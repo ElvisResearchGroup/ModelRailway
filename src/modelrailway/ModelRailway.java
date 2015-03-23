@@ -3,23 +3,48 @@ package modelrailway;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
+
 import modelrailway.core.Event;
 
 import org.slf4j.LoggerFactory;
 
+import jmri.DccLocoAddress;
+import jmri.DccThrottle;
 import jmri.InstanceManager;
+import jmri.ThrottleListener;
+import jmri.ThrottleManager;
+import jmri.jmrix.SystemConnectionMemo;
 import jmri.jmrix.loconet.*;
 import jmri.jmrix.loconet.pr3.PR3Adapter;
+import jmri.jmrix.loconet.pr3.PR3SystemConnectionMemo;
 import jmri.util.Log4JUtil;
 import jmri.web.server.WebServerManager;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ModelRailway implements LocoNetListener, Event.Listener {
-	// The PR3 Adaptor is the physical interface to the railway. It contains a
-	// USB port through which all loconet traffic is routed
+public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Listener {
+	/**
+	 * The PR3 Adaptor is the physical interface to the railway. It contains a
+	 * USB port through which all loconet traffic is routed
+	 */
 	private PR3Adapter connection;
+	
+	/**
+	 * The SystemConnectionMemo provides access to all the components of the
+	 * LocoNet interface.
+	 */
+	private PR3SystemConnectionMemo memo;
+	
+	/**
+	 * The list of locomotives on the system.
+	 */
+	private DccLocoAddress[] locomotives;
+	
+	/**
+	 * The list of active locomotive throttles
+	 */
+	private DccThrottle[] throttles;
 	
 	private ArrayList<Event.Listener> eventListeners = new ArrayList<Event.Listener>();
 
@@ -27,18 +52,27 @@ public class ModelRailway implements LocoNetListener, Event.Listener {
 	 * Constructor starts the JMRI application running, and then returns.
 	 * @throws Exception 
 	 */
-	public ModelRailway(String portName, int numTrains) throws Exception {
+	public ModelRailway(String portName, int... locomotives) throws Exception {
 		// Configure Log4J
 		initLog4J();
 		log.info(Log4JUtil.startupInfo("Main"));
 
+		this.locomotives = new DccLocoAddress[locomotives.length];
+		this.throttles = new DccThrottle[locomotives.length];
+		for(int i = 0;i!=locomotives.length;++i) {
+			this.locomotives[i] = new DccLocoAddress(locomotives[i],false);
+		}
 		// ============================================================
 		// Create the loconet connection
 		// ============================================================
 		connection = new PR3Adapter();
+		connection.openPort(portName, "Modelrailway App");
 		connection.setCommandStationType("DCS51");
 		connection.configure();
-		connection.openPort(portName, "JMRI app");
+		connection.connect();
+		memo = (PR3SystemConnectionMemo) connection.getSystemConnectionMemo();
+		memo.getLnTrafficController().addLocoNetListener(LnTrafficController.ALL, this);
+		requestThrottles();
 	}
 
 	/**
@@ -46,6 +80,38 @@ public class ModelRailway implements LocoNetListener, Event.Listener {
 	 */
 	public void destroy() {
 		connection.dispose();
+	}
+	
+	/**
+	 * Request throttles for all locomotives
+	 */
+	private void requestThrottles() {
+		ThrottleManager manager = memo.getThrottleManager();
+		for (DccLocoAddress loco : locomotives) {
+			System.out.println("Requesting throttle for locomotive: " + loco);
+			manager.requestThrottle(loco,this);
+		}
+	}
+	
+	@Override
+	public void notifyFailedThrottleRequest(DccLocoAddress arg0, String arg1) {
+		System.out.println("FAILED REQUESTING THROTTLE: " + arg0);
+	}
+
+	@Override
+	public void notifyThrottleFound(DccThrottle arg0) {
+		System.out.println("OBTAINED THROTTLE: " + arg0);
+		for(int i=0;i!=locomotives.length;++i) {
+			if(locomotives[i].equals(arg0.getLocoAddress())) {
+				System.out.println("MATCHED THROTTLE");
+				throttles[i] = arg0;
+			}
+		}
+	}
+	
+	public void setTrainSpeed(int id, float speed) {
+		throttles[id].setIsForward(true);
+		throttles[id].setSpeedSetting(speed);
 	}
 	
 	// ===============================================================
@@ -105,26 +171,7 @@ public class ModelRailway implements LocoNetListener, Event.Listener {
 	}
 	
 	public void notify(Event event) {
-		int[] message;
-		if (event instanceof Event.PowerChanged) {
-			Event.PowerChanged ep = (Event.PowerChanged) event;
-			message = new int[] { ep.isPowerOn() ? LnConstants.OPC_GPON
-					: LnConstants.OPC_GPOFF };
-		} else if (event instanceof Event.SpeedChanged) {
-			Event.SpeedChanged ep = (Event.SpeedChanged) event;
-			int slot = getLocomotiveSlot(ep.getLocomotive());
-			message = new int[] { LnConstants.OPC_LOCO_SPD, slot,
-					ep.getSpeed() };
-		} else if (event instanceof Event.DirectionChanged) {
-			Event.DirectionChanged ep = (Event.DirectionChanged) event;
-			int cmd = ep.getDirection() ? LnConstants.DIRF_DIR : 0;
-			message = new int[] { LnConstants.OPC_LOCO_SPD, ep.getLocomotive(),
-					cmd };
-		} else {
-			throw new IllegalArgumentException("Unknown event encountered: "
-					+ event.getClass().getName());
-		}
-		trafficController.sendLocoNetMessage(new LocoNetMessage(message));
+		
 	}
 		
 	/**

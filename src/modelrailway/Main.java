@@ -7,11 +7,12 @@ import java.io.InputStreamReader;
 import modelrailway.core.Event;
 
 public class Main {
+		
 	// ===============================================================
 	// Main entry point
 	// ===============================================================
 	public static void main(String args[]) throws Exception {
-		final ModelRailway railway = new ModelRailway(args[0], 3);
+		final ModelRailway railway = new ModelRailway(args[0],new int[]{1,2,3});
 		
 		// Add shutdown hook to make sure resources are released when quiting
 		// the application, even if the application is quit in a non-standard
@@ -51,8 +52,9 @@ public class Main {
 	
 	private static void startTrain(String command, ModelRailway railway) {
 		int locomotive = Integer.parseInt(command.substring(3));
-		railway.notify(new Event.DirectionChanged(locomotive, true));
-		railway.notify(new Event.SpeedChanged(locomotive, 50, 50));
+		//railway.notify(new Event.DirectionChanged(locomotive, true));
+		//railway.notify(new Event.SpeedChanged(locomotive, 50, 50));
+		railway.setTrainSpeed(locomotive, 0.5f);
 	}
 	
 	private static void printHelp() {
