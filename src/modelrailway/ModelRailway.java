@@ -20,10 +20,6 @@ public class ModelRailway implements LocoNetListener, Event.Listener {
 	// The PR3 Adaptor is the physical interface to the railway. It contains a
 	// USB port through which all loconet traffic is routed
 	private PR3Adapter connection;
-	private LnPacketizer trafficController;
-	
-	private LocoNetSlot[] trains;
-	private LocoNetThrottle[] throttles;
 	
 	private ArrayList<Event.Listener> eventListeners = new ArrayList<Event.Listener>();
 
@@ -40,60 +36,18 @@ public class ModelRailway implements LocoNetListener, Event.Listener {
 		// Create the loconet connection
 		// ============================================================
 		connection = new PR3Adapter();
-		connection.setPort(portName);
-		connection.configureBaudRate("57600");
 		connection.setCommandStationType("DCS51");
-		// connection.configureBaudRate("9600");
-		connection.openPort(portName, "JMRI app");
 		connection.configure();
-		//connection.connect();
-
-		// ============================================================
-		// Create the loconet traffic controller
-		// ============================================================
-		trafficController = new LnPacketizer();		
-		trafficController.startThreads();
-		trafficController.connectPort(connection);
-		trafficController.addLocoNetListener(LocoNetInterface.ALL,this);
-		
-		//
-		trains = new LocoNetSlot[numTrains];
-		throttles = new LocoNetThrottle[numTrains];
-		for(int i=0;i!=numTrains;++i) {
-			trains[i] = new LocoNetSlot(i);
-		}
+		connection.openPort(portName, "JMRI app");
 	}
 
-	
-
-	// ===============================================================
-	// Train and Switch Controls
-	// ===============================================================
-	
 	/**
-	 * Set the speed and direction of a given locomotive.
-	 * 
-	 * @param id
-	 * @param direction
-	 *            true indicates forward, false is backwards.
-	 * @param speed
-	 *            Number between 0 and 1
+	 * Destroy this railway connection, dropping all resources.
 	 */
-	public void setSpeedAndDirection(int id, boolean direction, float speed) {
-		System.out.println("SETTING SPEED: " + id + " : " + speed);
-		LocoNetThrottle throttle = throttles[id];
-		if (throttle == null) {
-			throttle = new LocoNetThrottle(
-					(LocoNetSystemConnectionMemo) connection
-							.getSystemConnectionMemo(),
-					trains[id]);
-			throttles[id] = throttle;
-		}
-		throttle.setIsForward(direction);
-		throttle.setSpeedSetting(speed);
-		throttle.dispatch();
+	public void destroy() {
+		connection.dispose();
 	}
-		
+	
 	// ===============================================================
 	// Message Listeners and Handlers
 	// ===============================================================
@@ -113,28 +67,34 @@ public class ModelRailway implements LocoNetListener, Event.Listener {
 		Event event = null;
 		
 		// First, process loconet message
-		int opcode = arg0.get(0);
+		int opcode = arg0.getOpCode();
 		switch(opcode) {
-		case OPC_GPON:
-		case OPC_GPOFF:
-			event = new Event.PowerChanged(opcode == OPC_GPON);
+		case LnConstants.OPC_GPON:
+		case LnConstants.OPC_GPOFF:
+			event = new Event.PowerChanged(opcode == LnConstants.OPC_GPON);
 			break;
-		case OPC_LOCO_DIRF:
-			event = new Event.DirectionChanged(arg0.get(1), (arg0.get(2) & SL_DIR) == SL_DIR);
+		case LnConstants.OPC_LOCO_DIRF:
+			boolean isForward = (arg0.getElement(2) & LnConstants.DIRF_DIR) == LnConstants.DIRF_DIR;
+			event = new Event.DirectionChanged(arg0.getElement(1), isForward);
 			break;
-		case OPC_LOCO_SPD:
-			int speed = arg0.get(2);
+		case LnConstants.OPC_LOCO_SPD:
+			int speed = arg0.getElement(2);
 			if(speed == 1) {
 				speed = -1;
 			} else if(speed > 1) {
 				speed = speed - 1;
 			}
-			event = new Event.SpeedChanged(arg0.get(1), speed, 0x7F-1);
+			event = new Event.SpeedChanged(arg0.getElement(1), speed, 0x7F-1);
+			break;
+		case LnConstants.OPC_LOCO_ADR:
+			System.out.println("GOT ADDRESS - " + arg0.getElement(1) + ","  + arg0.getElement(2));
 			break;
 		default:
 			// this is an unrecognised message, which we'll just silently ignore
 			// for now.
 		}
+		
+		System.out.println("RECEIVED EVENT: " + event);
 		
 		// Second, dispatch message as event (if understood)
 		if(event != null) {
@@ -145,6 +105,25 @@ public class ModelRailway implements LocoNetListener, Event.Listener {
 	}
 	
 	public void notify(Event event) {
+		int[] message;
+		if (event instanceof Event.PowerChanged) {
+			Event.PowerChanged ep = (Event.PowerChanged) event;
+			message = new int[] { ep.isPowerOn() ? LnConstants.OPC_GPON
+					: LnConstants.OPC_GPOFF };
+		} else if (event instanceof Event.SpeedChanged) {
+			Event.SpeedChanged ep = (Event.SpeedChanged) event;
+			int slot = getLocomotiveSlot(ep.getLocomotive());
+			message = new int[] { LnConstants.OPC_LOCO_SPD, slot,
+					ep.getSpeed() };
+		} else if (event instanceof Event.DirectionChanged) {
+			Event.DirectionChanged ep = (Event.DirectionChanged) event;
+			int cmd = ep.getDirection() ? LnConstants.DIRF_DIR : 0;
+			message = new int[] { LnConstants.OPC_LOCO_SPD, ep.getLocomotive(),
+					cmd };
+		} else {
+			throw new IllegalArgumentException("Unknown event encountered: "
+					+ event.getClass().getName());
+		}
 		trafficController.sendLocoNetMessage(new LocoNetMessage(message));
 	}
 		
@@ -173,19 +152,4 @@ public class ModelRailway implements LocoNetListener, Event.Listener {
 	}
 
 	static Logger log = LoggerFactory.getLogger(ModelRailway.class.getName());
-
-	// Opcodes
-	private static final int OPC_IDLE = 0x85;
-	private static final int OPC_GPON = 0x83;
-	private static final int OPC_GPOFF = 0x82;
-	private static final int OPC_LOCO_DIRF = 0xA1;
-	private static final int OPC_LOCO_SPD = 0xA0;
-
-	// Direction masks
-	private static final int SL_DIR = 32;
-	private static final int SL_F0 = 16; // directional lighting
-	private static final int SL_F4 = 8;  
-	private static final int SL_F3 = 4;  
-	private static final int SL_F2 = 2;  
-	private static final int SL_F1 = 1;  
 }

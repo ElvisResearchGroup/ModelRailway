@@ -1,32 +1,63 @@
 package modelrailway;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import modelrailway.core.Event;
 
 public class Main {
 	// ===============================================================
 	// Main entry point
 	// ===============================================================
 	public static void main(String args[]) throws Exception {
-		ModelRailway railway = new ModelRailway(args[0], 3);
-		float speed = 0.1f;
-		boolean direction = true;
-		//			
-		//			while (true) {
-		//				Thread.currentThread().sleep(1000);
-		//				railway.setSpeedAndDirection(1, true, speed);
-		//				if (speed > 0.9f) {
-		//					direction = false;
-		//				} else if (speed < 0.0f) {
-		//					direction = true;
-		//				}
-		//				if (direction) {
-		//					speed = Math.min(1.0f, speed + 0.25f);
-		//				} else {
-		//					speed = Math.max(0.0f, speed - 0.1f);
-		//				}
-		//			}
-		while(true) {
-			Thread.currentThread().sleep(100);
-			railway.sendMessage(0x83);
+		final ModelRailway railway = new ModelRailway(args[0], 3);
+		
+		// Add shutdown hook to make sure resources are released when quiting
+		// the application, even if the application is quit in a non-standard
+		// fashion.
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+		    @Override
+		    public void run() {
+		        System.out.println("Disconnecting from railway...");
+		        railway.destroy();
+		    }
+		}){});
+		
+		// Enter Read, Evaluate, Print loop.
+		
+		final BufferedReader input = new BufferedReader(new InputStreamReader(
+				System.in));
+		
+		try {
+			System.out.println("Welcome to the Model Railway!");
+			while (true) {
+				System.out.print("> ");
+				String text = input.readLine();
+
+				// commands goes here
+				if (text.equals("help")) {
+					printHelp();
+				} else if (text.startsWith("go")) {
+					startTrain(text,railway);
+				} else if (text.equals("exit")) {
+					System.exit(0);
+				} 
+			}
+		} catch (IOException e) {
+			System.err.println("I/O Error - " + e.getMessage());
 		}
+	}
+	
+	private static void startTrain(String command, ModelRailway railway) {
+		int locomotive = Integer.parseInt(command.substring(3));
+		railway.notify(new Event.DirectionChanged(locomotive, true));
+		railway.notify(new Event.SpeedChanged(locomotive, 50, 50));
+	}
+	
+	private static void printHelp() {
+		System.out.println("Model rail commands:");
+		System.out.println("\thelp --- access this help page");
+		System.out.println("\texit --- quit the application");
 	}
 }

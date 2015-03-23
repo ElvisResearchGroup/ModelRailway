@@ -37,14 +37,18 @@ public interface Event {
 		/**
 		 * True if the railway was powered on, false otherwise.
 		 */
-		private final boolean poweredOn;
+		private final boolean powerOn;
 		
-		public PowerChanged(boolean poweredOn) {
-			this.poweredOn = poweredOn;
+		public PowerChanged(boolean powerOn) {
+			this.powerOn = powerOn;
+		}
+		
+		public boolean isPowerOn() {
+			return powerOn;
 		}
 		
 		public String toString() {
-			if(poweredOn) {
+			if(powerOn) {
 				return "Railway was powered on.";
 			} else {
 				return "Railway was powered off.";
@@ -125,7 +129,7 @@ public interface Event {
 			return locomotive;
 		}
 				
-		public float getSpeed() {
+		public int getSpeed() {
 			return speed;
 		}
 		
