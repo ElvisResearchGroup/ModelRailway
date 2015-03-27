@@ -49,7 +49,15 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	
 	private ArrayList<Event.Listener> eventListeners = new ArrayList<Event.Listener>();
 
+	/**
+	 * The linmonitor is useful for decoding loconet messages.
+	 */
 	private Llnmon linmon;
+	
+	/**
+	 * verbose mode means dump out more debugging information.
+	 */
+	private boolean verbose = false;
 	
 	/**
 	 * Constructor starts the JMRI application running, and then returns.
@@ -70,12 +78,16 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		// ============================================================
 		connection = new PR3Adapter();
 		connection.openPort(portName, "Modelrailway App");
+		// Is following line necessary?
 		connection.setCommandStationType("DCS51 (Zephyr Xtra)");
-		System.out.println("OPTIONS: " + connection.getPortNames() + ", " + Arrays.toString(connection.getOptions()));
+		// The following line is extremely important. Without this line the PR3
+		// assumes there is no command station and defaults to the programming
+		// mode.
 		connection.setOptionState("CommandStation", "false");
 		connection.connect();
 		connection.configure();
 		memo = (PR3SystemConnectionMemo) connection.getSystemConnectionMemo();
+		// Is following line necessary?
 		memo.configureCommandStation(true, true, "DCS51 (Zephyr Xtra)", false, false);
 		memo.getLnTrafficController().addLocoNetListener(LnTrafficController.ALL, this);
 		requestThrottles();		
@@ -138,10 +150,14 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	public void message(LocoNetMessage arg0) {
 		Event event = null;
 		
-		if(linmon == null) {
-			linmon = new Llnmon();
+		if(verbose) {
+			// In verbose mode, we exploit the JMRI Llnmon tool to generate
+			// correct strings for all loconet messages.
+			if(linmon == null) {
+				linmon = new Llnmon();
+			}
+			System.out.println("MESSAGE: " + linmon.displayMessage(arg0));
 		}
-		System.out.println("MESSAGE: " + linmon.displayMessage(arg0));
 		
 		// First, process loconet message
 		int opcode = arg0.getOpCode();
@@ -170,6 +186,8 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			// this is an unrecognised message, which we'll just silently ignore
 			// for now.
 		}
+		
+		System.out.println("EVENT: " + event);
 		
 		// Second, dispatch message as event (if understood)
 		if(event != null) {
