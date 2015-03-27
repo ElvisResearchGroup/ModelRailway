@@ -127,8 +127,8 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		}
 	}
 	
-	public void setTrainSpeed(int id, float speed) {
-		throttles[id].setIsForward(true);
+	public void setTrainSpeed(int id, boolean direction, float speed) {
+		throttles[id].setIsForward(direction);
 		throttles[id].setSpeedSetting(speed);
 	}
 	
