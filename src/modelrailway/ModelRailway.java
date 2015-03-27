@@ -15,6 +15,7 @@ import jmri.ThrottleListener;
 import jmri.ThrottleManager;
 import jmri.jmrix.SystemConnectionMemo;
 import jmri.jmrix.loconet.*;
+import jmri.jmrix.loconet.locomon.Llnmon;
 import jmri.jmrix.loconet.pr3.PR3Adapter;
 import jmri.jmrix.loconet.pr3.PR3SystemConnectionMemo;
 import jmri.util.Log4JUtil;
@@ -48,6 +49,8 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	
 	private ArrayList<Event.Listener> eventListeners = new ArrayList<Event.Listener>();
 
+	private Llnmon linmon;
+	
 	/**
 	 * Constructor starts the JMRI application running, and then returns.
 	 * @throws Exception 
@@ -67,12 +70,15 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		// ============================================================
 		connection = new PR3Adapter();
 		connection.openPort(portName, "Modelrailway App");
-		connection.setCommandStationType("DCS51");
-		connection.configure();
+		connection.setCommandStationType("DCS51 (Zephyr Xtra)");
+		System.out.println("OPTIONS: " + connection.getPortNames() + ", " + Arrays.toString(connection.getOptions()));
+		connection.setOptionState("CommandStation", "false");
 		connection.connect();
+		connection.configure();
 		memo = (PR3SystemConnectionMemo) connection.getSystemConnectionMemo();
+		memo.configureCommandStation(true, true, "DCS51 (Zephyr Xtra)", false, false);
 		memo.getLnTrafficController().addLocoNetListener(LnTrafficController.ALL, this);
-		requestThrottles();
+		requestThrottles();		
 	}
 
 	/**
@@ -103,7 +109,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		System.out.println("OBTAINED THROTTLE: " + arg0);
 		for(int i=0;i!=locomotives.length;++i) {
 			if(locomotives[i].equals(arg0.getLocoAddress())) {
-				System.out.println("MATCHED THROTTLE");
+				System.out.println("MATCHED THROTTLE: " + arg0.getLocoAddress());
 				throttles[i] = arg0;
 			}
 		}
@@ -132,6 +138,11 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	public void message(LocoNetMessage arg0) {
 		Event event = null;
 		
+		if(linmon == null) {
+			linmon = new Llnmon();
+		}
+		System.out.println("MESSAGE: " + linmon.displayMessage(arg0));
+		
 		// First, process loconet message
 		int opcode = arg0.getOpCode();
 		switch(opcode) {
@@ -159,8 +170,6 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			// this is an unrecognised message, which we'll just silently ignore
 			// for now.
 		}
-		
-		System.out.println("RECEIVED EVENT: " + event);
 		
 		// Second, dispatch message as event (if understood)
 		if(event != null) {

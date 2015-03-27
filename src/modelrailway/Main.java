@@ -54,7 +54,7 @@ public class Main {
 		int locomotive = Integer.parseInt(command.substring(3));
 		//railway.notify(new Event.DirectionChanged(locomotive, true));
 		//railway.notify(new Event.SpeedChanged(locomotive, 50, 50));
-		railway.setTrainSpeed(locomotive, 0.5f);
+		railway.setTrainSpeed(locomotive, 0.9f);
 	}
 	
 	private static void printHelp() {
