@@ -7,7 +7,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
+import modelrailway.core.Controller;
 import modelrailway.core.Event;
+import modelrailway.core.Route;
+import modelrailway.core.Event.SpeedChanged;
+import modelrailway.core.Train;
+import modelrailway.util.SimpleController;
 
 /**
  * Provides a simple command-line interface for controlling the model railway.
@@ -18,9 +23,11 @@ import modelrailway.core.Event;
  */
 public class Main {
 	private ModelRailway railway;
+	private Controller controller;
 	
-	public Main(ModelRailway railway) {
+	public Main(ModelRailway railway, Controller controller) {
 		this.railway = railway;
+		this.controller = controller;
 	}
 	
 	// =========================================================================
@@ -38,7 +45,9 @@ public class Main {
 		this.new Command("quit",getMethod("quit")),
 		this.new Command("help",getMethod("printHelp")),
 		this.new Command("start",getMethod("startLocomotive",int.class, float.class)),
-		this.new Command("stop",getMethod("stopLocomotive",int.class))
+		this.new Command("stop",getMethod("stopLocomotive",int.class)),
+		this.new Command("route",getMethod("routeLocomotive",int.class,int[].class)),
+		this.new Command("locate",getMethod("setLocation",int.class,int.class))
 	};
 	
 	public void quit() {
@@ -49,15 +58,27 @@ public class Main {
 		boolean direction = speed >= 0;
 		speed = Math.abs(speed);
 		System.out.println("SETTING SPEED: " + speed);
-		// railway.notify(new Event.DirectionChanged(locomotive, true));
-		// railway.notify(new Event.SpeedChanged(locomotive, 50, 50));
-		railway.setTrainSpeed(locomotive, direction, speed);
+		railway.notify(new Event.DirectionChanged(locomotive, direction));
+		railway.notify(new Event.SpeedChanged(locomotive, speed));		
 	}
 	
 	public void stopLocomotive(int locomotive) {
 		System.out.println("STOPPING: " + locomotive);
+		railway.notify(new Event.SpeedChanged(locomotive,0.0f));
 	}
 
+	public void routeLocomotive(int locomotive, int[] route) {
+		System.out.println("Starting train: " + locomotive + " on route: " + Arrays.toString(route));
+		if(!controller.start(locomotive, new Route(false,route))) {
+			System.out.println("Error starting route (perhaps train not in starting section?)");
+		}
+	}
+	
+	public void setLocation(int locomotive, int section) {
+		System.out.println("Setting location: " + locomotive + " to: " + section);
+		controller.train(locomotive).setSection(section);
+	}
+	
 	public void printHelp() {
 		System.out.println("Model rail commands:");
 		for(Command c : commands) {
@@ -226,6 +247,17 @@ public class Main {
 				} catch(NumberFormatException e) {
 					return null;
 				}
+			} else if (parameter == int[].class) {
+				String[] numbers = token.split(",");
+				int[] array = new int[numbers.length];
+				for (int i = 0; i != numbers.length; ++i) {
+					try {
+						array[i] = Integer.parseInt(numbers[i]);
+					} catch (NumberFormatException e) {
+						return null;
+					}
+				}
+				return array;
 			} else if(parameter == String.class) {
 				return token;
 			} else {
@@ -240,16 +272,14 @@ public class Main {
 	// Main entry point
 	// =========================================================================
 	public static void main(String args[]) throws Exception {
-		//String port = args[0];
+		String port = args[0];
 
 		// Construct the model railway assuming the interface (i.e. USB Cable)
 		// is on a given port. Likewise, we initialise it with three locomotives
 		// whose addresses are 1,2 + 3. If more locomotives are to be used, this
 		// needs to be updated accordingly.
-
-//		final ModelRailway railway = new ModelRailway(port,
-//				new int[] { 1, 2, 3 });
-		ModelRailway railway = null;
+		final ModelRailway railway = new ModelRailway(port,
+				new int[] { 1, 2, 3 });
 		
 		// Add shutdown hook to make sure resources are released when quiting
 		// the application, even if the application is quit in a non-standard
@@ -258,12 +288,20 @@ public class Main {
 			@Override
 			public void run() {
 				System.out.println("Disconnecting from railway...");
-				//railway.destroy();
+				railway.destroy();
 			}
 		}) {
 		});
 
 		// Enter Read, Evaluate, Print loop.
-		new Main(railway).readEvaluatePrintLoop();
+		Train[] trains = {
+				new Train(0,true), // default config for train 0 
+				new Train(0,true), // default config for train 1
+				new Train(0,true)  // default config for train 2
+		};
+		Controller controller = new SimpleController(trains);
+		railway.register(controller);
+		controller.register(railway);
+		new Main(railway,controller).readEvaluatePrintLoop();
 	}
 }

@@ -35,6 +35,10 @@ public class Route {
 		this.sections = sections;
 	}
 	
+	public Integer firstSection() {
+		return sections[0];
+	}
+	
 	/**
 	 * Determine the next section in this route after a given section. the
 	 * <code>null</code> value is returned if this route is not a loop, the

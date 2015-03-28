@@ -112,34 +112,25 @@ public interface Event {
 		/**
 		 * The speed setting of the locomotive.
 		 */
-		private final int speed;
+		private final float speed;
 		
-		/**
-		 * The maximum speed setting for this locomotive.
-		 */
-		private final int maximumSpeed;
-		
-		public SpeedChanged(int locomotive, int speed, int maximumSpeed) {
+		public SpeedChanged(int locomotive, float speed) {
 			this.locomotive = locomotive;
 			this.speed = speed;
-			this.maximumSpeed = maximumSpeed;
 		}
 		
 		public int getLocomotive() {
 			return locomotive;
 		}
 				
-		public int getSpeed() {
+		public float getSpeed() {
 			return speed;
 		}
 		
-		public float getMaximumSpeed() {
-			return speed;
-		}
-		
-		public String toString() {			
-			return "Locomotive " + locomotive + " now moving at speed " + speed
-					+ " / " + maximumSpeed + ".";
+		public String toString() {
+			int percent = (int) (speed * 100f);
+			return "Locomotive " + locomotive + " now moving at speed "
+					+ percent + "%.";
 		}
 	}
 	

@@ -127,17 +127,12 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		}
 	}
 	
-	public void setTrainSpeed(int id, boolean direction, float speed) {
-		throttles[id].setIsForward(direction);
-		throttles[id].setSpeedSetting(speed);
-	}
-	
 	// ===============================================================
 	// Message Listeners and Handlers
 	// ===============================================================
 	
 
-	public void addEventListener(Event.Listener listener) {
+	public void register(Event.Listener listener) {
 		this.eventListeners.add(listener);
 	}
 	
@@ -177,10 +172,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			} else if(speed > 1) {
 				speed = speed - 1;
 			}
-			event = new Event.SpeedChanged(arg0.getElement(1), speed, 0x7F-1);
-			break;
-		case LnConstants.OPC_LOCO_ADR:
-			System.out.println("GOT ADDRESS - " + arg0.getElement(1) + ","  + arg0.getElement(2));
+			event = new Event.SpeedChanged(arg0.getElement(1), speed / (0x7F-1));
 			break;
 		default:
 			// this is an unrecognised message, which we'll just silently ignore
@@ -198,7 +190,13 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	}
 	
 	public void notify(Event event) {
-		
+		if(event instanceof Event.SpeedChanged) {
+			Event.SpeedChanged e = (Event.SpeedChanged) event; 
+			throttles[e.getLocomotive()].setSpeedSetting(e.getSpeed());
+		} else if(event instanceof Event.DirectionChanged) {
+			Event.DirectionChanged e = (Event.DirectionChanged) event;
+			throttles[e.getLocomotive()].setIsForward(e.getDirection());
+		}
 	}
 		
 	/**
