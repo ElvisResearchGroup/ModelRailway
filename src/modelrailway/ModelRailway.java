@@ -57,7 +57,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	/**
 	 * verbose mode means dump out more debugging information.
 	 */
-	private boolean verbose = false;
+	private volatile boolean verbose = false;
 	
 	/**
 	 * Constructor starts the JMRI application running, and then returns.
@@ -98,6 +98,10 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	 */
 	public void destroy() {
 		connection.dispose();
+	}
+	
+	public void setVerbose(boolean verbose) {
+		this.verbose = verbose;
 	}
 	
 	/**
@@ -174,12 +178,18 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			}
 			event = new Event.SpeedChanged(arg0.getElement(1), speed / (0x7F-1));
 			break;
+		case LnConstants.OPC_INPUT_REP:
+			int in1 = arg0.getElement(1);
+			int in2 = arg0.getElement(2);
+			int section = (SENSOR_ADR(in1, in2) - 1) * 2
+					+ ((in2 & LnConstants.OPC_INPUT_REP_SW) != 0 ? 2 : 1);
+			boolean state = (in2 & LnConstants.OPC_INPUT_REP_HI) != 0;
+			event = new Event.SectionChanged(section, state);
+			break;
 		default:
 			// this is an unrecognised message, which we'll just silently ignore
 			// for now.
 		}
-		
-		System.out.println("EVENT: " + event);
 		
 		// Second, dispatch message as event (if understood)
 		if(event != null) {
@@ -198,6 +208,10 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			throttles[e.getLocomotive()].setIsForward(e.getDirection());
 		}
 	}
+	
+    static private int SENSOR_ADR(int a1, int a2) {
+        return (((a2 & 0x0f) * 128) + (a1 & 0x7f)) + 1;
+    } 
 		
 	/**
 	 * Static method to get Log4J working before the rest of JMRI starts up.

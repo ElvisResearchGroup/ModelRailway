@@ -44,6 +44,7 @@ public class Main {
 	private Command[] commands = {
 		this.new Command("quit",getMethod("quit")),
 		this.new Command("help",getMethod("printHelp")),
+		this.new Command("verbose",getMethod("setVerbose",boolean.class)),
 		this.new Command("start",getMethod("startLocomotive",int.class, float.class)),
 		this.new Command("stop",getMethod("stopLocomotive",int.class)),
 		this.new Command("route",getMethod("routeLocomotive",int.class,int[].class)),
@@ -84,6 +85,10 @@ public class Main {
 		for(Command c : commands) {
 			System.out.println("\t" + c.keyword);
 		}
+	}
+	
+	public void setVerbose(boolean verbose) {
+		railway.setVerbose(verbose);
 	}
 
 	// =========================================================================

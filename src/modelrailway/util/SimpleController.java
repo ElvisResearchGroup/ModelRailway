@@ -78,6 +78,7 @@ public class SimpleController implements Controller {
 		// route.
 		if(e instanceof Event.SectionChanged) {
 			Event.SectionChanged es = (Event.SectionChanged) e;
+			System.out.println("SECTION CHANGED : " + es.getSection() + ", " + es.getInto());
 			// At this point, there are two things to do. Firstly, we need to
 			// confirm that this section changed event was the expected event
 			// for a route.  Second, we need to update the train with its
@@ -90,11 +91,14 @@ public class SimpleController implements Controller {
 				// next expected section for each train to see whether it
 				// matches any of them.
 				for(int i=0;i!=trains.length;++i) {
-					int expected = routes[i].nextSection(trains[i].currentSection());
-					if(expected == es.getSection()) {
-						// Matched
-						trainID = i;
-						break;
+					Route route = routes[i];
+					if(route != null) {
+						Integer expected = route.nextSection(trains[i].currentSection());
+						if (expected != null && expected == es.getSection()) {
+							// Matched
+							trainID = i;
+							break;
+						}
 					}
 				}
 			} else {
