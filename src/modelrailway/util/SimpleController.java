@@ -78,7 +78,10 @@ public class SimpleController implements Controller {
 		// route.
 		if(e instanceof Event.SectionChanged) {
 			Event.SectionChanged es = (Event.SectionChanged) e;
-			System.out.println("SECTION CHANGED : " + es.getSection() + ", " + es.getInto());
+			// The following calculation assumes that each detection section is
+			// an odd number, and that we have alternative
+			// detection/non-detection sections.
+			int section = 1 + ((es.getSection()-1) * 2);
 			// At this point, there are two things to do. Firstly, we need to
 			// confirm that this section changed event was the expected event
 			// for a route.  Second, we need to update the train with its
@@ -94,8 +97,9 @@ public class SimpleController implements Controller {
 					Route route = routes[i];
 					if(route != null) {
 						Integer expected = route.nextSection(trains[i].currentSection());
-						if (expected != null && expected == es.getSection()) {
+						if (expected != null && expected == section) {
 							// Matched
+							System.out.println("MATCHED TRAIN " + i + " ENTERING SECTION " + section);
 							trainID = i;
 							break;
 						}
@@ -106,8 +110,9 @@ public class SimpleController implements Controller {
 				// detection section. To figure out which train, we need simply
 				// need to decide which train was in that section.
 				for(int i=0;i!=trains.length;++i) {
-					if(trains[i].currentSection() == es.getSection()) {
+					if(trains[i].currentSection() == section) {
 						// Matched
+						System.out.println("MATCHED TRAIN " + i + " LEAVING SECTION " + section);
 						trainID = i;
 						break;
 					}
@@ -117,23 +122,33 @@ public class SimpleController implements Controller {
 			if(trainID == -1) {
 				// this indicates a recognition failure. At this point, we just
 				// stop all trains as a simplistic emergency procedure.
-				for(int i=0;i!=trains.length;++i) {
-					stop(i);
-					routes[i] = null;
-				}
+				//emergencyStopAll();
 			} else {
 				// We managed to determine which train caused this event,
 				// therefore we now update it's position.
 				Train train = trains[trainID];
-				Integer nextSection = routes[trainID].nextSection(train.currentSection());
+				Route route = routes[trainID];
+				Integer nextSection = route.nextSection(train.currentSection());
 				if(nextSection == null) {
-					// The train has reached the end of its route.
-					stop(trainID);
-					routes[trainID] = null;
+					// This indicates something went wrong.
+					emergencyStopAll();
 				} else {
 					train.setSection(nextSection);
+					if(nextSection == route.lastSection()) {
+						// The train has reached the last section of its route.
+						stop(trainID);
+						routes[trainID] = null;
+					}					
 				}
 			}
+		}
+	}
+	
+	private void emergencyStopAll() {
+		System.out.println("INVOKING EMERGENCY STOP");
+		for(int i=0;i!=trains.length;++i) {
+			routes[i] = null;
+			send(new Event.EmergencyStop(i));
 		}
 	}
 	

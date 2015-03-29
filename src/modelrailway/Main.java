@@ -48,6 +48,7 @@ public class Main {
 		this.new Command("start",getMethod("startLocomotive",int.class, float.class)),
 		this.new Command("stop",getMethod("stopLocomotive",int.class)),
 		this.new Command("route",getMethod("routeLocomotive",int.class,int[].class)),
+		this.new Command("loop",getMethod("loopLocomotive",int.class,int[].class)),
 		this.new Command("locate",getMethod("setLocation",int.class,int.class))
 	};
 	
@@ -64,13 +65,20 @@ public class Main {
 	}
 	
 	public void stopLocomotive(int locomotive) {
-		System.out.println("STOPPING: " + locomotive);
-		railway.notify(new Event.SpeedChanged(locomotive,0.0f));
+		System.out.println("EMERGENCY STOP: " + locomotive);
+		railway.notify(new Event.EmergencyStop(locomotive));
 	}
 
 	public void routeLocomotive(int locomotive, int[] route) {
 		System.out.println("Starting train: " + locomotive + " on route: " + Arrays.toString(route));
 		if(!controller.start(locomotive, new Route(false,route))) {
+			System.out.println("Error starting route (perhaps train not in starting section?)");
+		}
+	}
+	
+	public void loopLocomotive(int locomotive, int[] route) {
+		System.out.println("Starting train: " + locomotive + " on loop: " + Arrays.toString(route));
+		if(!controller.start(locomotive, new Route(true,route))) {
 			System.out.println("Error starting route (perhaps train not in starting section?)");
 		}
 	}

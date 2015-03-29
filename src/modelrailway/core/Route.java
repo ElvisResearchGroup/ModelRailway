@@ -39,6 +39,14 @@ public class Route {
 		return sections[0];
 	}
 	
+	public int lastSection() {
+		if (isLoop) {
+			return -1;
+		} else {
+			return sections[sections.length - 1];
+		}
+	}
+	
 	/**
 	 * Determine the next section in this route after a given section. the
 	 * <code>null</code> value is returned if this route is not a loop, the

@@ -173,4 +173,30 @@ public interface Event {
 			}
 		}
 	}
+	
+	/**
+	 * Instruct a train to perform an emergency stop.
+	 * 
+	 * @author David J. Pearce
+	 *
+	 */
+	public class EmergencyStop implements Event {
+		/**
+		 * The locomotive whose throttle was changed.
+		 */
+		private final int locomotive;
+		
+		public EmergencyStop(int locomotive) {
+			this.locomotive = locomotive;
+		}
+		
+		public int getLocomotive() {
+			return locomotive;
+		}
+		
+		public String toString() {
+			return "Locomotive " + locomotive + " performing emergency stop.";
+		}
+	}
+
 }
