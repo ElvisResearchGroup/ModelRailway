@@ -72,7 +72,7 @@ public class SimpleController implements Controller {
 	}
 
 	@Override
-	public void notify(Event e) {
+	public synchronized void notify(Event e) {
 		// This function listens only to section changed events and makes sure
 		// that the trains are progressing correctly along each section in their
 		// route.
@@ -99,7 +99,7 @@ public class SimpleController implements Controller {
 						Integer expected = route.nextSection(trains[i].currentSection());
 						if (expected != null && expected == section) {
 							// Matched
-							System.out.println("MATCHED TRAIN " + i + " ENTERING SECTION " + section);
+							//System.out.println("MATCHED TRAIN " + i + " ENTERING SECTION " + section);
 							trainID = i;
 							break;
 						}
@@ -112,7 +112,7 @@ public class SimpleController implements Controller {
 				for(int i=0;i!=trains.length;++i) {
 					if(trains[i].currentSection() == section) {
 						// Matched
-						System.out.println("MATCHED TRAIN " + i + " LEAVING SECTION " + section);
+						//System.out.println("MATCHED TRAIN " + i + " LEAVING SECTION " + section);
 						trainID = i;
 						break;
 					}
