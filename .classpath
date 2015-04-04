@@ -2,6 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JMRI"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/jmri.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/slf4j-api-1.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/slf4j-log4j12-1.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/log4j-1.2.17.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
