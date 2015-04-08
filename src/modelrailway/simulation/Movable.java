@@ -38,15 +38,35 @@ public abstract class Movable {
  * @return
  */
    public int move(){ // returns the new distance
-	   int distance2 = (distance + currentSpeed) % getFront().getDistance(onAlt);
-	   if(distance2 < distance){ // we have moved onto a new segment
-		   track[1] = track[0];
-		   track[0] = track[0].getNext(onAlt); // get next section of track based on wheather we are on an alternate section.
-		   onAlt = track[0].isAlt(track[1]);
+	   if(isFowards()){
+		   int distance2 = (distance + currentSpeed) % getFront().getDistance(onAlt);
+		   if(distance2 < distance){ // we have moved onto a new segment
+			   track[1] = track[0];
+			   track[0] = track[0].getNext(onAlt); // get next section of track based on wheather we are on an alternate section.
+			   onAlt = track[0].isAlt(track[1]);
+		   }
+	
+		   distance = distance2;
+		   if(distance > getLength()) track[1] = null; // not on back segment
+	   } else{ // moving backwards
+		   int distance2= (distance - currentSpeed); // adjust distance2
+		   if(distance2 < 0){ // we need to move backwards by a track piece
+			   Track temp = track[0]; // keep hold of old track piece
+			   track[0] = track[0].getPrevious(onAlt); // get the previous section of track. 
+			   boolean newalt = track[0].isAlt(temp); // are we on the alternate section of the new section of track ?
+			   if(distance2+track[0].getDistance(newalt) < length){ // check that we are all on the piece
+				   track[1]=track[0].getPrevious(newalt); // if not then set the track[1] array index to the piece our rear end is on
+			   }
+			   else{
+				   track[1]=null; // otherwise the entire object is on the first piece, track[0]
+			   }
+			   onAlt = newalt; // set whether we are on an alternate section or not
+			   distance = distance2+track[0].getDistance(newalt); // reset the distance
+		   }
+		   else{
+		      distance = distance2; // the distance was not negative so we are still on the same track piece
+		   }
 	   }
-
-	   distance = distance2;
-	   if(distance > getLength()) track[1] = null; // not on back segment
 	   return distance;
    }
 
@@ -104,6 +124,14 @@ public abstract class Movable {
    public Track getBack(){
 	   if(track[1] == null) return getFront();
 	   return track[1];
+   }
+   
+   /**
+    * toggles whether the object moves forwards or backwards
+    */
+   public void toggleDirection(){
+	   if(isFowards()) direction = Direction.back;
+	   else direction = Direction.forward;
    }
 
 }
