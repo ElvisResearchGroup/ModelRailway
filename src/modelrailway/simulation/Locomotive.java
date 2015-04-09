@@ -5,7 +5,7 @@ package modelrailway.simulation;
  *
  */
 public class Locomotive extends Movable {
-
+	
 	public Locomotive(Track[] tr, int distance, int length, int maxSpeed,
 			boolean onAlt) {
 		super(tr, distance, length, maxSpeed, onAlt);
