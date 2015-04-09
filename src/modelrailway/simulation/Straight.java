@@ -20,7 +20,7 @@ public class Straight extends Track {
 		    Track tr = new Straight(getHead(),getHead(),section,trackSegmentLength); 
 		    section.add(tr); // add a track
 			this.trivialRing(tr);
-			for(int x = 2; x < numTracks; x++){
+			for(int x = 2; x < numTracks; x++){ 
 				Track head = getHead(); // get the head
 				Section sinsert = new Section(new ArrayList<Track>()); // the section to insert
 				Track insert = new Straight(null,null,section,trackSegmentLength); // the track to insert
