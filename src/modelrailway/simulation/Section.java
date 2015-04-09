@@ -9,59 +9,30 @@ import java.util.Set;
  * @author powleybenj
  *
  */
-public class Section extends ArrayList<Track>{
-	private Section next;
-	private Section previous;
-	private Section altNext;
-	private Section altPrev;
+public class Section extends ArrayList<Track>{ // a section is a list of tracks , sections can detect trains 
 
+	private Set<Movable> movableObjects = new HashSet<Movable>(); // the trains on the section.
 	/**
 	 * Section takes a list of tracks in the section.
 	 * @param tr
-	 * @param next
-	 * @param previous
 	 */
-	public Section(List<Track> tr,Section next, Section previous){
+	public Section(List<Track> tr){
 		this.addAll(tr);
-		this.next = next;
-		this.previous = previous;
-
 	}
-	/**
-	 * Section takes a list of tracks in the section.
-	 * @param tr
-	 * @param next
-	 * @param previous
-	 * @param altNext
-	 * @param altPrev
-	 */
-	public Section(List<Track> tr, Section next, Section previous, Section altNext, Section altPrev){
-		this.addAll(tr);
-		this.next = next;
-		this.previous = previous;
-		this.altNext = altNext;
-		this.altPrev = altPrev;
+	
+	public boolean addMovable(Movable m){
+		return movableObjects.add(m);
 	}
-
-	/**
-	 * Next sections returns a list of the next sections.
-	 * @return
-	 */
-	public Set<Section> nextSections(){
-		Set<Section> sectionSet = new HashSet<Section>();
-		sectionSet.add(next);
-		if(altNext != null) sectionSet.add(altNext);
-		return sectionSet; // return the previous sections
+	
+	public boolean contains(Movable m){
+		return movableObjects.contains(m);
 	}
-	/**
-	 * Previous sections returns a list of the previous sections.
-	 * @return
-	 */
-	public Set<Section> previousSection(){
-		Set<Section> sectionSet = new HashSet<Section>();
-		sectionSet.add(previous);
-		if(altPrev != null) sectionSet.add(altPrev);
-		return sectionSet; // return previous sections
+	
+	public boolean remove(Movable m){
+		return movableObjects.remove(m);
 	}
-
+	
+	public boolean empty(){
+		return (movableObjects.size() == 0);
+	}
 }

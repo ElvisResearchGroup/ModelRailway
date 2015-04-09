@@ -16,19 +16,20 @@ public class Straight extends Track {
 		}
 		public Track ringTrack(int numTracks, int trackSegmentLength){ // produce a ring.
 			
-		    Section section = new Section(new ArrayList<Track>(),null,null,null,null );
-		    Track tr = new Straight(getHead(),getHead(),section,trackSegmentLength);
+		    Section section = new Section(new ArrayList<Track>() );
+		    Track tr = new Straight(getHead(),getHead(),section,trackSegmentLength); 
 		    section.add(tr); // add a track
 			this.trivialRing(tr);
 			for(int x = 2; x < numTracks; x++){
-				Track head = getHead();
-				Section sinsert = new Section(new ArrayList<Track>(),null,null,null,null );
-				Track insert = new Straight(null,null,section,trackSegmentLength);
+				Track head = getHead(); // get the head
+				Section sinsert = new Section(new ArrayList<Track>()); // the section to insert
+				Track insert = new Straight(null,null,section,trackSegmentLength); // the track to insert
 				sinsert.add(insert); // add a track
-				insertBetween(head,false,insert,false);
+				insertBetween(head,false,insert,false); // insert the insert piece between head and head.getNext(false);
 			}
 			return getHead();
 		}
+		
 	}
 	public Straight(Track previous, Track next, Section section, int length) {
 		super(previous, next,null, null, section, length, 0);
