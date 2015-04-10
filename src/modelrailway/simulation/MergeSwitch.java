@@ -1,21 +1,19 @@
 package modelrailway.simulation;
-/**
- * Switch is a piece of track with one entrance and two exits. the switch can be toggled.
- * @author powleybenj
- *
- */
-public class Switch extends Track {
+
+
+public class MergeSwitch extends Track{
 
 	private enum Direction{
-		exit,next
+		enter,prev
 	}
 	private Direction path;
-	private int pointPos;
-	public Switch(Track previous, Track next,Track exit, Section section,int length,int altlength, int pointPos) {
-		super(previous, next, null, exit, section, length, altlength);
+	private int pointPos; // point position from the back
+	
+	public MergeSwitch(Track previous, Track next,Track entrance, Section section,int length,int altlength, int pointPos) {
+		super(previous, next, entrance, null, section, length, altlength);
 		this.pointPos = pointPos;
 
-		this.path = Direction.next;
+		this.path = Direction.prev;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -35,7 +33,7 @@ public class Switch extends Track {
      * @return
      */
     private Track get(Direction d){
-		if(d.toString().equals("exit")){
+		if(d.toString().equals("enter")){
 			return super.getNext(true);
 		}
 		return super.getNext(false);
@@ -46,17 +44,16 @@ public class Switch extends Track {
      * @return 
      */
     public boolean getCurrentAlt(Movable m){
-    	if(m.getFront() == this ){
-    		if(m.getDistance() > pointPos){
+    	if(m.getBack() == this ){
+    		if(m.getBackDistance() < pointPos){ // point position from the back.
     		   return super.getCurrentAlt(m);	
     		} else {
-    			return this.path == Direction.exit;
+    			return this.path == Direction.enter;
     		}
-    	} else if (m.getBack() == this){
+    	} else if (m.getFront() == this){
     		if(m.getFront() == this.getNext(false)) return false;
     		else if (m.getFront() == this.getNext(true)) return true;
     	}
     	throw new WrongTrackException();
 	}
-
 }

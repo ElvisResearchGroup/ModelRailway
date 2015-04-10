@@ -222,6 +222,20 @@ public abstract class Track {
 	}
 	
 	/**
+	 * given the previous section of track return weather we are currently traveling along the alternate route or the primary route.
+	 * @param track
+	 * @return
+	 */
+	public boolean getCurrentAlt(Movable m){
+		if(m.getFront() == this){
+			return m.getOnAlt();
+		}else if(m.getBack() == this){
+			return m.getOnAlt();
+		}
+		throw new WrongTrackException();
+	}
+	
+	/**
 	 *  returns weather a piece of track is connecting to the primary route or to a secondary route.
 	 *  @return
 	 */

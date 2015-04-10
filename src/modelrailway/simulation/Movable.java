@@ -16,6 +16,7 @@ public abstract class Movable {
    private int currentSpeed = 0;
    private int maxSpeed = 0;
    private boolean onAlt = false; // are we on alt segment.
+   private boolean backAlt = false;
    private Direction direction;
    /**
     * Create a movable item at the specified distance along a track segment with the specified length.
@@ -36,49 +37,62 @@ public abstract class Movable {
 	   direction = Direction.forward;
 
    }
+   /**
+    * returns weather the track is on an alt segment.
+    * @return
+    */
+   public boolean getOnAlt(){
+	   return onAlt;
+   }
   /**
    * move causes the movable to move by its current speed. currently only moving forwards is supported.
    * @return
    */
    public int move(){ // returns the new distance
 	   if(isFowards()){
-		   int distance2 = (distance + currentSpeed) % getFront().getDistance(onAlt);
-		   if(distance2 < distance){ // we have moved onto a new segment
+		  int distance2 = (distance + currentSpeed) % getFront().getDistance(onAlt);
+		  if(distance2 < distance){ // we have moved onto a new segment
 			   track[1].getSection().removeMovable(this);
 			   track[1] = track[0];
-			   track[0] = track[0].getNext(onAlt); // get next section of track based on wheather we are on an alternate section.
+			   backAlt = onAlt;
+			   track[0] = track[0].getNext(onAlt); // get next section of track based on weather we are on an alternate section.
 			   onAlt = track[0].isAlt(track[1]);
 			   track[0].getSection().addMovable(this);
-		   }
+		  }
 		   
-		   distance = distance2;
-		   if(distance > getLength()){
+		  distance = distance2;
+		  if(distance > getLength()){
 			   track[1].getSection().removeMovable(this);
 			   track[1] = null; // not on back segment
+			   backAlt =onAlt;
 			   
-		   }
+		  }
 	   } else{ // moving backwards
-		   int distance2= (distance - currentSpeed); // adjust distance2
-		   if(distance2 < 0){ // we need to move backwards by a track piece
-			   Track temp = track[0]; // keep hold of old track piece
-			   temp.getSection().removeMovable(this);
-			   track[0] = track[0].getPrevious(onAlt); // get the previous section of track. 
-			   if(!track[0].getSection().containsMovable(this)) track[0].getSection().addMovable(this);
-			   boolean newalt = track[0].isAlt(temp); // are we on the alternate section of the new section of track ?
-			   if(distance2+track[0].getDistance(newalt) < length){ // check that we are all on the piece
-				   track[1]=track[0].getPrevious(newalt); // if not then set the track[1] array index to the piece our rear end is on
-				   if(!track[1].getSection().containsMovable(this)) track[1].getSection().addMovable(this);
-			   }
-			   else{
-				   track[1].getSection().removeMovable(this);
-				   track[1]=null; // otherwise the entire object is on the first piece, track[0]
-			   }
-			   onAlt = newalt; // set whether we are on an alternate section or not
-			   distance = distance2+track[0].getDistance(newalt); // reset the distance
-		   }
-		   else{
-		      distance = distance2; // the distance was not negative so we are still on the same track piece
-		   }
+		  int distance2 = (getBackDistance() +currentSpeed);
+		  if(distance2 > getBack().getDistance(backAlt)){ // move backwards. since we have moved backwards over a section we do not have track[1]
+			   track[1] = track[0].getPrevious(backAlt);
+			   backAlt = track[1].isAlt(track[0]);
+		  }
+		  distance = distance2 - getBack().getDistance(onAlt);
+		  if(distance > length){
+			   if(track[1] != track[0]){
+				   track[0].getSection().removeMovable(this);
+				   track[0] = track[1];
+				   track[1] = null;
+				   onAlt = backAlt;
+			   } else { // as track1 and track 0 are not different.
+				   track[1] = null;
+			   }   
+		  }
+		   
+		   
+	   }
+	   
+	   onAlt = track[0].getCurrentAlt(this); // adjust for points.
+	   if(track[1] != null){
+		   backAlt = track[1].getCurrentAlt(this);
+	   } else{
+		   backAlt = onAlt;
 	   }
 	   return distance;
    }
@@ -95,13 +109,12 @@ public abstract class Movable {
 	   return distance;
    }
    /**
-    * get the distance from the start of the piece of track to the back of the movable object
+    * get the distance from the start of the front section to the back of the moving object.
     * @return
     */
    public int getBackDistance(){
-	   int backDist = Math.abs(distance-getLength());
-	   if(getBack() == getFront()) return backDist;
-	   return getBack().getDistance(getFront())-backDist;
+	   return Math.abs(distance-getLength());
+
    }
   /**
    * stops the movable object. currently there is no acceleration.

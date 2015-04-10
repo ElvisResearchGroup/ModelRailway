@@ -83,6 +83,7 @@ public class Straight extends Track {
 		if(track == getNext(false) || track == getPrevious(false)){
 			return false;
 		}
+		
 		throw new WrongTrackException();
 	}
 
