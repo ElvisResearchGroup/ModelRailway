@@ -24,15 +24,15 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 		return movableObjects.add(m);
 	}
 	
-	public boolean contains(Movable m){
+	public boolean containsMovable(Movable m){
 		return movableObjects.contains(m);
 	}
 	
-	public boolean remove(Movable m){
+	public boolean removeMovable(Movable m){
 		return movableObjects.remove(m);
 	}
 	
-	public boolean empty(){
+	public boolean emptyMovable(){
 		return (movableObjects.size() == 0);
 	}
 }

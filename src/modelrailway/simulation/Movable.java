@@ -27,37 +27,50 @@ public abstract class Movable {
     * @param maxSpeed The maxSpeed is the max distance traveled per clock tick.
     */
    public Movable(Track[] tr, int distance,int length, int maxSpeed,boolean onAlt){
+	   for(int x = 0; x < tr.length; x++){
+		   if(!tr[x].getSection().containsMovable(this)) tr[x].getSection().addMovable(this);
+	   }
 	   this.track = tr;
 	   this.maxSpeed = maxSpeed;
 	   this.onAlt = onAlt;
 	   direction = Direction.forward;
 
    }
-/**
- * move causes the movable to move by its current speed. currently only moving forwards is supported.
- * @return
- */
+  /**
+   * move causes the movable to move by its current speed. currently only moving forwards is supported.
+   * @return
+   */
    public int move(){ // returns the new distance
 	   if(isFowards()){
 		   int distance2 = (distance + currentSpeed) % getFront().getDistance(onAlt);
 		   if(distance2 < distance){ // we have moved onto a new segment
+			   track[1].getSection().removeMovable(this);
 			   track[1] = track[0];
 			   track[0] = track[0].getNext(onAlt); // get next section of track based on wheather we are on an alternate section.
 			   onAlt = track[0].isAlt(track[1]);
+			   track[0].getSection().addMovable(this);
 		   }
-	
+		   
 		   distance = distance2;
-		   if(distance > getLength()) track[1] = null; // not on back segment
+		   if(distance > getLength()){
+			   track[1].getSection().removeMovable(this);
+			   track[1] = null; // not on back segment
+			   
+		   }
 	   } else{ // moving backwards
 		   int distance2= (distance - currentSpeed); // adjust distance2
 		   if(distance2 < 0){ // we need to move backwards by a track piece
 			   Track temp = track[0]; // keep hold of old track piece
+			   temp.getSection().removeMovable(this);
 			   track[0] = track[0].getPrevious(onAlt); // get the previous section of track. 
+			   if(!track[0].getSection().containsMovable(this)) track[0].getSection().addMovable(this);
 			   boolean newalt = track[0].isAlt(temp); // are we on the alternate section of the new section of track ?
 			   if(distance2+track[0].getDistance(newalt) < length){ // check that we are all on the piece
 				   track[1]=track[0].getPrevious(newalt); // if not then set the track[1] array index to the piece our rear end is on
+				   if(!track[1].getSection().containsMovable(this)) track[1].getSection().addMovable(this);
 			   }
 			   else{
+				   track[1].getSection().removeMovable(this);
 				   track[1]=null; // otherwise the entire object is on the first piece, track[0]
 			   }
 			   onAlt = newalt; // set whether we are on an alternate section or not
@@ -70,6 +83,10 @@ public abstract class Movable {
 	   return distance;
    }
 
+   /**
+    * Return the length.
+    * @return
+    */
    public int getLength() {
 	// TODO Auto-generated method stub
 	return length;
@@ -86,10 +103,10 @@ public abstract class Movable {
 	   if(getBack() == getFront()) return backDist;
 	   return getBack().getDistance(getFront())-backDist;
    }
-/**
- * stops the movable object. currently there is no acceleration.
- * @return
- */
+  /**
+   * stops the movable object. currently there is no acceleration.
+   * @return
+   */
    public int stop(){
 	   currentSpeed = 0;
 	   return distance;

@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class Straight extends Track {
 
 	public static class StraightRing extends RingRoute{
-		public StraightRing(int length, Track head) {
-			super(length,  head);
+		public StraightRing(Track head) {
+			super( head);
 			// TODO Auto-generated constructor stub
 		}
 		public Track ringTrack(int numTracks, int trackSegmentLength){ // produce a ring.

@@ -14,7 +14,7 @@ public abstract class Track {
 		private Track head;  
 		private List<Track> trackList = new ArrayList<Track>();
 		
-		public RingRoute(int length, Track head){
+		public RingRoute(Track head){
 			this.head = head;
 		}
 		public Track getHead(){
