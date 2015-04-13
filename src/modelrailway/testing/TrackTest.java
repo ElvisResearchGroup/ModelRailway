@@ -173,18 +173,107 @@ public class TrackTest {
 	    assertTrue (str.getNext(false) == sw2);
 	    assertTrue (sw2.getPrevious(true) == str);
 	}
-	
-	@Test public void trackTestTrainRun0(){
+	/**
+	 * Test a single locomotive running around a ring track. The locomotive is smaller than a section.
+	 */
+	@Test public void trackTestLocoRun0(){
 		Section sec = new Section(new ArrayList<Track>());
 
 		Straight st = new Straight(null,null,sec,100);
 		Straight.StraightRing route = new Straight.StraightRing(st);
-		Track head = route.ringTrack(5, 100);
+		Track head = route.ringTrack(3, 100);
 		sec.add(head);
-		Movable locomotive = new Locomotive(new Track[]{head}, 50, 50, 50, true);
+
+		Movable locomotive = new Locomotive(new Track[]{head}, 50, 50, 50, false);
 		sec.addMovable(locomotive);
+		assertTrue(locomotive.getFront() == head);
+		assertTrue(locomotive.getBack() == head);
+		
+		locomotive.move(); // locomotive has not started yet.
+		assertTrue(locomotive.getDistance() == 50);
+		assertTrue(locomotive.getFront() == head);
+		assertTrue(locomotive.getBack() == head);
+		
+		locomotive.start();
+		
 		locomotive.move();
 		assertTrue(locomotive.getDistance() == 0);
 		assertTrue(locomotive.getFront() == head.getNext(false));
+		assertTrue(locomotive.getBack() == head);
+		
+		locomotive.move();
+		assertTrue(locomotive.getDistance() == 50);
+		assertTrue(locomotive.getFront() == head.getNext(false));
+		assertTrue(locomotive.getBack() == head.getNext(false));
+		
+		locomotive.move();
+		assertTrue(locomotive.getDistance() == 0);
+		assertTrue(locomotive.getFront() == head.getNext(false).getNext(false));
+		assertTrue(locomotive.getBack() == head.getNext(false));
+		
+		locomotive.move();
+		assertTrue(locomotive.getDistance() == 50);
+		assertTrue(locomotive.getFront() == head.getNext(false).getNext(false));
+		assertTrue(locomotive.getBack() == head.getNext(false).getNext(false));
+		
+		locomotive.move();
+		assertTrue(locomotive.getDistance() == 0);
+		assertTrue(locomotive.getFront() == head);
+		assertTrue(locomotive.getBack() == head.getNext(false).getNext(false));
+	}
+	/**
+	 * Test a locomotive that is longer than 1 piece of track.
+	 */
+	@Test public void trackTestLocoRun1(){
+		Section sec = new Section(new ArrayList<Track>());
+
+		Straight st = new Straight(null,null,sec,100);
+		Straight.StraightRing route = new Straight.StraightRing(st);
+		Track head = route.ringTrack(3, 100);
+		sec.add(head);
+
+		Movable locomotive = new Locomotive(new Track[]{head.getNext(false),head}, 90, 110, 50, false);
+		sec.addMovable(locomotive);
+		assertTrue(locomotive.getFront() == head.getNext(false));
+		assertTrue(locomotive.getBack() == head);
+		assertTrue(locomotive.getBackDistance() == 20);
+
+		locomotive.start();
+
+		locomotive.move();
+		assertTrue(locomotive.getFront() == head.getNext(false).getNext(false));
+		assertTrue(locomotive.getBack() == head.getNext(false));
+		assertTrue(locomotive.getDistance() == 40);
+		assertTrue(locomotive.getBackDistance() == 70);
+
+		locomotive.move();
+		assertTrue(locomotive.getFront() == head.getNext(false).getNext(false));
+		assertTrue(locomotive.getBack() == head.getNext(false));
+		assertTrue(locomotive.getDistance() == 90);
+		assertTrue(locomotive.getBackDistance() == 20);
+
+		locomotive.move();
+		assertTrue(locomotive.getFront() == head);
+		assertTrue(locomotive.getBack() == head.getNext(false).getNext(false));
+		assertTrue(locomotive.getDistance() == 40);
+		assertTrue(locomotive.getBackDistance() == 70);
+
+		locomotive.move();
+		assertTrue(locomotive.getFront() == head);
+		assertTrue(locomotive.getBack() == head.getNext(false).getNext(false));
+		assertTrue(locomotive.getDistance() == 90);
+		assertTrue(locomotive.getBackDistance() == 20);
+
+		locomotive.move();
+		assertTrue(locomotive.getFront() == head.getNext(false));
+		assertTrue(locomotive.getBack() == head);
+		assertTrue(locomotive.getDistance() == 40);
+		assertTrue(locomotive.getBackDistance() == 70);
+
+		locomotive.move();
+		assertTrue(locomotive.getFront() == head.getNext(false));
+		assertTrue(locomotive.getBack() == head);
+		assertTrue(locomotive.getBackDistance() == 20);
+		assertTrue(locomotive.getDistance() == 90);
 	}
 }

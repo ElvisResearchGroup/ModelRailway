@@ -34,7 +34,12 @@ public abstract class Movable {
 	   this.track = tr;
 	   this.maxSpeed = maxSpeed;
 	   this.onAlt = onAlt;
+	   this.distance = distance;
+	   this.length = length;
 	   direction = Direction.forward;
+	   if(track.length == 1){
+		   this.track = new Track[]{tr[0],tr[0]};
+	   }
 
    }
    /**
@@ -51,7 +56,10 @@ public abstract class Movable {
    public int move(){ // returns the new distance
 	   if(isFowards()){
 		  int distance2 = (distance + currentSpeed) % getFront().getDistance(onAlt);
+		  //System.out.println("distance2: "+distance2);
+		  //System.out.println("distance: "+ distance);
 		  if(distance2 < distance){ // we have moved onto a new segment
+			//   System.out.println("new seg moved foward");
 			   track[1].getSection().removeMovable(this);
 			   track[1] = track[0];
 			   backAlt = onAlt;
@@ -59,13 +67,13 @@ public abstract class Movable {
 			   onAlt = track[0].isAlt(track[1]);
 			   track[0].getSection().addMovable(this);
 		  }
-		   
+
 		  distance = distance2;
-		  if(distance > getLength()){
+		  if(distance >= getLength()){
 			   track[1].getSection().removeMovable(this);
-			   track[1] = null; // not on back segment
+			   track[1] = track[0]; // not on back segment
 			   backAlt =onAlt;
-			   
+
 		  }
 	   } else{ // moving backwards
 		  int distance2 = (getBackDistance() +currentSpeed);
@@ -74,22 +82,22 @@ public abstract class Movable {
 			   backAlt = track[1].isAlt(track[0]);
 		  }
 		  distance = distance2 - getBack().getDistance(onAlt);
-		  if(distance > length){
+		  if(distance >= length){
 			   if(track[1] != track[0]){
 				   track[0].getSection().removeMovable(this);
 				   track[0] = track[1];
-				   track[1] = null;
+				   track[1] = track[0];
 				   onAlt = backAlt;
 			   } else { // as track1 and track 0 are not different.
-				   track[1] = null;
-			   }   
+				   track[1] = track[0];
+			   }
 		  }
-		   
-		   
+
+
 	   }
-	   
+
 	   onAlt = track[0].getCurrentAlt(this); // adjust for points.
-	   if(track[1] != null){
+	   if(track[1] != track[0]){
 		   backAlt = track[1].getCurrentAlt(this);
 	   } else{
 		   backAlt = onAlt;
@@ -155,7 +163,7 @@ public abstract class Movable {
 	   if(track[1] == null) return getFront();
 	   return track[1];
    }
-   
+
    /**
     * toggles whether the object moves forwards or backwards
     */
