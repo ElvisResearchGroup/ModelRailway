@@ -63,9 +63,10 @@ public abstract class Movable {
 			   track[1].getSection().removeMovable(this);
 			   track[1] = track[0];
 			   backAlt = onAlt;
+			   track[0].getSection().addMovable(this);
 			   track[0] = track[0].getNext(onAlt); // get next section of track based on weather we are on an alternate section.
 			   onAlt = track[0].isAlt(track[1]);
-			   track[0].getSection().addMovable(this);
+
 		  }
 
 		  distance = distance2;
@@ -79,6 +80,7 @@ public abstract class Movable {
 		  int distance2 = (getBackDistance() +currentSpeed);
 		  if(distance2 > getBack().getDistance(backAlt)){ // move backwards. since we have moved backwards over a section we do not have track[1]
 			   track[1] = track[0].getPrevious(backAlt);
+
 			   backAlt = track[1].isAlt(track[0]);
 		  }
 		  distance = distance2 - getBack().getDistance(onAlt);
@@ -89,6 +91,7 @@ public abstract class Movable {
 				   track[1] = track[0];
 				   onAlt = backAlt;
 			   } else { // as track1 and track 0 are not different.
+				   track[1].getSection().addMovable(this);
 				   track[1] = track[0];
 			   }
 		  }

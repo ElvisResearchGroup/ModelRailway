@@ -276,4 +276,60 @@ public class TrackTest {
 		assertTrue(locomotive.getBackDistance() == 20);
 		assertTrue(locomotive.getDistance() == 90);
 	}
+	
+	
+	@Test public void trackTestLocoRun2(){
+		Section sec = new Section(new ArrayList<Track>());
+
+		Straight st = new Straight(null,null,sec,100);
+		Straight.StraightRing route = new Straight.StraightRing(st);
+		Track head = route.ringTrack(3, 100);
+		sec.add(head);
+		
+		Section sec2 = new Section(new ArrayList<Track>());
+		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+
+		Section sec3 = new Section(new ArrayList<Track>());
+		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		
+		route.replace(head.getNext(false), sw , false);
+		route.replace(head.getNext(false).getNext(false), sw2, false);
+
+		Movable locomotive = new Locomotive(new Track[]{head}, 50, 50, 50, false);
+		sec.addMovable(locomotive);
+		assertTrue(locomotive.getFront() == head);
+		assertTrue(locomotive.getBack() == head);
+		
+		locomotive.move(); // locomotive has not started yet.
+		assertTrue(locomotive.getDistance() == 50);
+		assertTrue(locomotive.getFront() == head);
+		assertTrue(locomotive.getBack() == head);
+		
+		locomotive.start();
+		
+		locomotive.move();
+		assertTrue(locomotive.getDistance() == 0);
+		assertTrue(locomotive.getFront() == head.getNext(false));
+		assertTrue(locomotive.getBack() == head);
+		
+		locomotive.move();
+		assertTrue(locomotive.getDistance() == 50);
+		assertTrue(locomotive.getFront() == head.getNext(false));
+		assertTrue(locomotive.getBack() == head.getNext(false));
+		
+		locomotive.move();
+		assertTrue(locomotive.getDistance() == 0);
+		assertTrue(locomotive.getFront() == head.getNext(false).getNext(false));
+		assertTrue(locomotive.getBack() == head.getNext(false));
+		
+		locomotive.move();
+		assertTrue(locomotive.getDistance() == 50);
+		assertTrue(locomotive.getFront() == head.getNext(false).getNext(false));
+		assertTrue(locomotive.getBack() == head.getNext(false).getNext(false));
+		
+		locomotive.move();
+		assertTrue(locomotive.getDistance() == 0);
+		assertTrue(locomotive.getFront() == head);
+		assertTrue(locomotive.getBack() == head.getNext(false).getNext(false));
+	}
 }

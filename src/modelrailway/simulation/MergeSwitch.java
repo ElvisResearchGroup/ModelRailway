@@ -8,7 +8,7 @@ public class MergeSwitch extends Track{
 	}
 	private Direction path;
 	private int pointPos; // point position from the back
-	
+
 	public MergeSwitch(Track previous, Track next,Track entrance, Section section,int length,int altlength, int pointPos) {
 		super(previous, next, entrance, null, section, length, altlength);
 		this.pointPos = pointPos;
@@ -16,7 +16,7 @@ public class MergeSwitch extends Track{
 		this.path = Direction.prev;
 		// TODO Auto-generated constructor stub
 	}
-	
+
 
 	/**
 	 * toggle toggles which piece of track we are exiting from the signals.
@@ -41,19 +41,27 @@ public class MergeSwitch extends Track{
     /**
      * returns true when the movable object is on the alternate path and false when it is on the primary path.
      * @param m
-     * @return 
+     * @return
      */
     public boolean getCurrentAlt(Movable m){
     	if(m.getBack() == this ){
     		if(m.getBackDistance() < pointPos){ // point position from the back.
-    		   return super.getCurrentAlt(m);	
+    		   
+    		   return super.getCurrentAlt(m);
     		} else {
     			return this.path == Direction.enter;
     		}
-    	} else if (m.getFront() == this){
-    		if(m.getFront() == this.getNext(false)) return false;
-    		else if (m.getFront() == this.getNext(true)) return true;
-    	}
+    	} else if (m.getFront() == this){ // back is not the current piece of track.
+    		if(m.getBack() == this.getPrevious(false)){ // are we on the alternate path
+    			return false;
+    		}
+    		else if (m.getBack() == this.getPrevious(true)){ // are we on the current path.
+    			return true;
+    		}
+    	} 
     	throw new WrongTrackException();
+    	
+    	//return false; // deadcode
+
 	}
 }
