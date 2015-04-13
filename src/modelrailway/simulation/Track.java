@@ -9,13 +9,14 @@ import java.util.List;
  *
  */
 public abstract class Track {
-	
+
 	public static  class RingRoute{
-		private Track head;  
+		private Track head;
 		private List<Track> trackList = new ArrayList<Track>();
-		
+
 		public RingRoute(Track head){
 			this.head = head;
+			trackList.add(this.head);
 		}
 		public Track getHead(){
 			return head;
@@ -31,6 +32,52 @@ public abstract class Track {
 		 * @param onAlt2 on alternate track for inserted track
 		 * @return
 		 */
+
+		public Track insertBetween(Track tr1, boolean onAlt, Track tr2, boolean onAlt2, Track insertedTrack, boolean onAlt3){
+			boolean tr1UnifyNext = false;
+			boolean tr2UnifyPrevious = false;
+			boolean insertedTrackUnifyNext = false;
+			boolean insertedTrackUnifyPrevious = false;
+			trackList.add(insertedTrack);
+			if(tr1.next == tr1.alternateNext && tr1.next != null) tr1UnifyNext = true;
+			if(tr2.previous == tr2.alternatePrevious && tr2.previous != null) tr2UnifyPrevious = true;
+			if(insertedTrack.next == insertedTrack.alternateNext && insertedTrack.next != null) insertedTrackUnifyNext = true;
+			if(insertedTrack.previous == insertedTrack.alternatePrevious && insertedTrack.previous != null) insertedTrackUnifyPrevious = true;
+
+
+			if(onAlt2){
+				tr2.alternatePrevious = insertedTrack;
+				if(onAlt3 || insertedTrackUnifyNext) insertedTrack.alternateNext = tr2;
+				if((!onAlt3)|| insertedTrackUnifyNext) insertedTrack.next = tr2;
+				if(tr2UnifyPrevious) tr2.previous = insertedTrack;
+			}
+			else{
+				tr2.previous = insertedTrack;
+				if(onAlt3 || insertedTrackUnifyNext) insertedTrack.alternateNext =tr2;
+				if((!onAlt3) || insertedTrackUnifyNext) insertedTrack.next = tr2;
+				if(tr2UnifyPrevious) tr2.alternatePrevious = insertedTrack;
+
+			}
+
+			//fix tr1
+			if(onAlt2){
+				tr1.alternateNext = insertedTrack;
+				if(onAlt3 || insertedTrackUnifyPrevious) insertedTrack.alternatePrevious = tr1;
+				if((!onAlt3) || insertedTrackUnifyPrevious)  insertedTrack.previous = tr1;
+				if(tr1UnifyNext) tr2.next = insertedTrack;
+
+			}
+			else{
+				tr1.next = insertedTrack;
+				if(onAlt3 || insertedTrackUnifyNext) insertedTrack.alternateNext = tr1;
+				if((!onAlt3) || insertedTrackUnifyNext) insertedTrack.previous = tr1;
+				if(tr1UnifyNext) tr1.alternateNext = tr1.next;
+			}
+
+			return tr1; // return tr1
+
+
+		}
 		public Track insertBetween(Track tr1, boolean onAlt, Track insertedTrack, boolean onAlt2 ){
 			Track tr2 = tr1.getNext(onAlt);
 			//first fix tr2
@@ -38,13 +85,13 @@ public abstract class Track {
 			boolean tr2UnifyPrevious = false;
 			boolean insertedTrackUnifyNext = false;
 			boolean insertedTrackUnifyPrevious = false;
-			
-			if(tr1.next == tr1.alternateNext) tr1UnifyNext = true;
-			if(tr2.previous == tr2.alternatePrevious) tr2UnifyPrevious = true;
-			if(insertedTrack.next == insertedTrack.alternateNext) insertedTrackUnifyNext = true;
-			if(insertedTrack.previous == insertedTrack.alternatePrevious) insertedTrackUnifyPrevious = true;
-			
-			
+
+			if(tr1.next == tr1.alternateNext && tr1.next != null) tr1UnifyNext = true;
+			if(tr2.previous == tr2.alternatePrevious && tr2.previous != null) tr2UnifyPrevious = true;
+			if(insertedTrack.next == insertedTrack.alternateNext && insertedTrack.next != null) insertedTrackUnifyNext = true;
+			if(insertedTrack.previous == insertedTrack.alternatePrevious && insertedTrack.previous != null) insertedTrackUnifyPrevious = true;
+
+
 			if(tr2.isAlt(tr1)){
 				tr2.alternatePrevious = insertedTrack;
 				if(onAlt2 || insertedTrackUnifyNext) insertedTrack.alternateNext = tr2;
@@ -56,16 +103,16 @@ public abstract class Track {
 				if(onAlt2 || insertedTrackUnifyNext) insertedTrack.alternateNext =tr2;
 				if((!onAlt2) || insertedTrackUnifyNext) insertedTrack.next = tr2;
 				if(tr2UnifyPrevious) tr2.alternatePrevious = insertedTrack;
-				
+
 			}
-			
+
 			//fix tr1
 			if(tr1.isAlt(tr2)){
 				tr1.alternateNext = insertedTrack;
 				if(onAlt2 || insertedTrackUnifyPrevious) insertedTrack.alternatePrevious = tr1;
 				if((!onAlt2) || insertedTrackUnifyPrevious)  insertedTrack.previous = tr1;
 				if(tr1UnifyNext) tr2.next = insertedTrack;
-				
+
 			}
 			else{
 				tr1.next = insertedTrack;
@@ -73,16 +120,17 @@ public abstract class Track {
 				if((!onAlt2) || insertedTrackUnifyNext) insertedTrack.previous = tr1;
 				if(tr1UnifyNext) tr1.alternateNext = tr1.next;
 			}
-			
+			trackList.add(insertedTrack);
 			return tr1; // return tr1
 		}
-		
+
 		/**
 		 * trivalRing produces a ring of two elements.
 		 * @param tr
 		 * @return
 		 */
 		protected Track trivialRing(Track tr){
+			trackList.add(tr);
 			tr.alternateNext = null;
 			tr.alternatePrevious = null;
 			tr.altlength = 0;
@@ -92,9 +140,9 @@ public abstract class Track {
 			head.previous = tr;
 			return head;
 		}
-		
+
 		/**
-		 * Replaces t with T2, This is only valid if the track t has only one or no paths connected 
+		 * Replaces t with T2, This is only valid if the track t has only one or no paths connected
 		 * @param t
 		 * @param onAlt
 		 * @param t2
@@ -105,7 +153,7 @@ public abstract class Track {
 			Track tr = getHead();
 			List<Track> tlist = getTrackList();
 		    int index = tlist.lastIndexOf(t);
-
+		 //   System.out.println("t index: "+index);
 		    Track tn;
 		    Track tp;
 		    if(t.getNext(false) != null){
@@ -114,14 +162,14 @@ public abstract class Track {
 		        tn.previous=  t2;
 		        tp.next =  t2;
 		        if(onAlt2 ){
-		           if(t2.alternatePrevious == t2.previous) t2.previous = tp;
+		           if(t2.alternatePrevious == t2.previous && t2.alternatePrevious != null) t2.previous = tp;
 		           t2.alternatePrevious = tp;
-		           if(t2.alternateNext == t2.next) t2.next = tn;
+		           if(t2.alternateNext == t2.next && t2.next != null) t2.next = tn;
 		           t2.alternateNext = tn;
 		        }else{
-		           if(t2.alternatePrevious == t2.previous) t2.alternatePrevious = tp;
+		           if(t2.alternatePrevious == t2.previous && t2.previous != null) t2.alternatePrevious = tp;
 		           t2.previous = tp;
-		           if(t2.alternateNext == t2.next) t2.alternateNext = tn;
+		           if(t2.alternateNext == t2.next && t2.next != null) t2.alternateNext = tn;
 		           t2.next = tn;
 		        }
 		    }
@@ -131,24 +179,28 @@ public abstract class Track {
 		        tn.alternatePrevious = t2;
 		        tp.alternateNext = t2;
 		        if(onAlt2 ){
-			       if(t2.alternatePrevious == t2.previous) t2.previous = tp;
+			       if(t2.alternatePrevious == t2.previous && t2.previous != null) t2.previous = tp;
 			       t2.alternatePrevious = tp;
-			       if(t2.alternateNext == t2.next) t2.next = tn;
+			       if(t2.alternateNext == t2.next && t2.next != null) t2.next = tn;
 			       t2.alternateNext = tn;
 			    }else{
-			       if(t2.alternatePrevious == t2.previous) t2.alternatePrevious = tp;
+			       if(t2.alternatePrevious == t2.previous && t2.previous != null) t2.alternatePrevious = tp;
 			       t2.previous = tp;
-			       if(t2.alternateNext == t2.next) t2.alternateNext = tn;
+			       if(t2.alternateNext == t2.next && t2.next != null) t2.alternateNext = tn;
 			       t2.next = tn;
 			    }
 		    }
+		    if(tlist.get(index) == head){
+		    	head = t2; // replace the head.
+		    }
 		    tlist.set(index, t2);
+
 			return tr;
-		
+
 		}
-		
+
 	}
-	
+
 	private static final int PREVIOUS=0;
 	private static final int NEXT=1;
 	private Track previous;
@@ -156,7 +208,7 @@ public abstract class Track {
 	private Track alternatePrevious;
 	private Track alternateNext;
 	private int altlength;
-	
+
 	private int length;
 	private Section section;
 	/**
@@ -193,7 +245,7 @@ public abstract class Track {
 		if(onAlt) return this.alternateNext;
 		return this.next;
 	}
-	
+
 	/**
 	 * get the section that the piece of track is part of.
 	 * @return
@@ -220,7 +272,7 @@ public abstract class Track {
 		if(onAlt) return altlength;
 		return  length;
 	}
-	
+
 	/**
 	 * given the previous section of track return weather we are currently traveling along the alternate route or the primary route.
 	 * @param track
@@ -234,7 +286,7 @@ public abstract class Track {
 		}
 		throw new WrongTrackException();
 	}
-	
+
 	/**
 	 *  returns weather a piece of track is connecting to the primary route or to a secondary route.
 	 *  @return
