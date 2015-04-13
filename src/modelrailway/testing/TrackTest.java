@@ -128,7 +128,7 @@ public class TrackTest {
 	    assertTrue (sw2.getPrevious(true) == str);
 	}
 
-	@Test public void trackTestBuild4(){
+	@Test public void testTrackBuild4(){
 		Section sec = new Section(new ArrayList<Track>());
 
 		Straight st = new Straight(null,null,sec,100);
@@ -332,4 +332,51 @@ public class TrackTest {
 		assertTrue(locomotive.getFront() == head);
 		assertTrue(locomotive.getBack() == head.getNext(false).getNext(false));
 	}
+	
+	@Test public void trackTestLocoRun3(){
+		Section sec = new Section(new ArrayList<Track>());
+
+		Straight st = new Straight(null,null,sec,100);
+		Straight.StraightRing route = new Straight.StraightRing(st);
+		Track head = route.ringTrack(3, 100);
+		sec.add(head);
+		
+		Section sec2 = new Section(new ArrayList<Track>());
+		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		
+		route.replace(head.getNext(false), sw , false);
+		
+		((Switch) sw).toggle(); // set the switch so that we move along the alternate direction
+
+		Movable locomotive = new Locomotive(new Track[]{head}, 40, 50, 60, false);
+		sec.addMovable(locomotive);
+		assertTrue(locomotive.getFront() == head);
+		assertTrue(locomotive.getBack() == head);
+		assertTrue(locomotive.getOnAlt() == false);
+		
+		locomotive.move(); // locomotive has not started yet.
+		assertTrue(locomotive.getDistance() == 40);
+		assertTrue(locomotive.getFront() == head);
+		assertTrue(locomotive.getBack() == head);
+		
+		locomotive.start();
+		
+		locomotive.move();
+		assertTrue(locomotive.getDistance() == 0);
+		assertTrue(locomotive.getFront() == head.getNext(false));
+		assertTrue(locomotive.getBack() == head);
+		
+		locomotive.move();
+		assertTrue(locomotive.getDistance() == 60);
+		assertTrue(locomotive.getFront() == head.getNext(false));
+		assertTrue(locomotive.getBack() == head.getNext(false));
+		assertTrue(locomotive.getOnAlt() == true);
+		assertTrue(head.getNext(false).getNext(locomotive.getOnAlt()) == null);
+		
+	}
+	
+//	@Test public void trackTestLoco4(){
+		
+		
+//	}
 }
