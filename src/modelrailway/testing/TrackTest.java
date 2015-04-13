@@ -4,7 +4,9 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import modelrailway.simulation.Locomotive;
 import modelrailway.simulation.MergeSwitch;
+import modelrailway.simulation.Movable;
 import modelrailway.simulation.Straight;
 import modelrailway.simulation.Switch;
 import modelrailway.simulation.Track;
@@ -170,5 +172,19 @@ public class TrackTest {
 	    assertTrue (str.getPrevious(false) == sw);
 	    assertTrue (str.getNext(false) == sw2);
 	    assertTrue (sw2.getPrevious(true) == str);
+	}
+	
+	@Test public void trackTestTrainRun0(){
+		Section sec = new Section(new ArrayList<Track>());
+
+		Straight st = new Straight(null,null,sec,100);
+		Straight.StraightRing route = new Straight.StraightRing(st);
+		Track head = route.ringTrack(5, 100);
+		sec.add(head);
+		Movable locomotive = new Locomotive(new Track[]{head}, 50, 50, 50, true);
+		sec.addMovable(locomotive);
+		locomotive.move();
+		assertTrue(locomotive.getDistance() == 0);
+		assertTrue(locomotive.getFront() == head.getNext(false));
 	}
 }
