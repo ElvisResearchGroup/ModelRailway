@@ -1019,41 +1019,59 @@ public class TrackTest {
 
 		train.move();
 		assertTrue(train.getDistance() == 60);
+		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		assertTrue(train.getFront() == head.getNext(false));
 		assertTrue(train.getBack() == head.getNext(false));
 		assertTrue(train.getOnAlt() == true);
 		assertTrue(head.getNext(false).getNext(train.getOnAlt()) == str);
+		assertTrue(loco.getFront() == train.getFront());
 
 		train.move();
 		assertTrue(train.getDistance() == 20);
+		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		assertTrue(train.getFront() == str);
 		assertTrue(train.getBack() == head.getNext(false));
 		assertTrue(train.getOnAlt() == false);
-
+		assertTrue(loco.getFront() == train.getFront());
+		
 		train.move();
 		assertTrue(train.getDistance() == 80);
+		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		assertTrue(train.getFront() == str);
 		assertTrue(train.getBack() == str);
 		assertTrue(train.getOnAlt() == false);
-
+		assertTrue(loco.getFront() == train.getFront());
+		
 		train.move();
 		assertTrue(train.getDistance() == 40);
+		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		assertTrue(train.getFront() == sw2);
 		assertTrue(train.getBack() == sw2);
 		assertTrue(train.getOnAlt() == true);
-
+		assertTrue(loco.getFront() == train.getFront());
+		
 		train.move();
 		assertTrue(train.getDistance() == 0);
+		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		assertTrue(train.getFront() == tp_4);
 		assertTrue(train.getBack() == sw2);
 		assertTrue(train.getOnAlt() == false);
-
+		assertTrue(loco.getFront() == train.getFront());
+		
 		train.move();
 		assertTrue(train.getDistance() == 60);
+		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		assertTrue(train.getFront() == tp_4);
 		assertTrue(train.getBack() == tp_4);
 		assertTrue(train.getOnAlt() == false);
-
+		assertTrue(loco.getFront() == train.getFront());
+		
 
 		train.toggleDirection();
 		train.move();
@@ -1063,26 +1081,34 @@ public class TrackTest {
 		//System.out.println(train.getBack());
 		assertTrue(train.getBack() == sw2);
 		assertTrue(train.getOnAlt() == false);
-
+		assertTrue(train.getFront() == train.getFront());
+		
 		train.move();
 		assertTrue(train.getDistance() == 40);
+		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		//System.out.println("Front: "+train.getFront());
 		assertTrue(train.getFront() == sw2);
 		//System.out.println("Back: "+ train.getBack());
 		assertTrue(train.getBack() == sw2);
 		assertTrue(train.getOnAlt() == false);
+		assertTrue(stock.getFront() == train.getFront());
 
 		train.move();
 		assertTrue(train.getDistance() == 80);
+		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		assertTrue(train.getFront() == str);
 		assertTrue(train.getBack() == str);
 		assertTrue(train.getOnAlt() == false);
+		assertTrue(loco.getFront() == train.getFront());
 
 		train.move();
 		assertTrue(train.getDistance() == 20);
 		assertTrue(train.getFront() == str);
 		assertTrue(train.getBack() == head.getNext(false));
 		assertTrue(train.getOnAlt() == false);
+		assertTrue(loco.getFront() == train.getFront());
 
 		train.move();
 		assertTrue(train.getDistance() == 60);
@@ -1090,11 +1116,13 @@ public class TrackTest {
 		assertTrue(train.getBack() == head.getNext(false));
 		assertTrue(train.getOnAlt() == true);
 		assertTrue(head.getNext(false).getNext(train.getOnAlt()) == str);
+		assertTrue(loco.getFront() == train.getFront());
 
 		train.move();
 		assertTrue(train.getDistance() == 0);
 		assertTrue(train.getFront() == head.getNext(false));
 		assertTrue(train.getBack() == head);
+		assertTrue(loco.getFront() == train.getFront());
 	}
 
 	@Test public void trackTestStock5(){

@@ -50,12 +50,6 @@ public class Train extends Movable {
 
 	}
 
-    public Track getFront(){
-	    return super.getFront();
-    }
-    public Track getBack(){
-	    return super.getBack();
-	}
     /**
      * Finds then sets all max speeds to the smallest max speed for the movable objects in the supplied array.
      * @param mv
