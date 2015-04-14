@@ -177,7 +177,7 @@ public class TrackTest {
 	/**
 	 * Test a single locomotive running around a ring track. The locomotive is smaller than a section.
 	 */
-	@Test public void trackTestLocoRun0(){
+	@Test public void trackTestLoco0(){
 		Section sec = new Section(new ArrayList<Track>());
 
 		Straight st = new Straight(null,null,sec,100);
@@ -225,7 +225,7 @@ public class TrackTest {
 	/**
 	 * Test a locomotive that is longer than 1 piece of track.
 	 */
-	@Test public void trackTestLocoRun1(){
+	@Test public void trackTestLoco1(){
 		Section sec = new Section(new ArrayList<Track>());
 
 		Straight st = new Straight(null,null,sec,100);
@@ -279,7 +279,7 @@ public class TrackTest {
 	}
 
 
-	@Test public void trackTestLocoRun2(){
+	@Test public void trackTestLoco2(){
 		Section sec = new Section(new ArrayList<Track>());
 
 		Straight st = new Straight(null,null,sec,100);
@@ -334,7 +334,7 @@ public class TrackTest {
 		assertTrue(locomotive.getBack() == head.getNext(false).getNext(false));
 	}
 
-	@Test public void trackTestLocoRun3(){
+	@Test public void trackTestLoco3(){
 		Section sec = new Section(new ArrayList<Track>());
 
 		Straight st = new Straight(null,null,sec,100);
@@ -783,11 +783,8 @@ public class TrackTest {
 		assertTrue(train.getBack() == head);
 
 		train.start();
-		//System.out.println("locodist: "+((Train)train).getParts()[0].getDistance());
-		//System.out.println("distance: "+train.getDistance());
+
 		train.move();
-	//	System.out.println("locodist: "+((Train)train).getParts()[0].getDistance());
-		//System.out.println("distance: "+train.getDistance());
 		assertTrue(train.getDistance() == 0);
 		assertTrue(train.getFront() == head.getNext(false));
 		assertTrue(train.getBack() == head);
@@ -812,5 +809,115 @@ public class TrackTest {
 		assertTrue(train.getFront() == head);
 		assertTrue(train.getBack() == head.getNext(false).getNext(false));
 
+	}
+
+	@Test public void trackTestTrain1(){
+		Section sec = new Section(new ArrayList<Track>());
+
+		Straight st = new Straight(null,null,sec,100);
+		Straight.StraightRing route = new Straight.StraightRing(st);
+		Track head = route.ringTrack(3, 100);
+		sec.add(head);
+
+		Movable locomotive = new Locomotive(new Track[]{head.getNext(false),head}, 90, 110, 50, false);
+		Train train = new Train(new Movable[]{locomotive});
+		sec.addMovable(train);
+		assertTrue(train.getFront() == head.getNext(false));
+		assertTrue(train.getBack() == head);
+		assertTrue(train.getBackDistance() == 20);
+
+		train.start();
+
+		train.move();
+		assertTrue(train.getFront() == head.getNext(false).getNext(false));
+		assertTrue(train.getBack() == head.getNext(false));
+		assertTrue(train.getDistance() == 40);
+		assertTrue(train.getBackDistance() == 70);
+
+		train.move();
+		assertTrue(train.getFront() == head.getNext(false).getNext(false));
+		assertTrue(train.getBack() == head.getNext(false));
+		assertTrue(train.getDistance() == 90);
+		assertTrue(train.getBackDistance() == 20);
+
+		train.move();
+		assertTrue(train.getFront() == head);
+		assertTrue(train.getBack() == head.getNext(false).getNext(false));
+		assertTrue(train.getDistance() == 40);
+		assertTrue(train.getBackDistance() == 70);
+
+		train.move();
+		assertTrue(train.getFront() == head);
+		assertTrue(train.getBack() == head.getNext(false).getNext(false));
+		assertTrue(train.getDistance() == 90);
+		assertTrue(train.getBackDistance() == 20);
+
+		train.move();
+		assertTrue(train.getFront() == head.getNext(false));
+		assertTrue(train.getBack() == head);
+		assertTrue(train.getDistance() == 40);
+		assertTrue(train.getBackDistance() == 70);
+
+		train.move();
+		assertTrue(train.getFront() == head.getNext(false));
+		assertTrue(train.getBack() == head);
+		assertTrue(train.getBackDistance() == 20);
+		assertTrue(train.getDistance() == 90);
+	}
+
+	@Test public void trackTestTrain2(){
+		Section sec = new Section(new ArrayList<Track>());
+
+		Straight st = new Straight(null,null,sec,100);
+		Straight.StraightRing route = new Straight.StraightRing(st);
+		Track head = route.ringTrack(3, 100);
+		sec.add(head);
+
+		Section sec2 = new Section(new ArrayList<Track>());
+		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+
+		Section sec3 = new Section(new ArrayList<Track>());
+		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+
+		route.replace(head.getNext(false), sw , false);
+		route.replace(head.getNext(false).getNext(false), sw2, false);
+
+		Movable locomotive = new Locomotive(new Track[]{head}, 50, 50, 50, false);
+		Train train = new Train(new Movable[]{locomotive});
+		sec.addMovable(train);
+		assertTrue(train.getFront() == head);
+		assertTrue(train.getBack() == head);
+
+		train.move(); // locomotive has not started yet.
+		assertTrue(train.getDistance() == 50);
+		assertTrue(train.getFront() == head);
+		assertTrue(train.getBack() == head);
+
+		train.start();
+
+		train.move();
+		assertTrue(train.getDistance() == 0);
+		assertTrue(train.getFront() == head.getNext(false));
+		assertTrue(train.getBack() == head);
+
+		train.move();
+		assertTrue(train.getDistance() == 50);
+		assertTrue(train.getFront() == head.getNext(false));
+		assertTrue(train.getBack() == head.getNext(false));
+
+		train.move();
+		assertTrue(train.getDistance() == 0);
+		assertTrue(train.getFront() == head.getNext(false).getNext(false));
+		assertTrue(train.getBack() == head.getNext(false));
+
+		train.move();
+		assertTrue(train.getDistance() == 50);
+		assertTrue(train.getFront() == head.getNext(false).getNext(false));
+		assertTrue(train.getBack() == head.getNext(false).getNext(false));
+
+		train.move();
+		assertTrue(train.getDistance() == 0);
+		assertTrue(train.getFront() == head);
+		assertTrue(train.getBack() == head.getNext(false).getNext(false));
 	}
 }
