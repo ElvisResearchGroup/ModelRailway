@@ -85,7 +85,10 @@ public class TrackTest {
 		assertTrue(tp_2.getPrevious(false) == tp_1);
 		assertTrue(tp_1.getPrevious(false) == head);
 	}
-
+	/**
+	 * Create a ring track with an alternate branch to the main ring which leaves and rejoins the main ring.
+	 * 
+	 */
 	@Test public void testTrackBuild3(){
 		Section sec = new Section(new ArrayList<Track>());
 
@@ -279,7 +282,9 @@ public class TrackTest {
 		assertTrue(locomotive.getDistance() == 90);
 	}
 
-
+	/**
+	 * Test a locomotive that can navigate  a track with a switch without going through the switch.
+	 */
 	@Test public void trackTestLoco2(){
 		Section sec = new Section(new ArrayList<Track>());
 
@@ -334,7 +339,9 @@ public class TrackTest {
 		assertTrue(locomotive.getFront() == head);
 		assertTrue(locomotive.getBack() == head.getNext(false).getNext(false));
 	}
-
+	/**
+	 * test that the locomotive can take an alternate route on a switch.
+	 */
 	@Test public void trackTestLoco3(){
 		Section sec = new Section(new ArrayList<Track>());
 
@@ -376,7 +383,10 @@ public class TrackTest {
 		assertTrue(head.getNext(false).getNext(locomotive.getOnAlt()) == null);
 
 	}
-
+	/**
+	 * test that a locomotive can take the alternate route on a switch an rejoin to the main route through a merge switch.
+	 * Also check that the locomotive can change direction and navigate the same route in reverse.
+	 */
 	@Test public void trackTestLoco4(){
 		Section sec = new Section(new ArrayList<Track>());
 
@@ -630,7 +640,10 @@ public class TrackTest {
 		assertTrue(locomotive.getFront() == head.getNext(false));
 		assertTrue(locomotive.getBack() == head);
 	}
-
+	/**
+	 * check that a locomotive can take the alternate route of a switch, rejoin the main route, reverse after a switch change, 
+	 * and take the main route back to its start position.
+	 */
 	@Test public void trackTestLoco6(){
 		Section sec = new Section(new ArrayList<Track>());
 
@@ -761,7 +774,7 @@ public class TrackTest {
 		assertTrue(locomotive.getBack() == head);
 	}
 	/**
-	 * Same as trackTestLoco0 except we put a train on the track.
+	 * Same as trackTestLoco0 except we put a train on the track, with rolling stock.
 	 *
 	 */
 	@Test public void trackTestStock0(){ // put a train on.
@@ -812,7 +825,7 @@ public class TrackTest {
 		assertTrue(train.getBack() == head.getNext(false).getNext(false));
 
 	}
-
+	
 	@Test public void trackTestStock1(){
 		Section sec = new Section(new ArrayList<Track>());
 
