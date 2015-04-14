@@ -4,36 +4,77 @@ import java.util.Set;
 
 /**
  * The Train is a Movable object and contains other movable objects.
- * 
+ *
  * @author powleybenj
  *
  */
 public class Train extends Movable {
 	private Movable[] trainParts;
-	public Train(Movable[] movable,int maxSpeed,boolean onAlt) {
-		super(getTracks(movable), movable[0].getDistance(), getTotalLength(movable), maxSpeed, onAlt);
+	public Train(Movable[] movable) {
+		super(getTracks(movable), movable[0].getDistance(), getTotalLength(movable), findSmallestMaxSpeed(movable), movable[0].getOnAlt());
 		//assume train pieces are coupled.
+		trainParts = movable;
+
+
 	}
+
+
 	public int move(){
+		super.move();
+		//System.out.println("supermove dist: "+ super.getDistance());
 		for(int i = 1; i<trainParts.length; i++){
 			trainParts[i].move();
 		}
+		//System.out.println("move locomotive");
 		return trainParts[0].move();
 	}
 
 	public int stop(){
+		super.stop();
 		for(int i = 1; i<trainParts.length; i++){
 			trainParts[i].stop();
 		}
 		return trainParts[0].stop();
 	}
 
+	public int start(){
+		int sp = findSmallestMaxSpeed(trainParts);
+		//System.out.println("smallestmax: "+ sp);
+		super.setMaxSpeed(sp);
+		super.start();
+		for(int i = 1; i< trainParts.length; i++){
+			trainParts[i].start();
+		}
+		//System.out.println("Start locomotive");
+		return trainParts[0].start();
+
+	}
+
     public Track getFront(){
-	    return trainParts[0].getFront();
+	    return super.getFront();
     }
     public Track getBack(){
-	    return trainParts[trainParts.length-1].getBack();
+	    return super.getBack();
 	}
+    /**
+     * Finds then sets all max speeds to the smallest max speed for the movable objects in the supplied array.
+     * @param mv
+     * @return
+     */
+    private static int findSmallestMaxSpeed(Movable [] mv){
+    	int ret = Integer.MAX_VALUE;
+   // 	System.out.println("size: "+mv.length);
+    	for(Movable m : mv){
+    		int sp = m.getMaxSpeed();
+    		if (sp < ret ) ret = sp;
+    	}
+    	for(Movable m : mv){
+    		m.setMaxSpeed(ret);
+    	}
+    	return ret;
+    }
+
+
 	private static int getTotalLength(Movable[] movable){
 		int l = 0;
 		for(int i=0; i<movable.length; i++){
@@ -43,16 +84,11 @@ public class Train extends Movable {
 	}
 
 	private  static Track[] getTracks(Movable[] movable) {
-		Set<Track> set = new HashSet<Track>();
-		for(int i =0; i< movable.length; i++){
-			set.add(movable[i].getFront());
-			set.add(movable[i].getBack());
-		}
-		return  (Track[]) set.toArray();
+		return new Track[]{movable[0].getFront(), movable[movable.length-1].getBack()};
 	}
 
 	public Movable[] getParts(){
-		return trainParts.clone();
+		return trainParts;
 	}
 
 

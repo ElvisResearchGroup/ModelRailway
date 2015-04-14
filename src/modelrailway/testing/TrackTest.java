@@ -11,6 +11,7 @@ import modelrailway.simulation.Straight;
 import modelrailway.simulation.Switch;
 import modelrailway.simulation.Track;
 import modelrailway.simulation.Section;
+import modelrailway.simulation.Train;
 
 import org.junit.*;
 
@@ -757,5 +758,59 @@ public class TrackTest {
 		assertTrue(locomotive.getDistance() == 0);
 		assertTrue(locomotive.getFront() == head.getNext(false));
 		assertTrue(locomotive.getBack() == head);
+	}
+	/**
+	 * Same as trackTestLoco0 except we put a train on the track.
+	 *
+	 */
+	@Test public void trackTestTrain0(){ // put a train on.
+		Section sec = new Section(new ArrayList<Track>());
+
+		Straight st = new Straight(null,null,sec,100);
+		Straight.StraightRing route = new Straight.StraightRing(st);
+		Track head = route.ringTrack(3, 100);
+		sec.add(head);
+
+		Movable locomotive = new Locomotive(new Track[]{head}, 50, 50, 50, false);
+		Movable train = new Train(new Movable[]{locomotive});
+		sec.addMovable(train);
+		assertTrue(train.getFront() == head);
+		assertTrue(train.getBack() == head);
+
+		train.move(); // locomotive has not started yet.
+		assertTrue(train.getDistance() == 50);
+		assertTrue(train.getFront() == head);
+		assertTrue(train.getBack() == head);
+
+		train.start();
+		//System.out.println("locodist: "+((Train)train).getParts()[0].getDistance());
+		//System.out.println("distance: "+train.getDistance());
+		train.move();
+	//	System.out.println("locodist: "+((Train)train).getParts()[0].getDistance());
+		//System.out.println("distance: "+train.getDistance());
+		assertTrue(train.getDistance() == 0);
+		assertTrue(train.getFront() == head.getNext(false));
+		assertTrue(train.getBack() == head);
+
+		train.move();
+		assertTrue(train.getDistance() == 50);
+		assertTrue(train.getFront() == head.getNext(false));
+		assertTrue(train.getBack() == head.getNext(false));
+
+		train.move();
+		assertTrue(train.getDistance() == 0);
+		assertTrue(train.getFront() == head.getNext(false).getNext(false));
+		assertTrue(train.getBack() == head.getNext(false));
+
+		train.move();
+		assertTrue(train.getDistance() == 50);
+		assertTrue(train.getFront() == head.getNext(false).getNext(false));
+		assertTrue(train.getBack() == head.getNext(false).getNext(false));
+
+		train.move();
+		assertTrue(train.getDistance() == 0);
+		assertTrue(train.getFront() == head);
+		assertTrue(train.getBack() == head.getNext(false).getNext(false));
+
 	}
 }

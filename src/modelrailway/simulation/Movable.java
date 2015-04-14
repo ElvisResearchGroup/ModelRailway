@@ -43,6 +43,20 @@ public abstract class Movable {
 
    }
    /**
+    * return the maximum speed of the train.
+    */
+   public int getMaxSpeed(){
+	   return this.maxSpeed;
+   }
+
+   /**
+    * sets the maximum speed of the train.
+    * @param int speed.
+    */
+   public void setMaxSpeed(int sp){
+	   this.maxSpeed = sp;
+   }
+   /**
     * returns weather the track is on an alt segment.
     * @return
     */
@@ -143,6 +157,7 @@ public abstract class Movable {
     * @return
     */
    public int start(){
+	   //System.out.println("maxSpeed: "+maxSpeed);
 	   currentSpeed = maxSpeed;
 	   return distance;
    }
