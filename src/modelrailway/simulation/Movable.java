@@ -133,6 +133,10 @@ public abstract class Movable {
 	// TODO Auto-generated method stub
 	return length;
    }
+   /**
+    *  get the distance from the start of the front section to the front of the moving object.
+    * @return
+    */
    public int getDistance(){
 	   return distance;
    }
