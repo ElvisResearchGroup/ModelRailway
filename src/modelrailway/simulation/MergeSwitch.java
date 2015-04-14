@@ -17,7 +17,9 @@ public class MergeSwitch extends Track{
 		// TODO Auto-generated constructor stub
 	}
 
-
+	public Track getNext(boolean onAlt){
+		return super.getNext(false);
+	}
 	/**
 	 * toggle toggles which piece of track we are exiting from the signals.
 	 * @return
@@ -46,7 +48,7 @@ public class MergeSwitch extends Track{
     public boolean getCurrentAlt(Movable m){
     	if(m.getBack() == this ){
     		if(m.getBackDistance() < pointPos){ // point position from the back.
-    		   
+
     		   return super.getCurrentAlt(m);
     		} else {
     			return this.path == Direction.enter;
@@ -58,9 +60,9 @@ public class MergeSwitch extends Track{
     		else if (m.getBack() == this.getPrevious(true)){ // are we on the current path.
     			return true;
     		}
-    	} 
+    	}
     	throw new WrongTrackException();
-    	
+
     	//return false; // deadcode
 
 	}

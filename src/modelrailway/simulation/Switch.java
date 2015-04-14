@@ -18,8 +18,10 @@ public class Switch extends Track {
 		this.path = Direction.next;
 		// TODO Auto-generated constructor stub
 	}
-	
 
+	public Track getPrevious(boolean onAlt){
+		return super.getPrevious(false);
+	}
 	/**
 	 * toggle toggles which piece of track we are exiting from the signals.
 	 * @return
@@ -43,12 +45,12 @@ public class Switch extends Track {
     /**
      * returns true when the movable object is on the alternate path and false when it is on the primary path.
      * @param m
-     * @return 
+     * @return
      */
     public boolean getCurrentAlt(Movable m){
     	if(m.getFront() == this ){
     		if(m.getDistance() > pointPos){
-    		   return super.getCurrentAlt(m);	
+    		   return super.getCurrentAlt(m);
     		} else {
     			return this.path == Direction.exit;
     		}

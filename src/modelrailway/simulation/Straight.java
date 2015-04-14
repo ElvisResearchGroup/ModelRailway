@@ -86,5 +86,9 @@ public class Straight extends Track {
 		
 		throw new WrongTrackException();
 	}
+	
+	public boolean getCurrentAlt(Movable m){
+		return false;
+	}
 
 }
