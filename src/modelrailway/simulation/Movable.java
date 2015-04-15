@@ -94,26 +94,39 @@ public abstract class Movable {
 	   } else{ // moving backwards
 		//  int distance2 = (getBackDistance() +currentSpeed);
 		  int newDistance = (getDistance() - currentSpeed);
-		 // System.out.println("getBackDistance: "+getBackDistance());
-		 // System.out.println("newDistance: "+newDistance);
-		 // System.out.println("backDist: " + getBack().getDistance(backAlt));
-		  if(newDistance <= length && newDistance >= 0){ // move backwards. since we have moved backwards over a section we do not have track[1]
-			   track[0] = track[1];
+		  System.out.print("move backwards: ");
+		  if(this instanceof Train) System.out.println("Train");
+		  else if (this instanceof Locomotive) System.out.println("Loco");
+		  else if (this instanceof RollingStock) System.out.println(" Stock");
+
+
+
+		  if(newDistance >=0 && newDistance < length){ // move backwards. since we have moved backwards over a section we do not have track[1]
+			   track[0] = track[1]; 
 			   track[1] = track[1].getPrevious(backAlt);
 			   backAlt = track[0].isAlt(track[1]);
 			   distance = getDistance() -currentSpeed;
 		  }
-		  //int backdistance = distance2 - getBack().getDistance(onAlt);
 
-		  else if(newDistance < 0){ // remove track[0]
-				   track[0].getSection().removeMovable(this);
-				   track[0] = track[1];
-				   onAlt = backAlt;
-				   distance = track[0].getDistance(track[0].getCurrentAlt(this)) + newDistance;
-				   if(distance < length){
-						  track[1] = track[0].getPrevious(backAlt);
-				   }
+
+		  else if(newDistance < 0 && getDistance() < length) { // remove track[0]
+			   track[0].getSection().removeMovable(this);
+			   track[0] = track[1];
+			   onAlt = backAlt;
+			   distance = track[0].getDistance(track[0].getCurrentAlt(this)) + newDistance;
+			   if(distance < length){
+				   track[1] = track[0].getPrevious(backAlt);
+			   }
 		  }
+		  else if(newDistance < 0 && getDistance() >= length){ // A train cannot move further than one track length so
+			  track[0] = track[0].getPrevious(track[0].getCurrentAlt(this));
+			  track[1] = track[0];
+			  backAlt = track[0].getCurrentAlt(this);
+			  distance = track[0].getDistance(track[0].getCurrentAlt(this))+newDistance;
+
+		  }
+
+
 	   }
 
 	   onAlt = track[0].getCurrentAlt(this); // adjust for points.

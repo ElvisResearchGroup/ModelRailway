@@ -4,14 +4,14 @@ package modelrailway.simulation;
  * @author powleybenj
  *
  */
-public class Switch extends Track {
+public class ForwardSwitch extends Track {
 
 	private enum Direction{
 		exit,next
 	}
 	private Direction path;
 	private int pointPos;
-	public Switch(Track previous, Track next,Track exit, Section section,int length,int altlength, int pointPos) {
+	public ForwardSwitch(Track previous, Track next,Track exit, Section section,int length,int altlength, int pointPos) {
 		super(previous, next, null, exit, section, length, altlength);
 		this.pointPos = pointPos;
 

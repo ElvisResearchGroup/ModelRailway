@@ -5,11 +5,11 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 import modelrailway.simulation.Locomotive;
-import modelrailway.simulation.MergeSwitch;
+import modelrailway.simulation.BackSwitch;
 import modelrailway.simulation.Movable;
 import modelrailway.simulation.RollingStock;
 import modelrailway.simulation.Straight;
-import modelrailway.simulation.Switch;
+import modelrailway.simulation.ForwardSwitch;
 import modelrailway.simulation.Track;
 import modelrailway.simulation.Section;
 import modelrailway.simulation.Train;
@@ -87,7 +87,7 @@ public class TrackTest {
 	}
 	/**
 	 * Create a ring track with an alternate branch to the main ring which leaves and rejoins the main ring.
-	 * 
+	 *
 	 */
 	@Test public void testTrackBuild3(){
 		Section sec = new Section(new ArrayList<Track>());
@@ -102,10 +102,10 @@ public class TrackTest {
 		Track tp_4 = tp_3.getNext(false);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		Section sec3 = new Section(new ArrayList<Track>());
-		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
 
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
@@ -147,10 +147,10 @@ public class TrackTest {
 		Track tp_5 = tp_4.getNext(false);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		Section sec3 = new Section(new ArrayList<Track>());
-		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
 
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
@@ -294,10 +294,10 @@ public class TrackTest {
 		sec.add(head);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		Section sec3 = new Section(new ArrayList<Track>());
-		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
 
 		route.replace(head.getNext(false), sw , false);
 		route.replace(head.getNext(false).getNext(false), sw2, false);
@@ -351,11 +351,11 @@ public class TrackTest {
 		sec.add(head);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		route.replace(head.getNext(false), sw , false);
 
-		((Switch) sw).toggle(); // set the switch so that we move along the alternate direction
+		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 40, 50, 60, false);
 		sec.addMovable(locomotive);
@@ -400,10 +400,10 @@ public class TrackTest {
 		Track tp_4 = tp_3.getNext(false);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		Section sec3 = new Section(new ArrayList<Track>());
-		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
 
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
@@ -413,8 +413,8 @@ public class TrackTest {
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
-		((Switch) sw).toggle(); // set the switch so that we move along the alternate direction
-		((MergeSwitch) sw2).toggle();
+		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
+		((BackSwitch) sw2).toggle();
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 40, 50, 60, false);
 		sec.addMovable(locomotive);
@@ -527,10 +527,10 @@ public class TrackTest {
 		Track tp_4 = tp_3.getNext(false);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		Section sec3 = new Section(new ArrayList<Track>());
-		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
 
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
@@ -540,8 +540,8 @@ public class TrackTest {
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
-		((Switch) sw).toggle(); // set the switch so that we move along the alternate direction
-		((MergeSwitch) sw2).toggle();
+		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
+		((BackSwitch) sw2).toggle();
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 40, 50, 60, false);
 		sec.addMovable(locomotive);
@@ -641,7 +641,7 @@ public class TrackTest {
 		assertTrue(locomotive.getBack() == head);
 	}
 	/**
-	 * check that a locomotive can take the alternate route of a switch, rejoin the main route, reverse after a switch change, 
+	 * check that a locomotive can take the alternate route of a switch, rejoin the main route, reverse after a switch change,
 	 * and take the main route back to its start position.
 	 */
 	@Test public void trackTestLoco6(){
@@ -657,10 +657,10 @@ public class TrackTest {
 		Track tp_4 = tp_3.getNext(false);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		Section sec3 = new Section(new ArrayList<Track>());
-		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
 
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
@@ -670,8 +670,8 @@ public class TrackTest {
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
-		((Switch) sw).toggle(); // set the switch so that we move along the alternate direction
-		((MergeSwitch) sw2).toggle();
+		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
+		((BackSwitch) sw2).toggle();
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 40, 50, 60, false);
 		sec.addMovable(locomotive);
@@ -730,8 +730,8 @@ public class TrackTest {
 
 
 		locomotive.toggleDirection();
-		((Switch) sw).toggle();
-		((MergeSwitch) sw2).toggle();
+		((ForwardSwitch) sw).toggle();
+		((BackSwitch) sw2).toggle();
 
 		locomotive.move();
 		//System.out.println("distance: "+ locomotive.getDistance());
@@ -825,7 +825,7 @@ public class TrackTest {
 		assertTrue(train.getBack() == head.getNext(false).getNext(false));
 
 	}
-	
+
 	@Test public void trackTestStock1(){
 		Section sec = new Section(new ArrayList<Track>());
 
@@ -891,10 +891,10 @@ public class TrackTest {
 		sec.add(head);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		Section sec3 = new Section(new ArrayList<Track>());
-		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
 
 		route.replace(head.getNext(false), sw , false);
 		route.replace(head.getNext(false).getNext(false), sw2, false);
@@ -947,11 +947,11 @@ public class TrackTest {
 		sec.add(head);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		route.replace(head.getNext(false), sw , false);
 
-		((Switch) sw).toggle(); // set the switch so that we move along the alternate direction
+		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
 		Locomotive loco = new Locomotive(new Track[]{head}, 40, 20, 60, false); // dist length speed.
 		Movable stock = new RollingStock(new Track[]{head}, 20, 20, 60, false);
 		Movable train = new Train(new Movable[]{loco});
@@ -994,10 +994,10 @@ public class TrackTest {
 		Track tp_4 = tp_3.getNext(false);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		Section sec3 = new Section(new ArrayList<Track>());
-		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
 
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
@@ -1007,8 +1007,8 @@ public class TrackTest {
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
-		((Switch) sw).toggle(); // set the switch so that we move along the alternate direction
-		((MergeSwitch) sw2).toggle();
+		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
+		((BackSwitch) sw2).toggle();
 
 		Locomotive loco = new Locomotive(new Track[]{head}, 40, 20, 60, false);
 		Movable stock = new RollingStock(new Track[]{head}, 20, 20, 60, false);
@@ -1032,8 +1032,8 @@ public class TrackTest {
 
 		train.move();
 		assertTrue(train.getDistance() == 60);
-		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
+		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		assertTrue(train.getFront() == head.getNext(false));
 		assertTrue(train.getBack() == head.getNext(false));
 		assertTrue(train.getOnAlt() == true);
@@ -1042,49 +1042,49 @@ public class TrackTest {
 
 		train.move();
 		assertTrue(train.getDistance() == 20);
-		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
+		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		assertTrue(train.getFront() == str);
 		assertTrue(train.getBack() == head.getNext(false));
 		assertTrue(train.getOnAlt() == false);
 		assertTrue(loco.getFront() == train.getFront());
-		
+
 		train.move();
 		assertTrue(train.getDistance() == 80);
-		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
+		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		assertTrue(train.getFront() == str);
 		assertTrue(train.getBack() == str);
 		assertTrue(train.getOnAlt() == false);
 		assertTrue(loco.getFront() == train.getFront());
-		
+
 		train.move();
 		assertTrue(train.getDistance() == 40);
-		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
+		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		assertTrue(train.getFront() == sw2);
 		assertTrue(train.getBack() == sw2);
 		assertTrue(train.getOnAlt() == true);
 		assertTrue(loco.getFront() == train.getFront());
-		
+
 		train.move();
 		assertTrue(train.getDistance() == 0);
-		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
+		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		assertTrue(train.getFront() == tp_4);
 		assertTrue(train.getBack() == sw2);
 		assertTrue(train.getOnAlt() == false);
 		assertTrue(loco.getFront() == train.getFront());
-		
+
 		train.move();
 		assertTrue(train.getDistance() == 60);
-		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
+		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		assertTrue(train.getFront() == tp_4);
 		assertTrue(train.getBack() == tp_4);
 		assertTrue(train.getOnAlt() == false);
 		assertTrue(loco.getFront() == train.getFront());
-		
+
 
 		train.toggleDirection();
 		train.move();
@@ -1094,23 +1094,35 @@ public class TrackTest {
 		//System.out.println(train.getBack());
 		assertTrue(train.getBack() == sw2);
 		assertTrue(train.getOnAlt() == false);
-		assertTrue(train.getFront() == train.getFront());
-		
+		assertTrue(train.getFront() == loco.getFront());
+
 		train.move();
 		assertTrue(train.getDistance() == 40);
-		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
+		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
 		//System.out.println("Front: "+train.getFront());
 		assertTrue(train.getFront() == sw2);
 		//System.out.println("Back: "+ train.getBack());
 		assertTrue(train.getBack() == sw2);
+		//System.out.println("speed: "+ loco.getMaxSpeed());
+		//System.out.println("fowards: "+train.isFowards());
+		//System.out.println("switch previous train: "+ sw2.getPrevious(sw2.getCurrentAlt(train)));
+		//System.out.println("switch previous loco: " + sw2.getPrevious(sw2.getCurrentAlt(loco)));\
 		assertTrue(train.getOnAlt() == false);
-		assertTrue(stock.getFront() == train.getFront());
+		assertTrue(train.getFront() == loco.getFront());
 
+		System.out.println("::::::::move:::::::::\n");
+		System.out.println("loco : "+" front: "+loco.getFront()+" back: "+loco.getBack());
+		System.out.println("stock: "+ " front: "+stock.getFront()+" back: "+stock.getBack());
 		train.move();
+	
 		assertTrue(train.getDistance() == 80);
-		System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
+		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
+		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
+		System.out.println("train.getFront(): "+train.getFront());
+		System.out.println("STR: "+str +" sw2: "+sw2+" fowards: "+train.isFowards());
+		System.out.println("loco.getFront(): "+loco.getFront());
+		System.out.println("locodist : "+ loco.getDistance());
 		assertTrue(train.getFront() == str);
 		assertTrue(train.getBack() == str);
 		assertTrue(train.getOnAlt() == false);
@@ -1151,10 +1163,10 @@ public class TrackTest {
 		Track tp_4 = tp_3.getNext(false);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		Section sec3 = new Section(new ArrayList<Track>());
-		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
 
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
@@ -1164,8 +1176,8 @@ public class TrackTest {
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
-		((Switch) sw).toggle(); // set the switch so that we move along the alternate direction
-		((MergeSwitch) sw2).toggle();
+		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
+		((BackSwitch) sw2).toggle();
 
 		Movable loco = new Locomotive(new Track[]{head}, 40, 20, 60, false);
 		Movable stock = new RollingStock(new Track[]{head}, 20, 20, 60 ,false);
@@ -1280,10 +1292,10 @@ public class TrackTest {
 		Track tp_4 = tp_3.getNext(false);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		Section sec3 = new Section(new ArrayList<Track>());
-		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
 
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
@@ -1293,8 +1305,8 @@ public class TrackTest {
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
-		((Switch) sw).toggle(); // set the switch so that we move along the alternate direction
-		((MergeSwitch) sw2).toggle();
+		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
+		((BackSwitch) sw2).toggle();
 
 		Movable loco = new Locomotive(new Track[]{head}, 40, 20, 60, false);
 		Movable stock = new RollingStock(new Track[]{head}, 20, 20, 60, false);
@@ -1355,8 +1367,8 @@ public class TrackTest {
 
 
 		train.toggleDirection();
-		((Switch) sw).toggle();
-		((MergeSwitch) sw2).toggle();
+		((ForwardSwitch) sw).toggle();
+		((BackSwitch) sw2).toggle();
 
 		train.move();
 		//System.out.println("distance: "+ train.getDistance());
@@ -1509,10 +1521,10 @@ public class TrackTest {
 		sec.add(head);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		Section sec3 = new Section(new ArrayList<Track>());
-		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
 
 		route.replace(head.getNext(false), sw , false);
 		route.replace(head.getNext(false).getNext(false), sw2, false);
@@ -1564,11 +1576,11 @@ public class TrackTest {
 		sec.add(head);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		route.replace(head.getNext(false), sw , false);
 
-		((Switch) sw).toggle(); // set the switch so that we move along the alternate direction
+		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
 		Locomotive loco = new Locomotive(new Track[]{head}, 40, 50, 60, false);
 		Movable train = new Train(new Movable[]{loco});
 		sec.addMovable(train);
@@ -1610,10 +1622,10 @@ public class TrackTest {
 		Track tp_4 = tp_3.getNext(false);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		Section sec3 = new Section(new ArrayList<Track>());
-		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
 
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
@@ -1623,8 +1635,8 @@ public class TrackTest {
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
-		((Switch) sw).toggle(); // set the switch so that we move along the alternate direction
-		((MergeSwitch) sw2).toggle();
+		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
+		((BackSwitch) sw2).toggle();
 
 		Locomotive loco = new Locomotive(new Track[]{head}, 40, 50, 60, false);
 		Movable train = new Train(new Movable[]{loco});
@@ -1738,10 +1750,10 @@ public class TrackTest {
 		Track tp_4 = tp_3.getNext(false);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		Section sec3 = new Section(new ArrayList<Track>());
-		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
 
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
@@ -1751,8 +1763,8 @@ public class TrackTest {
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
-		((Switch) sw).toggle(); // set the switch so that we move along the alternate direction
-		((MergeSwitch) sw2).toggle();
+		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
+		((BackSwitch) sw2).toggle();
 
 		Movable loco = new Locomotive(new Track[]{head}, 40, 50, 60, false);
 		Train train = new Train(new Movable[]{loco});
@@ -1866,10 +1878,10 @@ public class TrackTest {
 		Track tp_4 = tp_3.getNext(false);
 
 		Section sec2 = new Section(new ArrayList<Track>());
-		Track sw = new Switch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		Section sec3 = new Section(new ArrayList<Track>());
-		Track sw2 = new MergeSwitch(null, null, sw, sec3, 100, 100, 50);
+		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
 
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
@@ -1879,8 +1891,8 @@ public class TrackTest {
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
-		((Switch) sw).toggle(); // set the switch so that we move along the alternate direction
-		((MergeSwitch) sw2).toggle();
+		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
+		((BackSwitch) sw2).toggle();
 
 		Movable loco = new Locomotive(new Track[]{head}, 40, 50, 60, false);
 		Train train = new Train(new Movable[]{loco});
@@ -1940,8 +1952,8 @@ public class TrackTest {
 
 
 		train.toggleDirection();
-		((Switch) sw).toggle();
-		((MergeSwitch) sw2).toggle();
+		((ForwardSwitch) sw).toggle();
+		((BackSwitch) sw2).toggle();
 
 		train.move();
 		//System.out.println("distance: "+ train.getDistance());

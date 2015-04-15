@@ -2,6 +2,7 @@ package modelrailway.simulation;
 import java.util.HashSet;
 import java.util.Set;
 
+
 /**
  * The Train is a Movable object and contains other movable objects.
  *
@@ -20,13 +21,14 @@ public class Train extends Movable {
 
 
 	public int move(){
-		super.move();
+		super.move(); //
 		//System.out.println("supermove dist: "+ super.getDistance());
 		for(int i = 1; i<trainParts.length; i++){
 			trainParts[i].move();
 		}
 		//System.out.println("move locomotive");
 		return trainParts[0].move();
+
 	}
 
 	public int stop(){
@@ -84,6 +86,11 @@ public class Train extends Movable {
 	public Movable[] getParts(){
 		return trainParts;
 	}
-
+	public void toggleDirection(){
+		super.toggleDirection();
+		for(int x = 0; x< trainParts.length; x++){
+			trainParts[x].toggleDirection();
+		}
+	}
 
 }

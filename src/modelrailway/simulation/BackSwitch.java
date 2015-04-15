@@ -1,7 +1,7 @@
 package modelrailway.simulation;
 
 
-public class MergeSwitch extends Track{
+public class BackSwitch extends Track{
 
 	private enum Direction{
 		enter,prev
@@ -9,7 +9,7 @@ public class MergeSwitch extends Track{
 	private Direction path;
 	private int pointPos; // point position from the back
 
-	public MergeSwitch(Track previous, Track next,Track entrance, Section section,int length,int altlength, int pointPos) {
+	public BackSwitch(Track previous, Track next,Track entrance, Section section,int length,int altlength, int pointPos) {
 		super(previous, next, entrance, null, section, length, altlength);
 		this.pointPos = pointPos;
 
@@ -17,6 +17,7 @@ public class MergeSwitch extends Track{
 		// TODO Auto-generated constructor stub
 	}
 
+	
 	public Track getNext(boolean onAlt){
 		return super.getNext(false);
 	}
