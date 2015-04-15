@@ -178,4 +178,17 @@ public class TrackTest {
 	    assertTrue (str.getNext(false) == sw2);
 	    assertTrue (sw2.getPrevious(true) == str);
 	}
+	/**
+	 * Test adding a diamond crossing;
+	 */
+	@Test public void testTrackBuild5(){
+		Section sec = new Section (new ArrayList<Track>());
+		Straight st = new Straight(null,null,sec,100);
+		Straight.StraightRing route = new Straight.StraightRing(st);
+		
+		Track head1 = route.ringTrack(3,100);
+		
+		
+		
+	}
 }
