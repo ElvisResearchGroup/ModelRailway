@@ -76,9 +76,14 @@ public abstract class Movable {
 		  if(distance2 < distance){ // we have moved onto a new segment
 			//   System.out.println("new seg moved foward");
 			   track[1].getSection().removeMovable(this);
+			   if(track[1].getAltSection() != null) track[1].getAltSection().removeMovable(this);
 			   track[1] = track[0];
 			   backAlt = onAlt;
-			   track[0].getSection().addMovable(this);
+			   if(track[0].getAltSection() != null ){ // we do not need to worry about alt section changing on switches as switches only have one section.
+				   track[0].getAltSection().addMovable(this);
+			   } else{
+			       track[0].getSection().addMovable(this);
+			   }
 			   track[0] = track[0].getNext(onAlt); // get next section of track based on weather we are on an alternate section.
 			   onAlt = track[0].isAlt(track[1]);
 
@@ -87,6 +92,7 @@ public abstract class Movable {
 		  distance = distance2;
 		  if(distance >= getLength()){
 			   track[1].getSection().removeMovable(this);
+			   if(track[1].getAltSection() != null) track[1].getAltSection().removeMovable(this);
 			   track[1] = track[0]; // not on back segment
 			   backAlt =onAlt;
 
@@ -107,7 +113,13 @@ public abstract class Movable {
 		  if(newDistance >=0 && newDistance <= length){ // move backwards. since we have moved backwards over a section we do not have track[1]
 			  System.out.println("newDistance >= 0 and newDistance <= length");
 			  // track[0] = track[1];
+			   
 			   track[1] = track[0].getPrevious(track[0].getCurrentAlt(this));
+			   if(track[1].isAlt(track[0]) && track[1].getAltSection() != null){ // handle the addition of the new section.
+				   track[1].getAltSection().addMovable(this);
+			   } else{
+				   track[1].getSection().addMovable(this);
+			   }
 			   backAlt = track[1].getCurrentAlt(this);
 			   distance = newDistance;
 		  }
@@ -116,16 +128,28 @@ public abstract class Movable {
 		  else if(newDistance <0 && getDistance() < length) { // remove track[0]
 			  System.out.println("newDistance< 0 and getDistance < length");
 			   track[0].getSection().removeMovable(this);
+			   if(track[0].getAltSection() != null)track[0].getAltSection().removeMovable(this);
 			   track[0] = track[1];
 			   onAlt = backAlt;
 			   distance = track[0].getDistance(track[0].getCurrentAlt(this)) + newDistance;
 			   if(distance < length){
 				   track[1] = track[0].getPrevious(backAlt);
+				   if(track[1].getAltSection() != null){  // handle sections 
+					   track[1].getAltSection().addMovable(this);
+				   } else{
+					   track[1].getSection().addMovable(this);
+				   }
 			   }
 		  }
 		  else if(newDistance < 0 && getDistance() >= length){ // A train cannot move further than one track length so
 			  System.out.println("newDistance < 0 and getDistance >= length");
+			  Track temp = track[0];
 			  track[0] = track[0].getPrevious(track[0].getCurrentAlt(this));
+			  if(track[0].isAlt(temp) && track[0].getAltSection() != null){
+				   track[0].getAltSection().addMovable(this);
+			   } else{
+				   track[0].getSection().addMovable(this);
+			   }
 			  track[1] = track[0];
 			  backAlt = track[0].getCurrentAlt(this);
 			  distance = track[0].getDistance(track[0].getCurrentAlt(this))+newDistance;

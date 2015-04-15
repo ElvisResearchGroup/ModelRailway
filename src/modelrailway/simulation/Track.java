@@ -211,12 +211,39 @@ public abstract class Track {
 
 	private int length;
 	private Section section;
+	private Section altSection;
+	
 	/**
 	 * produces a section of track.
 	 * @param previous
 	 * @param next
+	 * @param alternatePrevious
+	 * @param alternateNext
+	 * @param section
+	 * @param altSection
+	 * @param length
+	 * @param altLength
+	 */
+	public Track(Track previous, Track next, Track alternatePrevious, Track alternateNext, Section section, Section altSection, int length, int altlength){
+		this.previous = previous;
+		this.next = next;
+		this.section = section;
+		this.length = length;
+		this.alternatePrevious = alternatePrevious;
+		this.alternateNext = alternateNext;
+		this.altlength = altlength;
+		this.altSection = altSection;
+	}
+	
+	/**
+	 * produces a section of track.
+	 * @param previous
+	 * @param next
+	 * @param alternatePrevious
+	 * @param alternateNext
 	 * @param section
 	 * @param length
+	 * @param altLength
 	 */
 	public Track(Track previous, Track next, Track alternatePrevious, Track alternateNext, Section section, int length ,int altlength) {
 		this.previous = previous;
@@ -246,10 +273,14 @@ public abstract class Track {
 		return this.next;
 	}
 
+	public Section getAltSection(){
+		return altSection;
+	}
 	/**
 	 * get the section that the piece of track is part of.
 	 * @return
 	 */
+	
 	public Section getSection(){
 	    return section;
 	}

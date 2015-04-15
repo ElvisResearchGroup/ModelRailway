@@ -18,8 +18,8 @@ public class Crossing extends Track {
 	 * @param length
 	 * @param altlength
 	 */
-	public Crossing(Track previous, Track next, Track alternatePrevious, Track alternateNext, Section section, int length ,int altlength) {
-		super(previous, next, alternateNext, alternateNext, section, length, altlength);
+	public Crossing(Track previous, Track next, Track alternatePrevious, Track alternateNext, Section section, Section altSection, int length ,int altlength) {
+		super(previous, next, alternateNext, alternateNext, section, altSection, length, altlength);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -80,7 +80,7 @@ public class Straight extends Track {
 	 *  @return
 	 */
 	public boolean isAlt(Track track) {
-		if(track == getNext(false) || track == getPrevious(false)){
+		if(track == getNext(false) || track == getPrevious(false) || track == this){
 			return false;
 		}
 		
