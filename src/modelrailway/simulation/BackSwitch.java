@@ -17,7 +17,7 @@ public class BackSwitch extends Track{
 		// TODO Auto-generated constructor stub
 	}
 
-	
+
 	public Track getNext(boolean onAlt){
 		return super.getNext(false);
 	}
@@ -48,11 +48,19 @@ public class BackSwitch extends Track{
      */
     public boolean getCurrentAlt(Movable m){
     	if(m.getBack() == this ){
-    		if(m.getBackDistance() < pointPos){ // point position from the back.
-
-    		   return super.getCurrentAlt(m);
-    		} else {
-    			return this.path == Direction.enter;
+    		if(m.isFowards()){
+    		    if (m.getBackDistance() < pointPos){ // point position from the back.
+    		        return super.getCurrentAlt(m);
+    		    } else {
+    		     	return this.path == Direction.enter;
+    		    }
+    		}
+    		else{
+    			if(m.getBackDistance() < pointPos){
+    				return this.path == Direction.enter;
+    			} else {
+    				return super.getCurrentAlt(m);
+    			}
     		}
     	} else if (m.getFront() == this){ // back is not the current piece of track.
     		if(m.getBack() == this.getPrevious(false)){ // are we on the alternate path

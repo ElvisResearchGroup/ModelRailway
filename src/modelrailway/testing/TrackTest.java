@@ -1010,144 +1010,50 @@ public class TrackTest {
 		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
 		((BackSwitch) sw2).toggle();
 
-		Locomotive loco = new Locomotive(new Track[]{head}, 40, 20, 60, false);
-		Movable stock = new RollingStock(new Track[]{head}, 20, 20, 60, false);
+		Locomotive loco = new Locomotive(new Track[]{head}, 40, 20, 40, false); // speed should not be more than 50 due to positioning of points.
+		Movable stock = new RollingStock(new Track[]{head}, 20, 20, 40, false);
 		Movable train = new Train(new Movable[]{loco,stock});
 		sec.addMovable(train);
 		assertTrue(train.getFront() == head);
 		assertTrue(train.getBack() == head);
 		assertTrue(train.getOnAlt() == false);
 
-		train.move(); // train has not started yet.
-		assertTrue(train.getDistance() == 40);
+		train.start(); // train has not started yet.
+		train.move(); // 80 head
+		train.move(); // 20 head.next
+		assertTrue(train.getFront() == sw);
+		assertTrue(train.getBack() == head);
+		train.move(); // 60
+		assertTrue(train.getFront() == sw);
+		assertTrue(train.getBack() == sw);
+		train.move(); // 0
+		assertTrue(train.getFront() == str);
+		assertTrue(train.getBack() == sw);
+		train.move(); // 40
+		train.move(); // 80
+		train.move(); // 20
+		assertTrue(train.getFront() == sw2);
+		assertTrue(train.getBack() == str);
+		train.move();//60
+		train.move(); // 0
 		assertTrue(train.getFront() == head);
-		assertTrue(train.getBack() == head);
-
-		train.start();
-
-		train.move();
-		assertTrue(train.getDistance() == 0);
-		assertTrue(train.getFront() == head.getNext(false));
-		assertTrue(train.getBack() == head);
-
-		train.move();
-		assertTrue(train.getDistance() == 60);
-		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
-		assertTrue(train.getFront() == head.getNext(false));
-		assertTrue(train.getBack() == head.getNext(false));
-		assertTrue(train.getOnAlt() == true);
-		assertTrue(head.getNext(false).getNext(train.getOnAlt()) == str);
-		assertTrue(loco.getFront() == train.getFront());
-
-		train.move();
-		assertTrue(train.getDistance() == 20);
-		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
-		assertTrue(train.getFront() == str);
-		assertTrue(train.getBack() == head.getNext(false));
-		assertTrue(train.getOnAlt() == false);
-		assertTrue(loco.getFront() == train.getFront());
-
-		train.move();
-		assertTrue(train.getDistance() == 80);
-		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
-		assertTrue(train.getFront() == str);
-		assertTrue(train.getBack() == str);
-		assertTrue(train.getOnAlt() == false);
-		assertTrue(loco.getFront() == train.getFront());
-
-		train.move();
-		assertTrue(train.getDistance() == 40);
-		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
-		assertTrue(train.getFront() == sw2);
 		assertTrue(train.getBack() == sw2);
-		assertTrue(train.getOnAlt() == true);
-		assertTrue(loco.getFront() == train.getFront());
-
-		train.move();
-		assertTrue(train.getDistance() == 0);
-		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
-		assertTrue(train.getFront() == tp_4);
-		assertTrue(train.getBack() == sw2);
-		assertTrue(train.getOnAlt() == false);
-		assertTrue(loco.getFront() == train.getFront());
-
-		train.move();
-		assertTrue(train.getDistance() == 60);
-		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
-		assertTrue(train.getFront() == tp_4);
-		assertTrue(train.getBack() == tp_4);
-		assertTrue(train.getOnAlt() == false);
-		assertTrue(loco.getFront() == train.getFront());
-
-
 		train.toggleDirection();
-		train.move();
-		//System.out.println("distance: "+ train.getDistance());
-		assertTrue(train.getDistance() == 0);
-		assertTrue(train.getFront() == tp_4);
-		//System.out.println(train.getBack());
-		assertTrue(train.getBack() == sw2);
-		assertTrue(train.getOnAlt() == false);
-		assertTrue(train.getFront() == loco.getFront());
-
-		train.move();
-		assertTrue(train.getDistance() == 40);
-		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
-		//System.out.println("Front: "+train.getFront());
+		
+		
+		train.move(); // 60
+		train.move(); // 20
 		assertTrue(train.getFront() == sw2);
-		//System.out.println("Back: "+ train.getBack());
-		assertTrue(train.getBack() == sw2);
-		//System.out.println("speed: "+ loco.getMaxSpeed());
-		//System.out.println("fowards: "+train.isFowards());
-		//System.out.println("switch previous train: "+ sw2.getPrevious(sw2.getCurrentAlt(train)));
-		//System.out.println("switch previous loco: " + sw2.getPrevious(sw2.getCurrentAlt(loco)));\
-		assertTrue(train.getOnAlt() == false);
-		assertTrue(train.getFront() == loco.getFront());
-
-		System.out.println("::::::::move:::::::::\n");
-		System.out.println("loco : "+" front: "+loco.getFront()+" back: "+loco.getBack());
-		System.out.println("stock: "+ " front: "+stock.getFront()+" back: "+stock.getBack());
-		train.move();
-	
-		assertTrue(train.getDistance() == 80);
-		//System.out.println("train dist: "+train.getDistance() + " loco dist: "+ ((Train) train).getParts()[0].getDistance() );
-		//System.out.println("train front: "+train.getFront()+" loco front: "+((Train)train).getParts()[0].getFront());
-		System.out.println("train.getFront(): "+train.getFront());
-		System.out.println("STR: "+str +" sw2: "+sw2+" fowards: "+train.isFowards());
-		System.out.println("loco.getFront(): "+loco.getFront());
-		System.out.println("locodist : "+ loco.getDistance());
-		assertTrue(train.getFront() == str);
 		assertTrue(train.getBack() == str);
-		assertTrue(train.getOnAlt() == false);
-		assertTrue(loco.getFront() == train.getFront());
-
-		train.move();
-		assertTrue(train.getDistance() == 20);
+		train.move(); // 80
+		train.move(); // 40
+		train.move(); // 0
 		assertTrue(train.getFront() == str);
-		assertTrue(train.getBack() == head.getNext(false));
-		assertTrue(train.getOnAlt() == false);
-		assertTrue(loco.getFront() == train.getFront());
+		assertTrue(train.getBack() == sw);
+		train.move(); // 60
+		assertTrue(train.getFront() == sw);
+		assertTrue(train.getBack() == sw);
 
-		train.move();
-		assertTrue(train.getDistance() == 60);
-		assertTrue(train.getFront() == head.getNext(false));
-		assertTrue(train.getBack() == head.getNext(false));
-		assertTrue(train.getOnAlt() == true);
-		assertTrue(head.getNext(false).getNext(train.getOnAlt()) == str);
-		assertTrue(loco.getFront() == train.getFront());
-
-		train.move();
-		assertTrue(train.getDistance() == 0);
-		assertTrue(train.getFront() == head.getNext(false));
-		assertTrue(train.getBack() == head);
-		assertTrue(loco.getFront() == train.getFront());
 	}
 
 	@Test public void trackTestStock5(){

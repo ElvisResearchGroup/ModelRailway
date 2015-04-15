@@ -49,10 +49,20 @@ public class ForwardSwitch extends Track {
      */
     public boolean getCurrentAlt(Movable m){
     	if(m.getFront() == this ){
-    		if(m.getDistance() > pointPos){
-    		   return super.getCurrentAlt(m);
+    		if(m.isFowards()){
+    		   if(m.getDistance() >= pointPos){
+    		      return super.getCurrentAlt(m);
+    		   } else {
+    			  return this.path == Direction.exit;
+    		   }
     		} else {
-    			return this.path == Direction.exit;
+    		   if(m.getDistance() >= pointPos){
+    			  return this.path == Direction.exit;
+    		   }
+    		   else{
+    			  return super.getCurrentAlt(m);
+    		   }
+
     		}
     	} else if (m.getBack() == this){
     		if(m.getFront() == this.getNext(false)) return false;

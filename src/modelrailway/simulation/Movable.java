@@ -97,19 +97,24 @@ public abstract class Movable {
 		  System.out.print("move backwards: ");
 		  if(this instanceof Train) System.out.println("Train");
 		  else if (this instanceof Locomotive) System.out.println("Loco");
-		  else if (this instanceof RollingStock) System.out.println(" Stock");
-
-
-
-		  if(newDistance >=0 && newDistance < length){ // move backwards. since we have moved backwards over a section we do not have track[1]
-			   track[0] = track[1]; 
-			   track[1] = track[1].getPrevious(backAlt);
-			   backAlt = track[0].isAlt(track[1]);
-			   distance = getDistance() -currentSpeed;
+		  else if (this instanceof RollingStock){
+			  System.out.println(" Stock");
+			  System.out.println("newDistance: "+newDistance +"length: "+length +" dist: "+getDistance());
 		  }
 
 
-		  else if(newDistance < 0 && getDistance() < length) { // remove track[0]
+
+		  if(newDistance >=0 && newDistance <= length){ // move backwards. since we have moved backwards over a section we do not have track[1]
+			  System.out.println("newDistance >= 0 and newDistance <= length");
+			  // track[0] = track[1];
+			   track[1] = track[0].getPrevious(track[0].getCurrentAlt(this));
+			   backAlt = track[1].getCurrentAlt(this);
+			   distance = newDistance;
+		  }
+
+
+		  else if(newDistance <0 && getDistance() < length) { // remove track[0]
+			  System.out.println("newDistance< 0 and getDistance < length");
 			   track[0].getSection().removeMovable(this);
 			   track[0] = track[1];
 			   onAlt = backAlt;
@@ -119,13 +124,16 @@ public abstract class Movable {
 			   }
 		  }
 		  else if(newDistance < 0 && getDistance() >= length){ // A train cannot move further than one track length so
+			  System.out.println("newDistance < 0 and getDistance >= length");
 			  track[0] = track[0].getPrevious(track[0].getCurrentAlt(this));
 			  track[1] = track[0];
 			  backAlt = track[0].getCurrentAlt(this);
 			  distance = track[0].getDistance(track[0].getCurrentAlt(this))+newDistance;
 
 		  }
-
+		  else if(newDistance >=0 && newDistance > length){
+			 distance = newDistance;
+		  }
 
 	   }
 
