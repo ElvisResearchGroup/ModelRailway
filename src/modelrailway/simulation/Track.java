@@ -64,14 +64,14 @@ public abstract class Track {
 				tr1.alternateNext = insertedTrack;
 				if(onAlt3 || insertedTrackUnifyPrevious) insertedTrack.alternatePrevious = tr1;
 				if((!onAlt3) || insertedTrackUnifyPrevious)  insertedTrack.previous = tr1;
-				if(tr1UnifyNext) tr2.next = insertedTrack;
+				if(tr1UnifyNext) tr1.next = insertedTrack;
 
 			}
 			else{
 				tr1.next = insertedTrack;
 				if(onAlt3 || insertedTrackUnifyNext) insertedTrack.alternateNext = tr1;
 				if((!onAlt3) || insertedTrackUnifyNext) insertedTrack.previous = tr1;
-				if(tr1UnifyNext) tr1.alternateNext = tr1.next;
+				if(tr1UnifyNext) tr1.alternateNext = insertedTrack;
 			}
 
 			return tr1; // return tr1
@@ -111,13 +111,13 @@ public abstract class Track {
 				tr1.alternateNext = insertedTrack;
 				if(onAlt2 || insertedTrackUnifyPrevious) insertedTrack.alternatePrevious = tr1;
 				if((!onAlt2) || insertedTrackUnifyPrevious)  insertedTrack.previous = tr1;
-				if(tr1UnifyNext) tr2.next = insertedTrack;
+				if(tr1UnifyNext) tr1.next = insertedTrack;
 
 			}
 			else{
 				tr1.next = insertedTrack;
-				if(onAlt2 || insertedTrackUnifyNext) insertedTrack.alternateNext = tr1;
-				if((!onAlt2) || insertedTrackUnifyNext) insertedTrack.previous = tr1;
+				if(onAlt2 || insertedTrackUnifyPrevious) insertedTrack.alternatePrevious = tr1;
+				if((!onAlt2) || insertedTrackUnifyPrevious) insertedTrack.previous = tr1;
 				if(tr1UnifyNext) tr1.alternateNext = tr1.next;
 			}
 			trackList.add(insertedTrack);
@@ -212,7 +212,7 @@ public abstract class Track {
 	private int length;
 	private Section section;
 	private Section altSection;
-	
+
 	/**
 	 * produces a section of track.
 	 * @param previous
@@ -234,7 +234,7 @@ public abstract class Track {
 		this.altlength = altlength;
 		this.altSection = altSection;
 	}
-	
+
 	/**
 	 * produces a section of track.
 	 * @param previous
@@ -280,7 +280,7 @@ public abstract class Track {
 	 * get the section that the piece of track is part of.
 	 * @return
 	 */
-	
+
 	public Section getSection(){
 	    return section;
 	}

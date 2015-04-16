@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import modelrailway.simulation.Crossing;
 import modelrailway.simulation.Locomotive;
 import modelrailway.simulation.BackSwitch;
 import modelrailway.simulation.Movable;
@@ -181,14 +182,204 @@ public class TrackTest {
 	/**
 	 * Test adding a diamond crossing;
 	 */
-	@Test public void testTrackBuild5(){
+	@Test public void testLocoDiamond0(){
 		Section sec = new Section (new ArrayList<Track>());
 		Straight st = new Straight(null,null,sec,100);
 		Straight.StraightRing route = new Straight.StraightRing(st);
-		
+
+		//create a ring track with 3 track sections.
 		Track head1 = route.ringTrack(3,100);
-		
-		
-		
+		Track firstr1 = head1.getNext(false);
+		Track firstr2 = head1.getNext(false).getNext(false);
+
+		Section sec2 = new Section(new ArrayList<Track>());
+		Straight st2 = new Straight(null,null,sec2,100);
+		Straight.StraightRing route2 = new Straight.StraightRing(st2);
+
+		// create another ring track with 3 track sections.
+		Track head2 = route2.ringTrack(3, 100);
+		Track secr1 = head2.getNext(false);
+		Track secr2 = head2.getNext(false).getNext(false);
+
+
+		Section crMain = new Section(new ArrayList<Track>());
+		Section crAlt = new Section(new ArrayList<Track>());
+		Crossing cr = new Crossing(null,null,null,null,crMain,crAlt,100,100);
+
+
+		// insert the diamond crossing.
+		route.insertBetween(head1, false, cr, false);
+		route2.insertBetween(head2, false, cr, true);
+
+		// create a locomotive
+
+		Movable loco = new Locomotive(new Track[]{head1,head1}, 50, 50, 40, false); // tracks, dist, length, maxspeed, onAlt
+
+		loco.start();
+
+		loco.move();
+		assertTrue(loco.getDistance() == 90);
+		assertTrue(loco.getFront() == head1);
+		assertTrue(loco.getBack() == head1);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 30);
+		assertTrue(loco.getFront() == cr);
+		assertTrue(loco.getBack() == head1);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 70);
+		assertTrue(loco.getFront() == cr);
+		assertTrue(loco.getBack() == cr);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 10);
+		assertTrue(loco.getFront() == firstr1);
+		assertTrue(loco.getBack() == cr);
+		assertTrue(loco.getOnAlt() ==  false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 50);
+		assertTrue(loco.getFront() == firstr1);
+		assertTrue(loco.getBack() == firstr1);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 90);
+		assertTrue(loco.getFront() == firstr1);
+		assertTrue(loco.getBack() == firstr1);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 30);
+		//System.out.println("getFront(): "+loco.getFront()+" firstr2: "+firstr2+" firstr1: "+firstr1);
+		assertTrue(loco.getFront() == firstr2);
+		assertTrue(loco.getBack() == firstr1);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 70);
+		assertTrue(loco.getFront() == firstr2);
+		assertTrue(loco.getBack() == firstr2);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 10);
+		assertTrue(loco.getFront() == head1);
+		assertTrue(loco.getBack() == firstr2);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 50);
+		assertTrue(loco.getFront() == head1);
+		assertTrue(loco.getBack() == head1);
+		assertTrue(loco.getOnAlt() == false);
+
 	}
+
+	@Test public void testLocoDiamond1(){
+		Section sec = new Section (new ArrayList<Track>());
+		Straight st = new Straight(null,null,sec,100);
+		Straight.StraightRing route = new Straight.StraightRing(st);
+
+		//create a ring track with 3 track sections.
+		Track head1 = route.ringTrack(3,100);
+		Track firstr1 = head1.getNext(false);
+		Track firstr2 = head1.getNext(false).getNext(false);
+
+		Section sec2 = new Section(new ArrayList<Track>());
+		Straight st2 = new Straight(null,null,sec2,100);
+		Straight.StraightRing route2 = new Straight.StraightRing(st2);
+
+		// create another ring track with 3 track sections.
+		Track head2 = route2.ringTrack(3, 100);
+		Track secr1 = head2.getNext(false);
+		Track secr2 = head2.getNext(false).getNext(false);
+
+
+		Section crMain = new Section(new ArrayList<Track>());
+		Section crAlt = new Section(new ArrayList<Track>());
+		Crossing cr = new Crossing(null,null,null,null,crMain,crAlt,100,100);
+
+
+		// insert the diamond crossing.
+		route.insertBetween(head1, false, cr, false);
+		route2.insertBetween(head2, false, cr, true);
+
+		//System.out.println("head2: "+head2 +" cr: "+cr+" cr.getNext(true): "+cr.getNext(true) );
+
+		// create a locomotive
+
+		Movable loco = new Locomotive(new Track[]{head2,head2}, 50, 50, 40, false); // tracks, dist, length, maxspeed, onAlt
+
+		loco.start();
+
+		loco.move();
+		assertTrue(loco.getDistance() == 90);
+		assertTrue(loco.getFront() == head2);
+		assertTrue(loco.getBack() == head2);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 30);
+		assertTrue(loco.getFront() == cr);
+		assertTrue(loco.getBack() == head2);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 70);
+		assertTrue(loco.getFront() == cr);
+		assertTrue(loco.getBack() == cr);
+		assertTrue(loco.getOnAlt() == true);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 10);
+	//	System.out.println("loco.getFront():" + loco.getFront());
+		assertTrue(loco.getFront() == secr1);
+		assertTrue(loco.getBack() == cr);
+		assertTrue(loco.getOnAlt() ==  false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 50);
+		assertTrue(loco.getFront() == secr1);
+		assertTrue(loco.getBack() == secr1);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 90);
+		assertTrue(loco.getFront() == secr1);
+		assertTrue(loco.getBack() == secr1);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 30);
+		//System.out.println("getFront(): "+loco.getFront()+" firstr2: "+firstr2+" firstr1: "+firstr1);
+		assertTrue(loco.getFront() == secr2);
+		assertTrue(loco.getBack() == secr1);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 70);
+		assertTrue(loco.getFront() == secr2);
+		assertTrue(loco.getBack() == secr2);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 10);
+		assertTrue(loco.getFront() == head2);
+		assertTrue(loco.getBack() == secr2);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 50);
+		assertTrue(loco.getFront() == head2);
+		assertTrue(loco.getBack() == head2);
+		assertTrue(loco.getOnAlt() == false);
+
+	}
+
+	@Test public void testLocoDiamond2(){
+
+
+	}
+
 }
