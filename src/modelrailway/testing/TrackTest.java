@@ -573,7 +573,9 @@ public class TrackTest {
 		assertTrue(loco.getOnAlt() == false);
 
 	}
-
+	/**
+	 * Test sectioning on a basic ring track
+	 */
 	@Test public void testLocoSectioning0(){
 		Section sec = new Section(new ArrayList<Track>());
 
@@ -625,6 +627,13 @@ public class TrackTest {
 		assertFalse(head.getSection().containsMovable(loco));
 		assertFalse(tp_1.getSection().containsMovable(loco));
 		assertTrue(tp_2.getSection().containsMovable(loco));
+	}
+	/**
+	 * test sectioning on a track with switches
+	 */
+	@Test public void testLocoSectioning1(){
+		
+
 	}
 
 }
