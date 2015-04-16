@@ -78,6 +78,62 @@ public abstract class Track {
 
 
 		}
+		/**
+		 * When onAlt2 is true we insert the crossing so that insertedTrack.alternatePrevious = tr1 and insertedTrack.next is the next piece of track.
+		 * When onAlt2 is false we insert the crossing so that insertedTrack.previous = tr1 and insertedTrack.alternateNext is the next piece of track
+		 * @param tr1
+		 * @param onAlt
+		 * @param insertedTrack
+		 * @param onAlt2
+		 * @return
+		 */
+
+		public Track insertAcross(Track tr1, boolean onAlt, Track insertedTrack, boolean onAlt2){
+			Track tr2 = tr1.getNext(onAlt);
+			//first fix tr2
+			boolean tr1UnifyNext = false;
+			boolean tr2UnifyPrevious = false;
+			boolean insertedTrackUnifyNext = false;
+			boolean insertedTrackUnifyPrevious = false;
+
+			if(tr1.next == tr1.alternateNext && tr1.next != null) tr1UnifyNext = true;
+			if(tr2.previous == tr2.alternatePrevious && tr2.previous != null) tr2UnifyPrevious = true;
+			if(insertedTrack.next == insertedTrack.alternateNext && insertedTrack.next != null) insertedTrackUnifyNext = true;
+			if(insertedTrack.previous == insertedTrack.alternatePrevious && insertedTrack.previous != null) insertedTrackUnifyPrevious = true;
+
+
+			if(tr2.isAlt(tr1)){
+				tr2.alternatePrevious = insertedTrack;
+				if(onAlt2 || insertedTrackUnifyNext) insertedTrack.next = tr2; // flip next and alternate next for inserted track
+				if((!onAlt2)|| insertedTrackUnifyNext) insertedTrack.alternateNext = tr2;
+				if(tr2UnifyPrevious) tr2.previous = insertedTrack;
+			}
+			else{
+				tr2.previous = insertedTrack;
+				if(onAlt2 || insertedTrackUnifyNext) insertedTrack.next =tr2;
+				if((!onAlt2) || insertedTrackUnifyNext) insertedTrack.alternateNext = tr2;
+				if(tr2UnifyPrevious) tr2.alternatePrevious = insertedTrack;
+
+			}
+
+			//fix tr1
+			if(tr1.isAlt(tr2)){
+				tr1.alternateNext = insertedTrack;
+				if(onAlt2 || insertedTrackUnifyPrevious) insertedTrack.alternatePrevious = tr1;
+				if((!onAlt2) || insertedTrackUnifyPrevious)  insertedTrack.previous = tr1;
+				if(tr1UnifyNext) tr1.next = insertedTrack;
+
+			}
+			else{
+				tr1.next = insertedTrack;
+				if(onAlt2 || insertedTrackUnifyPrevious) insertedTrack.alternatePrevious = tr1;
+				if((!onAlt2) || insertedTrackUnifyPrevious) insertedTrack.previous = tr1;
+				if(tr1UnifyNext) tr1.alternateNext = tr1.next;
+			}
+			trackList.add(insertedTrack);
+			return tr1; // return tr1
+		}
+
 		public Track insertBetween(Track tr1, boolean onAlt, Track insertedTrack, boolean onAlt2 ){
 			Track tr2 = tr1.getNext(onAlt);
 			//first fix tr2
