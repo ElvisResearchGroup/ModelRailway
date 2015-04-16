@@ -475,4 +475,156 @@ public class TrackTest {
 		assertTrue(loco.getOnAlt() == false);
 	}
 
+	@Test public void testLocoDiamond3(){
+		Section sec = new Section (new ArrayList<Track>());
+		Straight st = new Straight(null,null,sec,100);
+		Straight.StraightRing route = new Straight.StraightRing(st);
+
+		//create a ring track with 3 track sections.
+		Track head1 = route.ringTrack(3,100);
+		Track firstr1 = head1.getNext(false);
+		Track firstr2 = head1.getNext(false).getNext(false);
+
+		Section sec2 = new Section(new ArrayList<Track>());
+		Straight st2 = new Straight(null,null,sec2,100);
+		Straight.StraightRing route2 = new Straight.StraightRing(st2);
+
+		// create another ring track with 3 track sections.
+		Track head2 = route2.ringTrack(3, 100);
+		Track secr1 = head2.getNext(false);
+		Track secr2 = head2.getNext(false).getNext(false);
+
+
+		Section crMain = new Section(new ArrayList<Track>());
+		Section crAlt = new Section(new ArrayList<Track>());
+		Crossing cr = new Crossing(null,null,null,null,crMain,crAlt,100,100);
+
+
+		// insert the diamond crossing.
+		route.insertAcross(head1, false, cr, false);
+		route2.insertAcross(head2, false, cr, true);
+
+		//System.out.println("head2: "+head2 +" cr: "+cr+" cr.getNext(true): "+cr.getNext(true) );
+
+		// create a locomotive
+
+		Movable loco = new Locomotive(new Track[]{head1,head1}, 50, 50, 40, false); // tracks, dist, length, maxspeed, onAlt
+
+		loco.start();
+
+		loco.move();
+		assertTrue(loco.getDistance() == 90);
+		assertTrue(loco.getFront() == head1);
+		assertTrue(loco.getBack() == head1);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 30);
+		assertTrue(loco.getFront() == cr);
+		assertTrue(loco.getBack() == head1);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 70);
+		assertTrue(loco.getFront() == cr);
+		assertTrue(loco.getBack() == cr);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 10);
+	//	System.out.println("loco.getFront():" + loco.getFront());
+		assertTrue(loco.getFront() == secr1);
+		assertTrue(loco.getBack() == cr);
+		assertTrue(loco.getOnAlt() ==  false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 50);
+		assertTrue(loco.getFront() == secr1);
+		assertTrue(loco.getBack() == secr1);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 90);
+		assertTrue(loco.getFront() == secr1);
+		assertTrue(loco.getBack() == secr1);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 30);
+		//System.out.println("getFront(): "+loco.getFront()+" firstr2: "+firstr2+" firstr1: "+firstr1);
+		assertTrue(loco.getFront() == secr2);
+		assertTrue(loco.getBack() == secr1);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 70);
+		assertTrue(loco.getFront() == secr2);
+		assertTrue(loco.getBack() == secr2);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 10);
+		assertTrue(loco.getFront() == head2);
+		assertTrue(loco.getBack() == secr2);
+		assertTrue(loco.getOnAlt() == false);
+
+		loco.move();
+		assertTrue(loco.getDistance() == 50);
+		assertTrue(loco.getFront() == head2);
+		assertTrue(loco.getBack() == head2);
+		assertTrue(loco.getOnAlt() == false);
+
+	}
+
+	@Test public void testLocoSectioning0(){
+		Section sec = new Section(new ArrayList<Track>());
+
+		Straight st = new Straight(null, null, sec, 100);
+		Straight.StraightRing route = new Straight.StraightRing(st);
+		Track head = route.ringTrack(3,100); // produce a ring track with 3 track pieces and each track piece has length 100
+		sec.add(head);
+		Track tp_1 = head.getNext(false);
+		Track tp_2 = tp_1.getNext(false);
+		Track tp_3 = tp_2.getNext(false);
+
+		if(head != tp_3){
+			fail("wrong length");
+		}
+		assertTrue("check that we have different pieces in the ring",head != tp_1 && tp_1 != tp_2 && tp_2 != tp_3);
+
+		assertTrue(tp_3.getPrevious(false) == tp_2);
+		assertTrue(tp_2.getPrevious(false) == tp_1);
+		assertTrue(tp_1.getPrevious(false) == head);
+
+		Movable loco = new Locomotive(new Track[]{head}, 50, 40, 40, false);
+
+		assertTrue(head.getSection().containsMovable(loco));
+		assertFalse(tp_1.getSection().containsMovable(loco));
+		assertFalse(tp_2.getSection().containsMovable(loco));
+
+		loco.start();
+		loco.move(); // 90
+		loco.move(); // 30
+		assertTrue(loco.getDistance() == 30);
+		assertTrue(loco.getFront() == tp_1);
+		assertTrue(loco.getBack() == head);
+		assertTrue(head.getSection().containsMovable(loco));
+		assertTrue(tp_1.getSection().containsMovable(loco));
+		//System.out.println("tp_2: "+tp_2);
+		assertFalse(tp_2.getSection().containsMovable(loco));
+
+		loco.move();// 70
+		assertFalse(head.getSection().containsMovable(loco));
+		assertTrue(tp_1.getSection().containsMovable(loco));
+		assertFalse(tp_2.getSection().containsMovable(loco));
+
+		loco.move(); // 10
+		assertFalse(head.getSection().containsMovable(loco));
+		assertTrue(tp_1.getSection().containsMovable(loco));
+		assertTrue(tp_2.getSection().containsMovable(loco));
+
+		loco.move();//50
+		assertFalse(head.getSection().containsMovable(loco));
+		assertFalse(tp_1.getSection().containsMovable(loco));
+		assertTrue(tp_2.getSection().containsMovable(loco));
+	}
+
 }

@@ -1,5 +1,7 @@
 package modelrailway.simulation;
 
+import java.util.ArrayList;
+
 
 /**
  * Movable object abstract class used to model trains,locomotives, rolling stock.
@@ -29,8 +31,12 @@ public abstract class Movable {
     */
    public Movable(Track[] tr, int distance,int length, int maxSpeed,boolean onAlt){
 	   for(int x = 0; x < tr.length; x++){
-		   if(!tr[x].getSection().containsMovable(this)) tr[x].getSection().addMovable(this);
+		   if(!tr[x].getSection().containsMovable(this)){
+			   tr[x].getSection().addMovable(this);
+			///   System.out.println("tr["+x+"] : "+tr[x]+" added movable");
+		   }
 	   }
+
 	   this.track = tr;
 	   this.maxSpeed = maxSpeed;
 	   this.onAlt = onAlt;
@@ -40,6 +46,7 @@ public abstract class Movable {
 	   if(track.length == 1){
 		   this.track = new Track[]{tr[0],tr[0]};
 	   }
+
 
    }
    /**
@@ -69,21 +76,15 @@ public abstract class Movable {
    */
    public int move(){ // returns the new distance
 	   ///System.out.println("currentSpeed: "+currentSpeed);
+	   ArrayList<Track> old = new ArrayList<Track>();
+	   if(track[1] != null) old.add(track[1]);
+	   old.add(track[0]);
+
 	   if(isFowards()){
 		  int distance2 = (distance + currentSpeed) % getFront().getDistance(onAlt);
-		  //System.out.println("distance2: "+distance2);
-		  //System.out.println("distance: "+ distance);
 		  if(distance2 < distance){ // we have moved onto a new segment
-			//   System.out.println("new seg moved foward");
-			   track[1].getSection().removeMovable(this);
-			   if(track[1].getAltSection() != null) track[1].getAltSection().removeMovable(this);
 			   track[1] = track[0];
 			   backAlt = onAlt;
-			   if(track[0].getAltSection() != null ){ // we do not need to worry about alt section changing on switches as switches only have one section.
-				   track[0].getAltSection().addMovable(this);
-			   } else{
-			       track[0].getSection().addMovable(this);
-			   }
 			   track[0] = track[0].getNext(onAlt); // get next section of track based on weather we are on an alternate section.
 			   onAlt = track[0].isAlt(track[1]);
 
@@ -91,65 +92,39 @@ public abstract class Movable {
 
 		  distance = distance2;
 		  if(distance >= getLength()){
-			   track[1].getSection().removeMovable(this);
-			   if(track[1].getAltSection() != null) track[1].getAltSection().removeMovable(this);
 			   track[1] = track[0]; // not on back segment
 			   backAlt =onAlt;
 
 		  }
 	   } else{ // moving backwards
-		//  int distance2 = (getBackDistance() +currentSpeed);
 		  int newDistance = (getDistance() - currentSpeed);
-		  System.out.print("move backwards: ");
-		  if(this instanceof Train) System.out.println("Train");
-		  else if (this instanceof Locomotive) System.out.println("Loco");
-		  else if (this instanceof RollingStock){
-			  System.out.println(" Stock");
-			  System.out.println("newDistance: "+newDistance +"length: "+length +" dist: "+getDistance());
-		  }
 
 
 
 		  if(newDistance >=0 && newDistance <= length){ // move backwards. since we have moved backwards over a section we do not have track[1]
-			  System.out.println("newDistance >= 0 and newDistance <= length");
+			  //System.out.println("newDistance >= 0 and newDistance <= length");
 			  // track[0] = track[1];
-			   
+
 			   track[1] = track[0].getPrevious(track[0].getCurrentAlt(this));
-			   if(track[1].isAlt(track[0]) && track[1].getAltSection() != null){ // handle the addition of the new section.
-				   track[1].getAltSection().addMovable(this);
-			   } else{
-				   track[1].getSection().addMovable(this);
-			   }
 			   backAlt = track[1].getCurrentAlt(this);
 			   distance = newDistance;
 		  }
 
 
 		  else if(newDistance <0 && getDistance() < length) { // remove track[0]
-			  System.out.println("newDistance< 0 and getDistance < length");
-			   track[0].getSection().removeMovable(this);
-			   if(track[0].getAltSection() != null)track[0].getAltSection().removeMovable(this);
+			  //System.out.println("newDistance< 0 and getDistance < length");
 			   track[0] = track[1];
 			   onAlt = backAlt;
 			   distance = track[0].getDistance(track[0].getCurrentAlt(this)) + newDistance;
 			   if(distance < length){
 				   track[1] = track[0].getPrevious(backAlt);
-				   if(track[1].getAltSection() != null){  // handle sections 
-					   track[1].getAltSection().addMovable(this);
-				   } else{
-					   track[1].getSection().addMovable(this);
-				   }
 			   }
 		  }
 		  else if(newDistance < 0 && getDistance() >= length){ // A train cannot move further than one track length so
-			  System.out.println("newDistance < 0 and getDistance >= length");
+			 // System.out.println("newDistance < 0 and getDistance >= length");
 			  Track temp = track[0];
+
 			  track[0] = track[0].getPrevious(track[0].getCurrentAlt(this));
-			  if(track[0].isAlt(temp) && track[0].getAltSection() != null){
-				   track[0].getAltSection().addMovable(this);
-			   } else{
-				   track[0].getSection().addMovable(this);
-			   }
 			  track[1] = track[0];
 			  backAlt = track[0].getCurrentAlt(this);
 			  distance = track[0].getDistance(track[0].getCurrentAlt(this))+newDistance;
@@ -166,6 +141,24 @@ public abstract class Movable {
 		   backAlt = track[1].getCurrentAlt(this);
 	   } else{
 		   backAlt = onAlt;
+	   }
+	   // update sectioning
+
+	   for(Track t: old){
+		   t.getSection().removeMovable(this);
+		   if(t.getAltSection() != null) t.getAltSection().removeMovable(this);
+	   }
+	   if(onAlt && track[0].getAltSection() != null){
+		   track[0].getAltSection().addMovable(this);
+	   } else{
+	       track[0].getSection().addMovable(this);
+	     //  System.out.println("track[0]: "+track[0]+" added movable ");
+	   }
+	   if(backAlt && track[1].getAltSection() != null){
+		   track[1].getAltSection().addMovable(this);
+	   } else{
+	       track[1].getSection().addMovable(this);
+	   //    System.out.println("track[1]: "+track[1]+" added movable ");
 	   }
 	   return distance;
    }
