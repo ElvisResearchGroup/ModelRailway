@@ -25,6 +25,7 @@ public class Simulator implements Controller{
 		private Track track;
 		private Map<Integer, modelrailway.simulation.Train> modelTrains;
 		private Map<Integer, Route> trainRoute;
+		private boolean stopthread = false;
 
 		public TrainThread(Map<Integer, modelrailway.simulation.Train> modelTrains, Map<Integer, Train> trains, Track track){
 			this.modelTrains = modelTrains;
@@ -35,30 +36,32 @@ public class Simulator implements Controller{
 		 *
 		 */
 		public void run(){
-			for(Map.Entry<Integer, modelrailway.simulation.Train> entry: modelTrains.entrySet()){
-				modelrailway.simulation.Train train = entry.getValue();
-				List<Section> slist = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
-				train.move();
-				List<Section> s2list = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
+			while(!stopthread){
+			  for(Map.Entry<Integer, modelrailway.simulation.Train> entry: modelTrains.entrySet()){
+				  modelrailway.simulation.Train train = entry.getValue();
+				  List<Section> slist = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
+				  train.move();
+				  List<Section> s2list = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
 
 
-				for(Section s : s2list){
+				  for(Section s : s2list){
 					if(!slist.contains(s)){
 						for(Listener l : listeners){
 							Event ev = new Event.SectionChanged(s.getNumber(), true);
 							l.notify(ev);
 						}
 					}
-				}
+				  }
 
-				for(Section s : slist){
+				  for(Section s : slist){
 					if(!s2list.contains(s)){
 						for(Listener l : listeners){
 							Event ev = new Event.SectionChanged(s.getNumber(), false);
 							l.notify(ev);
 						}
-					}
-				}
+				  	}
+				  }
+			  }
 			}
 		}
 		/**
@@ -84,6 +87,10 @@ public class Simulator implements Controller{
 		 */
 		public void stopTrain(int trainID){
 			if(modelTrains.containsKey(trainID)) modelTrains.get(trainID).stop();
+		}
+
+		public void stopThread(){
+			stopthread = true;
 		}
 	}
 	private List<Listener> listeners = new CopyOnWriteArrayList<Listener>();
@@ -122,6 +129,10 @@ public class Simulator implements Controller{
 	public void stop(int trainID) {
 		runningThread.stopTrain(trainID);
 
+	}
+
+	public void stop(){
+		runningThread.stopThread();
 	}
 
 	@Override

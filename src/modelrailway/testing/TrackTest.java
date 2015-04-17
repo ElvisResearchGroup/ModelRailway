@@ -3,12 +3,17 @@ package modelrailway.testing;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import modelrailway.core.Event;
+import modelrailway.core.Event.Listener;
 import modelrailway.simulation.Crossing;
 import modelrailway.simulation.Locomotive;
 import modelrailway.simulation.BackSwitch;
 import modelrailway.simulation.Movable;
 import modelrailway.simulation.RollingStock;
+import modelrailway.simulation.Simulator;
 import modelrailway.simulation.Straight;
 import modelrailway.simulation.ForwardSwitch;
 import modelrailway.simulation.Track;
@@ -628,12 +633,36 @@ public class TrackTest {
 		assertFalse(tp_1.getSection().containsMovable(loco));
 		assertTrue(tp_2.getSection().containsMovable(loco));
 	}
-	/**
-	 * test sectioning on a track with switches
-	 */
-	@Test public void testLocoSectioning1(){
-		
 
+	public void simulatorTest0(){
+		Section section = new Section(new ArrayList<Track>());
+		Track track = new Straight(null, null, section, 100);
+		Straight.StraightRing ring  = new Straight.StraightRing(track);
+		track = ring.ringTrack(5, 100); // produce a ring.
+
+		Train tr = new Train(new Movable[]{new Locomotive(new Track[]{track,track} ,40,40,40, false)});
+		Map<Integer,Train> map = new HashMap<Integer,Train>();
+		map.put(0, tr);
+		Map<Integer,modelrailway.core.Train>  map2 = new HashMap<Integer,modelrailway.core.Train>();
+		map2.put(0, new modelrailway.core.Train(0,true));
+
+
+		final Simulator sim = new Simulator(track, map2 , map);
+
+		sim.start(0, null);
+
+		Listener lis = new Listener(){
+
+			public void notify(Event e){
+				if(e instanceof Event.SectionChanged){
+					if (((Event.SectionChanged) e).getSection()  == 0){ sim.stop(0); sim.stop();}
+
+				}
+
+			}
+		};
+
+		sim.register(lis);
 	}
 
 }
