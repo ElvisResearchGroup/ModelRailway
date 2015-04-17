@@ -1,8 +1,11 @@
 package modelrailway.simulation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import modelrailway.core.Controller;
 import modelrailway.core.Event;
@@ -19,39 +22,79 @@ public class Simulator implements Controller{
 
 	private class TrainThread extends Thread{
 
+		private Track track;
 		private Map<Integer, modelrailway.simulation.Train> modelTrains;
 		private Map<Integer, Route> trainRoute;
 
-		public TrainThread(Map<Integer, modelrailway.simulation.Train> modelTrains, Map<Integer, Train> trains){
+		public TrainThread(Map<Integer, modelrailway.simulation.Train> modelTrains, Map<Integer, Train> trains, Track track){
 			this.modelTrains = modelTrains;
+			this.track = track;
 		}
-
+		/**
+		 * the run method repeatedly calls move on all the trains and checks for section changes.
+		 *
+		 */
 		public void run(){
+			for(Map.Entry<Integer, modelrailway.simulation.Train> entry: modelTrains.entrySet()){
+				modelrailway.simulation.Train train = entry.getValue();
+				List<Section> slist = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
+				train.move();
+				List<Section> s2list = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
 
+
+				for(Section s : s2list){
+					if(!slist.contains(s)){
+						for(Listener l : listeners){
+							Event ev = new Event.SectionChanged(s.getNumber(), true);
+							l.notify(ev);
+						}
+					}
+				}
+
+				for(Section s : slist){
+					if(!s2list.contains(s)){
+						for(Listener l : listeners){
+							Event ev = new Event.SectionChanged(s.getNumber(), false);
+							l.notify(ev);
+						}
+					}
+				}
+			}
 		}
-
+		/**
+		 * Start the train going on the track.
+		 * The route is ignored by the simulator, The controller needs to controll the route
+		 * @param trainID
+		 * @param route
+		 * @return
+		 */
 		public boolean startTrain(int trainID, Route route){
 			if(modelTrains.containsKey(trainID)){
-			    modelTrains.get(trainID).stop();
+			    modelTrains.get(trainID).start();
+			    //trainRoute.put(trainID, route);
 			    return true;
 			}
 			else {
 				return false;
 			}
 		}
-
+		/**
+		 * Stop the train with the supplied id.
+		 * @param trainID
+		 */
 		public void stopTrain(int trainID){
-			if(modelTrains.containsKey(trainID)) modelTrains.get(trainID);
+			if(modelTrains.containsKey(trainID)) modelTrains.get(trainID).stop();
 		}
 	}
-	private ArrayList<Listener> listeners = new ArrayList<Listener>();
+	private List<Listener> listeners = new CopyOnWriteArrayList<Listener>();
 	private Map<Integer,Train> trainMap; // a map from train id's to trains.
 	private TrainThread runningThread;
 
 
 	public Simulator(Track track, Map<Integer,Train> map, Map<Integer,modelrailway.simulation.Train> trains){
 		trainMap = map;
-		runningThread = new TrainThread(trains,map);
+		runningThread = new TrainThread(trains,map,track);
+		runningThread.start();
 
 	}
 	@Override
@@ -66,7 +109,11 @@ public class Simulator implements Controller{
 
 	}
 
-	@Override
+	/**
+	 * This method starts the train with trainID as its id.
+	 * The route is ignored as it is the responsibility of the controller with a track object to ensure that trains follow the route.
+	 *
+	 */
 	public boolean start(int trainID, Route route) {
 		return runningThread.startTrain(trainID,route);
 	}
