@@ -4,6 +4,7 @@ import java.util.*;
 
 import modelrailway.core.*;
 import modelrailway.core.Event.Listener;
+import modelrailway.core.Event.TurnoutChanged;
 
 /**
  * A very simplistic implementation of the controller interface. This manages
@@ -71,6 +72,12 @@ public class SimpleController implements Controller {
 		send(new Event.SpeedChanged(trainID,0.0f));		
 	}
 
+
+	@Override
+	public void set(int turnoutID, boolean thrown) {
+		send(new Event.TurnoutChanged(turnoutID,thrown));
+	}
+	
 	@Override
 	public synchronized void notify(Event e) {
 		// This function listens only to section changed events and makes sure

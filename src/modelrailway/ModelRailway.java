@@ -13,6 +13,7 @@ import jmri.DccThrottle;
 import jmri.InstanceManager;
 import jmri.ThrottleListener;
 import jmri.ThrottleManager;
+import jmri.Turnout;
 import jmri.jmrix.SystemConnectionMemo;
 import jmri.jmrix.loconet.*;
 import jmri.jmrix.loconet.locomon.Llnmon;
@@ -47,6 +48,11 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	 */
 	private DccThrottle[] throttles;
 	
+	/**
+	 * The list of active turnouts
+	 */
+	private Turnout[] turnouts;
+	
 	private ArrayList<Event.Listener> eventListeners = new ArrayList<Event.Listener>();
 
 	/**
@@ -57,7 +63,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	/**
 	 * verbose mode means dump out more debugging information.
 	 */
-	private volatile boolean verbose = false;
+	private volatile boolean verbose = true;
 	
 	/**
 	 * Constructor starts the JMRI application running, and then returns.
@@ -91,6 +97,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		memo.configureCommandStation(true, true, "DCS51 (Zephyr Xtra)", false, false);
 		memo.getLnTrafficController().addLocoNetListener(LnTrafficController.ALL, this);
 		requestThrottles();		
+		setupTurnouts(4);
 	}
 
 	/**
@@ -113,6 +120,22 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			System.out.println("Requesting throttle for locomotive: " + loco);
 			manager.requestThrottle(loco,this);
 		}
+	}
+	
+	/**
+	 * Set up the turnouts on the railway. These are assumed to be numbered
+	 * consecutively from 1.
+	 * 
+	 * @param nTurnOuts
+	 */
+	private void setupTurnouts(int nTurnOuts) {
+		LnTurnoutManager manager = memo.getTurnoutManager();
+		this.turnouts = new Turnout[nTurnOuts];
+		for(int i=0;i!=nTurnOuts;++i) {
+			turnouts[i] = manager.provideTurnout(getTurnoutString(i+1));
+			System.out.println("NAME: " + turnouts[i].getDisplayName());
+		}
+		System.out.println("DONE");
 	}
 	
 	@Override
@@ -200,18 +223,26 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	}
 	
 	public void notify(Event event) {
-		if(event instanceof Event.SpeedChanged) {
-			Event.SpeedChanged e = (Event.SpeedChanged) event; 
+		if (event instanceof Event.SpeedChanged) {
+			Event.SpeedChanged e = (Event.SpeedChanged) event;
 			throttles[e.getLocomotive()].setSpeedSetting(e.getSpeed());
-		} else if(event instanceof Event.DirectionChanged) {
+		} else if (event instanceof Event.DirectionChanged) {
 			Event.DirectionChanged e = (Event.DirectionChanged) event;
 			throttles[e.getLocomotive()].setIsForward(e.getDirection());
-		} else if(event instanceof Event.EmergencyStop) {
+		} else if (event instanceof Event.EmergencyStop) {
 			System.out.println("*** EMERGENCY STOP ***");
-			Event.EmergencyStop e = (Event.EmergencyStop) event;			
-//			throttles[e.getLocomotive()]
-//					.setSpeedSetting(LnConstants.OPC_LOCO_SPD_ESTOP);
+			Event.EmergencyStop e = (Event.EmergencyStop) event;
+			// throttles[e.getLocomotive()]
+			// .setSpeedSetting(LnConstants.OPC_LOCO_SPD_ESTOP);
 			throttles[e.getLocomotive()].setSpeedSetting(0.0f);
+		} else if (event instanceof Event.TurnoutChanged) {
+			Event.TurnoutChanged tc = (Event.TurnoutChanged) event;
+			System.out.println("SETTING TURNOUT : " + tc.getTurnout() + " : " + tc.getThrown());			
+			Turnout turnout = turnouts[tc.getTurnout()];
+
+			turnout.setCommandedState(tc.getThrown() ? Turnout.THROWN
+					: Turnout.CLOSED);
+			
 		}
 	}
 	
@@ -241,6 +272,14 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		System.setProperty("sun.awt.exception.handler",
 				jmri.util.exceptionhandler.AwtHandler.class.getName());
 		Thread.setDefaultUncaughtExceptionHandler(new jmri.util.exceptionhandler.UncaughtExceptionHandler());
+	}
+	
+	static private String getTurnoutString(int i) {
+		String r = Integer.toString(i);
+		while (r.length() < 3) {
+			r = "0" + r;
+		}
+		return "LT" + r;
 	}
 
 	static Logger log = LoggerFactory.getLogger(ModelRailway.class.getName());
