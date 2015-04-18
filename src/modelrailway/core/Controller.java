@@ -38,4 +38,11 @@ public interface Controller extends Event.Listener {
 	 * @return
 	 */
 	public Train train(int trainID);
+	
+	/**
+	 * Set the state of a given turnout
+	 * @param turnoutID
+	 * @param thrown
+	 */
+	public void set(int turnoutID, boolean thrown);
 }

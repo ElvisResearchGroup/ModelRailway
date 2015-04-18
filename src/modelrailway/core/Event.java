@@ -199,4 +199,43 @@ public interface Event {
 		}
 	}
 
+	/**
+	 * Indicates a change to a given turnout's status
+	 * 
+	 * @author djp
+	 * 
+	 */
+	public static final class TurnoutChanged implements Event {
+		/**
+		 * The turnout being changed
+		 */
+		private final int turnout;
+		
+		/**
+		 * Indicates whether or not the turnout is thrown
+		 */
+		private final boolean thrown;
+		
+		public TurnoutChanged(int turnout, boolean thrown) {
+			this.turnout = turnout;
+			this.thrown = thrown;
+		}
+		
+		public int getTurnout() {
+			return turnout;
+		}
+		
+		public boolean getThrown() {
+			return thrown;
+		}		
+		
+		public String toString() {
+			if (thrown) {
+				return "Turnout " + turnout + " thrown.";
+			} else {
+				return "Turnout " + turnout + " closed.";
+			}
+		}
+	}
+	
 }
