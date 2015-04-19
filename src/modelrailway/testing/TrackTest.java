@@ -635,10 +635,10 @@ public class TrackTest {
 		assertTrue(tp_2.getSection().containsMovable(loco));
 	}
 
-/**
-  * The test passes when it completes.
-  */
-@Test public void simulatorTest0(){
+    /**
+    * The test passes when it completes.
+    */
+    @Test public void testSimulator0(){
 		Section section = new Section(new ArrayList<Track>());
 		Track track = new Straight(null, null, section, 100);
 		Straight.StraightRing ring  = new Straight.StraightRing(track);
@@ -681,21 +681,29 @@ public class TrackTest {
 					else{
 						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(((Event.SectionChanged) e).getSection(),
 					                                                            ((Event.SectionChanged) e).getInto());
-						sectionsList.add(pair1);
+						if(((Event.SectionChanged)e).getInto() == true) sectionsList.add(pair1);
 					}
 
 				}
 
 			}
 		};
-		
+
 		sim.register(lis);
 		sim.start(0, null);
 		try{
 		   Thread.currentThread().join();
 		}catch(InterruptedException e){
-			System.out.println(sectionsList.toString());
+			///System.out.println(sectionsList.toString());
+			assertTrue(sectionsList.size() == 5);
+			assertTrue(sectionsList.get(0).fst == 4);
+			assertTrue(sectionsList.get(1).fst == 3);
+			assertTrue(sectionsList.get(2).fst == 2);
+			assertTrue(sectionsList.get(3).fst == 1);
+			assertTrue(sectionsList.get(4).fst == 0);
 		}
 	}
+
+
 
 }
