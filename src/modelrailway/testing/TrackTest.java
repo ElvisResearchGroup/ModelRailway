@@ -2,6 +2,7 @@ package modelrailway.testing;
 
 import static org.junit.Assert.*;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -634,7 +635,10 @@ public class TrackTest {
 		assertTrue(tp_2.getSection().containsMovable(loco));
 	}
 
-	public void simulatorTest0(){
+/**
+  * The test passes when it completes.
+  */
+@Test public void simulatorTest0(){
 		Section section = new Section(new ArrayList<Track>());
 		Track track = new Straight(null, null, section, 100);
 		Straight.StraightRing ring  = new Straight.StraightRing(track);
@@ -646,23 +650,52 @@ public class TrackTest {
 		Map<Integer,modelrailway.core.Train>  map2 = new HashMap<Integer,modelrailway.core.Train>();
 		map2.put(0, new modelrailway.core.Train(0,true));
 
-
+		final class Pair<X,Y> {
+			public Pair(X one , Y two){
+				fst = one;
+				snd = two;
+			}
+			final X fst;
+			final Y snd;
+			public String toString(){
+				return "\n<"+fst.toString() + "," + snd.toString()+">";
+			}
+		}
 		final Simulator sim = new Simulator(track, map2 , map);
-
-		sim.start(0, null);
-
+		final ArrayList<Pair<Integer,Boolean>> sectionsList = new ArrayList<Pair<Integer,Boolean>>();
+		//sim.start(0, null);
+		final Thread th = Thread.currentThread();
 		Listener lis = new Listener(){
 
 			public void notify(Event e){
 				if(e instanceof Event.SectionChanged){
-					if (((Event.SectionChanged) e).getSection()  == 0){ sim.stop(0); sim.stop();}
+					if (((Event.SectionChanged) e).getSection() == 0 &&
+					   ((Event.SectionChanged) e).getInto() == true ){
+						sim.stop(0);
+						sim.stop();
+						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(((Event.SectionChanged) e).getSection(),
+								                                                ((Event.SectionChanged) e).getInto());
+						sectionsList.add(pair1);
+						th.interrupt();
+					}
+					else{
+						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(((Event.SectionChanged) e).getSection(),
+					                                                            ((Event.SectionChanged) e).getInto());
+						sectionsList.add(pair1);
+					}
 
 				}
 
 			}
 		};
-
+		
 		sim.register(lis);
+		sim.start(0, null);
+		try{
+		   Thread.currentThread().join();
+		}catch(InterruptedException e){
+			System.out.println(sectionsList.toString());
+		}
 	}
 
 }
