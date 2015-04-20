@@ -27,7 +27,7 @@ public class Simulator implements Controller{
 		private Map<Integer, Route> trainRoute;
 		private boolean stopthread = false;
 
-		public TrainThread(Map<Integer, modelrailway.simulation.Train> modelTrains, Map<Integer, Train> trains, Track track){
+		public TrainThread(Map<Integer, modelrailway.simulation.Train> modelTrains, Map<Integer, Train> trains, Track track ){
 			this.modelTrains = modelTrains;
 			this.track = track;
 		}
@@ -39,6 +39,9 @@ public class Simulator implements Controller{
 			while(!stopthread){
 			  for(Map.Entry<Integer, modelrailway.simulation.Train> entry: modelTrains.entrySet()){
 				  modelrailway.simulation.Train train = entry.getValue();
+				  Integer trainId = entry.getKey();
+				  Route rt = trainRoute.get(trainId);
+
 				  List<Section> slist = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
 				  train.move();
 				  List<Section> s2list = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
@@ -96,18 +99,35 @@ public class Simulator implements Controller{
 	private List<Listener> listeners = new CopyOnWriteArrayList<Listener>();
 	private Map<Integer,Train> trainMap; // a map from train id's to trains.
 	private TrainThread runningThread;
-
+	private Map<Integer,modelrailway.simulation.Train> trains;
 
 	public Simulator(Track track, Map<Integer,Train> map, Map<Integer,modelrailway.simulation.Train> trains){
 		trainMap = map;
 		runningThread = new TrainThread(trains,map,track);
+		this.trains = trains;
 		runningThread.start();
+
 
 	}
 	@Override
 	public void notify(Event e) {
-		// TODO Auto-generated method stub
+		if(e instanceof Event.DirectionChanged){
 
+		}
+		else if (e instanceof Event.EmergencyStop){
+			Event.EmergencyStop stopEvent = (Event.EmergencyStop) e;
+			Integer loco = stopEvent.getLocomotive();
+			//Train tr = trainMap.get(loco);
+			runningThread.stopTrain(loco);
+
+		}
+		else if (e instanceof Event.PowerChanged){
+			for(Map.Entry<Integer, Train > entry : trainMap.entrySet()){
+				// powered off
+				runningThread.stopTrain(entry.getKey());
+			}
+			runningThread.stopThread();
+		}
 	}
 
 	@Override
@@ -122,6 +142,10 @@ public class Simulator implements Controller{
 	 *
 	 */
 	public boolean start(int trainID, Route route) {
+
+		for(Listener list: listeners){
+			list.notify(new Event.SpeedChanged(trainID, trains.get(trainID).getCurrentSpeed()));
+		}
 		return runningThread.startTrain(trainID,route);
 	}
 

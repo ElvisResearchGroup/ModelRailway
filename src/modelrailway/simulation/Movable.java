@@ -50,6 +50,13 @@ public abstract class Movable {
 
    }
    /**
+    * return the current speed of the train.
+    * @return
+    */
+   public int getCurrentSpeed(){
+	   return this.currentSpeed;
+   }
+   /**
     * return the maximum speed of the train.
     */
    public int getMaxSpeed(){

@@ -781,7 +781,4 @@ public class TrackTest {
  			assertTrue(sectionsList.get(6).fst == 0); // train 1
  		}
  	}
-
-
-
 }
