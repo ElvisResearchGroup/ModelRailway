@@ -39,7 +39,6 @@ public class TestController implements Controller, Listener {
 
 	@Override
 	public void notify(Event e) {
-		// TODO Auto-generated method stub
 		if(e instanceof Event.SectionChanged && ((Event.SectionChanged) e).getInto()){ // when there is a section change into another section
 		    moveIntoSection(e);
 		}
@@ -185,7 +184,6 @@ public class TestController implements Controller, Listener {
 
 	@Override
 	public void register(Listener listener) {
-		// TODO Auto-generated method stub
 		//trackController.register(listener);
 		listeners.add(listener);
 
@@ -193,7 +191,6 @@ public class TestController implements Controller, Listener {
 
 	@Override
 	public boolean start(int trainID, Route route) {
-		// TODO Auto-generated method stub
 		if(this.trains.containsKey(trainID)){
 			trainRoutes.put(trainID,route);
 			return trackController.start(trainID, route);
@@ -203,14 +200,12 @@ public class TestController implements Controller, Listener {
 
 	@Override
 	public void stop(int trainID) {
-		// TODO Auto-generated method stub
 		if(this.trains.containsKey(trainID)) trackController.stop(trainID);
 
 	}
 
 	@Override
 	public modelrailway.core.Train train(int trainID) {
-		// TODO Auto-generated method stub
 		if(trains.containsKey(trainID)) return trainOrientations.get(trainID);
 		return null;
 	}
