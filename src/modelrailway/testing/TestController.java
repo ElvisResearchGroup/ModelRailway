@@ -11,6 +11,7 @@ import modelrailway.core.Event.Listener;
 import modelrailway.core.Route;
 import modelrailway.core.Train;
 import modelrailway.simulation.BackSwitch;
+import modelrailway.simulation.Crossing;
 import modelrailway.simulation.ForwardSwitch;
 import modelrailway.simulation.Section;
 import modelrailway.simulation.Track;
@@ -24,33 +25,92 @@ public class TestController implements Controller, Listener {
 	private Map<Integer,modelrailway.simulation.Train> trains;
 	private Controller trackController;
 	private List<Listener> listeners = new ArrayList<Listener>();
-	
+
 	private Map<Integer,Route> trainRoutes = new HashMap<Integer,Route>();
 	private Map<Integer,modelrailway.core.Train> trainOrientations ;
 	private Track head;
-	
+
 	public TestController(Map<Integer,modelrailway.simulation.Train> trains, Map<Integer,modelrailway.core.Train> orientations,Track head, Controller trackController){
 		this.trackController = trackController;
-		this.trains = trains;		
+		this.trains = trains;
 		trainOrientations = orientations; // are the trains going backwards or fowards.
 		this.head = head;
 	}
-	
+
 	@Override
 	public void notify(Event e) {
 		// TODO Auto-generated method stub
 		if(e instanceof Event.SectionChanged && ((Event.SectionChanged) e).getInto()){ // when there is a section change into another section
 		    moveIntoSection(e);
-		}		
-		
+		}
+
 	}
-	
-	private void fixPointsFowards(modelrailway.simulation.Train train, Section section){
-		
+
+	private void fixPointsFowards(Integer trainID, ForwardSwitch track,Section section ,boolean goingFoward){
+		if(goingFoward){ // entering the points going in the foward direction.
+		    Route rt = trainRoutes.get(trainID);
+		    Integer nextSec = rt.nextSection(section.getNumber());
+		    Track next = track.getNext(false);
+		    Track alt = track.getNext(true);
+		    if(alt.getSection().getNumber() == nextSec){
+		    	// we intend to travel down the alt path
+		    	if(track.isNext()) track.toggle();
+
+		    } else if (alt.getAltSection() != null && alt.getAltSection().getNumber() == nextSec){
+		    	// we intend to travel down the alt path
+		    	if(track.isNext()) track.toggle();
+
+		    } else if (next.getSection().getNumber() == nextSec){
+		    	if(!track.isNext()) track.toggle();
+		    } else if (next.getAltSection() != null && next.getAltSection().getNumber() == nextSec){
+		    	if(!track.isNext()) track.toggle();
+		    }
+		    else{ // a mistake.
+		    	throw new RuntimeException("invalid route at fixPointsFowards");
+		    }
+
+		}else{ // entering the points going in the backward direction
+			// switch the points to point to where we are coming from
+			modelrailway.simulation.Train tr = trains.get(trainID); // get train.
+			boolean isAlt = tr.getBackAlt();
+			if(isAlt && track.isNext()) track.toggle();
+			else if(!isAlt && !track.isNext()) track.toggle();
+
+		}
 	}
-	
-	private void fixPointsBackwards(modelrailway.simulation.Train train, Section section){
-		
+
+	private void fixPointsBackwards(Integer trainID, BackSwitch track, Section section,boolean goingFoward){
+		if(goingFoward){ // entering the points going in the foward direction.
+		   boolean isAlt = track.getCurrentAlt(trains.get(trainID));
+		   if(isAlt && track.isPrev()) track.toggle();
+		   if(!isAlt && !track.isPrev()) track.toggle();
+
+		}else{ // entering the points going in the backward direction
+			// switch the points to point to where we are coming from
+			//modelrailway.simulation.Train tr = trains.get(trainID); // get train.
+		   Route rt = trainRoutes.get(trainID);
+		   Integer nextSec = rt.nextSection(section.getNumber());
+		   Track prev = track.getPrevious(false);
+		   Track alt = track.getPrevious(true);
+
+		   if(alt.getSection().getNumber() == nextSec){
+			    	// we intend to travel down the alt path
+			   if(track.isPrev()) track.toggle();
+
+		   } else if (alt.getAltSection() != null && alt.getAltSection().getNumber() == nextSec){
+			    	// we intend to travel down the alt path
+			   if(track.isPrev()) track.toggle();
+
+		   } else if (prev.getSection().getNumber() == nextSec){
+			   if(!track.isPrev()) track.toggle();
+		   } else if (prev.getAltSection() != null && prev.getAltSection().getNumber() == nextSec){
+			   if(!track.isPrev()) track.toggle();
+		   }
+		   else{ // a mistake.
+			   throw new RuntimeException("invalid route at fixPointsFowards");
+	       }
+
+		}
 	}
 	/**
 	 * note find correct train does not support diamond crossing.
@@ -59,30 +119,66 @@ public class TestController implements Controller, Listener {
 	 */
 	private void moveIntoSection(Event e){
 		for(Map.Entry<Integer, modelrailway.simulation.Train> trainEntry: trains.entrySet()){ // for all the trains on the track
-			
+
 			Section secFnt = trainEntry.getValue().getFront().getSection();
 			Section altSecFnt = trainEntry.getValue().getFront().getAltSection();
 			Section secBack = trainEntry.getValue().getBack().getSection();
 			Section altSecBack = trainEntry.getValue().getBack().getAltSection();
-			
+
 	    	if(secFnt.getNumber() ==  ((Event.SectionChanged) e).getSection()){ // check that the front of the train is in the section
 	    		Integer trainSection = ((Event.SectionChanged) e).getSection(); // store the section number in a variable
-	    		Track thisTrack = trainEntry.getValue().getFront();
-	    	    if(trainEntry.getValue().isFowards() ){ // if the train is traveling in the fowards orientation.
-	    	    	
-	    	    }
-	    	    else { // if the train is traveling in the backwards orientation.
-	    	    	
+	    		Track thisTrack = trainEntry.getValue().getFront(); //get the front of the train
+	    	   // train has traveled fowards into a section. we check weather the next section is a point or a diamond crossing
+	    	    if(thisTrack instanceof ForwardSwitch){
+	    	    	fixPointsFowards(trainEntry.getKey() ,((ForwardSwitch)trainEntry), secFnt,trainEntry.getValue().isFowards());
+
+	    	    } else if (thisTrack instanceof BackSwitch){
+	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) trainEntry), secFnt, trainEntry.getValue().isFowards());
+	    	    } else if (thisTrack instanceof Crossing){
+	    	    	// check diamond crossing.
 	    	    }
 	    	}
 	    	else if (secBack.getNumber() ==  ((Event.SectionChanged) e).getSection()){ // check that the back of the train is in the section.
-	    		
+	    		Integer trainSection = ((Event.SectionChanged) e).getSection(); // store the section number in a variable
+	    		Track thisTrack = trainEntry.getValue().getBack(); //get the front of the train
+	    	   // train has traveled fowards into a section. we check weather the next section is a point or a diamond crossing
+	    	    if(thisTrack instanceof ForwardSwitch){
+	    	    	fixPointsFowards(trainEntry.getKey() ,((ForwardSwitch)trainEntry), secBack,trainEntry.getValue().isFowards());
+
+	    	    } else if (thisTrack instanceof BackSwitch){
+	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) trainEntry), secBack, trainEntry.getValue().isFowards());
+	    	    } else if (thisTrack instanceof Crossing){
+	    	    	// check diamond crossing.
+	    	    }
 	    	}
-	    	else if (altSecFnt != null && altSecFnt.getNumber() == ((Event.SectionChanged) e).getSection()){ 
-	    		
+	    	else if (altSecFnt != null && altSecFnt.getNumber() == ((Event.SectionChanged) e).getSection()){
+	    		//if the track piece has an alternate section check to see if the train is in the alternate section. at the front.
+	    		Integer trainSection = ((Event.SectionChanged) e).getSection(); // store the section number in a variable
+	    		Track thisTrack = trainEntry.getValue().getFront(); //get the front of the train
+	    	   // train has traveled fowards into a section. we check weather the next section is a point or a diamond crossing
+	    	    if(thisTrack instanceof ForwardSwitch){
+	    	    	fixPointsFowards(trainEntry.getKey() ,((ForwardSwitch)trainEntry), altSecFnt,trainEntry.getValue().isFowards());
+
+	    	    } else if (thisTrack instanceof BackSwitch){
+	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) trainEntry), altSecFnt, trainEntry.getValue().isFowards());
+	    	    } else if (thisTrack instanceof Crossing){
+	    	    	// check diamond crossing.
+	    	    }
 	    	}
 	    	else if (altSecBack !=null && altSecBack.getNumber() == ((Event.SectionChanged) e).getSection()){
-	    		
+	    		//if the track piece has an alternate section check to see if the train is in the alternate section at the back
+	    		Integer trainSection = ((Event.SectionChanged) e).getSection(); // store the section number in a variable
+	    		Track thisTrack = trainEntry.getValue().getBack(); //get the front of the train
+	    	   // train has traveled fowards into a section. we check weather the next section is a point or a diamond crossing
+	    	    if(thisTrack instanceof ForwardSwitch){
+	    	    	fixPointsFowards(trainEntry.getKey() ,((ForwardSwitch)trainEntry), altSecBack,trainEntry.getValue().isFowards());
+
+	    	    } else if (thisTrack instanceof BackSwitch){
+	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) trainEntry), altSecBack, trainEntry.getValue().isFowards());
+
+	    	    } else if (thisTrack instanceof Crossing){
+	    	    	// check diamond crossing.
+	    	    }
 	    	}
 	    }
 	}
@@ -92,7 +188,7 @@ public class TestController implements Controller, Listener {
 		// TODO Auto-generated method stub
 		//trackController.register(listener);
 		listeners.add(listener);
-		
+
 	}
 
 	@Override
@@ -109,7 +205,7 @@ public class TestController implements Controller, Listener {
 	public void stop(int trainID) {
 		// TODO Auto-generated method stub
 		if(this.trains.containsKey(trainID)) trackController.stop(trainID);
-		
+
 	}
 
 	@Override

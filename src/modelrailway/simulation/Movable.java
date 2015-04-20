@@ -77,6 +77,11 @@ public abstract class Movable {
    public boolean getOnAlt(){
 	   return onAlt;
    }
+
+   public boolean getBackAlt(){
+	   return backAlt;
+   }
+
   /**
    * move causes the movable to move by its current speed. currently only moving forwards is supported.
    * @return
