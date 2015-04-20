@@ -17,7 +17,9 @@ public class BackSwitch extends Track{
 		// TODO Auto-generated constructor stub
 	}
 
-
+	public boolean isPrev(){
+		return (path == Direction.prev);
+	}
 	public Track getNext(boolean onAlt){
 		return super.getNext(false);
 	}

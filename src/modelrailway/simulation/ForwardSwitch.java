@@ -22,6 +22,11 @@ public class ForwardSwitch extends Track {
 	public Track getPrevious(boolean onAlt){
 		return super.getPrevious(false);
 	}
+	
+	public boolean isNext(){
+		return (path == Direction.next);
+	}
+	
 	/**
 	 * toggle toggles which piece of track we are exiting from the signals.
 	 * @return

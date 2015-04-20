@@ -31,6 +31,7 @@ public class Simulator implements Controller{
 			this.modelTrains = modelTrains;
 			this.track = track;
 		}
+		
 		/**
 		 * the run method repeatedly calls move on all the trains and checks for section changes.
 		 *
@@ -39,14 +40,9 @@ public class Simulator implements Controller{
 			while(!stopthread){
 			  for(Map.Entry<Integer, modelrailway.simulation.Train> entry: modelTrains.entrySet()){
 				  modelrailway.simulation.Train train = entry.getValue();
-				  Integer trainId = entry.getKey();
-				  Route rt = trainRoute.get(trainId);
-
 				  List<Section> slist = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
 				  train.move();
 				  List<Section> s2list = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
-
-
 				  for(Section s : s2list){
 					if(!slist.contains(s)){
 						for(Listener l : listeners){
@@ -55,7 +51,6 @@ public class Simulator implements Controller{
 						}
 					}
 				  }
-
 				  for(Section s : slist){
 					if(!s2list.contains(s)){
 						for(Listener l : listeners){
@@ -106,18 +101,24 @@ public class Simulator implements Controller{
 		runningThread = new TrainThread(trains,map,track);
 		this.trains = trains;
 		runningThread.start();
-
-
 	}
+	
 	@Override
 	public void notify(Event e) {
+		
 		if(e instanceof Event.DirectionChanged){
-
+			Event.EmergencyStop stp = (Event.EmergencyStop) e;
+			Integer loco = stp.getLocomotive();
+			trains.get(loco).toggleDirection();
 		}
 		else if (e instanceof Event.EmergencyStop){
 			Event.EmergencyStop stopEvent = (Event.EmergencyStop) e;
 			Integer loco = stopEvent.getLocomotive();
 			//Train tr = trainMap.get(loco);
+			for(Map.Entry<Integer, Train > entry : trainMap.entrySet()){
+				// powered off
+				runningThread.stopTrain(entry.getKey());
+			}
 			runningThread.stopTrain(loco);
 
 		}
@@ -128,6 +129,8 @@ public class Simulator implements Controller{
 			}
 			runningThread.stopThread();
 		}
+		
+        //todo implement variable speed change
 	}
 
 	@Override
@@ -154,14 +157,13 @@ public class Simulator implements Controller{
 		runningThread.stopTrain(trainID);
 
 	}
-
+	
 	public void stop(){
 		runningThread.stopThread();
 	}
 
 	@Override
 	public Train train(int trainID) {
-		// TODO Auto-generated method stub
 		return trainMap.get(trainID);
 	}
 
