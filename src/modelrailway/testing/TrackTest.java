@@ -636,9 +636,10 @@ public class TrackTest {
 	}
 
     /**
-    * The test passes when it completes.
+    * The the test puts one train on the track with the simulator and no controller.
     */
     @Test public void testSimulator0(){
+    	Section.resetCounter();
 		Section section = new Section(new ArrayList<Track>());
 		Track track = new Straight(null, null, section, 100);
 		Straight.StraightRing ring  = new Straight.StraightRing(track);
@@ -703,6 +704,83 @@ public class TrackTest {
 			assertTrue(sectionsList.get(4).fst == 0);
 		}
 	}
+
+    /**
+     * The test puts two trains on the track with the simulator and no controller.
+     */
+     @Test public void testSimulator1(){
+    	Section.resetCounter(); // reset the counter for labeling track segments.
+ 		Section section = new Section(new ArrayList<Track>());
+ 		Track track = new Straight(null, null, section, 100);
+ 		Straight.StraightRing ring  = new Straight.StraightRing(track);
+ 		track = ring.ringTrack(5, 100); // produce a ring.
+
+ 		//create two trains
+ 		Train tr = new Train(new Movable[]{new Locomotive(new Track[]{track,track} ,40,40,40, false)});
+ 		Train tr2 = new Train (new Movable[]{new Locomotive(new Track[]{track.getNext(false),track.getNext(false)},40,40,40,false )});
+
+ 		//put trains into both maps.
+ 		Map<Integer,Train> map = new HashMap<Integer,Train>();
+ 		map.put(0, tr);
+ 		map.put(1, tr2);
+
+ 		Map<Integer,modelrailway.core.Train>  map2 = new HashMap<Integer,modelrailway.core.Train>();
+ 		map2.put(0, new modelrailway.core.Train(0,true));
+ 		map2.put(1, new modelrailway.core.Train(1, true));
+
+ 		final class Pair<X,Y> {
+ 			public Pair(X one , Y two){
+ 				fst = one;
+ 				snd = two;
+ 			}
+ 			final X fst;
+ 			final Y snd;
+ 			public String toString(){
+ 				return "\n<"+fst.toString() + "," + snd.toString()+">";
+ 			}
+ 		}
+ 		final Simulator sim = new Simulator(track, map2 , map);
+ 		final ArrayList<Pair<Integer,Boolean>> sectionsList = new ArrayList<Pair<Integer,Boolean>>();
+ 		final Thread th = Thread.currentThread();
+
+ 		Listener lis = new Listener(){
+ 			public void notify(Event e){
+ 				if(e instanceof Event.SectionChanged){
+ 					if (((Event.SectionChanged) e).getSection() == 0 &&
+ 					   ((Event.SectionChanged) e).getInto() == true ){
+ 						sim.stop(0);
+ 						sim.stop(1);
+ 						sim.stop();
+ 						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(((Event.SectionChanged) e).getSection(),
+ 								                                                ((Event.SectionChanged) e).getInto());
+ 						sectionsList.add(pair1);
+ 						th.interrupt();
+ 					}
+ 					else{
+ 						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(((Event.SectionChanged) e).getSection(),
+ 					                                                            ((Event.SectionChanged) e).getInto());
+ 						if(((Event.SectionChanged)e).getInto() == true) sectionsList.add(pair1);
+ 					}
+ 				}
+ 			}
+ 		};
+
+ 		sim.register(lis);
+ 		sim.start(0, null);
+ 		sim.start(1, null);
+
+ 		try{
+ 		   Thread.currentThread().join();
+ 		}catch(InterruptedException e){
+ 			assertTrue(sectionsList.get(0).fst == 3); // train 1
+ 			assertTrue(sectionsList.get(1).fst == 4); // train 0
+ 			assertTrue(sectionsList.get(2).fst == 2); // train 1
+ 			assertTrue(sectionsList.get(3).fst == 3); // train 0
+ 			assertTrue(sectionsList.get(4).fst == 1); // train 1
+ 			assertTrue(sectionsList.get(5).fst == 2); // train 0
+ 			assertTrue(sectionsList.get(6).fst == 0); // train 1
+ 		}
+ 	}
 
 
 

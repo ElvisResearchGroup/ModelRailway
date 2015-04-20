@@ -30,6 +30,10 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 		this.addAll(tr);
 	}
 
+	public static void resetCounter(){
+		sectionNumberCounter = 0;
+	}
+
 	public int getNumber(){
 		return sectionNumber;
 	}
