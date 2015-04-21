@@ -31,7 +31,7 @@ public class Simulator implements Controller{
 			this.modelTrains = modelTrains;
 			this.track = track;
 		}
-		
+
 		/**
 		 * the run method repeatedly calls move on all the trains and checks for section changes.
 		 *
@@ -100,12 +100,13 @@ public class Simulator implements Controller{
 		trainMap = map;
 		runningThread = new TrainThread(trains,map,track);
 		this.trains = trains;
+		listeners.add(this);
 		runningThread.start();
 	}
-	
+
 	@Override
 	public void notify(Event e) {
-		
+
 		if(e instanceof Event.DirectionChanged){
 			Event.EmergencyStop stp = (Event.EmergencyStop) e;
 			Integer loco = stp.getLocomotive();
@@ -129,7 +130,7 @@ public class Simulator implements Controller{
 			}
 			runningThread.stopThread();
 		}
-		
+
         //todo implement variable speed change
 	}
 
@@ -157,7 +158,7 @@ public class Simulator implements Controller{
 		runningThread.stopTrain(trainID);
 
 	}
-	
+
 	public void stop(){
 		runningThread.stopThread();
 	}
