@@ -95,8 +95,10 @@ public class Simulator implements Controller{
 	private Map<Integer,Train> trainMap; // a map from train id's to trains.
 	private TrainThread runningThread;
 	private Map<Integer,modelrailway.simulation.Train> trains;
+	private Track head;
 
 	public Simulator(Track track, Map<Integer,Train> map, Map<Integer,modelrailway.simulation.Train> trains){
+		head = track;
 		trainMap = map;
 		runningThread = new TrainThread(trains,map,track);
 		this.trains = trains;
@@ -166,6 +168,24 @@ public class Simulator implements Controller{
 	@Override
 	public Train train(int trainID) {
 		return trainMap.get(trainID);
+	}
+
+	@Override
+	public void set(int turnoutID, boolean thrown) {
+		Track sw = head.getSwitchEntry(turnoutID);
+		if(sw instanceof ForwardSwitch){
+			boolean currNotThrown = ((ForwardSwitch) sw).isNext();
+			if(currNotThrown == thrown) ((ForwardSwitch) sw).toggle();
+
+		}
+		else if (sw instanceof BackSwitch){
+			boolean currNotThrown = ((BackSwitch) sw).isPrev();
+			if(currNotThrown  == thrown) ((BackSwitch) sw).toggle();
+		}
+		else{
+			throw new RuntimeException("unknown switch encountered in TestControler");
+		}
+
 	}
 
 }

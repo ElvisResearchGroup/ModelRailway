@@ -1,7 +1,9 @@
 package modelrailway.simulation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * An abstract class to model pieces of track.
@@ -34,6 +36,9 @@ public abstract class Track {
 		 */
 
 		public Track insertBetween(Track tr1, boolean onAlt, Track tr2, boolean onAlt2, Track insertedTrack, boolean onAlt3){
+			if(insertedTrack instanceof Switch){
+				head.addSwitchEntry(((Switch) insertedTrack).getSwitchID(), insertedTrack);
+			}
 			boolean tr1UnifyNext = false;
 			boolean tr2UnifyPrevious = false;
 			boolean insertedTrackUnifyNext = false;
@@ -90,6 +95,9 @@ public abstract class Track {
 
 		public Track insertAcross(Track tr1, boolean onAlt, Track insertedTrack, boolean onAlt2){
 			Track tr2 = tr1.getNext(onAlt);
+			if(insertedTrack instanceof Switch){
+				head.addSwitchEntry(((Switch) insertedTrack).getSwitchID(), insertedTrack);
+			}
 			//first fix tr2
 			boolean tr1UnifyNext = false;
 			boolean tr2UnifyPrevious = false;
@@ -136,6 +144,9 @@ public abstract class Track {
 
 		public Track insertBetween(Track tr1, boolean onAlt, Track insertedTrack, boolean onAlt2 ){
 			Track tr2 = tr1.getNext(onAlt);
+			if(insertedTrack instanceof Switch){
+				head.addSwitchEntry(((Switch) insertedTrack).getSwitchID(), insertedTrack);
+			}
 			//first fix tr2
 			boolean tr1UnifyNext = false;
 			boolean tr2UnifyPrevious = false;
@@ -207,6 +218,9 @@ public abstract class Track {
 		 */
 		public  Track replace(Track t, Track t2, boolean onAlt2){ // replace a section of track with another section of track;
 			Track tr = getHead();
+			if(t instanceof Switch){
+				tr.removeSwitchEntry(((Switch) t).getSwitchID());
+			}
 			List<Track> tlist = getTrackList();
 		    int index = tlist.lastIndexOf(t);
 		 //   System.out.println("t index: "+index);
@@ -268,6 +282,8 @@ public abstract class Track {
 	private int length;
 	private Section section;
 	private Section altSection;
+	private Map<Integer,Track> knownSwitches = new HashMap<Integer,Track>(); // used for the head section.
+
 
 	/**
 	 * produces a section of track.
@@ -289,6 +305,12 @@ public abstract class Track {
 		this.alternateNext = alternateNext;
 		this.altlength = altlength;
 		this.altSection = altSection;
+	}
+
+	public Track removeSwitchEntry(int switchID) {
+		return knownSwitches.remove(switchID);
+
+
 	}
 
 	/**
@@ -328,7 +350,10 @@ public abstract class Track {
 		if(onAlt) return this.alternateNext;
 		return this.next;
 	}
-
+	/**
+	 * get the alternate section if one exists. Otherwise return null.
+	 * @return
+	 */
 	public Section getAltSection(){
 		return altSection;
 	}
@@ -386,6 +411,25 @@ public abstract class Track {
 			return true;
 		}
 		throw new WrongTrackException();
+	}
+
+	/**
+	 * Add a switch with the supplied id to the list of known switches.
+	 * @param turnoutID
+	 * @param sw
+	 * @return
+	 */
+	public Track addSwitchEntry(Integer turnoutID, Track sw){
+		return knownSwitches.put(turnoutID, sw);
+	}
+	/**
+	 * get the switch with the supplied turnout ID from the hash map.
+	 * @param turnoutID
+	 * @param sw
+	 * @return
+	 */
+	public Track getSwitchEntry(Integer turnoutID){
+		return knownSwitches.get(turnoutID);
 	}
 
 }

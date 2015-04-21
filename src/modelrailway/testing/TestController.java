@@ -135,6 +135,7 @@ public class TestController implements Controller, Listener {
 	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) trainEntry), secFnt, trainEntry.getValue().isFowards());
 	    	    } else if (thisTrack instanceof Crossing){
 	    	    	// check diamond crossing.
+	    	    	throw new RuntimeException("Diamond crossing is not supported yet");
 	    	    }
 	    	}
 	    	else if (secBack.getNumber() ==  ((Event.SectionChanged) e).getSection()){ // check that the back of the train is in the section.
@@ -148,6 +149,7 @@ public class TestController implements Controller, Listener {
 	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) trainEntry), secBack, trainEntry.getValue().isFowards());
 	    	    } else if (thisTrack instanceof Crossing){
 	    	    	// check diamond crossing.
+	    	    	throw new RuntimeException("Diamond crossing is not supported yet");
 	    	    }
 	    	}
 	    	else if (altSecFnt != null && altSecFnt.getNumber() == ((Event.SectionChanged) e).getSection()){
@@ -162,6 +164,7 @@ public class TestController implements Controller, Listener {
 	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) trainEntry), altSecFnt, trainEntry.getValue().isFowards());
 	    	    } else if (thisTrack instanceof Crossing){
 	    	    	// check diamond crossing.
+	    	    	throw new RuntimeException("Diamond crossing is not supported yet");
 	    	    }
 	    	}
 	    	else if (altSecBack !=null && altSecBack.getNumber() == ((Event.SectionChanged) e).getSection()){
@@ -177,6 +180,7 @@ public class TestController implements Controller, Listener {
 
 	    	    } else if (thisTrack instanceof Crossing){
 	    	    	// check diamond crossing.
+	    	    	throw new RuntimeException("Diamond crossing is not supported yet");
 	    	    }
 	    	}
 	    }
@@ -208,5 +212,14 @@ public class TestController implements Controller, Listener {
 	public modelrailway.core.Train train(int trainID) {
 		if(trains.containsKey(trainID)) return trainOrientations.get(trainID);
 		return null;
+	}
+
+	@Override
+	/**
+	 * Set the switch at the given turnoutId, thrown is true if we are setting the switch to the alternate section.
+	 */
+	public void set(int turnoutID, boolean thrown) {
+		trackController.set(turnoutID, thrown);
+
 	}
 }

@@ -1,16 +1,19 @@
 package modelrailway.simulation;
 
 
-public class BackSwitch extends Track{
+public class BackSwitch extends Track implements Switch{
 
 	private enum Direction{
 		enter,prev
 	}
 	private Direction path;
 	private int pointPos; // point position from the back
+	private static int switchCounter = -1;
+	private int switchCount = switchCounter;
 
 	public BackSwitch(Track previous, Track next,Track entrance, Section section,int length,int altlength, int pointPos) {
 		super(previous, next, entrance, null, section, length, altlength);
+		switchCounter--;
 		this.pointPos = pointPos;
 
 		this.path = Direction.prev;
@@ -76,5 +79,11 @@ public class BackSwitch extends Track{
 
     	//return false; // deadcode
 
+	}
+
+	@Override
+	public int getSwitchID() {
+		// TODO Auto-generated method stub
+		return switchCount;
 	}
 }

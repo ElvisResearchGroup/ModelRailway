@@ -13,14 +13,14 @@ public class TrainController implements Controller, Listener {
 	private Map<Integer,modelrailway.simulation.Train> trains;
 	private Controller trackController;
 	private List<Listener> listeners = new ArrayList<Listener>();
-	
+
 	private Map<Integer,Route> trainRoutes = new HashMap<Integer,Route>();
 	private Map<Integer,modelrailway.core.Train> trainOrientations ;
 	private Track head;
-	
+
 	public TrainController(Map<Integer,modelrailway.simulation.Train> trains, Map<Integer,modelrailway.core.Train> orientations,Track head, Controller trackController){
 		this.trackController = trackController;
-		this.trains = trains;		
+		this.trains = trains;
 		trainOrientations = orientations; // are the trains going backwards or fowards.
 		this.head = head;
 	}
@@ -37,8 +37,8 @@ public class TrainController implements Controller, Listener {
 		    		 throw new RuntimeException("notify in TrainControler not implemented");
 		    	 }
 		     }
-		}		
-		
+		}
+
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class TrainController implements Controller, Listener {
 		// TODO Auto-generated method stub
 		//trackController.register(listener);
 		listeners.add(listener);
-		
+
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class TrainController implements Controller, Listener {
 	public void stop(int trainID) {
 		// TODO Auto-generated method stub
 		if(this.trains.containsKey(trainID)) trackController.stop(trainID);
-		
+
 	}
 
 	@Override
@@ -71,6 +71,11 @@ public class TrainController implements Controller, Listener {
 		// TODO Auto-generated method stub
 		if(trains.containsKey(trainID)) return trainOrientations.get(trainID);
 		return null;
+	}
+	@Override
+	public void set(int turnoutID, boolean thrown) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

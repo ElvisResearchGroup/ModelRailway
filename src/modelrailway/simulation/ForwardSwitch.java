@@ -4,17 +4,19 @@ package modelrailway.simulation;
  * @author powleybenj
  *
  */
-public class ForwardSwitch extends Track {
+public class ForwardSwitch extends Track implements Switch{
 
 	private enum Direction{
 		exit,next
 	}
 	private Direction path;
 	private int pointPos;
+	private static int switchCounter = 0;
+	private int switchCount = switchCounter;
 	public ForwardSwitch(Track previous, Track next,Track exit, Section section,int length,int altlength, int pointPos) {
 		super(previous, next, null, exit, section, length, altlength);
 		this.pointPos = pointPos;
-
+		switchCounter--;
 		this.path = Direction.next;
 		// TODO Auto-generated constructor stub
 	}
@@ -22,11 +24,11 @@ public class ForwardSwitch extends Track {
 	public Track getPrevious(boolean onAlt){
 		return super.getPrevious(false);
 	}
-	
+
 	public boolean isNext(){
 		return (path == Direction.next);
 	}
-	
+
 	/**
 	 * toggle toggles which piece of track we are exiting from the signals.
 	 * @return
@@ -74,6 +76,11 @@ public class ForwardSwitch extends Track {
     		else if (m.getFront() == this.getNext(true)) return true;
     	}
     	throw new WrongTrackException();
+	}
+
+	public int getSwitchID() {
+		// TODO Auto-generated method stub
+		return switchCount;
 	}
 
 }
