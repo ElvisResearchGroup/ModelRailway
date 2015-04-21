@@ -49,7 +49,8 @@ public class Main {
 		this.new Command("stop",getMethod("stopLocomotive",int.class)),
 		this.new Command("route",getMethod("routeLocomotive",int.class,int[].class)),
 		this.new Command("loop",getMethod("loopLocomotive",int.class,int[].class)),
-		this.new Command("locate",getMethod("setLocation",int.class,int.class))
+		this.new Command("locate",getMethod("setLocation",int.class,int.class)),
+		this.new Command("turnout",getMethod("setTurnout",int.class,boolean.class))
 	};
 	
 	public void quit() {
@@ -86,6 +87,11 @@ public class Main {
 	public void setLocation(int locomotive, int section) {
 		System.out.println("Setting location: " + locomotive + " to: " + section);
 		controller.train(locomotive).setSection(section);
+	}
+	
+	public void setTurnout(int turnout, boolean thrown) {
+		System.out.println("Setting turnout: " + turnout + " to: " + thrown);
+		controller.set(turnout, thrown);
 	}
 	
 	public void printHelp() {
