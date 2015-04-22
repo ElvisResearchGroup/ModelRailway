@@ -39,18 +39,21 @@ public class Simulator implements Controller{
 		public void run(){
 			while(!stopthread){
 			  for(Map.Entry<Integer, modelrailway.simulation.Train> entry: modelTrains.entrySet()){
+				  synchronized(listeners){
 				  modelrailway.simulation.Train train = entry.getValue();
 				  List<Section> slist = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
 				  train.move();
 				  List<Section> s2list = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
-				  //System.out.println("checking For movement: "+train.getFront().getSection().getNumber()+" slist: "+slist+" s2list: "+s2list);
+				  System.out.println("checking For movement: "+train.getBack().getSection().getNumber()); //+" slist: "+slist+" s2list: "+s2list);
 				  for(Section s : s2list){
 					if(!slist.contains(s)){
 						for(Listener l : listeners){
+							System.out.println("trainSec: "+train.getBack().getSection().getNumber());
+							System.out.println("listenerSize: "+listeners.size());
 							Event ev = new Event.SectionChanged(s.getNumber(), true);
 							l.notify(ev);
-							//System.out.println("trainSec: "+train.getFront().getSection().getNumber());
-							//System.out.println("listenerSize: "+listeners.size());
+
+							//
 						}
 					}
 				  }
@@ -62,7 +65,7 @@ public class Simulator implements Controller{
 						}
 				  	}
 				  }
-
+				}
 			  }
 			}
 
@@ -96,7 +99,7 @@ public class Simulator implements Controller{
 			stopthread = true;
 		}
 	}
-	private List<Listener> listeners = new CopyOnWriteArrayList<Listener>();
+	private List<Listener> listeners = new ArrayList<Listener>();
 	private Map<Integer,Train> trainMap; // a map from train id's to trains.
 	private TrainThread runningThread;
 	private Map<Integer,modelrailway.simulation.Train> trains;
@@ -107,7 +110,7 @@ public class Simulator implements Controller{
 		trainMap = map;
 		runningThread = new TrainThread(trains,map,track);
 		this.trains = trains;
-		listeners.add(this);
+		register(this);
 		runningThread.start();
 	}
 
@@ -143,8 +146,9 @@ public class Simulator implements Controller{
 
 	@Override
 	public void register(Listener listener) {
-		listeners.add(listener);
-
+		synchronized(listeners){
+		   listeners.add(listener);
+		}
 	}
 
 	/**

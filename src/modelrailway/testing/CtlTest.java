@@ -3,6 +3,7 @@ package modelrailway.testing;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 
 import org.junit.Test;
@@ -166,6 +167,8 @@ public class CtlTest {
 		assertTrue(sw.getNext(true) == str);
 		assertTrue(sw.getNext(false) == tp_2);
 		assertTrue(str.getSection() == sec4);
+		assertTrue(head.getPrevious(false) == sw2);
+		
 		
 
 		//set up the train track.
@@ -173,11 +176,11 @@ public class CtlTest {
 		// add a locomotive
 
 		Movable locomotive = new Locomotive(new Track[]{head,head},40,40,10,false);
-		locomotive.toggleDirection();
+		//locomotive.toggleDirection();
 
 		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
 		Train train = new Train(new Movable[]{locomotive});
-
+		train.toggleDirection();
 		trainMap.put(0,train );
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
@@ -198,10 +201,13 @@ public class CtlTest {
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		final Thread th = Thread.currentThread();
+		
 		ctl.register(new Listener(){
 			public void notify(Event e){
-				//System.out.println("event "+e.toString());
+				System.out.println("event "+e.toString());
 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+					
+				  System.out.println(e);
 				  outputArray.add(((Event.SectionChanged) e).getSection());
 
 				  if(((Event.SectionChanged)e).getSection() == 0){
@@ -215,14 +221,20 @@ public class CtlTest {
 			}
 
 		});
-
+		
+		assertTrue(train.isFowards() == false);
 		ctl.start(0, routePlan);
+		
+		
+		
 		try{
 			//System.out.println("started: ");
 		   Thread.currentThread().join();
 		 //  System.out.println("stopped:");
 		}catch(InterruptedException e){
-			System.out.println(outputArray.toString());
+			
+			System.out.println("routePlan: " +Arrays.asList(new Integer[]{ sw2Section, swAlt, switchSection, headSection}).toString());
+			System.out.println("routeTraveled: "+outputArray.toString());
 		}
 		assertTrue(outputArray.get(0) == 5);
 		assertTrue(outputArray.get(1) == 6);
