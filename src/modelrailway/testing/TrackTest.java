@@ -794,4 +794,15 @@ public class TrackTest {
  			assertTrue(sectionsList.get(7).fst == 0);
  		}
  	}
+    @Test public void testSimulator2(){
+    	Section.resetCounter(); // reset the counter for labeling track segments.
+ 		Section section = new Section(new ArrayList<Track>());
+ 		Track track = new Straight(null, null, section, 100);
+ 		Straight.StraightRing ring  = new Straight.StraightRing(track);
+ 		track = ring.ringTrack(5, 100); // produce a ring.
+
+
+
+
+    }
 }

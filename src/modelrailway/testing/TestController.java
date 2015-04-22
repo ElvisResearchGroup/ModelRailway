@@ -42,6 +42,7 @@ public class TestController implements Controller, Listener {
 	@Override
 	public void notify(Event e) {
 		if(e instanceof Event.SectionChanged && ((Event.SectionChanged) e).getInto()){ // when there is a section change into another section
+			//System.out.println("section change event."+((Event.SectionChanged) e).getSection());
 		    moveIntoSection(e);
 		}
 
@@ -49,7 +50,6 @@ public class TestController implements Controller, Listener {
 
 			l.notify(e);
 		}
-
 	}
 
 	private void fixPointsFowards(Integer trainID, ForwardSwitch track,Section section ,boolean goingFoward){
@@ -144,6 +144,7 @@ public class TestController implements Controller, Listener {
 	    	    	// check diamond crossing.
 	    	    	throw new RuntimeException("Diamond crossing is not supported yet");
 	    	    }
+
 	    	}
 	    	else if (secBack.getNumber() ==  ((Event.SectionChanged) e).getSection()){ // check that the back of the train is in the section.
 	    		Integer trainSection = ((Event.SectionChanged) e).getSection(); // store the section number in a variable

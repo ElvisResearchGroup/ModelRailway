@@ -83,12 +83,13 @@ public class CtlTest {
 
 
 		Route routePlan = new Route(true, headSection, switchSection, swAlt, sw2Section);
+		System.out.println("route: "+headSection+", "+switchSection+", "+swAlt+", "+sw2Section);
 
 		final ArrayList<String> outputArray = new ArrayList<String>();
 		final Thread th = Thread.currentThread();
 		ctl.register(new Listener(){
 			public void notify(Event e){
-
+				System.out.println("event "+e.toString());
 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
 				  outputArray.add(((Event.SectionChanged) e).getSection()+"\n");
 
@@ -97,7 +98,7 @@ public class CtlTest {
 					  ctl.stop(0);
 					  sim.stop();
 					  th.interrupt();
-					  ///sim.stop();
+
 				  }
 				}
 			}
