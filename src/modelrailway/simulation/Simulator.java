@@ -43,11 +43,14 @@ public class Simulator implements Controller{
 				  List<Section> slist = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
 				  train.move();
 				  List<Section> s2list = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
+				  //System.out.println("checking For movement: "+train.getFront().getSection().getNumber()+" slist: "+slist+" s2list: "+s2list);
 				  for(Section s : s2list){
 					if(!slist.contains(s)){
 						for(Listener l : listeners){
 							Event ev = new Event.SectionChanged(s.getNumber(), true);
 							l.notify(ev);
+							//System.out.println("trainSec: "+train.getFront().getSection().getNumber());
+							//System.out.println("listenerSize: "+listeners.size());
 						}
 					}
 				  }
@@ -59,6 +62,7 @@ public class Simulator implements Controller{
 						}
 				  	}
 				  }
+
 			  }
 			}
 

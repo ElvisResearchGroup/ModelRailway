@@ -53,14 +53,19 @@ public class TestController implements Controller, Listener {
 	}
 
 	private void fixPointsFowards(Integer trainID, ForwardSwitch track,Section section ,boolean goingFoward){
+		//System.out.println("fix Points Forwards"+section.getNumber());
 		if(goingFoward){ // entering the points going in the foward direction.
 		    Route rt = trainRoutes.get(trainID);
 		    Integer nextSec = rt.nextSection(section.getNumber());
+		   // System.out.println("currentSec: "+section.getNumber()+" nextSec: "+nextSec);
 		    Track next = track.getNext(false);
 		    Track alt = track.getNext(true);
 		    if(alt.getSection().getNumber() == nextSec){
 		    	// we intend to travel down the alt path
-		    	if(track.isNext()) track.toggle();
+		    	if(track.isNext()){
+		    		track.toggle();
+		  //  		System.out.println("foward points toggled");
+		    	}
 
 		    } else if (alt.getAltSection() != null && alt.getAltSection().getNumber() == nextSec){
 		    	// we intend to travel down the alt path
@@ -83,6 +88,7 @@ public class TestController implements Controller, Listener {
 			else if(!isAlt && !track.isNext()) track.toggle();
 
 		}
+
 	}
 
 	private void fixPointsBackwards(Integer trainID, BackSwitch track, Section section,boolean goingFoward){
@@ -117,6 +123,7 @@ public class TestController implements Controller, Listener {
 	       }
 
 		}
+		//System.out.println("fix Points Backwards"+section.getNumber());
 	}
 	/**
 	 * note find correct train does not support diamond crossing.
@@ -191,6 +198,7 @@ public class TestController implements Controller, Listener {
 	    	    	throw new RuntimeException("Diamond crossing is not supported yet");
 	    	    }
 	    	}
+	    //	System.out.println("Find Section for train: "+trainEntry.getKey()+" Section: "+((Event.SectionChanged) e).getSection());
 	    }
 	}
 
