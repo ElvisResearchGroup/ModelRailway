@@ -14,6 +14,7 @@ import modelrailway.simulation.BackSwitch;
 import modelrailway.simulation.Crossing;
 import modelrailway.simulation.ForwardSwitch;
 import modelrailway.simulation.Section;
+import modelrailway.simulation.Simulator;
 import modelrailway.simulation.Track;
 /**
  * This test controller has no collision detection but just tests to make sure that a train can follow a route. in order to test the train simulator.
@@ -35,12 +36,18 @@ public class TestController implements Controller, Listener {
 		this.trains = trains;
 		trainOrientations = orientations; // are the trains going backwards or fowards.
 		this.head = head;
+		trackController.register(this);
 	}
 
 	@Override
 	public void notify(Event e) {
 		if(e instanceof Event.SectionChanged && ((Event.SectionChanged) e).getInto()){ // when there is a section change into another section
 		    moveIntoSection(e);
+		}
+
+		for(Listener l : listeners){
+
+			l.notify(e);
 		}
 
 	}
@@ -129,10 +136,10 @@ public class TestController implements Controller, Listener {
 	    		Track thisTrack = trainEntry.getValue().getFront(); //get the front of the train
 	    	   // train has traveled fowards into a section. we check weather the next section is a point or a diamond crossing
 	    	    if(thisTrack instanceof ForwardSwitch){
-	    	    	fixPointsFowards(trainEntry.getKey() ,((ForwardSwitch)trainEntry), secFnt,trainEntry.getValue().isFowards());
+	    	    	fixPointsFowards(trainEntry.getKey() ,((ForwardSwitch)thisTrack), secFnt,trainEntry.getValue().isFowards());
 
 	    	    } else if (thisTrack instanceof BackSwitch){
-	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) trainEntry), secFnt, trainEntry.getValue().isFowards());
+	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) thisTrack), secFnt, trainEntry.getValue().isFowards());
 	    	    } else if (thisTrack instanceof Crossing){
 	    	    	// check diamond crossing.
 	    	    	throw new RuntimeException("Diamond crossing is not supported yet");
@@ -143,10 +150,10 @@ public class TestController implements Controller, Listener {
 	    		Track thisTrack = trainEntry.getValue().getBack(); //get the front of the train
 	    	   // train has traveled fowards into a section. we check weather the next section is a point or a diamond crossing
 	    	    if(thisTrack instanceof ForwardSwitch){
-	    	    	fixPointsFowards(trainEntry.getKey() ,((ForwardSwitch)trainEntry), secBack,trainEntry.getValue().isFowards());
+	    	    	fixPointsFowards(trainEntry.getKey() ,((ForwardSwitch)thisTrack), secBack,trainEntry.getValue().isFowards());
 
 	    	    } else if (thisTrack instanceof BackSwitch){
-	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) trainEntry), secBack, trainEntry.getValue().isFowards());
+	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) thisTrack), secBack, trainEntry.getValue().isFowards());
 	    	    } else if (thisTrack instanceof Crossing){
 	    	    	// check diamond crossing.
 	    	    	throw new RuntimeException("Diamond crossing is not supported yet");
@@ -158,10 +165,10 @@ public class TestController implements Controller, Listener {
 	    		Track thisTrack = trainEntry.getValue().getFront(); //get the front of the train
 	    	   // train has traveled fowards into a section. we check weather the next section is a point or a diamond crossing
 	    	    if(thisTrack instanceof ForwardSwitch){
-	    	    	fixPointsFowards(trainEntry.getKey() ,((ForwardSwitch)trainEntry), altSecFnt,trainEntry.getValue().isFowards());
+	    	    	fixPointsFowards(trainEntry.getKey() ,((ForwardSwitch)thisTrack), altSecFnt,trainEntry.getValue().isFowards());
 
 	    	    } else if (thisTrack instanceof BackSwitch){
-	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) trainEntry), altSecFnt, trainEntry.getValue().isFowards());
+	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) thisTrack), altSecFnt, trainEntry.getValue().isFowards());
 	    	    } else if (thisTrack instanceof Crossing){
 	    	    	// check diamond crossing.
 	    	    	throw new RuntimeException("Diamond crossing is not supported yet");
@@ -173,10 +180,10 @@ public class TestController implements Controller, Listener {
 	    		Track thisTrack = trainEntry.getValue().getBack(); //get the front of the train
 	    	   // train has traveled fowards into a section. we check weather the next section is a point or a diamond crossing
 	    	    if(thisTrack instanceof ForwardSwitch){
-	    	    	fixPointsFowards(trainEntry.getKey() ,((ForwardSwitch)trainEntry), altSecBack,trainEntry.getValue().isFowards());
+	    	    	fixPointsFowards(trainEntry.getKey() ,((ForwardSwitch)thisTrack), altSecBack,trainEntry.getValue().isFowards());
 
 	    	    } else if (thisTrack instanceof BackSwitch){
-	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) trainEntry), altSecBack, trainEntry.getValue().isFowards());
+	    	    	fixPointsBackwards(trainEntry.getKey(), ((BackSwitch) thisTrack), altSecBack, trainEntry.getValue().isFowards());
 
 	    	    } else if (thisTrack instanceof Crossing){
 	    	    	// check diamond crossing.
@@ -207,6 +214,7 @@ public class TestController implements Controller, Listener {
 		if(this.trains.containsKey(trainID)) trackController.stop(trainID);
 
 	}
+
 
 	@Override
 	public modelrailway.core.Train train(int trainID) {

@@ -33,6 +33,7 @@ public class CtlTest {
 	 * Use the TestController to test movement through a switch where the direction of the switch must be changed.
 	 */
   @Test public void ctlTest0(){
+	    Section.resetCounter();
 		Section sec = new Section(new ArrayList<Track>());
 
 		Straight st = new Straight(null,null,sec,100);
@@ -73,7 +74,7 @@ public class CtlTest {
 		orientationMap.put(0, new modelrailway.core.Train(0, true));
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
-		final TestController ctl = new TestController( trainMap,orientationMap,head, sim);
+		final TestController ctl = new TestController( trainMap,orientationMap,head, sim); //
 
 		Integer headSection = head.getSection().getNumber();
 		Integer switchSection = sw.getSection().getNumber();
@@ -84,14 +85,19 @@ public class CtlTest {
 		Route routePlan = new Route(true, headSection, switchSection, swAlt, sw2Section);
 
 		final ArrayList<String> outputArray = new ArrayList<String>();
-
+		final Thread th = Thread.currentThread();
 		ctl.register(new Listener(){
 			public void notify(Event e){
+
 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
 				  outputArray.add(((Event.SectionChanged) e).getSection()+"\n");
+
 				  if(((Event.SectionChanged)e).getSection() == 0){
+
 					  ctl.stop(0);
 					  sim.stop();
+					  th.interrupt();
+					  ///sim.stop();
 				  }
 				}
 			}
@@ -101,7 +107,9 @@ public class CtlTest {
 		ctl.start(0, routePlan);
 
 		try{
+			//System.out.println("started: ");
 		   Thread.currentThread().join();
+		 //  System.out.println("stopped:");
 		}catch(InterruptedException e){
 			System.out.println(outputArray.toString());
 		}

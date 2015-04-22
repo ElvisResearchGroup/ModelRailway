@@ -61,6 +61,7 @@ public class Simulator implements Controller{
 				  }
 			  }
 			}
+
 		}
 		/**
 		 * Start the train going on the track.
@@ -162,6 +163,7 @@ public class Simulator implements Controller{
 	}
 
 	public void stop(){
+
 		runningThread.stopThread();
 	}
 

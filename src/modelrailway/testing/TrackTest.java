@@ -9,6 +9,7 @@ import java.util.Map;
 
 import modelrailway.core.Event;
 import modelrailway.core.Event.Listener;
+import modelrailway.core.Event.SectionChanged;
 import modelrailway.simulation.Crossing;
 import modelrailway.simulation.Locomotive;
 import modelrailway.simulation.BackSwitch;
@@ -28,6 +29,7 @@ public class TrackTest {
 	 * Assert that we can build a straight ring of 3 track pieces.
 	 */
 	@Test public void  testTrackBuild0(){
+		Section.resetCounter();
 		Section sec = new Section(new ArrayList<Track>());
 
 		Straight st = new Straight(null, null, sec, 100);
@@ -52,6 +54,7 @@ public class TrackTest {
 	 * Assert that we can build a straight ring of 2 track pieces
 	 */
 	@Test public void testTrackBuild1(){
+		Section.resetCounter();
      	Section sec = new Section(new ArrayList<Track>());
 
 		Straight st = new Straight(null, null, sec, 100);
@@ -72,6 +75,7 @@ public class TrackTest {
 	 * Assert that we can build a straight ring of 4 track pieces.
 	 */
 	@Test public void testTrackBuild2(){
+		Section.resetCounter();
         Section sec = new Section(new ArrayList<Track>());
 
 		Straight st = new Straight(null, null, sec, 100);
@@ -97,6 +101,7 @@ public class TrackTest {
 	 *
 	 */
 	@Test public void testTrackBuild3(){
+		Section.resetCounter();
 		Section sec = new Section(new ArrayList<Track>());
 
 		Straight st = new Straight(null,null,sec,100);
@@ -141,6 +146,7 @@ public class TrackTest {
 	}
 
 	@Test public void testTrackBuild4(){
+		Section.resetCounter();
 		Section sec = new Section(new ArrayList<Track>());
 
 		Straight st = new Straight(null,null,sec,100);
@@ -189,6 +195,7 @@ public class TrackTest {
 	 * Test adding a diamond crossing;
 	 */
 	@Test public void testLocoDiamond0(){
+		Section.resetCounter();
 		Section sec = new Section (new ArrayList<Track>());
 		Straight st = new Straight(null,null,sec,100);
 		Straight.StraightRing route = new Straight.StraightRing(st);
@@ -285,6 +292,7 @@ public class TrackTest {
 	}
 
 	@Test public void testLocoDiamond1(){
+		Section.resetCounter();
 		Section sec = new Section (new ArrayList<Track>());
 		Straight st = new Straight(null,null,sec,100);
 		Straight.StraightRing route = new Straight.StraightRing(st);
@@ -384,6 +392,7 @@ public class TrackTest {
 	}
 
 	@Test public void testLocoDiamond2(){
+		Section.resetCounter();
 		Section sec = new Section (new ArrayList<Track>());
 		Straight st = new Straight(null,null,sec,100);
 		Straight.StraightRing route = new Straight.StraightRing(st);
@@ -482,6 +491,7 @@ public class TrackTest {
 	}
 
 	@Test public void testLocoDiamond3(){
+		Section.resetCounter();
 		Section sec = new Section (new ArrayList<Track>());
 		Straight st = new Straight(null,null,sec,100);
 		Straight.StraightRing route = new Straight.StraightRing(st);
@@ -583,6 +593,7 @@ public class TrackTest {
 	 * Test sectioning on a basic ring track
 	 */
 	@Test public void testLocoSectioning0(){
+		Section.resetCounter();
 		Section sec = new Section(new ArrayList<Track>());
 
 		Straight st = new Straight(null, null, sec, 100);
@@ -756,7 +767,7 @@ public class TrackTest {
  						sectionsList.add(pair1);
  						th.interrupt();
  					}
- 					else{
+ 					else if (((SectionChanged) e).getInto() == true){
  						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(((Event.SectionChanged) e).getSection(),
  					                                                            ((Event.SectionChanged) e).getInto());
  						if(((Event.SectionChanged)e).getInto() == true) sectionsList.add(pair1);
@@ -772,13 +783,15 @@ public class TrackTest {
  		try{
  		   Thread.currentThread().join();
  		}catch(InterruptedException e){
- 			assertTrue(sectionsList.get(0).fst == 3); // train 1
- 			assertTrue(sectionsList.get(1).fst == 4); // train 0
- 			assertTrue(sectionsList.get(2).fst == 2); // train 1
- 			assertTrue(sectionsList.get(3).fst == 3); // train 0
- 			assertTrue(sectionsList.get(4).fst == 1); // train 1
- 			assertTrue(sectionsList.get(5).fst == 2); // train 0
- 			assertTrue(sectionsList.get(6).fst == 0); // train 1
+ 			System.out.println(sectionsList);
+ 			assertTrue(sectionsList.get(0).fst == 4); // train 1
+ 			assertTrue(sectionsList.get(1).fst == 3); // train 0
+ 			assertTrue(sectionsList.get(2).fst == 3); // train 1
+ 			assertTrue(sectionsList.get(3).fst == 2); // train 0
+ 			assertTrue(sectionsList.get(4).fst == 2); // train 1
+ 			assertTrue(sectionsList.get(5).fst == 1); // train 0
+ 			assertTrue(sectionsList.get(6).fst == 1); // train 1
+ 			assertTrue(sectionsList.get(7).fst == 0);
  		}
  	}
 }
