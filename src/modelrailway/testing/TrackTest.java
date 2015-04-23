@@ -790,8 +790,8 @@ public class TrackTest {
  		};
 
  		sim.register(lis);
- 		sim.start(1, null);
- 		sim.start(0, null);
+ 		sim.start(1, null); // start front train.
+ 		sim.start(0, null); // start back train.
 
  		try{
  		   Thread.currentThread().join();
@@ -802,13 +802,13 @@ public class TrackTest {
  		    assertTrue(tr2SectionsList.get(1).fst == 2);
  		    assertTrue(tr2SectionsList.get(2).fst == 1);
  		    assertTrue(tr2SectionsList.get(3).fst == 0);
- 		    
+
  		    if(trSectionsList.size() >= 1){
  		    	assertTrue(trSectionsList.get(0).fst == 4);
  		    }
  		    if(trSectionsList.size() >= 2){
  		    	assertTrue(trSectionsList.get(1).fst == 3);
- 		    	
+
  		    }
  		    if(trSectionsList.size() >= 3){
  		    	assertTrue(trSectionsList.get(2).fst == 2);
