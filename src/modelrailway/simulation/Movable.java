@@ -88,6 +88,7 @@ public abstract class Movable {
    */
    public int move(){ // returns the new distance
 	   ///System.out.println("currentSpeed: "+currentSpeed);
+
 	   ArrayList<Track> old = new ArrayList<Track>();
 	   if(track[1] != null) old.add(track[1]);
 	   old.add(track[0]);
@@ -113,7 +114,7 @@ public abstract class Movable {
 
 
 
-		  if(newDistance >=0 && newDistance <= length){ // move backwards. since we have moved backwards over a section we do not have track[1]
+		  if(newDistance >=0 && newDistance < length){ // move backwards. since we have moved backwards over a section we do not have track[1]
 			  //System.out.println("newDistance >= 0 and newDistance <= length");
 			  // track[0] = track[1];
 
@@ -142,7 +143,7 @@ public abstract class Movable {
 			  distance = track[0].getDistance(track[0].getCurrentAlt(this))+newDistance;
 
 		  }
-		  else if(newDistance >=0 && newDistance > length){
+		  else if(newDistance >=0 && newDistance >= length){
 			 distance = newDistance;
 		  }
 

@@ -727,8 +727,8 @@ public class TrackTest {
  		track = ring.ringTrack(5, 100); // produce a ring.
 
  		//create two trains
- 		Train tr = new Train(new Movable[]{new Locomotive(new Track[]{track,track} ,40,40,40, false)});
- 		Train tr2 = new Train (new Movable[]{new Locomotive(new Track[]{track.getNext(false),track.getNext(false)},40,40,40,false )});
+ 		final Train tr = new Train(new Movable[]{new Locomotive(new Track[]{track,track} ,40,40,40, false)});
+ 		final Train tr2 = new Train (new Movable[]{new Locomotive(new Track[]{track.getNext(false),track.getNext(false)},40,40,40,false )});
 
  		//put trains into both maps.
  		Map<Integer,Train> map = new HashMap<Integer,Train>();
@@ -751,7 +751,8 @@ public class TrackTest {
  			}
  		}
  		final Simulator sim = new Simulator(track, map2 , map);
- 		final ArrayList<Pair<Integer,Boolean>> sectionsList = new ArrayList<Pair<Integer,Boolean>>();
+ 		final ArrayList<Pair<Integer,Boolean>> trSectionsList = new ArrayList<Pair<Integer,Boolean>>();
+ 		final ArrayList<Pair<Integer,Boolean>> tr2SectionsList = new ArrayList<Pair<Integer,Boolean>>();
  		final Thread th = Thread.currentThread();
 
  		Listener lis = new Listener(){
@@ -764,34 +765,57 @@ public class TrackTest {
  						sim.stop();
  						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(((Event.SectionChanged) e).getSection(),
  								                                                ((Event.SectionChanged) e).getInto());
- 						sectionsList.add(pair1);
+ 						if(tr.getFront().getSection().getNumber() == ((SectionChanged) e).getSection()){
+ 						    trSectionsList.add(pair1);
+ 						}
+ 						else{
+ 							tr2SectionsList.add(pair1);
+ 						}
  						th.interrupt();
  					}
  					else if (((SectionChanged) e).getInto() == true){
  						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(((Event.SectionChanged) e).getSection(),
  					                                                            ((Event.SectionChanged) e).getInto());
- 						if(((Event.SectionChanged)e).getInto() == true) sectionsList.add(pair1);
+ 						if(((Event.SectionChanged)e).getInto() == true){
+ 							if(tr.getFront().getSection().getNumber() == ((SectionChanged) e).getSection()){
+ 	 						    trSectionsList.add(pair1);
+ 	 						}
+ 	 						else{
+ 	 							tr2SectionsList.add(pair1);
+ 	 						}
+ 						}
  					}
  				}
  			}
  		};
 
  		sim.register(lis);
- 		sim.start(0, null);
  		sim.start(1, null);
+ 		sim.start(0, null);
 
  		try{
  		   Thread.currentThread().join();
  		}catch(InterruptedException e){
- 			System.out.println(sectionsList);
- 			assertTrue(sectionsList.get(0).fst == 4); // train 1
- 			assertTrue(sectionsList.get(1).fst == 3); // train 0
- 			assertTrue(sectionsList.get(2).fst == 3); // train 1
- 			assertTrue(sectionsList.get(3).fst == 2); // train 0
- 			assertTrue(sectionsList.get(4).fst == 2); // train 1
- 			assertTrue(sectionsList.get(5).fst == 1); // train 0
- 			assertTrue(sectionsList.get(6).fst == 1); // train 1
- 			assertTrue(sectionsList.get(7).fst == 0);
+ 			//System.out.println(trSectionsList);
+ 			//System.out.println(tr2SectionsList);
+ 		    assertTrue(tr2SectionsList.get(0).fst == 3);
+ 		    assertTrue(tr2SectionsList.get(1).fst == 2);
+ 		    assertTrue(tr2SectionsList.get(2).fst == 1);
+ 		    assertTrue(tr2SectionsList.get(3).fst == 0);
+ 		    
+ 		    if(trSectionsList.size() >= 1){
+ 		    	assertTrue(trSectionsList.get(0).fst == 4);
+ 		    }
+ 		    if(trSectionsList.size() >= 2){
+ 		    	assertTrue(trSectionsList.get(1).fst == 3);
+ 		    	
+ 		    }
+ 		    if(trSectionsList.size() >= 3){
+ 		    	assertTrue(trSectionsList.get(2).fst == 2);
+ 		    }
+ 		    if(trSectionsList.size() >= 4){
+ 		    	assertTrue(trSectionsList.get(3).fst == 1);
+ 		    }
  		}
  	}
     @Test public void testSimulator2(){

@@ -49,25 +49,25 @@ public class CtlTest {
 		Section sec2 = new Section(new ArrayList<Track>());
 		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 		sec2.add(sw);
-		
+
 		Section sec3 = new Section(new ArrayList<Track>());
 		Track sw2 = new BackSwitch(null, null, tp_2, sec3, 100, 100, 50);
 		sec3.add(sw2);
-		
-		
+
+
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
 
 		Section sec4 = new Section(new ArrayList<Track>());
 		Straight str = new Straight(null, null, sec4,100 );
 		sec4.add(str);
-		
+
 		route.insertBetween(sw, true, sw2, true,  str, false);
-		
+
 		assertTrue(sw.getNext(true) == str);
 		assertTrue(sw.getNext(false) == tp_2);
 		assertTrue(str.getSection() == sec4);
-		
+
 
 		//set up the train track.
 
@@ -129,10 +129,10 @@ public class CtlTest {
 		assertTrue(outputArray.get(1) == 6);
 		assertTrue(outputArray.get(2) == 5);
 		assertTrue(outputArray.get(3) == 0);
-		
-		
+
+
 	}
-  
+
   	@Test public void ctlTest1(){
   		Section.resetCounter();
 		Section sec = new Section(new ArrayList<Track>());
@@ -149,27 +149,27 @@ public class CtlTest {
 		Section sec2 = new Section(new ArrayList<Track>());
 		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 		sec2.add(sw);
-		
+
 		Section sec3 = new Section(new ArrayList<Track>());
 		Track sw2 = new BackSwitch(null, null, tp_2, sec3, 100, 100, 50);
 		sec3.add(sw2);
-		
-		
+
+
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
 
 		Section sec4 = new Section(new ArrayList<Track>());
 		Straight str = new Straight(null, null, sec4,100 );
 		sec4.add(str);
-		
+
 		route.insertBetween(sw, true, sw2, true,  str, false);
-		
+
 		assertTrue(sw.getNext(true) == str);
 		assertTrue(sw.getNext(false) == tp_2);
 		assertTrue(str.getSection() == sec4);
 		assertTrue(head.getPrevious(false) == sw2);
-		
-		
+
+
 
 		//set up the train track.
 
@@ -201,13 +201,13 @@ public class CtlTest {
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		final Thread th = Thread.currentThread();
-		
+
 		ctl.register(new Listener(){
 			public void notify(Event e){
-				System.out.println("event "+e.toString());
+				//System.out.println("event "+e.toString());
 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
-					
-				  System.out.println(e);
+
+				  //System.out.println(e);
 				  outputArray.add(((Event.SectionChanged) e).getSection());
 
 				  if(((Event.SectionChanged)e).getSection() == 0){
@@ -221,18 +221,18 @@ public class CtlTest {
 			}
 
 		});
-		
+
 		assertTrue(train.isFowards() == false);
 		ctl.start(0, routePlan);
-		
-		
-		
+
+
+
 		try{
 			//System.out.println("started: ");
 		   Thread.currentThread().join();
 		 //  System.out.println("stopped:");
 		}catch(InterruptedException e){
-			
+
 			System.out.println("routePlan: " +Arrays.asList(new Integer[]{ sw2Section, swAlt, switchSection, headSection}).toString());
 			System.out.println("routeTraveled: "+outputArray.toString());
 		}
@@ -241,4 +241,6 @@ public class CtlTest {
 		assertTrue(outputArray.get(2) == 4);
 		assertTrue(outputArray.get(3) == 0);
   	}
+  	
+  	
 }

@@ -44,12 +44,12 @@ public class Simulator implements Controller{
 				  List<Section> slist = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
 				  train.move();
 				  List<Section> s2list = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
-				  System.out.println("checking For movement: "+train.getBack().getSection().getNumber()); //+" slist: "+slist+" s2list: "+s2list);
+				  //System.out.println("checking For movement: "+train.getBack().getSection().getNumber()); //+" slist: "+slist+" s2list: "+s2list);
 				  for(Section s : s2list){
 					if(!slist.contains(s)){
 						for(Listener l : listeners){
-							System.out.println("trainSec: "+train.getBack().getSection().getNumber());
-							System.out.println("listenerSize: "+listeners.size());
+							//System.out.println("trainSec: "+train.getBack().getSection().getNumber());
+						//	System.out.println("listenerSize: "+listeners.size());
 							Event ev = new Event.SectionChanged(s.getNumber(), true);
 							l.notify(ev);
 
@@ -158,15 +158,19 @@ public class Simulator implements Controller{
 	 */
 	public boolean start(int trainID, Route route) {
 
+		boolean ret = runningThread.startTrain(trainID,route);
 		for(Listener list: listeners){
 			list.notify(new Event.SpeedChanged(trainID, trains.get(trainID).getCurrentSpeed()));
 		}
-		return runningThread.startTrain(trainID,route);
+		return ret;
 	}
 
 	@Override
 	public void stop(int trainID) {
-		runningThread.stopTrain(trainID);
+	    runningThread.stopTrain(trainID);
+		for(Listener list: listeners){
+			list.notify(new Event.SpeedChanged(trainID, trains.get(trainID).getCurrentSpeed()));
+		}
 
 	}
 

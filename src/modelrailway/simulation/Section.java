@@ -53,8 +53,12 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 	public boolean emptyMovable(){
 		return (movableObjects.size() == 0);
 	}
+
+	public Set<Movable> getMovableSet(){
+		return movableObjects;
+	}
 	public String toString(){
-		
+
 		return "section: "+super.toString();
 	}
 }

@@ -42,7 +42,7 @@ public class TestController implements Controller, Listener {
 	@Override
 	public void notify(Event e) {
 		if(e instanceof Event.SectionChanged && ((Event.SectionChanged) e).getInto()){ // when there is a section change into another section
-			System.out.println("section change event."+((Event.SectionChanged) e).getSection());
+			//System.out.println("section change event."+((Event.SectionChanged) e).getSection());
 		    moveIntoSection(e);
 		}
 
@@ -132,7 +132,7 @@ public class TestController implements Controller, Listener {
 	 */
 	private void moveIntoSection(Event e){
 		for(Map.Entry<Integer, modelrailway.simulation.Train> trainEntry: trains.entrySet()){ // for all the trains on the track
-			System.out.println(trainEntry.getValue().isFowards());
+			//System.out.println(trainEntry.getValue().isFowards());
 			Section secFnt = trainEntry.getValue().getFront().getSection();
 			Section altSecFnt = trainEntry.getValue().getFront().getAltSection();
 			Section secBack = trainEntry.getValue().getBack().getSection();
