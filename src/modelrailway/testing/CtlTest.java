@@ -240,9 +240,9 @@ public class CtlTest {
 		assertTrue(outputArray.get(1) == 6);
 		assertTrue(outputArray.get(2) == 4);
 		assertTrue(outputArray.get(3) == 0);
-		
+
   	}
-  	
+
   	@Test public void ctlTest2(){
   		Section.resetCounter();
 		Section sec = new Section(new ArrayList<Track>());
@@ -350,8 +350,8 @@ public class CtlTest {
 		assertTrue(outputArray.get(0) == 5);
 		assertTrue(outputArray.get(1) == mainRoute);
 		assertTrue(outputArray.get(2) == 4);
-		assertTrue(outputArray.get(3) == 0);	
-  		
+		assertTrue(outputArray.get(3) == 0);
+
   	}
 
   	@Test public void ctlTest3(){
@@ -461,8 +461,10 @@ public class CtlTest {
 		assertTrue(outputArray.get(0) == 4);
 		assertTrue(outputArray.get(1) == mainRoute);
 		assertTrue(outputArray.get(2) == 5);
-		assertTrue(outputArray.get(3) == 0);	
-  		
+		assertTrue(outputArray.get(3) == 0);
+
   	}
-  	
+
+
+
 }
