@@ -212,7 +212,7 @@ public class TestController implements Controller, Listener {
 	    	    }
 	    	}
 	    //	System.out.println("Find Section for train: "+trainEntry.getKey()+" Section: "+((Event.SectionChanged) e).getSection());
-	    }
+		}
 	}
 
 	@Override
@@ -260,4 +260,34 @@ public class TestController implements Controller, Listener {
 		trackController.set(turnoutID, thrown);
 
 	}
+	/**
+	 * Takes a section id and returns the route of the first Train object that is currently in that section.
+	 * @param section
+	 */
+	public Map.Entry<modelrailway.simulation.Train,Route> getRoute(int section) {
+		for(Map.Entry<Integer, Route> trainRoute : trainRoutes.entrySet()){
+			modelrailway.simulation.Train tr = trains.get(trainRoute.getKey());
+			Track frontTrack = tr.getFront();
+			Track backTrack = tr.getBack();
+
+			Map<modelrailway.simulation.Train,Route> trainRouteMap = new HashMap<modelrailway.simulation.Train,Route>();
+			trainRouteMap.put(tr,trainRoute.getValue());
+			@SuppressWarnings("unchecked")
+			Map.Entry<modelrailway.simulation.Train, Route> etry = trainRouteMap.entrySet().toArray(new Map.Entry[]{})[0];
+
+			if(frontTrack.getSection().getNumber() == section){
+				return etry;
+			} else if(frontTrack.getAltSection() != null && frontTrack.getAltSection().getNumber() == section){
+				return etry;
+			} else if (backTrack.getSection().getNumber() == section){
+				return etry;
+			} else if (backTrack.getAltSection() != null && backTrack.getAltSection().getNumber() == section){
+				return etry;
+			}
+		}
+		return null; // no train was on the section that we provided.
+		// TODO Auto-generated method stub
+
+	}
+
 }

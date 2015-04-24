@@ -269,6 +269,27 @@ public abstract class Track {
 
 		}
 
+		public Track bufferEnd(Track t1, boolean enterForward, boolean onAlt){
+			Section sec = new Section(new ArrayList<Track>());
+			Track buffer = new Buffer(t1,enterForward,sec,100);
+			sec.add(buffer);
+			if(onAlt){
+				if(enterForward){
+					t1.alternateNext = buffer;
+				}else{
+					t1.alternatePrevious = buffer;
+
+				}
+			}else{
+				if(enterForward){
+					t1.next = buffer;
+				}else{
+					t1.previous = buffer;
+				}
+			}
+			return getHead();
+		}
+
 	}
 
 	private static final int PREVIOUS=0;
