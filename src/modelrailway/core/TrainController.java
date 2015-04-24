@@ -66,6 +66,13 @@ public class TrainController implements Controller, Listener {
 
 	}
 
+	public boolean resumeTrain(int trainID){
+		if(this.trains.containsKey(trainID)){
+			return trackController.start(trainID, trainRoutes.get(trainID));
+		}
+		return false;
+	}
+
 	@Override
 	public Train train(int trainID) {
 		// TODO Auto-generated method stub

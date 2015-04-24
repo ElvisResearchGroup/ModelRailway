@@ -95,6 +95,14 @@ public class Simulator implements Controller{
 			if(modelTrains.containsKey(trainID)) modelTrains.get(trainID).stop();
 		}
 
+		public boolean resumeTrain(int trainID){
+			if(modelTrains.containsKey(trainID)){
+				modelTrains.get(trainID).start();
+				return true;
+			}
+			return false;
+		}
+
 		public void stopThread(){
 			stopthread = true;
 		}
@@ -165,17 +173,25 @@ public class Simulator implements Controller{
 		return ret;
 	}
 
+	public boolean resumeTrain(int trainID){
+		boolean ret = runningThread.resumeTrain(trainID);
+		for(Listener list: listeners){
+			list.notify(new Event.SpeedChanged(trainID, trains.get(trainID).getCurrentSpeed()));
+		}
+		return ret;
+	}
+
+
+
 	@Override
 	public void stop(int trainID) {
 	    runningThread.stopTrain(trainID);
 		for(Listener list: listeners){
 			list.notify(new Event.SpeedChanged(trainID, trains.get(trainID).getCurrentSpeed()));
 		}
-
 	}
 
 	public void stop(){
-
 		runningThread.stopThread();
 	}
 

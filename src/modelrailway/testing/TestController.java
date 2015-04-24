@@ -51,7 +51,13 @@ public class TestController implements Controller, Listener {
 			l.notify(e);
 		}
 	}
-
+	/**
+	 * Fix a foward switch to point in the direction that we want the train to go in.
+	 * @param trainID
+	 * @param track
+	 * @param section
+	 * @param goingFoward
+	 */
 	private void fixPointsFowards(Integer trainID, ForwardSwitch track,Section section ,boolean goingFoward){
 		//System.out.println("fix Points Forwards"+section.getNumber());
 		if(goingFoward){ // entering the points going in the foward direction.
@@ -90,7 +96,13 @@ public class TestController implements Controller, Listener {
 		}
 
 	}
-
+	/**
+	 * Fix a backwards switch to point in the direction that we want to go in.
+	 * @param trainID
+	 * @param track
+	 * @param section
+	 * @param goingFoward
+	 */
 	private void fixPointsBackwards(Integer trainID, BackSwitch track, Section section,boolean goingFoward){
 		if(goingFoward){ // entering the points going in the foward direction.
 		   boolean isAlt = track.getCurrentAlt(trains.get(trainID));
@@ -126,6 +138,7 @@ public class TestController implements Controller, Listener {
 		//System.out.println("fix Points Backwards"+section.getNumber());
 	}
 	/**
+	 * We have moved into a section. Do what is necissary to configure the section that we have just moved into.
 	 * note find correct train does not support diamond crossing.
 	 * @param e
 	 * @return
@@ -215,6 +228,13 @@ public class TestController implements Controller, Listener {
 		if(this.trains.containsKey(trainID)){
 			trainRoutes.put(trainID,route);
 			return trackController.start(trainID, route);
+		}
+		return false;
+	}
+
+	public boolean resumeTrain(int trainID){
+		if(this.trains.containsKey(trainID)){
+			return trackController.start(trainID, trainRoutes.get(trainID));
 		}
 		return false;
 	}

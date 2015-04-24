@@ -2,6 +2,9 @@ package modelrailway.simulation;
 import java.util.HashSet;
 import java.util.Set;
 
+import modelrailway.core.Controller;
+import modelrailway.core.Event;
+
 
 /**
  * The Train is a Movable object and contains other movable objects.
@@ -91,6 +94,12 @@ public class Train extends Movable {
 		for(int x = 0; x< trainParts.length; x++){
 			trainParts[x].toggleDirection();
 		}
+	}
+
+	public void notifySectionFree(Integer trainID, Controller ctl){
+		ctl.notify(new Event.SpeedChanged(trainID, 0.75f));
+		ctl.resumeTrain(trainID);
+
 	}
 
 }

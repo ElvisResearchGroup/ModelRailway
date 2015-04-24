@@ -85,10 +85,10 @@ public abstract class Movable {
   /**
    * move causes the movable to move by its current speed. currently only moving forwards is supported.
    * @return
+ * @throws SectionNotificationException
    */
    public int move(){ // returns the new distance
 	   ///System.out.println("currentSpeed: "+currentSpeed);
-
 	   ArrayList<Track> old = new ArrayList<Track>();
 	   if(track[1] != null) old.add(track[1]);
 	   old.add(track[0]);
