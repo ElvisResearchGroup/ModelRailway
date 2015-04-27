@@ -42,17 +42,17 @@ public class TestControlerCollision extends TestController implements Controller
 				boolean reserved = false ;
 				if(notAltNext.getSection().getNumber() == nextSec){
 					reserved = notAltNext.getSection().reserveSection(train);
-					
+
 				} if(notAltNext.getAltSection() != null && notAltNext.getAltSection().getNumber() == nextSec){
 					reserved = notAltNext.getAltSection().reserveSection(train);
-					
+
 				} if(altNext.getSection().getNumber() == nextSec){
 					reserved = altNext.getSection().reserveSection(train);
-					
+
 				} if(altNext.getAltSection() != null && altNext.getAltSection().getNumber() == nextSec){
 					reserved = altNext.getAltSection().reserveSection(train);
 				}
-				
+
 				if(reserved == false){ // we need to trigger an emergency stop
 					Integer id = super.getID(train);
 					this.stop(super.getID(train));
@@ -66,17 +66,17 @@ public class TestControlerCollision extends TestController implements Controller
 				boolean reserved = false ;
 				if(notAltPrev.getSection().getNumber() == nextSec){
 					reserved = notAltPrev.getSection().reserveSection(train);
-					
+
 				} if(notAltPrev.getAltSection() != null && notAltPrev.getAltSection().getNumber() == nextSec){
 					reserved =notAltPrev.getAltSection().reserveSection(train);
-					
+
 				} if(altPrev.getSection().getNumber() == nextSec){
 					reserved = altPrev.getSection().reserveSection(train);
-					
+
 				} if(altPrev.getAltSection() != null && altPrev.getAltSection().getNumber() == nextSec){
 					reserved = altPrev.getAltSection().reserveSection(train);
 				}
-				
+
 				if(reserved == false){
 					Integer id = super.getID(train);
 					this.stop(id);

@@ -468,9 +468,112 @@ public class CtlTest {
 		assertTrue(outputArray.get(3) == 0);
 
   	}
-  	
-  	
+
+  	@Test public void ctlTest4(){
+  		Section.resetCounter();
+		Section sec = new Section(new ArrayList<Track>());
+
+		Straight st = new Straight(null,null,sec,100);
+		Straight.StraightRing route = new Straight.StraightRing(st);
+		Track head = route.ringTrack(4, 100);
+		sec.add(head);
+		Track tp_1 = head.getNext(false);
+		Track tp_2 = tp_1.getNext(false);
+		Track tp_3 = tp_2.getNext(false);
+		Track tp_4 = tp_3.getNext(false);
+
+		//set up the train track.
+
+		// add a locomotive
+
+		final Movable locomotive = new Locomotive(new Track[]{head,head},40,20,10,false);
+
+
+
+		final Movable loco2 = new Locomotive(new Track[]{tp_3,tp_3},40,20,10,false);
+		//locomotive.toggleDirection();
+
+		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
+		Train train = new Train(new Movable[]{locomotive});
+		boolean secReserve = tp_1.getSection().reserveSection(train);
+		assertTrue(secReserve);
+		Train train2 = new Train(new Movable[]{loco2});
+		//train.toggleDirection();
+		trainMap.put(0,train );
+		train.setID(0);
+		trainMap.put(1, train2);
+		train2.setID(1);
+		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
+
+		orientationMap.put(0, new modelrailway.core.Train(0, true));
+		orientationMap.put(1, new modelrailway.core.Train(1,true));
+
+		final Simulator sim = new Simulator(head, orientationMap, trainMap);
+		final TestController ctl = new TestControlerCollision( trainMap,orientationMap,head, sim); //
+
+		Integer headSection = head.getSection().getNumber();
+		Integer sec1 = tp_1.getSection().getNumber();
+		Integer sec2 = tp_2.getSection().getNumber();
+		Integer sec3 = tp_3.getSection().getNumber();
+
+
+		Route routePlan = new Route(true, headSection, sec1, sec2, sec3);
+		//System.out.println("route: "+headSection+", "+switchSection+", "+swAlt+", "+sw2Section);
+
+		final Thread th = Thread.currentThread();
+		final ArrayList<String> output = new ArrayList<String>();
+
+		ctl.register(new Listener(){
+			public void notify(Event e){
+				//System.out.println("event "+e.toString());
+				//System.out.println(e);
+				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+
+				  //System.out.println(e);
+				  if(((Event.SectionChanged)e).getSection() == 0){
+
+					  ctl.stop(0);
+					  sim.stop();
+					  th.interrupt();
+					  output.add("failure to stop");
+
+				  }
+
+				}
+				if(e instanceof Event.EmergencyStop){
+				  sim.stop();
+				  output.add("emergency stop at position by locomotive "+((Event.EmergencyStop) e).getLocomotive());
+				  th.interrupt();
+				}
+			}
+
+		});
+
+		assertTrue(train.isFowards() == true);
+		ctl.start(0, routePlan);
+
+
+
+		try{
+			//System.out.println("started: ");
+		   Thread.currentThread().join();
+		 //  System.out.println("stopped:");
+		}catch(InterruptedException e){
+			//System.out.println(output);
+			
+			System.out.println(output);
+			assertTrue(output.get(0).split(" ")[0].equals("emergency"));
+			assertTrue(locomotive.getFront().getSection().getNumber() == sec2);
+			//System.out.println("routePlan: " +Arrays.asList(new Integer[]{ sw2Section, mainRoute, switchSection, headSection}).toString());
+			//System.out.println("routeTraveled: "+outputArray.toString());
+		}
+
+
+  	}
+
+
 
 
 
 }
+
