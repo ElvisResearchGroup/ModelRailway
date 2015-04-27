@@ -22,15 +22,17 @@ public class Train extends Movable {
 
 	}
 
-
 	public int move(){
-		super.move(); //
+		return this.move(null);
+	}
+	public int move(Event.Listener ls){
+		super.move(ls); //
 		//System.out.println("supermove dist: "+ super.getDistance());
 		for(int i = 1; i<trainParts.length; i++){
-			trainParts[i].move();
+			trainParts[i].move(ls);
 		}
 		//System.out.println("move locomotive");
-		return trainParts[0].move();
+		return trainParts[0].move(ls);
 
 	}
 

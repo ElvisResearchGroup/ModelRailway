@@ -157,8 +157,6 @@ public abstract class Track {
 			if(tr2.previous == tr2.alternatePrevious && tr2.previous != null) tr2UnifyPrevious = true;
 			if(insertedTrack.next == insertedTrack.alternateNext && insertedTrack.next != null) insertedTrackUnifyNext = true;
 			if(insertedTrack.previous == insertedTrack.alternatePrevious && insertedTrack.previous != null) insertedTrackUnifyPrevious = true;
-
-
 			if(tr2.isAlt(tr1)){
 				tr2.alternatePrevious = insertedTrack;
 				if(onAlt2 || insertedTrackUnifyNext) insertedTrack.alternateNext = tr2;
@@ -172,7 +170,6 @@ public abstract class Track {
 				if(tr2UnifyPrevious) tr2.alternatePrevious = insertedTrack;
 
 			}
-
 			//fix tr1
 			if(tr1.isAlt(tr2)){
 				tr1.alternateNext = insertedTrack;
@@ -264,7 +261,6 @@ public abstract class Track {
 		    	head = t2; // replace the head.
 		    }
 		    tlist.set(index, t2);
-
 			return tr;
 
 		}
@@ -289,7 +285,6 @@ public abstract class Track {
 			}
 			return getHead();
 		}
-
 	}
 
 	private static final int PREVIOUS=0;
@@ -330,8 +325,6 @@ public abstract class Track {
 
 	public Track removeSwitchEntry(int switchID) {
 		return knownSwitches.remove(switchID);
-
-
 	}
 
 	/**

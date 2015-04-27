@@ -79,6 +79,7 @@ public class CtlTest {
 		Train train = new Train(new Movable[]{locomotive});
 
 		trainMap.put(0,train );
+		train.setID(0);
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(0, true));
@@ -182,6 +183,7 @@ public class CtlTest {
 		Train train = new Train(new Movable[]{locomotive});
 		train.toggleDirection();
 		trainMap.put(0,train );
+		train.setID(0);
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(0, false));
@@ -293,6 +295,7 @@ public class CtlTest {
 		Train train = new Train(new Movable[]{locomotive});
 		train.toggleDirection();
 		trainMap.put(0,train );
+		train.setID(0);
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(0, false));
@@ -404,6 +407,7 @@ public class CtlTest {
 		Train train = new Train(new Movable[]{locomotive});
 		//train.toggleDirection();
 		trainMap.put(0,train );
+		train.setID(0);
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(0, false));
@@ -464,6 +468,8 @@ public class CtlTest {
 		assertTrue(outputArray.get(3) == 0);
 
   	}
+  	
+  	
 
 
 

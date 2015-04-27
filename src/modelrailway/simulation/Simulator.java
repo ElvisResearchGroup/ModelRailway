@@ -19,7 +19,7 @@ import modelrailway.core.Train;
  */
 public class Simulator implements Controller{
 
-
+	private final Listener thisListener = this;
 	private class TrainThread extends Thread{
 
 		private Track track;
@@ -42,7 +42,7 @@ public class Simulator implements Controller{
 				  synchronized(listeners){
 				  modelrailway.simulation.Train train = entry.getValue();
 				  List<Section> slist = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
-				  train.move();
+				  train.move(thisListener);
 				  List<Section> s2list = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
 				  //System.out.println("checking For movement: "+train.getBack().getSection().getNumber()); //+" slist: "+slist+" s2list: "+s2list);
 				  for(Section s : s2list){

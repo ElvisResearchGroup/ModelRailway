@@ -659,6 +659,7 @@ public class TrackTest {
 		Train tr = new Train(new Movable[]{new Locomotive(new Track[]{track,track} ,40,40,40, false)});
 		Map<Integer,Train> map = new HashMap<Integer,Train>();
 		map.put(0, tr);
+		tr.setID(0);
 		Map<Integer,modelrailway.core.Train>  map2 = new HashMap<Integer,modelrailway.core.Train>();
 		map2.put(0, new modelrailway.core.Train(0,true));
 
@@ -733,8 +734,9 @@ public class TrackTest {
  		//put trains into both maps.
  		Map<Integer,Train> map = new HashMap<Integer,Train>();
  		map.put(0, tr);
+ 		tr.setID(0);
  		map.put(1, tr2);
-
+ 		tr2.setID(1);
  		Map<Integer,modelrailway.core.Train>  map2 = new HashMap<Integer,modelrailway.core.Train>();
  		map2.put(0, new modelrailway.core.Train(0,true));
  		map2.put(1, new modelrailway.core.Train(1, true));

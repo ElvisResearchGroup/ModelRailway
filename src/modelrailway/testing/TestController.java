@@ -286,8 +286,20 @@ public class TestController implements Controller, Listener {
 			}
 		}
 		return null; // no train was on the section that we provided.
-		// TODO Auto-generated method stub
+	}
 
+	/**
+	 * Return the ID of a train in the list of trains maintained by the controller.
+	 * @param train
+	 * @return
+	 */
+	public int getID(modelrailway.simulation.Train train) {
+		
+		for(Map.Entry<Integer, modelrailway.simulation.Train> etry : trains.entrySet()){
+			if (etry.getValue() == train) return etry.getKey();
+		}
+		throw new RuntimeException("train not found");
+		
 	}
 
 }
