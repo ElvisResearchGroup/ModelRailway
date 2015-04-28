@@ -727,6 +727,8 @@ public class CtlTest {
 
  		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
  		Train train = new Train(new Movable[]{locomotive});
+ 		
+ 		sw.getSection().reserveSection(train);
 
  		Train train2 = new Train(new Movable[]{locomotive2});
  		
@@ -740,7 +742,7 @@ public class CtlTest {
  		orientationMap.put(1, new modelrailway.core.Train(1,true));
 
  		final Simulator sim = new Simulator(head, orientationMap, trainMap);
- 		final TestController ctl = new TestController( trainMap,orientationMap,head, sim); //
+ 		final TestController ctl = new TestControlerCollision( trainMap,orientationMap,head, sim); //
 
  		final Integer headSection = head.getSection().getNumber();
  		final Integer switchSection = sw.getSection().getNumber();
@@ -749,8 +751,8 @@ public class CtlTest {
  		final Integer mainRoute = tp_2.getSection().getNumber();
 
 
- 		Route routePlan = new Route(true, headSection, switchSection, swAlt, sw2Section);
- 		//System.out.println("route: "+headSection+", "+switchSection+", "+swAlt+", "+sw2Section);
+ 		Route routePlan = new Route(true, headSection, switchSection , swAlt , sw2Section  );
+ 		//System.out.println("route: "+headSection +","+ switchSection +","+ swAlt + "," + sw2Section);
 
  		final ArrayList<String> outputArray = new ArrayList<String>();
  		final Thread th = Thread.currentThread();
@@ -787,8 +789,8 @@ public class CtlTest {
  		}catch(InterruptedException e){
  			//System.out.println(outputArray.toString());
  		}
- 		System.out.println(outputArray);
- 		assertTrue(outputArray.get(outputArray.size()-1).split(" ")[0].equals("emergency"));
+ 		//System.out.println(outputArray);
+ 		assertTrue(outputArray.get(0).split(" ")[0].equals("emergency"));
   	}
 
 

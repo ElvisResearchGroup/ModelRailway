@@ -27,6 +27,7 @@ public class TestControlerCollision extends TestController implements Controller
 	 * @return
 	 */
 	private Event tryLocking(Event e){
+		
 		if((e instanceof Event.SectionChanged) && ((Event.SectionChanged) e).getInto()){ // when we are moving into a section
 			//System.out.println("sectionChanged: ");
 			Map.Entry<modelrailway.simulation.Train, Route> entry = super.getRoute(((Event.SectionChanged)e).getSection());
@@ -35,12 +36,14 @@ public class TestControlerCollision extends TestController implements Controller
 			Route trainRoute = entry.getValue(); // get the route that the train has planned.
 			//Integer nextSec = trainRoute.nextSection(sec);
 			//reserve sections.
+			//System.out.println("::try lock::");
 			if(train.isFowards()){
 				Track front = train.getFront();
 
 				Track notAltNext = front.getNext(false);
 				Track altNext = front.getNext(true);
 				boolean reserved = false ;
+				//System.out.println("reserve sections: notalt: "+ notAltNext.getSection() + " alt: "+altNext.getSection() +" section: "+ nextSec);
 				//System.out.println("nextSec: "+nextSec);
 				//System.out.println("notAltNext: "+notAltNext.getSection().getNumber());
 				//System.out.println("altNext: "+altNext.getSection().getNumber());
