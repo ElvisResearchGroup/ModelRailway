@@ -28,31 +28,39 @@ public class TestControlerCollision extends TestController implements Controller
 	 */
 	private Event tryLocking(Event e){
 		if((e instanceof Event.SectionChanged) && ((Event.SectionChanged) e).getInto()){ // when we are moving into a section
-
+			//System.out.println("sectionChanged: ");
 			Map.Entry<modelrailway.simulation.Train, Route> entry = super.getRoute(((Event.SectionChanged)e).getSection());
-			Integer sec = entry.getValue().nextSection(((Event.SectionChanged) e).getSection());  // get section number the train changed into.
+			Integer nextSec = entry.getValue().nextSection(((Event.SectionChanged) e).getSection());  // get section number the train changed into.
 			Train train = entry.getKey(); // get the train
 			Route trainRoute = entry.getValue(); // get the route that the train has planned.
-			Integer nextSec = trainRoute.nextSection(sec);
+			//Integer nextSec = trainRoute.nextSection(sec);
 			//reserve sections.
 			if(train.isFowards()){
 				Track front = train.getFront();
+
 				Track notAltNext = front.getNext(false);
 				Track altNext = front.getNext(true);
 				boolean reserved = false ;
+				//System.out.println("nextSec: "+nextSec);
+				//System.out.println("notAltNext: "+notAltNext.getSection().getNumber());
+				//System.out.println("altNext: "+altNext.getSection().getNumber());
+				//System.out.println("thisSec: "+train.getFront().getSection().getNumber());
 				if(notAltNext.getSection().getNumber() == nextSec){
+					//System.out.println("notalt number: "+notAltNext.getSection().getNumber());
 					reserved = notAltNext.getSection().reserveSection(train);
 
-				} if(notAltNext.getAltSection() != null && notAltNext.getAltSection().getNumber() == nextSec){
+				}else  if(notAltNext.getAltSection() != null && notAltNext.getAltSection().getNumber() == nextSec){
+
 					reserved = notAltNext.getAltSection().reserveSection(train);
 
-				} if(altNext.getSection().getNumber() == nextSec){
+				}else if(altNext.getSection().getNumber() == nextSec){
+					//System.out.println();
 					reserved = altNext.getSection().reserveSection(train);
 
-				} if(altNext.getAltSection() != null && altNext.getAltSection().getNumber() == nextSec){
+				}else if(altNext.getAltSection() != null && altNext.getAltSection().getNumber() == nextSec){
 					reserved = altNext.getAltSection().reserveSection(train);
 				}
-
+				//System.out.println("reserved: "+reserved);
 				if(reserved == false){ // we need to trigger an emergency stop
 					Integer id = super.getID(train);
 					this.stop(super.getID(train));
@@ -64,6 +72,7 @@ public class TestControlerCollision extends TestController implements Controller
 				Track notAltPrev = back.getPrevious(false);
 				Track altPrev = back.getPrevious(true);
 				boolean reserved = false ;
+				//System.out.println("backend: ");
 				if(notAltPrev.getSection().getNumber() == nextSec){
 					reserved = notAltPrev.getSection().reserveSection(train);
 

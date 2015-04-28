@@ -49,15 +49,15 @@ public abstract class Movable {
 		   this.track = new Track[]{tr[0],tr[0]};
 	   }
    }
-   
+
    public void setID(int id){
 	   this.id = id;
    }
-   
+
    public int getID(){
 	   return this.id;
    }
-   
+
    /**
     * return the current speed of the train.
     * @return
@@ -90,8 +90,9 @@ public abstract class Movable {
    public boolean getBackAlt(){
 	   return backAlt;
    }
-   
+
    public int move(){
+	   //System.out.println("old move");
 	   return move(null);
    }
 
@@ -156,19 +157,14 @@ public abstract class Movable {
 	   // update sectioning
 
 	   for(Track t: old){
-		   t.getSection().removeMovable(this);
+		   RemovePair pairs = t.getSection().removeMovable(this);
 		   if(t.getAltSection() != null){
 			   RemovePair pair = t.getAltSection().removeMovable(this);
-			   boolean retv = pair.retValue;
-			   Train tr = pair.listedTrain;
-			   if(tr != null){
-				    tr.stop();
-				    ls.notify(new Event.EmergencyStop(tr.getID()));
-			   }
 		   }
 	   }
 	   if(onAlt && track[0].getAltSection() != null){
 		   track[0].getAltSection().addMovable(this);
+
 	   } else{
 	       track[0].getSection().addMovable(this);
 	   }

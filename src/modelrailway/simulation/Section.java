@@ -47,8 +47,10 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 	 * @return
 	 */
 	public boolean reserveSection(Train t){
-		if(entryRequests.size() == 0 && entryRequests.size() == 0){
+		//System.out.println("Train: "+t.getID()+" reserving section for section "+this.getNumber() + "entryRequests :"+entryRequests+" movables: "+movableObjects);
+		if(entryRequests.size() == 0 && movableObjects.size() == 0){
 			entryRequests.offer(t);
+			//System.out.println("return true");
 			return true;
 		}
 		else {
@@ -56,6 +58,11 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 			return false;
 		}
 
+	}
+
+	public boolean onRequestList(Train t){
+		if(entryRequests.contains(t)) return true;
+		return false;
 	}
 
 	public static void resetCounter(){
@@ -83,6 +90,7 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 	 * @return
 	 */
 	public Section.RemovePair removeMovable(Movable m){
+
 		boolean ret = movableObjects.remove(m);
 		Train tr = null;
 		if(movableObjects.size() == 0){

@@ -235,8 +235,8 @@ public class CtlTest {
 		 //  System.out.println("stopped:");
 		}catch(InterruptedException e){
 
-			System.out.println("routePlan: " +Arrays.asList(new Integer[]{ sw2Section, swAlt, switchSection, headSection}).toString());
-			System.out.println("routeTraveled: "+outputArray.toString());
+			//System.out.println("routePlan: " +Arrays.asList(new Integer[]{ sw2Section, swAlt, switchSection, headSection}).toString());
+			//System.out.println("routeTraveled: "+outputArray.toString());
 		}
 		assertTrue(outputArray.get(0) == 5);
 		assertTrue(outputArray.get(1) == 6);
@@ -347,8 +347,8 @@ public class CtlTest {
 		 //  System.out.println("stopped:");
 		}catch(InterruptedException e){
 
-			System.out.println("routePlan: " +Arrays.asList(new Integer[]{ sw2Section, mainRoute, switchSection, headSection}).toString());
-			System.out.println("routeTraveled: "+outputArray.toString());
+			//System.out.println("routePlan: " +Arrays.asList(new Integer[]{ sw2Section, mainRoute, switchSection, headSection}).toString());
+			//System.out.println("routeTraveled: "+outputArray.toString());
 		}
 		assertTrue(outputArray.get(0) == 5);
 		assertTrue(outputArray.get(1) == mainRoute);
@@ -459,8 +459,8 @@ public class CtlTest {
 		 //  System.out.println("stopped:");
 		}catch(InterruptedException e){
 
-			System.out.println("routePlan: " +Arrays.asList(new Integer[]{ sw2Section, mainRoute, switchSection, headSection}).toString());
-			System.out.println("routeTraveled: "+outputArray.toString());
+			//System.out.println("routePlan: " +Arrays.asList(new Integer[]{ sw2Section, mainRoute, switchSection, headSection}).toString());
+			//System.out.println("routeTraveled: "+outputArray.toString());
 		}
 		assertTrue(outputArray.get(0) == 4);
 		assertTrue(outputArray.get(1) == mainRoute);
@@ -495,14 +495,21 @@ public class CtlTest {
 
 		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
 		Train train = new Train(new Movable[]{locomotive});
-		boolean secReserve = tp_1.getSection().reserveSection(train);
-		assertTrue(secReserve);
+
 		Train train2 = new Train(new Movable[]{loco2});
 		//train.toggleDirection();
 		trainMap.put(0,train );
 		train.setID(0);
 		trainMap.put(1, train2);
 		train2.setID(1);
+
+		//System.out.println(sec.getNumber()+ ": head");
+		//System.out.println(tp_1.getSection().getNumber()+ ": tp_1");
+		//System.out.println(tp_2.getSection().getNumber()+ ": tp_2");
+		//System.out.println(tp_3.getSection().getNumber()+ ": tp_3");
+
+		boolean secReserve = tp_1.getSection().reserveSection(train);
+		assertTrue(secReserve);
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(0, true));
@@ -526,7 +533,7 @@ public class CtlTest {
 		ctl.register(new Listener(){
 			public void notify(Event e){
 				//System.out.println("event "+e.toString());
-				//System.out.println(e);
+
 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
 
 				  //System.out.println(e);
@@ -560,8 +567,8 @@ public class CtlTest {
 		 //  System.out.println("stopped:");
 		}catch(InterruptedException e){
 			//System.out.println(output);
-			
-			System.out.println(output);
+
+			//System.out.println(output);
 			assertTrue(output.get(0).split(" ")[0].equals("emergency"));
 			assertTrue(locomotive.getFront().getSection().getNumber() == sec2);
 			//System.out.println("routePlan: " +Arrays.asList(new Integer[]{ sw2Section, mainRoute, switchSection, headSection}).toString());

@@ -48,18 +48,19 @@ public class Simulator implements Controller{
 				  for(Section s : s2list){
 					if(!slist.contains(s)){
 						for(Listener l : listeners){
-							//System.out.println("trainSec: "+train.getBack().getSection().getNumber());
-						//	System.out.println("listenerSize: "+listeners.size());
+
+							//s.reserveSection(train);
 							Event ev = new Event.SectionChanged(s.getNumber(), true);
 							l.notify(ev);
-
-							//
 						}
 					}
 				  }
 				  for(Section s : slist){
 					if(!s2list.contains(s)){
 						for(Listener l : listeners){
+
+							//s.reserveSection(train);
+
 							Event ev = new Event.SectionChanged(s.getNumber(), false);
 							l.notify(ev);
 						}
