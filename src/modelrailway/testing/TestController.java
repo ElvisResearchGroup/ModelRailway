@@ -31,6 +31,17 @@ public class TestController implements Controller, Listener {
 	private Map<Integer, Section> sections;
 	private Track head;
 
+	public Map<Integer, modelrailway.core.Train> trainOrientations(){
+		return trainOrientations;
+	}
+	public Map<Integer, Section> sections(){
+		return sections;
+	}
+
+	public Map<Integer, Route> routes(){
+		return trainRoutes;
+	}
+
 	public TestController( Map<Integer,modelrailway.core.Train> orientations, Map<Integer, Section> intSecMap , Track head, Controller trackController){
 		this.trackController = trackController;
 		trainOrientations = orientations; // are the trains going backwards or fowards.

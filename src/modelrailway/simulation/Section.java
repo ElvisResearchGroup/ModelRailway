@@ -16,9 +16,9 @@ import modelrailway.core.Controller;
  */
 public class Section extends ArrayList<Track>{ // a section is a list of tracks , sections can detect trains
 	public class RemovePair{
-		public RemovePair(boolean retValue, Train listedTrain){this.retValue = retValue; this.listedTrain = listedTrain;}
+		public RemovePair(boolean retValue, Integer listedTrain){this.retValue = retValue; this.listedTrain = listedTrain;}
 		public boolean retValue;
-		public Train listedTrain;
+		public Integer listedTrain;
 	}
 
 	static{
@@ -27,7 +27,7 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 
 	private Set<Movable> movableObjects = new HashSet<Movable>(); // the trains on the section.
 
-	private Queue<Train> entryRequests = new LinkedList<Train>();
+	private Queue<Integer> entryRequests = new LinkedList<Integer>();
 
 	/**
 	 * Section takes a list of tracks in the section.
@@ -46,7 +46,7 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 	 * @param t
 	 * @return
 	 */
-	public boolean reserveSection(Train t){
+	public boolean reserveSection(Integer t){
 		//System.out.println("Train: "+t.getID()+" reserving section for section "+this.getNumber() + "entryRequests :"+entryRequests+" movables: "+movableObjects);
 		if(entryRequests.size() == 0 && movableObjects.size() == 0){
 			entryRequests.offer(t);
@@ -60,7 +60,7 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 
 	}
 
-	public boolean onRequestList(Train t){
+	public boolean onRequestList(Integer t){
 		if(entryRequests.contains(t)) return true;
 		return false;
 	}
@@ -74,7 +74,7 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 	}
 
 	public boolean addMovable(Movable m){
-		if(entryRequests.peek() == m) entryRequests.poll();
+		if(entryRequests.peek() == m.getID()) entryRequests.poll();
 		return movableObjects.add(m);
 	}
 
@@ -92,7 +92,7 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 	public Section.RemovePair removeMovable(Movable m){
 
 		boolean ret = movableObjects.remove(m);
-		Train tr = null;
+		Integer tr = null;
 		if(movableObjects.size() == 0){
 		    tr = entryRequests.peek();
 		}

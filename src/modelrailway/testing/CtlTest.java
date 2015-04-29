@@ -85,7 +85,7 @@ public class CtlTest {
 		orientationMap.put(0, new modelrailway.core.Train(0, true));
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
-		final TestController ctl = new TestController( trainMap,orientationMap,head, sim); //
+		final TestController ctl = new TestController(trainMap,orientationMap,head, sim); //
 
 		Integer headSection = head.getSection().getNumber();
 		Integer switchSection = sw.getSection().getNumber();
@@ -508,7 +508,7 @@ public class CtlTest {
 		//System.out.println(tp_2.getSection().getNumber()+ ": tp_2");
 		//System.out.println(tp_3.getSection().getNumber()+ ": tp_3");
 
-		boolean secReserve = tp_1.getSection().reserveSection(train);
+		boolean secReserve = tp_1.getSection().reserveSection(train.getID());
 		assertTrue(secReserve);
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
@@ -727,11 +727,11 @@ public class CtlTest {
 
  		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
  		Train train = new Train(new Movable[]{locomotive});
- 		
- 		sw.getSection().reserveSection(train);
+
+ 		sw.getSection().reserveSection(train.getID());
 
  		Train train2 = new Train(new Movable[]{locomotive2});
- 		
+
  		trainMap.put(0,train );
  		train.setID(0);
  		trainMap.put(1, train2);

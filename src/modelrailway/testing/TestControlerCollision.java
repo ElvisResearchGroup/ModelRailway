@@ -11,10 +11,10 @@ import modelrailway.simulation.Train;
 
 public class TestControlerCollision extends TestController implements Controller{
 
-	public TestControlerCollision(Map<Integer, Train> trains,
-			Map<Integer, modelrailway.core.Train> orientations, Track head,
+	public TestControlerCollision(Map<Integer, modelrailway.core.Train> trains,
+			Map<Integer, Section> sections, Track head,
 			Controller trackController) {
-		super(trains, orientations, head, trackController);
+		super(trains, sections, head, trackController);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -27,19 +27,20 @@ public class TestControlerCollision extends TestController implements Controller
 	 * @return
 	 */
 	private Event tryLocking(Event e){
-		
+
 		if((e instanceof Event.SectionChanged) && ((Event.SectionChanged) e).getInto()){ // when we are moving into a section
 			//System.out.println("sectionChanged: ");
-			Map.Entry<modelrailway.simulation.Train, Route> entry = super.getRoute(((Event.SectionChanged)e).getSection());
+			Map.Entry<Integer, Route> entry = super.getRoute(((Event.SectionChanged)e).getSection());
 			Integer nextSec = entry.getValue().nextSection(((Event.SectionChanged) e).getSection());  // get section number the train changed into.
-			Train train = entry.getKey(); // get the train
+			Integer train = entry.getKey(); // get the train
 			Route trainRoute = entry.getValue(); // get the route that the train has planned.
 			//Integer nextSec = trainRoute.nextSection(sec);
 			//reserve sections.
 			//System.out.println("::try lock::");
-			if(train.isFowards()){
-				Track front = train.getFront();
+			if(this.trainOrientations().get(train).currentOrientation() == true){
+				Section thisSec = this.sections().get(this.trainOrientations().get(train).currentSection());
 
+				Track front = thisSec.get(0);
 				Track notAltNext = front.getNext(false);
 				Track altNext = front.getNext(true);
 				boolean reserved = false ;
@@ -65,13 +66,13 @@ public class TestControlerCollision extends TestController implements Controller
 				}
 				//System.out.println("reserved: "+reserved);
 				if(reserved == false){ // we need to trigger an emergency stop
-					Integer id = super.getID(train);
-					this.stop(super.getID(train));
-					super.notify(new Event.EmergencyStop(id));
+					this.stop(train);
+					super.notify(new Event.EmergencyStop(train));
 				}
 			}
 			else{
-				Track back = train.getBack();
+				Section thisSec = this.sections().get(this.trainOrientations().get(train).currentSection());
+				Track back = thisSec.get(0); // length is not supported.
 				Track notAltPrev = back.getPrevious(false);
 				Track altPrev = back.getPrevious(true);
 				boolean reserved = false ;
@@ -90,9 +91,8 @@ public class TestControlerCollision extends TestController implements Controller
 				}
 
 				if(reserved == false){
-					Integer id = super.getID(train);
-					this.stop(id);
-					super.notify(new Event.EmergencyStop(id));
+					this.stop(train);
+					super.notify(new Event.EmergencyStop(train));
 				}
 			}
 		}
