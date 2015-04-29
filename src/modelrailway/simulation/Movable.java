@@ -15,6 +15,7 @@ public abstract class Movable {
    private enum Direction{
 	   back,forward
    }
+
    private Track[] track; // track segments the item spans; may span up to two segments of track.
    private int distance; // distance along the track segment
    private int length; // length of the object
@@ -24,6 +25,7 @@ public abstract class Movable {
    private boolean backAlt = false;
    private Direction direction;
    private Integer id = null;
+   private modelrailway.core.Train trainOb = null;
    /**
     * Create a movable item at the specified distance along a track segment with the specified length.
     * The track array must contain two connected segments and must be valid before being supplied to the constructor.
@@ -54,7 +56,10 @@ public abstract class Movable {
 	   this.id = id;
    }
 
-   public int getID(){
+   public void setTrainOb(modelrailway.core.Train trainOb){
+	   this.trainOb = trainOb;
+   }
+   public Integer getID(){
 	   return this.id;
    }
 
@@ -164,14 +169,18 @@ public abstract class Movable {
 	   }
 	   if(onAlt && track[0].getAltSection() != null){
 		   track[0].getAltSection().addMovable(this);
+		   if(trainOb != null) trainOb.setSection(track[0].getAltSection().getNumber());
 
 	   } else{
 	       track[0].getSection().addMovable(this);
+	       if(trainOb != null) trainOb.setSection(track[0].getSection().getNumber());
 	   }
 	   if(backAlt && track[1].getAltSection() != null){
 		   track[1].getAltSection().addMovable(this);
+
 	   } else{
 	       track[1].getSection().addMovable(this);
+
 	   }
 	   return distance;
    }

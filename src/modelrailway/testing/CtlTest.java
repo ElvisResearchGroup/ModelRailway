@@ -80,12 +80,16 @@ public class CtlTest {
 
 		trainMap.put(0,train );
 		train.setID(0);
+
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(0, true));
+		locomotive.setTrainOb(orientationMap.get(0));
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
-		final TestController ctl = new TestController(trainMap,orientationMap,head, sim); //
+		final TestController ctl = new TestController(orientationMap,route.getSectionMap(),head, sim); //
+
+
 
 		Integer headSection = head.getSection().getNumber();
 		Integer switchSection = sw.getSection().getNumber();
@@ -187,9 +191,10 @@ public class CtlTest {
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(0, false));
+		locomotive.setTrainOb(orientationMap.get(0));
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
-		final TestController ctl = new TestController( trainMap,orientationMap,head, sim); //
+		final TestController ctl = new TestController(orientationMap,route.getSectionMap(),head, sim); //
 
 		Integer headSection = head.getSection().getNumber();
 		Integer switchSection = sw.getSection().getNumber();
@@ -299,9 +304,9 @@ public class CtlTest {
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(0, false));
-
+		locomotive.setTrainOb(orientationMap.get(0));
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
-		final TestController ctl = new TestController( trainMap,orientationMap,head, sim); //
+		final TestController ctl = new TestController(orientationMap,route.getSectionMap(),head, sim); //
 
 		Integer headSection = head.getSection().getNumber();
 		Integer switchSection = sw.getSection().getNumber();
@@ -411,9 +416,9 @@ public class CtlTest {
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(0, false));
-
+		locomotive.setTrainOb(orientationMap.get(0));
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
-		final TestController ctl = new TestController( trainMap,orientationMap,head, sim); //
+		final TestController ctl = new TestController(orientationMap,route.getSectionMap(),head, sim); //
 
 		Integer headSection = head.getSection().getNumber();
 		Integer switchSection = sw.getSection().getNumber();
@@ -500,6 +505,7 @@ public class CtlTest {
 		//train.toggleDirection();
 		trainMap.put(0,train );
 		train.setID(0);
+
 		trainMap.put(1, train2);
 		train2.setID(1);
 
@@ -514,9 +520,11 @@ public class CtlTest {
 
 		orientationMap.put(0, new modelrailway.core.Train(0, true));
 		orientationMap.put(1, new modelrailway.core.Train(1,true));
+		locomotive.setTrainOb(orientationMap.get(0));
+		loco2.setTrainOb(orientationMap.get(1));
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
-		final TestController ctl = new TestControlerCollision( trainMap,orientationMap,head, sim); //
+		final TestController ctl = new TestControlerCollision(orientationMap,route.getSectionMap(),head, sim); //
 
 		Integer headSection = head.getSection().getNumber();
 		Integer sec1 = tp_1.getSection().getNumber();
@@ -567,8 +575,8 @@ public class CtlTest {
 		 //  System.out.println("stopped:");
 		}catch(InterruptedException e){
 			//System.out.println(output);
-
-			//System.out.println(output);
+			System.out.println(routePlan);
+			System.out.println(output);
 			assertTrue(output.get(0).split(" ")[0].equals("emergency"));
 			assertTrue(locomotive.getFront().getSection().getNumber() == sec2);
 			//System.out.println("routePlan: " +Arrays.asList(new Integer[]{ sw2Section, mainRoute, switchSection, headSection}).toString());
@@ -632,9 +640,11 @@ public class CtlTest {
 
  		orientationMap.put(0, new modelrailway.core.Train(0, true));
  		orientationMap.put(1, new modelrailway.core.Train(1,true));
+ 		locomotive.setTrainOb(orientationMap.get(0));
+		locomotive2.setTrainOb(orientationMap.get(1));
 
  		final Simulator sim = new Simulator(head, orientationMap, trainMap);
- 		final TestController ctl = new TestController( trainMap,orientationMap,head, sim); //
+ 		final TestController ctl = new TestController(orientationMap,route.getSectionMap(),head, sim); //
 
  		Integer headSection = head.getSection().getNumber();
  		Integer switchSection = sw.getSection().getNumber();
@@ -740,9 +750,10 @@ public class CtlTest {
 
  		orientationMap.put(0, new modelrailway.core.Train(0, true));
  		orientationMap.put(1, new modelrailway.core.Train(1,true));
-
+ 		locomotive.setTrainOb(orientationMap.get(0));
+		locomotive2.setTrainOb(orientationMap.get(1));
  		final Simulator sim = new Simulator(head, orientationMap, trainMap);
- 		final TestController ctl = new TestControlerCollision( trainMap,orientationMap,head, sim); //
+ 		final TestController ctl = new TestControlerCollision(orientationMap,route.getSectionMap(),head, sim); //
 
  		final Integer headSection = head.getSection().getNumber();
  		final Integer switchSection = sw.getSection().getNumber();

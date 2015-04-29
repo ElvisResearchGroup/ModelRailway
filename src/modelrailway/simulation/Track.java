@@ -15,16 +15,30 @@ public abstract class Track {
 	public static  class RingRoute{
 		private Track head;
 		private List<Track> trackList = new ArrayList<Track>();
+		private List<Section> sectionList = new ArrayList<Section>();
 
 		public RingRoute(Track head){
 			this.head = head;
 			trackList.add(this.head);
+			sectionList.add(this.head.getSection());
+			if(this.head.getAltSection() != null) sectionList.add(this.head.getAltSection());
 		}
 		public Track getHead(){
 			return head;
 		}
 		public List<Track> getTrackList(){
 			return trackList;
+		}
+		public List<Section> getSectionList(){
+
+			return sectionList;
+		}
+		public Map<Integer, Section> getSectionMap(){
+			Map<Integer,Section > smap = new HashMap<Integer,Section>();
+			for(Section s : sectionList){
+				smap.put(s.getNumber(), s);
+			}
+			return smap;
 		}
 		/**
 		 * insert a track between tr1 and the next track to tr1.
@@ -44,6 +58,8 @@ public abstract class Track {
 			boolean insertedTrackUnifyNext = false;
 			boolean insertedTrackUnifyPrevious = false;
 			trackList.add(insertedTrack);
+			sectionList.add(insertedTrack.getSection());
+			if(insertedTrack.getAltSection() != null) sectionList.add(insertedTrack.getAltSection());
 			if(tr1.next == tr1.alternateNext && tr1.next != null) tr1UnifyNext = true;
 			if(tr2.previous == tr2.alternatePrevious && tr2.previous != null) tr2UnifyPrevious = true;
 			if(insertedTrack.next == insertedTrack.alternateNext && insertedTrack.next != null) insertedTrackUnifyNext = true;
@@ -139,6 +155,8 @@ public abstract class Track {
 				if(tr1UnifyNext) tr1.alternateNext = tr1.next;
 			}
 			trackList.add(insertedTrack);
+			sectionList.add(insertedTrack.getSection());
+			if(insertedTrack.getAltSection() != null) sectionList.add(insertedTrack.getAltSection());
 			return tr1; // return tr1
 		}
 
@@ -185,6 +203,8 @@ public abstract class Track {
 				if(tr1UnifyNext) tr1.alternateNext = tr1.next;
 			}
 			trackList.add(insertedTrack);
+			sectionList.add(insertedTrack.getSection());
+			if(insertedTrack.getAltSection() != null) sectionList.add(insertedTrack.getAltSection());
 			return tr1; // return tr1
 		}
 
@@ -195,6 +215,8 @@ public abstract class Track {
 		 */
 		protected Track trivialRing(Track tr){
 			trackList.add(tr);
+			sectionList.add(tr.getSection());
+			if(tr.getAltSection() != null) sectionList.add(tr.getAltSection());
 			tr.alternateNext = null;
 			tr.alternatePrevious = null;
 			tr.altlength = 0;
@@ -260,7 +282,17 @@ public abstract class Track {
 		    if(tlist.get(index) == head){
 		    	head = t2; // replace the head.
 		    }
+
+		    Section sec = tlist.get(index).getSection();
+		    sectionList.remove(sec);
+		    if(tlist.get(index).getAltSection() != null ){
+		    	sectionList.remove(tlist.get(index).getAltSection());
+
+		    }
+		    sectionList.add(t2.getSection());
+		    if(t2.getAltSection() != null) sectionList.add(t2.getAltSection());
 		    tlist.set(index, t2);
+
 			return tr;
 
 		}
@@ -269,6 +301,7 @@ public abstract class Track {
 			Section sec = new Section(new ArrayList<Track>());
 			Track buffer = new Buffer(t1,enterForward,sec,100);
 			sec.add(buffer);
+			sectionList.add(sec);
 			if(onAlt){
 				if(enterForward){
 					t1.alternateNext = buffer;

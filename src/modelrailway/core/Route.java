@@ -1,5 +1,6 @@
 package modelrailway.core;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 /**
@@ -93,6 +94,11 @@ public class Route {
 			}
 		}
 		throw new IllegalArgumentException("Invalid section for route");
+
+	}
+
+	public String toString(){
+		return "route: "+Arrays.toString(sections);
 
 	}
 }

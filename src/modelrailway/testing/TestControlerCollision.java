@@ -29,14 +29,16 @@ public class TestControlerCollision extends TestController implements Controller
 	private Event tryLocking(Event e){
 
 		if((e instanceof Event.SectionChanged) && ((Event.SectionChanged) e).getInto()){ // when we are moving into a section
-			//System.out.println("sectionChanged: ");
-			Map.Entry<Integer, Route> entry = super.getRoute(((Event.SectionChanged)e).getSection());
+			System.out.println("sectionChanged: "+((Event.SectionChanged)e).getSection());
+			Map.Entry<Integer, Route> entry = super.getRoute(((Event.SectionChanged)e).getSection()); //
+
+
 			Integer nextSec = entry.getValue().nextSection(((Event.SectionChanged) e).getSection());  // get section number the train changed into.
 			Integer train = entry.getKey(); // get the train
 			Route trainRoute = entry.getValue(); // get the route that the train has planned.
-			//Integer nextSec = trainRoute.nextSection(sec);
-			//reserve sections.
-			//System.out.println("::try lock::");
+
+
+
 			if(this.trainOrientations().get(train).currentOrientation() == true){
 				Section thisSec = this.sections().get(this.trainOrientations().get(train).currentSection());
 
@@ -44,11 +46,11 @@ public class TestControlerCollision extends TestController implements Controller
 				Track notAltNext = front.getNext(false);
 				Track altNext = front.getNext(true);
 				boolean reserved = false ;
-				//System.out.println("reserve sections: notalt: "+ notAltNext.getSection() + " alt: "+altNext.getSection() +" section: "+ nextSec);
-				//System.out.println("nextSec: "+nextSec);
-				//System.out.println("notAltNext: "+notAltNext.getSection().getNumber());
-				//System.out.println("altNext: "+altNext.getSection().getNumber());
-				//System.out.println("thisSec: "+train.getFront().getSection().getNumber());
+				System.out.println("reserve sections: notalt: "+ notAltNext.getSection().getNumber() + " alt: "+altNext.getSection().getNumber() +" section: "+ nextSec);
+				System.out.println("nextSec: "+nextSec);
+				System.out.println("notAltNext: "+notAltNext.getSection().getNumber());
+				System.out.println("altNext: "+altNext.getSection().getNumber());
+				System.out.println("thisSec: "+thisSec.getNumber());
 				if(notAltNext.getSection().getNumber() == nextSec){
 					//System.out.println("notalt number: "+notAltNext.getSection().getNumber());
 					reserved = notAltNext.getSection().reserveSection(train);

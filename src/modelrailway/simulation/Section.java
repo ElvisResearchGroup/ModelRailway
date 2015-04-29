@@ -47,7 +47,7 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 	 * @return
 	 */
 	public boolean reserveSection(Integer t){
-		//System.out.println("Train: "+t.getID()+" reserving section for section "+this.getNumber() + "entryRequests :"+entryRequests+" movables: "+movableObjects);
+		System.out.println("Train: "+t +" reserving section for section "+this.getNumber() + "entryRequests :"+entryRequests+" movables: "+movableObjects);
 		if(entryRequests.size() == 0 && movableObjects.size() == 0){
 			entryRequests.offer(t);
 			//System.out.println("return true");
@@ -74,7 +74,10 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 	}
 
 	public boolean addMovable(Movable m){
-		if(entryRequests.peek() == m.getID()) entryRequests.poll();
+		System.out.println(entryRequests);
+		if(entryRequests.size() != 0){
+		  if(m.getID() != null && entryRequests.peek() == m.getID()) entryRequests.poll();
+		  }
 		return movableObjects.add(m);
 	}
 
