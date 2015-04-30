@@ -32,7 +32,9 @@ public class Train extends Movable {
 			trainParts[i].move(ls);
 		}
 		//System.out.println("move locomotive");
-		return trainParts[0].move(ls);
+		int retval = trainParts[0].move(ls);
+		return retval;
+
 
 	}
 

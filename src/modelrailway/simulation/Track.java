@@ -51,6 +51,7 @@ public abstract class Track {
 
 		public Track insertBetween(Track tr1, boolean onAlt, Track tr2, boolean onAlt2, Track insertedTrack, boolean onAlt3){
 			if(insertedTrack instanceof Switch){
+
 				head.addSwitchEntry(((Switch) insertedTrack).getSwitchID(), insertedTrack);
 			}
 			boolean tr1UnifyNext = false;
@@ -239,6 +240,9 @@ public abstract class Track {
 			Track tr = getHead();
 			if(t instanceof Switch){
 				tr.removeSwitchEntry(((Switch) t).getSwitchID());
+			}
+			if(t2 instanceof Switch){
+				tr.addSwitchEntry(((Switch) t2).getSwitchID(),t2);
 			}
 			List<Track> tlist = getTrackList();
 		    int index = tlist.lastIndexOf(t);

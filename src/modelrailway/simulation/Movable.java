@@ -59,6 +59,9 @@ public abstract class Movable {
    public void setTrainOb(modelrailway.core.Train trainOb){
 	   this.trainOb = trainOb;
    }
+   public modelrailway.core.Train getTrainOb(){
+	   return trainOb;
+   }
    public Integer getID(){
 	   return this.id;
    }
@@ -169,11 +172,9 @@ public abstract class Movable {
 	   }
 	   if(onAlt && track[0].getAltSection() != null){
 		   track[0].getAltSection().addMovable(this);
-		   if(trainOb != null) trainOb.setSection(track[0].getAltSection().getNumber());
 
 	   } else{
 	       track[0].getSection().addMovable(this);
-	       if(trainOb != null) trainOb.setSection(track[0].getSection().getNumber());
 	   }
 	   if(backAlt && track[1].getAltSection() != null){
 		   track[1].getAltSection().addMovable(this);

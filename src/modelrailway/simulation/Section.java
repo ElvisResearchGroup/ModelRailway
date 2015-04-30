@@ -74,7 +74,7 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 	}
 
 	public boolean addMovable(Movable m){
-		System.out.println(entryRequests);
+		//System.out.println(entryRequests);
 		if(entryRequests.size() != 0){
 		  if(m.getID() != null && entryRequests.peek() == m.getID()) entryRequests.poll();
 		  }

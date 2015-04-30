@@ -78,12 +78,13 @@ public class Route {
 	}
 
 	public Integer prevSection(int section){
-		for (int i = 0; i != sections.length; ++i) {
+		for (int i = sections.length-1; i >= 0; --i) {
 			if (sections[i] == section) {
 				// Found matching section. Now, determine next section (if it
 				// exists).
-				i = (i - 1) % sections.length;
+				i = (i - 1); 
 				// Check whether we reached the end of the route or not
+				if(i < 0) i = sections.length + i;
 				if (i == 0 && !isLoop) {
 					// Yes, we did.
 					return null;

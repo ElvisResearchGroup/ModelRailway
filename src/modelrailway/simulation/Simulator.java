@@ -51,6 +51,7 @@ public class Simulator implements Controller{
 
 							//s.reserveSection(train);
 							Event ev = new Event.SectionChanged(s.getNumber(), true);
+							if(train.getParts()[0].getTrainOb() != null) train.getParts()[0].getTrainOb().setSection(s.getNumber());
 							l.notify(ev);
 						}
 					}
