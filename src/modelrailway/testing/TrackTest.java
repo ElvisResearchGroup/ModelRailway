@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import modelrailway.core.Event;
+import modelrailway.core.Section;
 import modelrailway.core.Event.Listener;
 import modelrailway.core.Event.SectionChanged;
 import modelrailway.simulation.Crossing;
@@ -19,7 +20,6 @@ import modelrailway.simulation.Simulator;
 import modelrailway.simulation.Straight;
 import modelrailway.simulation.ForwardSwitch;
 import modelrailway.simulation.Track;
-import modelrailway.simulation.Section;
 import modelrailway.simulation.Train;
 
 import org.junit.*;
@@ -227,7 +227,7 @@ public class TrackTest {
 		// create a locomotive
 
 		Movable loco = new Locomotive(new Track[]{head1,head1}, 50, 50, 40, false); // tracks, dist, length, maxspeed, onAlt
-
+		loco.setID(0);
 		loco.start();
 
 		loco.move();
@@ -326,7 +326,7 @@ public class TrackTest {
 		// create a locomotive
 
 		Movable loco = new Locomotive(new Track[]{head2,head2}, 50, 50, 40, false); // tracks, dist, length, maxspeed, onAlt
-
+		loco.setID(0);
 		loco.start();
 
 		loco.move();
@@ -426,7 +426,7 @@ public class TrackTest {
 		// create a locomotive
 
 		Movable loco = new Locomotive(new Track[]{head2,head2}, 50, 50, 40, false); // tracks, dist, length, maxspeed, onAlt
-
+		loco.setID(0);
 		loco.start();
 
 		loco.move();
@@ -525,7 +525,7 @@ public class TrackTest {
 		// create a locomotive
 
 		Movable loco = new Locomotive(new Track[]{head1,head1}, 50, 50, 40, false); // tracks, dist, length, maxspeed, onAlt
-
+		loco.setID(0);
 		loco.start();
 
 		loco.move();
@@ -614,10 +614,10 @@ public class TrackTest {
 		assertTrue(tp_1.getPrevious(false) == head);
 
 		Movable loco = new Locomotive(new Track[]{head}, 50, 40, 40, false);
-
-		assertTrue(head.getSection().containsMovable(loco));
-		assertFalse(tp_1.getSection().containsMovable(loco));
-		assertFalse(tp_2.getSection().containsMovable(loco));
+		loco.setID(0);
+		assertTrue(head.getSection().containsMovable(loco.getID()));
+		assertFalse(tp_1.getSection().containsMovable(loco.getID()));
+		assertFalse(tp_2.getSection().containsMovable(loco.getID()));
 
 		loco.start();
 		loco.move(); // 90
@@ -625,25 +625,25 @@ public class TrackTest {
 		assertTrue(loco.getDistance() == 30);
 		assertTrue(loco.getFront() == tp_1);
 		assertTrue(loco.getBack() == head);
-		assertTrue(head.getSection().containsMovable(loco));
-		assertTrue(tp_1.getSection().containsMovable(loco));
+		assertTrue(head.getSection().containsMovable(loco.getID()));
+		assertTrue(tp_1.getSection().containsMovable(loco.getID()));
 		//System.out.println("tp_2: "+tp_2);
-		assertFalse(tp_2.getSection().containsMovable(loco));
+		assertFalse(tp_2.getSection().containsMovable(loco.getID()));
 
 		loco.move();// 70
-		assertFalse(head.getSection().containsMovable(loco));
-		assertTrue(tp_1.getSection().containsMovable(loco));
-		assertFalse(tp_2.getSection().containsMovable(loco));
+		assertFalse(head.getSection().containsMovable(loco.getID()));
+		assertTrue(tp_1.getSection().containsMovable(loco.getID()));
+		assertFalse(tp_2.getSection().containsMovable(loco.getID()));
 
 		loco.move(); // 10
-		assertFalse(head.getSection().containsMovable(loco));
-		assertTrue(tp_1.getSection().containsMovable(loco));
-		assertTrue(tp_2.getSection().containsMovable(loco));
+		assertFalse(head.getSection().containsMovable(loco.getID()));
+		assertTrue(tp_1.getSection().containsMovable(loco.getID()));
+		assertTrue(tp_2.getSection().containsMovable(loco.getID()));
 
 		loco.move();//50
-		assertFalse(head.getSection().containsMovable(loco));
-		assertFalse(tp_1.getSection().containsMovable(loco));
-		assertTrue(tp_2.getSection().containsMovable(loco));
+		assertFalse(head.getSection().containsMovable(loco.getID()));
+		assertFalse(tp_1.getSection().containsMovable(loco.getID()));
+		assertTrue(tp_2.getSection().containsMovable(loco.getID()));
 	}
 
     /**

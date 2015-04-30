@@ -1,4 +1,4 @@
-package modelrailway.simulation;
+package modelrailway.core;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-import modelrailway.core.Controller;
+import modelrailway.simulation.Track;
 /**
  * Section is a list of track pieces with pointers to next and previous sections
  * @author powleybenj
@@ -25,7 +25,7 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 		sectionNumberCounter = 0;
 	}
 
-	private Set<Movable> movableObjects = new HashSet<Movable>(); // the trains on the section.
+	private Set<Integer> movableObjects = new HashSet<Integer>(); // the trains on the section.
 
 	private Queue<Integer> entryRequests = new LinkedList<Integer>();
 
@@ -73,15 +73,15 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 		return sectionNumber;
 	}
 
-	public boolean addMovable(Movable m){
+	public boolean addMovable(Integer m){
 		//System.out.println(entryRequests);
 		if(entryRequests.size() != 0){
-		  if(m.getID() != null && entryRequests.peek() == m.getID()) entryRequests.poll();
+		  if(m != null && entryRequests.peek() == m) entryRequests.poll();
 		  }
 		return movableObjects.add(m);
 	}
 
-	public boolean containsMovable(Movable m){
+	public boolean containsMovable(Integer m){
 		return movableObjects.contains(m);
 	}
 
@@ -92,7 +92,7 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 	 * @param m
 	 * @return
 	 */
-	public Section.RemovePair removeMovable(Movable m){
+	public Section.RemovePair removeMovable(Integer m){
 
 		boolean ret = movableObjects.remove(m);
 		Integer tr = null;
@@ -106,7 +106,7 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 		return (movableObjects.size() == 0);
 	}
 
-	public Set<Movable> getMovableSet(){
+	public Set<Integer> getMovableSet(){
 		return movableObjects;
 	}
 	public String toString(){

@@ -1,5 +1,6 @@
 package modelrailway.simulation;
 
+import modelrailway.core.Section;
 import modelrailway.simulation.Track;
 
 public class Buffer extends Track {

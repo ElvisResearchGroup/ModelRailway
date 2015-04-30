@@ -9,6 +9,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import modelrailway.core.Controller;
 import modelrailway.core.Event;
+import modelrailway.core.Section;
 import modelrailway.core.Event.Listener;
 import modelrailway.core.Route;
 import modelrailway.core.Train;

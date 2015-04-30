@@ -10,12 +10,12 @@ import org.junit.Test;
 
 import modelrailway.core.Controller;
 import modelrailway.core.Event;
+import modelrailway.core.Section;
 import modelrailway.core.Event.Listener;
 import modelrailway.core.Event.SectionChanged;
 import modelrailway.core.Route;
 import modelrailway.simulation.BackSwitch;
 import modelrailway.simulation.ForwardSwitch;
-import modelrailway.simulation.Section;
 import modelrailway.simulation.Straight;
 import modelrailway.simulation.Track;
 import modelrailway.simulation.Locomotive;

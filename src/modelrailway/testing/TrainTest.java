@@ -4,12 +4,12 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
+import modelrailway.core.Section;
 import modelrailway.simulation.BackSwitch;
 import modelrailway.simulation.ForwardSwitch;
 import modelrailway.simulation.Locomotive;
 import modelrailway.simulation.Movable;
 import modelrailway.simulation.RollingStock;
-import modelrailway.simulation.Section;
 import modelrailway.simulation.Straight;
 import modelrailway.simulation.Track;
 import modelrailway.simulation.Train;
@@ -29,7 +29,8 @@ public class TrainTest {
 		sec.add(head);
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 50, 50, 50, false);
-		sec.addMovable(locomotive);
+		locomotive.setID(0);
+		sec.addMovable(locomotive.getID());
 		assertTrue(locomotive.getFront() == head);
 		assertTrue(locomotive.getBack() == head);
 
@@ -77,7 +78,8 @@ public class TrainTest {
 		sec.add(head);
 
 		Movable locomotive = new Locomotive(new Track[]{head.getNext(false),head}, 90, 110, 50, false);
-		sec.addMovable(locomotive);
+		locomotive.setID(0);
+		sec.addMovable(locomotive.getID());
 		assertTrue(locomotive.getFront() == head.getNext(false));
 		assertTrue(locomotive.getBack() == head);
 		assertTrue(locomotive.getBackDistance() == 20);
@@ -142,7 +144,8 @@ public class TrainTest {
 		route.replace(head.getNext(false).getNext(false), sw2, false);
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 50, 50, 50, false);
-		sec.addMovable(locomotive);
+		locomotive.setID(0);
+		sec.addMovable(locomotive.getID());
 		assertTrue(locomotive.getFront() == head);
 		assertTrue(locomotive.getBack() == head);
 
@@ -197,7 +200,8 @@ public class TrainTest {
 		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 40, 40, 40, false);
-		sec.addMovable(locomotive);
+		locomotive.setID(0);
+		sec.addMovable(locomotive.getID());
 		assertTrue(locomotive.getFront() == head);
 		assertTrue(locomotive.getBack() == head);
 		assertTrue(locomotive.getOnAlt() == false);
@@ -261,7 +265,8 @@ public class TrainTest {
 		((BackSwitch) sw2).toggle();
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 40, 40, 40, false);
-		sec.addMovable(locomotive);
+		locomotive.setID(0);
+		sec.addMovable(locomotive.getID());
 		Movable train = locomotive;
 		assertTrue(train.getFront() == head);
 		assertTrue(train.getBack() == head);
@@ -338,7 +343,8 @@ public class TrainTest {
 		((BackSwitch) sw2).toggle();
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 40, 40, 40, false);
-		sec.addMovable(locomotive);
+		locomotive.setID(0);
+		sec.addMovable(locomotive.getID());
 
 
 		Movable train = locomotive;
@@ -399,9 +405,12 @@ public class TrainTest {
 		sec.add(head);
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 50, 30, 50, false); // distance 50, length 30, max speed 50
+
 		Movable stock = new RollingStock(new Track[]{head},20,20,50,false); // distance 80 length 20, max speed 50
 		Movable train = new Train(new Movable[]{locomotive});
-		sec.addMovable(train);
+		train.setID(0);
+		sec.addMovable(train.getID());
+
 		assertTrue(train.getFront() == head);
 		assertTrue(train.getBack() == head);
 
@@ -450,7 +459,9 @@ public class TrainTest {
 		Movable locomotive = new Locomotive(new Track[]{head.getNext(false)}, 90, 30, 50, false); // dist, length, speed
 		Movable stock = new RollingStock(new Track[]{head.getNext(false),head}, 60, 80, 50, false);
 		Train train = new Train(new Movable[]{locomotive,stock});
-		sec.addMovable(train);
+		train.setID(0);
+		sec.addMovable(train.getID());
+
 
 		assertTrue(train.getFront() == head.getNext(false));
 		assertTrue(train.getBack() == head);
@@ -515,7 +526,8 @@ public class TrainTest {
 		Movable locomotive = new Locomotive(new Track[]{head}, 50, 30, 50, false); // dist length speed
 		Movable stock = new RollingStock(new Track[]{head},20,20,50,false);
 		Train train = new Train(new Movable[]{locomotive,stock});
-		sec.addMovable(train);
+		train.setID(0);
+		sec.addMovable(train.getID());
 		assertTrue(train.getFront() == head);
 		assertTrue(train.getBack() == head);
 
@@ -568,7 +580,8 @@ public class TrainTest {
 		Locomotive loco = new Locomotive(new Track[]{head}, 40, 20, 40, false); // dist length speed.
 		Movable stock = new RollingStock(new Track[]{head}, 20, 20, 40, false);
 		Movable train = new Train(new Movable[]{loco,stock});
-		sec.addMovable(train);
+		train.setID(0);
+		sec.addMovable(train.getID());
 
 		assertTrue(train.getFront() == head);
 		assertTrue(train.getBack() == head);
@@ -635,7 +648,8 @@ public class TrainTest {
 		Locomotive loco = new Locomotive(new Track[]{head}, 40, 20, 40, false); // speed should not be more than 50 due to positioning of points.
 		Movable stock = new RollingStock(new Track[]{head}, 20, 20, 40, false);
 		Movable train = new Train(new Movable[]{loco,stock});
-		sec.addMovable(train);
+		train.setID(0);
+		sec.addMovable(train.getID());
 		assertTrue(train.getFront() == head);
 		assertTrue(train.getBack() == head);
 		assertTrue(train.getOnAlt() == false);
@@ -710,7 +724,8 @@ public class TrainTest {
 		Movable loco = new Locomotive(new Track[]{head}, 40, 20, 40, false);
 		Movable stock = new RollingStock(new Track[]{head}, 20, 20, 40, false);
 		Train train = new Train(new Movable[]{loco, stock});
-		sec.addMovable(train);
+		train.setID(0);
+		sec.addMovable(train.getID());
 		assertTrue(train.getFront() == head);
 		assertTrue(train.getBack() == head);
 		assertTrue(train.getOnAlt() == false);
@@ -740,7 +755,7 @@ public class TrainTest {
 		train.toggleDirection();
 		((ForwardSwitch) sw).toggle();
 		((BackSwitch) sw2).toggle();
-		
+
 		train.move(); // 60
 		train.move(); // 20
 		assertTrue(train.getFront() == sw2);
@@ -754,7 +769,7 @@ public class TrainTest {
 		assertTrue(train.getFront() == sw);
 		assertTrue(train.getBack() == sw);
 
-	
+
 	}
 	@Test public void trackTestTrain0(){ // put a train on.
 		Section sec = new Section(new ArrayList<Track>());
@@ -766,7 +781,9 @@ public class TrainTest {
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 50, 50, 50, false);
 		Movable train = new Train(new Movable[]{locomotive});
-		sec.addMovable(train);
+		train.setID(0);
+
+		sec.addMovable(train.getID());
 		assertTrue(train.getFront() == head);
 		assertTrue(train.getBack() == head);
 
@@ -814,7 +831,8 @@ public class TrainTest {
 
 		Movable locomotive = new Locomotive(new Track[]{head.getNext(false),head}, 90, 110, 50, false);
 		Train train = new Train(new Movable[]{locomotive});
-		sec.addMovable(train);
+		train.setID(0);
+		sec.addMovable(train.getID());
 		assertTrue(train.getFront() == head.getNext(false));
 		assertTrue(train.getBack() == head);
 		assertTrue(train.getBackDistance() == 20);
@@ -877,7 +895,8 @@ public class TrainTest {
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 50, 50, 50, false);
 		Train train = new Train(new Movable[]{locomotive});
-		sec.addMovable(train);
+		train.setID(0);
+		sec.addMovable(train.getID());
 		assertTrue(train.getFront() == head);
 		assertTrue(train.getBack() == head);
 
@@ -929,7 +948,8 @@ public class TrainTest {
 		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
 		Locomotive loco = new Locomotive(new Track[]{head}, 40, 50, 60, false);
 		Movable train = new Train(new Movable[]{loco});
-		sec.addMovable(train);
+		train.setID(0);
+		sec.addMovable(train.getID());
 		assertTrue(train.getFront() == head);
 		assertTrue(train.getBack() == head);
 		assertTrue(train.getOnAlt() == false);
@@ -986,7 +1006,8 @@ public class TrainTest {
 
 		Locomotive loco = new Locomotive(new Track[]{head}, 40, 40, 40, false);
 		Movable train = new Train(new Movable[]{loco});
-		sec.addMovable(train);
+		train.setID(0);
+		sec.addMovable(train.getID());
 		assertTrue(train.getFront() == head);
 		assertTrue(train.getBack() == head);
 		assertTrue(train.getOnAlt() == false);
@@ -1061,7 +1082,8 @@ public class TrainTest {
 
 		Movable loco = new Locomotive(new Track[]{head}, 40, 40, 40, false);
 		Train train = new Train(new Movable[]{loco});
-		sec.addMovable(train);
+		train.setID(0);
+		sec.addMovable(train.getID());
 		assertTrue(train.getFront() == head);
 		assertTrue(train.getBack() == head);
 		assertTrue(train.getOnAlt() == false);
@@ -1091,7 +1113,7 @@ public class TrainTest {
 		train.toggleDirection();
 		((ForwardSwitch) sw).toggle();
 		((BackSwitch) sw2).toggle();
-		
+
 		train.move(); // 60
 		train.move(); // 20
 		assertTrue(train.getFront() == sw2);

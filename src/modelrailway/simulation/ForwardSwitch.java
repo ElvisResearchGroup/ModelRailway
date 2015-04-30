@@ -1,4 +1,7 @@
 package modelrailway.simulation;
+
+import modelrailway.core.Section;
+
 /**
  * Switch is a piece of track with one entrance and two exits. the switch can be toggled.
  * @author powleybenj

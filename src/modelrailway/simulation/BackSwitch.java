@@ -1,5 +1,7 @@
 package modelrailway.simulation;
 
+import modelrailway.core.Section;
+
 
 public class BackSwitch extends Track implements Switch{
 

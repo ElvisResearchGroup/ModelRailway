@@ -1,4 +1,7 @@
 package modelrailway.simulation;
+
+import modelrailway.core.Section;
+
 /**
  *
  * The Crossing class is a piece of track with a diamond crossing.

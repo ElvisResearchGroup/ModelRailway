@@ -2,6 +2,8 @@ package modelrailway.simulation;
 
 import java.util.ArrayList;
 
+import modelrailway.core.Section;
+
 /**
  * Straight is a piece of track with one entrance and one exit.
  * @author powleybenj

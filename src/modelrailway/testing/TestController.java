@@ -8,13 +8,13 @@ import java.util.Map.Entry;
 
 import modelrailway.core.Controller;
 import modelrailway.core.Event;
+import modelrailway.core.Section;
 import modelrailway.core.Event.Listener;
 import modelrailway.core.Route;
 import modelrailway.core.Train;
 import modelrailway.simulation.BackSwitch;
 import modelrailway.simulation.Crossing;
 import modelrailway.simulation.ForwardSwitch;
-import modelrailway.simulation.Section;
 import modelrailway.simulation.Simulator;
 import modelrailway.simulation.Track;
 /**

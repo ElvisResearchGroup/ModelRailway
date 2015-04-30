@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import modelrailway.core.Section;
+
 /**
  * An abstract class to model pieces of track.
  * @author powleybenj

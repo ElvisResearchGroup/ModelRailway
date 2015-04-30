@@ -5,7 +5,7 @@ import java.util.Map;
 import modelrailway.core.Controller;
 import modelrailway.core.Event;
 import modelrailway.core.Route;
-import modelrailway.simulation.Section;
+import modelrailway.core.Section;
 import modelrailway.simulation.Track;
 import modelrailway.simulation.Train;
 

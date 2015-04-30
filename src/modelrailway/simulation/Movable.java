@@ -3,7 +3,7 @@ package modelrailway.simulation;
 import java.util.ArrayList;
 
 import modelrailway.core.Event;
-import modelrailway.simulation.Section.RemovePair;
+import modelrailway.core.Section.RemovePair;
 
 
 /**
@@ -24,7 +24,8 @@ public abstract class Movable {
    private boolean onAlt = false; // are we on alt segment.
    private boolean backAlt = false;
    private Direction direction;
-   private Integer id = null;
+   private Integer id = -1;
+   private Integer idCounter = -1;
    private modelrailway.core.Train trainOb = null;
    /**
     * Create a movable item at the specified distance along a track segment with the specified length.
@@ -36,9 +37,11 @@ public abstract class Movable {
     * @param maxSpeed The maxSpeed is the max distance traveled per clock tick.
     */
    public Movable(Track[] tr, int distance,int length, int maxSpeed,boolean onAlt){
+	   id = idCounter;
+	   idCounter--;
 	   for(int x = 0; x < tr.length; x++){
-		   if(!tr[x].getSection().containsMovable(this)){
-			   tr[x].getSection().addMovable(this);
+		   if(!tr[x].getSection().containsMovable(this.getID())){
+			   tr[x].getSection().addMovable(this.getID());
 		   }
 	   }
 	   this.track = tr;
@@ -165,22 +168,22 @@ public abstract class Movable {
 	   // update sectioning
 
 	   for(Track t: old){
-		   RemovePair pairs = t.getSection().removeMovable(this);
+		   RemovePair pairs = t.getSection().removeMovable(this.getID());
 		   if(t.getAltSection() != null){
-			   RemovePair pair = t.getAltSection().removeMovable(this);
+			   RemovePair pair = t.getAltSection().removeMovable(this.getID());
 		   }
 	   }
 	   if(onAlt && track[0].getAltSection() != null){
-		   track[0].getAltSection().addMovable(this);
+		   track[0].getAltSection().addMovable(this.getID());
 
 	   } else{
-	       track[0].getSection().addMovable(this);
+	       track[0].getSection().addMovable(this.getID());
 	   }
 	   if(backAlt && track[1].getAltSection() != null){
-		   track[1].getAltSection().addMovable(this);
+		   track[1].getAltSection().addMovable(this.getID());
 
 	   } else{
-	       track[1].getSection().addMovable(this);
+	       track[1].getSection().addMovable(this.getID());
 
 	   }
 	   return distance;
