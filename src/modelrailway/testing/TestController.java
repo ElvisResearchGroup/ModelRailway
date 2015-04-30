@@ -77,7 +77,7 @@ public class TestController implements Controller, Listener {
 		   // System.out.println("currentSec: "+section.getNumber()+" nextSec: "+nextSec);
 		    Track next = track.getNext(false);
 		    Track alt = track.getNext(true);
-		    System.out.println("track.getSwitchID(): "+track.getSwitchID());
+		    //System.out.println("track.getSwitchID(): "+track.getSwitchID());
 		    if(alt.getSection().getNumber() == nextSec){
 		    	// we intend to travel down the alt path
 		        this.set(track.getSwitchID(), true);
@@ -104,11 +104,11 @@ public class TestController implements Controller, Listener {
 			Section previous = sections.get(prevSec);
 
 			// are the next sections in the track segment.
-			System.out.println("sec: "+section.getNumber());
-			System.out.println("previous: "+previous.getNumber());
-			System.out.println("PrevSec: "+ prevSec);
-			System.out.println("PrevAlt: "+ track.getNext(true).getSection().getNumber());
-			System.out.println("Prev: "+ track.getNext(false).getSection().getNumber());
+			//System.out.println("sec: "+section.getNumber());
+			//System.out.println("previous: "+previous.getNumber());
+			//System.out.println("PrevSec: "+ prevSec);
+			//System.out.println("PrevAlt: "+ track.getNext(true).getSection().getNumber());
+		//	System.out.println("Prev: "+ track.getNext(false).getSection().getNumber());
 
 			if(prevSec == track.getNext(true).getSection().getNumber()){
 				this.set(track.getSwitchID(), true);
@@ -167,10 +167,10 @@ public class TestController implements Controller, Listener {
 		   Integer nextSec = rt.nextSection(section.getNumber());
 		   Track prev = track.getPrevious(false);
 		   Track alt = track.getPrevious(true);
-		   System.out.println("sec: "+section.getNumber());
-			System.out.println("nextSec: "+ nextSec);
-			System.out.println("alt: "+ track.getPrevious(true).getSection().getNumber());
-			System.out.println("prev: "+ track.getPrevious(false).getSection().getNumber());
+		   //System.out.println("sec: "+section.getNumber());
+			//System.out.println("nextSec: "+ nextSec);
+			//System.out.println("alt: "+ track.getPrevious(true).getSection().getNumber());
+			//System.out.println("prev: "+ track.getPrevious(false).getSection().getNumber());
 
 		   if(alt.getSection().getNumber() == nextSec){
 			    	// we intend to travel down the alt path
@@ -202,18 +202,18 @@ public class TestController implements Controller, Listener {
 		for(Entry<Integer, Train> trainOrientation: trainOrientations.entrySet()){ // for all the trains on the track
 
 			Integer section = trainOrientation.getValue().currentSection();
-			System.out.println("Section: "+section);
-			System.out.println("e.getSection(): "+((Event.SectionChanged) e).getSection());
+			//System.out.println("Section: "+section);
+			//System.out.println("e.getSection(): "+((Event.SectionChanged) e).getSection());
 	    	if(section ==  ((Event.SectionChanged) e).getSection()){ // check that the front of the train is in the section
 	    		Integer trainSection = ((Event.SectionChanged) e).getSection(); // store the section number in a variable
 	    		Section sec = sections.get(section);
 	    		Track thisTrack = sec.get(0);
-	    		System.out.println("Section: "+section);
-	    		System.out.println("Track: "+thisTrack);
-	    		System.out.println("TrackSection: "+thisTrack.getSection().getNumber());
+	    		//System.out.println("Section: "+section);
+	    		//System.out.println("Track: "+thisTrack);
+	    		//System.out.println("TrackSection: "+thisTrack.getSection().getNumber());
 	    	   // train has traveled fowards into a section. we check weather the next section is a point or a diamond crossing
 	    	    if(thisTrack instanceof ForwardSwitch){
-	    	    	System.out.println("orientation: "+trainOrientation.getValue().currentOrientation());
+	    	    	//System.out.println("orientation: "+trainOrientation.getValue().currentOrientation());
 	    	    	fixPointsFowards(trainOrientation.getKey() ,((ForwardSwitch)thisTrack), sec,trainOrientation.getValue().currentOrientation());
 
 	    	    } else if (thisTrack instanceof BackSwitch){

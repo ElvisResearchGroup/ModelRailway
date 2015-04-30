@@ -47,7 +47,7 @@ public class Section extends ArrayList<Track>{ // a section is a list of tracks 
 	 * @return
 	 */
 	public boolean reserveSection(Integer t){
-		System.out.println("Train: "+t +" reserving section for section "+this.getNumber() + "entryRequests :"+entryRequests+" movables: "+movableObjects);
+		//System.out.println("Train: "+t +" reserving section for section "+this.getNumber() + "entryRequests :"+entryRequests+" movables: "+movableObjects);
 		if(entryRequests.size() == 0 && movableObjects.size() == 0){
 			entryRequests.offer(t);
 			//System.out.println("return true");
