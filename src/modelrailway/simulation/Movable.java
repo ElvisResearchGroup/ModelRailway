@@ -37,10 +37,11 @@ public abstract class Movable {
     * @param maxSpeed The maxSpeed is the max distance traveled per clock tick.
     */
    public Movable(Track[] tr, int distance,int length, int maxSpeed,boolean onAlt){
-	   id = idCounter;
-	   idCounter--;
+	   id = idCounter; // set the id
+	   idCounter--; // adjust the couter.
 	   for(int x = 0; x < tr.length; x++){
 		   if(!tr[x].getSection().containsMovable(this.getID())){
+			//   System.out.println("adding: "+this+" with ID: "+this.getID()+" to section: "+tr[x].getSection());
 			   tr[x].getSection().addMovable(this.getID());
 		   }
 	   }

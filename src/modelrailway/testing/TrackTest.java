@@ -614,7 +614,7 @@ public class TrackTest {
 		assertTrue(tp_1.getPrevious(false) == head);
 
 		Movable loco = new Locomotive(new Track[]{head}, 50, 40, 40, false);
-		loco.setID(0);
+		//loco.setID(0);
 		assertTrue(head.getSection().containsMovable(loco.getID()));
 		assertFalse(tp_1.getSection().containsMovable(loco.getID()));
 		assertFalse(tp_2.getSection().containsMovable(loco.getID()));
