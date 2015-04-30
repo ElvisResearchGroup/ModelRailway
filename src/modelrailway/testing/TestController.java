@@ -167,6 +167,10 @@ public class TestController implements Controller, Listener {
 		   Integer nextSec = rt.nextSection(section.getNumber());
 		   Track prev = track.getPrevious(false);
 		   Track alt = track.getPrevious(true);
+		   System.out.println("sec: "+section.getNumber());
+			System.out.println("nextSec: "+ nextSec);
+			System.out.println("alt: "+ track.getPrevious(true).getSection().getNumber());
+			System.out.println("prev: "+ track.getPrevious(false).getSection().getNumber());
 
 		   if(alt.getSection().getNumber() == nextSec){
 			    	// we intend to travel down the alt path

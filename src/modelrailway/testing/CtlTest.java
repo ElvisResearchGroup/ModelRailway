@@ -411,12 +411,12 @@ public class CtlTest {
 
 		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
 		Train train = new Train(new Movable[]{locomotive});
-		//train.toggleDirection();
+		train.toggleDirection();
 		trainMap.put(0,train );
 		train.setID(0);
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
-		orientationMap.put(0, new modelrailway.core.Train(0, true));
+		orientationMap.put(0, new modelrailway.core.Train(0, false));
 		locomotive.setTrainOb(orientationMap.get(0));
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
 		final TestController ctl = new TestController(orientationMap,route.getSectionMap(),head, sim); //
@@ -427,9 +427,16 @@ public class CtlTest {
 		Integer sw2Section = sw2.getSection().getNumber();
 		Integer mainRoute = tp_2.getSection().getNumber();
 
+		System.out.println("headSection: "+headSection);
+		System.out.println("switchSection: "+switchSection);
+		System.out.println("swAlt: "+swAlt);
+		System.out.println("sw2Section: "+sw2Section);
+		System.out.println("mainRoute: "+mainRoute);
 
-		Route routePlan = new Route(true, switchSection, mainRoute, sw2Section, headSection);
-		System.out.println("route: "+headSection+", "+switchSection+", "+swAlt+", "+sw2Section);
+		System.out.println("");
+
+		Route routePlan = new Route(true, sw2Section, mainRoute, switchSection, headSection);
+		System.out.println("route: "+switchSection+", "+swAlt+", "+sw2Section);
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		final Thread th = Thread.currentThread();
@@ -454,7 +461,7 @@ public class CtlTest {
 
 		});
 
-		assertTrue(train.isFowards() == true);
+		assertTrue(train.isFowards() == false);
 		ctl.start(0, routePlan);
 
 
@@ -468,10 +475,10 @@ public class CtlTest {
 			System.out.println("routePlan: " +Arrays.asList(new Integer[]{ sw2Section, mainRoute, switchSection, headSection}).toString());
 			System.out.println("routeTraveled: "+outputArray.toString());
 		}
-		assertTrue(outputArray.get(0) == 0);
-		assertTrue(outputArray.get(1) == 4);
-		assertTrue(outputArray.get(2) == 6);
-		assertTrue(outputArray.get(3) == 5);
+		assertTrue(outputArray.get(0) == 5);
+		assertTrue(outputArray.get(1) == 2);
+		assertTrue(outputArray.get(2) == 4);
+		assertTrue(outputArray.get(3) == 0);
 
   	}
 
