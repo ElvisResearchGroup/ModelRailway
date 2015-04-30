@@ -218,6 +218,9 @@ public class Simulator implements Controller{
 		else{
 			throw new RuntimeException("unknown switch encountered in TestControler");
 		}
+		for(Listener list : listeners){
+			list.notify(new Event.TurnoutChanged(turnoutID, thrown));
+		}
 
 	}
 

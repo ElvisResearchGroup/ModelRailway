@@ -52,6 +52,7 @@ public class TestController implements Controller, Listener {
 
 	@Override
 	public void notify(Event e) {
+
 		if(e instanceof Event.SectionChanged && ((Event.SectionChanged) e).getInto()){ // when there is a section change into another section
 			//System.out.println("section change event."+((Event.SectionChanged) e).getSection());
 		    moveIntoSection(e);
