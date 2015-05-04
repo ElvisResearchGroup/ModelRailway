@@ -31,17 +31,36 @@ public class TestController implements Controller, Listener {
 	private Map<Integer, Section> sections;
 	private Track head;
 
+	/**
+	 * the trainOrientations method returns a mapping from trainID integers to modelrailway.core.Train objects.
+	 * @return
+	 */
 	public Map<Integer, modelrailway.core.Train> trainOrientations(){
 		return trainOrientations;
 	}
+	/**
+	 * sections() returns a mapping from sectionID integers to Section objects.
+	 * @return
+	 */
 	public Map<Integer, Section> sections(){
 		return sections;
 	}
-
+	/**
+	 * the routes() method returns a map from trainID integers to Route objects.
+	 * @return
+	 */
 	public Map<Integer, Route> routes(){
 		return trainRoutes;
 	}
-
+	/**
+	 * The testController is produced using a mapping of trainIDs to trainorientations, a mapping of sectionID's  to Section objects, The head section of a train track,
+	 * And a Controller, This TestController is listed as a listener to the controller provided.
+	 *
+	 * @param orientations
+	 * @param intSecMap
+	 * @param head
+	 * @param trackController
+	 */
 	public TestController( Map<Integer,modelrailway.core.Train> orientations, Map<Integer, Section> intSecMap , Track head, Controller trackController){
 		this.trackController = trackController;
 		trainOrientations = orientations; // are the trains going backwards or fowards.
@@ -55,8 +74,10 @@ public class TestController implements Controller, Listener {
 
 		if(e instanceof Event.SectionChanged && ((Event.SectionChanged) e).getInto()){ // when there is a section change into another section
 			//System.out.println("section change event."+((Event.SectionChanged) e).getSection());
+
 		    moveIntoSection(e);
 		}
+
 
 		for(Listener l : listeners){
 
@@ -206,9 +227,58 @@ public class TestController implements Controller, Listener {
 			//System.out.println("Section: "+section);
 			//System.out.println("e.getSection(): "+((Event.SectionChanged) e).getSection());
 	    	if(section ==  ((Event.SectionChanged) e).getSection()){ // check that the front of the train is in the section
+	    		// first work out which track segments we are currently dealing with.
+
+
 	    		Integer trainSection = ((Event.SectionChanged) e).getSection(); // store the section number in a variable
 	    		Section sec = sections.get(section);
-	    		Track thisTrack = sec.get(0);
+	    		Track lastTrack = sec.get(sec.size()-1);
+	    		Track firstTrack = sec.get(0);
+	    		Track thisTrack = null;
+	    		if(lastTrack.getSection().containsMovable(trainOrientation.getKey())){
+	    			thisTrack = lastTrack;
+	    		} else if (lastTrack.getAltSection() != null && lastTrack.getAltSection().containsMovable(trainOrientation.getKey())){
+	    			thisTrack = lastTrack;
+	    		} else if (firstTrack.getSection().containsMovable(trainOrientation.getKey())){
+	    			thisTrack = firstTrack;
+	    		} else if (firstTrack.getAltSection() != null && firstTrack.getAltSection().containsMovable(trainOrientation.getKey())){
+	    			thisTrack = firstTrack;
+	    		} else{
+	    			throw new RuntimeException("invalid track in move into Section");
+	    		}
+
+	    		// before handling the switches make sure that the sections of the track piece that we came from do not have this train in any of them
+
+	    		Integer prevSection = trainRoutes.get(trainOrientation.getKey()).prevSection(sec.getNumber()); // the previous section that we came from
+	    		Section previous = sections.get(prevSection);
+
+	    		// for all tracks in the previous section, remove this train from the queue of trains that have requested the section, instruct the next train on the queue to go.
+	    		for(Track t :previous){
+	    			boolean trainMoved = false;
+	    			Section tracSec = t.getSection();
+	    			Section trackAltSec = t.getAltSection();
+	    			if(trackAltSec != null){
+	    				Section.RemovePair pair = tracSec.removeFromQueue(trainOrientation.getKey());
+	    				if(pair.retValue){ // instruct next train to move.
+	    					if(!trainMoved) {
+	    						this.resumeTrain(pair.listedTrain);
+	    						trainMoved = true;
+	    					}
+
+	    				}
+	    			}
+	    			Section.RemovePair pair = trackAltSec.removeFromQueue(trainOrientation.getKey());
+	    			if(pair.retValue){
+	    				if(!trainMoved) {
+	    					this.resumeTrain(pair.listedTrain);
+	    					trainMoved = true;
+	    				}
+	    			}
+
+	    		}
+
+
+
 	    		//System.out.println("Section: "+section);
 	    		//System.out.println("Track: "+thisTrack);
 	    		//System.out.println("TrackSection: "+thisTrack.getSection().getNumber());
@@ -220,11 +290,13 @@ public class TestController implements Controller, Listener {
 	    	    } else if (thisTrack instanceof BackSwitch){
 	    	    	fixPointsBackwards(trainOrientation.getKey(), ((BackSwitch) thisTrack), sec, trainOrientation.getValue().currentOrientation());
 	    	    } else if (thisTrack instanceof Crossing){
-	    	    	// check diamond crossing.
-	    	    	throw new RuntimeException("Diamond crossing is not supported yet");
+	    	        // there is nothing for us to do in this crossing.
 	    	    }
 
+
+
 	    	}
+
        }
 	}
 

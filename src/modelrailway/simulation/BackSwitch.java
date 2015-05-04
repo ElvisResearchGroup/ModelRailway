@@ -21,10 +21,14 @@ public class BackSwitch extends Track implements Switch{
 		this.path = Direction.prev;
 		// TODO Auto-generated constructor stub
 	}
-
+	/**
+	 * isPrev() returns true when the path is set to direct trains to the previous section rather than to the alternate prevous section.
+	 * @return
+	 */
 	public boolean isPrev(){
 		return (path == Direction.prev);
 	}
+
 	public Track getNext(boolean onAlt){
 		return super.getNext(false);
 	}
@@ -54,6 +58,7 @@ public class BackSwitch extends Track implements Switch{
      * @return
      */
     public boolean getCurrentAlt(Movable m){
+    	//when this is the back section
     	if(m.getBack() == this ){
     		if(m.isFowards()){
     		    if (m.getBackDistance() < pointPos){ // point position from the back.
@@ -69,6 +74,7 @@ public class BackSwitch extends Track implements Switch{
     				return super.getCurrentAlt(m);
     			}
     		}
+    		//when this is the front section
     	} else if (m.getFront() == this){ // back is not the current piece of track.
     		if(m.getBack() == this.getPrevious(false)){ // are we on the alternate path
     			return false;
@@ -77,7 +83,7 @@ public class BackSwitch extends Track implements Switch{
     			return true;
     		}
     	}
-    	throw new WrongTrackException();
+    	throw new WrongTrackException(); // this segment of track is neither on the front or the back section.
 
     	//return false; // deadcode
 

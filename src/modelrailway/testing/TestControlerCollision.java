@@ -52,19 +52,32 @@ public class TestControlerCollision extends TestController implements Controller
 				//System.out.println("altNext: "+altNext.getSection().getNumber());
 				//System.out.println("thisSec: "+thisSec.getNumber());
 				if(notAltNext.getSection().getNumber() == nextSec){
+
 					//System.out.println("notalt number: "+notAltNext.getSection().getNumber());
-					reserved = notAltNext.getSection().reserveSection(train);
+					boolean reserved1 = notAltNext.getSection().reserveSection(train);
+					boolean reserved2 = false;
+					if(notAltNext.getAltSection() != null){ reserved2 = notAltNext.getAltSection().reserveSection(train);}
+					else{ reserved2 = true;}
+					reserved = reserved1 && reserved2;
 
 				}else  if(notAltNext.getAltSection() != null && notAltNext.getAltSection().getNumber() == nextSec){
 
-					reserved = notAltNext.getAltSection().reserveSection(train);
+					boolean reserved1 = notAltNext.getAltSection().reserveSection(train);
+					boolean reserved2 = notAltNext.getSection().reserveSection(train);
+					reserved = reserved1 && reserved2;
 
 				}else if(altNext.getSection().getNumber() == nextSec){
 					//System.out.println();
-					reserved = altNext.getSection().reserveSection(train);
+					boolean reserved1 = altNext.getSection().reserveSection(train);
+					boolean reserved2 = false;
+					if(altNext.getAltSection() != null){reserved2 = altNext.getAltSection().reserveSection(train);}
+					else {reserved2 = true;}
+					reserved = reserved1 && reserved2;
 
 				}else if(altNext.getAltSection() != null && altNext.getAltSection().getNumber() == nextSec){
-					reserved = altNext.getAltSection().reserveSection(train);
+					boolean reserved1 = altNext.getAltSection().reserveSection(train);
+					boolean reserved2 = altNext.getSection().reserveSection(train);
+					reserved = reserved1 && reserved2;
 				}
 				//System.out.println("reserved: "+reserved);
 				if(reserved == false){ // we need to trigger an emergency stop
@@ -80,16 +93,29 @@ public class TestControlerCollision extends TestController implements Controller
 				boolean reserved = false ;
 				//System.out.println("backend: ");
 				if(notAltPrev.getSection().getNumber() == nextSec){
-					reserved = notAltPrev.getSection().reserveSection(train);
+					boolean reserved1 = notAltPrev.getSection().reserveSection(train);
+					boolean reserved2 = false;
+					if(notAltPrev.getAltSection() != null){reserved2 = notAltPrev.getAltSection().reserveSection(train);}
+					else {reserved2 = true;}
+					reserved = reserved1 && reserved2;
+
 
 				} if(notAltPrev.getAltSection() != null && notAltPrev.getAltSection().getNumber() == nextSec){
-					reserved =notAltPrev.getAltSection().reserveSection(train);
+					boolean reserved1 = notAltPrev.getSection().reserveSection(train);
+					boolean reserved2 =notAltPrev.getAltSection().reserveSection(train);
+					reserved = reserved1 && reserved2;
 
 				} if(altPrev.getSection().getNumber() == nextSec){
-					reserved = altPrev.getSection().reserveSection(train);
+					boolean reserved1 = altPrev.getSection().reserveSection(train);
+					boolean reserved2 = false;
+					if(altPrev.getAltSection() != null) {reserved2 = altPrev.getAltSection().reserveSection(train);}
+					else{reserved2 = true;}
+					reserved = reserved1 && reserved2;
 
 				} if(altPrev.getAltSection() != null && altPrev.getAltSection().getNumber() == nextSec){
-					reserved = altPrev.getAltSection().reserveSection(train);
+					boolean reserved1 = altPrev.getAltSection().reserveSection(train);
+					boolean reserved2 = altPrev.getSection().reserveSection(train);
+					reserved = reserved1 && reserved2;
 				}
 
 				if(reserved == false){
