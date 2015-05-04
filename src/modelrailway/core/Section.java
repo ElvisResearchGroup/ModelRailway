@@ -35,7 +35,9 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 	private Set<Integer> movableObjects = new ConcurrentSkipListSet<Integer>(); // the trains on the section.
 
 	private Queue<Integer> entryRequests = new ConcurrentLinkedQueue<Integer>();
-
+	public boolean isQueueEmpty(){
+		return(entryRequests.size() == 0);
+	}
 	public RemovePair removeFromQueue(Integer t){
 		if(entryRequests.contains(t)){
 

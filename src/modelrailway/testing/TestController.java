@@ -258,23 +258,27 @@ public class TestController implements Controller, Listener {
 	    			Section tracSec = t.getSection();
 	    			Section trackAltSec = t.getAltSection();
 	    			if(trackAltSec != null){
-	    				Section.RemovePair pair = tracSec.removeFromQueue(trainOrientation.getKey());
-	    				if(pair.retValue){ // instruct next train to move.
-	    					if(!trainMoved) {
-	    						this.resumeTrain(pair.listedTrain);
-	    						trainMoved = true;
-	    					}
-
+	    				Section.RemovePair pair = null;
+	    				if(!trackAltSec.isQueueEmpty() && trainOrientation.getKey() != null) pair = tracSec.removeFromQueue(trainOrientation.getKey());
+	    				if(pair != null){
+	    				   if(pair.retValue){ // instruct next train to move.
+	    					   if(!trainMoved) {
+	    						   this.resumeTrain(pair.listedTrain);
+	    						   trainMoved = true;
+	    					   }
+	    				   }
 	    				}
 	    			}
-	    			Section.RemovePair pair = trackAltSec.removeFromQueue(trainOrientation.getKey());
-	    			if(pair.retValue){
-	    				if(!trainMoved) {
-	    					this.resumeTrain(pair.listedTrain);
-	    					trainMoved = true;
-	    				}
+	    			Section.RemovePair pair = null;
+	    			if(trackAltSec != null && !trackAltSec.isQueueEmpty() && trainOrientation.getKey() != null)  pair = trackAltSec.removeFromQueue(trainOrientation.getKey());
+	    			if(pair != null){
+	    			   if(pair.retValue){
+	    				   if(!trainMoved) {
+	    					   this.resumeTrain(pair.listedTrain);
+	    					   trainMoved = true;
+	    				   }
+	    			   }
 	    			}
-
 	    		}
 
 
