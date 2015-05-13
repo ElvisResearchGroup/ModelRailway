@@ -84,11 +84,11 @@ public class CtlTest {
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(0, true));
-		locomotive.setTrainOb(orientationMap.get(0));
+
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
 		final TestController ctl = new TestController(orientationMap,route.getSectionMap(),head, sim); //
-
+		sim.register(ctl);
 
 
 		Integer headSection = head.getSection().getNumber();
@@ -194,10 +194,11 @@ public class CtlTest {
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(0, false));
-		locomotive.setTrainOb(orientationMap.get(0));
+
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
 		final TestController ctl = new TestController(orientationMap,route.getSectionMap(),head, sim); //
+		sim.register(ctl);
 
 		Integer headSection = head.getSection().getNumber();
 		Integer switchSection = sw.getSection().getNumber();
@@ -307,9 +308,10 @@ public class CtlTest {
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(0, false));
-		locomotive.setTrainOb(orientationMap.get(0));
+
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
 		final TestController ctl = new TestController(orientationMap,route.getSectionMap(),head, sim); //
+		sim.register(ctl);
 
 		Integer headSection = head.getSection().getNumber();
 		Integer switchSection = sw.getSection().getNumber();
@@ -419,9 +421,10 @@ public class CtlTest {
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(0, true));
-		locomotive.setTrainOb(orientationMap.get(0));
+
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
 		final TestController ctl = new TestController(orientationMap,route.getSectionMap(),head, sim); //
+		sim.register(ctl);
 
 		Integer headSection = head.getSection().getNumber();
 		Integer switchSection = sw.getSection().getNumber();
@@ -531,11 +534,11 @@ public class CtlTest {
 
 		orientationMap.put(0, new modelrailway.core.Train(0, true));
 		orientationMap.put(1, new modelrailway.core.Train(1,true));
-		locomotive.setTrainOb(orientationMap.get(0));
-		loco2.setTrainOb(orientationMap.get(1));
+
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
-		final TestController ctl = new TestControlerCollision(orientationMap,route.getSectionMap(),head, sim); //
+		final TestController ctl = new TestControlerCollision(orientationMap,route.getSectionMap(),head,sim); //
+		sim.register(ctl);
 
 		Integer headSection = head.getSection().getNumber();
 		Integer sec1 = tp_1.getSection().getNumber();
@@ -646,13 +649,13 @@ public class CtlTest {
 
  		orientationMap.put(0, new modelrailway.core.Train(0, true));
  		orientationMap.put(1, new modelrailway.core.Train(1,true));
- 		locomotive.setTrainOb(orientationMap.get(0));
-		locomotive2.setTrainOb(orientationMap.get(1));
+
 
 //		train.toggleDirection();
 
  		final Simulator sim = new Simulator(head, orientationMap, trainMap);
  		final TestController ctl = new TestController(orientationMap,route.getSectionMap(),head, sim); //
+ 		sim.register(ctl);
 
  		Integer headSection = head.getSection().getNumber();
  		Integer switchSection = sw.getSection().getNumber();
@@ -761,10 +764,9 @@ public class CtlTest {
  		orientationMap.put(0, new modelrailway.core.Train(0, false));
  		orientationMap.put(1, new modelrailway.core.Train(1,false));
 
- 		locomotive.setTrainOb(orientationMap.get(0));
-		locomotive2.setTrainOb(orientationMap.get(1));
  		final Simulator sim = new Simulator(head, orientationMap, trainMap);
- 		final TestController ctl = new TestControlerCollision(orientationMap,route.getSectionMap(),head, sim); //
+ 		final TestController ctl = new TestControlerCollision(orientationMap,route.getSectionMap(),head,sim); //
+ 		sim.register(ctl);
 
  		final Integer headSection = head.getSection().getNumber();
  		final Integer switchSection = sw.getSection().getNumber();

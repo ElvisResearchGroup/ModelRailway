@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
 import modelrailway.core.Controller;
 import modelrailway.core.Event;
@@ -17,6 +18,7 @@ import modelrailway.simulation.Crossing;
 import modelrailway.simulation.ForwardSwitch;
 import modelrailway.simulation.Simulator;
 import modelrailway.simulation.Track;
+import modelrailway.util.Pair;
 /**
  * This test controller has no collision detection but just tests to make sure that a train can follow a route. in order to test the train simulator.
  * @author powleybenj
@@ -24,10 +26,11 @@ import modelrailway.simulation.Track;
  */
 public class TestController implements Controller, Listener {
 
-	private Controller trackController;
+	private Event.Listener trackController = null;
 	private List<Listener> listeners = new ArrayList<Listener>();
-	private Map<Integer,Route> trainRoutes = new HashMap<Integer,Route>();
+	private Map<Integer,Route> trainRoutes = new ConcurrentHashMap<Integer,Route>();
 	private Map<Integer,modelrailway.core.Train> trainOrientations ;
+	private Map<Integer,Boolean> isMoving = new ConcurrentHashMap<Integer,Boolean>();
 	private Map<Integer, Section> sections;
 	private Track head;
 
@@ -61,20 +64,43 @@ public class TestController implements Controller, Listener {
 	 * @param head
 	 * @param trackController
 	 */
-	public TestController( Map<Integer,modelrailway.core.Train> orientations, Map<Integer, Section> intSecMap , Track head, Controller trackController){
+	public TestController( Map<Integer,modelrailway.core.Train> orientations, Map<Integer, Section> intSecMap , Track head, Event.Listener trackController){
 		this.trackController = trackController;
 		trainOrientations = orientations; // are the trains going backwards or fowards.
 		this.sections = intSecMap;
 		this.head = head;
-		trackController.register(this);
 	}
 
+	public void adjustSection(Event e){
+		synchronized(isMoving){
+			Integer sectionID = ((Event.SectionChanged)e).getSection(); // figure out which train was moving in then set section in modelrailway.core.Train
+
+			for(Map.Entry<Integer, modelrailway.core.Train> tr : trainOrientations.entrySet()){
+				Train trainObj = tr.getValue();
+				System.out.println("sectinoID: "+sectionID);
+				System.out.println("isMoving: "+ isMoving);
+				System.out.println("tr: "+tr);
+				System.out.println("tr.getKey(): "+tr.getKey());
+				System.out.println("trainroutes: "+ trainRoutes);
+				System.out.println("isMoving.get(tr.getKey): "+isMoving.get(tr.getKey()));
+				System.out.println("trainRoutes.get(tr.getKey()): "+trainRoutes.get(tr.getKey()));
+
+
+				if(isMoving.get(tr.getKey()) != null && isMoving.get(tr.getKey())){
+					//System.out.println("next section");
+					if(trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()) == sectionID){
+						trainObj.setSection(sectionID);
+					}
+				}
+			}
+	    }
+	}
 	@Override
 	public void notify(Event e) {
 
 		if(e instanceof Event.SectionChanged && ((Event.SectionChanged) e).getInto()){ // when there is a section change into another section
 			//System.out.println("section change event."+((Event.SectionChanged) e).getSection());
-
+			adjustSection(e);
 		    moveIntoSection(e);
 		}
 
@@ -258,7 +284,7 @@ public class TestController implements Controller, Listener {
 	    			Section tracSec = t.getSection();
 	    			Section trackAltSec = t.getAltSection();
 	    			if(trackAltSec != null){
-	    				Section.RemovePair pair = null;
+	    				Pair<Boolean,Integer> pair = null;
 	    				if(!trackAltSec.isQueueEmpty() && trainOrientation.getKey() != null) pair = tracSec.removeFromQueue(trainOrientation.getKey());
 	    				if(pair != null){
 	    				   if(pair.retValue){ // instruct next train to move.
@@ -269,7 +295,7 @@ public class TestController implements Controller, Listener {
 	    				   }
 	    				}
 	    			}
-	    			Section.RemovePair pair = null;
+	    			Pair<Boolean,Integer> pair = null;
 	    			if(trackAltSec != null && !trackAltSec.isQueueEmpty() && trainOrientation.getKey() != null)  pair = trackAltSec.removeFromQueue(trainOrientation.getKey());
 	    			if(pair != null){
 	    			   if(pair.retValue){
@@ -314,28 +340,38 @@ public class TestController implements Controller, Listener {
 
 	@Override
 	public boolean start(int trainID, Route route) {
-
+		synchronized(isMoving){
+		isMoving.put(trainID, true);
 		trainRoutes.put(trainID,route);
-		return trackController.start(trainID, route);
+		if(trackController == null) throw new RuntimeException("track controller was null in start train");
+	    trackController.notify((Event)new Event.SpeedChanged(trainID, Integer.MAX_VALUE));
+		return true;
+		}
+
 
 	}
 
 	public boolean resumeTrain(int trainID){
-
-		return trackController.start(trainID, trainRoutes.get(trainID));
+		synchronized(isMoving){
+		isMoving.put(trainID, true);
+		((Listener) trackController).notify((Event)new Event.SpeedChanged(trainID, Integer.MAX_VALUE));
+		return true;
+		}
 
 	}
 
 	@Override
 	public void stop(int trainID) {
-		trackController.stop(trainID);
-
+		synchronized(isMoving){
+		isMoving.put(trainID, false);
+		((Listener) trackController).notify((Event)new Event.EmergencyStop(trainID));
+		}
 	}
 
 
 	@Override
 	public modelrailway.core.Train train(int trainID) {
-		return trainOrientations.get(trainID);
+		return trainOrientations.get(trainID); // change to notification
 	}
 
 	@Override
@@ -343,7 +379,7 @@ public class TestController implements Controller, Listener {
 	 * Set the switch at the given turnoutId, thrown is true if we are setting the switch to the alternate section.
 	 */
 	public void set(int turnoutID, boolean thrown) {
-		trackController.set(turnoutID, thrown);
+		((Listener) trackController).notify(new Event.TurnoutChanged(turnoutID, thrown));
 
 	}
 	/**

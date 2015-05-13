@@ -684,7 +684,7 @@ public class TrackTest {
 				if(e instanceof Event.SectionChanged){
 					if (((Event.SectionChanged) e).getSection() == 0 &&
 					   ((Event.SectionChanged) e).getInto() == true ){
-						sim.stop(0);
+						sim.notify(new Event.EmergencyStop(0));
 						sim.stop();
 						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(((Event.SectionChanged) e).getSection(),
 								                                                ((Event.SectionChanged) e).getInto());
@@ -703,7 +703,7 @@ public class TrackTest {
 		};
 
 		sim.register(lis);
-		sim.start(0, null);
+		sim.notify(new Event.SpeedChanged(0, Integer.MAX_VALUE));
 		try{
 		   Thread.currentThread().join();
 		}catch(InterruptedException e){
@@ -762,8 +762,9 @@ public class TrackTest {
  				if(e instanceof Event.SectionChanged){
  					if (((Event.SectionChanged) e).getSection() == 0 &&
  					   ((Event.SectionChanged) e).getInto() == true ){
- 						sim.stop(0);
- 						sim.stop(1);
+
+ 						sim.notify(new Event.EmergencyStop(0));
+ 						sim.notify(new Event.EmergencyStop(1));
  						sim.stop();
  						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(((Event.SectionChanged) e).getSection(),
  								                                                ((Event.SectionChanged) e).getInto());
@@ -792,8 +793,8 @@ public class TrackTest {
  		};
 
  		sim.register(lis);
- 		sim.start(1, null); // start front train.
- 		sim.start(0, null); // start back train.
+ 		sim.notify(new Event.SpeedChanged(1, Integer.MAX_VALUE)); // start front train.
+ 		sim.notify(new Event.SpeedChanged(0, Integer.MAX_VALUE)); // start back train.
 
  		try{
  		   Thread.currentThread().join();

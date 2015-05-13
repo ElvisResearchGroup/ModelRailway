@@ -6,15 +6,15 @@ import modelrailway.core.Controller;
 import modelrailway.core.Event;
 import modelrailway.core.Route;
 import modelrailway.core.Section;
+import modelrailway.simulation.Simulator;
 import modelrailway.simulation.Track;
 import modelrailway.simulation.Train;
 
 public class TestControlerCollision extends TestController implements Controller{
 
 	public TestControlerCollision(Map<Integer, modelrailway.core.Train> trains,
-			Map<Integer, Section> sections, Track head,
-			Controller trackController) {
-		super(trains, sections, head, trackController);
+			Map<Integer, Section> sections, Track head, Event.Listener trackControler) {
+		super(trains, sections, head, trackControler);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -27,8 +27,9 @@ public class TestControlerCollision extends TestController implements Controller
 	 * @return
 	 */
 	private Event tryLocking(Event e){
-
+		//assumes that we have already adjusted for the section change in Train.
 		if((e instanceof Event.SectionChanged) && ((Event.SectionChanged) e).getInto()){ // when we are moving into a section
+			adjustSection(e);
 			//System.out.println("sectionChanged: "+((Event.SectionChanged)e).getSection());
 			Map.Entry<Integer, Route> entry = super.getRoute(((Event.SectionChanged)e).getSection()); //
 

@@ -12,6 +12,7 @@ import java.util.Queue;
 import java.util.Set;
 
 import modelrailway.simulation.Track;
+import modelrailway.util.Pair;
 /**
  * Section is a list of track pieces with pointers to next and previous sections
  * Section also maintains both a set of movable object id's inside the section,
@@ -20,36 +21,13 @@ import modelrailway.simulation.Track;
  *
  */
 public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list of tracks , sections can detect trains
-	public class RemovePair{
-		public RemovePair(boolean retValue, Integer listedTrain){this.retValue = retValue; this.listedTrain = listedTrain;}
-		public boolean retValue;
-		public Integer listedTrain;
-	}
-
 	static{
 		sectionNumberCounter = 0;
 	}
-
 	// The set of movable objects keeps track of the movable objects that are inside the section
 
 	private Set<Integer> movableObjects = new ConcurrentSkipListSet<Integer>(); // the trains on the section.
-
 	private Queue<Integer> entryRequests = new ConcurrentLinkedQueue<Integer>();
-	public boolean isQueueEmpty(){
-		return(entryRequests.size() == 0);
-	}
-	public RemovePair removeFromQueue(Integer t){
-		if(entryRequests.contains(t)){
-
-			return new RemovePair(entryRequests.remove(t), entryRequests.peek());
-
-		}
-		else{
-			return new RemovePair(false,null);
-		}
-	}
-
-
 	private static int sectionNumberCounter;
 	private int sectionNumber;
     /**
@@ -90,6 +68,20 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 		}
 
 	}
+	public boolean isQueueEmpty(){
+		return(entryRequests.size() == 0);
+	}
+	public Pair<Boolean,Integer> removeFromQueue(Integer t){
+		if(entryRequests.contains(t)){
+
+			return new Pair<Boolean,Integer>(entryRequests.remove(t), entryRequests.peek());
+
+		}
+		else{
+			return new Pair<Boolean,Integer>(false,null);
+		}
+	}
+
 	/**
 	 * The onRequestList method checks if the ID for the train provided is on the list of trains that are queued for access to the section
 	 * @param t
@@ -150,14 +142,14 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 	 * @param m
 	 * @return
 	 */
-	public Section.RemovePair  removeMovable(Integer m){
+	public Pair<Boolean,Integer>  performMovableExit(Integer m){
 	   synchronized(movableObjects){
 		boolean ret = movableObjects.remove(m);
 		Integer tr = null;
 		if(movableObjects.size() == 0){
 		    tr = entryRequests.peek();
 		}
-		return new Section.RemovePair(ret,tr);
+		return new Pair<Boolean,Integer>(ret,tr);
 	   }
 	}
 

@@ -3,7 +3,7 @@ package modelrailway.simulation;
 import java.util.ArrayList;
 
 import modelrailway.core.Event;
-import modelrailway.core.Section.RemovePair;
+import modelrailway.util.Pair;
 
 
 /**
@@ -26,7 +26,7 @@ public abstract class Movable {
    private Direction direction;
    private Integer id = -1;
    private Integer idCounter = -1;
-   private modelrailway.core.Train trainOb = null;
+   //private modelrailway.core.Train trainOb = null;
    /**
     * Create a movable item at the specified distance along a track segment with the specified length.
     * The track array must contain two connected segments and must be valid before being supplied to the constructor.
@@ -60,12 +60,6 @@ public abstract class Movable {
 	   this.id = id;
    }
 
-   public void setTrainOb(modelrailway.core.Train trainOb){
-	   this.trainOb = trainOb;
-   }
-   public modelrailway.core.Train getTrainOb(){
-	   return trainOb;
-   }
    public Integer getID(){
 	   return this.id;
    }
@@ -169,9 +163,9 @@ public abstract class Movable {
 	   // update sectioning
 
 	   for(Track t: old){
-		   RemovePair pairs = t.getSection().removeMovable(this.getID());
+		   Pair<Boolean,Integer> pairs = t.getSection().performMovableExit(this.getID());
 		   if(t.getAltSection() != null){
-			   RemovePair pair = t.getAltSection().removeMovable(this.getID());
+			   Pair<Boolean,Integer> pair = t.getAltSection().performMovableExit(this.getID());
 		   }
 	   }
 	   if(onAlt && track[0].getAltSection() != null){
