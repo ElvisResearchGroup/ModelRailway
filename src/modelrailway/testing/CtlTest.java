@@ -74,6 +74,7 @@ public class CtlTest {
 		// add a locomotive
 
 		Movable locomotive = new Locomotive(new Track[]{head,head},40,40,10,false);
+		Movable.GenerateID.generateID(locomotive);
 
 		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
 		Train train = new Train(new Movable[]{locomotive});
@@ -183,6 +184,7 @@ public class CtlTest {
 		// add a locomotive
 
 		Movable locomotive = new Locomotive(new Track[]{head,head},40,20,10,false);
+		Movable.GenerateID.generateID(locomotive);
 
 		//locomotive.toggleDirection();
 
@@ -298,6 +300,7 @@ public class CtlTest {
 		// add a locomotive
 
 		Movable locomotive = new Locomotive(new Track[]{head,head},40,20,10,false);
+		Movable.GenerateID.generateID(locomotive);
 		//locomotive.toggleDirection();
 
 		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
@@ -411,6 +414,7 @@ public class CtlTest {
 		// add a locomotive
 
 		Movable locomotive = new Locomotive(new Track[]{head,head},40,20,10,false);
+		Movable.GenerateID.generateID(locomotive);
 		//locomotive.toggleDirection();
 
 		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
@@ -514,8 +518,10 @@ public class CtlTest {
 
 		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
 		Train train = new Train(new Movable[]{locomotive});
+		Movable.GenerateID.generateID(locomotive);
 
 		Train train2 = new Train(new Movable[]{loco2});
+		Movable.GenerateID.generateID(loco2);
 		//train.toggleDirection();
 		trainMap.put(0,train );
 		train.setID(0);
@@ -639,8 +645,10 @@ public class CtlTest {
 
  		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
  		Train train = new Train(new Movable[]{locomotive});
+ 		Movable.GenerateID.generateID(locomotive);
 
  		Train train2 = new Train(new Movable[]{locomotive2});
+ 		Movable.GenerateID.generateID(locomotive2);
  		trainMap.put(0,train );
  		train.setID(0);
  		trainMap.put(1, train2);
@@ -746,8 +754,9 @@ public class CtlTest {
  		// add a locomotive
 
  		Movable locomotive = new Locomotive(new Track[]{sw2,sw2},80,40,10,false);
+ 		Movable.GenerateID.generateID(locomotive);
  		Movable locomotive2 = new Locomotive(new Track[]{str,str},40,40,10,false);
-
+ 		Movable.GenerateID.generateID(locomotive2);
  		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
  		Train train = new Train(new Movable[]{locomotive});
 

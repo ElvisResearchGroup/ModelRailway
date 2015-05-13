@@ -16,6 +16,7 @@ public abstract class Movable {
 	   back,forward
    }
 
+
    private Track[] track; // track segments the item spans; may span up to two segments of track.
    private int distance; // distance along the track segment
    private int length; // length of the object
@@ -25,8 +26,6 @@ public abstract class Movable {
    private boolean backAlt = false;
    private Direction direction;
    private Integer id = -1;
-   private Integer idCounter = -1;
-   //private modelrailway.core.Train trainOb = null;
    /**
     * Create a movable item at the specified distance along a track segment with the specified length.
     * The track array must contain two connected segments and must be valid before being supplied to the constructor.
@@ -37,8 +36,6 @@ public abstract class Movable {
     * @param maxSpeed The maxSpeed is the max distance traveled per clock tick.
     */
    public Movable(Track[] tr, int distance,int length, int maxSpeed,boolean onAlt){
-	   id = idCounter; // set the id
-	   idCounter--; // adjust the couter.
 	   for(int x = 0; x < tr.length; x++){
 		   if(!tr[x].getSection().containsMovable(this.getID())){
 			//   System.out.println("adding: "+this+" with ID: "+this.getID()+" to section: "+tr[x].getSection());
@@ -255,5 +252,14 @@ public abstract class Movable {
 	   if(isFowards()) direction = Direction.back;
 	   else direction = Direction.forward;
    }
+
+   public static class GenerateID{
+	   public static int id = -1;
+	   public static void generateID(Movable m){
+		   m.id = GenerateID.id;
+		   GenerateID.id --;
+	   }
+   }
+
 
 }

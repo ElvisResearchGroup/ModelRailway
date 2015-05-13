@@ -15,6 +15,7 @@ import modelrailway.simulation.Crossing;
 import modelrailway.simulation.Locomotive;
 import modelrailway.simulation.BackSwitch;
 import modelrailway.simulation.Movable;
+import modelrailway.simulation.Movable.GenerateID;
 import modelrailway.simulation.RollingStock;
 import modelrailway.simulation.Simulator;
 import modelrailway.simulation.Straight;
@@ -227,6 +228,7 @@ public class TrackTest {
 		// create a locomotive
 
 		Movable loco = new Locomotive(new Track[]{head1,head1}, 50, 50, 40, false); // tracks, dist, length, maxspeed, onAlt
+
 		loco.setID(0);
 		loco.start();
 
@@ -655,8 +657,9 @@ public class TrackTest {
 		Track track = new Straight(null, null, section, 100);
 		Straight.StraightRing ring  = new Straight.StraightRing(track);
 		track = ring.ringTrack(5, 100); // produce a ring.
-
-		Train tr = new Train(new Movable[]{new Locomotive(new Track[]{track,track} ,40,40,40, false)});
+		Locomotive loco = new Locomotive(new Track[]{track,track} ,40,40,40, false);
+		Movable.GenerateID.generateID(loco);
+		Train tr = new Train(new Movable[]{loco});
 		Map<Integer,Train> map = new HashMap<Integer,Train>();
 		map.put(0, tr);
 		tr.setID(0);
@@ -726,10 +729,13 @@ public class TrackTest {
  		Track track = new Straight(null, null, section, 100);
  		Straight.StraightRing ring  = new Straight.StraightRing(track);
  		track = ring.ringTrack(5, 100); // produce a ring.
-
+ 		Locomotive loco1 = new Locomotive(new Track[]{track,track} ,40,40,40, false);
+ 		Movable.GenerateID.generateID(loco1);
  		//create two trains
- 		final Train tr = new Train(new Movable[]{new Locomotive(new Track[]{track,track} ,40,40,40, false)});
- 		final Train tr2 = new Train (new Movable[]{new Locomotive(new Track[]{track.getNext(false),track.getNext(false)},40,40,40,false )});
+ 		final Train tr = new Train(new Movable[]{loco1});
+ 		Locomotive loco2 =new Locomotive(new Track[]{track.getNext(false),track.getNext(false)},40,40,40,false );
+ 		Movable.GenerateID.generateID(loco2);
+ 		final Train tr2 = new Train (new Movable[]{loco2});
 
  		//put trains into both maps.
  		Map<Integer,Train> map = new HashMap<Integer,Train>();
