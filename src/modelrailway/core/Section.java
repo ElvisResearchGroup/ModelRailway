@@ -1,9 +1,11 @@
 package modelrailway.core;
 
 import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,7 +29,11 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 	// The set of movable objects keeps track of the movable objects that are inside the section
 
 	private Set<Integer> movableObjects = new ConcurrentSkipListSet<Integer>(); // the trains on the section.
-	private Queue<Integer> entryRequests = new ConcurrentLinkedQueue<Integer>();
+	private Queue<Integer> entryRequests = new ConcurrentLinkedQueue<Integer>(); // entry requests on the section.
+	private Map<Pair<Integer,Integer>,List<Boolean>> turnstyleTable = new ConcurrentHashMap<Pair<Integer,Integer>, List<Boolean>>();
+	//A map from to and from sections. to turnstyle switching order in the order that the train is encountered.
+	// true in the turnstyle table indicates altRoute false indicates standard Route.
+
 	private static int sectionNumberCounter;
 	private int sectionNumber;
     /**
@@ -41,6 +47,15 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 		sectionNumberCounter++;
 		this.addAll(tr);
 	}
+
+	public List<Boolean> retrieveSwitchingOrder(Pair<Integer,Integer> pair){
+		return turnstyleTable.get(pair);
+	}
+
+	public void putSwitchingOrder(Pair<Integer,Integer> pair, List<Boolean> val){
+		turnstyleTable.put(pair, val);
+	}
+
 	/**
 	 * The reserveSection method reserves the section for the supplied train. if there is nothing on the waiting list the section is reserved
 	 * and true is returned. otherwise false is returned. The calling method should stop the train if false is returned.

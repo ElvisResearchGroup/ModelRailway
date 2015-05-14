@@ -12,6 +12,7 @@ import modelrailway.core.Event;
 import modelrailway.core.Section;
 import modelrailway.core.Event.Listener;
 import modelrailway.core.Route;
+import modelrailway.simulation.Switch;
 import modelrailway.core.Train;
 import modelrailway.simulation.BackSwitch;
 import modelrailway.simulation.Crossing;
@@ -120,55 +121,84 @@ public class TestController implements Controller, Listener {
 	private void fixPointsFowards(Integer trainID, ForwardSwitch track,Section section ,boolean goingFoward){
 		//System.out.println("fix Points Forwards"+section.getNumber());
 		if(goingFoward){ // entering the points going in the foward direction.
+
 		    Route rt = trainRoutes.get(trainID);
 		    Integer nextSec = rt.nextSection(section.getNumber());
+		    Integer prevSec = rt.prevSection(section.getNumber());
 		   // System.out.println("currentSec: "+section.getNumber()+" nextSec: "+nextSec);
-		    Track next = track.getNext(false);
-		    Track alt = track.getNext(true);
-		    //System.out.println("track.getSwitchID(): "+track.getSwitchID());
-		    if(alt.getSection().getNumber() == nextSec){
-		    	// we intend to travel down the alt path
-		        this.set(track.getSwitchID(), true);
+		    Integer currentSectionNumber = section.getNumber();
+		    Pair<Integer, Integer> sectionPair = new Pair<Integer,Integer>(prevSec,nextSec);
+		    // for sectionPair
+		    List<Boolean> switchingOrder = section.retrieveSwitchingOrder(sectionPair);
+		    if(switchingOrder == null){
+			    Track next = track.getNext(false);
+			    Track alt = track.getNext(true);
+			    //System.out.println("track.getSwitchID(): "+track.getSwitchID());
+			    if(alt.getSection().getNumber() == nextSec){
+			    	// we intend to travel down the alt path
+			        this.set(track.getSwitchID(), true);
 
-		    } else if (alt.getAltSection() != null && alt.getAltSection().getNumber() == nextSec){
-		    	// we intend to travel down the alt path
-		    	this.set(track.getSwitchID(), true);
+			    } else if (alt.getAltSection() != null && alt.getAltSection().getNumber() == nextSec){
+			    	// we intend to travel down the alt path
+			    	this.set(track.getSwitchID(), true);
 
-		    } else if (next.getSection().getNumber() == nextSec){
-		    	this.set(track.getSwitchID(), false);
-		    } else if (next.getAltSection() != null && next.getAltSection().getNumber() == nextSec){
-		    	this.set(track.getSwitchID(), false);
+			    } else if (next.getSection().getNumber() == nextSec){
+			    	this.set(track.getSwitchID(), false);
+			    } else if (next.getAltSection() != null && next.getAltSection().getNumber() == nextSec){
+			    	this.set(track.getSwitchID(), false);
 
+			    }
+			    else{ // a mistake.
+			    	throw new RuntimeException("invalid route at fixPointsFowards");
+			    }
 		    }
-		    else{ // a mistake.
-		    	throw new RuntimeException("invalid route at fixPointsFowards");
+		    else{
+		    	Track tr = track;
+		    	for(Boolean bl: switchingOrder){ // for each switch//
+		    		if(!(tr instanceof Switch)) throw new RuntimeException("An invalid Section has been encountered as the section has multiple pieces and a piece is not a switch");
+		    		this.set(((Switch)tr).getSwitchID(), bl);
+		    		tr = track.getNext(bl);
+		    	}
+
+
 		    }
 
 		}else{ // entering the points going in the backward direction
 			// switch the points to point to where we are coming from
 			Route rt = trainRoutes.get(trainID);
+		    Integer nextSec = rt.nextSection(section.getNumber());
 			Integer prevSec = rt.prevSection(section.getNumber()); // the section we came from
 
 			Section previous = sections.get(prevSec);
-
+			Pair<Integer, Integer> sectionPair = new Pair<Integer,Integer>(prevSec,nextSec);
+		    // for sectionPair
+		    List<Boolean> switchingOrder = section.retrieveSwitchingOrder(sectionPair);
 			// are the next sections in the track segment.
 			//System.out.println("sec: "+section.getNumber());
 			//System.out.println("previous: "+previous.getNumber());
 			//System.out.println("PrevSec: "+ prevSec);
 			//System.out.println("PrevAlt: "+ track.getNext(true).getSection().getNumber());
 		//	System.out.println("Prev: "+ track.getNext(false).getSection().getNumber());
-
-			if(prevSec == track.getNext(true).getSection().getNumber()){
-				this.set(track.getSwitchID(), true);
-			} else if (track.getNext(true).getAltSection() != null && prevSec == track.getNext(true).getAltSection().getNumber()){
-				this.set(track.getSwitchID(), true);
-			}
-			else if (prevSec == track.getNext(false).getSection().getNumber()){
-			    this.set(track.getSwitchID(), false);
-            } else if (track.getNext(false).getAltSection() != null && prevSec == track.getNext(false).getAltSection().getNumber()){
-            	this.set(track.getSwitchID(), false);
-			}else{
-		    	throw new RuntimeException("invalid route at fixPointsFowards");
+		    if(switchingOrder == null){
+				if(prevSec == track.getNext(true).getSection().getNumber()){
+					this.set(track.getSwitchID(), true);
+				} else if (track.getNext(true).getAltSection() != null && prevSec == track.getNext(true).getAltSection().getNumber()){
+					this.set(track.getSwitchID(), true);
+				}
+				else if (prevSec == track.getNext(false).getSection().getNumber()){
+				    this.set(track.getSwitchID(), false);
+	            } else if (track.getNext(false).getAltSection() != null && prevSec == track.getNext(false).getAltSection().getNumber()){
+	            	this.set(track.getSwitchID(), false);
+				}else{
+			    	throw new RuntimeException("invalid route at fixPointsFowards");
+			    }
+		    }else{
+		    	Track tr = track;
+		    	for(Boolean bl: switchingOrder){ // for each switch//
+		    		if(!(tr instanceof Switch)) throw new RuntimeException("An invalid Section has been encountered as the section has multiple pieces and a piece is not a switch");
+		    		this.set(((Switch)tr).getSwitchID(), bl);
+		    		tr = track.getPrevious(bl);
+		    	}
 		    }
 
 		}
@@ -240,6 +270,29 @@ public class TestController implements Controller, Listener {
 		}
 		//System.out.println("fix Points Backwards"+section.getNumber());
 	}
+
+	public Track getCurrentTrackSection(Section currentSection, Section previousSection, boolean movingForward){
+		Track ret = null;
+		for(Track t: currentSection){
+			if(movingForward){
+				if(t.getPrevious(true).getSection() == previousSection){
+					ret = t.getPrevious(true);
+				}
+                if(t.getPrevious(false).getSection() == previousSection){
+                	ret = t.getPrevious(false);
+                }
+			    if(t.getPrevious(true).getAltSection() == previousSection){
+			    	ret = t.getPrevious(true);
+			    }
+			    if(t.getPrevious(false).getAltSection() == previousSection){
+					ret = t.getPrevious(false);
+				}
+
+			}
+		}
+		return ret;
+	}
+
 	/**
 	 * We have moved into a section. Do what is necissary to configure the section that we have just moved into.
 	 * note find correct train does not support diamond crossing.
@@ -255,9 +308,11 @@ public class TestController implements Controller, Listener {
 	    	if(section ==  ((Event.SectionChanged) e).getSection()){ // check that the front of the train is in the section
 	    		// first work out which track segments we are currently dealing with.
 
-
+	    		Integer prevSection = trainRoutes.get(trainOrientation.getKey()).prevSection(section); // the previous section that we came from
+	    		Section previous = sections.get(prevSection);
 	    		Integer trainSection = ((Event.SectionChanged) e).getSection(); // store the section number in a variable
-	    		Section sec = sections.get(section);
+
+	    		/*
 	    		Track lastTrack = sec.get(sec.size()-1);
 	    		Track firstTrack = sec.get(0);
 	    		Track thisTrack = null;
@@ -272,11 +327,11 @@ public class TestController implements Controller, Listener {
 	    		} else{
 	    			throw new RuntimeException("invalid track in move into Section");
 	    		}
-
+	*/
+	    		Track thisTrack = getCurrentTrackSection(sections.get(trainSection),sections.get(prevSection),trainOrientation.getValue().currentOrientation());
 	    		// before handling the switches make sure that the sections of the track piece that we came from do not have this train in any of them
 
-	    		Integer prevSection = trainRoutes.get(trainOrientation.getKey()).prevSection(sec.getNumber()); // the previous section that we came from
-	    		Section previous = sections.get(prevSection);
+
 
 	    		// for all tracks in the previous section, remove this train from the queue of trains that have requested the section, instruct the next train on the queue to go.
 	    		for(Track t :previous){
@@ -313,12 +368,13 @@ public class TestController implements Controller, Listener {
 	    		//System.out.println("Track: "+thisTrack);
 	    		//System.out.println("TrackSection: "+thisTrack.getSection().getNumber());
 	    	   // train has traveled fowards into a section. we check weather the next section is a point or a diamond crossing
+
 	    	    if(thisTrack instanceof ForwardSwitch){
 	    	    	//System.out.println("orientation: "+trainOrientation.getValue().currentOrientation());
-	    	    	fixPointsFowards(trainOrientation.getKey() ,((ForwardSwitch)thisTrack), sec,trainOrientation.getValue().currentOrientation());
+	    	    	fixPointsFowards(trainOrientation.getKey() ,((ForwardSwitch)thisTrack), sections.get(section),trainOrientation.getValue().currentOrientation());
 
 	    	    } else if (thisTrack instanceof BackSwitch){
-	    	    	fixPointsBackwards(trainOrientation.getKey(), ((BackSwitch) thisTrack), sec, trainOrientation.getValue().currentOrientation());
+	    	    	fixPointsBackwards(trainOrientation.getKey(), ((BackSwitch) thisTrack), sections.get(section), trainOrientation.getValue().currentOrientation());
 	    	    } else if (thisTrack instanceof Crossing){
 	    	        // there is nothing for us to do in this crossing.
 	    	    }

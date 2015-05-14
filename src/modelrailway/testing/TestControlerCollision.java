@@ -43,6 +43,7 @@ public class TestControlerCollision extends TestController implements Controller
 			if(this.trainOrientations().get(train).currentOrientation() == true){
 				Section thisSec = this.sections().get(this.trainOrientations().get(train).currentSection());
 
+
 				Track front = thisSec.get(0);
 				Track notAltNext = front.getNext(false);
 				Track altNext = front.getNext(true);

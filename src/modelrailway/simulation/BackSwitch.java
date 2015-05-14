@@ -12,7 +12,16 @@ public class BackSwitch extends Track implements Switch{
 	private int pointPos; // point position from the back
 	private static int switchCounter = -1;
 	private int switchCount = switchCounter;
-
+	/**
+	 * A back section has a previous section of track, an entrance and a next section of track.
+	 * @param previous
+	 * @param next
+	 * @param entrance
+	 * @param section
+	 * @param length
+	 * @param altlength
+	 * @param pointPos
+	 */
 	public BackSwitch(Track previous, Track next,Track entrance, Section section,int length,int altlength, int pointPos) {
 		super(previous, next, entrance, null, section, length, altlength);
 		switchCounter--;

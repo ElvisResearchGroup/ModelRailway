@@ -165,6 +165,7 @@ public abstract class Movable {
 			   Pair<Boolean,Integer> pair = t.getAltSection().performMovableExit(this.getID());
 		   }
 	   }
+
 	   if(onAlt && track[0].getAltSection() != null){
 		   track[0].getAltSection().addMovable(this.getID());
 
