@@ -22,6 +22,7 @@ import modelrailway.simulation.Locomotive;
 import modelrailway.simulation.Movable;
 import modelrailway.simulation.Train;
 import modelrailway.simulation.Simulator;
+import modelrailway.util.Pair;
 
 import java.util.HashMap;
 
@@ -49,6 +50,7 @@ public class CtlTest {
 		Section sec2 = new Section(new ArrayList<Track>());
 		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 		sec2.add(sw);
+		
 
 		Section sec3 = new Section(new ArrayList<Track>());
 		Track sw2 = new BackSwitch(null, null, null, sec3, 100, 100, 50);
@@ -98,6 +100,15 @@ public class CtlTest {
 		Integer sw2Section = sw2.getSection().getNumber();
 		Integer mainRoute = tp_2.getSection().getNumber();
 
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(headSection,swAlt),Arrays.asList(new Boolean[]{true}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(headSection,mainRoute),Arrays.asList(new Boolean[]{false}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
+		
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(headSection,swAlt),Arrays.asList(new Boolean[]{true}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(headSection,mainRoute),Arrays.asList(new Boolean[]{false}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
 
 		Route routePlan = new Route(true,  switchSection, swAlt, sw2Section,headSection);
 		//System.out.println("route: "+headSection+", "+switchSection+", "+swAlt+", "+sw2Section);
@@ -149,6 +160,7 @@ public class CtlTest {
 		Straight.StraightRing route = new Straight.StraightRing(st);
 		Track head = route.ringTrack(4, 100);
 		sec.add(head);
+				
 		Track tp_1 = head.getNext(false);
 		Track tp_2 = tp_1.getNext(false);
 		Track tp_3 = tp_2.getNext(false);
@@ -208,6 +220,15 @@ public class CtlTest {
 		Integer sw2Section = sw2.getSection().getNumber();
 		Integer mainRoute = tp_2.getSection().getNumber();
 
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(headSection,swAlt),Arrays.asList(new Boolean[]{true}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(headSection,mainRoute),Arrays.asList(new Boolean[]{false}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
+		
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(headSection,swAlt),Arrays.asList(new Boolean[]{true}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(headSection,mainRoute),Arrays.asList(new Boolean[]{false}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
 
 		Route routePlan = new Route(true, sw2Section, swAlt, switchSection, headSection);
 		//System.out.println("route: "+headSection+", "+switchSection+", "+swAlt+", "+sw2Section);
@@ -322,7 +343,16 @@ public class CtlTest {
 		Integer sw2Section = sw2.getSection().getNumber();
 		Integer mainRoute = tp_2.getSection().getNumber();
 
-
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(headSection,swAlt),Arrays.asList(new Boolean[]{true}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(headSection,mainRoute),Arrays.asList(new Boolean[]{false}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
+		
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(headSection,swAlt),Arrays.asList(new Boolean[]{true}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(headSection,mainRoute),Arrays.asList(new Boolean[]{false}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
+		
 		Route routePlan = new Route(true, sw2Section, mainRoute, switchSection, headSection);
 		//System.out.println("route: "+headSection+", "+switchSection+", "+swAlt+", "+sw2Section);
 
@@ -436,6 +466,15 @@ public class CtlTest {
 		Integer sw2Section = sw2.getSection().getNumber();
 		Integer mainRoute = tp_2.getSection().getNumber();
 
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(headSection,swAlt),Arrays.asList(new Boolean[]{true}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(headSection,mainRoute),Arrays.asList(new Boolean[]{false}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
+		
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(headSection,swAlt),Arrays.asList(new Boolean[]{true}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(headSection,mainRoute),Arrays.asList(new Boolean[]{false}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
 		//System.out.println("headSection: "+headSection);
 		//System.out.println("switchSection: "+switchSection);
 		//System.out.println("swAlt: "+swAlt);
@@ -670,6 +709,16 @@ public class CtlTest {
  		Integer swAlt = str.getSection().getNumber();
  		Integer sw2Section = sw2.getSection().getNumber();
  		Integer mainRoute = tp_2.getSection().getNumber();
+ 		
+ 		sec2.putSwitchingOrder(new Pair<Integer,Integer>(headSection,swAlt),Arrays.asList(new Boolean[]{true}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(headSection,mainRoute),Arrays.asList(new Boolean[]{false}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
+		
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(headSection,swAlt),Arrays.asList(new Boolean[]{true}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(headSection,mainRoute),Arrays.asList(new Boolean[]{false}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
 
 
  		Route routePlan = new Route(true, switchSection, swAlt, sw2Section, headSection);
@@ -682,7 +731,7 @@ public class CtlTest {
  				//System.out.println("event "+e.toString());
  				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
  				  outputArray.add(((Event.SectionChanged) e).getSection());
- 				  //System.out.println(((Event.SectionChanged)e).getSection());
+ 				  System.out.println("section changed: "+ ((Event.SectionChanged)e).getSection());
  				  if(((Event.SectionChanged)e).getSection() == 0){
 
  					  ctl.stop(0);
@@ -782,6 +831,16 @@ public class CtlTest {
  		final Integer swAlt = str.getSection().getNumber();
  		final Integer sw2Section = sw2.getSection().getNumber();
  		final Integer mainRoute = tp_2.getSection().getNumber();
+ 		
+ 		sec2.putSwitchingOrder(new Pair<Integer,Integer>(headSection,swAlt),Arrays.asList(new Boolean[]{true}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(headSection,mainRoute),Arrays.asList(new Boolean[]{false}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
+		sec2.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
+		
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(headSection,swAlt),Arrays.asList(new Boolean[]{true}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(headSection,mainRoute),Arrays.asList(new Boolean[]{false}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
+		sec3.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
 
 
  		Route routePlan = new Route(true, headSection, switchSection , swAlt , sw2Section  );
