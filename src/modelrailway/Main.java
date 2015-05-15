@@ -294,7 +294,7 @@ public class Main {
 		String port = args[0];
 
 		// Needed for connection on lab machines
-		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ACM0");
+		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
 
 		// Construct the model railway assuming the interface (i.e. USB Cable)
 		// is on a given port. Likewise, we initialise it with three locomotives
