@@ -3,5 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JMRI"/>
+	<classpathentry kind="lib" path="/am/roxy/home/djp/pkg/JMRI/jmri.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
