@@ -67,6 +67,8 @@ public class Straight extends Track {
 			Track track2 = getSecondHead();
 			return new Pair<Track,Track>(track1,track2);
 		}
+
+
 	}
 
 	public Straight(Track previous, Track next, Section section, int length) {
