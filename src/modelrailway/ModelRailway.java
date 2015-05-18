@@ -133,9 +133,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		this.turnouts = new Turnout[nTurnOuts];
 		for(int i=0;i!=nTurnOuts;++i) {
 			turnouts[i] = manager.provideTurnout(getTurnoutString(i+1));
-			System.out.println("NAME: " + turnouts[i].getDisplayName());
 		}
-		System.out.println("DONE");
 	}
 	
 	@Override

@@ -5,12 +5,14 @@
 # ==========================================
 
 # Home of the JMRI installation
-JMRI_HOME=/Applications/JMRI
+#JMRI_HOME=/Applications/JMRI
+JMRI_HOME=$HOME/pkg/JMRI
 
 # Directory in which application class files located
 BINDIR=bin
 
-PORT=/dev/cu.usbmodemfa131
+#PORT=/dev/cu.usbmodemfa131
+PORT=/dev/ttyACM0
 
 # ==========================================
 # Determine OS
@@ -50,11 +52,10 @@ LIBDIR=$JMRI_HOME/lib
 SYSLIBPATH=
 
 if [ -d "${LIBDIR}/$OS" ] ; then
-    SYSLIBPATH="${LIBDIR}/$OS"
+    SYSLIBPATH="${LIBDIR}/$OS/x86_64/"
 fi
 
 echo $SYSLIBPATH
-
 OPTIONS="${OPTIONS} -Djava.security.policy=${LIBDIR}/security.policy"
 OPTIONS="${OPTIONS} -Djava.library.path=.:$SYSLIBPATH:${LIBDIR}"
 
