@@ -118,6 +118,7 @@ public class Main {
 	 * which then interface with the railway. The interface remains in the loop
 	 * continually waiting for user input.
 	 */
+
 	private void readEvaluatePrintLoop() {
 		final BufferedReader input = new BufferedReader(new InputStreamReader(
 				System.in));

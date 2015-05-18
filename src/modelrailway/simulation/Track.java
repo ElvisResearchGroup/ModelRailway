@@ -364,6 +364,26 @@ public abstract class Track {
 			}
 			return getHead();
 		}
+
+		public Track join(Track t1, boolean onAlt, Track t2, boolean onAlt2){
+			if(onAlt){
+				t1.next = t2;
+
+				if(onAlt2){
+					t2.alternatePrevious = t1;
+				}else{
+					t2.previous = t1;
+				}
+			} else{
+				t1.alternateNext = t2;
+				if(onAlt2){
+					t2.alternatePrevious = t1;
+				}else{
+					t2.previous = t1;
+				}
+			}
+			return getHead();
+		}
 	}
 
 	public static class DblRing extends RingRoute{
@@ -434,7 +454,14 @@ public abstract class Track {
 
 		    return new Pair<Track,Track> (getHead(),getSecondHead());
 		}
-
+		/**
+		 * Insert a section with three switches in it where there are 3 entrance points and two exit points.
+		 * @param inner1S
+		 * @param outer1S
+		 * @param inner2S
+		 * @param outer2S
+		 * @return
+		 */
 		public Pair<Track,Track> insertMultiSwitchBack(Straight inner1S, Straight outer1S, Straight inner2S, Straight outer2S){
 			Track inner1 = inner1S;
 			Track outer1 = outer1S;
