@@ -119,7 +119,7 @@ public class Main {
 	 * continually waiting for user input.
 	 */
 
-	private void readEvaluatePrintLoop() {
+	protected void readEvaluatePrintLoop() {
 		final BufferedReader input = new BufferedReader(new InputStreamReader(
 				System.in));
 

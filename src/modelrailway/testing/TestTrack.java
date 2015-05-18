@@ -1,6 +1,7 @@
 package modelrailway.testing;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import modelrailway.core.Section;
 import modelrailway.simulation.BackSwitch;
@@ -119,6 +120,18 @@ public class TestTrack {
 	    track.insertBetween(sectionNine.get(0), false, sectionThreeAndEleven.get(0), false, tenStraight, false);
 
 	    // track should now be built., test with assert statements todo
+	}
+
+	public StraightDblRing getTrack(){
+		return track;
+	}
+
+	public Track getHead(){
+		return track.getHead();
+	}
+
+	public Map<Integer,Section> getSections(){
+		return track.getSectionMap();
 	}
 
  }
