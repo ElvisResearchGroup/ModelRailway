@@ -2,6 +2,8 @@ package modelrailway;
 
 import modelrailway.core.Controller;
 import modelrailway.core.Train;
+import modelrailway.core.TrainController;
+import modelrailway.testing.TestControlerCollision;
 import modelrailway.util.SimpleController;
 
 public class Main2 extends Main {
@@ -41,7 +43,7 @@ public class Main2 extends Main {
 				new Train(0,true), // default config for train 1
 				new Train(0,true)  // default config for train 2
 		};
-		Controller controller = new SimpleController(trains);
+		Controller controller = new TrainController(trains,railway);
 		railway.register(controller);
 		controller.register(railway);
 		new Main(railway,controller).readEvaluatePrintLoop();
