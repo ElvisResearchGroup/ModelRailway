@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import modelrailway.core.Section;
+import modelrailway.util.Pair;
 
 /**
  * An abstract class to model pieces of track.
@@ -17,13 +18,17 @@ public abstract class Track {
 	public static  class RingRoute{
 		private Track head;
 		private List<Track> trackList = new ArrayList<Track>();
-		private List<Section> sectionList = new ArrayList<Section>();
+		private HashMap<Section,Integer> sectionMap = new HashMap<Section,Integer>();
 
 		public RingRoute(Track head){
 			this.head = head;
 			trackList.add(this.head);
-			sectionList.add(this.head.getSection());
-			if(this.head.getAltSection() != null) sectionList.add(this.head.getAltSection());
+			if(sectionMap.get(this.head.getSection()) == null)sectionMap.put(this.head.getSection(),0);
+			sectionMap.put(this.head.getSection(), sectionMap.get(this.head.getSection())+1);
+			if(this.head.getAltSection() != null){
+				if(sectionMap.get(this.head.getAltSection()) == null)sectionMap.put(this.head.getAltSection(),0);
+				sectionMap.put(this.head.getAltSection(), sectionMap.get(this.head.getAltSection())+1);
+			}
 		}
 		public Track getHead(){
 			return head;
@@ -31,13 +36,13 @@ public abstract class Track {
 		public List<Track> getTrackList(){
 			return trackList;
 		}
-		public List<Section> getSectionList(){
+		public Map<Section,Integer> getSectionList(){
 
-			return sectionList;
+			return sectionMap;
 		}
 		public Map<Integer, Section> getSectionMap(){
 			Map<Integer,Section > smap = new HashMap<Integer,Section>();
-			for(Section s : sectionList){
+			for(Section s : sectionMap.keySet()){
 				smap.put(s.getNumber(), s);
 			}
 			return smap;
@@ -61,8 +66,12 @@ public abstract class Track {
 			boolean insertedTrackUnifyNext = false;
 			boolean insertedTrackUnifyPrevious = false;
 			trackList.add(insertedTrack);
-			sectionList.add(insertedTrack.getSection());
-			if(insertedTrack.getAltSection() != null) sectionList.add(insertedTrack.getAltSection());
+			if(sectionMap.get(insertedTrack.getSection()) == null) sectionMap.put(insertedTrack.getSection(),0);
+			sectionMap.put(insertedTrack.getSection(),sectionMap.get(insertedTrack.getSection())+1);
+			if(insertedTrack.getAltSection() != null){
+				if(sectionMap.get(insertedTrack.getAltSection()) == null) sectionMap.put(insertedTrack.getAltSection(),0);
+				sectionMap.put(insertedTrack.getAltSection(),sectionMap.get(insertedTrack.getAltSection())+1);
+			}
 			if(tr1.next == tr1.alternateNext && tr1.next != null) tr1UnifyNext = true;
 			if(tr2.previous == tr2.alternatePrevious && tr2.previous != null) tr2UnifyPrevious = true;
 			if(insertedTrack.next == insertedTrack.alternateNext && insertedTrack.next != null) insertedTrackUnifyNext = true;
@@ -158,11 +167,22 @@ public abstract class Track {
 				if(tr1UnifyNext) tr1.alternateNext = tr1.next;
 			}
 			trackList.add(insertedTrack);
-			sectionList.add(insertedTrack.getSection());
-			if(insertedTrack.getAltSection() != null) sectionList.add(insertedTrack.getAltSection());
+			if(sectionMap.get(insertedTrack.getSection()) == null) sectionMap.put(insertedTrack.getSection(),0);
+			sectionMap.put(insertedTrack.getSection(),sectionMap.get(insertedTrack.getSection())+1);
+			if(insertedTrack.getAltSection() != null){
+				if(sectionMap.get(insertedTrack.getAltSection()) == null) sectionMap.put(insertedTrack.getAltSection(),0);
+				sectionMap.put(insertedTrack.getAltSection(),sectionMap.get(insertedTrack.getAltSection())+1);
+			}
 			return tr1; // return tr1
 		}
-
+		/**
+		 * Insert a track between tr1 and the track next to tr1
+		 * @param tr1
+		 * @param onAlt
+		 * @param insertedTrack
+		 * @param onAlt2
+		 * @return
+		 */
 		public Track insertBetween(Track tr1, boolean onAlt, Track insertedTrack, boolean onAlt2 ){
 			Track tr2 = tr1.getNext(onAlt);
 			if(insertedTrack instanceof Switch){
@@ -206,8 +226,12 @@ public abstract class Track {
 				if(tr1UnifyNext) tr1.alternateNext = tr1.next;
 			}
 			trackList.add(insertedTrack);
-			sectionList.add(insertedTrack.getSection());
-			if(insertedTrack.getAltSection() != null) sectionList.add(insertedTrack.getAltSection());
+			if(sectionMap.get(insertedTrack.getSection()) == null) sectionMap.put(insertedTrack.getSection(),0);
+			sectionMap.put(insertedTrack.getSection(),sectionMap.get(insertedTrack.getSection())+1);
+			if(insertedTrack.getAltSection() != null){
+				if(sectionMap.get(insertedTrack.getAltSection()) == null) sectionMap.put(insertedTrack.getAltSection(),0);
+				sectionMap.put(insertedTrack.getAltSection(),sectionMap.get(insertedTrack.getAltSection())+1);
+			}
 			return tr1; // return tr1
 		}
 
@@ -218,8 +242,12 @@ public abstract class Track {
 		 */
 		protected Track trivialRing(Track tr){
 			trackList.add(tr);
-			sectionList.add(tr.getSection());
-			if(tr.getAltSection() != null) sectionList.add(tr.getAltSection());
+			if(sectionMap.get(tr.getSection()) == null) sectionMap.put(tr.getSection(),0);
+			sectionMap.put(tr.getSection(),sectionMap.get(tr.getSection())+1);
+			if(tr.getAltSection() != null){
+				if(sectionMap.get(tr.getAltSection()) == null) sectionMap.put(tr.getAltSection(),0);
+				sectionMap.put(tr.getAltSection(),sectionMap.get(tr.getAltSection())+1);
+			}
 			tr.alternateNext = null;
 			tr.alternatePrevious = null;
 			tr.altlength = 0;
@@ -290,24 +318,36 @@ public abstract class Track {
 		    }
 
 		    Section sec = tlist.get(index).getSection();
-		    sectionList.remove(sec);
+		    sectionMap.put(tlist.get(index).getSection(),sectionMap.get(sec) -1);
+
+		    if (sectionMap.get(tlist.get(index).getSection()) == 0) sectionMap.remove(sec);
 		    if(tlist.get(index).getAltSection() != null ){
-		    	sectionList.remove(tlist.get(index).getAltSection());
+		    	sectionMap.put(tlist.get(index).getAltSection(),sectionMap.get(sec) -1);
+
+				if (sectionMap.get(tlist.get(index).getAltSection()) == 0) sectionMap.remove(sec);
+		    	sectionMap.remove(tlist.get(index).getAltSection());
 
 		    }
-		    sectionList.add(t2.getSection());
-		    if(t2.getAltSection() != null) sectionList.add(t2.getAltSection());
+		    if(sectionMap.get(t2.getSection()) == null) sectionMap.put(t2.getSection(), 0);
+		    sectionMap.put(t2.getSection(), sectionMap.get(t2.getSection())+1);
+
+		    if(sectionMap.get(t2.getAltSection()) == null) sectionMap.put(t2.getAltSection(), 0);
+		    sectionMap.put(t2.getAltSection(), sectionMap.get(t2.getAltSection())+1);
+
 		    tlist.set(index, t2);
 
 			return tr;
 
 		}
 
+
 		public Track bufferEnd(Track t1, boolean enterForward, boolean onAlt){
 			Section sec = new Section(new ArrayList<Track>());
 			Track buffer = new Buffer(t1,enterForward,sec,100);
 			sec.add(buffer);
-			sectionList.add(sec);
+			if(sectionMap.get(sec) == null) sectionMap.put(sec, 0);
+		    sectionMap.put(sec, sectionMap.get(sec)+1);
+
 			if(onAlt){
 				if(enterForward){
 					t1.alternateNext = buffer;
@@ -326,8 +366,102 @@ public abstract class Track {
 		}
 	}
 
-	private static final int PREVIOUS=0;
-	private static final int NEXT=1;
+	public static class DblRing extends RingRoute{
+		private Track secondRingHead = null;
+		public DblRing(Track head, Track secHead) {
+			super(head);
+			secondRingHead = secHead;
+		}
+
+		public Track getSecondHead(){
+			return secondRingHead;
+		}
+
+		public Pair<Track,Track> trivialDRing(Track tr, Track tr2){
+			this.getTrackList().add(tr);
+			Map<Section,Integer> sectionMap = this.getSectionList();
+			if(sectionMap.get(tr.getSection()) == null) sectionMap.put(tr.getSection(), 0);
+		    sectionMap.put(tr.getSection(), sectionMap.get(tr.getSection())+1);
+
+		    if(sectionMap.get(tr.getAltSection()) == null) sectionMap.put(tr.getAltSection(), 0);
+		    sectionMap.put(tr.getAltSection(), sectionMap.get(tr.getAltSection())+1);
+			tr.alternateNext = null;
+			tr.alternatePrevious = null;
+			tr.altlength = 0;
+			tr.next = this.getHead();
+			tr.previous = this.getHead();
+			this.getHead().next = tr;
+			this.getHead().previous = tr;
+
+			if(sectionMap.get(tr2.getSection()) == null) sectionMap.put(tr2.getSection(), 0);
+		    sectionMap.put(tr2.getSection(), sectionMap.get(tr2.getSection())+1);
+
+		    if(sectionMap.get(tr2.getAltSection()) == null) sectionMap.put(tr2.getAltSection(), 0);
+		    sectionMap.put(tr2.getAltSection(), sectionMap.get(tr2.getAltSection())+1);
+
+			tr2.alternateNext = null;
+			tr2.alternatePrevious = null;
+			tr2.altlength = 0;
+			tr2.next = secondRingHead;
+			tr2.previous = secondRingHead;
+			secondRingHead.next = tr2;
+			secondRingHead.previous = tr2;
+
+			return new Pair<Track,Track>(tr,tr2);
+		}
+
+		public Pair<Track,Track> insertMultiSwitch(Straight inner1S, Straight outer1S, Straight inner2S, Straight outer2S){
+			Track inner1 =  inner1S;
+			Track outer1 = outer1S;
+			Track inner2 = inner2S;
+			Track outer2 = outer2S;
+			Section sec = this.createSwitchesSectionforward();
+			Track innerSW = sec.get(0);
+			Track outerSW = sec.get(1);
+			Track mergeSW = sec.get(2);
+
+			innerSW.previous = inner1;
+			inner1.next = innerSW;
+
+		    outerSW.previous = outer1;
+		    outer1.next = outerSW;
+
+		    inner2.previous = mergeSW;
+		    mergeSW.next = inner2;
+
+		    outer2.previous = outerSW;
+		    outerSW.next = outer2;
+
+		    return new Pair<Track,Track> (getHead(),getSecondHead());
+		}
+
+
+		/**
+		 * The first and second pieces tracks in the returned section have the entry to the setion.
+		 * All three pieces have exits from the section.
+		 *
+		 * @return
+		 */
+		public Section createSwitchesSectionforward(){
+			Section sec = new Section(new ArrayList<Track>());
+
+			this.getSectionList().put(sec, 1);
+
+			Track s8Piece = new ForwardSwitch(null, null, null, sec, 300, 175, 150);
+			Track s16Piece = new ForwardSwitch(null,null,null,sec,300,175,150);
+			Track mergePiece = new BackSwitch(s16Piece, null, s8Piece, sec, 100, 100, 50);
+
+			s8Piece.alternateNext = mergePiece;
+			s16Piece.alternateNext = mergePiece;
+
+			sec.add(s8Piece);
+			sec.add(s16Piece);
+			sec.add(mergePiece);
+
+			return sec;
+		}
+	}
+
 	private Track previous;
 	private Track next;
 	private Track alternatePrevious;

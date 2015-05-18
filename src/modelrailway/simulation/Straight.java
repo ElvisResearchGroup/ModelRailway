@@ -3,6 +3,7 @@ package modelrailway.simulation;
 import java.util.ArrayList;
 
 import modelrailway.core.Section;
+import modelrailway.util.Pair;
 
 /**
  * Straight is a piece of track with one entrance and one exit.
@@ -33,6 +34,41 @@ public class Straight extends Track {
 		}
 
 	}
+
+	public static class StraightDblRing extends DblRing{
+		public StraightDblRing(Track head, Track secHead){
+			super(head,secHead);
+
+		}
+
+		public Pair<Track,Track> ringTrack(int numTracksOuter, int numTracksInner, int trackSegmentLength){
+			Section section = new Section(new ArrayList<Track>() );
+			Section section2 = new Section(new ArrayList<Track>());
+		    Track tr = new Straight(getHead(),getHead(),section,trackSegmentLength);
+		    Track tr2 = new Straight(getSecondHead(), getSecondHead(), section2, trackSegmentLength);
+		    section.add(tr); // add a track
+		    section2.add(tr2);
+			this.trivialDRing(tr,tr2);
+			for(int x = 2; x < numTracksOuter; x++){
+				Track head = getHead(); // get the head
+				Section sinsert = new Section(new ArrayList<Track>()); // the section to insert
+				Track insert = new Straight(null,null,sinsert,trackSegmentLength); // the track to insert
+				sinsert.add(insert); // add a track
+				insertBetween(head,false,insert,false); // insert the insert piece between head and head.getNext(false);
+			}
+			for(int x = 2; x < numTracksInner; x++){
+				Track head2 = getSecondHead();
+				Section sinsert = new Section(new ArrayList<Track>());
+				Track insert = new Straight(null,null,sinsert, trackSegmentLength);
+				sinsert.add(insert);
+				insertBetween(head2,false,insert,false);
+			}
+			Track track1 = getHead();
+			Track track2 = getSecondHead();
+			return new Pair<Track,Track>(track1,track2);
+		}
+	}
+
 	public Straight(Track previous, Track next, Section section, int length) {
 		super(previous, next,null, null, section, length, 0);
 		// TODO Auto-generated constructor stub

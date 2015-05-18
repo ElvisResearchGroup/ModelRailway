@@ -56,6 +56,10 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 		turnstyleTable.put(pair, val);
 	}
 
+	public void setSectionNumber(int sectionNumber){
+		this.sectionNumber = sectionNumber;
+	}
+
 	/**
 	 * The reserveSection method reserves the section for the supplied train. if there is nothing on the waiting list the section is reserved
 	 * and true is returned. otherwise false is returned. The calling method should stop the train if false is returned.

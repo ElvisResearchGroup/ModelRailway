@@ -29,7 +29,9 @@ import java.util.HashMap;
 import org.junit.*;
 
 public class ModelTrackTest {
-
+	/*
+	 * Test the model railway with a ring of straight track segments.
+	 */
 	@Test public void modelTrackTest0(){
 		Section.resetCounter();
 		Section sec = new Section(new ArrayList<Track>());
@@ -39,13 +41,28 @@ public class ModelTrackTest {
 		Track head = route.ringTrack(8, 100);
 		sec.add(head);
 		Track tp_1 = head.getNext(false);
+		tp_1.getSection().setSectionNumber(1);
+
 		Track tp_2 = tp_1.getNext(false);
+		tp_2.getSection().setSectionNumber(2);
+
 		Track tp_3 = tp_2.getNext(false);
+		tp_3.getSection().setSectionNumber(3);
+
 		Track tp_4 = tp_3.getNext(false);
+		tp_4.getSection().setSectionNumber(4);
+
 		Track tp_5 = tp_4.getNext(false);
+		tp_5.getSection().setSectionNumber(5);
+
 		Track tp_6 = tp_5.getNext(false);
+		tp_6.getSection().setSectionNumber(6);
+
 		Track tp_7 = tp_6.getNext(false);
+		tp_7.getSection().setSectionNumber(7);
+
 		Track tp_8 = tp_7.getNext(false);
+		tp_8.getSection().setSectionNumber(8);
 
 		//set up the train track.
 
