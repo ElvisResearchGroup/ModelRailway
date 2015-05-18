@@ -435,6 +435,34 @@ public abstract class Track {
 		    return new Pair<Track,Track> (getHead(),getSecondHead());
 		}
 
+		public Pair<Track,Track> insertMultiSwitchBack(Straight inner1S, Straight outer1S, Straight inner2S, Straight outer2S){
+			Track inner1 = inner1S;
+			Track outer1 = outer1S;
+			Track inner2 = inner2S;
+			Track outer2 = outer2S;
+
+			Section sec = this.createSwitchesSectionBackward();
+
+			Track innerSW = sec.get(0); //section s11
+			Track outerSW = sec.get(1);
+			Track mergeSW = sec.get(2);
+
+			outerSW.previous = outer1S;
+			outer1.next = outerSW;
+
+			mergeSW.previous = inner1;
+			inner1.next = mergeSW;
+
+			inner2.previous = innerSW;
+			innerSW.next = inner2;
+
+			outer2.previous = outerSW;
+			outerSW.next = outer2;
+
+			return new Pair<Track,Track>(getHead(), getSecondHead());
+
+		}
+
 
 		/**
 		 * The first and second pieces tracks in the returned section have the entry to the setion.
@@ -456,6 +484,25 @@ public abstract class Track {
 
 			sec.add(s8Piece);
 			sec.add(s16Piece);
+			sec.add(mergePiece);
+
+			return sec;
+		}
+
+		public Section createSwitchesSectionBackward(){
+
+			Section sec = new Section(new ArrayList<Track>());
+			this.getSectionList().put(sec, 1);
+
+			Track s11Piece = new BackSwitch(null,null,null,sec,300,175,150);
+			Track s3Piece = new BackSwitch(null,null,null,sec,300,175,150);
+			Track mergePiece = new ForwardSwitch(null, s11Piece, s3Piece,sec, 100,100,50);
+
+			s11Piece.alternatePrevious = mergePiece;
+			s3Piece.alternatePrevious = mergePiece;
+
+			sec.add(s11Piece);
+			sec.add(s3Piece);
 			sec.add(mergePiece);
 
 			return sec;
