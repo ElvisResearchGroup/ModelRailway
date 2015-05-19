@@ -48,7 +48,9 @@ public class Straight extends Track {
 		    Track tr2 = new Straight(getSecondHead(), getSecondHead(), section2, trackSegmentLength);
 		    section.add(tr); // add a track
 		    section2.add(tr2);
+		    System.out.println("tr: "+tr.getSection() +" tr2: "+ tr2.getSection());
 			this.trivialDRing(tr,tr2);
+			//this.trivialDRing(this.getHead(), this.getSecondHead());
 			for(int x = 2; x < numTracksOuter; x++){
 				Track head = getHead(); // get the head
 				Section sinsert = new Section(new ArrayList<Track>()); // the section to insert
@@ -63,6 +65,7 @@ public class Straight extends Track {
 				sinsert.add(insert);
 				insertBetween(head2,false,insert,false);
 			}
+			assert(this.getTrackList().size() == numTracksOuter + numTracksInner);
 			Track track1 = getHead();
 			Track track2 = getSecondHead();
 			return new Pair<Track,Track>(track1,track2);

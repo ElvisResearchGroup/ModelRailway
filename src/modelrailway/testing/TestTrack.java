@@ -31,11 +31,18 @@ public class TestTrack {
 
 			strtSec.add(strt);
 			strtInnerSec.add(strtInner);
+
 			strtSec.setSectionNumber(1);
 			strtInnerSec.setSectionNumber(17);
 
 			track = new StraightDblRing(strt, strtInner);
+			System.out.println("strtSection: "+ strt.getSection());
+			System.out.println("strtInnerSec: "+ strtInner.getSection()); 
+
+			System.out.println("double ring size: "+track.getTrackList().size());
+
 			Pair<Track,Track> trackHeads = track.ringTrack(8, 8, 100);
+			System.out.println();
 			Track outerHead = trackHeads.fst;
 
 			Track innerHead = trackHeads.snd;
@@ -43,9 +50,12 @@ public class TestTrack {
 			Integer outerStartSec = strtSec.getNumber();
 			Integer innerStartSec = strtInnerSec.getNumber();
 
+			Section sectionOne = outerHead.getSection();
+			sectionOne.setSectionNumber(1);
+
 		    Section sectionTwo = outerHead.getNext(false).getSection();
 		    sectionTwo.setSectionNumber(2);
-		    
+
 		    Section sectionThree = outerHead.getNext(false).getNext(false).getSection();
 
 		    Section sectionFour = outerHead.getNext(false).getNext(false).getNext(false).getSection();
@@ -59,15 +69,16 @@ public class TestTrack {
 
 		    Section sectionSeven = outerHead.getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getSection();
 		    sectionSeven.setSectionNumber(7);
-		    
+
 		    Section sectionEight = outerHead.getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getSection();
 		    sectionSeven.setSectionNumber(8);
-		    
-		    
+
+		    Section sectionSeventeen = innerHead.getSection();
+		    sectionSeventeen.setSectionNumber(17);
 
 		    Section sectionEighteen = innerHead.getNext(false).getSection();
 		    sectionEighteen.setSectionNumber(18);
-		    
+
 		    Section sectionEleven = innerHead.getNext(false).getNext(false).getSection();
 		    sectionEleven.setSectionNumber(11);
 
@@ -84,50 +95,67 @@ public class TestTrack {
 		    sectionFifteen.setSectionNumber(15);
 
 		    Section sectionSixteen = innerHead.getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getSection();
-		    sectionFifteen.setSectionNumber(16);
-		    
+		    sectionSixteen.setSectionNumber(16);
+
+		    assert(this.getTrack().getTrackList().size() == 16);
+
 		    Track forwardSwitch8 = new ForwardSwitch(sectionSeven.get(0), outerHead, null, sectionEight, 100, 100, 50);
 		    track.replace(sectionEight.get(0), forwardSwitch8, true);
-		    
-		    
+		   // sectionEight.add(forwardSwitch8);
+		    assert(sectionEight.size() == 1);
+		    assert(this.getTrack().getTrackList().size() == 16);
+		    System.out.println("tracklistSize : "+this.getTrack().getTrackList().size());
+
 		    Track forwardSwitch16 = new ForwardSwitch(sectionFifteen.get(0), null, innerHead, sectionSixteen, 100, 100, 50);
-		    track.replace(sectionEight.get(0), forwardSwitch16, true);
-		    
+		    track.replace(sectionSixteen.get(0), forwardSwitch16, true);
+		 //   sectionSixteen.add(forwardSwitch16);
+		    assert(sectionSixteen.size() == 1);
+
 		    Track backSwitch3 = new BackSwitch(null, outerHead, sectionFour.get(0), sectionEight, 100, 100, 50);
 		    track.replace(sectionThree.get(0),backSwitch3, true);
-		    
-		    
+		    //sectionThree.add(backSwitch3);
+		    assert(sectionThree.size() == 1);
+
+
 		    Track backSwitch11 = new BackSwitch(null, null, sectionEleven.get(0), sectionSixteen, 100, 100, 50);
 		    track.replace(sectionEleven.get(0), backSwitch11, true);
-		    
+		    //sectionEleven.add(backSwitch11);
+		    assert(sectionEleven.size() == 1);
+
+
+
 		    track.join(sectionSixteen.get(0), true, sectionEleven.get(0), true);
-		    
+
 		    Section sectionNineteen = new Section(new ArrayList<Track>());
+		    sectionNineteen.setSectionNumber(19);
 		    Track straightNineteenSub = new Straight(null,null,sectionNineteen,100);
 		    sectionNineteen.add(straightNineteenSub);
-		   
+
 		    track.insertBetween(sectionSixteen.get(0), true, sectionEleven.get(0), true, straightNineteenSub, false);
-		    
+
 		    Section sectionTen = new Section(new ArrayList<Track>());
+		    sectionTen.setSectionNumber(10);
 		    Track straightTenSub = new Straight(null,null,sectionTen,100);
-		    sectionNineteen.add(straightNineteenSub);
-		   
+		    sectionTen.add(straightTenSub);
+
 		    track.insertBetween(sectionNineteen.get(0), true, sectionEleven.get(0), true, straightTenSub, false);
-		   
-		    Track backSwitch19 = new BackSwitch(sectionSixteen.get(0), sectionTen.get(0),sectionEight.get(0), sectionNineteen,100,100,50);
-		    
+
+		    Track backSwitch19 = new BackSwitch(sectionSixteen.get(0),
+		    		sectionTen.get(0),
+		    		sectionEight.get(0), sectionNineteen,100,100,50);
+
 		    track.replace(sectionNineteen.get(0), backSwitch19, false);
-		    
+
 		    Track forwardSwitch10 = new ForwardSwitch(sectionNineteen.get(0), sectionEleven.get(0), sectionThree.get(0), sectionTen, 100,100,50);
-		    
+
 		    track.replace(sectionTen.get(0),forwardSwitch10, false);
-		    
+
 		    track.join(sectionEight.get(0), true, sectionNineteen.get(0), true);
-		    
+
 		    track.join(sectionTen.get(0), true, sectionThree.get(0), true);
-		    
+
 		    // track should now be built., test with assert statements todo
-	    // track should now be built., test with assert statements todo
+	        // track has been built without diamond crossing. Now add diamond crossing.
 	}
 
 	public StraightDblRing getTrack(){
@@ -139,7 +167,7 @@ public class TestTrack {
 	}
 
 	public Map<Integer,Section> getSections(){
-		return track.getSectionMap();
+		return track.getSectionNumberMap();
 	}
 
  }

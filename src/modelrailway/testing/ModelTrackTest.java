@@ -90,7 +90,7 @@ public class ModelTrackTest {
 			e1.printStackTrace();
 			fail("initialization error: ");
 		}
-		final TestController ctl = new TestController(orientationMap,route.getSectionMap(),head, sim); //
+		final TestController ctl = new TestController(orientationMap,route.getSectionNumberMap(),head, sim); //
 
 
 		Integer start = tp_1.getSection().getNumber();

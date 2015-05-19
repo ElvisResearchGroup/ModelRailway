@@ -19,10 +19,12 @@ public abstract class Track {
 		private Track head;
 		private List<Track> trackList = new ArrayList<Track>();
 		private HashMap<Section,Integer> sectionMap = new HashMap<Section,Integer>();
+		// sectionMap, a hashmap containing the number of times a section occurs in the Route
 
 		public RingRoute(Track head){
 			this.head = head;
 			trackList.add(this.head);
+
 			if(sectionMap.get(this.head.getSection()) == null)sectionMap.put(this.head.getSection(),0);
 			sectionMap.put(this.head.getSection(), sectionMap.get(this.head.getSection())+1);
 			if(this.head.getAltSection() != null){
@@ -36,13 +38,23 @@ public abstract class Track {
 		public List<Track> getTrackList(){
 			return trackList;
 		}
+		/**
+		 * The sectionList() returns a hashmap from sections in the Route to the number of times the section occurs.
+		 * @return
+		 */
 		public Map<Section,Integer> getSectionList(){
 
 			return sectionMap;
 		}
-		public Map<Integer, Section> getSectionMap(){
+		/**
+		 *  get a map from sections to section numbers.
+		 */
+		public Map<Integer, Section> getSectionNumberMap(){
 			Map<Integer,Section > smap = new HashMap<Integer,Section>();
+			System.out.println("sectionMap.keySet(): "+sectionMap.keySet().size());
 			for(Section s : sectionMap.keySet()){
+				if(s == null) System.out.println("A section is  null in sectionMap");
+
 				smap.put(s.getNumber(), s);
 			}
 			return smap;
@@ -66,8 +78,10 @@ public abstract class Track {
 			boolean insertedTrackUnifyNext = false;
 			boolean insertedTrackUnifyPrevious = false;
 			trackList.add(insertedTrack);
+
 			if(sectionMap.get(insertedTrack.getSection()) == null) sectionMap.put(insertedTrack.getSection(),0);
 			sectionMap.put(insertedTrack.getSection(),sectionMap.get(insertedTrack.getSection())+1);
+
 			if(insertedTrack.getAltSection() != null){
 				if(sectionMap.get(insertedTrack.getAltSection()) == null) sectionMap.put(insertedTrack.getAltSection(),0);
 				sectionMap.put(insertedTrack.getAltSection(),sectionMap.get(insertedTrack.getAltSection())+1);
@@ -275,7 +289,9 @@ public abstract class Track {
 				tr.addSwitchEntry(((Switch) t2).getSwitchID(),t2);
 			}
 			List<Track> tlist = getTrackList();
+			System.out.println("trackListSize: "+tlist.size());
 		    int index = tlist.lastIndexOf(t);
+		    System.out.println(tlist.size());
 		 //   System.out.println("t index: "+index);
 		    Track tn;
 		    Track tp;
@@ -313,6 +329,7 @@ public abstract class Track {
 			       t2.next = tn;
 			    }
 		    }
+		    System.out.println("index: "+index);
 		    if(tlist.get(index) == head){
 		    	head = t2; // replace the head.
 		    }
@@ -328,12 +345,13 @@ public abstract class Track {
 		    	sectionMap.remove(tlist.get(index).getAltSection());
 
 		    }
+
 		    if(sectionMap.get(t2.getSection()) == null) sectionMap.put(t2.getSection(), 0);
 		    sectionMap.put(t2.getSection(), sectionMap.get(t2.getSection())+1);
-
-		    if(sectionMap.get(t2.getAltSection()) == null) sectionMap.put(t2.getAltSection(), 0);
-		    sectionMap.put(t2.getAltSection(), sectionMap.get(t2.getAltSection())+1);
-
+		    if(t2.getAltSection() != null){
+		       if(sectionMap.get(t2.getAltSection()) == null) sectionMap.put(t2.getAltSection(), 0);
+		       sectionMap.put(t2.getAltSection(), sectionMap.get(t2.getAltSection())+1);
+		    }
 		    tlist.set(index, t2);
 
 			return tr;
@@ -391,6 +409,14 @@ public abstract class Track {
 		public DblRing(Track head, Track secHead) {
 			super(head);
 			secondRingHead = secHead;
+			this.getTrackList().add(secHead);
+
+			if(this.getSectionList().get(secondRingHead.getSection()) == null)this.getSectionList().put(secondRingHead.getSection(),0);
+			this.getSectionList().put(secondRingHead.getSection(), this.getSectionList().get(secondRingHead.getSection())+1);
+			if(secondRingHead.getAltSection() != null){
+				if(this.getSectionList().get(secondRingHead.getAltSection()) == null)this.getSectionList().put(secondRingHead.getAltSection(),0);
+				this.getSectionList().put(secondRingHead.getAltSection(), this.getSectionList().get(secondRingHead.getAltSection())+1);
+			}
 		}
 
 		public Track getSecondHead(){
@@ -398,13 +424,20 @@ public abstract class Track {
 		}
 
 		public Pair<Track,Track> trivialDRing(Track tr, Track tr2){
+			System.out.println("running trivial DRing");
+			System.out.println("tr: "+tr.getSection()+" tr2: "+tr2.getSection());
+			if(tr.getSection() == null || tr2.getSection() == null){
+				System.out.println("A section was null");;
+			}
 			this.getTrackList().add(tr);
 			Map<Section,Integer> sectionMap = this.getSectionList();
 			if(sectionMap.get(tr.getSection()) == null) sectionMap.put(tr.getSection(), 0);
 		    sectionMap.put(tr.getSection(), sectionMap.get(tr.getSection())+1);
 
+		    if(tr.getAltSection() != null){
 		    if(sectionMap.get(tr.getAltSection()) == null) sectionMap.put(tr.getAltSection(), 0);
 		    sectionMap.put(tr.getAltSection(), sectionMap.get(tr.getAltSection())+1);
+		    }
 			tr.alternateNext = null;
 			tr.alternatePrevious = null;
 			tr.altlength = 0;
@@ -413,12 +446,14 @@ public abstract class Track {
 			this.getHead().next = tr;
 			this.getHead().previous = tr;
 
+			this.getTrackList().add(tr2);
 			if(sectionMap.get(tr2.getSection()) == null) sectionMap.put(tr2.getSection(), 0);
 		    sectionMap.put(tr2.getSection(), sectionMap.get(tr2.getSection())+1);
 
+		    if(tr2.getAltSection() != null){
 		    if(sectionMap.get(tr2.getAltSection()) == null) sectionMap.put(tr2.getAltSection(), 0);
 		    sectionMap.put(tr2.getAltSection(), sectionMap.get(tr2.getAltSection())+1);
-
+		    }
 			tr2.alternateNext = null;
 			tr2.alternatePrevious = null;
 			tr2.altlength = 0;
