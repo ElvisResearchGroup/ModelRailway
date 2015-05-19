@@ -12,6 +12,7 @@ import modelrailway.core.Event;
 import modelrailway.core.Route;
 import modelrailway.core.Event.SpeedChanged;
 import modelrailway.core.Train;
+import modelrailway.core.TrainController;
 import modelrailway.util.SimpleController;
 
 /**

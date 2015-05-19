@@ -31,43 +31,43 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	 * USB port through which all loconet traffic is routed
 	 */
 	private PR3Adapter connection;
-	
+
 	/**
 	 * The SystemConnectionMemo provides access to all the components of the
 	 * LocoNet interface.
 	 */
 	private PR3SystemConnectionMemo memo;
-	
+
 	/**
 	 * The list of locomotives on the system.
 	 */
 	private DccLocoAddress[] locomotives;
-	
+
 	/**
 	 * The list of active locomotive throttles
 	 */
 	private DccThrottle[] throttles;
-	
+
 	/**
 	 * The list of active turnouts
 	 */
 	private Turnout[] turnouts;
-	
+
 	private ArrayList<Event.Listener> eventListeners = new ArrayList<Event.Listener>();
 
 	/**
 	 * The linmonitor is useful for decoding loconet messages.
 	 */
 	private Llnmon linmon;
-	
+
 	/**
 	 * verbose mode means dump out more debugging information.
 	 */
-	private volatile boolean verbose = true;
-	
+	private volatile boolean verbose = false;
+
 	/**
 	 * Constructor starts the JMRI application running, and then returns.
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public ModelRailway(String portName, int... locomotives) throws Exception {
 		// Configure Log4J
@@ -96,7 +96,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		// Is following line necessary?
 		memo.configureCommandStation(true, true, "DCS51 (Zephyr Xtra)", false, false);
 		memo.getLnTrafficController().addLocoNetListener(LnTrafficController.ALL, this);
-		requestThrottles();		
+		requestThrottles();
 		setupTurnouts(4);
 	}
 
@@ -106,11 +106,11 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	public void destroy() {
 		connection.dispose();
 	}
-	
+
 	public void setVerbose(boolean verbose) {
 		this.verbose = verbose;
 	}
-	
+
 	/**
 	 * Request throttles for all locomotives
 	 */
@@ -121,11 +121,11 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			manager.requestThrottle(loco,this);
 		}
 	}
-	
+
 	/**
 	 * Set up the turnouts on the railway. These are assumed to be numbered
 	 * consecutively from 1.
-	 * 
+	 *
 	 * @param nTurnOuts
 	 */
 	private void setupTurnouts(int nTurnOuts) {
@@ -135,7 +135,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			turnouts[i] = manager.provideTurnout(getTurnoutString(i+1));
 		}
 	}
-	
+
 	@Override
 	public void notifyFailedThrottleRequest(DccLocoAddress arg0, String arg1) {
 		System.out.println("FAILED REQUESTING THROTTLE: " + arg0);
@@ -151,16 +151,16 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			}
 		}
 	}
-	
+
 	// ===============================================================
 	// Message Listeners and Handlers
 	// ===============================================================
-	
+
 
 	public void register(Event.Listener listener) {
 		this.eventListeners.add(listener);
 	}
-	
+
 	/**
 	 * The message listener which is called for all broadcasted loconet
 	 * messages. This processes each message and turns it into an appropriate
@@ -169,7 +169,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	@Override
 	public void message(LocoNetMessage arg0) {
 		Event event = null;
-		
+
 		if(verbose) {
 			// In verbose mode, we exploit the JMRI Llnmon tool to generate
 			// correct strings for all loconet messages.
@@ -178,7 +178,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			}
 			System.out.println("MESSAGE: " + linmon.displayMessage(arg0));
 		}
-		
+
 		// First, process loconet message
 		int opcode = arg0.getOpCode();
 		switch(opcode) {
@@ -211,15 +211,15 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			// this is an unrecognised message, which we'll just silently ignore
 			// for now.
 		}
-		
+
 		// Second, dispatch message as event (if understood)
 		if(event != null) {
 			for(Event.Listener listener : eventListeners) {
 				listener.notify(event);
 			}
-		}		
+		}
 	}
-	
+
 	public void notify(Event event) {
 		if (event instanceof Event.SpeedChanged) {
 			Event.SpeedChanged e = (Event.SpeedChanged) event;
@@ -235,19 +235,19 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			throttles[e.getLocomotive()].setSpeedSetting(0.0f);
 		} else if (event instanceof Event.TurnoutChanged) {
 			Event.TurnoutChanged tc = (Event.TurnoutChanged) event;
-			System.out.println("SETTING TURNOUT : " + tc.getTurnout() + " : " + tc.getThrown());			
+			System.out.println("SETTING TURNOUT : " + tc.getTurnout() + " : " + tc.getThrown());
 			Turnout turnout = turnouts[tc.getTurnout()];
 
 			turnout.setCommandedState(tc.getThrown() ? Turnout.THROWN
 					: Turnout.CLOSED);
-			
+
 		}
 	}
-	
+
     static private int SENSOR_ADR(int a1, int a2) {
         return (((a2 & 0x0f) * 128) + (a1 & 0x7f)) + 1;
-    } 
-		
+    }
+
 	/**
 	 * Static method to get Log4J working before the rest of JMRI starts up.
 	 */
@@ -271,7 +271,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 				jmri.util.exceptionhandler.AwtHandler.class.getName());
 		Thread.setDefaultUncaughtExceptionHandler(new jmri.util.exceptionhandler.UncaughtExceptionHandler());
 	}
-	
+
 	static private String getTurnoutString(int i) {
 		String r = Integer.toString(i);
 		while (r.length() < 3) {

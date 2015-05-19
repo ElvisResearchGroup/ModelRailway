@@ -46,6 +46,6 @@ public class Main2 extends Main {
 		Controller controller = new TrainController(trains,railway);
 		railway.register(controller);
 		controller.register(railway);
-		new Main(railway,controller).readEvaluatePrintLoop();
+		new Main2(railway,controller).readEvaluatePrintLoop();
 	}
 }
