@@ -34,8 +34,7 @@ public class Main2 extends Main {
 				System.out.println("Disconnecting from railway...");
 				railway.destroy();
 			}
-		}) {
-		});
+		}));
 
 		// Enter Read, Evaluate, Print loop.
 		Train[] trains = {

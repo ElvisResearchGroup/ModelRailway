@@ -37,7 +37,7 @@ public class TestTrack {
 
 			track = new StraightDblRing(strt, strtInner);
 			System.out.println("strtSection: "+ strt.getSection());
-			System.out.println("strtInnerSec: "+ strtInner.getSection()); 
+			System.out.println("strtInnerSec: "+ strtInner.getSection());
 
 			System.out.println("double ring size: "+track.getTrackList().size());
 
@@ -98,6 +98,7 @@ public class TestTrack {
 		    sectionSixteen.setSectionNumber(16);
 
 		    assert(this.getTrack().getTrackList().size() == 16);
+		    //insert switches and alternate track.
 
 		    Track forwardSwitch8 = new ForwardSwitch(sectionSeven.get(0), outerHead, null, sectionEight, 100, 100, 50);
 		    track.replace(sectionEight.get(0), forwardSwitch8, true);
@@ -126,36 +127,80 @@ public class TestTrack {
 
 		    track.join(sectionSixteen.get(0), true, sectionEleven.get(0), true);
 
-		    Section sectionNineteen = new Section(new ArrayList<Track>());
-		    sectionNineteen.setSectionNumber(19);
-		    Track straightNineteenSub = new Straight(null,null,sectionNineteen,100);
-		    sectionNineteen.add(straightNineteenSub);
+		    Section sectionNine = new Section(new ArrayList<Track>());
+		    sectionNine.setSectionNumber(9);
+		    Track straightNineSub = new Straight(null,null,sectionNine,100);
+		    sectionNine.add(straightNineSub);
 
-		    track.insertBetween(sectionSixteen.get(0), true, sectionEleven.get(0), true, straightNineteenSub, false);
+		    track.insertBetween(sectionSixteen.get(0), true, sectionEleven.get(0), true, straightNineSub, false);
 
 		    Section sectionTen = new Section(new ArrayList<Track>());
 		    sectionTen.setSectionNumber(10);
 		    Track straightTenSub = new Straight(null,null,sectionTen,100);
 		    sectionTen.add(straightTenSub);
 
-		    track.insertBetween(sectionNineteen.get(0), true, sectionEleven.get(0), true, straightTenSub, false);
+		    track.insertBetween(sectionNine.get(0), true, sectionEleven.get(0), true, straightTenSub, false);
 
 		    Track backSwitch19 = new BackSwitch(sectionSixteen.get(0),
 		    		sectionTen.get(0),
-		    		sectionEight.get(0), sectionNineteen,100,100,50);
+		    		sectionEight.get(0), sectionNine,100,100,50);
 
-		    track.replace(sectionNineteen.get(0), backSwitch19, false);
+		    track.replace(sectionNine.get(0), backSwitch19, false);
 
-		    Track forwardSwitch10 = new ForwardSwitch(sectionNineteen.get(0), sectionEleven.get(0), sectionThree.get(0), sectionTen, 100,100,50);
+		    Track forwardSwitch10 = new ForwardSwitch(sectionNine.get(0), sectionEleven.get(0), sectionThree.get(0), sectionTen, 100,100,50);
 
 		    track.replace(sectionTen.get(0),forwardSwitch10, false);
 
-		    track.join(sectionEight.get(0), true, sectionNineteen.get(0), true);
+		    track.join(sectionEight.get(0), true, sectionNine.get(0), true);
 
 		    track.join(sectionTen.get(0), true, sectionThree.get(0), true);
 
+		    // insert diamond crossing and buffers.
+
+		    Track forwardSwitch4 = new ForwardSwitch(sectionThree.get(0), sectionFive.get(0), null, sectionFour, 100,100,50);
+		    track.replace(sectionFour.get(0), forwardSwitch4, false);
+
+		    Track forwardSwitch12 = new ForwardSwitch(sectionTwelve.get(0), sectionThirteen.get(0),null, sectionTwelve,100,100,50);
+		    track.replace(sectionTwelve.get(0),forwardSwitch12, false);
+
+		    Section sectionNineteen = new Section(new ArrayList<Track>());
+		    sectionNineteen.setSectionNumber(19);
+		    Track diamondCrossing13 = new Crossing(sectionTwelve.get(0), sectionFourteen.get(0), sectionFive.get(0), null, sectionThirteen, sectionNineteen,100,100);
+		    sectionNineteen.add(diamondCrossing13);
+
+		    track.join(sectionFour.get(0), true,  sectionNineteen.get(0), true);
+
+		    track.bufferEnd(sectionTwelve.get(0),true,true);
+
+		    Track section23Straight = sectionTwelve.get(0).getNext(true);
+		    Section sectionTwentyThree = section23Straight.getSection();
+		    sectionTwentyThree.setSectionNumber(23);
+
+		    Section sectionTwentyTwo = new Section(new ArrayList<Track>());
+		    Track section22Straight = new Straight(sectionTwelve.get(0), sectionTwentyThree.get(0), sectionTwentyTwo, 100);
+		    sectionTwentyTwo.setSectionNumber(22);
+
+		    track.insertBetween(sectionTwelve.get(0), true, section23Straight, false, section22Straight, false );
+
+
+		    track.bufferEnd(sectionNineteen.get(0),true,true);
+
+		    Track section21Straight  = sectionNineteen.get(0).getNext(true);
+		    Section sectionTwentyOne = section21Straight.getSection();
+		    sectionTwentyOne.setSectionNumber(21);
+
+		    Section sectionTwenty = new Section(new ArrayList<Track>());
+		    Track section20Straight = new Straight(sectionNineteen.get(0), sectionTwentyOne.get(0), sectionTwenty, 100);
+		    sectionTwenty.setSectionNumber(20);
+
+		    track.insertBetween(sectionNineteen.get(0), true, section21Straight, false, section20Straight, false);
+
+
 		    // track should now be built., test with assert statements todo
 	        // track has been built without diamond crossing. Now add diamond crossing.
+
+
+
 	}
 
 	public StraightDblRing getTrack(){
