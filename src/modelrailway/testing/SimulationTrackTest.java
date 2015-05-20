@@ -58,7 +58,10 @@ public class SimulationTrackTest {
 		
 		//now check the connections for section seven to section eight.
 		
-		assertTrue(sectionSeven.get(0).getNext(false) == sectionEight.get(0));
+		System.out.println(sectionSeven.get(0).getNext(false).getSection().getNumber());
+		System.out.println(sectionSeven.get(0).getNext(false) +"   "+sectionEight.get(0));
+		
+		assertTrue(sectionSeven.get(0).getNext(false)== sectionEight.get(0));
 		assertTrue(sectionEight.get(0).getPrevious(false) == sectionSeven.get(0));
 		
 		//now check the connections from section eight to section nine

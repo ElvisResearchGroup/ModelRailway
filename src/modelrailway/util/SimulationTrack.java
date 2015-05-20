@@ -172,6 +172,7 @@ public class SimulationTrack {
 		    Section sectionNine = new Section(new ArrayList<Track>());
 		    sectionNine.setSectionNumber(9);
 		    track.recalculateSections();
+		    
 		    Track straightNineSub = new Straight(null,null,sectionNine,100);
 		    sectionNine.add(straightNineSub);
 
@@ -180,6 +181,7 @@ public class SimulationTrack {
 		    Section sectionTen = new Section(new ArrayList<Track>());
 		    sectionTen.setSectionNumber(10);
 		    track.recalculateSections();
+		    
 		    Track straightTenSub = new Straight(null,null,sectionTen,100);
 		    sectionTen.add(straightTenSub);
 
@@ -244,6 +246,7 @@ public class SimulationTrack {
 		    track.recalculateSections();
 
 		    track.insertBetween(sectionNineteen.get(0), true, section21Straight, false, section20Straight, false);
+		    track.recalculateSections();
 
 		    
 
