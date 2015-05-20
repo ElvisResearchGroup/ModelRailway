@@ -40,6 +40,8 @@ public class TrackTest {
 		Track tp_1 = head.getNext(false);
 		Track tp_2 = tp_1.getNext(false);
 		Track tp_3 = tp_2.getNext(false);
+		
+
 
 		if(head != tp_3){
 			fail("wrong length");
@@ -64,6 +66,9 @@ public class TrackTest {
 		sec.add(head);
 		Track tp_1 = head.getNext(false);
 		Track tp_2 = tp_1.getNext(false);
+		
+
+
 
 		if(head != tp_2){
 			fail("wrong length");
@@ -87,6 +92,9 @@ public class TrackTest {
 		Track tp_2 = tp_1.getNext(false);
 		Track tp_3 = tp_2.getNext(false);
 		Track tp_4 = tp_3.getNext(false);
+		
+
+		
 		if(head != tp_4){
 			fail("wrong length");
 		}

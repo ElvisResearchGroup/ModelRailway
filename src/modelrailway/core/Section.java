@@ -197,4 +197,15 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 
 		return "section: "+super.toString()+"  movables: "+movableObjects.toString() +" entryRequests: "+entryRequests.toString();
 	}
+	
+	public boolean equals(Object o){
+		if(o instanceof Section){
+		   return (this.sectionNumber == ((Section)o).sectionNumber);
+		}
+		return false;
+	}
+	
+	public int hashCode(){
+		return this.sectionNumber;
+	}
 }

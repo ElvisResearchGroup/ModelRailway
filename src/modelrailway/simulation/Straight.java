@@ -42,13 +42,14 @@ public class Straight extends Track {
 		}
 
 		public Pair<Track,Track> ringTrack(int numTracksOuter, int numTracksInner, int trackSegmentLength){
+			Section.resetCounter();
 			Section section = new Section(new ArrayList<Track>() );
 			Section section2 = new Section(new ArrayList<Track>());
 		    Track tr = new Straight(getHead(),getHead(),section,trackSegmentLength);
 		    Track tr2 = new Straight(getSecondHead(), getSecondHead(), section2, trackSegmentLength);
 		    section.add(tr); // add a track
 		    section2.add(tr2);
-		    System.out.println("tr: "+tr.getSection() +" tr2: "+ tr2.getSection());
+		    //System.out.println("tr: "+tr.getSection() +" tr2: "+ tr2.getSection());
 			this.trivialDRing(tr,tr2);
 			//this.trivialDRing(this.getHead(), this.getSecondHead());
 			for(int x = 2; x < numTracksOuter; x++){

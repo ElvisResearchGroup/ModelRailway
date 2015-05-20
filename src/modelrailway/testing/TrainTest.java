@@ -27,6 +27,8 @@ public class TrainTest {
 		Straight.StraightRing route = new Straight.StraightRing(st);
 		Track head = route.ringTrack(3, 100);
 		sec.add(head);
+		
+
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 50, 50, 50, false);
 		locomotive.setID(0);
@@ -192,6 +194,7 @@ public class TrainTest {
 		Track head = route.ringTrack(3, 100);
 		sec.add(head);
 
+
 		Section sec2 = new Section(new ArrayList<Track>());
 		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
@@ -242,22 +245,28 @@ public class TrainTest {
 		Straight.StraightRing route = new Straight.StraightRing(st);
 		Track head = route.ringTrack(4, 100);
 		sec.add(head);
+		
 		Track tp_1 = head.getNext(false);
 		Track tp_2 = tp_1.getNext(false);
 		Track tp_3 = tp_2.getNext(false);
 		Track tp_4 = tp_3.getNext(false);
 
+
+		
 		Section sec2 = new Section(new ArrayList<Track>());
 		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
+
 		Section sec3 = new Section(new ArrayList<Track>());
 		Track sw2 = new BackSwitch(null, null, sw, sec3, 100, 100, 50);
+
 
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
 
 		Section sec4 = new Section(new ArrayList<Track>());
 		Straight str = new Straight(null, null, sec4,100 );
+
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
@@ -338,7 +347,9 @@ public class TrainTest {
 		Straight str = new Straight(null, null, sec4,100 );
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
+		
 
+		
 		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
 		((BackSwitch) sw2).toggle();
 
@@ -403,6 +414,9 @@ public class TrainTest {
 		Straight.StraightRing route = new Straight.StraightRing(st);
 		Track head = route.ringTrack(3, 100);
 		sec.add(head);
+		
+
+		
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 50, 30, 50, false); // distance 50, length 30, max speed 50
 
@@ -455,12 +469,15 @@ public class TrainTest {
 		Straight.StraightRing route = new Straight.StraightRing(st);
 		Track head = route.ringTrack(3, 100);
 		sec.add(head);
+		
+		
 
 		Movable locomotive = new Locomotive(new Track[]{head.getNext(false)}, 90, 30, 50, false); // dist, length, speed
 		Movable stock = new RollingStock(new Track[]{head.getNext(false),head}, 60, 80, 50, false);
 		Train train = new Train(new Movable[]{locomotive,stock});
 		train.setID(0);
 		sec.addMovable(train.getID());
+
 
 
 		assertTrue(train.getFront() == head.getNext(false));
@@ -522,6 +539,8 @@ public class TrainTest {
 
 		route.replace(head.getNext(false), sw , false);
 		route.replace(head.getNext(false).getNext(false), sw2, false);
+		
+
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 50, 30, 50, false); // dist length speed
 		Movable stock = new RollingStock(new Track[]{head},20,20,50,false);
@@ -575,6 +594,9 @@ public class TrainTest {
 		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		route.replace(head.getNext(false), sw , false);
+		
+
+		
 
 		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
 		Locomotive loco = new Locomotive(new Track[]{head}, 40, 20, 40, false); // dist length speed.
@@ -641,6 +663,7 @@ public class TrainTest {
 		Straight str = new Straight(null, null, sec4,100 );
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
+		
 
 		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
 		((BackSwitch) sw2).toggle();
@@ -717,6 +740,8 @@ public class TrainTest {
 		Straight str = new Straight(null, null, sec4,100 );
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
+		
+
 
 		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
 		((BackSwitch) sw2).toggle();
@@ -778,6 +803,7 @@ public class TrainTest {
 		Straight.StraightRing route = new Straight.StraightRing(st);
 		Track head = route.ringTrack(3, 100);
 		sec.add(head);
+		
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 50, 50, 50, false);
 		Movable train = new Train(new Movable[]{locomotive});
@@ -828,6 +854,8 @@ public class TrainTest {
 		Straight.StraightRing route = new Straight.StraightRing(st);
 		Track head = route.ringTrack(3, 100);
 		sec.add(head);
+		
+
 
 		Movable locomotive = new Locomotive(new Track[]{head.getNext(false),head}, 90, 110, 50, false);
 		Train train = new Train(new Movable[]{locomotive});
@@ -892,6 +920,9 @@ public class TrainTest {
 
 		route.replace(head.getNext(false), sw , false);
 		route.replace(head.getNext(false).getNext(false), sw2, false);
+		
+
+
 
 		Movable locomotive = new Locomotive(new Track[]{head}, 50, 50, 50, false);
 		Train train = new Train(new Movable[]{locomotive});
@@ -944,6 +975,8 @@ public class TrainTest {
 		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 
 		route.replace(head.getNext(false), sw , false);
+		
+
 
 		((ForwardSwitch) sw).toggle(); // set the switch so that we move along the alternate direction
 		Locomotive loco = new Locomotive(new Track[]{head}, 40, 50, 60, false);
@@ -995,6 +1028,9 @@ public class TrainTest {
 
 		route.replace(tp_1, sw, false);
 		route.replace(tp_3, sw2, false);
+		
+
+
 
 		Section sec4 = new Section(new ArrayList<Track>());
 		Straight str = new Straight(null, null, sec4,100 );
@@ -1074,6 +1110,8 @@ public class TrainTest {
 
 		Section sec4 = new Section(new ArrayList<Track>());
 		Straight str = new Straight(null, null, sec4,100 );
+		
+
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 

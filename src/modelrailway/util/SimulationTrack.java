@@ -22,6 +22,7 @@ public class SimulationTrack {
 
 	private StraightDblRing track = null;
 	public SimulationTrack(){
+			track = null;
 			Section strtSec = new Section(new ArrayList<Track>());
 			Section strtInnerSec = new Section(new ArrayList<Track>());
 
@@ -31,72 +32,114 @@ public class SimulationTrack {
 			strtSec.add(strt);
 			strtInnerSec.add(strtInner);
 
-			strtSec.setSectionNumber(1);
-			strtInnerSec.setSectionNumber(17);
-
 			track = new StraightDblRing(strt, strtInner);
-			System.out.println("strtSection: "+ strt.getSection());
-			System.out.println("strtInnerSec: "+ strtInner.getSection());
+			
+			System.out.println("simulation Track initial double ring:");
+			for(Map.Entry<Section,Integer> entry: track.getSectionList().entrySet()){
+				System.out.println(entry);
+			}
+			
+			//System.out.println("strtSection: "+ strt.getSection());
+			//System.out.println("strtInnerSec: "+ strtInner.getSection());
 
-			System.out.println("double ring size: "+track.getTrackList().size());
+			//System.out.println("double ring size: "+track.getTrackList().size());
 
 			Pair<Track,Track> trackHeads = track.ringTrack(8, 8, 100);
-			System.out.println();
+			
+			System.out.println("Tracklist Size: "+track.getTrackList().size());
+			
+			System.out.println("RingTrack : ");
+			for(Map.Entry<Section,Integer> entry: track.getSectionList().entrySet()){
+				System.out.println(entry+" number: "+entry.getKey().getNumber());
+			}
+			//System.out.println();
 			Track outerHead = trackHeads.fst;
 
 			Track innerHead = trackHeads.snd;
 
-			Integer outerStartSec = strtSec.getNumber();
-			Integer innerStartSec = strtInnerSec.getNumber();
 
 			Section sectionOne = outerHead.getSection();
 			sectionOne.setSectionNumber(1);
 
+
 		    Section sectionTwo = outerHead.getNext(false).getSection();
 		    sectionTwo.setSectionNumber(2);
 
+
 		    Section sectionThree = outerHead.getNext(false).getNext(false).getSection();
+		    sectionThree.setSectionNumber(3);
+
 
 		    Section sectionFour = outerHead.getNext(false).getNext(false).getNext(false).getSection();
 		    sectionFour.setSectionNumber(4);
 
+
 		    Section sectionFive = outerHead.getNext(false).getNext(false).getNext(false).getNext(false).getSection();
-		    sectionFive.setSectionNumber(5);;
+		    sectionFive.setSectionNumber(5);
+
 
 		    Section sectionSix = outerHead.getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getSection();
 		    sectionSix.setSectionNumber(6);
 
+
 		    Section sectionSeven = outerHead.getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getSection();
-		    sectionSeven.setSectionNumber(7);
+		    sectionSeven.setSectionNumber(new Integer(7));
+
 
 		    Section sectionEight = outerHead.getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getSection();
-		    sectionSeven.setSectionNumber(8);
+		    sectionEight.setSectionNumber(8);
+		    
+		    
+
 
 		    Section sectionSeventeen = innerHead.getSection();
 		    sectionSeventeen.setSectionNumber(17);
 
+
 		    Section sectionEighteen = innerHead.getNext(false).getSection();
 		    sectionEighteen.setSectionNumber(18);
+
 
 		    Section sectionEleven = innerHead.getNext(false).getNext(false).getSection();
 		    sectionEleven.setSectionNumber(11);
 
+
 		    Section sectionTwelve = innerHead.getNext(false).getNext(false).getNext(false).getSection();
 		    sectionTwelve.setSectionNumber(12);
+
 
 		    Section sectionThirteen = innerHead.getNext(false).getNext(false).getNext(false).getNext(false).getSection();
 		    sectionThirteen.setSectionNumber(13);
 
+
 		    Section sectionFourteen = innerHead.getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getSection();
 		    sectionFourteen.setSectionNumber(14);
+
 
 		    Section sectionFifteen = innerHead.getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getSection();
 		    sectionFifteen.setSectionNumber(15);
 
+
 		    Section sectionSixteen = innerHead.getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getSection();
 		    sectionSixteen.setSectionNumber(16);
+		    
+		  
 
-		    assert(this.getTrack().getTrackList().size() == 16);
+		    track.recalculateSections();
+		    
+		    
+		    System.out.println("Section Numbers for Track: ");
+		    for(Track tr: track.getTrackList()){
+		    	System.out.println("tr: "+tr.getSection().getNumber());
+		    }
+		    
+		    System.out.println("Section Numbers: ");
+			for(Map.Entry<Section,Integer> entry: track.getSectionList().entrySet()){
+				System.out.println(entry +" number: "+entry.getKey().getNumber());
+			}
+			
+		    
+		    
 		    //insert switches and alternate track.
 
 		    Track forwardSwitch8 = new ForwardSwitch(sectionSeven.get(0), outerHead, null, sectionEight, 100, 100, 50);
@@ -104,7 +147,7 @@ public class SimulationTrack {
 		   // sectionEight.add(forwardSwitch8);
 		    assert(sectionEight.size() == 1);
 		    assert(this.getTrack().getTrackList().size() == 16);
-		    System.out.println("tracklistSize : "+this.getTrack().getTrackList().size());
+		    //System.out.println("tracklistSize : "+this.getTrack().getTrackList().size());
 
 		    Track forwardSwitch16 = new ForwardSwitch(sectionFifteen.get(0), null, innerHead, sectionSixteen, 100, 100, 50);
 		    track.replace(sectionSixteen.get(0), forwardSwitch16, true);
@@ -128,6 +171,7 @@ public class SimulationTrack {
 
 		    Section sectionNine = new Section(new ArrayList<Track>());
 		    sectionNine.setSectionNumber(9);
+		    track.recalculateSections();
 		    Track straightNineSub = new Straight(null,null,sectionNine,100);
 		    sectionNine.add(straightNineSub);
 
@@ -135,6 +179,7 @@ public class SimulationTrack {
 
 		    Section sectionTen = new Section(new ArrayList<Track>());
 		    sectionTen.setSectionNumber(10);
+		    track.recalculateSections();
 		    Track straightTenSub = new Straight(null,null,sectionTen,100);
 		    sectionTen.add(straightTenSub);
 
@@ -164,6 +209,7 @@ public class SimulationTrack {
 
 		    Section sectionNineteen = new Section(new ArrayList<Track>());
 		    sectionNineteen.setSectionNumber(19);
+		    track.recalculateSections();
 		    Track diamondCrossing13 = new Crossing(sectionTwelve.get(0), sectionFourteen.get(0), sectionFive.get(0), null, sectionThirteen, sectionNineteen,100,100);
 		    sectionNineteen.add(diamondCrossing13);
 
@@ -173,12 +219,15 @@ public class SimulationTrack {
 
 		    Track section23Straight = sectionTwelve.get(0).getNext(true);
 		    Section sectionTwentyThree = section23Straight.getSection();
+		    track.getSectionList().put(sectionTwentyThree, 1);
 		    sectionTwentyThree.setSectionNumber(23);
-
+		    track.recalculateSections();
+		    
 		    Section sectionTwentyTwo = new Section(new ArrayList<Track>());
 		    Track section22Straight = new Straight(sectionTwelve.get(0), sectionTwentyThree.get(0), sectionTwentyTwo, 100);
 		    sectionTwentyTwo.setSectionNumber(22);
-
+		    track.recalculateSections();
+		    
 		    track.insertBetween(sectionTwelve.get(0), true, section23Straight, false, section22Straight, false );
 
 
@@ -187,10 +236,12 @@ public class SimulationTrack {
 		    Track section21Straight  = sectionNineteen.get(0).getNext(true);
 		    Section sectionTwentyOne = section21Straight.getSection();
 		    sectionTwentyOne.setSectionNumber(21);
+		    track.recalculateSections();
 
 		    Section sectionTwenty = new Section(new ArrayList<Track>());
 		    Track section20Straight = new Straight(sectionNineteen.get(0), sectionTwentyOne.get(0), sectionTwenty, 100);
 		    sectionTwenty.setSectionNumber(20);
+		    track.recalculateSections();
 
 		    track.insertBetween(sectionNineteen.get(0), true, section21Straight, false, section20Straight, false);
 

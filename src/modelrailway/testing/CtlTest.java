@@ -44,14 +44,19 @@ public class CtlTest {
 		Straight.StraightRing route = new Straight.StraightRing(st);
 		Track head = route.ringTrack(4, 100);
 		sec.add(head);
+
+		
 		Track tp_1 = head.getNext(false);
 		Track tp_2 = tp_1.getNext(false);
 		Track tp_3 = tp_2.getNext(false);
 		Track tp_4 = tp_3.getNext(false);
+		
+
 
 		Section sec2 = new Section(new ArrayList<Track>());
 		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 		sec2.add(sw);
+
 
 
 		Section sec3 = new Section(new ArrayList<Track>());
@@ -65,6 +70,7 @@ public class CtlTest {
 		Section sec4 = new Section(new ArrayList<Track>());
 		Straight str = new Straight(null, null, sec4,100 );
 		sec4.add(str);
+
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
@@ -163,18 +169,23 @@ public class CtlTest {
 		Track head = route.ringTrack(4, 100);
 		sec.add(head);
 
+
 		Track tp_1 = head.getNext(false);
 		Track tp_2 = tp_1.getNext(false);
+
 		Track tp_3 = tp_2.getNext(false);
 		Track tp_4 = tp_3.getNext(false);
+
 
 		Section sec2 = new Section(new ArrayList<Track>());
 		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 		sec2.add(sw);
 
+
 		Section sec3 = new Section(new ArrayList<Track>());
 		Track sw2 = new BackSwitch(null, null, null, sec3, 100, 100, 50);
 		sec3.add(sw2);
+
 
 
 		route.replace(tp_1, sw, false);
@@ -287,18 +298,23 @@ public class CtlTest {
 		Straight.StraightRing route = new Straight.StraightRing(st);
 		Track head = route.ringTrack(4, 100);
 		sec.add(head);
+
 		Track tp_1 = head.getNext(false);
 		Track tp_2 = tp_1.getNext(false);
+
 		Track tp_3 = tp_2.getNext(false);
 		Track tp_4 = tp_3.getNext(false);
+
 
 		Section sec2 = new Section(new ArrayList<Track>());
 		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
 		sec2.add(sw);
 
+
 		Section sec3 = new Section(new ArrayList<Track>());
 		Track sw2 = new BackSwitch(null, null, null, sec3, 100, 100, 50);
 		sec3.add(sw2);
+
 
 
 		route.replace(tp_1, sw, false);
@@ -307,6 +323,7 @@ public class CtlTest {
 		Section sec4 = new Section(new ArrayList<Track>());
 		Straight str = new Straight(null, null, sec4,100 );
 		sec4.add(str);
+
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
@@ -591,6 +608,7 @@ public class CtlTest {
 		Integer sec1 = tp_1.getSection().getNumber();
 		Integer sec2 = tp_2.getSection().getNumber();
 		Integer sec3 = tp_3.getSection().getNumber();
+		
 
 
 		Route routePlan = new Route(true, headSection, sec1, sec2, sec3);
@@ -676,6 +694,9 @@ public class CtlTest {
  		sec4.add(str);
 
  		route.insertBetween(sw, true, sw2, true,  str, false);
+ 		
+
+ 		
 
  		assertTrue(sw.getNext(true) == str);
  		assertTrue(sw.getNext(false) == tp_2);
@@ -794,11 +815,14 @@ public class CtlTest {
  		sec4.add(str);
 
  		route.insertBetween(sw, true, sw2, true,  str, false);
+ 		
+
 
  		assertTrue(sw.getNext(true) == str);
  		assertTrue(sw.getNext(false) == tp_2);
  		assertTrue(str.getSection() == sec4);
 
+ 		
 
  		//set up the train track.
 

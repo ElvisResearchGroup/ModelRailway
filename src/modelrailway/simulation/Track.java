@@ -24,13 +24,7 @@ public abstract class Track {
 		public RingRoute(Track head){
 			this.head = head;
 			trackList.add(this.head);
-
-			if(sectionMap.get(this.head.getSection()) == null)sectionMap.put(this.head.getSection(),0);
-			sectionMap.put(this.head.getSection(), sectionMap.get(this.head.getSection())+1);
-			if(this.head.getAltSection() != null){
-				if(sectionMap.get(this.head.getAltSection()) == null)sectionMap.put(this.head.getAltSection(),0);
-				sectionMap.put(this.head.getAltSection(), sectionMap.get(this.head.getAltSection())+1);
-			}
+			this.incrementSectionCounter(this.head);
 		}
 		public Track getHead(){
 			return head;
@@ -38,6 +32,41 @@ public abstract class Track {
 		public List<Track> getTrackList(){
 			return trackList;
 		}
+		public void incrementSectionCounter(Track t){
+			if(sectionMap.get(t.getSection()) == null)sectionMap.put(t.getSection(),0);
+			sectionMap.put(t.getSection(), sectionMap.get(t.getSection())+1);
+		}
+		public void incrementAltSecCounter(Track t){
+			if(t.getAltSection() != null){
+				if(sectionMap.get(t.getAltSection()) == null)sectionMap.put(t.getAltSection(),0);
+				sectionMap.put(t.getAltSection(), sectionMap.get(t.getAltSection())+1);
+			} 
+		}
+		public void decrementSecCounter(Track t){
+		  if(sectionMap.get(t.getSection()) != null){
+				sectionMap.put(t.getSection(),sectionMap.get(t.getSection()) -1);
+				if(sectionMap.get(t.getSection()) == 0){
+					sectionMap.remove(t.getSection());
+				}
+		   }
+	    }
+		public void decrementAltSecCounter(Track t){
+			if(sectionMap.get(t.getAltSection()) != null){
+				sectionMap.put(t.getAltSection(),sectionMap.get(t.getAltSection()) -1);
+				if(sectionMap.get(t.getAltSection()) == 0){	
+					sectionMap.remove(t.getAltSection());
+				}
+		   }
+		}
+		
+		public void recalculateSections(){
+			sectionMap = new HashMap<Section,Integer>();
+			for(Track tr: getTrackList()){
+				incrementSectionCounter(tr);
+				incrementAltSecCounter(tr);
+			}
+		}
+		
 		/**
 		 * The sectionList() returns a hashmap from sections in the Route to the number of times the section occurs.
 		 * @return
@@ -51,9 +80,9 @@ public abstract class Track {
 		 */
 		public Map<Integer, Section> getSectionNumberMap(){
 			Map<Integer,Section > smap = new HashMap<Integer,Section>();
-			System.out.println("sectionMap.keySet(): "+sectionMap.keySet().size());
+			//System.out.println("sectionMap.keySet(): "+sectionMap.keySet().size());
 			for(Section s : sectionMap.keySet()){
-				if(s == null) System.out.println("A section is  null in sectionMap");
+				//if(s == null) System.out.println("A section is  null in sectionMap");
 
 				smap.put(s.getNumber(), s);
 			}
@@ -79,13 +108,9 @@ public abstract class Track {
 			boolean insertedTrackUnifyPrevious = false;
 			trackList.add(insertedTrack);
 
-			if(sectionMap.get(insertedTrack.getSection()) == null) sectionMap.put(insertedTrack.getSection(),0);
-			sectionMap.put(insertedTrack.getSection(),sectionMap.get(insertedTrack.getSection())+1);
-
-			if(insertedTrack.getAltSection() != null){
-				if(sectionMap.get(insertedTrack.getAltSection()) == null) sectionMap.put(insertedTrack.getAltSection(),0);
-				sectionMap.put(insertedTrack.getAltSection(),sectionMap.get(insertedTrack.getAltSection())+1);
-			}
+			incrementSectionCounter(insertedTrack);
+			incrementAltSecCounter(insertedTrack);
+			
 			if(tr1.next == tr1.alternateNext && tr1.next != null) tr1UnifyNext = true;
 			if(tr2.previous == tr2.alternatePrevious && tr2.previous != null) tr2UnifyPrevious = true;
 			if(insertedTrack.next == insertedTrack.alternateNext && insertedTrack.next != null) insertedTrackUnifyNext = true;
@@ -145,7 +170,11 @@ public abstract class Track {
 			boolean tr2UnifyPrevious = false;
 			boolean insertedTrackUnifyNext = false;
 			boolean insertedTrackUnifyPrevious = false;
+			
 
+			incrementSectionCounter(insertedTrack);
+			incrementAltSecCounter(insertedTrack);
+			
 			if(tr1.next == tr1.alternateNext && tr1.next != null) tr1UnifyNext = true;
 			if(tr2.previous == tr2.alternatePrevious && tr2.previous != null) tr2UnifyPrevious = true;
 			if(insertedTrack.next == insertedTrack.alternateNext && insertedTrack.next != null) insertedTrackUnifyNext = true;
@@ -181,12 +210,8 @@ public abstract class Track {
 				if(tr1UnifyNext) tr1.alternateNext = tr1.next;
 			}
 			trackList.add(insertedTrack);
-			if(sectionMap.get(insertedTrack.getSection()) == null) sectionMap.put(insertedTrack.getSection(),0);
-			sectionMap.put(insertedTrack.getSection(),sectionMap.get(insertedTrack.getSection())+1);
-			if(insertedTrack.getAltSection() != null){
-				if(sectionMap.get(insertedTrack.getAltSection()) == null) sectionMap.put(insertedTrack.getAltSection(),0);
-				sectionMap.put(insertedTrack.getAltSection(),sectionMap.get(insertedTrack.getAltSection())+1);
-			}
+			
+			
 			return tr1; // return tr1
 		}
 		/**
@@ -202,6 +227,12 @@ public abstract class Track {
 			if(insertedTrack instanceof Switch){
 				head.addSwitchEntry(((Switch) insertedTrack).getSwitchID(), insertedTrack);
 			}
+			
+
+			incrementSectionCounter(insertedTrack);
+			incrementAltSecCounter(insertedTrack);
+			
+			
 			//first fix tr2
 			boolean tr1UnifyNext = false;
 			boolean tr2UnifyPrevious = false;
@@ -240,12 +271,7 @@ public abstract class Track {
 				if(tr1UnifyNext) tr1.alternateNext = tr1.next;
 			}
 			trackList.add(insertedTrack);
-			if(sectionMap.get(insertedTrack.getSection()) == null) sectionMap.put(insertedTrack.getSection(),0);
-			sectionMap.put(insertedTrack.getSection(),sectionMap.get(insertedTrack.getSection())+1);
-			if(insertedTrack.getAltSection() != null){
-				if(sectionMap.get(insertedTrack.getAltSection()) == null) sectionMap.put(insertedTrack.getAltSection(),0);
-				sectionMap.put(insertedTrack.getAltSection(),sectionMap.get(insertedTrack.getAltSection())+1);
-			}
+			
 			return tr1; // return tr1
 		}
 
@@ -256,12 +282,10 @@ public abstract class Track {
 		 */
 		protected Track trivialRing(Track tr){
 			trackList.add(tr);
-			if(sectionMap.get(tr.getSection()) == null) sectionMap.put(tr.getSection(),0);
-			sectionMap.put(tr.getSection(),sectionMap.get(tr.getSection())+1);
-			if(tr.getAltSection() != null){
-				if(sectionMap.get(tr.getAltSection()) == null) sectionMap.put(tr.getAltSection(),0);
-				sectionMap.put(tr.getAltSection(),sectionMap.get(tr.getAltSection())+1);
-			}
+			incrementSectionCounter(tr);
+			incrementAltSecCounter(tr);
+			
+			
 			tr.alternateNext = null;
 			tr.alternatePrevious = null;
 			tr.altlength = 0;
@@ -289,10 +313,10 @@ public abstract class Track {
 				tr.addSwitchEntry(((Switch) t2).getSwitchID(),t2);
 			}
 			List<Track> tlist = getTrackList();
-			System.out.println("trackListSize: "+tlist.size());
+			//System.out.println("trackListSize: "+tlist.size());
 		    int index = tlist.lastIndexOf(t);
-		    System.out.println(tlist.size());
-		 //   System.out.println("t index: "+index);
+		    //System.out.println(tlist.size());
+		    //System.out.println("t index: "+index);
 		    Track tn;
 		    Track tp;
 		    if(t.getNext(false) != null){
@@ -329,29 +353,16 @@ public abstract class Track {
 			       t2.next = tn;
 			    }
 		    }
-		    System.out.println("index: "+index);
+		    ///System.out.println("index: "+index);
 		    if(tlist.get(index) == head){
 		    	head = t2; // replace the head.
 		    }
 
-		    Section sec = tlist.get(index).getSection();
-		    sectionMap.put(tlist.get(index).getSection(),sectionMap.get(sec) -1);
-
-		    if (sectionMap.get(tlist.get(index).getSection()) == 0) sectionMap.remove(sec);
-		    if(tlist.get(index).getAltSection() != null ){
-		    	sectionMap.put(tlist.get(index).getAltSection(),sectionMap.get(sec) -1);
-
-				if (sectionMap.get(tlist.get(index).getAltSection()) == 0) sectionMap.remove(sec);
-		    	sectionMap.remove(tlist.get(index).getAltSection());
-
-		    }
-
-		    if(sectionMap.get(t2.getSection()) == null) sectionMap.put(t2.getSection(), 0);
-		    sectionMap.put(t2.getSection(), sectionMap.get(t2.getSection())+1);
-		    if(t2.getAltSection() != null){
-		       if(sectionMap.get(t2.getAltSection()) == null) sectionMap.put(t2.getAltSection(), 0);
-		       sectionMap.put(t2.getAltSection(), sectionMap.get(t2.getAltSection())+1);
-		    }
+		    Track removedTrack = tlist.get(index);
+		    
+		    this.decrementSecCounter(removedTrack);
+		    this.decrementAltSecCounter(removedTrack);
+		    
 		    tlist.set(index, t2);
 
 			return tr;
@@ -362,10 +373,10 @@ public abstract class Track {
 		public Track bufferEnd(Track t1, boolean enterForward, boolean onAlt){
 			Section sec = new Section(new ArrayList<Track>());
 			Track buffer = new Buffer(t1,enterForward,sec,100);
+			this.getTrackList().add(buffer);
 			sec.add(buffer);
-			if(sectionMap.get(sec) == null) sectionMap.put(sec, 0);
-		    sectionMap.put(sec, sectionMap.get(sec)+1);
-
+			this.incrementSectionCounter(buffer);
+		
 			if(onAlt){
 				if(enterForward){
 					t1.alternateNext = buffer;
@@ -410,13 +421,8 @@ public abstract class Track {
 			super(head);
 			secondRingHead = secHead;
 			this.getTrackList().add(secHead);
-
-			if(this.getSectionList().get(secondRingHead.getSection()) == null)this.getSectionList().put(secondRingHead.getSection(),0);
-			this.getSectionList().put(secondRingHead.getSection(), this.getSectionList().get(secondRingHead.getSection())+1);
-			if(secondRingHead.getAltSection() != null){
-				if(this.getSectionList().get(secondRingHead.getAltSection()) == null)this.getSectionList().put(secondRingHead.getAltSection(),0);
-				this.getSectionList().put(secondRingHead.getAltSection(), this.getSectionList().get(secondRingHead.getAltSection())+1);
-			}
+			this.incrementSectionCounter(secHead);
+			
 		}
 
 		public Track getSecondHead(){
@@ -424,20 +430,14 @@ public abstract class Track {
 		}
 
 		public Pair<Track,Track> trivialDRing(Track tr, Track tr2){
-			System.out.println("running trivial DRing");
-			System.out.println("tr: "+tr.getSection()+" tr2: "+tr2.getSection());
-			if(tr.getSection() == null || tr2.getSection() == null){
-				System.out.println("A section was null");;
-			}
+			//System.out.println("running trivial DRing");
+			//System.out.println("tr: "+tr.getSection()+" tr2: "+tr2.getSection());
+			//if(tr.getSection() == null || tr2.getSection() == null){
+				//System.out.println("A section was null");;
+			//}
 			this.getTrackList().add(tr);
-			Map<Section,Integer> sectionMap = this.getSectionList();
-			if(sectionMap.get(tr.getSection()) == null) sectionMap.put(tr.getSection(), 0);
-		    sectionMap.put(tr.getSection(), sectionMap.get(tr.getSection())+1);
-
-		    if(tr.getAltSection() != null){
-		    if(sectionMap.get(tr.getAltSection()) == null) sectionMap.put(tr.getAltSection(), 0);
-		    sectionMap.put(tr.getAltSection(), sectionMap.get(tr.getAltSection())+1);
-		    }
+			this.incrementSectionCounter(tr);
+			this.incrementAltSecCounter(tr);
 			tr.alternateNext = null;
 			tr.alternatePrevious = null;
 			tr.altlength = 0;
@@ -447,13 +447,9 @@ public abstract class Track {
 			this.getHead().previous = tr;
 
 			this.getTrackList().add(tr2);
-			if(sectionMap.get(tr2.getSection()) == null) sectionMap.put(tr2.getSection(), 0);
-		    sectionMap.put(tr2.getSection(), sectionMap.get(tr2.getSection())+1);
 
-		    if(tr2.getAltSection() != null){
-		    if(sectionMap.get(tr2.getAltSection()) == null) sectionMap.put(tr2.getAltSection(), 0);
-		    sectionMap.put(tr2.getAltSection(), sectionMap.get(tr2.getAltSection())+1);
-		    }
+			this.incrementAltSecCounter(tr2);
+			this.incrementSectionCounter(tr2);
 			tr2.alternateNext = null;
 			tr2.alternatePrevious = null;
 			tr2.altlength = 0;

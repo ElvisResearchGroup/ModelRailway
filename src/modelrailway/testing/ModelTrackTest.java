@@ -102,6 +102,7 @@ public class ModelTrackTest {
 		Integer s6 = tp_6.getSection().getNumber();
 		Integer s7 = tp_7.getSection().getNumber();
 		Integer s8 = tp_8.getSection().getNumber();
+		
 
 		Route routePlan = new Route(true,  start, s2,s3,s4,s5,s6,s7,s8);
 		//System.out.println("route: "+headSection+", "+switchSection+", "+swAlt+", "+sw2Section);
