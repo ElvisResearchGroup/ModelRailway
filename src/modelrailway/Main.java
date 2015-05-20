@@ -12,8 +12,8 @@ import modelrailway.core.Event;
 import modelrailway.core.Route;
 import modelrailway.core.Event.SpeedChanged;
 import modelrailway.core.Train;
-import modelrailway.core.TrainController;
 import modelrailway.util.SimpleController;
+import modelrailway.util.TrainController;
 
 /**
  * Provides a simple command-line interface for controlling the model railway.

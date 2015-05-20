@@ -1,4 +1,4 @@
-package modelrailway.testing;
+package modelrailway.util;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -10,7 +10,6 @@ import modelrailway.simulation.ForwardSwitch;
 import modelrailway.simulation.Straight;
 import modelrailway.simulation.Straight.StraightDblRing;
 import modelrailway.simulation.Track;
-import modelrailway.util.Pair;
 
 /**
  * the test Track class generates a track for the train to run on which is identical to the track that is used in the hardware model.
@@ -19,10 +18,10 @@ import modelrailway.util.Pair;
  * @author powleybenj
  *
  */
-public class TestTrack {
+public class SimulationTrack {
 
 	private StraightDblRing track = null;
-	public TestTrack(){
+	public SimulationTrack(){
 			Section strtSec = new Section(new ArrayList<Track>());
 			Section strtInnerSec = new Section(new ArrayList<Track>());
 
@@ -195,11 +194,7 @@ public class TestTrack {
 
 		    track.insertBetween(sectionNineteen.get(0), true, section21Straight, false, section20Straight, false);
 
-
-		    // track should now be built., test with assert statements todo
-	        // track has been built without diamond crossing. Now add diamond crossing.
-
-
+		    
 
 	}
 

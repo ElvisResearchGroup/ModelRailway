@@ -1,4 +1,4 @@
-package modelrailway.testing;
+package modelrailway.util;
 
 import java.util.Map;
 
@@ -10,9 +10,9 @@ import modelrailway.simulation.Simulator;
 import modelrailway.simulation.Track;
 import modelrailway.simulation.Train;
 
-public class TestControlerCollision extends TestController implements Controller{
+public class ControlerCollision extends MovementController implements Controller{
 
-	public TestControlerCollision(Map<Integer, modelrailway.core.Train> trains,
+	public ControlerCollision(Map<Integer, modelrailway.core.Train> trains,
 			Map<Integer, Section> sections, Track head, Event.Listener trackControler) {
 		super(trains, sections, head, trackControler);
 		// TODO Auto-generated constructor stub

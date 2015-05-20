@@ -1,4 +1,4 @@
-package modelrailway.testing;
+package modelrailway.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,13 +19,12 @@ import modelrailway.simulation.Crossing;
 import modelrailway.simulation.ForwardSwitch;
 import modelrailway.simulation.Simulator;
 import modelrailway.simulation.Track;
-import modelrailway.util.Pair;
 /**
  * This test controller has no collision detection but just tests to make sure that a train can follow a route. in order to test the train simulator.
  * @author powleybenj
  *
  */
-public class TestController implements Controller, Listener {
+public class MovementController implements Controller, Listener {
 
 	private Event.Listener trackController = null;
 	private List<Listener> listeners = new ArrayList<Listener>();
@@ -65,7 +64,7 @@ public class TestController implements Controller, Listener {
 	 * @param head
 	 * @param trackController
 	 */
-	public TestController( Map<Integer,modelrailway.core.Train> orientations, Map<Integer, Section> intSecMap , Track head, Event.Listener trackController){
+	public MovementController( Map<Integer,modelrailway.core.Train> orientations, Map<Integer, Section> intSecMap , Track head, Event.Listener trackController){
 		this.trackController = trackController;
 		trainOrientations = orientations; // are the trains going backwards or fowards.
 		this.sections = intSecMap;

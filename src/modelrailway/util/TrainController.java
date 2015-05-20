@@ -1,4 +1,4 @@
-package modelrailway.core;
+package modelrailway.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,13 +6,15 @@ import java.util.List;
 import java.util.Map;
 
 import modelrailway.ModelRailway;
+import modelrailway.core.Controller;
+import modelrailway.core.Event;
+import modelrailway.core.Section;
+import modelrailway.core.Train;
 import modelrailway.core.Event.Listener;
 import modelrailway.simulation.Track;
-import modelrailway.testing.TestControlerCollision;
-import modelrailway.testing.TestTrack;
 
-public class TrainController extends TestControlerCollision implements Controller, Listener {
-	private static TestTrack track = new TestTrack();
+public class TrainController extends ControlerCollision implements Controller, Listener {
+	private static SimulationTrack track = new SimulationTrack();
 
 	public TrainController(Train[] trains, ModelRailway railway) {
 		super(getTrains(trains), getSections(), getHead(), railway);

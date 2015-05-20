@@ -23,6 +23,7 @@ import modelrailway.simulation.Movable;
 import modelrailway.simulation.Train;
 import modelrailway.simulation.Simulator;
 import modelrailway.util.Pair;
+import modelrailway.util.MovementController;
 
 import java.util.HashMap;
 
@@ -90,7 +91,7 @@ public class ModelTrackTest {
 			e1.printStackTrace();
 			fail("initialization error: ");
 		}
-		final TestController ctl = new TestController(orientationMap,route.getSectionNumberMap(),head, sim); //
+		final MovementController ctl = new MovementController(orientationMap,route.getSectionNumberMap(),head, sim); //
 
 
 		Integer start = tp_1.getSection().getNumber();

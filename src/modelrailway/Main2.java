@@ -2,9 +2,9 @@ package modelrailway;
 
 import modelrailway.core.Controller;
 import modelrailway.core.Train;
-import modelrailway.core.TrainController;
-import modelrailway.testing.TestControlerCollision;
 import modelrailway.util.SimpleController;
+import modelrailway.util.ControlerCollision;
+import modelrailway.util.TrainController;
 
 public class Main2 extends Main {
 	public Main2(ModelRailway railway, Controller controller) {

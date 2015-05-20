@@ -23,6 +23,8 @@ import modelrailway.simulation.Movable;
 import modelrailway.simulation.Train;
 import modelrailway.simulation.Simulator;
 import modelrailway.util.Pair;
+import modelrailway.util.ControlerCollision;
+import modelrailway.util.MovementController;
 
 import java.util.HashMap;
 
@@ -90,7 +92,7 @@ public class CtlTest {
 
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
-		final TestController ctl = new TestController(orientationMap,route.getSectionNumberMap(),head, sim); //
+		final MovementController ctl = new MovementController(orientationMap,route.getSectionNumberMap(),head, sim); //
 		sim.register(ctl);
 
 
@@ -211,7 +213,7 @@ public class CtlTest {
 
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
-		final TestController ctl = new TestController(orientationMap,route.getSectionNumberMap(),head, sim); //
+		final MovementController ctl = new MovementController(orientationMap,route.getSectionNumberMap(),head, sim); //
 		sim.register(ctl);
 
 		Integer headSection = head.getSection().getNumber();
@@ -334,7 +336,7 @@ public class CtlTest {
 		orientationMap.put(0, new modelrailway.core.Train(0, false));
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
-		final TestController ctl = new TestController(orientationMap,route.getSectionNumberMap(),head, sim); //
+		final MovementController ctl = new MovementController(orientationMap,route.getSectionNumberMap(),head, sim); //
 		sim.register(ctl);
 
 		Integer headSection = head.getSection().getNumber();
@@ -457,7 +459,7 @@ public class CtlTest {
 		orientationMap.put(0, new modelrailway.core.Train(0, true));
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
-		final TestController ctl = new TestController(orientationMap,route.getSectionNumberMap(),head, sim); //
+		final MovementController ctl = new MovementController(orientationMap,route.getSectionNumberMap(),head, sim); //
 		sim.register(ctl);
 
 		Integer headSection = head.getSection().getNumber();
@@ -582,7 +584,7 @@ public class CtlTest {
 
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
-		final TestController ctl = new TestControlerCollision(orientationMap,route.getSectionNumberMap(),head,sim); //
+		final MovementController ctl = new ControlerCollision(orientationMap,route.getSectionNumberMap(),head,sim); //
 		sim.register(ctl);
 
 		Integer headSection = head.getSection().getNumber();
@@ -701,7 +703,7 @@ public class CtlTest {
 //		train.toggleDirection();
 
  		final Simulator sim = new Simulator(head, orientationMap, trainMap);
- 		final TestController ctl = new TestController(orientationMap,route.getSectionNumberMap(),head, sim); //
+ 		final MovementController ctl = new MovementController(orientationMap,route.getSectionNumberMap(),head, sim); //
  		sim.register(ctl);
 
  		Integer headSection = head.getSection().getNumber();
@@ -823,7 +825,7 @@ public class CtlTest {
  		orientationMap.put(1, new modelrailway.core.Train(1,false));
 
  		final Simulator sim = new Simulator(head, orientationMap, trainMap);
- 		final TestController ctl = new TestControlerCollision(orientationMap,route.getSectionNumberMap(),head,sim); //
+ 		final MovementController ctl = new ControlerCollision(orientationMap,route.getSectionNumberMap(),head,sim); //
  		sim.register(ctl);
 
  		final Integer headSection = head.getSection().getNumber();
