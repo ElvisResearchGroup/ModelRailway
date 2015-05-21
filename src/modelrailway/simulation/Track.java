@@ -322,8 +322,18 @@ public abstract class Track {
 		    if(t.getNext(false) != null){
 		        tn = t.getNext(false);
 		        tp = t.getPrevious(false);
-		        tn.previous=  t2;
-		        tp.next =  t2;
+		        if(tn.previous == t){
+		           tn.previous=  t2;
+		        }
+		        else{
+		           tn.alternatePrevious = t2;
+		        }
+		        if(tp.next == t){
+		           tp.next =  t2;
+		        }
+		        else{
+		            tp.alternateNext = t2;
+		        }
 		        if(onAlt2 ){
 		           if(t2.alternatePrevious == t2.previous && t2.alternatePrevious != null) t2.previous = tp;
 		           t2.alternatePrevious = tp;
@@ -339,8 +349,18 @@ public abstract class Track {
 		    else{
 		    	tn = t.getNext(true);
 		        tp = t.getPrevious(true);
-		        tn.alternatePrevious = t2;
-		        tp.alternateNext = t2;
+		        if(tn.previous == t){
+			           tn.previous=  t2;
+			        }
+			        else{
+			           tn.alternatePrevious = t2;
+			        }
+			        if(tp.next == t){
+			           tp.next =  t2;
+			        }
+			        else{
+			            tp.alternateNext = t2;
+			        }
 		        if(onAlt2 ){
 			       if(t2.alternatePrevious == t2.previous && t2.previous != null) t2.previous = tp;
 			       t2.alternatePrevious = tp;
@@ -368,6 +388,8 @@ public abstract class Track {
 			return tr;
 
 		}
+		
+		
 
 
 		public Track bufferEnd(Track t1, boolean enterForward, boolean onAlt){
@@ -395,7 +417,7 @@ public abstract class Track {
 		}
 
 		public Track join(Track t1, boolean onAlt, Track t2, boolean onAlt2){
-			if(onAlt){
+			if(!onAlt){
 				t1.next = t2;
 
 				if(onAlt2){
