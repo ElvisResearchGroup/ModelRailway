@@ -252,6 +252,12 @@ public class SimulationTrack {
 		    track.recalculateSections();
 		    Track diamondCrossing13 = new Crossing(sectionTwelve.get(0), sectionFourteen.get(0), sectionFive.get(0), null, sectionThirteen, sectionNineteen,100,100);
 		    sectionNineteen.add(diamondCrossing13);
+		    
+		    
+		    track.replace(sectionThirteen.get(0), diamondCrossing13, false);
+		    sectionThirteen.remove(0);
+		    sectionThirteen.add(diamondCrossing13);
+		    
 
 		    track.join(sectionFour.get(0), true,  sectionNineteen.get(0), true);
 

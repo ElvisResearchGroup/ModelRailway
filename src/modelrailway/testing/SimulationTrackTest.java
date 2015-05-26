@@ -237,7 +237,7 @@ public class SimulationTrackTest {
 		assertTrue(sectionTwelve.getNumber() == 12);
 
 
-		
+
 		assertTrue(sectionTwentyOne.size() == 1);
 		assertTrue(sectionThirteen.size() == 1);
 		assertTrue(sectionEleven.size() == 1);
@@ -245,12 +245,12 @@ public class SimulationTrackTest {
 
 		assertTrue(sectionEleven.get(0).getNext(false).equals(sectionTwelve.get(0)));
 		assertTrue(sectionTwelve.get(0).getPrevious(false).equals(sectionEleven.get(0)));
-		
+
 		//System.out.println(sectionTwelve.get(0).getNext(true).getSection().getNumber());
-		
-		
+
+
 		//System.out.println(sectionTwentyOne.get(0).getSection().getNumber());
-		
+
 
 		assertTrue(sectionTwelve.get(0).getNext(true).equals(sectionTwentyOne.get(0)));
 		assertTrue(sectionTwentyOne.get(0).getPrevious(false).equals(sectionTwelve.get(0)));
@@ -263,6 +263,49 @@ public class SimulationTrackTest {
 	 * test Track 4
 	 */
 	@Test public void testTrackBuild5(){
+		SimulationTrack simTrack0 = new SimulationTrack();
+		StraightDblRing ring = simTrack0.getTrack();
+		Map<Integer, Section> numberMap = ring.getSectionNumberMap();
+
+		Section sectionNineteen = numberMap.get(19);
+		Section sectionFive = numberMap.get(5);
+		Section sectionThree = numberMap.get(3);
+		Section sectionFour = numberMap.get(4);
+		Section sectionTwenty = numberMap.get(20);
+
+		if(sectionNineteen == null) fail("section nineteen expected to exist");
+
+		assertTrue(sectionNineteen.getNumber() == 19);
+		assertTrue(sectionFive.getNumber() == 5);
+		assertTrue(sectionThree.getNumber() == 3);
+		assertTrue(sectionFour.getNumber() == 4);
+
+
+
+		assertTrue(sectionNineteen.size() == 1);
+		assertTrue(sectionFive.size() == 1);
+		assertTrue(sectionThree.size() == 1);
+		assertTrue(sectionFour.size() == 1);
+
+		assertTrue(sectionThree.get(0).getNext(false).equals(sectionFour.get(0)));
+		assertTrue(sectionFour.get(0).getPrevious(false).equals(sectionThree.get(0)));
+
+		//System.out.println(sectionTwelve.get(0).getNext(true).getSection().getNumber());
+
+
+		//System.out.println(sectionTwentyOne.get(0).getSection().getNumber());
+
+
+		assertTrue(sectionFour.get(0).getNext(true).equals(sectionNineteen.get(0)));
+
+
+
+		assertTrue(sectionNineteen.get(0).getPrevious(true).equals(sectionFour.get(0)));
+
+		assertTrue(sectionFour.get(0).getNext(false).equals(sectionFive.get(0)));
+		assertTrue(sectionFive.get(0).getPrevious(false).equals(sectionFour.get(0)));
+		assertTrue(sectionNineteen.get(0).getNext(true).equals(sectionTwenty.get(0)));
+
 
 	}
 }
