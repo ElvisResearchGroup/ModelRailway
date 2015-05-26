@@ -40,7 +40,7 @@ public abstract class Track {
 			if(t.getAltSection() != null){
 				if(sectionMap.get(t.getAltSection()) == null)sectionMap.put(t.getAltSection(),0);
 				sectionMap.put(t.getAltSection(), sectionMap.get(t.getAltSection())+1);
-			} 
+			}
 		}
 		public void decrementSecCounter(Track t){
 		  if(sectionMap.get(t.getSection()) != null){
@@ -53,12 +53,12 @@ public abstract class Track {
 		public void decrementAltSecCounter(Track t){
 			if(sectionMap.get(t.getAltSection()) != null){
 				sectionMap.put(t.getAltSection(),sectionMap.get(t.getAltSection()) -1);
-				if(sectionMap.get(t.getAltSection()) == 0){	
+				if(sectionMap.get(t.getAltSection()) == 0){
 					sectionMap.remove(t.getAltSection());
 				}
 		   }
 		}
-		
+
 		public void recalculateSections(){
 			sectionMap = new HashMap<Section,Integer>();
 			for(Track tr: getTrackList()){
@@ -66,7 +66,7 @@ public abstract class Track {
 				incrementAltSecCounter(tr);
 			}
 		}
-		
+
 		/**
 		 * The sectionList() returns a hashmap from sections in the Route to the number of times the section occurs.
 		 * @return
@@ -110,7 +110,7 @@ public abstract class Track {
 
 			incrementSectionCounter(insertedTrack);
 			incrementAltSecCounter(insertedTrack);
-			
+
 			if(tr1.next == tr1.alternateNext && tr1.next != null) tr1UnifyNext = true;
 			if(tr2.previous == tr2.alternatePrevious && tr2.previous != null) tr2UnifyPrevious = true;
 			if(insertedTrack.next == insertedTrack.alternateNext && insertedTrack.next != null) insertedTrackUnifyNext = true;
@@ -132,7 +132,7 @@ public abstract class Track {
 			}
 
 			//fix tr1
-			if(onAlt2){
+			if(onAlt){
 				tr1.alternateNext = insertedTrack;
 				if(onAlt3 || insertedTrackUnifyPrevious) insertedTrack.alternatePrevious = tr1;
 				if((!onAlt3) || insertedTrackUnifyPrevious)  insertedTrack.previous = tr1;
@@ -170,11 +170,11 @@ public abstract class Track {
 			boolean tr2UnifyPrevious = false;
 			boolean insertedTrackUnifyNext = false;
 			boolean insertedTrackUnifyPrevious = false;
-			
+
 
 			incrementSectionCounter(insertedTrack);
 			incrementAltSecCounter(insertedTrack);
-			
+
 			if(tr1.next == tr1.alternateNext && tr1.next != null) tr1UnifyNext = true;
 			if(tr2.previous == tr2.alternatePrevious && tr2.previous != null) tr2UnifyPrevious = true;
 			if(insertedTrack.next == insertedTrack.alternateNext && insertedTrack.next != null) insertedTrackUnifyNext = true;
@@ -210,8 +210,8 @@ public abstract class Track {
 				if(tr1UnifyNext) tr1.alternateNext = tr1.next;
 			}
 			trackList.add(insertedTrack);
-			
-			
+
+
 			return tr1; // return tr1
 		}
 		/**
@@ -227,12 +227,12 @@ public abstract class Track {
 			if(insertedTrack instanceof Switch){
 				head.addSwitchEntry(((Switch) insertedTrack).getSwitchID(), insertedTrack);
 			}
-			
+
 
 			incrementSectionCounter(insertedTrack);
 			incrementAltSecCounter(insertedTrack);
-			
-			
+
+
 			//first fix tr2
 			boolean tr1UnifyNext = false;
 			boolean tr2UnifyPrevious = false;
@@ -271,7 +271,7 @@ public abstract class Track {
 				if(tr1UnifyNext) tr1.alternateNext = tr1.next;
 			}
 			trackList.add(insertedTrack);
-			
+
 			return tr1; // return tr1
 		}
 
@@ -284,8 +284,8 @@ public abstract class Track {
 			trackList.add(tr);
 			incrementSectionCounter(tr);
 			incrementAltSecCounter(tr);
-			
-			
+
+
 			tr.alternateNext = null;
 			tr.alternatePrevious = null;
 			tr.altlength = 0;
@@ -379,17 +379,17 @@ public abstract class Track {
 		    }
 
 		    Track removedTrack = tlist.get(index);
-		    
+
 		    this.decrementSecCounter(removedTrack);
 		    this.decrementAltSecCounter(removedTrack);
-		    
+
 		    tlist.set(index, t2);
 
 			return tr;
 
 		}
-		
-		
+
+
 
 
 		public Track bufferEnd(Track t1, boolean enterForward, boolean onAlt){
@@ -398,7 +398,7 @@ public abstract class Track {
 			this.getTrackList().add(buffer);
 			sec.add(buffer);
 			this.incrementSectionCounter(buffer);
-		
+
 			if(onAlt){
 				if(enterForward){
 					t1.alternateNext = buffer;
@@ -444,7 +444,7 @@ public abstract class Track {
 			secondRingHead = secHead;
 			this.getTrackList().add(secHead);
 			this.incrementSectionCounter(secHead);
-			
+
 		}
 
 		public Track getSecondHead(){

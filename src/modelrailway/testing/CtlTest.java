@@ -45,12 +45,12 @@ public class CtlTest {
 		Track head = route.ringTrack(4, 100);
 		sec.add(head);
 
-		
+
 		Track tp_1 = head.getNext(false);
 		Track tp_2 = tp_1.getNext(false);
 		Track tp_3 = tp_2.getNext(false);
 		Track tp_4 = tp_3.getNext(false);
-		
+
 
 
 		Section sec2 = new Section(new ArrayList<Track>());
@@ -73,12 +73,14 @@ public class CtlTest {
 
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
+		
+		route.recalculateSections();
 
 		assertTrue(sw.getNext(true) == str);
 		assertTrue(sw.getNext(false) == tp_2);
 		assertTrue(str.getSection() == sec4);
 
-
+		System.out.println("routeSectionSize: "+route.getSectionNumberMap().size());
 		//set up the train track.
 
 		// add a locomotive
@@ -203,7 +205,8 @@ public class CtlTest {
 		assertTrue(head.getPrevious(false) == sw2);
 
 
-
+		route.recalculateSections();
+		route.getSectionNumberMap();
 		//set up the train track.
 
 		// add a locomotive
@@ -324,8 +327,12 @@ public class CtlTest {
 		Straight str = new Straight(null, null, sec4,100 );
 		sec4.add(str);
 
+		
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
+		
+		route.recalculateSections();
+		route.getSectionNumberMap();
 
 		assertTrue(sw.getNext(true) == str);
 		assertTrue(sw.getNext(false) == tp_2);
@@ -450,13 +457,16 @@ public class CtlTest {
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
+		route.recalculateSections();
+		route.getSectionNumberMap();
+		
 		assertTrue(sw.getNext(true) == str);
 		assertTrue(sw.getNext(false) == tp_2);
 		assertTrue(sw2.getPrevious(false) == tp_2);
 		assertTrue(str.getSection() == sec4);
 		assertTrue(head.getPrevious(false) == sw2);
 
-
+		
 
 		//set up the train track.
 
@@ -608,7 +618,7 @@ public class CtlTest {
 		Integer sec1 = tp_1.getSection().getNumber();
 		Integer sec2 = tp_2.getSection().getNumber();
 		Integer sec3 = tp_3.getSection().getNumber();
-		
+
 
 
 		Route routePlan = new Route(true, headSection, sec1, sec2, sec3);
@@ -674,29 +684,45 @@ public class CtlTest {
  		Track head = route.ringTrack(4, 100);
  		sec.add(head);
  		Track tp_1 = head.getNext(false);
+ 		Section s1 = tp_1.getSection();
+
  		Track tp_2 = tp_1.getNext(false);
+ 		Section s2 = tp_2.getSection();
+
  		Track tp_3 = tp_2.getNext(false);
+ 		Section s3 = tp_3.getSection();
+
  		Track tp_4 = tp_3.getNext(false);
+ 		Section s4 = tp_4.getSection();
+
+
+ 		route.recalculateSections();
 
  		Section sec2 = new Section(new ArrayList<Track>());
  		Track sw = new ForwardSwitch(null, null, null, sec2, 100 , 100 , 50 ) ; // points are crossed at 50
+
  		sec2.add(sw);
 
  		Section sec3 = new Section(new ArrayList<Track>());
  		Track sw2 = new BackSwitch(null, null, null, sec3, 100, 100, 50);
+
  		sec3.add(sw2);
+
 
  		route.replace(tp_1, sw, false);
  		route.replace(tp_3, sw2, false);
 
  		Section sec4 = new Section(new ArrayList<Track>());
  		Straight str = new Straight(null, null, sec4,100 );
+
+
  		sec4.add(str);
 
  		route.insertBetween(sw, true, sw2, true,  str, false);
- 		
 
- 		
+ 		route.recalculateSections();
+
+
 
  		assertTrue(sw.getNext(true) == str);
  		assertTrue(sw.getNext(false) == tp_2);
@@ -815,14 +841,14 @@ public class CtlTest {
  		sec4.add(str);
 
  		route.insertBetween(sw, true, sw2, true,  str, false);
- 		
+
 
 
  		assertTrue(sw.getNext(true) == str);
  		assertTrue(sw.getNext(false) == tp_2);
  		assertTrue(str.getSection() == sec4);
 
- 		
+
 
  		//set up the train track.
 

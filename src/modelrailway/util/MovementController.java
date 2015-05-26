@@ -116,6 +116,8 @@ public class MovementController implements Controller, Listener {
 	public Pair<Track,Track> getCurrentTrackSection(Section currentSection, Section previousSection, boolean movingForward){
 		Track prev = null;
 		Track curr = null;
+		if(currentSection == null) throw new RuntimeException("The section was null");
+		if(currentSection.size() == 0) throw new RuntimeException("No sections for track: ");
 		for(Track t: currentSection){
 			if(movingForward){
 				if(t.getPrevious(true).getSection() == previousSection){
@@ -181,6 +183,8 @@ public class MovementController implements Controller, Listener {
 	    		
 	    		Integer trainSection = ((Event.SectionChanged) e).getSection(); // store the section number in a variable
 	    		
+	    		
+	    		
 	    		System.out.println("previous: "+prevSection);
 	    		System.out.println("trainSection: "+trainSection);
 	    		/*
@@ -202,6 +206,8 @@ public class MovementController implements Controller, Listener {
 	    		System.out.println("try get current track: "+trainSection +" prevSection: "+prevSection);
 	    		Track thisTrack = null;
 	    		if(trainOrientation.getValue().currentOrientation()){
+	    		//Section currSec =  sections.get(trainSection);
+	    		System.out.println("sections: "+sections);
 	    		Pair<Track,Track> prevCurrPair = getCurrentTrackSection(sections.get(trainSection),sections.get(prevSection),trainOrientation.getValue().currentOrientation());
 	    		// before handling the switches make sure that the sections of the track piece that we came from do not have this train in any of them
 	    		thisTrack = prevCurrPair.snd;
