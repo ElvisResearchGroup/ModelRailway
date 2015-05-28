@@ -332,28 +332,28 @@ public class SimulationTrackTest {
 		Track headPiece = startSec.get(0);
 
 		Route route = new Route(true, 1,2,3,4,5,6,7,8);
-		
+
 		Movable locomotive = new Locomotive(new Track[]{headPiece}, 40,40,10, false);
-		
+
 		Train train = new Train(new Movable[]{locomotive});
-		
+
 		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
-		
+
 		trainMap.put(0,train );
 		train.setID(0);
 
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(1, true));
-		
+
 		final Simulator sim = new Simulator(headPiece, orientationMap, trainMap);
-		
+
 		final ControlerCollision ctl = new ControlerCollision(orientationMap,ring.getSectionNumberMap(),headPiece,sim);
 		sim.register(ctl);
-		
+
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
  		final Thread th = Thread.currentThread();
-		
+
 		ctl.register(new Listener(){
  			public void notify(Event e){
  				//System.out.println("event "+e.toString());
@@ -362,7 +362,7 @@ public class SimulationTrackTest {
 
  				  if(((Event.SectionChanged)e).getSection() == 1){
 
- 					  ctl.stop(1);
+ 					  ctl.stop(0);
  					  sim.stop();
  					  th.interrupt();
 
@@ -378,7 +378,7 @@ public class SimulationTrackTest {
  		});
 
  		ctl.start(0, route);
-		
+
 		try{
 			Thread.currentThread().join();
 		}catch(InterruptedException e){
@@ -394,8 +394,74 @@ public class SimulationTrackTest {
 		assertTrue(outputArray.get(5) == 7);
 		assertTrue(outputArray.get(6) == 8);
 		assertTrue(outputArray.get(7) == 1);
-		
 
 
+
+	}
+	@Test public void testTrackRun1(){
+		SimulationTrack sim0 = new SimulationTrack();
+
+		StraightDblRing ring = sim0.getTrack();
+
+		Map<Integer,Section> numberMap = ring.getSectionNumberMap();
+
+		Section startSec = numberMap.get(1);
+		Track headPiece = startSec.get(0);
+
+		Route route = new Route(true, 17,18,11,12,13,14,15,16,9,10);
+
+		Movable locomotive = new Locomotive(new Track[]{headPiece}, 40,40,10, false);
+
+		Train train = new Train(new Movable[]{locomotive});
+
+		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
+
+		trainMap.put(0,train );
+		train.setID(0);
+
+		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
+
+		orientationMap.put(0, new modelrailway.core.Train(17, true));
+
+		final Simulator sim = new Simulator(headPiece, orientationMap, trainMap);
+
+		final ControlerCollision ctl = new ControlerCollision(orientationMap,ring.getSectionNumberMap(),headPiece,sim);
+		sim.register(ctl);
+
+		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
+ 		final Thread th = Thread.currentThread();
+
+		ctl.register(new Listener(){
+ 			public void notify(Event e){
+ 				//System.out.println("event "+e.toString());
+ 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+ 				  outputArray.add(((Event.SectionChanged) e).getSection());
+
+ 				  if(((Event.SectionChanged)e).getSection() == 10){
+
+ 					  ctl.stop(0);
+ 					  sim.stop();
+ 					  th.interrupt();
+
+ 				  }
+ 				}
+
+ 				if(e instanceof Event.EmergencyStop){
+ 					sim.stop();
+ 					th.interrupt();
+ 				}
+ 			}
+
+ 		});
+
+ 		ctl.start(0, route);
+
+		try{
+			Thread.currentThread().join();
+		}catch(InterruptedException e){
+			System.out.println("testTrackRun0");
+			System.out.println("route: "+route.toString());
+			System.out.println("output: "+outputArray.toString());
+		}
 	}
 }
