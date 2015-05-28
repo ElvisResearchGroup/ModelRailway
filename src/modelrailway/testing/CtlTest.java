@@ -939,6 +939,16 @@ public class CtlTest {
 
  		assertTrue(outputArray.get(0).split(" ")[0].equals("emergency"));
   	}
+  	
+  	/**
+  	 * Test switches going along an alternate route.
+  	 */
+  	@Test public void testTrackRun1(){
+  		
+  		
+  	}
+  	
+  	
 
 
 
