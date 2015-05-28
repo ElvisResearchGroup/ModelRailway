@@ -1,6 +1,7 @@
 package modelrailway.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 
 import modelrailway.core.Section;
@@ -252,12 +253,12 @@ public class SimulationTrack {
 		    track.recalculateSections();
 		    Track diamondCrossing13 = new Crossing(sectionTwelve.get(0), sectionFourteen.get(0), sectionFive.get(0), null, sectionThirteen, sectionNineteen,100,100);
 		    sectionNineteen.add(diamondCrossing13);
-		    
-		    
+
+
 		    track.replace(sectionThirteen.get(0), diamondCrossing13, false);
 		    sectionThirteen.remove(0);
 		    sectionThirteen.add(diamondCrossing13);
-		    
+
 
 		    track.join(sectionFour.get(0), true,  sectionNineteen.get(0), true);
 
@@ -316,6 +317,68 @@ public class SimulationTrack {
 		    Section sectionTwenty = section20Straight.getSection();
 		    sectionTwenty.setSectionNumber(20);
 		    track.recalculateSections();
+
+
+		    // add switching order.
+
+		    sectionEight.putSwitchingOrder(new Pair<Integer,Integer>(7,9),Arrays.asList(new Boolean[]{true}));
+		    sectionEight.putSwitchingOrder(new Pair<Integer,Integer>(7,1),Arrays.asList(new Boolean[]{false}));
+		    sectionEight.putSwitchingOrder(new Pair<Integer,Integer>(1,7),Arrays.asList(new Boolean[]{false}));
+		    sectionEight.putSwitchingOrder(new Pair<Integer,Integer>(9,7),Arrays.asList(new Boolean[]{true}));
+
+
+		    // add switching order for s16
+
+		    sectionSixteen.putSwitchingOrder(new Pair<Integer,Integer>(15,9),Arrays.asList(new Boolean[]{true}));
+		    sectionSixteen.putSwitchingOrder(new Pair<Integer,Integer>(15,17),Arrays.asList(new Boolean[]{false}));
+		    sectionSixteen.putSwitchingOrder(new Pair<Integer,Integer>(17,15),Arrays.asList(new Boolean[]{false}));
+		    sectionSixteen.putSwitchingOrder(new Pair<Integer,Integer>(9,15),Arrays.asList(new Boolean[]{true}));
+
+
+		    // add switching order for s11
+
+		    sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(12,10),Arrays.asList(new Boolean[]{true}));
+		    sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(12,18),Arrays.asList(new Boolean[]{false}));
+		    sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(18,12),Arrays.asList(new Boolean[]{false}));
+		    sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(10,12),Arrays.asList(new Boolean[]{true}));
+
+
+		    // add switching order for s9
+
+		    sectionNine.putSwitchingOrder(new Pair<Integer,Integer>(10,8),Arrays.asList(new Boolean[]{true}));
+		    sectionNine.putSwitchingOrder(new Pair<Integer,Integer>(10,16),Arrays.asList(new Boolean[]{false}));
+		    sectionNine.putSwitchingOrder(new Pair<Integer,Integer>(16,10),Arrays.asList(new Boolean[]{false}));
+		    sectionNine.putSwitchingOrder(new Pair<Integer,Integer>(8,10),Arrays.asList(new Boolean[]{true}));
+
+		    //add switching order for s10
+
+		    sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(9,3),Arrays.asList(new Boolean[]{true}));
+		    sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(9,11),Arrays.asList(new Boolean[]{false}));
+		    sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(11,9),Arrays.asList(new Boolean[]{false}));
+		    sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(3,9),Arrays.asList(new Boolean[]{true}));
+
+		    //add switching order for s3
+
+		    sectionThree.putSwitchingOrder(new Pair<Integer,Integer>(10,4),Arrays.asList(new Boolean[]{true}));
+		    sectionThree.putSwitchingOrder(new Pair<Integer,Integer>(4,2),Arrays.asList(new Boolean[]{false}));
+		    sectionThree.putSwitchingOrder(new Pair<Integer,Integer>(2,4),Arrays.asList(new Boolean[]{false}));
+		    sectionThree.putSwitchingOrder(new Pair<Integer,Integer>(4,10),Arrays.asList(new Boolean[]{true}));
+
+		    //add switching order for s4
+
+		    sectionFour.putSwitchingOrder(new Pair<Integer,Integer>(19,3),Arrays.asList(new Boolean[]{true}));
+		    sectionFour.putSwitchingOrder(new Pair<Integer,Integer>(5,3),Arrays.asList(new Boolean[]{false}));
+		    sectionFour.putSwitchingOrder(new Pair<Integer,Integer>(3,5),Arrays.asList(new Boolean[]{false}));
+		    sectionFour.putSwitchingOrder(new Pair<Integer,Integer>(3,19),Arrays.asList(new Boolean[]{true}));
+
+		    // add switching order for s12
+
+		    sectionTwelve.putSwitchingOrder(new Pair<Integer,Integer>(21,11),Arrays.asList(new Boolean[]{true}));
+		    sectionTwelve.putSwitchingOrder(new Pair<Integer,Integer>(13,11),Arrays.asList(new Boolean[]{false}));
+		    sectionTwelve.putSwitchingOrder(new Pair<Integer,Integer>(11,13),Arrays.asList(new Boolean[]{false}));
+		    sectionTwelve.putSwitchingOrder(new Pair<Integer,Integer>(11,21),Arrays.asList(new Boolean[]{true}));
+
+
 
 
 	}

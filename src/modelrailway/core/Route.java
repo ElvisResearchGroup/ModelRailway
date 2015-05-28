@@ -74,7 +74,8 @@ public class Route {
 				}
 			}
 		}
-		throw new IllegalArgumentException("Invalid section for route");
+		throw new IllegalArgumentException("Invalid section for route: "+section
+				+" route: "+Arrays.toString(sections));
 	}
 
 	public Integer prevSection(int section){
@@ -82,7 +83,7 @@ public class Route {
 			if (sections[i] == section) {
 				// Found matching section. Now, determine next section (if it
 				// exists).
-				i = (i - 1); 
+				i = (i - 1);
 				// Check whether we reached the end of the route or not
 				if(i < 0) i = sections.length + i;
 				if (i == 0 && !isLoop) {

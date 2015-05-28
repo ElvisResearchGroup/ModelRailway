@@ -87,9 +87,9 @@ public class MovementController implements Controller, Listener {
 
 
 				if(isMoving.get(tr.getKey()) != null && isMoving.get(tr.getKey())){
-					System.out.println("next section: in adjust");
-					System.out.println("sectionID: "+sectionID);
-					System.out.println("trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()): "+trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()));
+					//System.out.println("next section: in adjust");
+					//System.out.println("sectionID: "+sectionID);
+					//System.out.println("trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()): "+trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()));
 					if(trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()) == sectionID){
 						trainObj.setSection(sectionID);
 					}
@@ -112,7 +112,7 @@ public class MovementController implements Controller, Listener {
 			l.notify(e);
 		}
 	}
-	
+
 	public Pair<Track,Track> getCurrentTrackSection(Section currentSection, Section previousSection, boolean movingForward){
 		Track prev = null;
 		Track curr = null;
@@ -123,7 +123,7 @@ public class MovementController implements Controller, Listener {
 				if(t.getPrevious(true).getSection() == previousSection){
 					prev = t.getPrevious(true);
 					curr = t;
-					
+
 				}
                 if(t.getPrevious(false).getSection() == previousSection){
                 	prev = t.getPrevious(false);
@@ -143,7 +143,7 @@ public class MovementController implements Controller, Listener {
 				if(t.getNext(true).getSection() == previousSection){
 					prev = t.getNext(true);
 					curr = t;
-					
+
 				}
                 if(t.getNext(false).getSection() == previousSection){
                 	prev = t.getNext(false);
@@ -173,20 +173,20 @@ public class MovementController implements Controller, Listener {
 
 			Integer section = trainOrientation.getValue().currentSection();
 			//System.out.println("Section: "+section);
-			System.out.println("e.getSection(): "+((Event.SectionChanged) e).getSection()+" section: "+section);
+			//System.out.println("e.getSection(): "+((Event.SectionChanged) e).getSection()+" section: "+section);
 	    	if(section ==  ((Event.SectionChanged) e).getSection()){ // check that the front of the train is in the section
 	    		// first work out which track segments we are currently dealing with.
-	    		
+
 	    		Integer prevSection = trainRoutes.get(trainOrientation.getKey()).prevSection(section); // the previous section that we came from
 	    		Integer nextSection = trainRoutes.get(trainOrientation.getKey()).prevSection(section);
 	    		Section previous = sections.get(prevSection);
-	    		
+
 	    		Integer trainSection = ((Event.SectionChanged) e).getSection(); // store the section number in a variable
-	    		
-	    		
-	    		
-	    		System.out.println("previous: "+prevSection);
-	    		System.out.println("trainSection: "+trainSection);
+
+
+
+	    		//System.out.println("previous: "+prevSection);
+	    		//System.out.println("trainSection: "+trainSection);
 	    		/*
 	    		Track lastTrack = sec.get(sec.size()-1);
 	    		Track firstTrack = sec.get(0);
@@ -203,11 +203,11 @@ public class MovementController implements Controller, Listener {
 	    			throw new RuntimeException("invalid track in move into Section");
 	    		}
 	*/
-	    		System.out.println("try get current track: "+trainSection +" prevSection: "+prevSection);
+	    		//System.out.println("try get current track: "+trainSection +" prevSection: "+prevSection);
 	    		Track thisTrack = null;
 	    		if(trainOrientation.getValue().currentOrientation()){
 	    		//Section currSec =  sections.get(trainSection);
-	    		System.out.println("sections: "+sections);
+	    		//System.out.println("sections: "+sections);
 	    		Pair<Track,Track> prevCurrPair = getCurrentTrackSection(sections.get(trainSection),sections.get(prevSection),trainOrientation.getValue().currentOrientation());
 	    		// before handling the switches make sure that the sections of the track piece that we came from do not have this train in any of them
 	    		thisTrack = prevCurrPair.snd;
@@ -247,12 +247,12 @@ public class MovementController implements Controller, Listener {
 	    			}
 	    		}
 
-	    		
-	    		System.out.println("Switch"+thisTrack);
-	    		System.out.println("trackSection: "+thisTrack.getSection().getNumber());
-	    		
+
+	    		//System.out.println("Switch"+thisTrack);
+	    		//System.out.println("trackSection: "+thisTrack.getSection().getNumber());
+
 	    		if(thisTrack instanceof Switch){ // move switches
-	    			
+
 	    			Integer trainID = trainOrientation.getKey();
 	    			Route rt = trainRoutes.get(trainID);
 	    			Section sectionS = sections.get(section);
@@ -261,9 +261,9 @@ public class MovementController implements Controller, Listener {
 	    			Pair<Integer, Integer> sectionPair = new Pair<Integer,Integer>(prevSec,nextSec);
 	    		    // for sectionPair
 	    		    List<Boolean> switchingOrder = sectionS.retrieveSwitchingOrder(sectionPair);
-	    		    System.out.println("Section,previous: "+ previous);
-	    		    System.out.println("sectionS: "+sectionS);
-	    		    System.out.println("sectionPair: "+sectionPair);
+	    		  //  System.out.println("Section,previous: "+ previous);
+	    		    //System.out.println("sectionS: "+sectionS);
+	    		    //System.out.println("sectionPair: "+sectionPair);
 	    			if(!trainOrientation.getValue().currentOrientation()){
 	    			  Track tr = thisTrack;
 			    	  for(Boolean bl: switchingOrder){ // for each switch//
@@ -280,7 +280,7 @@ public class MovementController implements Controller, Listener {
 				    	 tr = thisTrack.getNext(bl); // follow track
 				      }
 	    			}
-	    			
+
 	    		}
 	    		//System.out.println("Section: "+section);
 	    		//System.out.println("Track: "+thisTrack);
