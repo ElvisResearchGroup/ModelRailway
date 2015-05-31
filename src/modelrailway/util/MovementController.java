@@ -223,9 +223,9 @@ public class MovementController implements Controller, Listener {
 	    			boolean trainMoved = false;
 	    			Section tracSec = t.getSection();
 	    			Section trackAltSec = t.getAltSection();
-	    			if(trackAltSec != null){
+	    			if(tracSec != null){
 	    				Pair<Boolean,Integer> pair = null;
-	    				if(!trackAltSec.isQueueEmpty() && trainOrientation.getKey() != null) pair = tracSec.removeFromQueue(trainOrientation.getKey());
+	    				if(!tracSec.isQueueEmpty() && trainOrientation.getKey() != null) pair = tracSec.removeFromQueue(trainOrientation.getKey());
 	    				if(pair != null){
 	    				   if(pair.fst){ // instruct next train to move.
 	    					   if(!trainMoved) {
@@ -236,10 +236,14 @@ public class MovementController implements Controller, Listener {
 	    				}
 	    			}
 	    			Pair<Boolean,Integer> pair = null;
-	    			if(trackAltSec != null && !trackAltSec.isQueueEmpty() && trainOrientation.getKey() != null)  pair = trackAltSec.removeFromQueue(trainOrientation.getKey());
-	    			if(pair != null){
+	    			if((trackAltSec != null) && (!trackAltSec.isQueueEmpty()) && (trainOrientation.getKey() != null)){
+	    				//System.out.println("trackAltSec.isQueueEmpty: "+trackAltSec.isQueueEmpty()+" track: "+trackAltSec.getNumber());
+	    				pair = trackAltSec.removeFromQueue(trainOrientation.getKey());
+	    			}
+	    			if(pair != null && pair.snd != null){
 	    			   if(pair.fst){
 	    				   if(!trainMoved) {
+	    					  // if(pair.snd == null) throw new RuntimeException("trackAltSec Number: "+trackAltSec.getNumber()+" peep at altsec: "+trackAltSec.getEntryRequests().toString()+"trackAltSec: "+trackAltSec.getNumber());
 	    					   this.resumeTrain(pair.snd);
 	    					   trainMoved = true;
 	    				   }

@@ -405,12 +405,14 @@ public class SimulationTrackTest {
 
 		Map<Integer,Section> numberMap = ring.getSectionNumberMap();
 
-		Section startSec = numberMap.get(1);
-		Track headPiece = startSec.get(0);
+		Section startSec = numberMap.get(17);
+		Track startPiece = startSec.get(0);
 
+		Section headSec = numberMap.get(1);
+		Track headPiece = headSec.get(0);
 		Route route = new Route(true, 17,18,11,12,13,14,15,16,9,10);
 
-		Movable locomotive = new Locomotive(new Track[]{headPiece}, 40,40,10, false);
+		Movable locomotive = new Locomotive(new Track[]{startPiece}, 40,40,10, false);
 
 		Train train = new Train(new Movable[]{locomotive});
 

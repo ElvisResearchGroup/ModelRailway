@@ -47,6 +47,9 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 		sectionNumberCounter++;
 		this.addAll(tr);
 	}
+	public Queue<Integer> getEntryRequests(){
+		return entryRequests;
+	}
 
 	public List<Boolean> retrieveSwitchingOrder(Pair<Integer,Integer> pair){
 		return turnstyleTable.get(pair);
@@ -88,15 +91,18 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 
 	}
 	public boolean isQueueEmpty(){
-		return(entryRequests.size() == 0);
+		//System.out.println("entryRequests.size(): "+entryRequests.size()+" entryRequests: "+entryRequests.toString()+" number: "+this.sectionNumber);
+		return (entryRequests.size() == 0);
 	}
 	public Pair<Boolean,Integer> removeFromQueue(Integer t){
+		//System.out.println("entryRequests: "+entryRequests.toString()+" t: "+t+" number: "+this.sectionNumber+" thread: "+Thread.currentThread().getId());
 		if(entryRequests.contains(t)){
 
 			return new Pair<Boolean,Integer>(entryRequests.remove(t), entryRequests.peek());
 
 		}
 		else{
+			//System.out.println("Entry requests does not contain t: "+ t+" Entry requests: "+entryRequests.toString()+" size: "+entryRequests.size());
 			return new Pair<Boolean,Integer>(false,null);
 		}
 	}
@@ -197,14 +203,14 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 
 		return "section: "+super.toString()+"  movables: "+movableObjects.toString() +" entryRequests: "+entryRequests.toString();
 	}
-	
+
 	public boolean equals(Object o){
 		if(o instanceof Section){
 		   return (this.sectionNumber == ((Section)o).sectionNumber);
 		}
 		return false;
 	}
-	
+
 	public int hashCode(){
 		return this.sectionNumber;
 	}

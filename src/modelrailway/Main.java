@@ -120,7 +120,7 @@ public class Main {
 	 * continually waiting for user input.
 	 */
 
-	protected void readEvaluatePrintLoop() {
+	public void readEvaluatePrintLoop() {
 		final BufferedReader input = new BufferedReader(new InputStreamReader(
 				System.in));
 
@@ -302,6 +302,7 @@ public class Main {
 		// is on a given port. Likewise, we initialise it with three locomotives
 		// whose addresses are 1,2 + 3. If more locomotives are to be used, this
 		// needs to be updated accordingly.
+		System.out.println("Port: "+port);
 		final ModelRailway railway = new ModelRailway(port,
 				new int[] { 1, 2, 3 });
 
