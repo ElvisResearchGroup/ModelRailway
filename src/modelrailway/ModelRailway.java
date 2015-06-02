@@ -188,7 +188,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			break;
 		case LnConstants.OPC_LOCO_DIRF:
 			boolean isForward = (arg0.getElement(2) & LnConstants.DIRF_DIR) == LnConstants.DIRF_DIR;
-			event = new Event.DirectionChanged(arg0.getElement(1), isForward);
+			event = new Event.DirectionChanged(getTrainIDfromSlot(arg0.getElement(1)), isForward);
 			break;
 		case LnConstants.OPC_LOCO_SPD:
 			int speed = arg0.getElement(2);
@@ -197,7 +197,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			} else if(speed > 1) {
 				speed = speed - 1;
 			}
-			event = new Event.SpeedChanged(arg0.getElement(1), speed / (0x7F-1));
+			event = new Event.SpeedChanged(getTrainIDfromSlot(arg0.getElement(1)), speed / (0x7F-1));
 			break;
 		case LnConstants.OPC_INPUT_REP:
 			int in1 = arg0.getElement(1);
@@ -220,9 +220,28 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		}
 	}
 
+	/**
+	 * Convert a throttle slot into a train identifier
+	 *
+	 * @param slot
+	 * @return
+	 */
+	private int getTrainIDfromSlot(int slot) {
+		int trainID = 0;
+		for(DccThrottle throttle : throttles) {
+			LocoNetThrottle t = (LocoNetThrottle) throttle;
+			if(t.getLocoNetSlot().getSlot() == slot) {
+				return trainID;
+			}
+			trainID++;
+		}
+		throw new IllegalArgumentException("Invalid slot encountered");
+	}
+
 	public void notify(Event event) {
 		if (event instanceof Event.SpeedChanged) {
 			Event.SpeedChanged e = (Event.SpeedChanged) event;
+			System.out.println("CHANGING SPEED: " + e.getLocomotive() + " to " + e.getSpeed());
 			throttles[e.getLocomotive()].setSpeedSetting(e.getSpeed());
 		} else if (event instanceof Event.DirectionChanged) {
 			Event.DirectionChanged e = (Event.DirectionChanged) event;

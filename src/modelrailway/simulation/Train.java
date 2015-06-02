@@ -101,6 +101,7 @@ public class Train extends Movable {
 	}
 
 	public void notifySectionFree(Integer trainID, Controller ctl){
+		System.out.println("TRAIN ID: " + trainID);
 		ctl.notify(new Event.SpeedChanged(trainID, 0.75f));
 		ctl.resumeTrain(trainID);
 
