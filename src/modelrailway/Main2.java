@@ -12,6 +12,15 @@ public class Main2 extends Main {
 		// TODO Auto-generated constructor stub
 	}
 
+	public ModelRailway getRailway(){
+		return rails;
+	}
+	public Controller getCtl(){
+		return ctl;
+	}
+	private static ModelRailway rails;
+	private static Controller ctl;
+
 	public static void main(String args[]) throws Exception {
 		String port = args[0];
 
@@ -24,7 +33,7 @@ public class Main2 extends Main {
 		// needs to be updated accordingly.
 		final ModelRailway railway = new ModelRailway(port,
 				new int[] { 1, 2, 3 });
-
+		rails = railway;
 		// Add shutdown hook to make sure resources are released when quiting
 		// the application, even if the application is quit in a non-standard
 		// fashion.
@@ -45,6 +54,7 @@ public class Main2 extends Main {
 		Controller controller = new TrainController(trains,railway);
 		railway.register(controller);
 		controller.register(railway);
+		ctl = controller;
 		new Main2(railway,controller).readEvaluatePrintLoop();
 	}
 }

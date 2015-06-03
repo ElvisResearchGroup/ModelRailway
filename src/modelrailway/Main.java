@@ -53,6 +53,10 @@ public class Main {
 		this.new Command("locate",getMethod("setLocation",int.class,int.class)),
 		this.new Command("turnout",getMethod("setTurnout",int.class,boolean.class))
 	};
+	
+	public Command[] getCommands(){
+		return commands;
+	}
 
 	public void quit() {
 		System.exit(0);

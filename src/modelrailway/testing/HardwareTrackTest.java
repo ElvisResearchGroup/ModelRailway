@@ -1,12 +1,10 @@
 package modelrailway.testing;
 
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Test;
 
 import modelrailway.Main2;
 import modelrailway.ModelRailway;
@@ -26,48 +24,23 @@ import modelrailway.util.ControlerCollision;
 import modelrailway.util.SimulationTrack;
 import modelrailway.util.TrainController;
 
-public class HardwareTrackTest {
+public class HardwareTrackTest extends Main2{
 
-
+	
+	public HardwareTrackTest(ModelRailway railway, Controller controller) {
+		super(railway, controller);
+		// TODO Auto-generated constructor stub
+	}
+	
 	final String port="/dev/ttyACM0";
-	@Test public void hardwareTest0() throws Exception{
+	public void hardwareTest0() throws Exception{
 
-		// Needed for connection on lab machines
-		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
-
-		// Construct the model railway assuming the interface (i.e. USB Cable)
-		// is on a given port. Likewise, we initialise it with three locomotives
-		// whose addresses are 1,2 + 3. If more locomotives are to be used, this
-		// needs to be updated accordingly.
-		final ModelRailway railway = new ModelRailway(port,
-				new int[] {1});
-
-		// Add shutdown hook to make sure resources are released when quiting
-		// the application, even if the application is quit in a non-standard
-		// fashion.
-		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Disconnecting from railway...");
-				railway.destroy();
-			}
-		}));
-
+		
+		final Controller controller = getCtl();
 		// Enter Read, Evaluate, Print loop.
 		Train[] trains = {
 				new Train(1,true), // default config for train 0
 		};
-		final Controller controller = new TrainController(trains,railway);
-		railway.register(controller);
-		controller.register(railway);
-		final Thread evalThread = new Thread(){
-			public void run(){
-				new Main2(railway,controller).readEvaluatePrintLoop();
-			}
-		};
-		evalThread.start();
-
-		Thread.currentThread().sleep(10000); // wait for 5 seconds for turn on.
 
 		SimulationTrack sim0 = new SimulationTrack();
 
@@ -129,14 +102,14 @@ public class HardwareTrackTest {
 			System.out.println("route: "+route.toString());
 			System.out.println("output: "+outputArray.toString());
 		}
-		assertTrue(outputArray.get(0) == 2);
-		assertTrue(outputArray.get(1) == 3);
-		assertTrue(outputArray.get(2) == 4);
-		assertTrue(outputArray.get(3) == 5);
-		assertTrue(outputArray.get(4) == 6);
-		assertTrue(outputArray.get(5) == 7);
-		assertTrue(outputArray.get(6) == 8);
-		assertTrue(outputArray.get(7) == 1);
+		assert(outputArray.get(0) == 2);
+		assert(outputArray.get(1) == 3);
+		assert(outputArray.get(2) == 4);
+		assert(outputArray.get(3) == 5);
+		assert(outputArray.get(4) == 6);
+		assert(outputArray.get(5) == 7);
+		assert(outputArray.get(6) == 8);
+		assert(outputArray.get(7) == 1);
 
 
 	}
