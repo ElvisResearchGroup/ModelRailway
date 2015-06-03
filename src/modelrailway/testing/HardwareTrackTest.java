@@ -29,8 +29,17 @@ public class HardwareTrackTest extends Main2{
 	
 	public HardwareTrackTest(ModelRailway railway, Controller controller) {
 		super(railway, controller);
+		Command[] cmd = this.getCommands();
+		Command htest0 = this.new Command("hardwareTest0", super.getMethod("hardwareTest0"));
+		Command[] cmd2 = new Command[cmd.length+1];
+		System.arraycopy(cmd, 0, cmd2, 0, cmd.length);
+		cmd2[cmd2.length-1] = htest0;
+		this.setCommands(cmd2);
+		
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 	
 	final String port="/dev/ttyACM0";
 	public void hardwareTest0() throws Exception{

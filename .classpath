@@ -3,45 +3,45 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/jmri.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/ch.ntb.usb.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/commons-lang3-3.2.1.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/gluegen-rt.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jackson-annotations-2.0.6.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jackson-core-2.0.6.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jackson-databind-2.0.6.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jakarta-regexp-1.5.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/javacsv.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jdom.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jetty-continuation-8.1.11.v20130520.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jetty-http-8.1.11.v20130520.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jetty-io-8.1.11.v20130520.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jetty-security-8.1.11.v20130520.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jetty-server-8.1.11.v20130520.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jetty-servlet-8.1.11.v20130520.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jetty-util-8.1.11.v20130520.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jetty-websocket-8.1.11.v20130520.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jfcunit.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jhall.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jinput.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jlfgr-1_0.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jmdns.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/joal.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/junit.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/jython.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/mailapi.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/openlcb.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/RXTXcomm.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/Serialio.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/servlet-api-3.0.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/slf4j-api-1.7.6.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/slf4j-log4j12-1.7.6.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/smtp.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/vecmath.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/WinRegistry-4.4.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/xAPlib.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/xbee-api-0.9.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/jmri.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/ch.ntb.usb.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/commons-lang3-3.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jackson-annotations-2.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jackson-core-2.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jackson-databind-2.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jakarta-regexp-1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/javacsv.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jdom.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jetty-continuation-8.1.11.v20130520.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jetty-http-8.1.11.v20130520.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jetty-io-8.1.11.v20130520.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jetty-security-8.1.11.v20130520.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jetty-server-8.1.11.v20130520.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jetty-servlet-8.1.11.v20130520.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jetty-util-8.1.11.v20130520.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jetty-websocket-8.1.11.v20130520.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jfcunit.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jhall.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jinput.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jlfgr-1_0.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jmdns.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/joal.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/junit.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/jython.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/mailapi.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/openlcb.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/RXTXcomm.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/Serialio.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/servlet-api-3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/slf4j-api-1.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/slf4j-log4j12-1.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/smtp.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/vecmath.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/WinRegistry-4.4.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/xAPlib.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/xbee-api-0.9.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/JMRI/lib/xercesImpl.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

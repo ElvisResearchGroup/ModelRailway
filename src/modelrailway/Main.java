@@ -57,7 +57,11 @@ public class Main {
 	public Command[] getCommands(){
 		return commands;
 	}
-
+	
+	public void setCommands(Command[] cmd){
+		commands = cmd;
+	}
+	
 	public void quit() {
 		System.exit(0);
 	}
@@ -208,7 +212,7 @@ public class Main {
 	 * @author David J. Pearce
 	 *
 	 */
-	private class Command {
+	public class Command {
 		public final String keyword;
 		public final Method method;
 
