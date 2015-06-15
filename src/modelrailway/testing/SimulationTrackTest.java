@@ -32,6 +32,7 @@ public class SimulationTrackTest {
 	@Test public void testTrackBuild0(){
 		SimulationTrack simTrack0 = new SimulationTrack();
 		StraightDblRing ring = simTrack0.getTrack();
+		ring.recalculateSections();
 		Map<Integer, Section> numberMap = ring.getSectionNumberMap();
 
 		//first check that all the section numbers are in the numberMap.
@@ -96,6 +97,7 @@ public class SimulationTrackTest {
 	@Test public void testTrackBuild1(){
 		SimulationTrack simTrack0 = new SimulationTrack();
 		StraightDblRing ring = simTrack0.getTrack();
+		ring.recalculateSections();
 		Map<Integer, Section> numberMap = ring.getSectionNumberMap();
 
 		//first check that all the section numbers are in the numberMap.
@@ -162,6 +164,7 @@ public class SimulationTrackTest {
 	@Test public void testTrackBuild2(){
 		SimulationTrack simTrack0 = new SimulationTrack();
 		StraightDblRing ring = simTrack0.getTrack();
+		ring.recalculateSections();
 		Map<Integer, Section> numberMap = ring.getSectionNumberMap();
 
 		Section sectionTen = numberMap.get(10);
@@ -196,6 +199,7 @@ public class SimulationTrackTest {
 	@Test public void testTrackBuild3(){
 		SimulationTrack simTrack0 = new SimulationTrack();
 		StraightDblRing ring = simTrack0.getTrack();
+		ring.recalculateSections();
 		Map<Integer, Section> numberMap = ring.getSectionNumberMap();
 
 		Section sectionTen = numberMap.get(10);
@@ -236,6 +240,7 @@ public class SimulationTrackTest {
 	@Test public void testTrackBuild4(){
 		SimulationTrack simTrack0 = new SimulationTrack();
 		StraightDblRing ring = simTrack0.getTrack();
+		ring.recalculateSections();
 		Map<Integer, Section> numberMap = ring.getSectionNumberMap();
 
 		Section sectionTwentyOne = numberMap.get(21);
@@ -277,6 +282,7 @@ public class SimulationTrackTest {
 	@Test public void testTrackBuild5(){
 		SimulationTrack simTrack0 = new SimulationTrack();
 		StraightDblRing ring = simTrack0.getTrack();
+		ring.recalculateSections();
 		Map<Integer, Section> numberMap = ring.getSectionNumberMap();
 
 		Section sectionNineteen = numberMap.get(19);
@@ -325,6 +331,7 @@ public class SimulationTrackTest {
 		SimulationTrack sim0 = new SimulationTrack();
 
 		StraightDblRing ring = sim0.getTrack();
+		ring.recalculateSections();
 
 		Map<Integer,Section> numberMap = ring.getSectionNumberMap();
 
@@ -402,7 +409,7 @@ public class SimulationTrackTest {
 		SimulationTrack sim0 = new SimulationTrack();
 
 		StraightDblRing ring = sim0.getTrack();
-
+		ring.recalculateSections();
 		Map<Integer,Section> numberMap = ring.getSectionNumberMap();
 
 		Section startSec = numberMap.get(17);

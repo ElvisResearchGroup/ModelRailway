@@ -32,17 +32,17 @@ public abstract class Track {
 		public List<Track> getTrackList(){
 			return trackList;
 		}
-		public void incrementSectionCounter(Track t){
+		private void incrementSectionCounter(Track t){
 			if(sectionMap.get(t.getSection()) == null)sectionMap.put(t.getSection(),0);
 			sectionMap.put(t.getSection(), sectionMap.get(t.getSection())+1);
 		}
-		public void incrementAltSecCounter(Track t){
+		private void incrementAltSecCounter(Track t){
 			if(t.getAltSection() != null){
 				if(sectionMap.get(t.getAltSection()) == null)sectionMap.put(t.getAltSection(),0);
 				sectionMap.put(t.getAltSection(), sectionMap.get(t.getAltSection())+1);
 			}
 		}
-		public void decrementSecCounter(Track t){
+		private void decrementSecCounter(Track t){
 		  if(sectionMap.get(t.getSection()) != null){
 				sectionMap.put(t.getSection(),sectionMap.get(t.getSection()) -1);
 				if(sectionMap.get(t.getSection()) == 0){
@@ -50,7 +50,7 @@ public abstract class Track {
 				}
 		   }
 	    }
-		public void decrementAltSecCounter(Track t){
+		private void decrementAltSecCounter(Track t){
 			if(sectionMap.get(t.getAltSection()) != null){
 				sectionMap.put(t.getAltSection(),sectionMap.get(t.getAltSection()) -1);
 				if(sectionMap.get(t.getAltSection()) == 0){
@@ -58,7 +58,10 @@ public abstract class Track {
 				}
 		   }
 		}
-
+		/**
+		 * Sections can be renumbered if we do not wish to use the default numbering. recalculateSections recalculates the section counts in the sectionMap.
+		 * which are based on section numbers. 
+		 */
 		public void recalculateSections(){
 			sectionMap = new HashMap<Section,Integer>();
 			for(Track tr: getTrackList()){
@@ -108,8 +111,8 @@ public abstract class Track {
 			boolean insertedTrackUnifyPrevious = false;
 			trackList.add(insertedTrack);
 
-			incrementSectionCounter(insertedTrack);
-			incrementAltSecCounter(insertedTrack);
+			//incrementSectionCounter(insertedTrack);
+			//incrementAltSecCounter(insertedTrack);
 
 			if(tr1.next == tr1.alternateNext && tr1.next != null) tr1UnifyNext = true;
 			if(tr2.previous == tr2.alternatePrevious && tr2.previous != null) tr2UnifyPrevious = true;
@@ -172,8 +175,8 @@ public abstract class Track {
 			boolean insertedTrackUnifyPrevious = false;
 
 
-			incrementSectionCounter(insertedTrack);
-			incrementAltSecCounter(insertedTrack);
+			//incrementSectionCounter(insertedTrack);
+			//incrementAltSecCounter(insertedTrack);
 
 			if(tr1.next == tr1.alternateNext && tr1.next != null) tr1UnifyNext = true;
 			if(tr2.previous == tr2.alternatePrevious && tr2.previous != null) tr2UnifyPrevious = true;
@@ -229,8 +232,8 @@ public abstract class Track {
 			}
 
 
-			incrementSectionCounter(insertedTrack);
-			incrementAltSecCounter(insertedTrack);
+			//incrementSectionCounter(insertedTrack);
+			//incrementAltSecCounter(insertedTrack);
 
 
 			//first fix tr2
@@ -282,8 +285,8 @@ public abstract class Track {
 		 */
 		protected Track trivialRing(Track tr){
 			trackList.add(tr);
-			incrementSectionCounter(tr);
-			incrementAltSecCounter(tr);
+			//incrementSectionCounter(tr);
+			//incrementAltSecCounter(tr);
 
 
 			tr.alternateNext = null;
@@ -380,8 +383,8 @@ public abstract class Track {
 
 		    Track removedTrack = tlist.get(index);
 
-		    this.decrementSecCounter(removedTrack);
-		    this.decrementAltSecCounter(removedTrack);
+		    //this.decrementSecCounter(removedTrack);
+		    //this.decrementAltSecCounter(removedTrack);
 
 		    tlist.set(index, t2);
 
@@ -397,7 +400,7 @@ public abstract class Track {
 			Track buffer = new Buffer(t1,enterForward,sec,100);
 			this.getTrackList().add(buffer);
 			sec.add(buffer);
-			this.incrementSectionCounter(buffer);
+			//this.incrementSectionCounter(buffer);
 
 			if(onAlt){
 				if(enterForward){
@@ -443,7 +446,7 @@ public abstract class Track {
 			super(head);
 			secondRingHead = secHead;
 			this.getTrackList().add(secHead);
-			this.incrementSectionCounter(secHead);
+			//this.incrementSectionCounter(secHead);
 
 		}
 
@@ -458,8 +461,8 @@ public abstract class Track {
 				//System.out.println("A section was null");;
 			//}
 			this.getTrackList().add(tr);
-			this.incrementSectionCounter(tr);
-			this.incrementAltSecCounter(tr);
+			//this.incrementSectionCounter(tr);
+			//this.incrementAltSecCounter(tr);
 			tr.alternateNext = null;
 			tr.alternatePrevious = null;
 			tr.altlength = 0;
@@ -470,8 +473,8 @@ public abstract class Track {
 
 			this.getTrackList().add(tr2);
 
-			this.incrementAltSecCounter(tr2);
-			this.incrementSectionCounter(tr2);
+			//this.incrementAltSecCounter(tr2);
+			//this.incrementSectionCounter(tr2);
 			tr2.alternateNext = null;
 			tr2.alternatePrevious = null;
 			tr2.altlength = 0;

@@ -568,6 +568,9 @@ public class CtlTest {
 		Straight.StraightRing route = new Straight.StraightRing(st);
 		Track head = route.ringTrack(4, 100);
 		sec.add(head);
+		route.recalculateSections();
+		route.getSectionNumberMap();
+		
 		Track tp_1 = head.getNext(false);
 		Track tp_2 = tp_1.getNext(false);
 		Track tp_3 = tp_2.getNext(false);
@@ -683,6 +686,10 @@ public class CtlTest {
  		Straight.StraightRing route = new Straight.StraightRing(st);
  		Track head = route.ringTrack(4, 100);
  		sec.add(head);
+ 		route.recalculateSections();
+		route.getSectionNumberMap();
+ 		
+ 		
  		Track tp_1 = head.getNext(false);
  		Section s1 = tp_1.getSection();
 
@@ -721,7 +728,7 @@ public class CtlTest {
  		route.insertBetween(sw, true, sw2, true,  str, false);
 
  		route.recalculateSections();
-
+		route.getSectionNumberMap();
 
 
  		assertTrue(sw.getNext(true) == str);
@@ -842,7 +849,8 @@ public class CtlTest {
 
  		route.insertBetween(sw, true, sw2, true,  str, false);
 
-
+ 		route.recalculateSections();
+		route.getSectionNumberMap();
 
  		assertTrue(sw.getNext(true) == str);
  		assertTrue(sw.getNext(false) == tp_2);
