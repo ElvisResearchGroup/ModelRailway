@@ -14,7 +14,12 @@ import modelrailway.util.Pair;
  *
  */
 public abstract class Track {
-
+	/**
+	 * The RingRoute Inner class represents a series of track segments which form a ring. 
+	 * 
+	 * @author powleybenj
+	 *
+	 */
 	public static  class RingRoute{
 		private Track head;
 		private List<Track> trackList = new ArrayList<Track>();
@@ -32,31 +37,24 @@ public abstract class Track {
 		public List<Track> getTrackList(){
 			return trackList;
 		}
+		
+		/**
+		 * increment the count for the section of the given track , if there is no count put the section of the track into the sectionMap.
+		 * @param t
+		 */
 		private void incrementSectionCounter(Track t){
 			if(sectionMap.get(t.getSection()) == null)sectionMap.put(t.getSection(),0);
 			sectionMap.put(t.getSection(), sectionMap.get(t.getSection())+1);
 		}
+		/**
+		 * increment the count for the alternate section of the given track, if there is no count put the alternate section into the section Map.
+		 * @param t
+		 */
 		private void incrementAltSecCounter(Track t){
 			if(t.getAltSection() != null){
 				if(sectionMap.get(t.getAltSection()) == null)sectionMap.put(t.getAltSection(),0);
 				sectionMap.put(t.getAltSection(), sectionMap.get(t.getAltSection())+1);
 			}
-		}
-		private void decrementSecCounter(Track t){
-		  if(sectionMap.get(t.getSection()) != null){
-				sectionMap.put(t.getSection(),sectionMap.get(t.getSection()) -1);
-				if(sectionMap.get(t.getSection()) == 0){
-					sectionMap.remove(t.getSection());
-				}
-		   }
-	    }
-		private void decrementAltSecCounter(Track t){
-			if(sectionMap.get(t.getAltSection()) != null){
-				sectionMap.put(t.getAltSection(),sectionMap.get(t.getAltSection()) -1);
-				if(sectionMap.get(t.getAltSection()) == 0){
-					sectionMap.remove(t.getAltSection());
-				}
-		   }
 		}
 		/**
 		 * Sections can be renumbered if we do not wish to use the default numbering. recalculateSections recalculates the section counts in the sectionMap.
@@ -394,7 +392,14 @@ public abstract class Track {
 
 
 
-
+		/**
+		 * the bufferEnd section puts a buffer on either the alt section of this track or the main route of this track 
+		 * and specifies whether we are entering in the fowards direction or the backwards direction. 
+		 * @param t1
+		 * @param enterForward
+		 * @param onAlt
+		 * @return
+		 */
 		public Track bufferEnd(Track t1, boolean enterForward, boolean onAlt){
 			Section sec = new Section(new ArrayList<Track>());
 			Track buffer = new Buffer(t1,enterForward,sec,100);
@@ -418,7 +423,16 @@ public abstract class Track {
 			}
 			return getHead();
 		}
-
+		/**
+		 * The join method joins two pieces of track together so that a train can move between them.
+		 * onAlt specifies whether we are joining on the alternate route or the main route of the first track piece,
+		 * onAlt2 specifies whether we are joining on the alternate route or the main route of the second track piece.
+		 * @param t1
+		 * @param onAlt
+		 * @param t2
+		 * @param onAlt2
+		 * @return
+		 */
 		public Track join(Track t1, boolean onAlt, Track t2, boolean onAlt2){
 			if(!onAlt){
 				t1.next = t2;
@@ -439,7 +453,11 @@ public abstract class Track {
 			return getHead();
 		}
 	}
-
+	/**
+	 * The DblRing class represents a track made out of two rings.
+	 * @author powleybenj
+	 *
+	 */
 	public static class DblRing extends RingRoute{
 		private Track secondRingHead = null;
 		public DblRing(Track head, Track secHead) {
@@ -453,7 +471,13 @@ public abstract class Track {
 		public Track getSecondHead(){
 			return secondRingHead;
 		}
-
+		/**
+		 * produce a double ring with two track pieces in the first ring and two track pieces in the second ring.
+		 * The arguments are the second piece of the first ring, then the second piece of the second ring. 
+		 * @param tr
+		 * @param tr2
+		 * @return
+		 */
 		public Pair<Track,Track> trivialDRing(Track tr, Track tr2){
 			//System.out.println("running trivial DRing");
 			//System.out.println("tr: "+tr.getSection()+" tr2: "+tr2.getSection());
@@ -485,7 +509,14 @@ public abstract class Track {
 
 			return new Pair<Track,Track>(tr,tr2);
 		}
-
+		/**
+		 * Insert a switch made up of several switch pieces in the forwards direction there are two entrance points and three exit points.
+		 * @param inner1S
+		 * @param outer1S
+		 * @param inner2S
+		 * @param outer2S
+		 * @return
+		 */
 		public Pair<Track,Track> insertMultiSwitch(Straight inner1S, Straight outer1S, Straight inner2S, Straight outer2S){
 			Track inner1 =  inner1S;
 			Track outer1 = outer1S;
