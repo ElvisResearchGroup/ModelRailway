@@ -1,11 +1,12 @@
 package modelrailway.testing;
 
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-
+import modelrailway.Main;
 import modelrailway.Main2;
 import modelrailway.ModelRailway;
 import modelrailway.core.Controller;
@@ -24,32 +25,80 @@ import modelrailway.util.ControlerCollision;
 import modelrailway.util.SimulationTrack;
 import modelrailway.util.TrainController;
 
-public class HardwareTrackTest extends Main2{
+public class HardwareTrackTest extends Main{
 
-	
+
 	public HardwareTrackTest(ModelRailway railway, Controller controller) {
 		super(railway, controller);
 		Command[] cmd = this.getCommands();
-		Command htest0 = this.new Command("hardwareTest0", super.getMethod("hardwareTest0"));
+		Command htest0 = this.new Command("hardwareTest0", getMethod("hardwareTest0"));
 		Command[] cmd2 = new Command[cmd.length+1];
 		System.arraycopy(cmd, 0, cmd2, 0, cmd.length);
 		cmd2[cmd2.length-1] = htest0;
 		this.setCommands(cmd2);
-		
+
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
-	final String port="/dev/ttyACM0";
-	public void hardwareTest0() throws Exception{
+	public static Method getMethod(String name, Class... paramTypes) {
+		try {
+			return HardwareTrackTest.class.getMethod(name, paramTypes);
+		} catch (Exception e) {
+			throw new RuntimeException("No such method: " + name, e);
+		}
+	}
 
-		
-		final Controller controller = getCtl();
+	public ModelRailway getRailway(){
+		return rails;
+	}
+	public Controller getCtl(){
+		return ctl;
+	}
+	private static ModelRailway rails;
+	private static Controller ctl;
+
+	public static void main(String args[]) throws Exception {
+		String port = args[0];
+
+		// Needed for connection on lab machines
+		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
+
+		// Construct the model railway assuming the interface (i.e. USB Cable)
+		// is on a given port. Likewise, we initialise it with three locomotives
+		// whose addresses are 1,2 + 3. If more locomotives are to be used, this
+		// needs to be updated accordingly.
+		final ModelRailway railway = new ModelRailway(port,
+				new int[] {1});
+		rails = railway;
+		// Add shutdown hook to make sure resources are released when quiting
+		// the application, even if the application is quit in a non-standard
+		// fashion.
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("Disconnecting from railway...");
+				railway.destroy();
+			}
+		}));
+
 		// Enter Read, Evaluate, Print loop.
 		Train[] trains = {
 				new Train(1,true), // default config for train 0
 		};
+		Controller controller = new TrainController(trains,railway);
+		railway.register(controller);
+		controller.register(railway);
+		ctl = controller;
+		System.out.println("got to print Loop");
+		new HardwareTrackTest(railway,controller).readEvaluatePrintLoop();
+	}
+
+
+	final String port="/dev/ttyACM0";
+	public void hardwareTest0() throws Exception{
+
+
+		final Controller controller = getCtl();
+		// Enter Read, Evaluate, Print loop.
 
 		SimulationTrack sim0 = new SimulationTrack();
 
@@ -70,10 +119,6 @@ public class HardwareTrackTest extends Main2{
 
 		trainMap.put(0,train );
 		train.setID(0);
-
-		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
-
-		orientationMap.put(0, trains[0]);
 
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();

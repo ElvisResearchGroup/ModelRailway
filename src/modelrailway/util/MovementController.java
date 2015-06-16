@@ -322,7 +322,7 @@ public class MovementController implements Controller, Listener {
 		isMoving.put(trainID, true);
 		trainRoutes.put(trainID,route);
 		if(trackController == null) throw new RuntimeException("track controller was null in start train");
-	    trackController.notify((Event)new Event.SpeedChanged(trainID, Integer.MAX_VALUE));
+	    trackController.notify((Event)new Event.SpeedChanged(trainID, 6));
 		return true;
 		}
 
@@ -332,7 +332,7 @@ public class MovementController implements Controller, Listener {
 	public boolean resumeTrain(int trainID){
 		synchronized(isMoving){
 		isMoving.put(trainID, true);
-		((Listener) trackController).notify((Event)new Event.SpeedChanged(trainID, Integer.MAX_VALUE));
+		((Listener) trackController).notify((Event)new Event.SpeedChanged(trainID, 6));
 		return true;
 		}
 
@@ -364,9 +364,12 @@ public class MovementController implements Controller, Listener {
 	 * Takes a section id and returns the route of the first Train object that is currently in that section.
 	 * @param section
 	 */
-	public Map.Entry<Integer,Route> getRoute(int section) {
+	public Map.Entry<Integer,Route> getRoute(int section){
+		System.out.println("routes: "+trainRoutes.size() + " routes: "+trainRoutes.toString());
+		System.out.println("orientations: "+trainOrientations.size()+" orientations: "+trainOrientations.toString());
 		for(Map.Entry<Integer, Route> trainRoute : trainRoutes.entrySet()){
 			for(Map.Entry<Integer,Train> trainOrientation : trainOrientations.entrySet()){
+				System.out.println("testTrain: "+ trainOrientation.getKey() +" trainRouteKey: "+trainRoute.getKey());
 				if (trainOrientation.getKey() == trainRoute.getKey()) return trainRoute;
 			}
 
