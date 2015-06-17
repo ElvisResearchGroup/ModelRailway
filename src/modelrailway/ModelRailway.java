@@ -63,7 +63,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	/**
 	 * verbose mode means dump out more debugging information.
 	 */
-	private volatile boolean verbose = false;
+	private volatile boolean verbose = true;
 
 	/**
 	 * Constructor starts the JMRI application running, and then returns.
@@ -97,7 +97,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		memo.configureCommandStation(true, true, "DCS51 (Zephyr Xtra)", false, false);
 		memo.getLnTrafficController().addLocoNetListener(LnTrafficController.ALL, this);
 		requestThrottles();
-		setupTurnouts(4);
+		setupTurnouts(8);
 	}
 
 	/**
@@ -254,7 +254,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			throttles[e.getLocomotive()].setSpeedSetting(0.0f);
 		} else if (event instanceof Event.TurnoutChanged) {
 			Event.TurnoutChanged tc = (Event.TurnoutChanged) event;
-			System.out.println("SETTING TURNOUT : " + tc.getTurnout() + " : " + tc.getThrown());
+			System.out.println("SETTING TURNOUT : " + tc.getTurnout() + " : " + tc.getThrown() + " num turnouts: "+turnouts.length);
 			Turnout turnout = turnouts[tc.getTurnout()];
 
 			turnout.setCommandedState(tc.getThrown() ? Turnout.THROWN

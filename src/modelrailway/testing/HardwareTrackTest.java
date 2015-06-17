@@ -127,7 +127,8 @@ public class HardwareTrackTest extends Main{
 
 		controller.register(new Listener(){
 			public void notify(Event e){
- 				//System.out.println("event "+e.toString());
+ 				System.out.println("event "+e.toString());
+
  				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
  				  outputArray.add(((Event.SectionChanged) e).getSection());
 
