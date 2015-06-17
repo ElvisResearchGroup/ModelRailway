@@ -46,9 +46,11 @@ public class Simulator implements Event.Listener{
 					for(Listener l : listeners){
 
 						//s.reserveSection(train);
-						Event ev = new Event.SectionChanged(s.getNumber(), true);
-						//if(train.getParts()[0].getTrainOb() != null) train.getParts()[0].getTrainOb().setSection(s.getNumber());
-						l.notify(ev); // notify all the listeners about the change in the section
+						if(s.getNumber() % 2 == 1){ // only send section changed events for the odd numbered sections, also adjust the section number to be consistent with the track.
+						  Event ev = new Event.SectionChanged(((s.getNumber()-1)/2)+1, true);
+						  //if(train.getParts()[0].getTrainOb() != null) train.getParts()[0].getTrainOb().setSection(s.getNumber());
+						  l.notify(ev); // notify all the listeners about the change in the section
+						}
 					}
 				}
 			  }
@@ -57,9 +59,10 @@ public class Simulator implements Event.Listener{
 					for(Listener l : listeners){
 
 						//s.reserveSection(train);
-
-						Event ev = new Event.SectionChanged(s.getNumber(), false);
-						l.notify(ev);
+						if(s.getNumber() %2 == 1){
+						  Event ev = new Event.SectionChanged(((s.getNumber()-1)/2)+1, false);
+						  l.notify(ev);
+						}
 					}
 			  	}
 			  }

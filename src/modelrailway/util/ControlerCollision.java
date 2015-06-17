@@ -28,9 +28,9 @@ public class ControlerCollision extends MovementController implements Controller
 	 */
 	private Event tryLocking(Event e){
 		//assumes that we have already adjusted for the section change in Train.
-		if((e instanceof Event.SectionChanged) && ((Event.SectionChanged) e).getInto()){ // when we are moving into a section
+		if((e instanceof Event.SectionChanged)){ // when we are moving into a section
 			try{
-				adjustSection(e);
+				adjustSection(e); // adjust section for the next section
 			}catch(AlreadyHere ex){
 				return e;
 
@@ -38,30 +38,34 @@ public class ControlerCollision extends MovementController implements Controller
 
 			Integer sectionID = 1 + ((((Event.SectionChanged)e).getSection()-1) * 2);
 
-			//System.out.println("sectionChanged: "+((Event.SectionChanged)e).getSection());
+			System.out.println("sectionChanged: "+e +" sectionID: "+sectionID);
 			Map.Entry<Integer, Route> entry = super.getRoute(sectionID); //
 
 			//System.out.println("is entry null: "+(entry == null));
-
-			Integer nextSec = entry.getValue().nextSection(sectionID);  // get section number the train changed into.
 			Integer train = entry.getKey(); // get the train
 			Route trainRoute = entry.getValue(); // get the route that the train has planned.
+
+			Integer nextSec = entry.getValue().nextSection(this.trainOrientations().get(train).currentSection());  // get section number the train changed into.
+			System.out.println("nextSec: "+nextSec +", thisSec: "+ sectionID);
+
+
 
 			//System.out.println("entryValue: "+entry.getValue());
 
 			if(this.trainOrientations().get(train).currentOrientation() == true){
 				Section thisSec = this.sections().get(this.trainOrientations().get(train).currentSection());
-
+				System.out.println("currentSection: "+this.trainOrientations().get(train).currentSection());
 
 				Track front = thisSec.get(0);
 				Track notAltNext = front.getNext(false);
 				Track altNext = front.getNext(true);
 				boolean reserved = false ;
-				//System.out.println("reserve sections: notalt: "+ notAltNext.getSection().getNumber() + " alt: "+altNext.getSection().getNumber() +" section: "+ nextSec);
-				//System.out.println("nextSec: "+nextSec);
-				//System.out.println("notAltNext: "+notAltNext.getSection().getNumber());
-				//System.out.println("altNext: "+altNext.getSection().getNumber());
-				//System.out.println("thisSec: "+thisSec.getNumber());
+				System.out.println("reserve sections: notalt: "+ notAltNext.getSection().getNumber() + " alt: "+altNext.getSection().getNumber() +" section: "+ nextSec);
+				System.out.println("nextSec: "+nextSec);
+				System.out.println("notAltNext: "+notAltNext.getSection().getNumber());
+				System.out.println("altNext: "+altNext.getSection().getNumber());
+
+				System.out.println("thisSec: "+thisSec.getNumber());
 				if(notAltNext.getSection().getNumber() == nextSec){
 
 					//System.out.println("notalt number: "+notAltNext.getSection().getNumber());
@@ -93,7 +97,9 @@ public class ControlerCollision extends MovementController implements Controller
 				}
 				//System.out.println("reserved: "+reserved);
 				if(reserved == false){ // we need to trigger an emergency stop
+					System.out.println("train is being stoped as reserved is false");
 					this.stop(train);
+
 					super.notify(new Event.EmergencyStop(train));
 				}
 			}

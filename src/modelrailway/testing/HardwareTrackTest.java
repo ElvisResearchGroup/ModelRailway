@@ -133,7 +133,7 @@ public class HardwareTrackTest extends Main{
  				  outputArray.add(((Event.SectionChanged) e).getSection());
 
  				  if(((Event.SectionChanged)e).getSection() == 1){
-
+ 					  System.out.println("stop triggered by unit test");
  					  controller.stop(0);
  					  th.interrupt();
 

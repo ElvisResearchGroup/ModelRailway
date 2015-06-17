@@ -75,29 +75,25 @@ public class MovementController implements Controller, Listener {
 
 	public void adjustSection(Event e){
 		synchronized(isMoving){
-
 			Integer sectionID = 1 + ((((Event.SectionChanged)e).getSection()-1) * 2);
 			//Integer sectionID = ((Event.SectionChanged)e).getSection(); // figure out which train was moving in then set section in modelrailway.core.Train
-
-			for(Map.Entry<Integer, modelrailway.core.Train> tr : trainOrientations.entrySet()){
+			if(((Event.SectionChanged)e).getInto()){
+			   for(Map.Entry<Integer, modelrailway.core.Train> tr : trainOrientations.entrySet()){
 				Train trainObj = tr.getValue();
-			//	System.out.println("sectinoID: "+sectionID);
-			//	System.out.println("isMoving: "+ isMoving);
-			//	System.out.println("tr: "+tr);
-			//	System.out.println("tr.getKey(): "+tr.getKey());
-			//	System.out.println("trainroutes: "+ trainRoutes);
-			//	System.out.println("isMoving.get(tr.getKey): "+isMoving.get(tr.getKey()));
-			//	System.out.println("trainRoutes.get(tr.getKey()): "+trainRoutes.get(tr.getKey()));
-
-
-				if(isMoving.get(tr.getKey()) != null && isMoving.get(tr.getKey())){
-					//System.out.println("next section: in adjust");
-					//System.out.println("sectionID: "+sectionID);
-					//System.out.println("trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()): "+trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()));
-					if(trainObj.currentSection() == sectionID) throw new AlreadyHere();
-					if(trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()) == sectionID){
-						trainObj.setSection(sectionID);
-					}
+					 //  if(trainObj.currentSection() == sectionID) throw new AlreadyHere();
+					   if(trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()) == sectionID){
+					     	trainObj.setSection(sectionID);
+					   }
+			   }
+			}else{
+				for(Map.Entry<Integer, modelrailway.core.Train> tr : trainOrientations.entrySet()){
+					   Train trainObj = tr.getValue();
+					   if(isMoving.get(tr.getKey()) != null && isMoving.get(tr.getKey())){
+						   if(trainObj.currentSection() == sectionID){
+							    Integer nextOne = trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection());
+						     	trainObj.setSection(nextOne);
+						   }
+					   }
 				}
 			}
 	    }
@@ -105,36 +101,9 @@ public class MovementController implements Controller, Listener {
 	@Override
 	public void notify(Event e) {
 
-		if(e instanceof Event.SectionChanged && ((Event.SectionChanged) e).getInto()){ // when there is a section change into another section
-			//System.out.println("section change event."+((Event.SectionChanged) e).getSection());
-
-			try{
+		if(e instanceof Event.SectionChanged ){ // when there is a section change into another section
 			   adjustSection(e);
 		       moveIntoSection(e);
-			} catch(AlreadyHere ex){
-				return; // this is a double event so return and do not notify other listeners
-			}
-		} else if ( e instanceof Event.SectionChanged && !((Event.SectionChanged) e).getInto()){
-		  //  Integer sectionID = ((Event.SectionChanged) e).getSection();
-		    Integer sectionID = 1 + ((((Event.SectionChanged)e).getSection()-1) * 2);
-		    for(Map.Entry<Integer, modelrailway.core.Train> tr : trainOrientations.entrySet()){
-		    	Train trainObj = tr.getValue();
-
-		    	if(isMoving.get(tr.getKey()) != null && isMoving.get(tr.getKey())){
-		    		if(trainObj.currentSection() == sectionID){ // throw an event into the next section.
-		    			Integer nextSec = trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection());
-		    			Event.SectionChanged moveIntoSec = new Event.SectionChanged(nextSec, true);
-		    			this.notify(moveIntoSec);
-		    			for(Listener l: listeners){
-		    				l.notify(moveIntoSec);
-		    			}
-		    		}
-		    	}
-
-		    }
-
-
-
 		}
 
 
@@ -200,7 +169,20 @@ public class MovementController implements Controller, Listener {
 	 * @return
 	 */
 	private void moveIntoSection(Event e){
-		Integer eventsectionID = 1 + ((((Event.SectionChanged)e).getSection()-1) * 2);
+		Integer eventsectionID =  1 + ((((Event.SectionChanged)e).getSection()-1) * 2);
+		if(((Event.SectionChanged) e).getInto()){ }
+		else {
+			for(Map.Entry<Integer, modelrailway.core.Train> tr : trainOrientations.entrySet()){
+				   Train trainObj = tr.getValue();
+				   if(isMoving.get(tr.getKey()) != null && isMoving.get(tr.getKey())){
+					   if(trainObj.currentSection() == eventsectionID){
+						    Integer nextOne = trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection());
+					     	eventsectionID = nextOne;
+					     	break;
+					   }
+				   }
+			}
+		}
 		for(Entry<Integer, Train> trainOrientation: trainOrientations.entrySet()){ // for all the trains on the track
 
 			Integer section = trainOrientation.getValue().currentSection();
@@ -213,7 +195,7 @@ public class MovementController implements Controller, Listener {
 	    		Integer nextSection = trainRoutes.get(trainOrientation.getKey()).prevSection(section);
 	    		Section previous = sections.get(prevSection);
 
-	    		Integer trainSection = 1 + ((((Event.SectionChanged)e).getSection()-1) * 2);//((Event.SectionChanged) e).getSection(); // store the section number in a variable
+	    		Integer trainSection = eventsectionID;//((Event.SectionChanged) e).getSection(); // store the section number in a variable
 
 
 
@@ -312,6 +294,7 @@ public class MovementController implements Controller, Listener {
 	    			  Track tr = thisTrack;
 				      for(Boolean bl: switchingOrder){ // for each switch//
 				    	 if(!(tr instanceof Switch)) throw new RuntimeException("An invalid Section has been encountered as the section has multiple pieces and a piece is not a switch");
+				    	 System.out.println("trSwitch ID: "+((Switch) tr).getSwitchID());
 				    	 this.set(((Switch)tr).getSwitchID(), bl);
 				    	 tr = thisTrack.getNext(bl); // follow track
 				      }
