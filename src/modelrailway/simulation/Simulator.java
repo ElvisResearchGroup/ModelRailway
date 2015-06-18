@@ -41,31 +41,52 @@ public class Simulator implements Event.Listener{
 			  train.move(thisListener);
 			  List<Section> s2list = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
 			  //System.out.println("checking For movement: "+train.getBack().getSection().getNumber()); //+" slist: "+slist+" s2list: "+s2list);
-			  for(Section s : s2list){
+			 for(Section s : s2list){
 				if(!slist.contains(s)){
-					for(Listener l : listeners){
-
-						//s.reserveSection(train);
-						if(s.getNumber() % 2 == 1){ // only send section changed events for the odd numbered sections, also adjust the section number to be consistent with the track.
-						  Event ev = new Event.SectionChanged(((s.getNumber()-1)/2)+1, true);
-						  //if(train.getParts()[0].getTrainOb() != null) train.getParts()[0].getTrainOb().setSection(s.getNumber());
-						  l.notify(ev); // notify all the listeners about the change in the section
-						}
+					System.out.println("train Before sList for slist.contains: "+ train.getID());
+					System.out.print("sList: ");
+					for(Section s2: slist){
+						System.out.print(s2.getNumber()+", ");
 					}
+					System.out.println();
+					System.out.print("s2List: ");
+					for(Section s2: s2list){
+						System.out.print(s2.getNumber()+", ");
+					}
+					System.out.println();
 				}
 			  }
-			  for(Section s : slist){
-				if(!s2list.contains(s)){
-					for(Listener l : listeners){
-
-						//s.reserveSection(train);
-						if(s.getNumber() %2 == 1){
-						  Event ev = new Event.SectionChanged(((s.getNumber()-1)/2)+1, false);
+			  if(slist.get(1).getNumber() != s2list.get(1).getNumber()){ // then the front has moved
+				  if(slist.get(1).getNumber() %2 == 1){ // if it is a detecting segment that we moved out of 
+					  for(Listener l : listeners){
+						  Event ev = new Event.SectionChanged((((slist.get(1).getNumber() - 1)/2) +1), false); // we move out of the section
 						  l.notify(ev);
-						}
-					}
-			  	}
+					  }
+				  }
+				  if(s2list.get(1).getNumber() %2 == 1){
+					  for(Listener l : listeners){
+						  Event ev = new Event.SectionChanged((((s2list.get(1).getNumber() - 1)/2) +1), true); // we move into the section.
+						  l.notify(ev);
+						  
+					  }
+				  }
 			  }
+			  
+			 for(Section s : slist){
+				if(!s2list.contains(s)){
+					System.out.println("train Before sList for s2list.contains: "+ train.getID());
+					System.out.print("sList: ");
+					for(Section s2: slist){
+						System.out.print(s2.getNumber()+", ");
+					}
+					System.out.println();
+					System.out.print("s2List: ");
+					for(Section s2: s2list){
+						System.out.print(s2.getNumber()+", ");
+					}
+					System.out.println();
+			   }
+			 }
 	}
 
 	@Override

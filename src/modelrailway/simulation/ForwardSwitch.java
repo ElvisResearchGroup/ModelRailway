@@ -64,6 +64,9 @@ public class ForwardSwitch extends Track implements Switch{
     		   if(m.getDistance() >= pointPos){
     		      return super.getCurrentAlt(m);
     		   } else {
+    			   System.out.println("this.path == direction.exit " + (this.path == Direction.exit));
+    			  
+    			   System.out.println("exit: "+this.getNext(true).getSection().getNumber());
     			  return this.path == Direction.exit;
     		   }
     		} else {

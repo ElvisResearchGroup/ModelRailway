@@ -32,7 +32,8 @@ public class ControlerCollision extends MovementController implements Controller
 			try{
 				adjustSection(e); // adjust section for the next section
 			}catch(AlreadyHere ex){
-				return e;
+				System.out.println("already Here in tryLocking");
+				//return e;
 
 			}
 
