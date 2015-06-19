@@ -14,7 +14,7 @@ public class ForwardSwitch extends Track implements Switch{
 	}
 	private Direction path;
 	private int pointPos;
-	//count how many switches are being assigned so that we can assgin switch numbers automatically. 
+	//count how many switches are being assigned so that we can assgin switch numbers automatically.
 	private static int switchCounter = 0;
 	private int switchCount = switchCounter;
 	public ForwardSwitch(Track previous, Track next,Track exit, Section section,int length,int altlength, int pointPos) {
@@ -24,7 +24,12 @@ public class ForwardSwitch extends Track implements Switch{
 		this.path = Direction.next;
 		// TODO Auto-generated constructor stub
 	}
-	
+
+	public int setSwitchID(int i){
+		switchCount = i;
+		return i;
+	}
+
 	public Track getPrevious(boolean onAlt){
 		return super.getPrevious(false);
 	}
@@ -65,7 +70,7 @@ public class ForwardSwitch extends Track implements Switch{
     		      return super.getCurrentAlt(m);
     		   } else {
     			   System.out.println("this.path == direction.exit " + (this.path == Direction.exit));
-    			  
+
     			   System.out.println("exit: "+this.getNext(true).getSection().getNumber());
     			  return this.path == Direction.exit;
     		   }

@@ -15,8 +15,8 @@ import modelrailway.util.Pair;
  */
 public abstract class Track {
 	/**
-	 * The RingRoute Inner class represents a series of track segments which form a ring. 
-	 * 
+	 * The RingRoute Inner class represents a series of track segments which form a ring.
+	 *
 	 * @author powleybenj
 	 *
 	 */
@@ -37,7 +37,7 @@ public abstract class Track {
 		public List<Track> getTrackList(){
 			return trackList;
 		}
-		
+
 		/**
 		 * increment the count for the section of the given track , if there is no count put the section of the track into the sectionMap.
 		 * @param t
@@ -58,7 +58,7 @@ public abstract class Track {
 		}
 		/**
 		 * Sections can be renumbered if we do not wish to use the default numbering. recalculateSections recalculates the section counts in the sectionMap.
-		 * which are based on section numbers. 
+		 * which are based on section numbers.
 		 */
 		public void recalculateSections(){
 			sectionMap = new HashMap<Section,Integer>();
@@ -393,8 +393,8 @@ public abstract class Track {
 
 
 		/**
-		 * the bufferEnd section puts a buffer on either the alt section of this track or the main route of this track 
-		 * and specifies whether we are entering in the fowards direction or the backwards direction. 
+		 * the bufferEnd section puts a buffer on either the alt section of this track or the main route of this track
+		 * and specifies whether we are entering in the fowards direction or the backwards direction.
 		 * @param t1
 		 * @param enterForward
 		 * @param onAlt
@@ -473,7 +473,7 @@ public abstract class Track {
 		}
 		/**
 		 * produce a double ring with two track pieces in the first ring and two track pieces in the second ring.
-		 * The arguments are the second piece of the first ring, then the second piece of the second ring. 
+		 * The arguments are the second piece of the first ring, then the second piece of the second ring.
 		 * @param tr
 		 * @param tr2
 		 * @return
@@ -509,14 +509,14 @@ public abstract class Track {
 
 			return new Pair<Track,Track>(tr,tr2);
 		}
-		/**
+		/*
 		 * Insert a switch made up of several switch pieces in the forwards direction there are two entrance points and three exit points.
 		 * @param inner1S
 		 * @param outer1S
 		 * @param inner2S
 		 * @param outer2S
 		 * @return
-		 */
+
 		public Pair<Track,Track> insertMultiSwitch(Straight inner1S, Straight outer1S, Straight inner2S, Straight outer2S){
 			Track inner1 =  inner1S;
 			Track outer1 = outer1S;
@@ -541,14 +541,14 @@ public abstract class Track {
 
 		    return new Pair<Track,Track> (getHead(),getSecondHead());
 		}
-		/**
+*/		/*
 		 * Insert a section with three switches in it where there are 3 entrance points and two exit points.
 		 * @param inner1S
 		 * @param outer1S
 		 * @param inner2S
 		 * @param outer2S
 		 * @return
-		 */
+
 		public Pair<Track,Track> insertMultiSwitchBack(Straight inner1S, Straight outer1S, Straight inner2S, Straight outer2S){
 			Track inner1 = inner1S;
 			Track outer1 = outer1S;
@@ -575,7 +575,7 @@ public abstract class Track {
 
 			return new Pair<Track,Track>(getHead(), getSecondHead());
 
-		}
+		}*/
 
 
 		/**

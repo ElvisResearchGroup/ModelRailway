@@ -41,6 +41,13 @@ public class BackSwitch extends Track implements Switch{
 	public Track getNext(boolean onAlt){
 		return super.getNext(false);
 	}
+
+	public int setSwitchID(int i){
+		switchCount = i;
+		return i;
+	}
+
+
 	/**
 	 * toggle toggles which piece of track we are exiting from the signals.
 	 * @return

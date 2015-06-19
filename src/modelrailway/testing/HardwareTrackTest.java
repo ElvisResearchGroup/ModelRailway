@@ -109,7 +109,7 @@ public class HardwareTrackTest extends Main{
 		Section startSec = numberMap.get(1);
 		Track headPiece = startSec.get(0);
 
-		Route route = new Route(true, 1,2,3,4,5,6,7,8);
+		final Route route = new Route(true, 1,2,3,4,5,6,7,8);
 
 		Movable locomotive = new Locomotive(new Track[]{headPiece}, 40,40,10, false);
 
@@ -130,20 +130,39 @@ public class HardwareTrackTest extends Main{
  				System.out.println("event "+e.toString());
 
  				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
- 				  outputArray.add(((Event.SectionChanged) e).getSection());
+ 				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 				  outputArray.add(i);
 
- 				  if(((Event.SectionChanged)e).getSection() == 1){
+ 				  if(i == 1){
  					  System.out.println("stop triggered by unit test");
  					  controller.stop(0);
  					  th.interrupt();
 
  				  }
  				}
+ 				else if(e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+ 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					outputArray.add(route.nextSection(i));
+
+
+ 				}
 
  				if(e instanceof Event.EmergencyStop){
+ 					System.out.println("an emergency stop has been triggered by an event in the unit test");
  					controller.stop(0);
  					th.interrupt();
  				}
+
+ 				else if (e instanceof Event.SpeedChanged && ((Event.SpeedChanged)e).getSpeed() == 0){
+
+//					System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+//					System.out.println("%%%%%%%%%%%%%%Speed Changed%%%%%%%%%%%%%%%%%%%%%%%");
+//					System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+//
+//					Thread.dumpStack();
+//
+//					System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+				}
  			}
 
 		});

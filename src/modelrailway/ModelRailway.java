@@ -242,6 +242,10 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		if (event instanceof Event.SpeedChanged) {
 			Event.SpeedChanged e = (Event.SpeedChanged) event;
 			System.out.println("CHANGING SPEED: " + e.getLocomotive() + " to " + e.getSpeed());
+			if(e.getSpeed() == 0) {
+				System.out.println("*** ERROR? ***");
+				Thread.currentThread().dumpStack();
+			}
 			throttles[e.getLocomotive()].setSpeedSetting(e.getSpeed());
 		} else if (event instanceof Event.DirectionChanged) {
 			Event.DirectionChanged e = (Event.DirectionChanged) event;

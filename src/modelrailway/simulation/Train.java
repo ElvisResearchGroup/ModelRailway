@@ -39,6 +39,11 @@ public class Train extends Movable {
 	}
 
 	public int stop(){
+		System.out.println("===================================================================");
+		System.out.println("============A stop has been triggered for the train================");
+		System.out.println("===================================================================");
+		Thread.dumpStack();
+		System.out.println("===================================================================");
 		super.stop();
 		for(int i = 1; i<trainParts.length; i++){
 			trainParts[i].stop();
