@@ -85,7 +85,7 @@ public class MovementController implements Controller, Listener {
 	public Train adjustSection(Event e){
 		synchronized(isMoving){
 			Pair<Integer,Train> pair = this.sectionTrainMovesInto((Event.SectionChanged)e);
-			if(pair == null) throw new RuntimeException("Fault in section movement");
+			if(pair == null) throw new AlreadyHere(null);//throw new RuntimeException("Fault in section movement");
 			if(pair.fst == null && pair.snd != null) throw new AlreadyHere(pair.snd);
 
 			pair.snd.setSection(pair.fst);
@@ -100,22 +100,24 @@ public class MovementController implements Controller, Listener {
 		  if(e instanceof Event.SectionChanged ){ // when there is a section change into another section
 			  	 System.out.println();
 			     tr = adjustSection(e);
-			     if(tr == null) throw new RuntimeException("train was null");
+			     //if(tr == null) throw new RuntimeException("train was null");
 
 		  }
 		}catch(AlreadyHere h){
 			System.out.println("train was Already Here");
 			skip = true;
 			tr = h.tr;
-			if(tr == null) throw new RuntimeException("train was null in exception thrown");
+			//if(tr == null) throw new RuntimeException("train was null in exception thrown");
 		}
+		if(tr != null){
 		if(e instanceof Event.SectionChanged){
 	       System.out.println("section has been adusted: tr == null ?: "+(tr == null));
 	       moveIntoSection(e,tr); // reperform section movement when we move in twice.
 
 
 		}
-		if(!false){
+		}
+		if(!skip){
 		  for(Listener l : listeners){
 
 			  l.notify(e);
@@ -233,8 +235,8 @@ public class MovementController implements Controller, Listener {
 			System.out.println("train: "+trainOrientation.getKey() + " section: "+section);
 			System.out.println("eventsectionID: "+eventsectionID);
 
-	    	if(section ==  eventsectionID){ // check that the front of the train is in the section
-	    		System.out.println("move into section: ");
+	    	if(section ==  eventsectionID && trainRoutes.get(trainOrientation.getKey()) != null){ // check that the front of the train is in the section
+	    		System.out.println("move into section: "+section);
 
 	    		// first work out which track segments we are currently dealing with.
 

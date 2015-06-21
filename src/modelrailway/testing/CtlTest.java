@@ -226,7 +226,12 @@ public class CtlTest {
 		assertTrue(str.getSection() == sec4);
 		assertTrue(head.getPrevious(false) == sw2);
 
-
+		head.getSection().setSectionNumber(1);
+		sec2.setSectionNumber(2);
+		tp_2.getSection().setSectionNumber(3);
+		sec3.setSectionNumber(4);
+		sec4.setSectionNumber(5);
+		
 		route.recalculateSections();
 		route.getSectionNumberMap();
 		//set up the train track.
@@ -245,7 +250,7 @@ public class CtlTest {
 		train.setID(0);
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
-		orientationMap.put(0, new modelrailway.core.Train(0, false));
+		orientationMap.put(0, new modelrailway.core.Train(head.getSection().getNumber(), false));
 
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
@@ -278,18 +283,26 @@ public class CtlTest {
 			public void notify(Event e){
 				//System.out.println("event "+e.toString());
 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+					  
+					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					  outputArray.add(i);
+					  
+					  if(((SectionChanged)e).getSection() == 1){
 
-				  //System.out.println(e);
-				  outputArray.add(((Event.SectionChanged) e).getSection());
+						  ctl.stop(0);
+						  sim.stop();
+						  th.interrupt();
 
-				  if(((Event.SectionChanged)e).getSection() == 1){
-
-					  ctl.stop(0);
-					  sim.stop();
-					  th.interrupt();
-
-				  }
-				}
+					  }
+					//  throw new RuntimeException("Experienced Notify Stop Statement");
+					}
+					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+						outputArray.add(routePlan.nextSection(i));
+						
+					}
+					
+					
 			}
 
 		});
@@ -308,10 +321,10 @@ public class CtlTest {
 			System.out.println(routePlan.toString());
 			System.out.println("routeTraveled: "+outputArray.toString());
 		}
-		assertTrue(outputArray.get(0) == 5);
-		assertTrue(outputArray.get(1) == 6);
-		assertTrue(outputArray.get(2) == 4);
-		assertTrue(outputArray.get(3) == 0);
+		assertTrue(outputArray.get(0) == sw2Section);
+		assertTrue(outputArray.get(1) == swAlt);
+		assertTrue(outputArray.get(2) == switchSection);
+		assertTrue(outputArray.get(3) == headSection);
 
   	}
 
@@ -353,6 +366,13 @@ public class CtlTest {
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 		
+		
+		head.getSection().setSectionNumber(1);
+		sec2.setSectionNumber(2);
+		tp_2.getSection().setSectionNumber(3);
+		sec3.setSectionNumber(4);
+		sec4.setSectionNumber(5);
+		
 		route.recalculateSections();
 		route.getSectionNumberMap();
 
@@ -379,7 +399,7 @@ public class CtlTest {
 		train.setID(0);
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
-		orientationMap.put(0, new modelrailway.core.Train(0, false));
+		orientationMap.put(0, new modelrailway.core.Train(head.getSection().getNumber(), false));
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
 		final MovementController ctl = new MovementController(orientationMap,route.getSectionNumberMap(),head, sim); //
@@ -411,18 +431,26 @@ public class CtlTest {
 			public void notify(Event e){
 				//System.out.println("event "+e.toString());
 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+					  
+					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					  outputArray.add(i);
+					  
+					  if(((SectionChanged)e).getSection() == 1){
 
-				  //System.out.println(e);
-				  outputArray.add(((Event.SectionChanged) e).getSection());
+						  ctl.stop(0);
+						  sim.stop();
+						  th.interrupt();
 
-				  if(((Event.SectionChanged)e).getSection() == 0){
-
-					  ctl.stop(0);
-					  sim.stop();
-					  th.interrupt();
-
-				  }
-				}
+					  }
+					//  throw new RuntimeException("Experienced Notify Stop Statement");
+					}
+					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+						outputArray.add(routePlan.nextSection(i));
+						
+					}
+					
+					
 			}
 
 		});
@@ -441,10 +469,10 @@ public class CtlTest {
 			System.out.println(routePlan.toString());
 			System.out.println("routeTraveled: "+outputArray.toString());
 		}
-		assertTrue(outputArray.get(0) == 5);
+		assertTrue(outputArray.get(0) == sw2Section);
 		assertTrue(outputArray.get(1) == mainRoute);
-		assertTrue(outputArray.get(2) == 4);
-		assertTrue(outputArray.get(3) == 0);
+		assertTrue(outputArray.get(2) == switchSection);
+		assertTrue(outputArray.get(3) == headSection);
 
   	}
 
@@ -479,6 +507,13 @@ public class CtlTest {
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
+		
+		head.getSection().setSectionNumber(1);
+		sec2.setSectionNumber(2);
+		tp_2.getSection().setSectionNumber(3);
+		sec3.setSectionNumber(4);
+		sec4.setSectionNumber(5);
+		
 		route.recalculateSections();
 		route.getSectionNumberMap();
 		
@@ -505,7 +540,7 @@ public class CtlTest {
 		train.setID(0);
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
-		orientationMap.put(0, new modelrailway.core.Train(0, true));
+		orientationMap.put(0, new modelrailway.core.Train(head.getSection().getNumber(), true));
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
 		final MovementController ctl = new MovementController(orientationMap,route.getSectionNumberMap(),head, sim); //
@@ -545,18 +580,26 @@ public class CtlTest {
 			public void notify(Event e){
 				//System.out.println("event "+e.toString());
 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+					  
+					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					  outputArray.add(i);
+					  
+					  if(((SectionChanged)e).getSection() == 1){
 
-				  //System.out.println(e);
-				  outputArray.add(((Event.SectionChanged) e).getSection());
+						  ctl.stop(0);
+						  sim.stop();
+						  th.interrupt();
 
-				  if(((Event.SectionChanged)e).getSection() == 0){
-
-					  ctl.stop(0);
-					  sim.stop();
-					  th.interrupt();
-
-				  }
-				}
+					  }
+					//  throw new RuntimeException("Experienced Notify Stop Statement");
+					}
+					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+						outputArray.add(routePlan.nextSection(i));
+						
+					}
+					
+					
 			}
 
 		});
@@ -575,10 +618,10 @@ public class CtlTest {
 			System.out.println(routePlan.toString());
 			System.out.println("routeTraveled: "+outputArray.toString());
 		}
-		assertTrue(outputArray.get(0) == 4);
-		assertTrue(outputArray.get(1) == 2);
-		assertTrue(outputArray.get(2) == 5);
-		assertTrue(outputArray.get(3) == 0);
+		assertTrue(outputArray.get(0) == switchSection);
+		assertTrue(outputArray.get(1) == mainRoute);
+		assertTrue(outputArray.get(2) == sw2Section);
+		assertTrue(outputArray.get(3) == headSection);
 
   	}
 
@@ -590,6 +633,9 @@ public class CtlTest {
 		Straight.StraightRing route = new Straight.StraightRing(st);
 		Track head = route.ringTrack(4, 100);
 		sec.add(head);
+		
+		
+		
 		route.recalculateSections();
 		route.getSectionNumberMap();
 		
@@ -597,7 +643,17 @@ public class CtlTest {
 		Track tp_2 = tp_1.getNext(false);
 		Track tp_3 = tp_2.getNext(false);
 		Track tp_4 = tp_3.getNext(false);
-
+		
+		head.getSection().setSectionNumber(1);
+		tp_1.getSection().setSectionNumber(2);
+		tp_2.getSection().setSectionNumber(3);
+		tp_3.getSection().setSectionNumber(4);
+		
+		route.recalculateSections();
+		route.getSectionNumberMap();
+	
+		assert(tp_4 == head);
+		
 		//set up the train track.
 
 		// add a locomotive
@@ -632,8 +688,8 @@ public class CtlTest {
 		assertTrue(secReserve);
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
-		orientationMap.put(0, new modelrailway.core.Train(0, true));
-		orientationMap.put(1, new modelrailway.core.Train(1,true));
+		orientationMap.put(0, new modelrailway.core.Train(head.getSection().getNumber(), true));
+		orientationMap.put(1, new modelrailway.core.Train(tp_3.getSection().getNumber(),true));
 
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
@@ -658,18 +714,28 @@ public class CtlTest {
 				//System.out.println("event "+e.toString());
 
 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+					  
+					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					  output.add(""+i);
+					  
+					  if(((SectionChanged)e).getSection() == 1){
 
-				  //System.out.println(e);
-				  if(((Event.SectionChanged)e).getSection() == 0){
+						  ctl.stop(0);
+						  sim.stop();
+						  th.interrupt();
+						  output.add("failure to stop");
 
-					  ctl.stop(0);
-					  sim.stop();
-					  th.interrupt();
-					  output.add("failure to stop");
-
-				  }
-
-				}
+					  }
+					//  throw new RuntimeException("Experienced Notify Stop Statement");
+					}
+					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+						output.add(""+i);
+						//output.add(routePlan.nextSection(i));
+						
+					}
+					
+					
 				if(e instanceof Event.EmergencyStop){
 				  sim.stop();
 				  output.add("emergency stop at position by locomotive "+((Event.EmergencyStop) e).getLocomotive());
@@ -692,6 +758,7 @@ public class CtlTest {
 			//System.out.println(output);
 			//System.out.println(routePlan);
 			//System.out.println(output);
+			System.out.println("split: "+output.get(0).split(" ")[0]);
 			assertTrue(output.get(0).split(" ")[0].equals("emergency"));
 			assertTrue(locomotive.getFront().getSection().getNumber() == sec2);
 			System.out.println("ctlColTest0");
@@ -749,7 +816,13 @@ public class CtlTest {
  		sec4.add(str);
 
  		route.insertBetween(sw, true, sw2, true,  str, false);
-
+ 		
+ 		head.getSection().setSectionNumber(1);
+		sec2.setSectionNumber(2);
+		tp_2.getSection().setSectionNumber(3);
+		sec3.setSectionNumber(4);
+		sec4.setSectionNumber(5);
+ 		
  		route.recalculateSections();
 		route.getSectionNumberMap();
 
@@ -773,8 +846,8 @@ public class CtlTest {
  		train2.setID(1);
  		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
- 		orientationMap.put(0, new modelrailway.core.Train(0, true));
- 		orientationMap.put(1, new modelrailway.core.Train(1,true));
+ 		orientationMap.put(0, new modelrailway.core.Train(head.getSection().getNumber(), true));
+ 		orientationMap.put(1, new modelrailway.core.Train(sw.getSection().getNumber(),true));
 
 
 //		train.toggleDirection();
@@ -809,16 +882,26 @@ public class CtlTest {
  			public void notify(Event e){
  				//System.out.println("event "+e.toString());
  				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
- 				  outputArray.add(((Event.SectionChanged) e).getSection());
- 				  System.out.println("section changed: "+ ((Event.SectionChanged)e).getSection());
- 				  if(((Event.SectionChanged)e).getSection() == 0){
+ 					  
+ 					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 					  outputArray.add(i);
+ 					  
+ 					  if(((SectionChanged)e).getSection() == 1){
 
- 					  ctl.stop(0);
- 					  sim.stop();
- 					  th.interrupt();
+ 						  ctl.stop(0);
+ 						  sim.stop();
+ 						  th.interrupt();
 
- 				  }
- 				}
+ 					  }
+ 					//  throw new RuntimeException("Experienced Notify Stop Statement");
+ 					}
+ 					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+ 						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 						outputArray.add(routePlan.nextSection(i));
+ 						
+ 					}
+ 					
+ 					
  			}
 
  		});
@@ -834,10 +917,10 @@ public class CtlTest {
  			System.out.println(routePlan.toString());
  			System.out.println("output: "+outputArray.toString());
  		}
- 		assertTrue(outputArray.get(0) == 4);
- 		assertTrue(outputArray.get(1) == 6);
- 		assertTrue(outputArray.get(2) == 5);
- 		assertTrue(outputArray.get(3) == 0);
+ 		assertTrue(outputArray.get(0) == switchSection);
+ 		assertTrue(outputArray.get(1) == swAlt);
+ 		assertTrue(outputArray.get(2) == sw2Section);
+ 		assertTrue(outputArray.get(3) == headSection);
 
   	}
 
@@ -872,6 +955,12 @@ public class CtlTest {
 
  		route.insertBetween(sw, true, sw2, true,  str, false);
 
+ 		head.getSection().setSectionNumber(1);
+		sec2.setSectionNumber(2);
+		tp_2.getSection().setSectionNumber(3);
+		sec3.setSectionNumber(4);
+		sec4.setSectionNumber(5);
+ 		
  		route.recalculateSections();
 		route.getSectionNumberMap();
 
@@ -902,8 +991,8 @@ public class CtlTest {
  		train2.setID(1);
  		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
- 		orientationMap.put(0, new modelrailway.core.Train(0, false));
- 		orientationMap.put(1, new modelrailway.core.Train(1,false));
+ 		orientationMap.put(0, new modelrailway.core.Train(head.getSection().getNumber(), false));
+ 		orientationMap.put(1, new modelrailway.core.Train(sw.getSection().getNumber(),false));
 
  		final Simulator sim = new Simulator(head, orientationMap, trainMap);
  		final MovementController ctl = new ControlerCollision(orientationMap,route.getSectionNumberMap(),head,sim); //
@@ -936,16 +1025,26 @@ public class CtlTest {
  			public void notify(Event e){
  				//System.out.println("event "+e.toString());
  				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
- 				  outputArray.add(""+((Event.SectionChanged) e).getSection());
+ 					  
+ 					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 					  outputArray.add(""+i);
+ 					  
+ 					  if(((SectionChanged)e).getSection() == 1){
 
- 				  if(((Event.SectionChanged)e).getSection() == sw2Section){
+ 						  ctl.stop(0);
+ 						  sim.stop();
+ 						  th.interrupt();
 
- 					  ctl.stop(0);
- 					  sim.stop();
- 					  th.interrupt();
-
- 				  }
- 				}
+ 					  }
+ 					//  throw new RuntimeException("Experienced Notify Stop Statement");
+ 					}
+ 					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+ 						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 						outputArray.add(""+routePlan.nextSection(i));
+ 						
+ 					}
+ 					
+ 					
 
  				if(e instanceof Event.EmergencyStop){
  					sim.stop();

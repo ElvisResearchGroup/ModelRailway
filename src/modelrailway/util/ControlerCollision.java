@@ -98,9 +98,9 @@ public class ControlerCollision extends MovementController implements Controller
 				}
 				//System.out.println("reserved: "+reserved);
 				if(reserved == false){ // we need to trigger an emergency stop
-					//System.out.println("========train is being stoped as reserved is false");
+					System.out.println("========train is being stoped as reserved is false");
 					this.stop(train);
-
+					System.out.println("sending emergency stop");
 					super.notify(new Event.EmergencyStop(train));
 				}
 			}

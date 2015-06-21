@@ -95,7 +95,7 @@ public class Route {
 				}
 			}
 		}
-		throw new IllegalArgumentException("Invalid section for route");
+		throw new IllegalArgumentException("Invalid section for route: "+section);
 
 	}
 

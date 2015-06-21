@@ -213,7 +213,7 @@ public abstract class Movable {
 	    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		System.out.println(">>>>>>>>>>>A stop has been triggered for the Movable>>>>>>>>>>>>>>>>");
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-		Thread.dumpStack();
+		//Thread.dumpStack();
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	   currentSpeed = 0;
 	   return distance;
