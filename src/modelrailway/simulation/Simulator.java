@@ -153,7 +153,7 @@ public class Simulator implements Event.Listener{
 	 * @param thrown
 	 */
 	private void set(int turnoutID, boolean thrown) {
-		Track sw = head.getSwitchEntry(turnoutID);
+		Track sw = head.getSwitchEntry(turnoutID+1);
 		if(sw instanceof ForwardSwitch){
 			boolean currNotThrown = ((ForwardSwitch) sw).isNext();
 			if(currNotThrown == thrown) ((ForwardSwitch) sw).toggle();
@@ -164,7 +164,7 @@ public class Simulator implements Event.Listener{
 			if(currNotThrown  == thrown) ((BackSwitch) sw).toggle();
 		}
 		else{
-			throw new RuntimeException("unknown switch encountered in TestControler");
+			throw new RuntimeException("unknown switch encountered in TestControler: "+ turnoutID +" , thrown :"+thrown);
 		}
 
 	}

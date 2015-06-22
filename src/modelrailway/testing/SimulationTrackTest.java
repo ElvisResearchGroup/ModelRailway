@@ -338,7 +338,7 @@ public class SimulationTrackTest {
 		Section startSec = numberMap.get(1);
 		Track headPiece = startSec.get(0);
 
-		Route route = new Route(true, 1,2,3,4,5,6,7,8);
+		final Route route = new Route(true, 1,2,3,4,5,6,7,8);
 
 		Movable locomotive = new Locomotive(new Track[]{headPiece}, 40,40,10, false);
 
@@ -363,23 +363,33 @@ public class SimulationTrackTest {
 
 		ctl.register(new Listener(){
  			public void notify(Event e){
- 				//System.out.println("event "+e.toString());
+ 				System.out.println("event "+e.toString());
  				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
- 				  outputArray.add(((Event.SectionChanged) e).getSection());
+ 					  
+ 					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 					  outputArray.add(i);
 
- 				  if(((Event.SectionChanged)e).getSection() == 1){
+ 					  if(((SectionChanged)e).getSection() == 1){
 
- 					  ctl.stop(0);
- 					  sim.stop();
- 					  th.interrupt();
+ 						  ctl.stop(0);
+ 						  sim.stop();
+ 						  th.interrupt();
 
- 				  }
- 				}
+ 					  }
+ 					//  throw new RuntimeException("Experienced Notify Stop Statement");
+ 					}
+ 					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+ 						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 						outputArray.add(route.nextSection(i));
 
- 				if(e instanceof Event.EmergencyStop){
- 					sim.stop();
- 					th.interrupt();
- 				}
+ 					}
+ 				
+ 					else if (e instanceof Event.EmergencyStop){
+ 						ctl.stop(0);
+ 						sim.stop();
+ 						th.interrupt();
+ 					}
+
  			}
 
  		});
@@ -417,7 +427,7 @@ public class SimulationTrackTest {
 
 		Section headSec = numberMap.get(1);
 		Track headPiece = headSec.get(0);
-		Route route = new Route(true, 17,18,11,12,13,14,15,16,9,10);
+		final Route route = new Route(true, 17,18,11,12,13,14,15,16,9,10);
 
 		Movable locomotive = new Locomotive(new Track[]{startPiece}, 40,40,10, false);
 
@@ -444,21 +454,30 @@ public class SimulationTrackTest {
  			public void notify(Event e){
  				//System.out.println("event "+e.toString());
  				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
- 				  outputArray.add(((Event.SectionChanged) e).getSection());
 
- 				  if(((Event.SectionChanged)e).getSection() == 10){
+ 					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 					  outputArray.add(i);
 
+ 					  if(((SectionChanged)e).getSection() == 1){
+
+ 						  ctl.stop(0);
+ 						  sim.stop();
+ 						  th.interrupt();
+
+ 					  }
+ 					//  throw new RuntimeException("Experienced Notify Stop Statement");
+ 				}
+ 				else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+ 						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 						outputArray.add(route.nextSection(i));
+
+ 			    }
+ 				else if (e instanceof Event.EmergencyStop){
  					  ctl.stop(0);
  					  sim.stop();
  					  th.interrupt();
-
- 				  }
  				}
 
- 				if(e instanceof Event.EmergencyStop){
- 					sim.stop();
- 					th.interrupt();
- 				}
  			}
 
  		});
