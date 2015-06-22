@@ -14,25 +14,25 @@ import modelrailway.core.Event.Listener;
 import modelrailway.simulation.Track;
 
 public class TrainController extends ControlerCollision implements Controller, Listener {
-	private static SimulationTrack track = new SimulationTrack();
+	//private static SimulationTrack track = new SimulationTrack();
 
-	public TrainController(Train[] trains, ModelRailway railway) {
-		super(getTrains(trains), getSections(), getHead(), railway);
+	public TrainController(Train[] trains, ModelRailway railway, SimulationTrack track) {
+		super(getTrains(trains), track.getSections(), track.getHead(), railway);
 
 
 
 
 	}
 
-	private static Track getHead() {
+	//private static Track getHead() {
 		// TODO Auto-generated method stub
-		return track.getHead();
-	}
+		//return track.getHead();
+	//}
 
-	private static Map<Integer, Section> getSections() {
+	//private static Map<Integer, Section> getSections() {
 		// TODO Auto-generated method stub
-		return track.getSections();
-	}
+		//return track.getSections();
+	//}
 
 	private static Map<Integer, Train> getTrains(Train[] trains) {
 		// TODO Auto-generated method stub

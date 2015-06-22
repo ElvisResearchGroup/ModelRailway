@@ -248,26 +248,6 @@ public class MovementController implements Controller, Listener {
 	    		//System.out.println("try get current track: "+trainSection +" prevSection: "+prevSection);
 	    		Track thisTrack = sections.get(eventsectionID).get(0);
 
-
-
-
-
-	    		//System.out.println("trainOrientation.getValue().currentOrientation(): "+trainOrientation.getValue().currentOrientation());
-	    		//if(trainOrientation.getValue().currentOrientation()){ // if we are going foward, use the previous section.
-	    		 // Section currSec =  sections.get(trainSection);
-	    		//System.out.println("sections: "+sections);
-	    		  //Pair<Track,Track> prevCurrPair = getCurrentTrackSection(sections.get(trainSection),sections.get(prevSection),trainOrientation.getValue().currentOrientation());
-	    		// before handling the switches make sure that the sections of the track piece that we came from do not have this train in any of them
-	    		  //thisTrack = prevCurrPair.snd;
-	    	    //}
-	    		//else{ // if the orientation is facing back use the next section
-	    		 // Pair<Track,Track> nextCurrPair = getCurrentTrackSection(sections.get(trainSection),sections.get(nextSection),trainOrientation.getValue().currentOrientation());
-		    		// before handling the switches make sure that the sections of the track piece that we came from do not have this train in any of them
-		    	  //thisTrack = nextCurrPair.snd;
-	    		//}
-	    		//System.out.println("thisTrackNumber: "+ thisTrack.getSection().getNumber());
-
-	    		// for all tracks in the previous section, remove this train from the queue of trains that have requested the section, instruct the next train on the queue to go.
 	    		for(Track t :previous){
 	    			boolean trainMoved = false;
 	    			Section tracSec = t.getSection();
@@ -314,9 +294,6 @@ public class MovementController implements Controller, Listener {
 	    			Pair<Integer, Integer> sectionPair = new Pair<Integer,Integer>(prevSec,nextSec);
 	    		    // for sectionPair
 	    		    List<Boolean> switchingOrder = sectionS.retrieveSwitchingOrder(sectionPair);
-	    		   // System.out.println("Section,previous: "+ previous.getNumber());
-	    		   // System.out.println("sectionS: "+sectionS.getNumber());
-	    		   // System.out.println("sectionPair: "+sectionPair.fst + ", "+sectionPair.snd);
 
 	    		    System.out.println("Adjust switch: "+((Switch) thisTrack).getSwitchID());
 	    			if(!trainOrientation.getValue().currentOrientation()){
@@ -332,8 +309,8 @@ public class MovementController implements Controller, Listener {
 				      for(Boolean bl: switchingOrder){ // for each switch//
 				    	 if(!(tr instanceof Switch)) throw new RuntimeException("An invalid Section has been encountered as the section has multiple pieces and a piece is not a switch");
 				    	// System.out.println("trSwitch ID: "+((Switch) tr).getSwitchID());
-
-				    	 this.set(((Switch)tr).getSwitchID(), bl);
+				    	 System.out.println("Switch: "+((Switch)tr).getSwitchID()+", Turnout: "+bl+"tr.getSection().getNumber(): "+tr.getSection().getNumber());
+				    	 this.set(((Switch)tr).getSwitchID()-1, bl); // minus 1 to adjust for counting from zero in turnout array
 				    	 tr = thisTrack.getNext(bl); // follow track
 				      }
 	    			}
@@ -377,12 +354,7 @@ public class MovementController implements Controller, Listener {
 	public void stop(int trainID) {
 		synchronized(isMoving){
 		isMoving.put(trainID, false);
-		//System.out.println("The stop method for the train has been called");
-		//System.out.println("##################################################");
-		//System.out.println("#####The the stop method for the movement ctl#####");
-		//System.out.println("##################################################");
-		//Thread.dumpStack();
-		//System.out.println("##################################################");
+
 		((Listener) trackController).notify((Event)new Event.EmergencyStop(trainID));
 		}
 	}

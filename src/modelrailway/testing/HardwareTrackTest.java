@@ -56,6 +56,8 @@ public class HardwareTrackTest extends Main{
 	private static ModelRailway rails;
 	private static Controller ctl;
 
+	private static final SimulationTrack sim0 = new SimulationTrack();
+
 	public static void main(String args[]) throws Exception {
 		String port = args[0];
 
@@ -84,7 +86,7 @@ public class HardwareTrackTest extends Main{
 		Train[] trains = {
 				new Train(1,true), // default config for train 0
 		};
-		Controller controller = new TrainController(trains,railway);
+		Controller controller = new TrainController(trains,railway, sim0);
 		railway.register(controller);
 		controller.register(railway);
 		ctl = controller;
@@ -99,8 +101,6 @@ public class HardwareTrackTest extends Main{
 
 		final Controller controller = getCtl();
 		// Enter Read, Evaluate, Print loop.
-
-		SimulationTrack sim0 = new SimulationTrack();
 
 		StraightDblRing ring = sim0.getTrack();
 
@@ -127,12 +127,12 @@ public class HardwareTrackTest extends Main{
 
 		controller.register(new Listener(){
 			public void notify(Event e){
- 				System.out.println("event "+e.toString());
+ 				System.out.println("event in unit test: "+e.toString());
 
  				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
  				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
  				  outputArray.add(i);
-
+ 				  System.out.println("sectionchanged in unit test into section: "+ i);
  				  if(i == 1){
  					  System.out.println("stop triggered by unit test");
  					  controller.stop(0);
@@ -152,17 +152,6 @@ public class HardwareTrackTest extends Main{
  					controller.stop(0);
  					th.interrupt();
  				}
-
- 				else if (e instanceof Event.SpeedChanged && ((Event.SpeedChanged)e).getSpeed() == 0){
-
-//					System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-//					System.out.println("%%%%%%%%%%%%%%Speed Changed%%%%%%%%%%%%%%%%%%%%%%%");
-//					System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-//
-//					Thread.dumpStack();
-//
-//					System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-				}
  			}
 
 		});
@@ -187,4 +176,5 @@ public class HardwareTrackTest extends Main{
 
 
 	}
+
 }

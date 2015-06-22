@@ -73,18 +73,18 @@ public class CtlTest {
 
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
-		
-		
+
+
 		head.getSection().setSectionNumber(1);
 		sec2.setSectionNumber(2);
 		tp_2.getSection().setSectionNumber(3);
 		sec3.setSectionNumber(4);
 		sec4.setSectionNumber(5);
-		
-		
+
+
 		route.recalculateSections();
-		
-		
+
+
 
 		assertTrue(sw.getNext(true) == str);
 		assertTrue(sw.getNext(false) == tp_2);
@@ -140,10 +140,10 @@ public class CtlTest {
 			public void notify(Event e){
 				//System.out.println("event "+e.toString());
 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
-				  
+
 				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
 				  outputArray.add(i);
-				  
+
 				  if(((SectionChanged)e).getSection() == 1){
 
 					  ctl.stop(0);
@@ -156,11 +156,11 @@ public class CtlTest {
 				else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
 					outputArray.add(routePlan.nextSection(i));
-					
+
 				}
-				
-				
-				
+
+
+
 			}
 
 		});
@@ -231,7 +231,7 @@ public class CtlTest {
 		tp_2.getSection().setSectionNumber(3);
 		sec3.setSectionNumber(4);
 		sec4.setSectionNumber(5);
-		
+
 		route.recalculateSections();
 		route.getSectionNumberMap();
 		//set up the train track.
@@ -273,7 +273,7 @@ public class CtlTest {
 		sec3.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
 		sec3.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
 
-		Route routePlan = new Route(true, sw2Section, swAlt, switchSection, headSection);
+		final Route routePlan = new Route(true, sw2Section, swAlt, switchSection, headSection);
 		//System.out.println("route: "+headSection+", "+switchSection+", "+swAlt+", "+sw2Section);
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
@@ -283,10 +283,10 @@ public class CtlTest {
 			public void notify(Event e){
 				//System.out.println("event "+e.toString());
 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
-					  
+
 					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
 					  outputArray.add(i);
-					  
+
 					  if(((SectionChanged)e).getSection() == 1){
 
 						  ctl.stop(0);
@@ -299,10 +299,10 @@ public class CtlTest {
 					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
 						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
 						outputArray.add(routePlan.nextSection(i));
-						
+
 					}
-					
-					
+
+
 			}
 
 		});
@@ -362,17 +362,17 @@ public class CtlTest {
 		Straight str = new Straight(null, null, sec4,100 );
 		sec4.add(str);
 
-		
+
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
-		
-		
+
+
 		head.getSection().setSectionNumber(1);
 		sec2.setSectionNumber(2);
 		tp_2.getSection().setSectionNumber(3);
 		sec3.setSectionNumber(4);
 		sec4.setSectionNumber(5);
-		
+
 		route.recalculateSections();
 		route.getSectionNumberMap();
 
@@ -421,7 +421,7 @@ public class CtlTest {
 		sec3.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
 		sec3.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
 
-		Route routePlan = new Route(true, sw2Section, mainRoute, switchSection, headSection);
+		final Route routePlan = new Route(true, sw2Section, mainRoute, switchSection, headSection);
 		//System.out.println("route: "+headSection+", "+switchSection+", "+swAlt+", "+sw2Section);
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
@@ -431,10 +431,10 @@ public class CtlTest {
 			public void notify(Event e){
 				//System.out.println("event "+e.toString());
 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
-					  
+
 					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
 					  outputArray.add(i);
-					  
+
 					  if(((SectionChanged)e).getSection() == 1){
 
 						  ctl.stop(0);
@@ -447,10 +447,10 @@ public class CtlTest {
 					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
 						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
 						outputArray.add(routePlan.nextSection(i));
-						
+
 					}
-					
-					
+
+
 			}
 
 		});
@@ -507,23 +507,23 @@ public class CtlTest {
 
 		route.insertBetween(sw, true, sw2, true,  str, false);
 
-		
+
 		head.getSection().setSectionNumber(1);
 		sec2.setSectionNumber(2);
 		tp_2.getSection().setSectionNumber(3);
 		sec3.setSectionNumber(4);
 		sec4.setSectionNumber(5);
-		
+
 		route.recalculateSections();
 		route.getSectionNumberMap();
-		
+
 		assertTrue(sw.getNext(true) == str);
 		assertTrue(sw.getNext(false) == tp_2);
 		assertTrue(sw2.getPrevious(false) == tp_2);
 		assertTrue(str.getSection() == sec4);
 		assertTrue(head.getPrevious(false) == sw2);
 
-		
+
 
 		//set up the train track.
 
@@ -570,7 +570,7 @@ public class CtlTest {
 		//System.out.println("");
 
 		//Route routePlan = new Route(true, sw2Section, mainRoute, switchSection, headSection);
-		Route routePlan = new Route(true, switchSection, mainRoute, sw2Section, headSection);
+		final Route routePlan = new Route(true, switchSection, mainRoute, sw2Section, headSection);
 		///System.out.println("route: "+switchSection+", "+swAlt+", "+sw2Section);
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
@@ -580,10 +580,10 @@ public class CtlTest {
 			public void notify(Event e){
 				//System.out.println("event "+e.toString());
 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
-					  
+
 					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
 					  outputArray.add(i);
-					  
+
 					  if(((SectionChanged)e).getSection() == 1){
 
 						  ctl.stop(0);
@@ -596,10 +596,10 @@ public class CtlTest {
 					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
 						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
 						outputArray.add(routePlan.nextSection(i));
-						
+
 					}
-					
-					
+
+
 			}
 
 		});
@@ -633,33 +633,33 @@ public class CtlTest {
 		Straight.StraightRing route = new Straight.StraightRing(st);
 		Track head = route.ringTrack(4, 100);
 		sec.add(head);
-		
-		
-		
+
+
+
 		route.recalculateSections();
 		route.getSectionNumberMap();
-		
+
 		Track tp_1 = head.getNext(false);
 		Track tp_2 = tp_1.getNext(false);
 		Track tp_3 = tp_2.getNext(false);
 		Track tp_4 = tp_3.getNext(false);
-		
+
 		head.getSection().setSectionNumber(1);
 		tp_1.getSection().setSectionNumber(2);
 		tp_2.getSection().setSectionNumber(3);
 		tp_3.getSection().setSectionNumber(4);
-		
+
 		route.recalculateSections();
 		route.getSectionNumberMap();
-	
+
 		assert(tp_4 == head);
-		
+
 		//set up the train track.
 
 		// add a locomotive
 
 		final Movable locomotive = new Locomotive(new Track[]{head,head},40,20,10,false);
-		
+
 
 
 
@@ -714,10 +714,10 @@ public class CtlTest {
 				//System.out.println("event "+e.toString());
 
 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
-					  
+
 					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
 					  output.add(""+i);
-					  
+
 					  if(((SectionChanged)e).getSection() == 1){
 
 						  ctl.stop(0);
@@ -732,10 +732,10 @@ public class CtlTest {
 						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
 						output.add(""+i);
 						//output.add(routePlan.nextSection(i));
-						
+
 					}
-					
-					
+
+
 				if(e instanceof Event.EmergencyStop){
 				  sim.stop();
 				  output.add("emergency stop at position by locomotive "+((Event.EmergencyStop) e).getLocomotive());
@@ -778,8 +778,8 @@ public class CtlTest {
  		sec.add(head);
  		route.recalculateSections();
 		route.getSectionNumberMap();
- 		
- 		
+
+
  		Track tp_1 = head.getNext(false);
  		Section s1 = tp_1.getSection();
 
@@ -816,13 +816,13 @@ public class CtlTest {
  		sec4.add(str);
 
  		route.insertBetween(sw, true, sw2, true,  str, false);
- 		
+
  		head.getSection().setSectionNumber(1);
 		sec2.setSectionNumber(2);
 		tp_2.getSection().setSectionNumber(3);
 		sec3.setSectionNumber(4);
 		sec4.setSectionNumber(5);
- 		
+
  		route.recalculateSections();
 		route.getSectionNumberMap();
 
@@ -873,7 +873,7 @@ public class CtlTest {
 		sec3.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
 
 
- 		Route routePlan = new Route(true, switchSection, swAlt, sw2Section, headSection);
+ 		final Route routePlan = new Route(true, switchSection, swAlt, sw2Section, headSection);
 
 
  		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
@@ -882,10 +882,10 @@ public class CtlTest {
  			public void notify(Event e){
  				//System.out.println("event "+e.toString());
  				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
- 					  
+
  					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
  					  outputArray.add(i);
- 					  
+
  					  if(((SectionChanged)e).getSection() == 1){
 
  						  ctl.stop(0);
@@ -898,10 +898,10 @@ public class CtlTest {
  					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
  						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
  						outputArray.add(routePlan.nextSection(i));
- 						
+
  					}
- 					
- 					
+
+
  			}
 
  		});
@@ -960,7 +960,7 @@ public class CtlTest {
 		tp_2.getSection().setSectionNumber(3);
 		sec3.setSectionNumber(4);
 		sec4.setSectionNumber(5);
- 		
+
  		route.recalculateSections();
 		route.getSectionNumberMap();
 
@@ -1015,7 +1015,7 @@ public class CtlTest {
 		sec3.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
 
 
- 		Route routePlan = new Route(true, headSection, switchSection , swAlt , sw2Section  );
+ 		final Route routePlan = new Route(true, headSection, switchSection , swAlt , sw2Section  );
  		//Route routePlan = new Route(true, sw2Section, swAlt, switchSection, headSection);
  		//System.out.println("route: "+headSection +","+ switchSection +","+ swAlt + "," + sw2Section);
 
@@ -1025,10 +1025,10 @@ public class CtlTest {
  			public void notify(Event e){
  				//System.out.println("event "+e.toString());
  				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
- 					  
+
  					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
  					  outputArray.add(""+i);
- 					  
+
  					  if(((SectionChanged)e).getSection() == 1){
 
  						  ctl.stop(0);
@@ -1041,10 +1041,10 @@ public class CtlTest {
  					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
  						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
  						outputArray.add(""+routePlan.nextSection(i));
- 						
+
  					}
- 					
- 					
+
+
 
  				if(e instanceof Event.EmergencyStop){
  					sim.stop();
@@ -1069,16 +1069,16 @@ public class CtlTest {
 
  		assertTrue(outputArray.get(0).split(" ")[0].equals("emergency"));
   	}
-  	
+
   	/**
   	 * Test switches going along an alternate route.
   	 */
   	@Test public void testTrackRun1(){
-  		
-  		
+
+
   	}
-  	
-  	
+
+
 
 
 

@@ -243,8 +243,8 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			Event.SpeedChanged e = (Event.SpeedChanged) event;
 			System.out.println("CHANGING SPEED: " + e.getLocomotive() + " to " + e.getSpeed());
 			if(e.getSpeed() == 0) {
-				System.out.println("*** ERROR? ***");
-				Thread.currentThread().dumpStack();
+				//System.out.println("*** ERROR? ***");
+				//Thread.currentThread().dumpStack();
 			}
 			throttles[e.getLocomotive()].setSpeedSetting(e.getSpeed());
 		} else if (event instanceof Event.DirectionChanged) {
@@ -259,6 +259,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		} else if (event instanceof Event.TurnoutChanged) {
 			Event.TurnoutChanged tc = (Event.TurnoutChanged) event;
 			System.out.println("SETTING TURNOUT : " + tc.getTurnout() + " : " + tc.getThrown() + " num turnouts: "+turnouts.length);
+		//	if(tc.getTurnout() == 6 && tc.getThrown() == false) throw new RuntimeException("setting wrong turnout 6 to off position");
 			Turnout turnout = turnouts[tc.getTurnout()];
 
 			turnout.setCommandedState(tc.getThrown() ? Turnout.THROWN

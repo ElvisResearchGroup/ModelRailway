@@ -51,10 +51,10 @@ public class Main2 extends Main {
 				new Train(0,true), // default config for train 1
 				new Train(0,true)  // default config for train 2
 		};
-		Controller controller = new TrainController(trains,railway);
-		railway.register(controller);
-		controller.register(railway);
-		ctl = controller;
-		new Main2(railway,controller).readEvaluatePrintLoop();
+		//Controller controller = new TrainController(trains,railway);
+		//railway.register(controller);
+		//controller.register(railway);
+		//ctl = controller;
+		//new Main2(railway,controller).readEvaluatePrintLoop();
 	}
 }
