@@ -145,6 +145,7 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 		if(entryRequests.size() != 0){
 		  if(m != null && entryRequests.peek() == m) entryRequests.poll();
 		  }
+		//throw new RuntimeException("adding a movable object");
 		return movableObjects.add(m);
 		}
 		}

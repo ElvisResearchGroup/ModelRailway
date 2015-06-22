@@ -104,21 +104,11 @@ public class HardwareTrackTest extends Main{
 
 		StraightDblRing ring = sim0.getTrack();
 
-		Map<Integer,Section> numberMap = ring.getSectionNumberMap();
+		ring.getSectionNumberMap();
 
-		Section startSec = numberMap.get(1);
-		Track headPiece = startSec.get(0);
 
-		final Route route = new Route(true, 1,2,3,4,5,6,7,8);
+		final Route route = new Route(true, 2,3,4,5,6,7,8,1);
 
-		Movable locomotive = new Locomotive(new Track[]{headPiece}, 40,40,10, false);
-
-		modelrailway.simulation.Train train = new modelrailway.simulation.Train(new Movable[]{locomotive});
-
-		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
-
-		trainMap.put(0,train );
-		train.setID(0);
 
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();

@@ -69,8 +69,10 @@ public class ControlerCollision extends MovementController implements Controller
 				//System.out.println("thisSec: "+thisSec.getNumber());
 				if(notAltNext.getSection().getNumber() == nextSec){
 
-					//System.out.println("notalt number: "+notAltNext.getSection().getNumber());
+					System.out.println("notalt next, not alt sec number: "+notAltNext.getSection().getNumber());
 					boolean reserved1 = notAltNext.getSection().reserveSection(train);
+					System.out.println("reserved1: "+reserved1);
+					System.out.println("Movables In Section: "+ notAltNext.getSection().getMovableSet());
 					boolean reserved2 = false;
 					if(notAltNext.getAltSection() != null){ reserved2 = notAltNext.getAltSection().reserveSection(train);}
 					else{ reserved2 = true;}
@@ -78,13 +80,14 @@ public class ControlerCollision extends MovementController implements Controller
 					reserved = reserved1 && reserved2;
 
 				}else  if(notAltNext.getAltSection() != null && notAltNext.getAltSection().getNumber() == nextSec){
-
+					System.out.println("notalt next, alt sec number: "+notAltNext.getSection().getNumber());
 					boolean reserved1 = notAltNext.getAltSection().reserveSection(train);
 					boolean reserved2 = notAltNext.getSection().reserveSection(train);
 					reserved = reserved1 && reserved2;
 
 				}else if(altNext.getSection().getNumber() == nextSec){
 					//System.out.println();
+					System.out.println("alt next, not alt sec number: "+altNext.getSection().getNumber());
 					boolean reserved1 = altNext.getSection().reserveSection(train);
 					boolean reserved2 = false;
 					if(altNext.getAltSection() != null){reserved2 = altNext.getAltSection().reserveSection(train);}
@@ -92,6 +95,7 @@ public class ControlerCollision extends MovementController implements Controller
 					reserved = reserved1 && reserved2;
 
 				}else if(altNext.getAltSection() != null && altNext.getAltSection().getNumber() == nextSec){
+					System.out.println("alt next, alt sec number: "+altNext.getAltSection().getNumber());
 					boolean reserved1 = altNext.getAltSection().reserveSection(train);
 					boolean reserved2 = altNext.getSection().reserveSection(train);
 					reserved = reserved1 && reserved2;

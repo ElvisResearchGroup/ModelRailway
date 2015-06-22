@@ -105,19 +105,22 @@ public class MovementController implements Controller, Listener {
 		  }
 		}catch(AlreadyHere h){
 			System.out.println("train was Already Here");
-			skip = true;
+			//skip = true;
 			tr = h.tr;
 			//if(tr == null) throw new RuntimeException("train was null in exception thrown");
 		}
 		if(tr != null){
-		if(e instanceof Event.SectionChanged){
+		  if(e instanceof Event.SectionChanged){
 	       System.out.println("section has been adusted: tr == null ?: "+(tr == null));
 	       moveIntoSection(e,tr); // reperform section movement when we move in twice.
 
+	       System.out.println("finished moving in section: skip ? "+skip);
 
-		}
+
+		  }
 		}
 		if(!skip){
+			System.out.println("Notify Listeners");
 		  for(Listener l : listeners){
 
 			  l.notify(e);
@@ -254,11 +257,14 @@ public class MovementController implements Controller, Listener {
 	    			Section trackAltSec = t.getAltSection();
 	    			if(tracSec != null){
 	    				Pair<Boolean,Integer> pair = null;
-	    				if(!tracSec.isQueueEmpty() && trainOrientation.getKey() != null) pair = tracSec.removeFromQueue(trainOrientation.getKey());
+	    				if(!tracSec.isQueueEmpty() && trainOrientation.getKey() != null){
+	    					pair = tracSec.removeFromQueue(trainOrientation.getKey());
+	    				}
 	    				if(pair != null){
 	    				   if(pair.fst != null && pair.fst){ // instruct next train to move.
 	    					   if(!trainMoved && pair.snd != null) {
 	    						   this.resumeTrain(pair.snd);
+	    						   
 	    						   trainMoved = true;
 	    					   }
 	    				   }
@@ -318,6 +324,8 @@ public class MovementController implements Controller, Listener {
 	    	}
 
        }
+
+		//System.out.println("End of adjust section");
 	}
 
 	@Override
