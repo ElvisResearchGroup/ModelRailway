@@ -19,14 +19,20 @@ public class ControlerCollision extends MovementController implements Controller
 	}
 
 	public void notify(Event e){
-		super.notify(tryLocking(e));
+		Integer train = tryLocking(e);
+		if(train == null){ // when it is null do not do the movement
+		  super.notify(e);
+		}else{
+		  super.notify(e);
+		  super.notify(new Event.EmergencyStop(train));
+		}
 	}
 	/**
 	 * Try to obtain the lock for the section ahead of where we are traveling into if we are traveling into a section.
 	 * @param e
 	 * @return
 	 */
-	private Event tryLocking(Event e){
+	private Integer tryLocking(Event e){
 		//assumes that we have already adjusted for the section change in Train.
 		if((e instanceof Event.SectionChanged)){ // when we are moving into a section
 			try{
@@ -54,6 +60,7 @@ public class ControlerCollision extends MovementController implements Controller
 			//System.out.println("entryValue: "+entry.getValue());
 
 			if(this.trainOrientations().get(train).currentOrientation() == true){
+				System.out.println("Orientation: "+this.trainOrientations().get(train).currentOrientation());
 				Section thisSec = this.sections().get(this.trainOrientations().get(train).currentSection());
 				//System.out.println("currentSection: "+this.trainOrientations().get(train).currentSection());
 
@@ -105,10 +112,12 @@ public class ControlerCollision extends MovementController implements Controller
 					System.out.println("========train is being stoped as reserved is false");
 					this.stop(train);
 					System.out.println("sending emergency stop");
-					super.notify(new Event.EmergencyStop(train));
+					
+					return train; // dont to the movement
 				}
 			}
 			else{
+				System.out.println("Orientation: "+this.trainOrientations().get(train).currentOrientation());
 				Section thisSec = this.sections().get(this.trainOrientations().get(train).currentSection());
 				Track back = thisSec.get(0); // length is not supported.
 				Track notAltPrev = back.getPrevious(false);
@@ -144,11 +153,12 @@ public class ControlerCollision extends MovementController implements Controller
 				if(reserved == false){
 					//System.out.println("========train is being stoped as reserved is false");
 					this.stop(train);
-					super.notify(new Event.EmergencyStop(train));
+					//super.notify(new Event.EmergencyStop(train));
+					return train; // dont do the movement.
 				}
 			}
 		}
-		return e;
+		return null;
 	}
 
 }

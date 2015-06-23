@@ -665,6 +665,21 @@ public class TrackTest {
 		Track track = new Straight(null, null, section, 100);
 		Straight.StraightRing ring  = new Straight.StraightRing(track);
 		track = ring.ringTrack(5, 100); // produce a ring.
+		
+		track.getSection().setSectionNumber(1);
+		Track t1 = track.getNext(false);
+		t1.getSection().setSectionNumber(2);
+		Track t2 = t1.getNext(false);
+		t2.getSection().setSectionNumber(3);
+		Track t3 = t2.getNext(false);
+		t3.getSection().setSectionNumber(4);
+		Track t4 = t3.getNext(false);
+		t4.getSection().setSectionNumber(5);
+		
+		ring.recalculateSections();
+		ring.getSectionNumberMap();
+		
+		
 		Locomotive loco = new Locomotive(new Track[]{track,track} ,40,40,40, false);
 		Movable.GenerateID.generateID(loco);
 		Train tr = new Train(new Movable[]{loco});
@@ -693,19 +708,22 @@ public class TrackTest {
 
 			public void notify(Event e){
 				if(e instanceof Event.SectionChanged){
-					if (((Event.SectionChanged) e).getSection() == 0 &&
+					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					if (i  == 1 &&
 					   ((Event.SectionChanged) e).getInto() == true ){
+						
 						sim.notify(new Event.EmergencyStop(0));
 						sim.stop();
-						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(((Event.SectionChanged) e).getSection(),
+						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(i,
 								                                                ((Event.SectionChanged) e).getInto());
 						sectionsList.add(pair1);
 						th.interrupt();
 					}
-					else{
-						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(((Event.SectionChanged) e).getSection(),
+					else {
+						
+						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>( (i % 5 )+1 ,
 					                                                            ((Event.SectionChanged) e).getInto());
-						if(((Event.SectionChanged)e).getInto() == true) sectionsList.add(pair1);
+					     sectionsList.add(pair1);
 					}
 
 				}
@@ -718,13 +736,13 @@ public class TrackTest {
 		try{
 		   Thread.currentThread().join();
 		}catch(InterruptedException e){
-			///System.out.println(sectionsList.toString());
+			System.out.println(sectionsList.toString());
 			assertTrue(sectionsList.size() == 5);
-			assertTrue(sectionsList.get(0).fst == 4);
-			assertTrue(sectionsList.get(1).fst == 3);
-			assertTrue(sectionsList.get(2).fst == 2);
-			assertTrue(sectionsList.get(3).fst == 1);
-			assertTrue(sectionsList.get(4).fst == 0);
+			assertTrue(sectionsList.get(0).fst == 5);
+			assertTrue(sectionsList.get(1).fst == 4);
+			assertTrue(sectionsList.get(2).fst == 3);
+			assertTrue(sectionsList.get(3).fst == 2);
+			assertTrue(sectionsList.get(4).fst == 1);
 		}
 	}
 

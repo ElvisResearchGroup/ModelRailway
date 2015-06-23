@@ -17,6 +17,7 @@ import modelrailway.core.Route;
 import modelrailway.simulation.BackSwitch;
 import modelrailway.simulation.ForwardSwitch;
 import modelrailway.simulation.Straight;
+import modelrailway.simulation.Switch;
 import modelrailway.simulation.Track;
 import modelrailway.simulation.Locomotive;
 import modelrailway.simulation.Movable;
@@ -238,7 +239,7 @@ public class CtlTest {
 
 		// add a locomotive
 
-		Movable locomotive = new Locomotive(new Track[]{head,head},40,20,10,false);
+		Movable locomotive = new Locomotive(new Track[]{head,head},40,20,10,false); // head
 		Movable.GenerateID.generateID(locomotive);
 
 		//locomotive.toggleDirection();
@@ -250,7 +251,7 @@ public class CtlTest {
 		train.setID(0);
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
-		orientationMap.put(0, new modelrailway.core.Train(head.getSection().getNumber(), false));
+		orientationMap.put(0, new modelrailway.core.Train(head.getSection().getNumber(), false)); // go backwards. 
 
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
@@ -267,12 +268,18 @@ public class CtlTest {
 		sec2.putSwitchingOrder(new Pair<Integer,Integer>(headSection,mainRoute),Arrays.asList(new Boolean[]{false}));
 		sec2.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
 		sec2.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
+		
+		System.out.println("Section 2: "+((Switch)sec2.get(0)).getSwitchID());
 
 		sec3.putSwitchingOrder(new Pair<Integer,Integer>(headSection,swAlt),Arrays.asList(new Boolean[]{true}));
 		sec3.putSwitchingOrder(new Pair<Integer,Integer>(headSection,mainRoute),Arrays.asList(new Boolean[]{false}));
 		sec3.putSwitchingOrder(new Pair<Integer,Integer>(swAlt,headSection),Arrays.asList(new Boolean[]{true}));
 		sec3.putSwitchingOrder(new Pair<Integer,Integer>(mainRoute,headSection),Arrays.asList(new Boolean[]{false}));
+		
+		System.out.println("Section 3: "+((Switch)sec3.get(0)).getSwitchID());
 
+		
+	
 		final Route routePlan = new Route(true, sw2Section, swAlt, switchSection, headSection);
 		//System.out.println("route: "+headSection+", "+switchSection+", "+swAlt+", "+sw2Section);
 
@@ -298,6 +305,7 @@ public class CtlTest {
 					}
 					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
 						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+						System.out.println("Try getting next Section for i: "+i);
 						outputArray.add(routePlan.nextSection(i));
 
 					}
@@ -747,19 +755,13 @@ public class CtlTest {
 
 		assertTrue(train.isFowards() == true);
 		ctl.start(0, routePlan);
-
-
-
+		
 		try{
-			//System.out.println("started: ");
 		   Thread.currentThread().join();
-		 //  System.out.println("stopped:");
 		}catch(InterruptedException e){
-			//System.out.println(output);
-			//System.out.println(routePlan);
-			//System.out.println(output);
-			System.out.println("split: "+output.get(0).split(" ")[0]);
-			assertTrue(output.get(0).split(" ")[0].equals("emergency"));
+			System.out.println("output: "+output);
+			System.out.println("split: "+output.get(output.size()-1).split(" ")[0]); // stop on the last one
+			assertTrue(output.get(output.size()-1).split(" ")[0].equals("emergency")); // stop on the last one.
 			assertTrue(locomotive.getFront().getSection().getNumber() == sec2);
 			System.out.println("ctlColTest0");
 			System.out.println(routePlan.toString());
@@ -1067,7 +1069,7 @@ public class CtlTest {
  			System.out.println("output: "+outputArray.toString());
  		}
 
- 		assertTrue(outputArray.get(0).split(" ")[0].equals("emergency"));
+ 		assertTrue(outputArray.get(outputArray.size()-1).split(" ")[0].equals("emergency"));
   	}
 
   	/**

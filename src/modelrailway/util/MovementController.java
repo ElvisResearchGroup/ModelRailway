@@ -136,6 +136,7 @@ public class MovementController implements Controller, Listener {
 		if(currentSection.size() == 0) throw new RuntimeException("No sections for track: ");
 		for(Track t: currentSection){
 			if(movingForward){
+				System.out.println("moving forward");
 				if(t.getPrevious(true).getSection() == previousSection){
 					prev = t.getPrevious(true);
 					curr = t;
@@ -156,6 +157,7 @@ public class MovementController implements Controller, Listener {
 
 			}
 			else{
+				System.out.println("moving back");
 				if(t.getNext(true).getSection() == previousSection){
 					prev = t.getNext(true);
 					curr = t;
@@ -300,13 +302,14 @@ public class MovementController implements Controller, Listener {
 	    			Pair<Integer, Integer> sectionPair = new Pair<Integer,Integer>(prevSec,nextSec);
 	    		    // for sectionPair
 	    		    List<Boolean> switchingOrder = sectionS.retrieveSwitchingOrder(sectionPair);
-
-	    		    System.out.println("Adjust switch: "+((Switch) thisTrack).getSwitchID());
+	    		    
+	    		    System.out.println("Adjust switch: "+(((Switch) thisTrack).getSwitchID()-1));
+	    		    System.out.println("Section Pair: <"+prevSec+","+nextSec+">");
 	    			if(!trainOrientation.getValue().currentOrientation()){
 	    			  Track tr = thisTrack;
 			    	  for(Boolean bl: switchingOrder){ // for each switch//
 			    		  if(!(tr instanceof Switch)) throw new RuntimeException("An invalid Section has been encountered as the section has multiple pieces and a piece is not a switch");
-			    		  this.set(((Switch)tr).getSwitchID(), bl);
+			    		  this.set(((Switch)tr).getSwitchID() -1 , bl);
 			    		  tr = thisTrack.getPrevious(bl); // follow track
 			    	  }
 	    			}

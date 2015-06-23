@@ -27,8 +27,8 @@ public class Train extends Movable {
 	}
 	public int move(Event.Listener ls){
 		super.move(ls); //
-		System.out.println("in move for Train : "+ this.getID());
-		System.out.println("trainParts[0].getID()" + trainParts[0].getID());
+		//System.out.println("in move for Train : "+ this.getID());
+		//System.out.println("trainParts[0].getID()" + trainParts[0].getID());
 		//System.out.println("supermove dist: "+ super.getDistance());
 		for(int i = 1; i<trainParts.length; i++){
 			trainParts[i].move(ls);
