@@ -32,9 +32,15 @@ public class HardwareTrackTest extends Main{
 		super(railway, controller);
 		Command[] cmd = this.getCommands();
 		Command htest0 = this.new Command("hardwareTest0", getMethod("hardwareTest0"));
-		Command[] cmd2 = new Command[cmd.length+1];
+		Command htest1 = this.new Command("hardwareTest1", getMethod("hardwareTest1"));
+		Command htest2 = this.new Command("hardwareTest2", getMethod("hardwareTest2"));
+		Command htest3 = this.new Command("hardwareTest3", getMethod("hardwareTest3"));
+		Command[] cmd2 = new Command[cmd.length+4];
 		System.arraycopy(cmd, 0, cmd2, 0, cmd.length);
-		cmd2[cmd2.length-1] = htest0;
+		cmd2[cmd2.length-4] = htest0;
+		cmd2[cmd2.length-3] = htest1;
+		cmd2[cmd2.length-2] = htest2;
+		cmd2[cmd2.length-1] = htest3;
 		this.setCommands(cmd2);
 
 		// TODO Auto-generated constructor stub
@@ -151,7 +157,7 @@ public class HardwareTrackTest extends Main{
 		try{
 			Thread.currentThread().join();
 		}catch(InterruptedException e){
-			System.out.println("testTrackRun0");
+			System.out.println("hardwareTest0");
 			System.out.println("route: "+route.toString());
 			System.out.println("output: "+outputArray.toString());
 		}
@@ -166,5 +172,226 @@ public class HardwareTrackTest extends Main{
 
 
 	}
+
+
+	public void hardwareTest1(){
+
+		final Controller controller = getCtl();
+		// Enter Read, Evaluate, Print loop.
+
+		StraightDblRing ring = sim0.getTrack();
+
+		ring.getSectionNumberMap();
+
+
+		final Route route = new Route(true,1,2,3,4,19,20);
+
+
+
+		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
+		final Thread th = Thread.currentThread();
+
+
+		controller.register(new Listener(){
+			public void notify(Event e){
+ 				System.out.println("event in unit test: "+e.toString());
+
+ 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+ 				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 				  outputArray.add(i);
+ 				  System.out.println("sectionchanged in unit test into section: "+ i);
+ 				  if(i == 19){
+ 					  System.out.println("stop triggered by unit test");
+ 					  controller.stop(0);
+ 					  th.interrupt();
+
+ 				  }
+ 				}
+ 				else if(e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+ 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					outputArray.add(route.nextSection(i));
+					if(route.nextSection(i) == 20){
+						System.out.println("stop triggered by unit test");
+	 					controller.stop(0);
+	 					th.interrupt();
+					}
+
+
+ 				}
+
+ 				if(e instanceof Event.EmergencyStop){
+ 					System.out.println("an emergency stop has been triggered by an event in the unit test");
+ 					controller.stop(0);
+ 					th.interrupt();
+ 				}
+ 			}
+
+		});
+
+ 		controller.start(0, route);
+
+		try{
+			Thread.currentThread().join();
+		}catch(InterruptedException e){
+			System.out.println("hardwareTest1");
+			System.out.println("route: "+route.toString());
+			System.out.println("output: "+outputArray.toString());
+		}
+		assert(outputArray.get(0) == 2);
+		assert(outputArray.get(1) == 3);
+		assert(outputArray.get(2) == 4);
+		assert(outputArray.get(3) == 19);
+		//assert(outputArray.get(4) == 20);
+
+
+	}
+
+	public void hardwareTest2(){
+
+		final Controller controller = getCtl();
+		// Enter Read, Evaluate, Print loop.
+
+		StraightDblRing ring = sim0.getTrack();
+
+		ring.getSectionNumberMap();
+
+
+		final Route route = new Route(true,1,2,3,4,5,6,7,8,9,10);
+
+
+
+		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
+		final Thread th = Thread.currentThread();
+
+
+		controller.register(new Listener(){
+			public void notify(Event e){
+ 				System.out.println("event in unit test: "+e.toString());
+
+ 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+ 				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 				  outputArray.add(i);
+ 				  System.out.println("sectionchanged in unit test into section: "+ i);
+ 				  if(i == 10){
+ 					  System.out.println("stop triggered by unit test");
+ 					  controller.stop(0);
+ 					  th.interrupt();
+
+ 				  }
+ 				}
+ 				else if(e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+ 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					outputArray.add(route.nextSection(i));
+					if(route.nextSection(i) == 10){
+						System.out.println("stop triggered by unit test");
+	 					controller.stop(0);
+	 					th.interrupt();
+					}
+
+
+ 				}
+
+ 				if(e instanceof Event.EmergencyStop){
+ 					System.out.println("an emergency stop has been triggered by an event in the unit test");
+ 					controller.stop(0);
+ 					th.interrupt();
+ 				}
+ 			}
+
+		});
+
+ 		controller.start(0, route);
+
+		try{
+			Thread.currentThread().join();
+		}catch(InterruptedException e){
+			System.out.println("hardwareTest2");
+			System.out.println("route: "+route.toString());
+			System.out.println("output: "+outputArray.toString());
+		}
+		assert(outputArray.get(0) == 2);
+		assert(outputArray.get(1) == 3);
+		assert(outputArray.get(2) == 4);
+		assert(outputArray.get(3) == 5);
+		assert(outputArray.get(3) == 6);
+		assert(outputArray.get(3) == 7);
+		assert(outputArray.get(3) == 8);
+		assert(outputArray.get(3) == 9);
+
+	}
+	public void hardwareTest3(){
+
+		final Controller controller = getCtl();
+		// Enter Read, Evaluate, Print loop.
+
+		StraightDblRing ring = sim0.getTrack();
+
+		ring.getSectionNumberMap();
+		((TrainController)controller).trainOrientations().get(0).setSection(9);
+
+		final Route route = new Route(true,9,10,3,4,5,6,7,8,1);
+
+
+
+		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
+		final Thread th = Thread.currentThread();
+
+
+		controller.register(new Listener(){
+			public void notify(Event e){
+ 				System.out.println("event in unit test: "+e.toString());
+
+ 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+ 				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 				  outputArray.add(i);
+ 				  System.out.println("sectionchanged in unit test into section: "+ i);
+ 				  if(i == 1){
+ 					  System.out.println("stop triggered by unit test");
+ 					  controller.stop(0);
+ 					  th.interrupt();
+
+ 				  }
+ 				}
+ 				else if(e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+ 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					outputArray.add(route.nextSection(i));
+					if(route.nextSection(i) == 1){
+						System.out.println("stop triggered by unit test");
+	 					controller.stop(0);
+	 					th.interrupt();
+					}
+
+
+ 				}
+
+ 				if(e instanceof Event.EmergencyStop){
+ 					System.out.println("an emergency stop has been triggered by an event in the unit test");
+ 					controller.stop(0);
+ 					th.interrupt();
+ 				}
+ 			}
+
+		});
+
+ 		controller.start(0, route);
+
+		try{
+			Thread.currentThread().join();
+		}catch(InterruptedException e){
+			System.out.println("hardwareTest2");
+			System.out.println("route: "+route.toString());
+			System.out.println("output: "+outputArray.toString());
+		}
+		assert(outputArray.get(0) == 10);
+		assert(outputArray.get(1) == 3);
+		assert(outputArray.get(2) == 4);
+		assert(outputArray.get(3) == 5);
+		assert(outputArray.get(3) == 6);
+		assert(outputArray.get(3) == 7);
+		assert(outputArray.get(3) == 8);
+		assert(outputArray.get(3) == 1);
+
+	}
+
 
 }

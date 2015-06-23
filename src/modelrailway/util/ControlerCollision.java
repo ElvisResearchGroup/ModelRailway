@@ -110,6 +110,9 @@ public class ControlerCollision extends MovementController implements Controller
 				//System.out.println("reserved: "+reserved);
 				if(reserved == false){ // we need to trigger an emergency stop
 					System.out.println("========train is being stoped as reserved is false");
+					
+					System.out.println("altNext, section: "+altNext.getSection().getNumber() + "next, section "+notAltNext.getSection().getNumber() +" thisSec: " +thisSec.getNumber());
+					
 					this.stop(train);
 					System.out.println("sending emergency stop");
 					
