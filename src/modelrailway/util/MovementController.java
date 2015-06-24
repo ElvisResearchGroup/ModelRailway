@@ -246,83 +246,45 @@ public class MovementController implements Controller, Listener {
 	    		// first work out which track segments we are currently dealing with.
 
 	    		Integer prevSection = trainRoutes.get(trainOrientation.getKey()).prevSection(section); // the previous section that we came from
-	    		Integer nextSection = trainRoutes.get(trainOrientation.getKey()).nextSection(section);  // next section.
+	    	//	Integer nextSection = trainRoutes.get(trainOrientation.getKey()).nextSection(section);  // next section.
 	    		Section previous = sections.get(prevSection);
 
-	    		Integer trainSection = eventsectionID;//((Event.SectionChanged) e).getSection(); // store the section number in a variable
+	    		Section thisSection = sections.get(section);
+
+	    		//Integer trainSection = eventsectionID;//((Event.SectionChanged) e).getSection(); // store the section number in a variable
 	    		//System.out.println("try get current track: "+trainSection +" prevSection: "+prevSection);
 	    		Track thisTrack = sections.get(eventsectionID).get(0);
+	    		unlockSection(previous, trainOrientation);
 
-	    		for(Track t :previous){
-	    			boolean trainMoved = false;
-	    			Section tracSec = t.getSection();
-	    			Section trackAltSec = t.getAltSection();
-	    			if(tracSec != null){
-	    				Pair<Boolean,Integer> pair = null;
-	    				if(!tracSec.isQueueEmpty() && trainOrientation.getKey() != null){
-	    					pair = tracSec.removeFromQueue(trainOrientation.getKey());
-	    				}
-	    				if(pair != null){
-	    				   if(pair.fst != null && pair.fst){ // instruct next train to move.
-	    					   if(!trainMoved && pair.snd != null) {
-	    						   this.resumeTrain(pair.snd);
-	    						   
-	    						   trainMoved = true;
-	    					   }
-	    				   }
-	    				}
-	    			}
-	    			Pair<Boolean,Integer> pair = null;
-	    			if((trackAltSec != null) && (!trackAltSec.isQueueEmpty()) && (trainOrientation.getKey() != null)){
-	    				//System.out.println("trackAltSec.isQueueEmpty: "+trackAltSec.isQueueEmpty()+" track: "+trackAltSec.getNumber());
-	    				pair = trackAltSec.removeFromQueue(trainOrientation.getKey());
-	    			}
-	    			if(pair != null && pair.snd != null){
-	    			   if(pair.fst != null && pair.fst){
-	    				   if(!trainMoved && pair.snd!= null) {
-	    					  // if(pair.snd == null) throw new RuntimeException("trackAltSec Number: "+trackAltSec.getNumber()+" peep at altsec: "+trackAltSec.getEntryRequests().toString()+"trackAltSec: "+trackAltSec.getNumber());
-	    					   this.resumeTrain(pair.snd);
-	    					   trainMoved = true;
-	    				   }
-	    			   }
-	    			}
-	    		}
+	    		try{
+	    			//Integer previousPrev = trainRoutes.get(trainOrientation.getKey()).prevSection(prevSection);
+	    			//Section previousPrevSec = sections.get(previousPrev);
+	    			Track tr = previous.get(0);
+	    			if(tr.getNext(false).getSection() == thisSection|| tr.getNext(false).getAltSection() == thisSection){
+	    				unlockSection(tr.getNext(true).getSection(), trainOrientation);
+	    				unlockSection(tr.getNext(true).getAltSection(),trainOrientation);
 
+	    			} else if (tr.getNext(true).getSection() == thisSection || tr.getNext(true).getAltSection()== thisSection){
+	    				unlockSection(tr.getNext(false).getSection(), trainOrientation);
+	    				unlockSection(tr.getNext(false).getAltSection(),trainOrientation);
+
+	    			} else if (tr.getPrevious(false).getSection() == thisSection || tr.getPrevious(false).getAltSection() == thisSection){
+	    				unlockSection(tr.getPrevious(true).getSection(), trainOrientation);
+	    				unlockSection(tr.getPrevious(true).getAltSection(),trainOrientation);
+	    			} else if (tr.getPrevious(true).getSection() == thisSection|| tr.getPrevious (false).getAltSection() == thisSection){
+	    				unlockSection(tr.getPrevious(false).getSection(), trainOrientation);
+	    				unlockSection(tr.getPrevious(false).getAltSection(),trainOrientation);
+	    			}
+
+	    		} catch(RuntimeException ex){}
 
 	    		//System.out.println("Switch"+thisTrack);
 	    		System.out.println("trackSection: "+thisTrack.getSection().getNumber());
 
 	    		if(thisTrack instanceof Switch){ // move switches
-
 	    			Integer trainID = trainOrientation.getKey();
-	    			Route rt = trainRoutes.get(trainID);
-	    			Section sectionS = sections.get(section);
-	    		    Integer nextSec = rt.nextSection(section);
-	    			Integer prevSec = rt.prevSection(section); // the section we came from
-	    			Pair<Integer, Integer> sectionPair = new Pair<Integer,Integer>(prevSec,nextSec);
-	    		    // for sectionPair
-	    		    List<Boolean> switchingOrder = sectionS.retrieveSwitchingOrder(sectionPair);
-	    		    
-	    		    System.out.println("Adjust switch: "+(((Switch) thisTrack).getSwitchID()-1));
-	    		    System.out.println("Section Pair: <"+prevSec+","+nextSec+">");
-	    			if(!trainOrientation.getValue().currentOrientation()){
-	    			  Track tr = thisTrack;
-			    	  for(Boolean bl: switchingOrder){ // for each switch//
-			    		  if(!(tr instanceof Switch)) throw new RuntimeException("An invalid Section has been encountered as the section has multiple pieces and a piece is not a switch");
-			    		  this.set(((Switch)tr).getSwitchID() -1 , bl);
-			    		  tr = thisTrack.getPrevious(bl); // follow track
-			    	  }
-	    			}
-	    			else{
-	    			  Track tr = thisTrack;
-				      for(Boolean bl: switchingOrder){ // for each switch//
-				    	 if(!(tr instanceof Switch)) throw new RuntimeException("An invalid Section has been encountered as the section has multiple pieces and a piece is not a switch");
-				    	// System.out.println("trSwitch ID: "+((Switch) tr).getSwitchID());
-				    	 System.out.println("Switch: "+((Switch)tr).getSwitchID()+", Turnout: "+bl+"tr.getSection().getNumber(): "+tr.getSection().getNumber());
-				    	 this.set(((Switch)tr).getSwitchID()-1, bl); // minus 1 to adjust for counting from zero in turnout array
-				    	 tr = thisTrack.getNext(bl); // follow track
-				      }
-	    			}
+	    			Train trainObj = trainOrientation.getValue();
+	    			moveSwitches(trainID, section, trainObj, thisTrack);
 	    		}
 	    	}
 
@@ -331,11 +293,107 @@ public class MovementController implements Controller, Listener {
 		//System.out.println("End of adjust section");
 	}
 
+	private void unlockSection(Section previous, Map.Entry<Integer,Train> trainOrientation){
+		if(previous == null) return;
+		for(Track t :previous){
+			boolean trainMoved = false;
+			Section tracSec = t.getSection();
+			Section trackAltSec = t.getAltSection();
+			if(tracSec != null){
+				Pair<Boolean,Integer> pair = null;
+				if(!tracSec.isQueueEmpty() && trainOrientation.getKey() != null){
+					pair = tracSec.removeFromQueue(trainOrientation.getKey());
+					System.out.println("==========================================");
+    				System.out.println("trainOrientation.getKey() removed from Queue: "+trainOrientation.getKey());
+    				System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+    				System.out.println("trainOrientation.getKey() in Queue ?: "+tracSec.getEntryRequests().contains(trainOrientation.getKey()));
+				}
+				if(pair != null){
+				   if(pair.fst != null && pair.fst){ // instruct next train to move.
+					   if(!trainMoved && pair.snd != null) {
+						   this.resumeTrain(pair.snd);
+
+						   trainMoved = true;
+					   }
+				   }
+				}
+			}
+			Pair<Boolean,Integer> pair = null;
+			if((trackAltSec != null) && (!trackAltSec.isQueueEmpty()) && (trainOrientation.getKey() != null)){
+				//System.out.println("trackAltSec.isQueueEmpty: "+trackAltSec.isQueueEmpty()+" track: "+trackAltSec.getNumber());
+				pair = trackAltSec.removeFromQueue(trainOrientation.getKey());
+				System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+				System.out.println("trainOrientation.getKey() removed from Queue: "+trainOrientation.getKey());
+				System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+			}
+			if(pair != null && pair.snd != null){
+			   if(pair.fst != null && pair.fst){
+				   if(!trainMoved && pair.snd!= null) {
+					  // if(pair.snd == null) throw new RuntimeException("trackAltSec Number: "+trackAltSec.getNumber()+" peep at altsec: "+trackAltSec.getEntryRequests().toString()+"trackAltSec: "+trackAltSec.getNumber());
+					   this.resumeTrain(pair.snd);
+					   trainMoved = true;
+				   }
+			   }
+			}
+		}
+
+	}
+
+	/**
+	 * trainID , the ID of the train moving through, section: the section number that we are switching.
+	 * trainObj : the Train object for the train with trainID as its identification number,
+	 * thisTrack: the track that contains the switch we are moving first.
+	 * @param trainID
+	 * @param section
+	 * @param trainObj
+	 * @param thisTrack
+	 */
+	public void moveSwitches(Integer trainID, Integer section, Train trainObj, Track  thisTrack){
+
+
+		Route rt = trainRoutes.get(trainID);
+		Section sectionS = sections.get(section);
+	    Integer nextSec = rt.nextSection(section);
+		Integer prevSec = rt.prevSection(section); // the section we came from
+		Pair<Integer, Integer> sectionPair = new Pair<Integer,Integer>(prevSec,nextSec);
+	    // for sectionPair
+	    List<Boolean> switchingOrder = sectionS.retrieveSwitchingOrder(sectionPair);
+
+	    System.out.println("Adjust switch: "+(((Switch) thisTrack).getSwitchID()-1));
+	    System.out.println("Section Pair: <"+prevSec+","+nextSec+">");
+	    System.out.println("switchingOrder: "+ switchingOrder);
+		if(!trainObj.currentOrientation()){
+		  Track tr = thisTrack;
+    	  for(Boolean bl: switchingOrder){ // for each switch//
+    		  if(!(tr instanceof Switch)) throw new RuntimeException("An invalid Section has been encountered as the section has multiple pieces and a piece is not a switch");
+    		  this.set(((Switch)tr).getSwitchID() -1 , bl);
+    		  tr = thisTrack.getPrevious(bl); // follow track
+    	  }
+		}
+		else{
+		  Track tr = thisTrack;
+
+	      for(Boolean bl: switchingOrder){ // for each switch//
+	    	 if(!(tr instanceof Switch)) throw new RuntimeException("An invalid Section has been encountered as the section has multiple pieces and a piece is not a switch");
+	    	// System.out.println("trSwitch ID: "+((Switch) tr).getSwitchID());
+	    	 System.out.println("Switch: "+((Switch)tr).getSwitchID()+", Turnout: "+bl+"tr.getSection().getNumber(): "+tr.getSection().getNumber());
+	    	 this.set(((Switch)tr).getSwitchID()-1, bl); // minus 1 to adjust for counting from zero in turnout array
+	    	 tr = thisTrack.getNext(bl); // follow track
+	      }
+		}
+
+	}
+
 	@Override
 	public void register(Listener listener) {
 
 		listeners.add(listener);
 
+
+	}
+
+	public void deregister(Listener listener){
+		listeners.remove(listener);
 
 	}
 

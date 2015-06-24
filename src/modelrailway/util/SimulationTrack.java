@@ -357,10 +357,10 @@ public class SimulationTrack {
 
 		    //add switching order for s10
 
-		    sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(9,3),Arrays.asList(new Boolean[]{false}));
-		    sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(9,11),Arrays.asList(new Boolean[]{true}));
-		    sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(11,9),Arrays.asList(new Boolean[]{true}));
-		    sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(3,9),Arrays.asList(new Boolean[]{false}));
+		    sectionTen.putSwitchingOrder(new Pair<Integer,Integer>(9,3),Arrays.asList(new Boolean[]{false}));
+		    sectionTen.putSwitchingOrder(new Pair<Integer,Integer>(9,11),Arrays.asList(new Boolean[]{true}));
+		    sectionTen.putSwitchingOrder(new Pair<Integer,Integer>(11,9),Arrays.asList(new Boolean[]{true}));
+		    sectionTen.putSwitchingOrder(new Pair<Integer,Integer>(3,9),Arrays.asList(new Boolean[]{false}));
 
 		    //add switching order for s3
 

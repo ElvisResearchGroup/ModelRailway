@@ -35,8 +35,10 @@ public class HardwareTrackTest extends Main{
 		Command htest1 = this.new Command("hardwareTest1", getMethod("hardwareTest1"));
 		Command htest2 = this.new Command("hardwareTest2", getMethod("hardwareTest2"));
 		Command htest3 = this.new Command("hardwareTest3", getMethod("hardwareTest3"));
-		Command[] cmd2 = new Command[cmd.length+4];
+		Command htest4 = this.new Command("hardwareTest4", getMethod("hardwareTest4"));
+		Command[] cmd2 = new Command[cmd.length+5];
 		System.arraycopy(cmd, 0, cmd2, 0, cmd.length);
+		cmd2[cmd2.length-5] = htest4;
 		cmd2[cmd2.length-4] = htest0;
 		cmd2[cmd2.length-3] = htest1;
 		cmd2[cmd2.length-2] = htest2;
@@ -62,18 +64,25 @@ public class HardwareTrackTest extends Main{
 	private static ModelRailway rails;
 	private static Controller ctl;
 
+	public HardwareTrackTest(){
+		super(null,null);
+
+	}
+
 	private static final SimulationTrack sim0 = new SimulationTrack();
 
 	public static void main(String args[]) throws Exception {
 		String port = args[0];
+		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
 
 		// Needed for connection on lab machines
-		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
+
 
 		// Construct the model railway assuming the interface (i.e. USB Cable)
 		// is on a given port. Likewise, we initialise it with three locomotives
 		// whose addresses are 1,2 + 3. If more locomotives are to be used, this
 		// needs to be updated accordingly.
+
 		final ModelRailway railway = new ModelRailway(port,
 				new int[] {1});
 		rails = railway;
@@ -92,12 +101,15 @@ public class HardwareTrackTest extends Main{
 		Train[] trains = {
 				new Train(1,true), // default config for train 0
 		};
-		Controller controller = new TrainController(trains,railway, sim0);
-		railway.register(controller);
-		controller.register(railway);
+		Controller controller = new TrainController(trains,rails, sim0);
+		rails.register(controller);
+		controller.register(rails);
 		ctl = controller;
 		System.out.println("got to print Loop");
-		new HardwareTrackTest(railway,controller).readEvaluatePrintLoop();
+		HardwareTrackTest tst = new HardwareTrackTest(rails,controller);
+		tst.ctl = ctl;
+		tst.rails = rails;
+		tst.readEvaluatePrintLoop();
 	}
 
 
@@ -112,16 +124,14 @@ public class HardwareTrackTest extends Main{
 
 		ring.getSectionNumberMap();
 
-
+		((TrainController)controller).trainOrientations().get(0).setSection(1);
 		final Route route = new Route(true, 2,3,4,5,6,7,8,1);
 
 
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		final Thread th = Thread.currentThread();
-
-
-		controller.register(new Listener(){
+		final Listener lst = new Listener(){
 			public void notify(Event e){
  				System.out.println("event in unit test: "+e.toString());
 
@@ -150,7 +160,9 @@ public class HardwareTrackTest extends Main{
  				}
  			}
 
-		});
+		};
+
+		controller.register(lst);
 
  		controller.start(0, route);
 
@@ -170,6 +182,7 @@ public class HardwareTrackTest extends Main{
 		assert(outputArray.get(6) == 8);
 		assert(outputArray.get(7) == 1);
 
+		((TrainController) controller).deregister(lst);
 
 	}
 
@@ -182,7 +195,7 @@ public class HardwareTrackTest extends Main{
 		StraightDblRing ring = sim0.getTrack();
 
 		ring.getSectionNumberMap();
-
+		((TrainController)controller).trainOrientations().get(0).setSection(1);
 
 		final Route route = new Route(true,1,2,3,4,19,20);
 
@@ -191,8 +204,7 @@ public class HardwareTrackTest extends Main{
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		final Thread th = Thread.currentThread();
 
-
-		controller.register(new Listener(){
+		final Listener lst = new Listener(){
 			public void notify(Event e){
  				System.out.println("event in unit test: "+e.toString());
 
@@ -226,7 +238,9 @@ public class HardwareTrackTest extends Main{
  				}
  			}
 
-		});
+		};
+
+		controller.register(lst);
 
  		controller.start(0, route);
 
@@ -243,6 +257,8 @@ public class HardwareTrackTest extends Main{
 		assert(outputArray.get(3) == 19);
 		//assert(outputArray.get(4) == 20);
 
+		((TrainController) controller).deregister(lst);
+
 
 	}
 
@@ -254,7 +270,7 @@ public class HardwareTrackTest extends Main{
 		StraightDblRing ring = sim0.getTrack();
 
 		ring.getSectionNumberMap();
-
+		((TrainController)controller).trainOrientations().get(0).setSection(1);
 
 		final Route route = new Route(true,1,2,3,4,5,6,7,8,9,10);
 
@@ -263,8 +279,7 @@ public class HardwareTrackTest extends Main{
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		final Thread th = Thread.currentThread();
 
-
-		controller.register(new Listener(){
+		final Listener lst  = new Listener(){
 			public void notify(Event e){
  				System.out.println("event in unit test: "+e.toString());
 
@@ -298,7 +313,8 @@ public class HardwareTrackTest extends Main{
  				}
  			}
 
-		});
+		};
+		controller.register(lst);
 
  		controller.start(0, route);
 
@@ -318,6 +334,8 @@ public class HardwareTrackTest extends Main{
 		assert(outputArray.get(3) == 8);
 		assert(outputArray.get(3) == 9);
 
+		((TrainController) controller).deregister(lst);
+
 	}
 	public void hardwareTest3(){
 
@@ -335,9 +353,7 @@ public class HardwareTrackTest extends Main{
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		final Thread th = Thread.currentThread();
-
-
-		controller.register(new Listener(){
+		final Listener lst = new Listener(){
 			public void notify(Event e){
  				System.out.println("event in unit test: "+e.toString());
 
@@ -371,7 +387,9 @@ public class HardwareTrackTest extends Main{
  				}
  			}
 
-		});
+		};
+
+		controller.register(lst);
 
  		controller.start(0, route);
 
@@ -391,7 +409,14 @@ public class HardwareTrackTest extends Main{
 		assert(outputArray.get(3) == 8);
 		assert(outputArray.get(3) == 1);
 
+		((TrainController) controller) .deregister(lst);
+
 	}
 
+	public void hardwareTest4() throws Exception{
+		hardwareTest2();
+		Thread.sleep(1000);
 
+		hardwareTest3();
+	}
 }
