@@ -40,7 +40,7 @@ public class TrackTest {
 		Track tp_1 = head.getNext(false);
 		Track tp_2 = tp_1.getNext(false);
 		Track tp_3 = tp_2.getNext(false);
-		
+
 
 
 		if(head != tp_3){
@@ -66,7 +66,7 @@ public class TrackTest {
 		sec.add(head);
 		Track tp_1 = head.getNext(false);
 		Track tp_2 = tp_1.getNext(false);
-		
+
 
 
 
@@ -92,9 +92,9 @@ public class TrackTest {
 		Track tp_2 = tp_1.getNext(false);
 		Track tp_3 = tp_2.getNext(false);
 		Track tp_4 = tp_3.getNext(false);
-		
 
-		
+
+
 		if(head != tp_4){
 			fail("wrong length");
 		}
@@ -664,8 +664,8 @@ public class TrackTest {
 		Section section = new Section(new ArrayList<Track>());
 		Track track = new Straight(null, null, section, 100);
 		Straight.StraightRing ring  = new Straight.StraightRing(track);
-		track = ring.ringTrack(5, 100); // produce a ring.
-		
+		track = ring.ringTrack(6, 100); // produce a ring.
+
 		track.getSection().setSectionNumber(1);
 		Track t1 = track.getNext(false);
 		t1.getSection().setSectionNumber(2);
@@ -675,19 +675,23 @@ public class TrackTest {
 		t3.getSection().setSectionNumber(4);
 		Track t4 = t3.getNext(false);
 		t4.getSection().setSectionNumber(5);
-		
+		Track t5 = t4.getNext(false);
+		t5.getSection().setSectionNumber(6);
+
 		ring.recalculateSections();
 		ring.getSectionNumberMap();
-		
-		
-		Locomotive loco = new Locomotive(new Track[]{track,track} ,40,40,40, false);
+
+
+		Locomotive loco = new Locomotive(new Track[]{track,track} ,40,40,10, false);
+
 		Movable.GenerateID.generateID(loco);
 		Train tr = new Train(new Movable[]{loco});
+		tr.toggleDirection(); // make simulation train start by going backwards.
 		Map<Integer,Train> map = new HashMap<Integer,Train>();
 		map.put(0, tr);
 		tr.setID(0);
 		Map<Integer,modelrailway.core.Train>  map2 = new HashMap<Integer,modelrailway.core.Train>();
-		map2.put(0, new modelrailway.core.Train(0,true));
+		map2.put(0, new modelrailway.core.Train(1,false));
 
 		final class Pair<X,Y> {
 			public Pair(X one , Y two){
@@ -709,9 +713,10 @@ public class TrackTest {
 			public void notify(Event e){
 				if(e instanceof Event.SectionChanged){
 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					System.out.println("i: "+i);
 					if (i  == 1 &&
 					   ((Event.SectionChanged) e).getInto() == true ){
-						
+
 						sim.notify(new Event.EmergencyStop(0));
 						sim.stop();
 						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(i,
@@ -720,9 +725,12 @@ public class TrackTest {
 						th.interrupt();
 					}
 					else {
-						
-						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>( (i % 5 )+1 ,
-					                                                            ((Event.SectionChanged) e).getInto());
+						Integer sec = i;
+						if(((Event.SectionChanged) e).getInto() == false){
+						  sec = i-1;
+						  if(sec == 0) sec = 6;
+						}
+						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>( sec, true);
 					     sectionsList.add(pair1);
 					}
 
@@ -737,12 +745,13 @@ public class TrackTest {
 		   Thread.currentThread().join();
 		}catch(InterruptedException e){
 			System.out.println(sectionsList.toString());
-			assertTrue(sectionsList.size() == 5);
-			assertTrue(sectionsList.get(0).fst == 5);
-			assertTrue(sectionsList.get(1).fst == 4);
-			assertTrue(sectionsList.get(2).fst == 3);
-			assertTrue(sectionsList.get(3).fst == 2);
-			assertTrue(sectionsList.get(4).fst == 1);
+			assertTrue(sectionsList.size() == 6);
+			assertTrue(sectionsList.get(0).fst == 6);
+			assertTrue(sectionsList.get(1).fst == 5);
+			assertTrue(sectionsList.get(2).fst == 4);
+			assertTrue(sectionsList.get(3).fst == 3);
+			assertTrue(sectionsList.get(4).fst == 2);
+			assertTrue(sectionsList.get(5).fst == 1);
 		}
 	}
 
@@ -754,12 +763,12 @@ public class TrackTest {
  		Section section = new Section(new ArrayList<Track>());
  		Track track = new Straight(null, null, section, 100);
  		Straight.StraightRing ring  = new Straight.StraightRing(track);
- 		track = ring.ringTrack(5, 100); // produce a ring.
- 		Locomotive loco1 = new Locomotive(new Track[]{track,track} ,40,40,40, false);
+ 		track = ring.ringTrack(6, 100); // produce a ring.
+ 		Locomotive loco1 = new Locomotive(new Track[]{track,track} ,40,40,10, false);
  		Movable.GenerateID.generateID(loco1);
  		//create two trains
  		final Train tr = new Train(new Movable[]{loco1});
- 		Locomotive loco2 =new Locomotive(new Track[]{track.getNext(false),track.getNext(false)},40,40,40,false );
+ 		Locomotive loco2 =new Locomotive(new Track[]{track.getNext(false),track.getNext(false)},40,40,10,false );
  		Movable.GenerateID.generateID(loco2);
  		final Train tr2 = new Train (new Movable[]{loco2});
 

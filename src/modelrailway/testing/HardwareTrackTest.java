@@ -415,7 +415,7 @@ public class HardwareTrackTest extends Main{
 
 	public void hardwareTest4() throws Exception{
 		hardwareTest2();
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 
 		hardwareTest3();
 	}
