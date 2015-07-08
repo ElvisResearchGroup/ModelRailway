@@ -764,11 +764,27 @@ public class TrackTest {
  		Track track = new Straight(null, null, section, 100);
  		Straight.StraightRing ring  = new Straight.StraightRing(track);
  		track = ring.ringTrack(6, 100); // produce a ring.
+
+ 		track.getSection().setSectionNumber(1);
+		Track t1 = track.getNext(false);
+		t1.getSection().setSectionNumber(2);
+		Track t2 = t1.getNext(false);
+		t2.getSection().setSectionNumber(3);
+		Track t3 = t2.getNext(false);
+		t3.getSection().setSectionNumber(4);
+		Track t4 = t3.getNext(false);
+		t4.getSection().setSectionNumber(5);
+		Track t5 = t4.getNext(false);
+		t5.getSection().setSectionNumber(6);
+
+		ring.recalculateSections();
+		ring.getSectionNumberMap();
+
  		Locomotive loco1 = new Locomotive(new Track[]{track,track} ,40,40,10, false);
  		Movable.GenerateID.generateID(loco1);
  		//create two trains
  		final Train tr = new Train(new Movable[]{loco1});
- 		Locomotive loco2 =new Locomotive(new Track[]{track.getNext(false),track.getNext(false)},40,40,10,false );
+ 		Locomotive loco2 =new Locomotive(new Track[]{track.getNext(false).getNext(false).getNext(false),track.getNext(false).getNext(false).getNext(false)},40,40,10,false );
  		Movable.GenerateID.generateID(loco2);
  		final Train tr2 = new Train (new Movable[]{loco2});
 
@@ -797,19 +813,28 @@ public class TrackTest {
  		final ArrayList<Pair<Integer,Boolean>> trSectionsList = new ArrayList<Pair<Integer,Boolean>>();
  		final ArrayList<Pair<Integer,Boolean>> tr2SectionsList = new ArrayList<Pair<Integer,Boolean>>();
  		final Thread th = Thread.currentThread();
+        final ArrayList<String> eventList = new ArrayList<String>();
 
  		Listener lis = new Listener(){
  			public void notify(Event e){
+ 				eventList.add(e.toString());
  				if(e instanceof Event.SectionChanged){
- 					if (((Event.SectionChanged) e).getSection() == 0 &&
- 					   ((Event.SectionChanged) e).getInto() == true ){
+ 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 					Integer sec = i;
+					if(((Event.SectionChanged) e).getInto() == false){
+					  sec = i+1;
+					  if(sec == 0) sec = 6;
+					}
+					System.out.println("sec: "+sec);
+					if (sec  == 1 &&
+					   ((Event.SectionChanged) e).getInto() == true ){
 
  						sim.notify(new Event.EmergencyStop(0));
  						sim.notify(new Event.EmergencyStop(1));
  						sim.stop();
- 						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(((Event.SectionChanged) e).getSection(),
+ 						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(sec,
  								                                                ((Event.SectionChanged) e).getInto());
- 						if(tr.getFront().getSection().getNumber() == ((SectionChanged) e).getSection()){
+ 						if(tr.getFront().getSection().getNumber() == sec){
  						    trSectionsList.add(pair1);
  						}
  						else{
@@ -817,17 +842,18 @@ public class TrackTest {
  						}
  						th.interrupt();
  					}
- 					else if (((SectionChanged) e).getInto() == true){
- 						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(((Event.SectionChanged) e).getSection(),
+ 					else {
+ 						
+ 						Pair<Integer,Boolean> pair1 = new Pair<Integer,Boolean>(sec,
  					                                                            ((Event.SectionChanged) e).getInto());
- 						if(((Event.SectionChanged)e).getInto() == true){
- 							if(tr.getFront().getSection().getNumber() == ((SectionChanged) e).getSection()){
+ 						//if(((Event.SectionChanged)e).getInto() == true){
+ 							if(tr.getFront().getSection().getNumber() == sec){
  	 						    trSectionsList.add(pair1);
  	 						}
  	 						else{
  	 							tr2SectionsList.add(pair1);
  	 						}
- 						}
+ 						//}
  					}
  				}
  			}
@@ -840,25 +866,26 @@ public class TrackTest {
  		try{
  		   Thread.currentThread().join();
  		}catch(InterruptedException e){
- 			//System.out.println(trSectionsList);
- 			//System.out.println(tr2SectionsList);
- 		    assertTrue(tr2SectionsList.get(0).fst == 3);
- 		    assertTrue(tr2SectionsList.get(1).fst == 2);
+ 			System.out.println("trSectionsList: "+trSectionsList.toString());
+ 			System.out.println("tr2SectionsList: "+tr2SectionsList.toString());
+ 			//System.out.println("sectionList: "+eventList.toString());
+ 		    assertTrue(tr2SectionsList.get(0).fst == 5);
+ 		    assertTrue(tr2SectionsList.get(1).fst == 6);
  		    assertTrue(tr2SectionsList.get(2).fst == 1);
- 		    assertTrue(tr2SectionsList.get(3).fst == 0);
+ 		    
 
  		    if(trSectionsList.size() >= 1){
- 		    	assertTrue(trSectionsList.get(0).fst == 4);
+ 		    	assertTrue(trSectionsList.get(0).fst == 2);
  		    }
  		    if(trSectionsList.size() >= 2){
  		    	assertTrue(trSectionsList.get(1).fst == 3);
 
  		    }
  		    if(trSectionsList.size() >= 3){
- 		    	assertTrue(trSectionsList.get(2).fst == 2);
+ 		    	assertTrue(trSectionsList.get(2).fst == 4);
  		    }
  		    if(trSectionsList.size() >= 4){
- 		    	assertTrue(trSectionsList.get(3).fst == 1);
+ 		    	assertTrue(trSectionsList.get(3).fst == 5);
  		    }
  		}
  	}

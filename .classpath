@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/jmri.jar"/>
 	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/ch.ntb.usb.jar"/>
 	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/commons-lang3-3.2.1.jar"/>
 	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/gluegen-rt.jar"/>
@@ -42,6 +43,5 @@
 	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/xAPlib.jar"/>
 	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/xbee-api-0.9.jar"/>
 	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/lib/xercesImpl.jar"/>
-	<classpathentry kind="lib" path="/am/phoenix/home1/powleybenj/Documents/COMP489/JMRI/JMRI/jmri.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
