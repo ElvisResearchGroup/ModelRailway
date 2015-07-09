@@ -210,7 +210,7 @@ public class SimulationTrack {
 		    sectionTen.add(straightTenSub);
 
 		    track.insertBetween(sectionNine.get(0), true, sectionEleven.get(0), true, straightTenSub, false);
-
+		    track.insertBetween(sectionNine.get(0), false, sectionEleven.get(0), true, straightTenSub, false);
 		 //   System.out.println("next(true) for sectionSixteen: "+sectionSixteen.get(0).getNext(true).getSection().getNumber());
 		 //   System.out.println("next(false) for sectionSixteen"+sectionSixteen.get(0).getNext(false).getSection().getNumber());
 
@@ -221,6 +221,8 @@ public class SimulationTrack {
 		    sectionNine.add(backSwitch9);
 		    track.replace(sectionNine.get(0), backSwitch9, false);
 		    sectionNine.remove(0);
+
+
 
 		   // System.out.println("next(true) for sectionSixteen: "+sectionSixteen.get(0).getNext(true).getSection().getNumber());
 		   // System.out.println("next(false) for sectionSixteen"+sectionSixteen.get(0).getNext(false).getSection().getNumber());
@@ -234,7 +236,10 @@ public class SimulationTrack {
 		    track.join(sectionEight.get(0), true, sectionNine.get(0), true);
 
 		    track.join(sectionTen.get(0), true, sectionThree.get(0), true);
+		    track.recalculateSections();
 
+		   // System.out.println("sectionNine, false:"+sectionNine.get(0).getNext(false).getSection().getNumber()+", sectionNine true:"+sectionNine.get(0).getNext(true).getSection().getNumber());
+		   // System.exit(0);
 		    // insert diamond crossing and buffers.
 
 		    Track forwardSwitch4 = new ForwardSwitch(sectionThree.get(0), sectionFive.get(0), null, sectionFour, 100,100,50);

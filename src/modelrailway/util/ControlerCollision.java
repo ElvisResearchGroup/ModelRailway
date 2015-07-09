@@ -54,8 +54,8 @@ public class ControlerCollision extends MovementController implements Controller
 			Route trainRoute = entry.getValue(); // get the route that the train has planned.
 
 			Integer nextSec = entry.getValue().nextSection(this.trainOrientations().get(train).currentSection());  // get section number the train changed into.
-			//System.out.println("nextSec: "+nextSec +", thisSec: "+ sectionID);
-
+			System.out.println("nextSec: "+nextSec +", thisSec: "+ sectionID);
+			System.out.println("trainCurrent: "+ this.trainOrientations().get(train).currentSection());
 
 
 			//System.out.println("entryValue: "+entry.getValue());
@@ -64,7 +64,7 @@ public class ControlerCollision extends MovementController implements Controller
 				System.out.println("Orientation: "+this.trainOrientations().get(train).currentOrientation());
 				Section thisSec = this.sections().get(this.trainOrientations().get(train).currentSection());
 				//System.out.println("currentSection: "+this.trainOrientations().get(train).currentSection());
-
+				System.out.println("thisSec.getNumber():"+thisSec.getNumber());
 				Track front = thisSec.get(0);
 				Track notAltNext = front.getNext(false);
 				Track altNext = front.getNext(true);
@@ -131,7 +131,7 @@ public class ControlerCollision extends MovementController implements Controller
 					System.out.println("========train is being stoped as reserved is false");
 
 					System.out.println("altNext, section: "+altNext.getSection().getNumber() + "next, section "+notAltNext.getSection().getNumber() +" thisSec: " +thisSec.getNumber());
-
+					System.out.println("Intended next section: "+nextSec);
 					this.stop(train);
 					System.out.println("sending emergency stop");
 
