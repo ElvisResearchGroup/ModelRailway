@@ -391,8 +391,8 @@ public class SimulationTrackTest {
 
 	    // test track switch 4
 
-	    assertTrue(sectionFour.get(0).getNext(false).getSection().getNumber() == 5);
-	    assertTrue(sectionFour.get(0).getNext(true).getAltSection().getNumber() == 19);
+	    assertTrue(sectionFour.get(0).getNext(true).getSection().getNumber() == 5); // 
+	    assertTrue(sectionFour.get(0).getNext(false).getAltSection().getNumber() == 19);
 	    assertTrue(sectionFour.get(0).getPrevious(false).getSection().getNumber() == 3);
 	    assertTrue(sectionFour.get(0).getPrevious(true).getSection().getNumber() == 3);
 

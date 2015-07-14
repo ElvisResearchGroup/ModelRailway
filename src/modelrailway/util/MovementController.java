@@ -85,9 +85,10 @@ public class MovementController implements Controller, Listener {
 	public Train adjustSection(Event e){
 		synchronized(isMoving){
 			Pair<Integer,Train> pair = this.sectionTrainMovesInto((Event.SectionChanged)e);
+			
 			if(pair == null) throw new AlreadyHere(null);//throw new RuntimeException("Fault in section movement");
 			if(pair.fst == null && pair.snd != null) throw new AlreadyHere(pair.snd);
-
+			if(pair.fst != null) System.out.println("pair.fst: "+pair.fst);
 			pair.snd.setSection(pair.fst);
 			return pair.snd;
 	    }

@@ -273,8 +273,9 @@ public class SimulationTrack {
 		    sectionThirteen.add(diamondCrossing13);
 
 
-		    track.join(sectionFour.get(0), true,  sectionNineteen.get(0), true);
+		    track.join(sectionFour.get(0),  false ,  sectionNineteen.get(0), true);
 		    track.join(sectionTwelve.get(0), false, sectionThirteen.get(0), false);
+		    track.join(sectionFour.get(0), true, sectionFive.get(0), false);
 		    
 		    track.join(sectionThirteen.get(0), false, sectionFourteen.get(0), false);
 		    track.recalculateSections();
