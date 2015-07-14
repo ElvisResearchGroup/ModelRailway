@@ -272,7 +272,7 @@ public class HardwareTrackTest extends Main{
 		ring.getSectionNumberMap();
 		((TrainController)controller).trainOrientations().get(0).setSection(1);
 
-		final Route route = new Route(true,1,2,3,4,5,6,7,8,9,10);
+		final Route route = new Route(true,1,2,3,4,5,6,7,8,9);
 
 
 
@@ -415,7 +415,7 @@ public class HardwareTrackTest extends Main{
 
 	public void hardwareTest4() throws Exception{
 		hardwareTest2();
-	//	Thread.sleep(1000);
+		Thread.sleep(1000);
 
 		hardwareTest3();
 	}

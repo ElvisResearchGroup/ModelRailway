@@ -178,6 +178,7 @@ public class SimulationTrack {
 		    ((Switch) backSwitch11).setSwitchID(5);
 		    sectionEleven.add(backSwitch11);
 
+		    
 		    track.replace(sectionEleven.get(0), backSwitch11, true);
 		    sectionEleven.remove(0);
 		    //sectionEleven.add(backSwitch11);
@@ -255,6 +256,8 @@ public class SimulationTrack {
 
 		    track.replace(sectionTwelve.get(0),forwardSwitch12, false);
 		    sectionTwelve.remove(0);
+		    track.join(backSwitch11, true, sectionTwelve.get(0), true);
+		    //track.join(backSwitch11, false, sectionTwelve.get(0), false);
 
 		    Section sectionNineteen = new Section(new ArrayList<Track>());
 		    sectionNineteen.setSectionNumber(19);
@@ -271,6 +274,10 @@ public class SimulationTrack {
 
 
 		    track.join(sectionFour.get(0), true,  sectionNineteen.get(0), true);
+		    track.join(sectionTwelve.get(0), false, sectionThirteen.get(0), false);
+		    
+		    track.join(sectionThirteen.get(0), false, sectionFourteen.get(0), false);
+		    track.recalculateSections();
 
 		    track.bufferEnd(sectionTwelve.get(0),true,true);
 

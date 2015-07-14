@@ -20,6 +20,8 @@ import modelrailway.simulation.Track.RingRoute;
 import modelrailway.simulation.Track;
 import modelrailway.simulation.Train;
 import modelrailway.util.ControlerCollision;
+import modelrailway.util.MovementController;
+import modelrailway.util.Pair;
 import modelrailway.util.SimulationTrack;
 
 import org.junit.Test;
@@ -327,6 +329,184 @@ public class SimulationTrackTest {
 
 	}
 
+
+	@Test public void testTrackSwitches0(){
+		SimulationTrack simTrack0 = new SimulationTrack();
+		StraightDblRing ring = simTrack0.getTrack();
+		ring.recalculateSections();
+		Map<Integer, Section> numberMap = ring.getSectionNumberMap();
+
+		Section sectionEight = numberMap.get(8);
+		Section sectionSixteen = numberMap.get(16);
+		Section sectionThree = numberMap.get(3);
+		Section sectionTen = numberMap.get(10);
+		Section sectionNine = numberMap.get(9);
+		Section sectionEleven = numberMap.get(11);
+
+		Section sectionTwelve = numberMap.get(12);
+		Section sectionFour = numberMap.get(4);
+
+
+		//test track switch 8
+
+	 //   sectionEight.putSwitchingOrder(new Pair<Integer,Integer>(7,9),Arrays.asList(new Boolean[]{true}));
+	 //   sectionEight.putSwitchingOrder(new Pair<Integer,Integer>(7,1),Arrays.asList(new Boolean[]{false}));
+	 //   sectionEight.putSwitchingOrder(new Pair<Integer,Integer>(1,7),Arrays.asList(new Boolean[]{false}));
+	 //   sectionEight.putSwitchingOrder(new Pair<Integer,Integer>(9,7),Arrays.asList(new Boolean[]{true}));
+
+		assertTrue(sectionEight.get(0).getNext(false).getSection().getNumber() == 1);
+	    assertTrue(sectionEight.get(0).getNext(true).getSection().getNumber()==9);
+	    assertTrue(sectionEight.get(0).getPrevious(true).getSection().getNumber() == 7);
+	    assertTrue(sectionEight.get(0).getPrevious(false).getSection().getNumber() == 7);
+
+	    //test track switch 9;
+
+	    assertTrue(sectionNine.get(0).getNext(false).getSection().getNumber()==10);
+	    assertTrue(sectionNine.get(0).getNext(true).getSection().getNumber()==10);
+	    assertTrue(sectionNine.get(0).getPrevious(true).getSection().getNumber() == 8);
+	    assertTrue(sectionNine.get(0).getPrevious(false).getSection().getNumber() == 16);
+
+	    //test track switch 10
+
+	    assertTrue(sectionTen.get(0).getNext(true).getSection().getNumber() == 3);
+	    assertTrue(sectionTen.get(0).getNext(false).getSection().getNumber() == 11);
+	    assertTrue(sectionTen.get(0).getPrevious(true).getSection().getNumber() == 9);
+	    assertTrue(sectionTen.get(0).getPrevious(false).getSection().getNumber() == 9);
+
+	    // test track switch 11
+
+	    assertTrue(sectionEleven.get(0).getNext(false).getSection().getNumber() == 12);
+	    assertTrue(sectionEleven.get(0).getNext(true).getSection().getNumber() == 12);
+	    assertTrue(sectionEleven.get(0).getPrevious(false).getSection().getNumber() == 18);
+	    assertTrue(sectionEleven.get(0).getPrevious(true).getSection().getNumber() == 10);
+
+	    // test track switch 12
+
+	   // System.out.println(sectionTwelve.get(0).getNext(true).getSection().getNumber());
+	   // System.out.println(sectionTwelve.get(0).getNext(false).getSection().getNumber() );
+	    assertTrue(sectionTwelve.get(0).getNext(false).getSection().getNumber() == 13);
+	    assertTrue(sectionTwelve.get(0).getNext(true).getSection().getNumber() == 21);
+	    assertTrue(sectionTwelve.get(0).getPrevious(true).getSection().getNumber() == 11);
+	    assertTrue(sectionTwelve.get(0).getPrevious(false).getSection().getNumber() == 11);
+
+	    // test track switch 4
+
+	    assertTrue(sectionFour.get(0).getNext(false).getSection().getNumber() == 5);
+	    assertTrue(sectionFour.get(0).getNext(true).getAltSection().getNumber() == 19);
+	    assertTrue(sectionFour.get(0).getPrevious(false).getSection().getNumber() == 3);
+	    assertTrue(sectionFour.get(0).getPrevious(true).getSection().getNumber() == 3);
+
+	    // test track switch 3
+
+	    assertTrue(sectionThree.get(0).getNext(false).getSection().getNumber() == 4);
+	    assertTrue(sectionThree.get(0).getNext(true).getSection().getNumber() == 4);
+	    assertTrue(sectionThree.get(0).getPrevious(true).getSection().getNumber() == 10);
+	    assertTrue(sectionThree.get(0).getPrevious(false).getSection().getNumber() == 2);
+
+	    // test track switch 16
+
+	    assertTrue(sectionSixteen.get(0).getNext(false).getSection().getNumber() == 17);
+	    assertTrue(sectionSixteen.get(0).getNext(true).getSection().getNumber() == 9);
+	    assertTrue(sectionSixteen.get(0).getPrevious(true).getSection().getNumber() == 15);
+	    assertTrue(sectionSixteen.get(0).getPrevious(false).getSection().getNumber() == 15);
+
+	}
+	@Test public void testTrackRunNoCtl(){
+		SimulationTrack sim0 = new SimulationTrack();
+		sim0.getTrack().recalculateSections();
+		Map<Integer,Section> map = sim0.getTrack().getSectionNumberMap();
+		Movable loco = new Locomotive(new Track[]{map.get(1).get(0)}, 40,40,10,false);
+		Train train = new Train(new Movable[]{loco});
+		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
+		trainMap.put(0, train);
+		train.setID(0);
+		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
+		orientationMap.put(0,  new modelrailway.core.Train(1,true));
+		final Route route = new Route(true,1,2,3,4,5,6,7,8);
+		final Simulator sim = new Simulator(sim0.getHead(),orientationMap,trainMap);
+
+		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
+		final Thread th = Thread.currentThread();
+		sim.register(new Listener(){
+			@Override
+			public void notify(Event e) {
+				System.out.println("in notify" + e.getClass());
+				if(e instanceof Event.SectionChanged){
+					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					if( ((SectionChanged) e).getInto() == false){
+						outputArray.add(route.nextSection(i));
+					}else {
+					   outputArray.add(i);
+					}
+					System.out.println(i+" added");
+					if(i > 8){
+						th.interrupt();
+						sim.notify(new Event.SpeedChanged(0, 0));
+					}
+					if(i == 7){
+						th.interrupt();
+					}
+				}
+			}
+		});
+		sim.notify( new Event.SpeedChanged(0, 6));
+		try{
+			Thread.currentThread().join();
+		}catch(InterruptedException e){
+			System.out.println(outputArray.toString());
+		}
+	}
+
+	@Test public void testTrackRunMoveCtl(){
+		SimulationTrack sim0 = new SimulationTrack();
+		sim0.getTrack().recalculateSections();
+		Map<Integer,Section> map = sim0.getTrack().getSectionNumberMap();
+		Movable loco = new Locomotive(new Track[]{map.get(1).get(0)}, 40,40,10,false);
+		Train train = new Train(new Movable[]{loco});
+		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
+		trainMap.put(0, train);
+		train.setID(0);
+		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
+		orientationMap.put(0,  new modelrailway.core.Train(1,true));
+		final Route route = new Route(true,1,2,3,4,5,6,7,8);
+		final Simulator sim = new Simulator(sim0.getHead(),orientationMap,trainMap);
+		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
+		final Thread th = Thread.currentThread();
+		final MovementController controller = new MovementController(orientationMap,map,sim0.getHead(), sim);
+
+		sim.register(controller);
+		controller.register(new Listener(){
+			@Override
+			public void notify(Event e) {
+				System.out.println("in notify" + e.getClass());
+				if(e instanceof Event.SectionChanged){
+					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					if( ((SectionChanged) e).getInto() == false){
+						outputArray.add(route.nextSection(i));
+					}else {
+					   outputArray.add(i);
+					}
+					System.out.println(i+" added");
+					if(i > 8){
+						th.interrupt();
+						sim.notify(new Event.SpeedChanged(0, 0));
+					}
+					if(i == 7){
+						th.interrupt();
+					}
+				}
+			}
+		});
+		controller.start(0, route);
+		try{
+			Thread.currentThread().join();
+		}catch(InterruptedException e){
+			System.out.println(outputArray.toString());
+		}
+
+	}
+
+
 	@Test public void testTrackRun0(){
 		SimulationTrack sim0 = new SimulationTrack();
 
@@ -365,7 +545,7 @@ public class SimulationTrackTest {
  			public void notify(Event e){
  				System.out.println("event "+e.toString());
  				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
- 					  
+
  					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
  					  outputArray.add(i);
 
@@ -383,7 +563,7 @@ public class SimulationTrackTest {
  						outputArray.add(route.nextSection(i));
 
  					}
- 				
+
  					else if (e instanceof Event.EmergencyStop){
  						ctl.stop(0);
  						sim.stop();
@@ -491,5 +671,95 @@ public class SimulationTrackTest {
 			System.out.println("route: "+route.toString());
 			System.out.println("output: "+outputArray.toString());
 		}
+	}
+
+	@Test public void testTrackRun2(){
+		SimulationTrack sim0 = new SimulationTrack();
+
+		StraightDblRing ring = sim0.getTrack();
+		ring.recalculateSections();
+
+		Map<Integer,Section> numberMap = ring.getSectionNumberMap();
+
+		Section startSec = numberMap.get(1);
+		Track headPiece = startSec.get(0);
+
+		final Route route = new Route(true,1,2,3,4,5,6,7,8,9,10);
+
+		Movable locomotive = new Locomotive(new Track[]{headPiece}, 40,40,10, false);
+
+		Train train = new Train(new Movable[]{locomotive});
+
+		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
+
+		trainMap.put(0,train );
+		train.setID(0);
+
+		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
+
+		orientationMap.put(0, new modelrailway.core.Train(1, true));
+
+		final Simulator sim = new Simulator(headPiece, orientationMap, trainMap);
+
+		final ControlerCollision ctl = new ControlerCollision(orientationMap,ring.getSectionNumberMap(),headPiece,sim);
+		sim.register(ctl);
+
+		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
+ 		final Thread th = Thread.currentThread();
+
+		ctl.register(new Listener(){
+ 			public void notify(Event e){
+ 				System.out.println("event "+e.toString());
+ 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+
+ 					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 					  outputArray.add(i);
+
+ 					  if(((SectionChanged)e).getSection() == 10){
+
+ 						  ctl.stop(0);
+ 						  sim.stop();
+ 						  th.interrupt();
+
+ 					  }
+ 					//  throw new RuntimeException("Experienced Notify Stop Statement");
+ 					}
+ 					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+ 						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 						outputArray.add(route.nextSection(i));
+
+ 					}
+
+ 					else if (e instanceof Event.EmergencyStop){
+ 						ctl.stop(0);
+ 						sim.stop();
+ 						th.interrupt();
+ 					}
+
+ 			}
+
+ 		});
+
+ 		ctl.start(0, route);
+
+		try{
+			Thread.currentThread().join();
+		}catch(InterruptedException e){
+			System.out.println("testTrackRun0");
+			System.out.println("route: "+route.toString());
+			System.out.println("output: "+outputArray.toString());
+		}
+		assertTrue(outputArray.get(0) == 2);
+		assertTrue(outputArray.get(1) == 3);
+		assertTrue(outputArray.get(2) == 4);
+		assertTrue(outputArray.get(3) == 5);
+		assertTrue(outputArray.get(4) == 6);
+		assertTrue(outputArray.get(5) == 7);
+		assertTrue(outputArray.get(6) == 8);
+		assertTrue(outputArray.get(7) == 9);
+		assertTrue(outputArray.get(8) == 10);
+
+
+
 	}
 }

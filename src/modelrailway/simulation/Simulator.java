@@ -164,6 +164,7 @@ public class Simulator implements Event.Listener{
 			if(currNotThrown  == thrown) ((BackSwitch) sw).toggle();
 		}
 		else{
+			System.out.println(sw.getClass().toString());
 			throw new RuntimeException("unknown switch encountered in TestControler: "+ turnoutID +" , thrown :"+thrown);
 		}
 
