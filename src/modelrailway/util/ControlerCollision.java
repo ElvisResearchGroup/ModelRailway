@@ -4,6 +4,7 @@ import java.util.Map;
 
 import modelrailway.core.Controller;
 import modelrailway.core.Event;
+import modelrailway.core.Event.SectionChanged;
 import modelrailway.core.Route;
 import modelrailway.core.Section;
 import modelrailway.simulation.Simulator;
@@ -23,11 +24,19 @@ public class ControlerCollision extends MovementController implements Controller
 		Integer train = tryLocking(e);
 		if(train == null){ // when it is null do not do the movement
 		  super.notify(e);
+		  Integer numbers = this.calculateSectionNumber((Event.SectionChanged)e);
+		  Route rt = this.routes().get(train);
+		  if(!rt.isALoop() && rt.isStopSection(numbers)) super.notify(new Event.EmergencyStop(train)); // reached the end of the track.
 		}else{
 		  super.notify(e);
 		  super.notify(new Event.EmergencyStop(train));
 		}
+
+
+
 	}
+
+
 	/**
 	 * Try to obtain the lock for the section ahead of where we are traveling into if we are traveling into a section.
 	 * @param e
@@ -44,7 +53,7 @@ public class ControlerCollision extends MovementController implements Controller
 
 			}
 
-			Integer sectionID = 1 + ((((Event.SectionChanged)e).getSection()-1) * 2);
+			Integer sectionID = calculateSectionNumber((SectionChanged) e);
 
 			//System.out.println("sectionChanged: "+e +" sectionID: "+sectionID);
 			Map.Entry<Integer, Route> entry = super.getRoute(sectionID); //

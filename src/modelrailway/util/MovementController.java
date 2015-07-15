@@ -85,7 +85,7 @@ public class MovementController implements Controller, Listener {
 	public Train adjustSection(Event e){
 		synchronized(isMoving){
 			Pair<Integer,Train> pair = this.sectionTrainMovesInto((Event.SectionChanged)e);
-			
+
 			if(pair == null) throw new AlreadyHere(null);//throw new RuntimeException("Fault in section movement");
 			if(pair.fst == null && pair.snd != null) throw new AlreadyHere(pair.snd);
 			if(pair.fst != null) System.out.println("pair.fst: "+pair.fst);
@@ -112,10 +112,10 @@ public class MovementController implements Controller, Listener {
 		}
 		if(tr != null){
 		  if(e instanceof Event.SectionChanged){
-	       System.out.println("section has been adusted: tr == null ?: "+(tr == null));
+	       //System.out.println("section has been adusted: tr == null ?: "+(tr == null));
 	       moveIntoSection(e,tr); // reperform section movement when we move in twice.
 
-	       System.out.println("finished moving in section: skip ? "+skip);
+	      // System.out.println("finished moving in section: skip ? "+skip);
 
 
 		  }

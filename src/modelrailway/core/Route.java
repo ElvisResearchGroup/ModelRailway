@@ -25,6 +25,9 @@ public class Route {
 	 */
 	private boolean isLoop;
 
+	private int stopSection;
+
+
 	/**
 	 * Construct a give route.
 	 *
@@ -46,6 +49,11 @@ public class Route {
 		} else {
 			return sections[sections.length - 1];
 		}
+	}
+
+	public boolean isALoop(){
+		return isLoop;
+
 	}
 
 	/**
@@ -96,6 +104,16 @@ public class Route {
 			}
 		}
 		throw new IllegalArgumentException("Invalid section for route: "+section);
+
+	}
+
+	public void setStopSection(int section){
+		this.stopSection = section;
+
+	}
+
+	public boolean isStopSection(int section){
+		return section == this.stopSection;
 
 	}
 
