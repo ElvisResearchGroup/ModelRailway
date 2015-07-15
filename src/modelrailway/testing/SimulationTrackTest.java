@@ -4,7 +4,9 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import modelrailway.core.Event;
@@ -85,7 +87,7 @@ public class SimulationTrackTest {
 		//System.out.println("next alt sec 8: "+sectionEight.get(0).getNext(false).getSection().getNumber());
 
 		assertTrue(sectionEight.get(0).getNext(true) == sectionNine.get(0));
-		assertTrue(sectionNine.get(0).getPrevious(true) == sectionEight.get(0));
+		assertTrue(sectionNine.get(0).getPrevious(false) == sectionEight.get(0));
 
 		//now check the connections from section eight to section one
 
@@ -152,13 +154,13 @@ public class SimulationTrackTest {
 		//System.out.println(sectionSixteen.get(0).getNext(false).getSection().getNumber());
 		//System.out.println(sectionSixteen.get(0).getNext(true).getSection().getNumber());
 
-		assertTrue(sectionSixteen.get(0).getNext(false) == sectionSeventeen.get(0));
+		assertTrue(sectionSixteen.get(0).getNext(true) == sectionSeventeen.get(0));
 		assertTrue(sectionSeventeen.get(0).getPrevious(false) == sectionSixteen.get(0));
 
 		//now check the connections from section eight to section one
 
-		assertTrue(sectionSixteen.get(0).getNext(true)== sectionNine.get(0));
-		assertTrue(sectionNine.get(0).getPrevious(false) == sectionSixteen.get(0));
+		assertTrue(sectionSixteen.get(0).getNext(false)== sectionNine.get(0));
+		assertTrue(sectionNine.get(0).getPrevious(true) == sectionSixteen.get(0));
 	}
 	/**
 	 * Test switch connections at section 3
@@ -187,11 +189,11 @@ public class SimulationTrackTest {
 		assertTrue(sectionTwo.get(0).getNext(false).equals(sectionThree.get(0)));
 		assertTrue(sectionThree.get(0).getPrevious(false).equals(sectionTwo.get(0)));
 
-		assertTrue(sectionTen.get(0).getNext(true).equals(sectionThree.get(0)));
+		assertTrue(sectionTen.get(0).getNext(false).equals(sectionThree.get(0)));
 		assertTrue(sectionThree.get(0).getPrevious(true).equals(sectionTen.get(0)));
 
 		assertTrue(sectionThree.get(0).getNext(false).equals(sectionFour.get(0)));
-		assertTrue(sectionFour.get(0).getPrevious(false).equals(sectionThree.get(0)));
+		assertTrue(sectionFour.get(0).getPrevious(true).equals(sectionThree.get(0)));
 
 
 	}
@@ -221,17 +223,17 @@ public class SimulationTrackTest {
 		assertTrue(sectionTwelve.size() == 1);
 
 		assertTrue(sectionEighteen.get(0).getNext(false).equals(sectionEleven.get(0)));
-		assertTrue(sectionEleven.get(0).getPrevious(false).equals(sectionEighteen.get(0)));
+		assertTrue(sectionEleven.get(0).getPrevious(true).equals(sectionEighteen.get(0)));
 
 		System.out.println("sectionTen.getNext(true): "+sectionTen.get(0).getNext(true).getSection().getNumber());
 		System.out.println("sectionTen.getNext(false): "+sectionTen.get(0).getNext(false).getSection().getNumber());
 
 
 		System.out.println("sectionEleven.get(0):"+sectionEleven.get(0).getSection().getNumber());
-		assertTrue(sectionTen.get(0).getNext(false).equals(sectionEleven.get(0)));
-		assertTrue(sectionEleven.get(0).getPrevious(true).equals(sectionTen.get(0)));
+		assertTrue(sectionTen.get(0).getNext(true).equals(sectionEleven.get(0)));
+		assertTrue(sectionEleven.get(0).getPrevious(false).equals(sectionTen.get(0)));
 
-		assertTrue(sectionEleven.get(0).getNext(false).equals(sectionTwelve.get(0)));
+		assertTrue(sectionEleven.get(0).getNext(true).equals(sectionTwelve.get(0)));
 		assertTrue(sectionTwelve.get(0).getPrevious(false).equals(sectionEleven.get(0)));
 
 	}
@@ -271,10 +273,10 @@ public class SimulationTrackTest {
 		//System.out.println(sectionTwentyOne.get(0).getSection().getNumber());
 
 
-		assertTrue(sectionTwelve.get(0).getNext(true).equals(sectionTwentyOne.get(0)));
+		assertTrue(sectionTwelve.get(0).getNext(false).equals(sectionTwentyOne.get(0)));
 		assertTrue(sectionTwentyOne.get(0).getPrevious(false).equals(sectionTwelve.get(0)));
 
-		assertTrue(sectionTwelve.get(0).getNext(false).equals(sectionThirteen.get(0)));
+		assertTrue(sectionTwelve.get(0).getNext(true).equals(sectionThirteen.get(0)));
 		assertTrue(sectionThirteen.get(0).getPrevious(false).equals(sectionTwelve.get(0)));
 	}
 
@@ -316,13 +318,13 @@ public class SimulationTrackTest {
 		//System.out.println(sectionTwentyOne.get(0).getSection().getNumber());
 
 
-		assertTrue(sectionFour.get(0).getNext(true).equals(sectionNineteen.get(0)));
+		assertTrue(sectionFour.get(0).getNext(false).equals(sectionNineteen.get(0)));
 
 
 
 		assertTrue(sectionNineteen.get(0).getPrevious(true).equals(sectionFour.get(0)));
 
-		assertTrue(sectionFour.get(0).getNext(false).equals(sectionFive.get(0)));
+		assertTrue(sectionFour.get(0).getNext(true).equals(sectionFive.get(0)));
 		assertTrue(sectionFive.get(0).getPrevious(false).equals(sectionFour.get(0)));
 		assertTrue(sectionNineteen.get(0).getNext(true).equals(sectionTwenty.get(0)));
 
@@ -571,7 +573,8 @@ public class SimulationTrackTest {
 		final ControlerCollision ctl = new ControlerCollision(orientationMap,ring.getSectionNumberMap(),headPiece,sim);
 		sim.register(ctl);
 
-		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
+		final List<Integer> outputArray = Collections.synchronizedList(new ArrayList<Integer>());
+		
  		final Thread th = Thread.currentThread();
 
 		ctl.register(new Listener(){

@@ -1,6 +1,7 @@
 package modelrailway.util;
 
 import java.util.Map;
+import java.util.Map.Entry;
 
 import modelrailway.core.Controller;
 import modelrailway.core.Event;
@@ -25,8 +26,14 @@ public class ControlerCollision extends MovementController implements Controller
 		if(train == null){ // when it is null do not do the movement
 		  super.notify(e);
 		  Integer numbers = this.calculateSectionNumber((Event.SectionChanged)e);
-		  Route rt = this.routes().get(train);
-		  if(!rt.isALoop() && rt.isStopSection(numbers)) super.notify(new Event.EmergencyStop(train)); // reached the end of the track.
+		  if(this.routes() != null){
+		     Entry<Integer, Route> rtmap = super.getRoute(numbers);
+		     Route rt = rtmap.getValue();
+		     Integer trn = rtmap.getKey();
+		     if(rt != null){
+		       if(!rt.isALoop() && rt.isStopSection(numbers)) super.notify(new Event.EmergencyStop(trn)); // reached the end of the track.
+		     }
+		  }
 		}else{
 		  super.notify(e);
 		  super.notify(new Event.EmergencyStop(train));
