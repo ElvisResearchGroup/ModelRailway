@@ -359,7 +359,7 @@ public class MovementController implements Controller, Listener {
 		Pair<Integer, Integer> sectionPair = new Pair<Integer,Integer>(prevSec,nextSec);
 	    // for sectionPair
 	    List<Boolean> switchingOrder = sectionS.retrieveSwitchingOrder(sectionPair);
-
+	    System.out.println("section: "+section);
 	    System.out.println("Adjust switch: "+(((Switch) thisTrack).getSwitchID()-1));
 	    System.out.println("Section Pair: <"+prevSec+","+nextSec+">");
 	    System.out.println("switchingOrder: "+ switchingOrder);

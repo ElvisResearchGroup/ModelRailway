@@ -178,7 +178,7 @@ public class SimulationTrack {
 		    ((Switch) backSwitch11).setSwitchID(5);
 		    sectionEleven.add(backSwitch11);
 
-		    
+
 		    track.replace(sectionEleven.get(0), backSwitch11, true);
 		    sectionEleven.remove(0);
 		    //sectionEleven.add(backSwitch11);
@@ -186,7 +186,8 @@ public class SimulationTrack {
 
 
 		//    System.out.println("next(false) for sectionSixteen");
-		    track.join(sectionSixteen.get(0), true, sectionEleven.get(0), true);
+		  
+		   
 		  //  System.out.println("next(true) for sectionSixteen: "+sectionSixteen.get(0).getNext(true).getSection().getNumber());
 		  //  System.out.println("next(false) for sectionSixteen"+sectionSixteen.get(0).getNext(false).getSection().getNumber());
 
@@ -212,6 +213,8 @@ public class SimulationTrack {
 
 		    track.insertBetween(sectionNine.get(0), true, sectionEleven.get(0), true, straightTenSub, false);
 		    track.insertBetween(sectionNine.get(0), false, sectionEleven.get(0), true, straightTenSub, false);
+		    track.join(sectionTen.get(0), true, sectionEleven.get(0), false);
+		    track.join(sectionEighteen.get(0), false, sectionEleven.get(0), true);
 		 //   System.out.println("next(true) for sectionSixteen: "+sectionSixteen.get(0).getNext(true).getSection().getNumber());
 		 //   System.out.println("next(false) for sectionSixteen"+sectionSixteen.get(0).getNext(false).getSection().getNumber());
 
@@ -225,6 +228,8 @@ public class SimulationTrack {
 
 
 
+
+
 		   // System.out.println("next(true) for sectionSixteen: "+sectionSixteen.get(0).getNext(true).getSection().getNumber());
 		   // System.out.println("next(false) for sectionSixteen"+sectionSixteen.get(0).getNext(false).getSection().getNumber());
 
@@ -234,9 +239,13 @@ public class SimulationTrack {
 		    track.replace(sectionTen.get(0),forwardSwitch10, false);
 		    sectionTen.remove(0);
 
-		    track.join(sectionEight.get(0), true, sectionNine.get(0), true);
+		    track.join(sectionEight.get(0), true, sectionNine.get(0), false);
+		    track.join(sectionSixteen.get(0),false, sectionNine.get(0), true);
+		    track.join(sectionSixteen.get(0), true,sectionSeventeen.get(0), false);
 
-		    track.join(sectionTen.get(0), true, sectionThree.get(0), true);
+		    track.join(sectionTen.get(0), false, sectionThree.get(0), true);
+		    track.join(sectionTen.get(0), true , sectionEleven.get(0) , false);
+
 		    track.recalculateSections();
 
 		   // System.out.println("sectionNine, false:"+sectionNine.get(0).getNext(false).getSection().getNumber()+", sectionNine true:"+sectionNine.get(0).getNext(true).getSection().getNumber());
@@ -256,7 +265,9 @@ public class SimulationTrack {
 
 		    track.replace(sectionTwelve.get(0),forwardSwitch12, false);
 		    sectionTwelve.remove(0);
+		    track.join(backSwitch11, true, sectionTwelve.get(0), false);
 		    track.join(backSwitch11, true, sectionTwelve.get(0), true);
+		    
 		    //track.join(backSwitch11, false, sectionTwelve.get(0), false);
 
 		    Section sectionNineteen = new Section(new ArrayList<Track>());
@@ -274,15 +285,15 @@ public class SimulationTrack {
 
 
 		    track.join(sectionFour.get(0),  false ,  sectionNineteen.get(0), true);
-		    track.join(sectionTwelve.get(0), false, sectionThirteen.get(0), false);
+		   
 		    track.join(sectionFour.get(0), true, sectionFive.get(0), false);
-		    
+
 		    track.join(sectionThirteen.get(0), false, sectionFourteen.get(0), false);
 		    track.recalculateSections();
 
-		    track.bufferEnd(sectionTwelve.get(0),true,true);
-
-		    Track section22Straight = sectionTwelve.get(0).getNext(true);
+		    track.bufferEnd(sectionTwelve.get(0),true,false);
+		 
+		    Track section22Straight = sectionTwelve.get(0).getNext(false);
 		    Section sectionTwentyTwo = section22Straight.getSection();
 		    track.getSectionList().put(sectionTwentyTwo, 1);
 		    sectionTwentyTwo.setSectionNumber(22);
@@ -305,8 +316,9 @@ public class SimulationTrack {
 
 		    //System.out.println("");
 		    //System.out.println("-----------------------------------------");
-
-		    track.insertBetween(sectionTwelve.get(0), true, section22Straight, false, section21Straight, false );
+		    track.join(sectionTwelve.get(0), true, sectionThirteen.get(0), false);
+		    track.insertBetween(sectionTwelve.get(0), false, section22Straight, false, section21Straight, false );
+		   
 
 		    //System.out.println("21 previous: "+sectionTwentyOne.get(0).getPrevious(false).getSection().getNumber());
 

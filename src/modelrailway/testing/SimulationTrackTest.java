@@ -360,43 +360,71 @@ public class SimulationTrackTest {
 	    assertTrue(sectionEight.get(0).getPrevious(false).getSection().getNumber() == 7);
 
 	    //test track switch 9;
+	    //sectionNine.putSwitchingOrder(new Pair<Integer,Integer>(10,8),Arrays.asList(new Boolean[]{false}));
+	    //sectionNine.putSwitchingOrder(new Pair<Integer,Integer>(10,16),Arrays.asList(new Boolean[]{true}));
+	    //sectionNine.putSwitchingOrder(new Pair<Integer,Integer>(16,10),Arrays.asList(new Boolean[]{true}));
+	    //sectionNine.putSwitchingOrder(new Pair<Integer,Integer>(8,10),Arrays.asList(new Boolean[]{false}));
+
 
 	    assertTrue(sectionNine.get(0).getNext(false).getSection().getNumber()==10);
 	    assertTrue(sectionNine.get(0).getNext(true).getSection().getNumber()==10);
-	    assertTrue(sectionNine.get(0).getPrevious(true).getSection().getNumber() == 8);
-	    assertTrue(sectionNine.get(0).getPrevious(false).getSection().getNumber() == 16);
+	    assertTrue(sectionNine.get(0).getPrevious(false).getSection().getNumber() == 8);
+	    assertTrue(sectionNine.get(0).getPrevious(true).getSection().getNumber() == 16);
 
 	    //test track switch 10
 
-	    assertTrue(sectionTen.get(0).getNext(true).getSection().getNumber() == 3);
-	    assertTrue(sectionTen.get(0).getNext(false).getSection().getNumber() == 11);
+	    //sectionTen.putSwitchingOrder(new Pair<Integer,Integer>(9,3),Arrays.asList(new Boolean[]{false}));
+	    //sectionTen.putSwitchingOrder(new Pair<Integer,Integer>(9,11),Arrays.asList(new Boolean[]{true}));
+	    //sectionTen.putSwitchingOrder(new Pair<Integer,Integer>(11,9),Arrays.asList(new Boolean[]{true}));
+	    //sectionTen.putSwitchingOrder(new Pair<Integer,Integer>(3,9),Arrays.asList(new Boolean[]{false}));
+
+	    assertTrue(sectionTen.get(0).getNext(false).getSection().getNumber() == 3);
+	    assertTrue(sectionTen.get(0).getNext(true).getSection().getNumber() == 11);
 	    assertTrue(sectionTen.get(0).getPrevious(true).getSection().getNumber() == 9);
 	    assertTrue(sectionTen.get(0).getPrevious(false).getSection().getNumber() == 9);
 
 	    // test track switch 11
 
+	    //sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(12,10),Arrays.asList(new Boolean[]{false}));
+	    //sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(12,18),Arrays.asList(new Boolean[]{true}));
+	    //sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(18,12),Arrays.asList(new Boolean[]{true}));
+	    //sectionEleven.putSwitchingOrder(new Pair<Integer,Integer>(10,12),Arrays.asList(new Boolean[]{false}));
+	    
 	    assertTrue(sectionEleven.get(0).getNext(false).getSection().getNumber() == 12);
 	    assertTrue(sectionEleven.get(0).getNext(true).getSection().getNumber() == 12);
-	    assertTrue(sectionEleven.get(0).getPrevious(false).getSection().getNumber() == 18);
-	    assertTrue(sectionEleven.get(0).getPrevious(true).getSection().getNumber() == 10);
+	    assertTrue(sectionEleven.get(0).getPrevious(true).getSection().getNumber() == 18);
+	    assertTrue(sectionEleven.get(0).getPrevious(false).getSection().getNumber() == 10);
 
 	    // test track switch 12
 
-	   // System.out.println(sectionTwelve.get(0).getNext(true).getSection().getNumber());
-	   // System.out.println(sectionTwelve.get(0).getNext(false).getSection().getNumber() );
-	    assertTrue(sectionTwelve.get(0).getNext(false).getSection().getNumber() == 13);
-	    assertTrue(sectionTwelve.get(0).getNext(true).getSection().getNumber() == 21);
+	   // sectionTwelve.putSwitchingOrder(new Pair<Integer,Integer>(21,11),Arrays.asList(new Boolean[]{false}));
+	   // sectionTwelve.putSwitchingOrder(new Pair<Integer,Integer>(13,11),Arrays.asList(new Boolean[]{true}));
+	   // sectionTwelve.putSwitchingOrder(new Pair<Integer,Integer>(11,13),Arrays.asList(new Boolean[]{true}));
+	   // sectionTwelve.putSwitchingOrder(new Pair<Integer,Integer>(11,21),Arrays.asList(new Boolean[]{false}));
+	    
+	    assertTrue(sectionTwelve.get(0).getNext(false).getSection().getNumber() == 21);
+	    assertTrue(sectionTwelve.get(0).getNext(true).getSection().getNumber() == 13);
 	    assertTrue(sectionTwelve.get(0).getPrevious(true).getSection().getNumber() == 11);
 	    assertTrue(sectionTwelve.get(0).getPrevious(false).getSection().getNumber() == 11);
 
 	    // test track switch 4
+	    
+	    //sectionFour.putSwitchingOrder(new Pair<Integer,Integer>(19,3),Arrays.asList(new Boolean[]{false}));
+	    //sectionFour.putSwitchingOrder(new Pair<Integer,Integer>(5,3),Arrays.asList(new Boolean[]{true}));
+	    //sectionFour.putSwitchingOrder(new Pair<Integer,Integer>(3,5),Arrays.asList(new Boolean[]{true}));
+	    //sectionFour.putSwitchingOrder(new Pair<Integer,Integer>(3,19),Arrays.asList(new Boolean[]{false}));
 
-	    assertTrue(sectionFour.get(0).getNext(true).getSection().getNumber() == 5); // 
+
+	    assertTrue(sectionFour.get(0).getNext(true).getSection().getNumber() == 5); //
 	    assertTrue(sectionFour.get(0).getNext(false).getAltSection().getNumber() == 19);
 	    assertTrue(sectionFour.get(0).getPrevious(false).getSection().getNumber() == 3);
 	    assertTrue(sectionFour.get(0).getPrevious(true).getSection().getNumber() == 3);
 
 	    // test track switch 3
+	    //sectionThree.putSwitchingOrder(new Pair<Integer,Integer>(10,4),Arrays.asList(new Boolean[]{true}));
+	    //sectionThree.putSwitchingOrder(new Pair<Integer,Integer>(4,2),Arrays.asList(new Boolean[]{false}));
+	    //sectionThree.putSwitchingOrder(new Pair<Integer,Integer>(2,4),Arrays.asList(new Boolean[]{false}));
+	    //sectionThree.putSwitchingOrder(new Pair<Integer,Integer>(4,10),Arrays.asList(new Boolean[]{true}));
 
 	    assertTrue(sectionThree.get(0).getNext(false).getSection().getNumber() == 4);
 	    assertTrue(sectionThree.get(0).getNext(true).getSection().getNumber() == 4);
@@ -404,9 +432,14 @@ public class SimulationTrackTest {
 	    assertTrue(sectionThree.get(0).getPrevious(false).getSection().getNumber() == 2);
 
 	    // test track switch 16
+	    
+	   // sectionSixteen.putSwitchingOrder(new Pair<Integer,Integer>(15,9),Arrays.asList(new Boolean[]{false}));
+	   // sectionSixteen.putSwitchingOrder(new Pair<Integer,Integer>(15,17),Arrays.asList(new Boolean[]{true}));
+	   // sectionSixteen.putSwitchingOrder(new Pair<Integer,Integer>(17,15),Arrays.asList(new Boolean[]{true}));
+	   // sectionSixteen.putSwitchingOrder(new Pair<Integer,Integer>(9,15),Arrays.asList(new Boolean[]{false}));
 
-	    assertTrue(sectionSixteen.get(0).getNext(false).getSection().getNumber() == 17);
-	    assertTrue(sectionSixteen.get(0).getNext(true).getSection().getNumber() == 9);
+	    assertTrue(sectionSixteen.get(0).getNext(true).getSection().getNumber() == 17);
+	    assertTrue(sectionSixteen.get(0).getNext(false).getSection().getNumber() == 9);
 	    assertTrue(sectionSixteen.get(0).getPrevious(true).getSection().getNumber() == 15);
 	    assertTrue(sectionSixteen.get(0).getPrevious(false).getSection().getNumber() == 15);
 
@@ -422,7 +455,7 @@ public class SimulationTrackTest {
 		train.setID(0);
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 		orientationMap.put(0,  new modelrailway.core.Train(1,true));
-		final Route route = new Route(true,1,2,3,4,5,6,7,8);
+		final Route route = new Route(true,1,2,3,4,13,20);
 		final Simulator sim = new Simulator(sim0.getHead(),orientationMap,trainMap);
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
@@ -607,7 +640,7 @@ public class SimulationTrackTest {
 
 		Section headSec = numberMap.get(1);
 		Track headPiece = headSec.get(0);
-		final Route route = new Route(true, 17,18,11,12,13,14,15,16,9,10);
+		final Route route = new Route(true, 17,18,11,12,13,14,15,16,9,10,11);
 
 		Movable locomotive = new Locomotive(new Track[]{startPiece}, 40,40,10, false);
 
@@ -638,7 +671,7 @@ public class SimulationTrackTest {
  					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
  					  outputArray.add(i);
 
- 					  if(((SectionChanged)e).getSection() == 1){
+ 					  if(i== 9){
 
  						  ctl.stop(0);
  						  sim.stop();
@@ -650,6 +683,11 @@ public class SimulationTrackTest {
  				else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
  						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
  						outputArray.add(route.nextSection(i));
+ 						if(route.nextSection(i) == 9){
+ 							ctl.stop(0);;
+ 							sim.stop();
+ 							th.interrupt();
+ 						}
 
  			    }
  				else if (e instanceof Event.EmergencyStop){
@@ -684,7 +722,7 @@ public class SimulationTrackTest {
 		Section startSec = numberMap.get(1);
 		Track headPiece = startSec.get(0);
 
-		final Route route = new Route(true,1,2,3,4,5,6,7,8,9,10);
+		final Route route = new Route(true,1,2,3,4,5,6,7,8,9,10,11,12);
 
 		Movable locomotive = new Locomotive(new Track[]{headPiece}, 40,40,10, false);
 
@@ -714,19 +752,20 @@ public class SimulationTrackTest {
 
  					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
  					  outputArray.add(i);
-
- 					  if(((SectionChanged)e).getSection() == 10){
-
- 						  ctl.stop(0);
- 						  sim.stop();
- 						  th.interrupt();
-
- 					  }
+ 					  //System.out.println("i: "+i);
+ 					 
  					//  throw new RuntimeException("Experienced Notify Stop Statement");
  					}
  					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
  						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
  						outputArray.add(route.nextSection(i));
+ 						 if(route.nextSection(i) == 10){
+
+ 	 						  ctl.stop(0);
+ 	 						  sim.stop();
+ 	 						  th.interrupt();
+
+ 	 					  }
 
  					}
 
@@ -759,7 +798,29 @@ public class SimulationTrackTest {
 		assertTrue(outputArray.get(7) == 9);
 		assertTrue(outputArray.get(8) == 10);
 
-
+		// check that section 1 is not reserved.
+		
+		assertFalse(ring.getSectionNumberMap().get(1).containsMovable(0));
+		assertTrue(ring.getSectionNumberMap().get(1).getEntryRequests().size() == 0); // assert that the entry requests have been cleared. from section1
+		
+		//assert that the entry requests have been cleared from section 8
+		assertTrue(ring.getSectionNumberMap().get(8).getEntryRequests().size() == 0);
+		assertFalse(ring.getSectionNumberMap().get(8).containsMovable(0));
+		
+		//assert that the entry requests have been cleared from section 9
+		assertTrue(ring.getSectionNumberMap().get(9).getEntryRequests().size() == 0);
+		//assertFalse(ring.getSectionNumberMap().get(9).containsMovable(0)); // the train may or may not be still in section 9
+		
+		//assert that the entry requests have been cleared from section 2
+		
+		assertTrue(ring.getSectionNumberMap().get(2).getEntryRequests().size() == 0); // ensure that section 2 has not been reserved.
+		assertFalse(ring.getSectionNumberMap().get(2).containsMovable(0));
+		
+		// check entry requests for section eleven.
+		
+		assertTrue(ring.getSectionNumberMap().get(11).getEntryRequests().size() == 1); // ensure that section 11 has been reserved
+		assertFalse(ring.getSectionNumberMap().get(11).containsMovable(0)); // ensure that section 11 has not been reached.
+		
 
 	}
 }
