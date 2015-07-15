@@ -8,10 +8,9 @@ import modelrailway.core.Event;
 import modelrailway.core.Event.SectionChanged;
 import modelrailway.core.Route;
 import modelrailway.core.Section;
-import modelrailway.simulation.Simulator;
+import modelrailway.core.Train;
 import modelrailway.simulation.Switch;
 import modelrailway.simulation.Track;
-import modelrailway.simulation.Train;
 
 public class ControlerCollision extends MovementController implements Controller{
 
@@ -22,21 +21,25 @@ public class ControlerCollision extends MovementController implements Controller
 	}
 
 	public void notify(Event e){
-		Integer train = tryLocking(e);
-		if(train == null){ // when it is null do not do the movement
-		  super.notify(e);
-		  Integer numbers = this.calculateSectionNumber((Event.SectionChanged)e);
-		  if(this.routes() != null){
-		     Entry<Integer, Route> rtmap = super.getRoute(numbers);
+
+		Pair<Integer,Integer> trainPair = tryLocking(e); // try locking the section.
+		Integer train = trainPair.fst;
+		Integer sectionID = trainPair.snd;
+		if(train == null){ // Since the train object is null, locking has not failed.
+		  super.notify(e); // so notify listeners that the locking has not failed to do the movement.
+		  //now that the train object has moved. The train has been adjusted to move in or out of the section supplied.
+		  if(sectionID != null){ // if the locking succeeded, This can only occur if the event was a movement event.
+		     Entry<Integer, Route> rtmap = super.getRoute(sectionID);
+
 		     Route rt = rtmap.getValue();
 		     Integer trn = rtmap.getKey();
-		     if(rt != null){
-		       if(!rt.isALoop() && rt.isStopSection(numbers)) super.notify(new Event.EmergencyStop(trn)); // reached the end of the track.
+		     if(rt != null){ // if there is a valid route that is not a loop and the stopSection has been moved into then notify the train to stop.
+		       if(!rt.isALoop() && rt.isStopSection(sectionID)) super.notify(new Event.EmergencyStop(trn)); // reached the end of the track.
 		     }
 		  }
 		}else{
-		  super.notify(e);
-		  super.notify(new Event.EmergencyStop(train));
+		  super.notify(e); // The train object is not null so a train has been returned when we tried to lock and failed.
+		  super.notify(new Event.EmergencyStop(train)); // now we stop the train that failed locking.
 		}
 
 
@@ -46,51 +49,38 @@ public class ControlerCollision extends MovementController implements Controller
 
 	/**
 	 * Try to obtain the lock for the section ahead of where we are traveling into if we are traveling into a section.
+	 * try locking returns a pair containing the integer id of the train, and a section id that a train is in.
+	 * The integer id of the train is null if the method succeeds and the sectionID of the train will be returned.
 	 * @param e
 	 * @return
 	 */
-	private Integer tryLocking(Event e){
-		//assumes that we have already adjusted for the section change in Train.
+	private Pair<Integer,Integer> tryLocking(Event e){
+
 		if((e instanceof Event.SectionChanged)){ // when we are moving into a section
+			Train tr = null;
 			try{
-				adjustSection(e); // adjust section for the next section
+				tr = adjustSection(e); // adjust train object for the next section.
 			}catch(AlreadyHere ex){
-				//System.out.println("already Here in tryLocking");
-				//return e;
+				tr = ex.tr; // get the train.
 
 			}
+			if(tr == null) throw new RuntimeException("There was no train associated with a section changed movement. in tryLocking(Event e)");
 
-			Integer sectionID = calculateSectionNumber((SectionChanged) e);
+			Integer sectionID = tr.currentSection(); // get the current section of the train we are working with.
 
-			//System.out.println("sectionChanged: "+e +" sectionID: "+sectionID);
-			Map.Entry<Integer, Route> entry = super.getRoute(sectionID); //
+			Map.Entry<Integer, Route> entry = super.getRoute(sectionID); // get the route associated with the train in the section the train is in.
 
-			//System.out.println("is entry null: "+(entry == null));
 			Integer train = entry.getKey(); // get the train
-			Route trainRoute = entry.getValue(); // get the route that the train has planned.
 
 			Integer nextSec = entry.getValue().nextSection(this.trainOrientations().get(train).currentSection());  // get section number the train changed into.
-			System.out.println("nextSec: "+nextSec +", thisSec: "+ sectionID);
-			System.out.println("trainCurrent: "+ this.trainOrientations().get(train).currentSection());
-
-
-			//System.out.println("entryValue: "+entry.getValue());
 
 			if(this.trainOrientations().get(train).currentOrientation() == true){
-				System.out.println("Orientation: "+this.trainOrientations().get(train).currentOrientation());
 				Section thisSec = this.sections().get(this.trainOrientations().get(train).currentSection());
-				//System.out.println("currentSection: "+this.trainOrientations().get(train).currentSection());
-				System.out.println("thisSec.getNumber():"+thisSec.getNumber());
 				Track front = thisSec.get(0);
 				Track notAltNext = front.getNext(false);
 				Track altNext = front.getNext(true);
 				boolean reserved = false ;
-				//System.out.println("reserve sections: notalt: "+ notAltNext.getSection().getNumber() + " alt: "+altNext.getSection().getNumber() +" section: "+ nextSec);
-				//System.out.println("nextSec: "+nextSec);
-				//System.out.println("notAltNext: "+notAltNext.getSection().getNumber());
-				//System.out.println("altNext: "+altNext.getSection().getNumber());
 
-				//System.out.println("thisSec: "+thisSec.getNumber());
 				if(notAltNext.getSection().getNumber() == nextSec){
 
 					System.out.println("notalt next, not alt sec number: "+notAltNext.getSection().getNumber());
@@ -151,7 +141,7 @@ public class ControlerCollision extends MovementController implements Controller
 					this.stop(train);
 					System.out.println("sending emergency stop");
 
-					return train; // dont to the movement
+					return new Pair<Integer,Integer>(train,sectionID); // dont to the movement
 				}
 			}
 			else{
@@ -203,11 +193,12 @@ public class ControlerCollision extends MovementController implements Controller
 					//System.out.println("========train is being stoped as reserved is false");
 					this.stop(train);
 					//super.notify(new Event.EmergencyStop(train));
-					return train; // dont do the movement.
+					return new Pair<Integer,Integer>(train,sectionID); // dont do the movement.
 				}
 			}
+			return new Pair<Integer,Integer>(null,sectionID);
 		}
-		return null;
+		return new Pair<Integer,Integer>(null,null);
 	}
 
 }
