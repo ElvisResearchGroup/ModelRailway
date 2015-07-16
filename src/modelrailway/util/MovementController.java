@@ -170,12 +170,19 @@ public class MovementController implements Controller, Listener {
 
 	public Pair<Integer,Train> sectionTrainMovesInto(Event.SectionChanged e){
 		Integer eventsectionID =  this.calculateSectionNumber((Event.SectionChanged) e);
-
+		
 		if(((Event.SectionChanged) e).getInto()){ // if we are moving into a section,
+			System.out.println("Moving in");;
 			for(Map.Entry<Integer, Train> tr: trainOrientations.entrySet()){ // go through all the trains
+				
 			    Train trainObj = tr.getValue(); // for each train
 			    if(isMoving.get(tr.getKey()) != null && isMoving.get(tr.getKey())){ // if the train is moving
+			    	System.out.println("tr.getKey(): " + tr.getKey());
+			    	System.out.println("trainObj.currentSection(): "+ trainObj.currentSection());
+			    	System.out.println("trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()): "+ trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()));
+			    	System.out.println("eventsectionID: "+ eventsectionID);
 			    	if(trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()) == eventsectionID){
+			    		System.out.println("return the pair.");
 			    		return new Pair<Integer,Train>(eventsectionID, trainObj);
 			    	} else if(trainObj.currentSection() == eventsectionID){ // if the train is already in the section
 			    		return new Pair<Integer,Train>(null,trainObj);
@@ -184,6 +191,7 @@ public class MovementController implements Controller, Listener {
 			}
 		}
 		else { // when we are moving out of a section.
+		
 			for(Map.Entry<Integer, modelrailway.core.Train> tr : trainOrientations.entrySet()){
 				   Train trainObj = tr.getValue();
 				   if(isMoving.get(tr.getKey()) != null && isMoving.get(tr.getKey())){

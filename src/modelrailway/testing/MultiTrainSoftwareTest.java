@@ -182,7 +182,7 @@ public class MultiTrainSoftwareTest {
 		//assert(outputArray.get(6) == 8);
 		//assert(outputArray.get(7) == 1);
 
-		((TrainController) controller).deregister(lst);
+		//((TrainController) controller).deregister(lst);
 
 	}
 
