@@ -21,14 +21,15 @@ public class MultiTrainHardwareTest extends Main{
 		super(railway, controller);
 		Command[] cmd = this.getCommands();
 		Command htest0 = this.new Command("hardwareTest0", getMethod("hardwareTest0"));
-		//Command htest1 = this.new Command("hardwareTest1", getMethod("hardwareTest1"));
+		Command htest1 = this.new Command("hardwareTest1", getMethod("hardwareTest1"));
 		//Command htest2 = this.new Command("hardwareTest2", getMethod("hardwareTest2"));
 		//Command htest3 = this.new Command("hardwareTest3", getMethod("hardwareTest3"));
 		//Command htest4 = this.new Command("hardwareTest4", getMethod("hardwareTest4"));
-		Command[] cmd2 = new Command[cmd.length+1];//5];
+		Command[] cmd2 = new Command[cmd.length+2];//5];
 		System.arraycopy(cmd, 0, cmd2, 0, cmd.length);
 	//	cmd2[cmd2.length-5] = htest4;
 		cmd2[cmd2.length-1] = htest0;
+		cmd2[cmd2.length-2] = htest1;
 		//cmd2[cmd2.length-3] = htest1;
 		//cmd2[cmd2.length-2] = htest2;
 		//cmd2[cmd2.length-1] = htest3;
@@ -89,8 +90,8 @@ public class MultiTrainHardwareTest extends Main{
 
 		// Enter Read, Evaluate, Print loop.
 		Train[] trains = {
-				new Train(8,true), // default config for train 0
-				new Train(16,true)
+				new Train(16,true), // default config for train 0
+				new Train(8,true)
 		};
 		Controller controller = new TrainController(trains,rails, sim0);
 		rails.register(controller);
@@ -116,10 +117,11 @@ public class MultiTrainHardwareTest extends Main{
 
 		//((TrainController)controller).trainOrientations().get(0).setSection(1);
 		((TrainController)controller).trainOrientations().get(1).setSection(16);
-	//	final Route route = new Route(true,1, 2,3,4,5,6,7,8);
+		final Route route = new Route(true, 8,7,6,5,4,3,2,1,8,7);
+		route.setStopSection(1);
 
-		final Route route2 = new Route(true, 16,9,10,3,4,5,6,7,8);
-
+		final Route route2 = new Route(true, 16,9,10,3,4,5,6,7,8,9,10);
+		route2.setStopSection(8);
 
 
 
@@ -162,13 +164,75 @@ public class MultiTrainHardwareTest extends Main{
 		};
 
 		controller.register(lst);
-		controller.start(1, route2);
- 	//	controller.start(0, route);
+		controller.start(0, route2);
+ 		controller.start(1, route);
 
 		try{
 			Thread.currentThread().join();
 		}catch(InterruptedException e){
 			System.out.println("hardwareTest0");
+			//System.out.println("route: "+route.toString());
+			System.out.println("output: "+outputArray.toString());
+		}
+		//assert(outputArray.get(0) == 2);
+		//assert(outputArray.get(1) == 3);
+		//assert(outputArray.get(2) == 4);
+		//assert(outputArray.get(3) == 5);
+		//assert(outputArray.get(4) == 6);
+		//assert(outputArray.get(5) == 7);
+		//assert(outputArray.get(6) == 8);
+		//assert(outputArray.get(7) == 1);
+
+		((TrainController) controller).deregister(lst);
+
+	}
+	
+	
+	public void hardwareTest1(){
+		final Controller controller = getCtl();
+		// Enter Read, Evaluate, Print loop.
+
+		StraightDblRing ring = sim0.getTrack();
+
+		ring.getSectionNumberMap();
+
+		//((TrainController)controller).trainOrientations().get(0).setSection(1);
+		((TrainController)controller).trainOrientations().get(1).setSection(1);
+		final Route route = new Route(true, 1,2,3,4,5,6,7,8,1,2,3);
+		
+
+		final Route route2 = new Route(true, 4,5,6,7,8,1,2,3,4,5);
+	
+		((TrainController)controller).trainOrientations().get(0).setSection(4);
+		
+
+		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
+		final Thread th = Thread.currentThread();
+		final Listener lst = new Listener(){
+			public void notify(Event e){
+ 				System.out.println("event in unit test: "+e.toString());
+
+ 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+ 				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 				  outputArray.add(i);
+ 				  System.out.println("sectionchanged in unit test into section: "+ i);
+ 				}
+ 				else if(e instanceof Event.SpeedChanged){
+
+ 				   System.out.println("speed changed in test: "+((Event.SpeedChanged) e).getLocomotive());
+ 				}
+ 			}
+
+		};
+
+		controller.register(lst);
+		controller.start(0, route2);
+ 		controller.start(1, route);
+
+		try{
+			Thread.currentThread().join();
+		}catch(InterruptedException e){
+			System.out.println("hardwareTest1");
 			//System.out.println("route: "+route.toString());
 			System.out.println("output: "+outputArray.toString());
 		}
