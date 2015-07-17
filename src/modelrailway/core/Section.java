@@ -97,16 +97,22 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 		//System.out.println("entryRequests.size(): "+entryRequests.size()+" entryRequests: "+entryRequests.toString()+" number: "+this.sectionNumber);
 		return (entryRequests.size() == 0);
 	}
+
+	/**
+	 * remove from queue returns a pair, the first element is true if an element is removed, The second element is the head of the queue of entryRequests.
+	 * @param t
+	 * @return
+	 */
 	public Pair<Boolean,Integer> removeFromQueue(Integer t){
+		if(entryRequests.size() == 0) return null;
 		//System.out.println("entryRequests: "+entryRequests.toString()+" t: "+t+" number: "+this.sectionNumber+" thread: "+Thread.currentThread().getId());
 		if(entryRequests.contains(t)){
-
+			boolean removal = entryRequests.remove(t);
+			if(entryRequests.size() == 0) return new Pair<Boolean, Integer>(removal,null); // if there are no elements left.
 			return new Pair<Boolean,Integer>(entryRequests.remove(t), entryRequests.peek()); // the next element after removal.
-
 		}
 		else{
-			//System.out.println("Entry requests does not contain t: "+ t+" Entry requests: "+entryRequests.toString()+" size: "+entryRequests.size());
-			return new Pair<Boolean,Integer>(false,null);
+			return new Pair<Boolean,Integer>(false,entryRequests.peek());
 		}
 	}
 

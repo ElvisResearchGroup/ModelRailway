@@ -271,46 +271,45 @@ public class MovementController implements Controller, Listener {
        }
 	}
 	/**
-	 * unlock the provided section, in order for a train to unlock the section. The train must have just moved out of the section.
-	 * and removed itself from the queue of trains waiting to leave the section.
+	 * unlock the provided section,
+	 * remove the train in trainOrientation from the queue of trains waiting to leave the section.
+	 * unlockSection will act on the section regardless of weather the train is in the section or not.
+	 * unlockSection should not be called on a section that we do not have the lock to.
 	 * @param previous
 	 * @param trainOrientation
 	 */
 	private void unlockSection(Section previous, Map.Entry<Integer,Train> trainOrientation){
+
 		if(previous == null) return;
 		Track t = previous.get(0); // for the track segment.
-	    boolean trainMoved = false; // trainMoved = false,
+	  //  boolean trainMoved = false; //
 		System.out.println("Key: "+ trainOrientation.getKey()+", "+t.getSection().getNumber());
 		Section tracSec = t.getSection(); // get the section
 		Section trackAltSec = t.getAltSection(); // get the alternate section
+
+
 		if(tracSec != null){
-			Pair<Boolean,Integer> pair = null;
+			Pair<Boolean, Integer> pair = null;
 			if(!tracSec.isQueueEmpty() && trainOrientation.getKey() != null){
 				pair = tracSec.removeFromQueue(trainOrientation.getKey());
-				System.out.println("result from removing from queue: element removed: "+pair.fst +", trainonQueue: "+pair.snd );
 			}
-			if(pair != null){ //
-				  if(pair.fst != null && pair.fst){ // instruct next train to move.
-					  if(!trainMoved && pair.snd != null) {
-						  System.out.println("Resuming the train : "+ pair.snd);
-						  this.resumeTrain(pair.snd);
-						  trainMoved = true;
-					  }
-				  }
-			}
-		}
-		Pair<Boolean,Integer> pair = null;
-		if((trackAltSec != null) && (!trackAltSec.isQueueEmpty()) && (trainOrientation.getKey() != null)){
-			pair = trackAltSec.removeFromQueue(trainOrientation.getKey());
-		}
-		if(pair != null && pair.snd != null){
-			if(pair.fst != null && pair.fst){
-				if(!trainMoved && pair.snd!= null) {
+			if(pair != null){
+				if(pair.snd != null){ // if there is a train waiting then allow it to resume.
 					this.resumeTrain(pair.snd);
-					trainMoved = true;
 				}
 			}
-	    }
+		}
+		if(trackAltSec != null){
+			Pair<Boolean, Integer> pair = null;
+			if(!trackAltSec.isQueueEmpty() && trainOrientation.getKey() != null){
+				pair = tracSec.removeFromQueue(trainOrientation.getKey());
+			}
+			if(pair != null){
+				if(pair.snd != null){ // if there is a train waiting then allow it to resume.
+					this.resumeTrain(pair.snd);
+				}
+			}
+		}
 	}
 
 	/**
