@@ -13,6 +13,7 @@ import modelrailway.core.Train;
 import modelrailway.core.Event.Listener;
 import modelrailway.core.Event.SectionChanged;
 import modelrailway.simulation.Straight.StraightDblRing;
+import modelrailway.simulation.Switch;
 import modelrailway.util.SimulationTrack;
 import modelrailway.util.TrainController;
 
@@ -22,17 +23,17 @@ public class MultiTrainHardwareTest extends Main{
 		Command[] cmd = this.getCommands();
 		Command htest0 = this.new Command("hardwareTest0", getMethod("hardwareTest0"));
 		Command htest1 = this.new Command("hardwareTest1", getMethod("hardwareTest1"));
-		//Command htest2 = this.new Command("hardwareTest2", getMethod("hardwareTest2"));
-		//Command htest3 = this.new Command("hardwareTest3", getMethod("hardwareTest3"));
-		//Command htest4 = this.new Command("hardwareTest4", getMethod("hardwareTest4"));
-		Command[] cmd2 = new Command[cmd.length+2];//5];
+		Command htest2 = this.new Command("hardwareTest2", getMethod("hardwareTest2"));
+		Command htest3 = this.new Command("hardwareTest3", getMethod("hardwareTest3"));
+		Command htest4 = this.new Command("hardwareTest4", getMethod("hardwareTest4"));
+		Command[] cmd2 = new Command[cmd.length+5];//5];
 		System.arraycopy(cmd, 0, cmd2, 0, cmd.length);
-	//	cmd2[cmd2.length-5] = htest4;
+		cmd2[cmd2.length-5] = htest4;
 		cmd2[cmd2.length-1] = htest0;
 		cmd2[cmd2.length-2] = htest1;
 		//cmd2[cmd2.length-3] = htest1;
-		//cmd2[cmd2.length-2] = htest2;
-		//cmd2[cmd2.length-1] = htest3;
+		cmd2[cmd2.length-3] = htest2;
+		cmd2[cmd2.length-4] = htest3;
 		this.setCommands(cmd2);
 
 		// TODO Auto-generated constructor stub
@@ -60,6 +61,8 @@ public class MultiTrainHardwareTest extends Main{
 	}
 
 	private static final SimulationTrack sim0 = new SimulationTrack();
+
+	private static final Train[] trains = {new Train(16,true), new Train(8,true)};
 
 	public static void main(String args[]) throws Exception {
 		///String port = args[0];
@@ -89,10 +92,6 @@ public class MultiTrainHardwareTest extends Main{
 		}));
 
 		// Enter Read, Evaluate, Print loop.
-		Train[] trains = {
-				new Train(16,true), // default config for train 0
-				new Train(8,true)
-		};
 		Controller controller = new TrainController(trains,rails, sim0);
 		rails.register(controller);
 		controller.register(rails);
@@ -115,15 +114,18 @@ public class MultiTrainHardwareTest extends Main{
 
 		ring.getSectionNumberMap();
 
-		//((TrainController)controller).trainOrientations().get(0).setSection(1);
-		((TrainController)controller).trainOrientations().get(1).setSection(16);
+		((TrainController)controller).trainOrientations().get(1).setSection(8);
 		final Route route = new Route(true, 8,7,6,5,4,3,2,1,8,7);
 		route.setStopSection(1);
+
+		((TrainController)controller).trainOrientations().get(0).setSection(16);
 
 		final Route route2 = new Route(true, 16,9,10,3,4,5,6,7,8,9,10);
 		route2.setStopSection(8);
 
-
+		ctl.set(((Switch)ring.getSectionNumberMap().get(16).get(0)).getSwitchID(), false);
+		ctl.set(((Switch)ring.getSectionNumberMap().get(9).get(0)).getSwitchID(), true);
+		ctl.set(((Switch)ring.getSectionNumberMap().get(8).get(0)).getSwitchID(), false);
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		final Thread th = Thread.currentThread();
@@ -135,30 +137,13 @@ public class MultiTrainHardwareTest extends Main{
  				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
  				  outputArray.add(i);
  				  System.out.println("sectionchanged in unit test into section: "+ i);
- 				  if(i == 8){
- 					  System.out.println("stop triggered by unit test");
- 					  controller.stop(0);
- 					  controller.stop(1);
- 					  th.interrupt();
 
- 				  }
  				}
  				else if(e instanceof Event.SpeedChanged){
 
  				   System.out.println("speed changed in test: "+((Event.SpeedChanged) e).getLocomotive());
  				}
- 				//else if(e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
- 					//Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
-					//outputArray.add(route.nextSection(i));
 
-
- 				//}
-
- 			//	if(e instanceof Event.EmergencyStop){
- 			//		System.out.println("an emergency stop has been triggered by an event in the unit test");
- 					//controller.stop(0);
- 					//th.interrupt();
- 				//}
  			}
 
 		};
@@ -174,20 +159,12 @@ public class MultiTrainHardwareTest extends Main{
 			//System.out.println("route: "+route.toString());
 			System.out.println("output: "+outputArray.toString());
 		}
-		//assert(outputArray.get(0) == 2);
-		//assert(outputArray.get(1) == 3);
-		//assert(outputArray.get(2) == 4);
-		//assert(outputArray.get(3) == 5);
-		//assert(outputArray.get(4) == 6);
-		//assert(outputArray.get(5) == 7);
-		//assert(outputArray.get(6) == 8);
-		//assert(outputArray.get(7) == 1);
 
 		((TrainController) controller).deregister(lst);
 
 	}
-	
-	
+
+
 	public void hardwareTest1(){
 		final Controller controller = getCtl();
 		// Enter Read, Evaluate, Print loop.
@@ -199,12 +176,12 @@ public class MultiTrainHardwareTest extends Main{
 		//((TrainController)controller).trainOrientations().get(0).setSection(1);
 		((TrainController)controller).trainOrientations().get(1).setSection(1);
 		final Route route = new Route(true, 1,2,3,4,5,6,7,8,1,2,3);
-		
+
 
 		final Route route2 = new Route(true, 4,5,6,7,8,1,2,3,4,5);
-	
+
 		((TrainController)controller).trainOrientations().get(0).setSection(4);
-		
+
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		final Thread th = Thread.currentThread();
@@ -246,6 +223,187 @@ public class MultiTrainHardwareTest extends Main{
 		//assert(outputArray.get(7) == 1);
 
 		((TrainController) controller).deregister(lst);
+
+	}
+	/**
+	 *  Check that the controller can control a second train.
+	 */
+	public void hardwareTest2(){
+		final Controller controller = getCtl();
+		// Enter Read, Evaluate, Print loop.
+
+		StraightDblRing ring = sim0.getTrack();
+
+		ring.getSectionNumberMap();
+		((TrainController)controller).trainOrientations().get(0).setSection(16);
+
+		ctl.set(((Switch)ring.getSectionNumberMap().get(16).get(0)).getSwitchID(), false);
+		ctl.set(((Switch)ring.getSectionNumberMap().get(9).get(0)).getSwitchID(), true);
+		ctl.set(((Switch)ring.getSectionNumberMap().get(8).get(0)).getSwitchID(), false);
+
+		final Route route = new Route(true, 8,1,2,3,4,5,6,7,8,1);
+
+
+
+		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
+		final Thread th = Thread.currentThread();
+		final Listener lst = new Listener(){
+			public void notify(Event e){
+ 				System.out.println("event in unit test: "+e.toString());
+
+ 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+ 				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 				  outputArray.add(i);
+ 				  System.out.println("sectionchanged in unit test into section: "+ i);
+ 				}
+ 				else if(e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+ 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					outputArray.add(route.nextSection(i));
+ 				}
+
+ 				if(e instanceof Event.EmergencyStop){
+ 					System.out.println("an emergency stop has been triggered by an event in the unit test");
+ 					controller.stop(0);
+ 					th.interrupt();
+ 				}
+ 			}
+		};
+		controller.register(lst);
+ 		controller.start(1, route);
+		try{
+			Thread.currentThread().join();
+		}catch(InterruptedException e){
+			System.out.println("hardwareTest2");
+			System.out.println("route: "+route.toString());
+			System.out.println("output: "+outputArray.toString());
+		}
+		((TrainController) controller) .deregister(lst);
+	}
+	/**
+	 *  Check that the train can stop when a section is occupied.
+	 */
+	public void hardwareTest3(){
+		final Controller controller = getCtl();
+		// Enter Read, Evaluate, Print loop.
+		StraightDblRing ring = sim0.getTrack();
+
+		ring.getSectionNumberMap();
+		((TrainController)controller).trainOrientations().get(0).setSection(5); // make train 0 placed in section 5
+		ring.getSectionNumberMap().get(5).getMovableSet().add(0);
+
+		ctl.set(((Switch)ring.getSectionNumberMap().get(16).get(0)).getSwitchID(), false);
+		ctl.set(((Switch)ring.getSectionNumberMap().get(9).get(0)).getSwitchID(), true);
+		ctl.set(((Switch)ring.getSectionNumberMap().get(8).get(0)).getSwitchID(), false);
+
+		final Route route = new Route(true, 8,1,2,3,4,5,6,7,8,1);
+		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
+		final Thread th = Thread.currentThread();
+		final Listener lst = new Listener(){
+			public void notify(Event e){
+ 				System.out.println("event in unit test: "+e.toString());
+
+ 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+ 				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 				  outputArray.add(i);
+ 				  System.out.println("sectionchanged in unit test into section: "+ i);
+ 				//  if(i == 1){
+ 				//	  System.out.println("stop triggered by unit test");
+ 				//	  controller.stop(0);
+ 				//	  th.interrupt();
+
+ 				 // }
+ 				}
+ 				else if(e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+ 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					outputArray.add(route.nextSection(i));
+					if(route.nextSection(i) == 1){
+						System.out.println("stop triggered by unit test");
+	 					controller.stop(0);
+	 					th.interrupt();
+					}
+
+
+ 				}
+
+ 				if(e instanceof Event.EmergencyStop){
+ 					System.out.println("an emergency stop has been triggered by an event in the unit test");
+ 					controller.stop(0);
+ 					th.interrupt();
+ 				}
+ 			}
+
+		};
+
+		controller.register(lst);
+
+ 		controller.start(1, route);
+
+		try{
+			Thread.currentThread().join();
+		}catch(InterruptedException e){
+			System.out.println("hardwareTest2");
+			System.out.println("route: "+route.toString());
+			System.out.println("output: "+outputArray.toString());
+		}
+
+
+		((TrainController) controller) .deregister(lst);
+
+
+
+	}
+
+	/**
+	 *  Test that a train can restart after stopping
+	 *
+	 */
+	public void hardwareTest4(){
+		final Controller controller = getCtl();
+		StraightDblRing ring = sim0.getTrack();
+		ring.getSectionNumberMap();
+		((TrainController)controller).trainOrientations().get(0).setSection(5); // make train 0 placed in section 5
+		ring.getSectionNumberMap().get(5).getMovableSet().add(0);
+		ring.getSectionNumberMap().get(5).getEntryRequests().offer(0);
+		ctl.set(((Switch)ring.getSectionNumberMap().get(16).get(0)).getSwitchID(), false);
+		ctl.set(((Switch)ring.getSectionNumberMap().get(9).get(0)).getSwitchID(), true);
+		ctl.set(((Switch)ring.getSectionNumberMap().get(8).get(0)).getSwitchID(), false);
+		final Route route = new Route(true, 8,1,2,3,4,5,6,7,8,1);
+		final Route route2= new Route(true, 5,6,7,8,1,2,3,4);
+		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
+		final Thread th = Thread.currentThread();
+		final Listener lst = new Listener(){
+			public void notify(Event e){
+ 				System.out.println("event in unit test: "+e.toString());
+ 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+ 				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 				  outputArray.add(i);
+ 				  System.out.println("sectionchanged in unit test into section: "+ i);
+ 				}
+ 				else if(e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+ 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					outputArray.add(route.nextSection(i));
+ 				}
+ 				if(e instanceof Event.SpeedChanged){
+ 					System.out.println("LOCO: "+ ((Event.SpeedChanged) e).getLocomotive());
+ 				    System.out.println("Speed: "+ ((Event.SpeedChanged)e).getSpeed());
+ 					if(((Event.SpeedChanged) e).getLocomotive() == 1 && ((Event.SpeedChanged)e).getSpeed() == 0){
+ 						controller.start(0, route2);
+ 						System.out.println("starting it");
+ 					}
+ 				}
+ 			}
+		};
+		controller.register(lst);
+ 		controller.start(1, route);
+		try{
+			Thread.currentThread().join();
+		}catch(InterruptedException e){
+			System.out.println("hardwareTest2");
+			System.out.println("route: "+route.toString());
+			System.out.println("output: "+outputArray.toString());
+		}
+		((TrainController) controller) .deregister(lst);
+
 
 	}
 

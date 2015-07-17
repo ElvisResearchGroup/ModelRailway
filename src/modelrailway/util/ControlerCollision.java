@@ -181,7 +181,7 @@ public class ControlerCollision extends MovementController implements Controller
 				} if(altPrev.getSection().getNumber() == nextSec){
 					boolean reserved1 = altPrev.getSection().reserveSection(train);
 					System.out.println("reserved1: "+reserved1);
-					
+
 					boolean reserved2 = false;
 					if(altPrev.getAltSection() != null) {reserved2 = altPrev.getAltSection().reserveSection(train);}
 					else{reserved2 = true;}

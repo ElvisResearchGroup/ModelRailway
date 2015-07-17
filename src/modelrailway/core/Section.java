@@ -76,7 +76,7 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 		//if there are no requests for access to the section, and there are no objects inside the section we offer the train object to the list of requests
 		// and return true. Returning true signifies that the train attempting to reserve the section does not need to stop.
 		if((entryRequests.size() == 0 || entryRequests.peek() == t)&& movableObjects.size() == 0){
-			
+
 			if(entryRequests.peek() != t) entryRequests.offer(t);
 			//System.out.println("return true");
 			return true;
@@ -101,7 +101,7 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 		//System.out.println("entryRequests: "+entryRequests.toString()+" t: "+t+" number: "+this.sectionNumber+" thread: "+Thread.currentThread().getId());
 		if(entryRequests.contains(t)){
 
-			return new Pair<Boolean,Integer>(entryRequests.remove(t), entryRequests.peek());
+			return new Pair<Boolean,Integer>(entryRequests.remove(t), entryRequests.peek()); // the next element after removal.
 
 		}
 		else{

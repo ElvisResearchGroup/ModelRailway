@@ -19,6 +19,7 @@ import modelrailway.core.Event.SectionChanged;
 import modelrailway.simulation.Locomotive;
 import modelrailway.simulation.Movable;
 import modelrailway.simulation.Simulator;
+import modelrailway.simulation.Switch;
 import modelrailway.simulation.Track;
 import modelrailway.simulation.Straight.StraightDblRing;
 import modelrailway.util.ControlerCollision;
@@ -36,8 +37,10 @@ public class HardwareTrackTest extends Main{
 		Command htest2 = this.new Command("hardwareTest2", getMethod("hardwareTest2"));
 		Command htest3 = this.new Command("hardwareTest3", getMethod("hardwareTest3"));
 		Command htest4 = this.new Command("hardwareTest4", getMethod("hardwareTest4"));
-		Command[] cmd2 = new Command[cmd.length+5];
+		Command htest5 = this.new Command("hardwareTest5", getMethod("hardwareTest5"));
+		Command[] cmd2 = new Command[cmd.length+6];
 		System.arraycopy(cmd, 0, cmd2, 0, cmd.length);
+		cmd2[cmd2.length-6] = htest5;
 		cmd2[cmd2.length-5] = htest4;
 		cmd2[cmd2.length-4] = htest0;
 		cmd2[cmd2.length-3] = htest1;
@@ -69,7 +72,7 @@ public class HardwareTrackTest extends Main{
 
 	}
 
-	private static final SimulationTrack sim0 = new SimulationTrack();
+	private static SimulationTrack sim0 = new SimulationTrack();
 
 	public static void main(String args[]) throws Exception {
 		String port = args[0];
@@ -274,6 +277,8 @@ public class HardwareTrackTest extends Main{
 
 		final Route route = new Route(true,1,2,3,4,5,6,7,8,9);
 
+		ctl.set(((Switch)ring.getSectionNumberMap().get(16).get(0)).getSwitchID(), false);
+		ctl.set(((Switch)ring.getSectionNumberMap().get(9).get(0)).getSwitchID(), true);
 
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
@@ -419,6 +424,81 @@ public class HardwareTrackTest extends Main{
 
 		hardwareTest3();
 	}
+
+	public void hardwareTest5(){
+		final Controller controller = getCtl();
+		// Enter Read, Evaluate, Print loop.
+
+		StraightDblRing ring = sim0.getTrack();
+
+		ring.getSectionNumberMap();
+		((TrainController)controller).trainOrientations().get(0).setSection(16);
+		ctl.set(((Switch)ring.getSectionNumberMap().get(16).get(0)).getSwitchID(), false);
+		ctl.set(((Switch)ring.getSectionNumberMap().get(9).get(0)).getSwitchID(), true);
+
+
+		final Route route = new Route(true, 16 ,9,10,3,4,5,6,7,8,1);
+
+
+
+		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
+		final Thread th = Thread.currentThread();
+		final Listener lst = new Listener(){
+			public void notify(Event e){
+ 				System.out.println("event in unit test: "+e.toString());
+
+ 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+ 				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 				  outputArray.add(i);
+ 				  System.out.println("sectionchanged in unit test into section: "+ i);
+ 				  if(i == 1){
+ 					  System.out.println("stop triggered by unit test");
+ 					  controller.stop(0);
+ 					  th.interrupt();
+
+ 				  }
+ 				}
+ 				else if(e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+ 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					outputArray.add(route.nextSection(i));
+					if(route.nextSection(i) == 1){
+						System.out.println("stop triggered by unit test");
+	 					controller.stop(0);
+	 					th.interrupt();
+					}
+
+
+ 				}
+
+ 				if(e instanceof Event.EmergencyStop){
+ 					System.out.println("an emergency stop has been triggered by an event in the unit test");
+ 					controller.stop(0);
+ 					th.interrupt();
+ 				}
+ 			}
+
+		};
+
+		controller.register(lst);
+
+ 		controller.start(0, route);
+
+		try{
+			Thread.currentThread().join();
+		}catch(InterruptedException e){
+			System.out.println("hardwareTest2");
+			System.out.println("route: "+route.toString());
+			System.out.println("output: "+outputArray.toString());
+		}
+
+
+		((TrainController) controller) .deregister(lst);
+
+
+	}
+
+
+
 
 
 }

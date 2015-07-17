@@ -112,6 +112,7 @@ public class MovementController implements Controller, Listener {
 		  }
 		}
 		for(Listener l : listeners){
+			System.out.println("Notify listeners: "+ e.getClass().toString());
 			l.notify(e);
 		}
 
@@ -170,11 +171,11 @@ public class MovementController implements Controller, Listener {
 
 	public Pair<Integer,Train> sectionTrainMovesInto(Event.SectionChanged e){
 		Integer eventsectionID =  this.calculateSectionNumber((Event.SectionChanged) e);
-		
+
 		if(((Event.SectionChanged) e).getInto()){ // if we are moving into a section,
 			System.out.println("Moving in");;
 			for(Map.Entry<Integer, Train> tr: trainOrientations.entrySet()){ // go through all the trains
-				
+
 			    Train trainObj = tr.getValue(); // for each train
 			    if(isMoving.get(tr.getKey()) != null && isMoving.get(tr.getKey())){ // if the train is moving
 			    	System.out.println("tr.getKey(): " + tr.getKey());
@@ -191,7 +192,7 @@ public class MovementController implements Controller, Listener {
 			}
 		}
 		else { // when we are moving out of a section.
-		
+
 			for(Map.Entry<Integer, modelrailway.core.Train> tr : trainOrientations.entrySet()){
 				   Train trainObj = tr.getValue();
 				   if(isMoving.get(tr.getKey()) != null && isMoving.get(tr.getKey())){
@@ -234,6 +235,9 @@ public class MovementController implements Controller, Listener {
 	    		Section thisSection = sections.get(section); // the section object matching the id of the current section that the train is in
 
 	    		Track thisTrack = sections.get(eventsectionID).get(0);
+	    		System.out.println("Previous: "+previous.getNumber());
+	    		System.out.println("");
+
 	    		unlockSection(previous, trainOrientation); // unlock the section we just came from
 	    		try{
 	    			Track tr = previous.get(0);
@@ -266,44 +270,47 @@ public class MovementController implements Controller, Listener {
 	    	}
        }
 	}
-
+	/**
+	 * unlock the provided section, in order for a train to unlock the section. The train must have just moved out of the section.
+	 * and removed itself from the queue of trains waiting to leave the section.
+	 * @param previous
+	 * @param trainOrientation
+	 */
 	private void unlockSection(Section previous, Map.Entry<Integer,Train> trainOrientation){
 		if(previous == null) return;
-		for(Track t :previous){
-			boolean trainMoved = false;
-			Section tracSec = t.getSection();
-			Section trackAltSec = t.getAltSection();
-			if(tracSec != null){
-				Pair<Boolean,Integer> pair = null;
-				if(!tracSec.isQueueEmpty() && trainOrientation.getKey() != null){
-					pair = tracSec.removeFromQueue(trainOrientation.getKey());
-				}
-				if(pair != null){
-				   if(pair.fst != null && pair.fst){ // instruct next train to move.
-					   if(!trainMoved && pair.snd != null) {
-						   this.resumeTrain(pair.snd);
-
-						   trainMoved = true;
-					   }
-				   }
-				}
-			}
+		Track t = previous.get(0); // for the track segment.
+	    boolean trainMoved = false; // trainMoved = false,
+		System.out.println("Key: "+ trainOrientation.getKey()+", "+t.getSection().getNumber());
+		Section tracSec = t.getSection(); // get the section
+		Section trackAltSec = t.getAltSection(); // get the alternate section
+		if(tracSec != null){
 			Pair<Boolean,Integer> pair = null;
-			if((trackAltSec != null) && (!trackAltSec.isQueueEmpty()) && (trainOrientation.getKey() != null)){
-				//System.out.println("trackAltSec.isQueueEmpty: "+trackAltSec.isQueueEmpty()+" track: "+trackAltSec.getNumber());
-				pair = trackAltSec.removeFromQueue(trainOrientation.getKey());
+			if(!tracSec.isQueueEmpty() && trainOrientation.getKey() != null){
+				pair = tracSec.removeFromQueue(trainOrientation.getKey());
+				System.out.println("result from removing from queue: element removed: "+pair.fst +", trainonQueue: "+pair.snd );
 			}
-			if(pair != null && pair.snd != null){
-			   if(pair.fst != null && pair.fst){
-				   if(!trainMoved && pair.snd!= null) {
-					  // if(pair.snd == null) throw new RuntimeException("trackAltSec Number: "+trackAltSec.getNumber()+" peep at altsec: "+trackAltSec.getEntryRequests().toString()+"trackAltSec: "+trackAltSec.getNumber());
-					   this.resumeTrain(pair.snd);
-					   trainMoved = true;
-				   }
-			   }
+			if(pair != null){ //
+				  if(pair.fst != null && pair.fst){ // instruct next train to move.
+					  if(!trainMoved && pair.snd != null) {
+						  System.out.println("Resuming the train : "+ pair.snd);
+						  this.resumeTrain(pair.snd);
+						  trainMoved = true;
+					  }
+				  }
 			}
 		}
-
+		Pair<Boolean,Integer> pair = null;
+		if((trackAltSec != null) && (!trackAltSec.isQueueEmpty()) && (trainOrientation.getKey() != null)){
+			pair = trackAltSec.removeFromQueue(trainOrientation.getKey());
+		}
+		if(pair != null && pair.snd != null){
+			if(pair.fst != null && pair.fst){
+				if(!trainMoved && pair.snd!= null) {
+					this.resumeTrain(pair.snd);
+					trainMoved = true;
+				}
+			}
+	    }
 	}
 
 	/**
