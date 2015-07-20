@@ -36,29 +36,9 @@ public class SimulationTrack {
 
 			track = new StraightDblRing(strt, strtInner);
 
-			//System.out.println("simulation Track initial double ring:");
-			//for(Map.Entry<Section,Integer> entry: track.getSectionList().entrySet()){
-		    //	System.out.println(entry);
-			//}
-
-			//System.out.println("strtSection: "+ strt.getSection());
-			//System.out.println("strtInnerSec: "+ strtInner.getSection());
-
-			//System.out.println("double ring size: "+track.getTrackList().size());
-
 			Pair<Track,Track> trackHeads = track.ringTrack(8, 8, 100);
-
-			//System.out.println("Tracklist Size: "+track.getTrackList().size());
-
-			//System.out.println("RingTrack : ");
-			//for(Map.Entry<Section,Integer> entry: track.getSectionList().entrySet()){
-			//	System.out.println(entry+" number: "+entry.getKey().getNumber());
-			//}
-			//System.out.println();
 			Track outerHead = trackHeads.fst;
-
 			Track innerHead = trackHeads.snd;
-
 
 			Section sectionOne = outerHead.getSection();
 			sectionOne.setSectionNumber(1);
@@ -91,9 +71,6 @@ public class SimulationTrack {
 		    Section sectionEight = outerHead.getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getSection();
 		    sectionEight.setSectionNumber(8);
 
-
-
-
 		    Section sectionSeventeen = innerHead.getSection();
 		    sectionSeventeen.setSectionNumber(17);
 
@@ -125,22 +102,7 @@ public class SimulationTrack {
 		    Section sectionSixteen = innerHead.getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getNext(false).getSection();
 		    sectionSixteen.setSectionNumber(16);
 
-
-
 		    track.recalculateSections();
-
-
-		    //System.out.println("Section Numbers for Track: ");
-		    //for(Track tr: track.getTrackList()){
-		    //	System.out.println("tr: "+tr.getSection().getNumber());
-		    //}
-
-		    //System.out.println("Section Numbers: ");
-			//for(Map.Entry<Section,Integer> entry: track.getSectionList().entrySet()){
-			//	System.out.println(entry +" number: "+entry.getKey().getNumber());
-			//}
-
-
 
 		    //insert switches and alternate track.
 
@@ -184,13 +146,6 @@ public class SimulationTrack {
 		    //sectionEleven.add(backSwitch11);
 		    assert(sectionEleven.size() == 1);
 
-
-		//    System.out.println("next(false) for sectionSixteen");
-		  
-		   
-		  //  System.out.println("next(true) for sectionSixteen: "+sectionSixteen.get(0).getNext(true).getSection().getNumber());
-		  //  System.out.println("next(false) for sectionSixteen"+sectionSixteen.get(0).getNext(false).getSection().getNumber());
-
 		    Section sectionNine = new Section(new ArrayList<Track>());
 
 		    sectionNine.setSectionNumber(9);
@@ -200,9 +155,6 @@ public class SimulationTrack {
 		    sectionNine.add(straightNineSub);
 
 		    track.insertBetween(sectionSixteen.get(0), true, sectionEleven.get(0), true, straightNineSub, false);
-
-		  //  System.out.println("next(true) for sectionSixteen: "+sectionSixteen.get(0).getNext(true).getSection().getNumber());
-		  //  System.out.println("next(false) for sectionSixteen"+sectionSixteen.get(0).getNext(false).getSection().getNumber());
 
 		    Section sectionTen = new Section(new ArrayList<Track>());
 		    sectionTen.setSectionNumber(10);
@@ -215,8 +167,6 @@ public class SimulationTrack {
 		    track.insertBetween(sectionNine.get(0), false, sectionEleven.get(0), true, straightTenSub, false);
 		    track.join(sectionTen.get(0), true, sectionEleven.get(0), false);
 		    track.join(sectionEighteen.get(0), false, sectionEleven.get(0), true);
-		 //   System.out.println("next(true) for sectionSixteen: "+sectionSixteen.get(0).getNext(true).getSection().getNumber());
-		 //   System.out.println("next(false) for sectionSixteen"+sectionSixteen.get(0).getNext(false).getSection().getNumber());
 
 		    Track backSwitch9 = new BackSwitch(sectionSixteen.get(0),
 		    		sectionTen.get(0),
@@ -225,13 +175,6 @@ public class SimulationTrack {
 		    sectionNine.add(backSwitch9);
 		    track.replace(sectionNine.get(0), backSwitch9, false);
 		    sectionNine.remove(0);
-
-
-
-
-
-		   // System.out.println("next(true) for sectionSixteen: "+sectionSixteen.get(0).getNext(true).getSection().getNumber());
-		   // System.out.println("next(false) for sectionSixteen"+sectionSixteen.get(0).getNext(false).getSection().getNumber());
 
 		    Track forwardSwitch10 = new ForwardSwitch(sectionNine.get(0), sectionEleven.get(0), sectionThree.get(0), sectionTen, 100,100,50);
 		    ((Switch) forwardSwitch10).setSwitchID(4);
@@ -248,10 +191,6 @@ public class SimulationTrack {
 
 		    track.recalculateSections();
 
-		   // System.out.println("sectionNine, false:"+sectionNine.get(0).getNext(false).getSection().getNumber()+", sectionNine true:"+sectionNine.get(0).getNext(true).getSection().getNumber());
-		   // System.exit(0);
-		    // insert diamond crossing and buffers.
-
 		    Track forwardSwitch4 = new ForwardSwitch(sectionThree.get(0), sectionFive.get(0), null, sectionFour, 100,100,50);
 		    ((Switch) forwardSwitch4).setSwitchID(7);
 		    sectionFour.add(forwardSwitch4);
@@ -267,7 +206,7 @@ public class SimulationTrack {
 		    sectionTwelve.remove(0);
 		    track.join(backSwitch11, true, sectionTwelve.get(0), false);
 		    track.join(backSwitch11, true, sectionTwelve.get(0), true);
-		    
+
 		    //track.join(backSwitch11, false, sectionTwelve.get(0), false);
 
 		    Section sectionNineteen = new Section(new ArrayList<Track>());
@@ -285,14 +224,14 @@ public class SimulationTrack {
 
 
 		    track.join(sectionFour.get(0),  false ,  sectionNineteen.get(0), true);
-		   
+
 		    track.join(sectionFour.get(0), true, sectionFive.get(0), false);
 
 		    track.join(sectionThirteen.get(0), false, sectionFourteen.get(0), false);
 		    track.recalculateSections();
 
 		    track.bufferEnd(sectionTwelve.get(0),true,false);
-		 
+
 		    Track section22Straight = sectionTwelve.get(0).getNext(false);
 		    Section sectionTwentyTwo = section22Straight.getSection();
 		    track.getSectionList().put(sectionTwentyTwo, 1);
@@ -306,36 +245,8 @@ public class SimulationTrack {
 		    track.getSectionList().put(sectionTwentyOne, 1);
 		    track.recalculateSections();
 
-		    //System.out.println("12 previous: "+sectionTwelve.get(0).getPrevious(false).getSection().getNumber());
-
-		    //System.out.println("12 next(false): "+sectionTwelve.get(0).getNext(false).getSection().getNumber());
-
-		    //System.out.println("12 previous: "+sectionTwelve.get(0).getPrevious(false).getSection().getNumber());
-
-		    //System.out.println("12 next(true): "+sectionTwelve.get(0).getNext(true).getSection().getNumber());
-
-		    //System.out.println("");
-		    //System.out.println("-----------------------------------------");
 		    track.join(sectionTwelve.get(0), true, sectionThirteen.get(0), false);
 		    track.insertBetween(sectionTwelve.get(0), false, section22Straight, false, section21Straight, false );
-		   
-
-		    //System.out.println("21 previous: "+sectionTwentyOne.get(0).getPrevious(false).getSection().getNumber());
-
-		    //System.out.println("21 next: "+sectionTwentyOne.get(0).getNext(false).getSection().getNumber());
-
-		    //System.out.println("22 previous: "+sectionTwentyTwo.get(0).getPrevious(false).getSection().getNumber());
-
-		    //System.out.println("22 next: "+sectionTwentyTwo.get(0).getNext(false).getSection().getNumber());
-
-		    //System.out.println("12 previous: "+sectionTwelve.get(0).getPrevious(false).getSection().getNumber());
-
-		    //System.out.println("12 next(false): "+sectionTwelve.get(0).getNext(false).getSection().getNumber());
-
-		    //System.out.println("12 previous: "+sectionTwelve.get(0).getPrevious(false).getSection().getNumber());
-
-		    //System.out.println("12 next(true): "+sectionTwelve.get(0).getNext(true).getSection().getNumber());
-
 
 		    track.recalculateSections();
 
@@ -407,9 +318,6 @@ public class SimulationTrack {
 		    sectionTwelve.putSwitchingOrder(new Pair<Integer,Integer>(13,11),Arrays.asList(new Boolean[]{true}));
 		    sectionTwelve.putSwitchingOrder(new Pair<Integer,Integer>(11,13),Arrays.asList(new Boolean[]{true}));
 		    sectionTwelve.putSwitchingOrder(new Pair<Integer,Integer>(11,21),Arrays.asList(new Boolean[]{false}));
-
-
-
 
 	}
 

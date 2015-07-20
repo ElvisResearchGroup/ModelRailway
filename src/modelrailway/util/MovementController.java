@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 
 import modelrailway.core.Controller;
@@ -81,6 +82,11 @@ public class MovementController implements Controller, Listener {
 	public Integer calculateSectionNumber(Event.SectionChanged ev){
 		return 1 + ((((Event.SectionChanged)ev).getSection()-1) * 2);
 	}
+
+	public Integer calculateEventNumber(int i){
+		return ((i - 1)/2) +1;
+
+	}
 	/*
 	 *  adjustSection returns a pair containing the section the train has just moved into and the train that has just moved.
 	 *  adjustSection adjusts the train object to the section that the train has just moved into.
@@ -95,6 +101,8 @@ public class MovementController implements Controller, Listener {
 			return pair.snd;
 	    }
 	}
+
+
 	@Override
 	public void notify(Event e) {
 		Train tr = null;
@@ -182,11 +190,20 @@ public class MovementController implements Controller, Listener {
 			    	System.out.println("trainObj.currentSection(): "+ trainObj.currentSection());
 			    	System.out.println("trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()): "+ trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()));
 			    	System.out.println("eventsectionID: "+ eventsectionID);
+			    	Queue<Integer> reqCurrent = sections().get(eventsectionID).getEntryRequests();
+			    	Integer nextID = trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()) ;
+			    	Queue<Integer> reqNext = sections().get(nextID).getEntryRequests();
 			    	if(trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()) == eventsectionID){
-			    		System.out.println("return the pair.");
-			    		return new Pair<Integer,Train>(eventsectionID, trainObj);
+
+			    		if( !reqNext.contains(tr.getKey()) || reqNext.peek() == tr.getKey() ){ // if we are running without locking, or if this is the next train on the list.
+
+			    		  System.out.println("return the pair.");
+			    		  return new Pair<Integer,Train>(eventsectionID, trainObj);
+			    		}
 			    	} else if(trainObj.currentSection() == eventsectionID){ // if the train is already in the section
-			    		return new Pair<Integer,Train>(null,trainObj);
+			    		if( !reqCurrent.contains(tr.getKey()) || reqCurrent.peek() == tr.getKey() ){
+			    		  return new Pair<Integer,Train>(null,trainObj);
+			    		}
 			    	}
 			    }
 			}
@@ -196,13 +213,21 @@ public class MovementController implements Controller, Listener {
 			for(Map.Entry<Integer, modelrailway.core.Train> tr : trainOrientations.entrySet()){
 				   Train trainObj = tr.getValue();
 				   if(isMoving.get(tr.getKey()) != null && isMoving.get(tr.getKey())){
+					   Queue<Integer> reqCurrent = sections().get(eventsectionID).getEntryRequests();
+					   Integer prev = trainRoutes.get(tr.getKey()).prevSection(trainObj.currentSection()) ;
+					   Queue<Integer> reqPrev = sections().get(prev).getEntryRequests();
 					   if(trainObj.currentSection() == eventsectionID){
+
+						   if( !reqCurrent.contains(tr.getKey()) || reqCurrent.peek() == tr.getKey() ){
 						    Integer nextOne = trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection());
 					     	eventsectionID = nextOne;
 					     	return new Pair<Integer,Train>(eventsectionID,trainObj);
+						   }
 					   }
-					   else if (trainRoutes.get(tr.getKey()).prevSection(trainObj.currentSection()) == eventsectionID){ // if the train is already in the section
+					   else if (prev == eventsectionID){ // if the train is already in the section
+						   if( !reqPrev.contains(tr.getKey()) || reqPrev.peek() == tr.getKey() ){
 						    return new Pair<Integer,Train>(null,trainObj);
+						   }
 					   }
 				   }
 			}
@@ -216,7 +241,7 @@ public class MovementController implements Controller, Listener {
 	 * @param train
 	 * @return
 	 */
-	private void moveIntoSection( Train train){
+	protected void moveIntoSection( Train train){
 
 		Integer eventsectionID = train.currentSection(); // The train object has already been adjusted
 
@@ -238,26 +263,7 @@ public class MovementController implements Controller, Listener {
 	    		System.out.println("Previous: "+previous.getNumber());
 	    		System.out.println("");
 
-	    		unlockSection(previous, trainOrientation); // unlock the section we just came from
-	    		try{
-	    			Track tr = previous.get(0);
-	    			if(tr.getNext(false).getSection() == thisSection|| tr.getNext(false).getAltSection() == thisSection){
-	    				unlockSection(tr.getNext(true).getSection(), trainOrientation);
-	    				unlockSection(tr.getNext(true).getAltSection(),trainOrientation);
-
-	    			} else if (tr.getNext(true).getSection() == thisSection || tr.getNext(true).getAltSection()== thisSection){
-	    				unlockSection(tr.getNext(false).getSection(), trainOrientation);
-	    				unlockSection(tr.getNext(false).getAltSection(),trainOrientation);
-
-	    			} else if (tr.getPrevious(false).getSection() == thisSection || tr.getPrevious(false).getAltSection() == thisSection){
-	    				unlockSection(tr.getPrevious(true).getSection(), trainOrientation);
-	    				unlockSection(tr.getPrevious(true).getAltSection(),trainOrientation);
-	    			} else if (tr.getPrevious(true).getSection() == thisSection|| tr.getPrevious (false).getAltSection() == thisSection){
-	    				unlockSection(tr.getPrevious(false).getSection(), trainOrientation);
-	    				unlockSection(tr.getPrevious(false).getAltSection(),trainOrientation);
-	    			}
-
-	    		} catch(RuntimeException ex){}
+	    		// this is where unlocking should be inserted in the collision controller.
 
 	    		//System.out.println("Switch"+thisTrack);
 	    		System.out.println("trackSection: "+thisTrack.getSection().getNumber());
@@ -270,47 +276,7 @@ public class MovementController implements Controller, Listener {
 	    	}
        }
 	}
-	/**
-	 * unlock the provided section,
-	 * remove the train in trainOrientation from the queue of trains waiting to leave the section.
-	 * unlockSection will act on the section regardless of weather the train is in the section or not.
-	 * unlockSection should not be called on a section that we do not have the lock to.
-	 * @param previous
-	 * @param trainOrientation
-	 */
-	private void unlockSection(Section previous, Map.Entry<Integer,Train> trainOrientation){
 
-		if(previous == null) return;
-		Track t = previous.get(0); // for the track segment.
-	  //  boolean trainMoved = false; //
-		System.out.println("Key: "+ trainOrientation.getKey()+", "+t.getSection().getNumber());
-		Section tracSec = t.getSection(); // get the section
-		Section trackAltSec = t.getAltSection(); // get the alternate section
-
-
-		if(tracSec != null){
-			Pair<Boolean, Integer> pair = null;
-			if(!tracSec.isQueueEmpty() && trainOrientation.getKey() != null){
-				pair = tracSec.removeFromQueue(trainOrientation.getKey());
-			}
-			if(pair != null){
-				if(pair.snd != null){ // if there is a train waiting then allow it to resume.
-					this.resumeTrain(pair.snd);
-				}
-			}
-		}
-		if(trackAltSec != null){
-			Pair<Boolean, Integer> pair = null;
-			if(!trackAltSec.isQueueEmpty() && trainOrientation.getKey() != null){
-				pair = tracSec.removeFromQueue(trainOrientation.getKey());
-			}
-			if(pair != null){
-				if(pair.snd != null){ // if there is a train waiting then allow it to resume.
-					this.resumeTrain(pair.snd);
-				}
-			}
-		}
-	}
 
 	/**
 	 * trainID , the ID of the train moving through, section: the section number that we are switching.
