@@ -97,6 +97,7 @@ public class MovementController implements Controller, Listener {
 
 			if(pair == null) throw new AlreadyHere(null);//throw new RuntimeException("Fault in section movement");
 			if(pair.fst == null && pair.snd != null) throw new AlreadyHere(pair.snd); // throw an exception containing the train that has moved in twice
+			System.out.println("pair.fst: "+pair.fst);
 			pair.snd.setSection(pair.fst); // no exception has been thrown so now we set the section that the train is in.
 			return pair.snd;
 	    }
@@ -181,7 +182,7 @@ public class MovementController implements Controller, Listener {
 		Integer eventsectionID =  this.calculateSectionNumber((Event.SectionChanged) e);
 
 		if(((Event.SectionChanged) e).getInto()){ // if we are moving into a section,
-			System.out.println("Moving in");;
+			System.out.println("Moving in");
 			for(Map.Entry<Integer, Train> tr: trainOrientations.entrySet()){ // go through all the trains
 
 			    Train trainObj = tr.getValue(); // for each train
@@ -193,17 +194,18 @@ public class MovementController implements Controller, Listener {
 			    	Queue<Integer> reqCurrent = sections().get(eventsectionID).getEntryRequests();
 			    	Integer nextID = trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()) ;
 			    	Queue<Integer> reqNext = sections().get(nextID).getEntryRequests();
-			    	if(trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()) == eventsectionID){
 
-			    		if( !reqNext.contains(tr.getKey()) || reqNext.peek() == tr.getKey() ){ // if we are running without locking, or if this is the next train on the list.
+			    	if(nextID == eventsectionID){
 
-			    		  System.out.println("return the pair.");
+			    		//if( !reqNext.contains(tr.getKey()) || reqNext.peek() == tr.getKey() ){ // if we are running without locking, or if this is the next train on the list.
+			    		  System.out.println("Train: "+tr.getKey());
 			    		  return new Pair<Integer,Train>(eventsectionID, trainObj);
-			    		}
+			    		//}
 			    	} else if(trainObj.currentSection() == eventsectionID){ // if the train is already in the section
-			    		if( !reqCurrent.contains(tr.getKey()) || reqCurrent.peek() == tr.getKey() ){
+			    		//if( !reqCurrent.contains(tr.getKey()) || reqCurrent.peek() == tr.getKey() ){
+			    		  System.out.println("Train: "+tr.getKey());
 			    		  return new Pair<Integer,Train>(null,trainObj);
-			    		}
+			    		//}
 			    	}
 			    }
 			}
@@ -218,16 +220,18 @@ public class MovementController implements Controller, Listener {
 					   Queue<Integer> reqPrev = sections().get(prev).getEntryRequests();
 					   if(trainObj.currentSection() == eventsectionID){
 
-						   if( !reqCurrent.contains(tr.getKey()) || reqCurrent.peek() == tr.getKey() ){
+						   //if( (!reqCurrent.contains(tr.getKey())) || reqCurrent.peek() == tr.getKey() ){
 						    Integer nextOne = trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection());
 					     	eventsectionID = nextOne;
+					     	System.out.println("Train: "+tr.getKey());
 					     	return new Pair<Integer,Train>(eventsectionID,trainObj);
-						   }
+						   //}
 					   }
 					   else if (prev == eventsectionID){ // if the train is already in the section
-						   if( !reqPrev.contains(tr.getKey()) || reqPrev.peek() == tr.getKey() ){
+						   //if( (!reqPrev.contains(tr.getKey())) || reqPrev.peek() == tr.getKey() ){
+							System.out.println("Train: "+tr.getKey());
 						    return new Pair<Integer,Train>(null,trainObj);
-						   }
+						   //}
 					   }
 				   }
 			}
@@ -242,7 +246,7 @@ public class MovementController implements Controller, Listener {
 	 * @return
 	 */
 	protected void moveIntoSection( Train train){
-
+		System.out.println("In Movement Move.");
 		Integer eventsectionID = train.currentSection(); // The train object has already been adjusted
 
 
@@ -356,7 +360,7 @@ public class MovementController implements Controller, Listener {
 	public void stop(int trainID) {
 		synchronized(isMoving){
 		isMoving.put(trainID, false);
-
+		((Listener) trackController).notify((Event) new Event.SpeedChanged(trainID, 0));
 		((Listener) trackController).notify((Event)new Event.EmergencyStop(trainID));
 		}
 	}
@@ -383,7 +387,9 @@ public class MovementController implements Controller, Listener {
 	public Map.Entry<Integer,Route> getRoute(int section){
 		for(Map.Entry<Integer, Route> trainRoute : trainRoutes.entrySet()){
 			for(Map.Entry<Integer,Train> trainOrientation : trainOrientations.entrySet()){
-				if (trainOrientation.getKey() == trainRoute.getKey()) return trainRoute;
+				if (trainOrientation.getKey() == trainRoute.getKey()){
+					if(trainOrientation.getValue().currentSection() == section)return trainRoute;
+				}
 			}
 
 		}

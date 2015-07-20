@@ -64,7 +64,10 @@ public class ControlerCollision extends MovementController implements Controller
 		if((e instanceof Event.SectionChanged)){ // when we are moving into a section
 			Train tr = null;
 			try{
+
+				System.out.println("Before Adjust");
 				tr = adjustSection(e); // adjust train object for the next section.
+				System.out.println("After Adjust");
 			}catch(AlreadyHere ex){
 				tr = ex.tr; // get the train.
 
@@ -73,14 +76,20 @@ public class ControlerCollision extends MovementController implements Controller
 
 			Integer sectionID = tr.currentSection(); // get the current section of the train we are working with.
 
-			Map.Entry<Integer, Route> entry = super.getRoute(sectionID); // get the route associated with the train in the section the train is in.
+			Map.Entry<Integer, Route> entry = this.getRoute(sectionID); // get the route associated with the train in the section the train is in.
 
 			Integer train = entry.getKey(); // get the train, this is the id for the train tr.
 
-			Integer nextSec = entry.getValue().nextSection(this.trainOrientations().get(train).currentSection());  // get section number the train changed into.
 
+			System.out.println("tr.currentSection(): "+ sectionID);
+			
+			Integer nextSec = entry.getValue().nextSection(this.trainOrientations().get(train).currentSection());  // get section number the train changed into.
+			System.out.println("trainOrientations: "+ this.trainOrientations().get(train).currentSection());
+			System.out.println("trainID: "+ train);
+			System.out.println("trainSection: "+ tr.currentSection());
 			if(tr.currentOrientation() == true){ // we are moving in the forwards direction.
-				Section thisSec = this.sections().get(tr.currentSection());
+
+				Section thisSec = this.sections().get(tr.currentSection()); //
 				Track front = thisSec.get(0);
 				Track notAltNext = front.getNext(false);
 				Track altNext = front.getNext(true);
@@ -215,7 +224,7 @@ public class ControlerCollision extends MovementController implements Controller
 
 		Integer eventsectionID = train.currentSection(); // The train object has already been adjusted
 
-
+		System.out.println("In Controler Collision: "+ eventsectionID);
 		for(Entry<Integer, Train> trainOrientation: trainOrientations().entrySet()){ // for all the trains on the track, we need to find the train id that matches the train we have.
 
 			Integer section = trainOrientation.getValue().currentSection(); // get the section of the train

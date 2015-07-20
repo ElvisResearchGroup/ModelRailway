@@ -164,7 +164,9 @@ public class MultiTrainHardwareTest extends Main{
 
 	}
 
-
+	/**
+	 * When a fast train is behind a slow train, check that the fast train will not run into the back of the slow one.
+	 */
 	public void hardwareTest1(){
 		final Controller controller = getCtl();
 		// Enter Read, Evaluate, Print loop.
@@ -181,7 +183,8 @@ public class MultiTrainHardwareTest extends Main{
 		final Route route2 = new Route(true, 4,5,6,7,8,1,2,3,4,5);
 
 		((TrainController)controller).trainOrientations().get(0).setSection(4);
-
+		System.out.println("Route 1: "+ sim0.getSections().get(1).getEntryRequests().toString());
+		System.out.println("Route 2: "+ sim0.getSections().get(2).getEntryRequests().toString());
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		final Thread th = Thread.currentThread();
@@ -198,6 +201,12 @@ public class MultiTrainHardwareTest extends Main{
 
  				   System.out.println("speed changed in test: "+((Event.SpeedChanged) e).getLocomotive());
  				}
+ 				
+ 				if(controller.train(0).currentSection() == 3){
+ 					controller.stop(0);
+ 					controller.stop(1);
+ 					th.interrupt();
+ 				}
  			}
 
 		};
@@ -209,9 +218,16 @@ public class MultiTrainHardwareTest extends Main{
 		try{
 			Thread.currentThread().join();
 		}catch(InterruptedException e){
-			System.out.println("hardwareTest1");
-			//System.out.println("route: "+route.toString());
-			System.out.println("output: "+outputArray.toString());
+			
+			System.out.println("1: "+sim0.getSections().get(1).getEntryRequests().toString());
+			System.out.println("2: "+sim0.getSections().get(2).getEntryRequests().toString());
+			System.out.println("3: "+sim0.getSections().get(3).getEntryRequests().toString());
+			System.out.println("4: "+sim0.getSections().get(4).getEntryRequests().toString());
+			System.out.println("5: "+sim0.getSections().get(5).getEntryRequests().toString());
+			System.out.println("6: "+sim0.getSections().get(6).getEntryRequests().toString());
+			System.out.println("7: "+sim0.getSections().get(7).getEntryRequests().toString());
+			System.out.println("8: "+sim0.getSections().get(8).getEntryRequests().toString());
+			
 		}
 		//assert(outputArray.get(0) == 2);
 		//assert(outputArray.get(1) == 3);
