@@ -24,6 +24,7 @@ import modelrailway.util.ControlerCollision;
 import modelrailway.util.SimulationTrack;
 
 import org.junit.Test;
+import org.junit.*;
 
 public class SimTestRun {
 	@Test public void testTrackRun0(){

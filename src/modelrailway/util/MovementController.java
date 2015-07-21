@@ -191,11 +191,17 @@ public class MovementController implements Controller, Listener {
 			    	System.out.println("trainObj.currentSection(): "+ trainObj.currentSection());
 			    	System.out.println("trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()): "+ trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()));
 			    	System.out.println("eventsectionID: "+ eventsectionID);
-			    	Queue<Integer> reqCurrent = sections().get(eventsectionID).getEntryRequests();
-			    	Integer nextID = trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()) ;
-			    	Queue<Integer> reqNext = sections().get(nextID).getEntryRequests();
+			    	//Queue<Integer> reqCurrent = sections().get(eventsectionID).getEntryRequests();
+			    	
+			    	//Queue<Integer> reqNext = sections().get(nextID).getEntryRequests();
+			    	Route rt = trainRoutes.get(tr.getKey());
+			    	
+			    	Integer nextID = null;
+			    	if(!(trainObj.currentSection() == rt.lastSection() && !rt.isALoop())){ // if we are not at the last section of a non loop. 
+			    	  nextID = trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()) ;
+			    	}
 
-			    	if(nextID == eventsectionID){
+			    	if(!(!rt.isALoop()&& trainObj.currentSection() == rt.lastSection()) && nextID == eventsectionID){
 
 			    		//if( !reqNext.contains(tr.getKey()) || reqNext.peek() == tr.getKey() ){ // if we are running without locking, or if this is the next train on the list.
 			    		  System.out.println("Train: "+tr.getKey());
@@ -215,19 +221,30 @@ public class MovementController implements Controller, Listener {
 			for(Map.Entry<Integer, modelrailway.core.Train> tr : trainOrientations.entrySet()){
 				   Train trainObj = tr.getValue();
 				   if(isMoving.get(tr.getKey()) != null && isMoving.get(tr.getKey())){
-					   Queue<Integer> reqCurrent = sections().get(eventsectionID).getEntryRequests();
-					   Integer prev = trainRoutes.get(tr.getKey()).prevSection(trainObj.currentSection()) ;
-					   Queue<Integer> reqPrev = sections().get(prev).getEntryRequests();
+					   //Queue<Integer> reqCurrent = sections().get(eventsectionID).getEntryRequests();
+					   //System.out.println("currentSec: "+trainObj.currentSection());
+					  // System.out.println("prev: "+trainRoutes.get(tr.getKey()).prevSection(trainObj.currentSection()));
+					   Route rt = trainRoutes.get(tr.getKey());
+					   
+					   //if(!rt.isALoop() && rt.firstSection() == trainObj.currentSection()){
+						   
+						   
+					   //}
+					   Integer prev = null;
+					   if(!(trainObj.currentSection() == rt.firstSection() && !rt.isALoop())){
+					     prev= trainRoutes.get(tr.getKey()).prevSection(trainObj.currentSection()) ;
+					   }
+					  // Queue<Integer> reqPrev = sections().get(prev).getEntryRequests();
 					   if(trainObj.currentSection() == eventsectionID){
 
-						   //if( (!reqCurrent.contains(tr.getKey())) || reqCurrent.peek() == tr.getKey() ){
+						  // if( (!reqCurrent.contains(tr.getKey())) || reqCurrent.peek() == tr.getKey() ){
 						    Integer nextOne = trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection());
 					     	eventsectionID = nextOne;
 					     	System.out.println("Train: "+tr.getKey());
 					     	return new Pair<Integer,Train>(eventsectionID,trainObj);
 						   //}
 					   }
-					   else if (prev == eventsectionID){ // if the train is already in the section
+					   else if ( !(!rt.isALoop()&& trainObj.currentSection() == rt.firstSection())&&  prev == eventsectionID){ // if the train is already in the section, this should not happen on the first section
 						   //if( (!reqPrev.contains(tr.getKey())) || reqPrev.peek() == tr.getKey() ){
 							System.out.println("Train: "+tr.getKey());
 						    return new Pair<Integer,Train>(null,trainObj);
@@ -236,7 +253,7 @@ public class MovementController implements Controller, Listener {
 				   }
 			}
 		}
-		return null;
+		return null; 
 	}
 
 	/**

@@ -51,7 +51,7 @@ public class TestStoppingCtl {
 
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
-		orientationMap.put(0, new modelrailway.core.Train(1, true));
+		orientationMap.put(0, new modelrailway.core.Train(1, true)); // put model train in section 1
 
 		final Simulator sim = new Simulator(headPiece, orientationMap, trainMap);
 
