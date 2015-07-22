@@ -15,5 +15,10 @@ public class Pair<R,T> {
 		}
 		return false;
 	}
+	
+	public String toString(){
+		
+	   return "<"+fst.toString()+","+snd.toString()+">";
+	}
 
 }

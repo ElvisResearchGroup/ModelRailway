@@ -101,10 +101,10 @@ public class Simulator implements Event.Listener{
 			Event.EmergencyStop stopEvent = (Event.EmergencyStop) e;
 			Integer loco = stopEvent.getLocomotive();
 			//Train tr = trainMap.get(loco);
-			for(Map.Entry<Integer, modelrailway.simulation.Train > entry : trains.entrySet()){
+			//for(Map.Entry<Integer, modelrailway.simulation.Train > entry : trains.entrySet()){
 				// powered off
-				runningThread.stopTrain(entry.getKey());
-			}
+			//	runningThread.stopTrain(entry.getKey());
+		//	}
 			runningThread.stopTrain(loco);
 
 		}

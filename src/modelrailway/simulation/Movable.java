@@ -80,6 +80,7 @@ public abstract class Movable {
     * @param int speed.
     */
    public void setMaxSpeed(int sp){
+
 	   this.maxSpeed = sp;
    }
    /**
@@ -210,11 +211,13 @@ public abstract class Movable {
    * @return
    */
    public int stop(){
-	    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-		System.out.println(">>>>>>>>>>>A stop has been triggered for the Movable>>>>>>>>>>>>>>>>");
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+	    //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		//System.out.println(">>>>>>>>>>>A stop has been triggered for the Movable>>>>>>>>>>>>>>>>");
+		//System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		//Thread.dumpStack();
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		//System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+	  // if(this.getID() == 1) Thread.currentThread().dumpStack();
+	   System.out.println("Stop: "+this.getID());
 	   currentSpeed = 0;
 	   return distance;
    }
@@ -224,6 +227,7 @@ public abstract class Movable {
     */
    public int start(){
 	   //System.out.println("maxSpeed: "+maxSpeed);
+	   System.out.println("Start: "+ this.getID());
 	   currentSpeed = maxSpeed;
 	   return distance;
    }
