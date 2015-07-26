@@ -68,11 +68,21 @@ public class ControlerCollision extends MovementController implements Controller
 
 		  System.out.println("Stop triggered: "+ train);
 		  this.stop(train);
+		   // it is necisary to unlock the section before the section we have just come from .
+		  // as when the train stops it does not unlock the section it has just come from as it may be straddled across that section.
+		  // so succesive stops can cause a long chain of locked sections. , The section is only unlocked if it was tested and found to be locked to avoid unnecisarily starting trains that may be waiting. 
 		  
 		  Integer loco = train;
 		  Integer prev = this.routes().get(loco).prevSection(this.trainOrientations().get(loco).currentSection());
+		  Integer prevPrevSection = routes().get(loco).prevSection(prev);
+		  
 		  for(Map.Entry<Integer, Train> trainEnt: this.trainOrientations().entrySet()){
-		     if(trainEnt.getKey() == loco) this.unlockSection(sections().get(prev), trainEnt);
+		     if(trainEnt.getKey() == loco){
+		    	 Section prevPrevSec = sections().get(prevPrevSection);
+				 if(prevPrevSec != null && prevPrevSec.getEntryRequests().contains(trainEnt.getKey())){ //unlock prevPrev
+				     unlockSection(prevPrevSec, trainEnt);
+				 }
+		     }
 		  }
 		  super.notify(new Event.EmergencyStop(train)); // now we stop the train that failed locking.
 		}
@@ -90,7 +100,7 @@ public class ControlerCollision extends MovementController implements Controller
 	 * @param e
 	 * @return
 	 */
-	private Pair<Integer,Integer> tryLocking(Event e, boolean moving){
+	public Pair<Integer,Integer> tryLocking(Event e, boolean moving){
 		//if(e instanceof Event.SpeedChanged && ((Event.SpeedChanged) e)
 		if((e instanceof Event.SectionChanged)){ // when we are moving into a section
 			Train tr = null;
@@ -133,6 +143,8 @@ public class ControlerCollision extends MovementController implements Controller
 
 				Section thisSec = this.sections().get(tr.currentSection()); //
 				Track front = thisSec.get(0);
+				//System.out.println("thisSec: "+ thisSec.getNumber());
+				
 				Track notAltNext = front.getNext(false);
 				Track altNext = front.getNext(true);
 				boolean reserved = false ;
@@ -151,7 +163,7 @@ public class ControlerCollision extends MovementController implements Controller
 					reserved = reserved1 && reserved2;
 					// fix switches in reserved section.
 					if(notAltNext.getSection().get(0) instanceof Switch){
-					  super.moveSwitches(train, notAltNext.getSection().getNumber(), trainOrientations().get(train), notAltNext.getSection().get(0));
+					  moveSwitches(train, notAltNext.getSection().getNumber(), trainOrientations().get(train), notAltNext.getSection().get(0));
 					}
 
 
@@ -163,7 +175,7 @@ public class ControlerCollision extends MovementController implements Controller
 					reserved = reserved1 && reserved2;
 
 					if(notAltNext.getAltSection().get(0) instanceof Switch){
-					  super.moveSwitches(train, notAltNext.getAltSection().getNumber(), trainOrientations().get(train), notAltNext.getAltSection().get(0));
+					  moveSwitches(train, notAltNext.getAltSection().getNumber(), trainOrientations().get(train), notAltNext.getAltSection().get(0));
 					}
 
 				}else if(altNext.getSection().getNumber() == nextSec){
@@ -175,7 +187,7 @@ public class ControlerCollision extends MovementController implements Controller
 					else {reserved2 = true;}
 					reserved = reserved1 && reserved2;
 					if(altNext.getSection().get(0) instanceof Switch){
-				      super.moveSwitches(train, altNext.getSection().getNumber(), trainOrientations().get(train), altNext.getSection().get(0));
+				      moveSwitches(train, altNext.getSection().getNumber(), trainOrientations().get(train), altNext.getSection().get(0));
 					}
 
 
@@ -185,7 +197,7 @@ public class ControlerCollision extends MovementController implements Controller
 					boolean reserved2 = altNext.getSection().reserveSection(train);
 					reserved = reserved1 && reserved2;
 					if(altNext.getAltSection().get(0) instanceof Switch){
-				      super.moveSwitches(train, altNext.getAltSection().getNumber(), trainOrientations().get(train), altNext.getAltSection().get(0));
+				      moveSwitches(train, altNext.getAltSection().getNumber(), trainOrientations().get(train), altNext.getAltSection().get(0));
 				    }
 				}
 				//System.out.println("reserved: "+reserved);
@@ -218,7 +230,7 @@ public class ControlerCollision extends MovementController implements Controller
 					else {reserved2 = true;}
 					reserved = reserved1 && reserved2;
 					if(notAltPrev.getSection().get(notAltPrev.getSection().size()-1) instanceof Switch){
-					  super.moveSwitches(train, notAltPrev.getSection().getNumber(), trainOrientations().get(train), notAltPrev.getSection().get(notAltPrev.getSection().size()-1));
+					  moveSwitches(train, notAltPrev.getSection().getNumber(), trainOrientations().get(train), notAltPrev.getSection().get(notAltPrev.getSection().size()-1));
 				    }
 
 				} if(notAltPrev.getAltSection() != null && notAltPrev.getAltSection().getNumber() == nextSec){
@@ -226,7 +238,7 @@ public class ControlerCollision extends MovementController implements Controller
 					boolean reserved2 =notAltPrev.getAltSection().reserveSection(train);
 					reserved = reserved1 && reserved2;
 					if(notAltPrev.getAltSection().get(notAltPrev.getAltSection().size()-1) instanceof Switch){
-						 super.moveSwitches(train, notAltPrev.getAltSection().getNumber(), trainOrientations().get(train), notAltPrev.getAltSection().get(notAltPrev.getAltSection().size()-1));
+						 moveSwitches(train, notAltPrev.getAltSection().getNumber(), trainOrientations().get(train), notAltPrev.getAltSection().get(notAltPrev.getAltSection().size()-1));
 					}
 
 				} if(altPrev.getSection().getNumber() == nextSec){
@@ -238,7 +250,7 @@ public class ControlerCollision extends MovementController implements Controller
 					else{reserved2 = true;}
 					reserved = reserved1 && reserved2;
 					if(altPrev.getSection().get(altPrev.getSection().size()-1) instanceof Switch){
-						 super.moveSwitches(train, altPrev.getSection().getNumber(), trainOrientations().get(train), altPrev.getSection().get(altPrev.getSection().size()-1));
+						 moveSwitches(train, altPrev.getSection().getNumber(), trainOrientations().get(train), altPrev.getSection().get(altPrev.getSection().size()-1));
 					}
 
 				} if(altPrev.getAltSection() != null && altPrev.getAltSection().getNumber() == nextSec){
@@ -246,7 +258,7 @@ public class ControlerCollision extends MovementController implements Controller
 					boolean reserved2 = altPrev.getSection().reserveSection(train);
 					reserved = reserved1 && reserved2;
 					if(altPrev.getAltSection().get(notAltPrev.getAltSection().size()-1) instanceof Switch){
-						 super.moveSwitches(train, altPrev.getAltSection().getNumber(), trainOrientations().get(train), altPrev.getAltSection().get(altPrev.getAltSection().size()-1));
+						 moveSwitches(train, altPrev.getAltSection().getNumber(), trainOrientations().get(train), altPrev.getAltSection().get(altPrev.getAltSection().size()-1));
 					}
 				}
 
@@ -288,26 +300,15 @@ public class ControlerCollision extends MovementController implements Controller
 	    		   //System.out.println("");
 
 	    		   System.out.println("UnlockedPrevious Section: "+ previous.getNumber());
+	    		   Integer prevPrevSection = routes().get(trainOrientation.getKey()).prevSection(prevSection);
+	    		   Section prevPrevSec = sections().get(prevPrevSection);
+	    		   
+	    		   if(prevPrevSec != null && prevPrevSec.getEntryRequests().contains(trainOrientation.getKey())){ //unlock prevPrev
+	    			   unlockSection(prevPrevSec, trainOrientation);
+	    		   }
+	    		   
 	    		   unlockSection(previous, trainOrientation); // unlock the section we just came from
-	    	  	  // try{
-	    		//	   Track tr = previous.get(0);
-	    		//	   if(tr.getNext(false).getSection() == thisSection|| tr.getNext(false).getAltSection() == thisSection){
-	    		//		   unlockSection(tr.getNext(true).getSection(), trainOrientation);
-	    		//		   unlockSection(tr.getNext(true).getAltSection(),trainOrientation);//
-
-	    			//   } else if (tr.getNext(true).getSection() == thisSection || tr.getNext(true).getAltSection()== thisSection){
-	    			//	   unlockSection(tr.getNext(false).getSection(), trainOrientation);
-	    			//	   unlockSection(tr.getNext(false).getAltSection(),trainOrientation);
-
-	    			//   } else if (tr.getPrevious(false).getSection() == thisSection || tr.getPrevious(false).getAltSection() == thisSection){
-	    			//	   unlockSection(tr.getPrevious(true).getSection(), trainOrientation);
-	    			//	   unlockSection(tr.getPrevious(true).getAltSection(),trainOrientation);
-	    			 //  } else if (tr.getPrevious(true).getSection() == thisSection|| tr.getPrevious (false).getAltSection() == thisSection){
-	    			//	   unlockSection(tr.getPrevious(false).getSection(), trainOrientation);
-	    			//	   unlockSection(tr.getPrevious(false).getAltSection(),trainOrientation);
-	    			 //  }
-
-	    		  // } catch(RuntimeException ex){}
+	    	  	 
 	    		}
 	    		//System.out.println("Switch"+thisTrack);
 	    		//System.out.println("trackSection: "+thisTrack.getSection().getNumber());
