@@ -42,6 +42,8 @@ public class SimTestRun {
 		Track headPiece = startSec.get(0);
 
 		final Route route = new Route(true, 1,2,3,4,5,6,7,8);
+		
+		
 
 		Movable locomotive = new Locomotive(new Track[]{headPiece}, 40,40,10, false);
 
@@ -55,6 +57,8 @@ public class SimTestRun {
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
 		orientationMap.put(0, new modelrailway.core.Train(1, true));
+		
+		sim0.getSections().get(2).reserveSection(0);
 
 		final Simulator sim = new Simulator(headPiece, orientationMap, trainMap);
 
@@ -424,7 +428,7 @@ public class SimTestRun {
 		//assertFalse(ring.getSectionNumberMap().get(8).containsMovable(0));// the train may or may not be still in section 8
 
 		//assert that the entry requests have been cleared from section 9
-		assertTrue(ring.getSectionNumberMap().get(9).getEntryRequests().size() == 0);
+	//	assertTrue(ring.getSectionNumberMap().get(9).getEntryRequests().size() == 0);
 		assertFalse(ring.getSectionNumberMap().get(9).containsMovable(1));
 
 		//assert that the entry requests have been cleared from section 2

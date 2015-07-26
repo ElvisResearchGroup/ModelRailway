@@ -105,13 +105,16 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 	 */
 	public Pair<Boolean,Integer> removeFromQueue(Integer t){
 		if(entryRequests.size() == 0) return null;
+		
+		//if(t == 2) Thread.dumpStack();
 		//System.out.println("entryRequests: "+entryRequests.toString()+" t: "+t+" number: "+this.sectionNumber+" thread: "+Thread.currentThread().getId());
 		if(entryRequests.contains(t)){
 			boolean removal = entryRequests.remove(t);
 			if(entryRequests.size() == 0) return new Pair<Boolean, Integer>(removal,null); // if there are no elements left.
-			return new Pair<Boolean,Integer>(entryRequests.remove(t), entryRequests.peek()); // the next element after removal.
+			
+			return new Pair<Boolean,Integer>(removal, entryRequests.peek()); // the next element after removal.
 		}
-		else{
+		else{ // there was no  element to remove.
 			return new Pair<Boolean,Integer>(false,entryRequests.peek());
 		}
 	}
@@ -151,9 +154,9 @@ public class Section extends CopyOnWriteArrayList<Track>{ // a section is a list
 		//System.out.println(entryRequests);
 		synchronized(entryRequests){
 		synchronized(movableObjects){
-		if(entryRequests.size() != 0){
-		  if(m != null && entryRequests.peek() == m) entryRequests.poll();
-		  }
+		//if(entryRequests.size() != 0){
+		  //if(m != null && entryRequests.peek() == m) entryRequests.poll();
+		 // }
 		//throw new RuntimeException("adding a movable object");
 		return movableObjects.add(m);
 		}

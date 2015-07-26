@@ -43,21 +43,21 @@ public class Simulator implements Event.Listener{
 			  //System.out.println("checking For movement: "+train.getBack().getSection().getNumber()); //+" slist: "+slist+" s2list: "+s2list);
 			 for(Section s : s2list){
 				if(!slist.contains(s)){
-					System.out.println("train Before sList for slist.contains: "+ train.getID());
-					System.out.print("sList: ");
+					//System.out.println("train Before sList for slist.contains: "+ train.getID());
+					//System.out.print("sList: ");
 					for(Section s2: slist){
-						System.out.print(s2.getNumber()+", ");
+						//System.out.print(s2.getNumber()+", ");
 					}
-					System.out.println();
-					System.out.print("s2List: ");
+					//System.out.println();
+					//System.out.print("s2List: ");
 					for(Section s2: s2list){
-						System.out.print(s2.getNumber()+", ");
+					//	System.out.print(s2.getNumber()+", ");
 					}
-					System.out.println();
+					//System.out.println();
 				}
 			  }
 			  if(slist.get(1).getNumber() != s2list.get(1).getNumber()){ // then the front has moved
-				  if(slist.get(1).getNumber() %2 == 1){ // if it is a detecting segment that we moved out of 
+				  if(slist.get(1).getNumber() %2 == 1){ // if it is a detecting segment that we moved out of
 					  for(Listener l : listeners){
 						  Event ev = new Event.SectionChanged((((slist.get(1).getNumber() - 1)/2) +1), false); // we move out of the section
 						  l.notify(ev);
@@ -67,24 +67,24 @@ public class Simulator implements Event.Listener{
 					  for(Listener l : listeners){
 						  Event ev = new Event.SectionChanged((((s2list.get(1).getNumber() - 1)/2) +1), true); // we move into the section.
 						  l.notify(ev);
-						  
+
 					  }
 				  }
 			  }
-			  
+
 			 for(Section s : slist){
 				if(!s2list.contains(s)){
-					System.out.println("train Before sList for s2list.contains: "+ train.getID());
-					System.out.print("sList: ");
+					//System.out.println("train Before sList for s2list.contains: "+ train.getID());
+					//System.out.print("sList: ");
 					for(Section s2: slist){
-						System.out.print(s2.getNumber()+", ");
+						//System.out.print(s2.getNumber()+", ");
 					}
-					System.out.println();
-					System.out.print("s2List: ");
+					//System.out.println();
+					//System.out.print("s2List: ");
 					for(Section s2: s2list){
-						System.out.print(s2.getNumber()+", ");
+					//	System.out.print(s2.getNumber()+", ");
 					}
-					System.out.println();
+					//System.out.println();
 			   }
 			 }
 	}
@@ -164,7 +164,7 @@ public class Simulator implements Event.Listener{
 			if(currNotThrown  == thrown) ((BackSwitch) sw).toggle();
 		}
 		else{
-			System.out.println(sw.getClass().toString());
+			//System.out.println(sw.getClass().toString());
 			throw new RuntimeException("unknown switch encountered in TestControler: "+ turnoutID +" , thrown :"+thrown);
 		}
 
