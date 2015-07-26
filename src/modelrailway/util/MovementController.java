@@ -117,8 +117,15 @@ public class MovementController implements Controller, Listener {
 		}
 		if(tr != null){
 		  if(e instanceof Event.SectionChanged){
+		   System.out.println("Move into section");
 	       moveIntoSection(tr); // re-perform section movement when we move in twice.
-		  }
+		  } 
+		 
+		}
+		if(tr == null){
+			System.out.println("tr is null");
+			System.out.println("e instance: "+e.getClass().toString());
+			
 		}
 		for(Listener l : listeners){
 			//System.out.println("Notify listeners: "+ e.getClass().toString());
@@ -184,8 +191,10 @@ public class MovementController implements Controller, Listener {
 		if(((Event.SectionChanged) e).getInto()){ // if we are moving into a section,
 			//System.out.println("Moving in");
 			for(Map.Entry<Integer, Train> tr: trainOrientations.entrySet()){ // go through all the trains
-
+				
 			    Train trainObj = tr.getValue(); // for each train
+			    System.out.println("trainObj: "+ tr.getKey() +", "+isMoving.get(tr.getKey()));
+			    System.out.println("trainObj: "+ tr.getKey() +", train: "+tr.getValue().currentSection());
 			    if(isMoving.get(tr.getKey()) != null && isMoving.get(tr.getKey()) == moving){ // if the train is moving
 			    	//System.out.println("tr.getKey(): " + tr.getKey());
 			    	//System.out.println("trainObj.currentSection(): "+ trainObj.currentSection());
@@ -201,7 +210,7 @@ public class MovementController implements Controller, Listener {
 			    	  nextID = trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()) ;
 			    	}
 			    	Queue<Integer> reqNext = sections().get(nextID).getEntryRequests();
-
+			    	System.out.println("next == event: "+ (nextID == eventsectionID));
 			    	if(!(!rt.isALoop()&& trainObj.currentSection() == rt.lastSection()) && nextID == eventsectionID){
 
 			    		if( !reqNext.contains(tr.getKey()) || reqNext.peek() == tr.getKey() ){ // if we are running without locking, or if this is the next train on the list.
@@ -323,7 +332,7 @@ public class MovementController implements Controller, Listener {
 		Pair<Integer, Integer> sectionPair = new Pair<Integer,Integer>(prevSec,nextSec);
 	    // for sectionPair
 	    List<Boolean> switchingOrder = sectionS.retrieveSwitchingOrder(sectionPair);
-	    //System.out.println("moveSwitches, pair: "+sectionPair.toString());
+	    System.out.println("moveSwitches, pair: "+sectionPair.toString());
 		if(!trainObj.currentOrientation()){
 		  Track tr = thisTrack;
     	  for(Boolean bl: switchingOrder){ // for each switch
@@ -365,6 +374,20 @@ public class MovementController implements Controller, Listener {
 		trainRoutes.put(trainID,route);
 		if(trackController == null) throw new RuntimeException("track controller was null in start train");
 	    trackController.notify((Event)new Event.SpeedChanged(trainID, 6));
+		return true;
+		}
+
+
+	}
+	
+
+	public boolean zerostart(int trainID, Route route) {
+		synchronized(isMoving){
+
+		isMoving.put(trainID, true);
+		trainRoutes.put(trainID,route);
+		if(trackController == null) throw new RuntimeException("track controller was null in start train");
+	    trackController.notify((Event)new Event.SpeedChanged(trainID, 0));
 		return true;
 		}
 

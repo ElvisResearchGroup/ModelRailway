@@ -68,6 +68,12 @@ public class ControlerCollision extends MovementController implements Controller
 
 		  System.out.println("Stop triggered: "+ train);
 		  this.stop(train);
+		  
+		  Integer loco = train;
+		  Integer prev = this.routes().get(loco).prevSection(this.trainOrientations().get(loco).currentSection());
+		  for(Map.Entry<Integer, Train> trainEnt: this.trainOrientations().entrySet()){
+		     if(trainEnt.getKey() == loco) this.unlockSection(sections().get(prev), trainEnt);
+		  }
 		  super.notify(new Event.EmergencyStop(train)); // now we stop the train that failed locking.
 		}
 
@@ -91,6 +97,7 @@ public class ControlerCollision extends MovementController implements Controller
 			try{
 
 				//System.out.println("Before Adjust");
+				//System.out.println("moving: "+moving);
 				tr = adjustSection(e, moving); // adjust train object for the next section.
 				//System.out.println("After Adjust");
 			}catch(AlreadyHere ex){
@@ -98,7 +105,7 @@ public class ControlerCollision extends MovementController implements Controller
 
 			}
 			//System.out.println("section: "+ ((Event.SectionChanged )e).getSection());
-			System.out.println("section: "+ this.calculateSectionNumber((SectionChanged) e));
+			//System.out.println("section: "+ this.calculateSectionNumber((SectionChanged) e));
 
 			if(tr == null) throw new RuntimeException("There was no train associated with a section changed movement. in tryLocking(Event e)");
 
@@ -260,10 +267,11 @@ public class ControlerCollision extends MovementController implements Controller
 		Integer eventsectionID = train.currentSection(); // The train object has already been adjusted
 
 		System.out.println("In Controler Collision: "+ eventsectionID);
+		
 		for(Entry<Integer, Train> trainOrientation: trainOrientations().entrySet()){ // for all the trains on the track, we need to find the train id that matches the train we have.
 
 			Integer section = trainOrientation.getValue().currentSection(); // get the section of the train
-
+			System.out.println("section: "+section);
 			// we compare sections to see that we are working with the same train as has been passed in.
 			// so trainOrientation.getKey() will have the train id of the train object
 	    	if(section ==  eventsectionID && routes().get(trainOrientation.getKey()) != null){ // check that the front of the train is in the section
@@ -274,6 +282,7 @@ public class ControlerCollision extends MovementController implements Controller
 	    		Section thisSection = sections().get(section); // the section object matching the id of the current section that the train is in
 
 	    		Track thisTrack = sections().get(eventsectionID).get(0);
+	    		System.out.println("prevSection: "+prevSection +" trainOrientation.getKey(): "+ trainOrientation.getKey());
 	    		if(previous != null){
 	    		   //System.out.println("Previous: "+previous.getNumber());
 	    		   //System.out.println("");

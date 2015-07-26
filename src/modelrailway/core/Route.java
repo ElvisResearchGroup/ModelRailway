@@ -91,16 +91,17 @@ public class Route {
 			if (sections[i] == section) {
 				// Found matching section. Now, determine next section (if it
 				// exists).
-				i = (i - 1);
+				int x = (i - 1);
 				// Check whether we reached the end of the route or not
-				if(i < 0) i = sections.length + i;
-				if (i == 0 && !isLoop) {
-					// Yes, we did.
-					return null;
-				} else {
-					// No, there is still more.
-					return sections[i];
+				if(!isLoop){
+					if(x < 0) return null;
+					return sections[x];
+					
+				}else{
+					if(x < 0) x = sections.length +x;
+					return sections[x];
 				}
+				
 			}
 		}
 		throw new IllegalArgumentException("Invalid section for route: "+section);

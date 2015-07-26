@@ -107,12 +107,17 @@ public abstract class Movable {
    */
    public int move(Event.Listener ls){ // returns the new distance
 	   ///System.out.println("currentSpeed: "+currentSpeed);
+	   //if(currentSpeed == 0) return distance;
 	   ArrayList<Track> old = new ArrayList<Track>();
 	   if(track[1] != null) old.add(track[1]);
 	   old.add(track[0]);
 
 	   if(isFowards()){
+		  //System.out.println("distance: "+ distance);
+		  //System.out.println("getFront().getDistance(onAlt): "+getFront().getDistance(onAlt));
+		 // System.out.println("currentSpeed: "+currentSpeed);
 		  int distance2 = (distance + currentSpeed) % getFront().getDistance(onAlt);
+		 // System.out.println(distance2);
 		  if(distance2 < distance){ // we have moved onto a new segment
 			   track[1] = track[0];
 			   backAlt = onAlt;

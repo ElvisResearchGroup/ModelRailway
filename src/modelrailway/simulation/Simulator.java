@@ -9,6 +9,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import modelrailway.core.Controller;
 import modelrailway.core.Event;
+import modelrailway.core.Event.SpeedChanged;
 import modelrailway.core.Section;
 import modelrailway.core.Event.Listener;
 import modelrailway.core.Route;
@@ -38,25 +39,31 @@ public class Simulator implements Event.Listener{
 
 			  modelrailway.simulation.Train train = entry.getValue();
 			  List<Section> slist = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
-			  train.move(thisListener);
-			  List<Section> s2list = Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
+			 // if(train.getCurrentSpeed() != 0){ 
+			//	  System.out.println("nonzero");
+				  train.move(thisListener);
+			//  }
+			  List<Section> s2list= Arrays.asList(new Section[]{train.getBack().getSection(), train.getFront().getSection()});
+			 // System.out.println("<"+slist.get(0).getNumber()+","+ slist.get(1).getNumber()+">");
+			  //System.out.println("<"+s2list.get(0).getNumber()+","+ s2list.get(1).getNumber()+">");
 			  //System.out.println("checking For movement: "+train.getBack().getSection().getNumber()); //+" slist: "+slist+" s2list: "+s2list);
-			 for(Section s : s2list){
-				if(!slist.contains(s)){
+			 //for(Section s : s2list){
+			//	if(!slist.contains(s)){
 					//System.out.println("train Before sList for slist.contains: "+ train.getID());
 					//System.out.print("sList: ");
-					for(Section s2: slist){
+				//	for(Section s2: slist){
 						//System.out.print(s2.getNumber()+", ");
-					}
+					//}
 					//System.out.println();
 					//System.out.print("s2List: ");
-					for(Section s2: s2list){
+				//	for(Section s2: s2list){
 					//	System.out.print(s2.getNumber()+", ");
-					}
+				//	}
 					//System.out.println();
-				}
-			  }
+		//		}
+			//  }
 			  if(slist.get(1).getNumber() != s2list.get(1).getNumber()){ // then the front has moved
+				  
 				  if(slist.get(1).getNumber() %2 == 1){ // if it is a detecting segment that we moved out of
 					  for(Listener l : listeners){
 						  Event ev = new Event.SectionChanged((((slist.get(1).getNumber() - 1)/2) +1), false); // we move out of the section
@@ -72,21 +79,21 @@ public class Simulator implements Event.Listener{
 				  }
 			  }
 
-			 for(Section s : slist){
-				if(!s2list.contains(s)){
+		//	 for(Section s : slist){
+			//	if(!s2list.contains(s)){
 					//System.out.println("train Before sList for s2list.contains: "+ train.getID());
 					//System.out.print("sList: ");
-					for(Section s2: slist){
+				//	for(Section s2: slist){
 						//System.out.print(s2.getNumber()+", ");
-					}
+				//	}
 					//System.out.println();
 					//System.out.print("s2List: ");
-					for(Section s2: s2list){
+				//	for(Section s2: s2list){
 					//	System.out.print(s2.getNumber()+", ");
-					}
+				//	}
 					//System.out.println();
-			   }
-			 }
+			//   }
+			// }
 	}
 
 	@Override
@@ -117,9 +124,11 @@ public class Simulator implements Event.Listener{
 		}
 		else if (e instanceof Event.SpeedChanged){
 			int loco =((Event.SpeedChanged) e).getLocomotive();
-			if(trains.get(loco).getCurrentSpeed() == 0){ // start the train
+			if(((SpeedChanged) e).getSpeed() != 0){ // start the train
 				runningThread.startTrain(loco);
 
+			}else{
+				runningThread.stopTrain(loco);
 			}
 		}
 		else if (e instanceof Event.TurnoutChanged){
