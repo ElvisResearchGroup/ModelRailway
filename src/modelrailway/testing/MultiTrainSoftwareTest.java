@@ -76,8 +76,13 @@ public class MultiTrainSoftwareTest {
 		sim.register(controller);
 		controller.set(headID, startSec.retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
 		controller.set(innerID, numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
+		
+		final ArrayList<Integer> loco0Movement = new ArrayList<Integer>();
+		final ArrayList<Integer> loco1Movement = new ArrayList<Integer>();
+		loco0Movement.add(8);
+		loco1Movement.add(16);
+		final ArrayList<String> outputArrayLoco0 = new ArrayList<String>();
 		final ArrayList<String> outputArrayLoco1 = new ArrayList<String>();
-		final ArrayList<String> outputArrayLoco2 = new ArrayList<String>();
 		final Thread th = Thread.currentThread();
 
 
@@ -85,78 +90,46 @@ public class MultiTrainSoftwareTest {
 			public void notify(Event e){
  				System.out.println("event in unit test: "+e.toString());
  				if(e instanceof Event.SectionChanged){
- 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
- 					Integer oldI = i;
- 					if(!((SectionChanged) e).getInto()){
- 						Integer t1 = orientationMap.get(0).currentSection();
- 						Integer t2 = orientationMap.get(0).currentSection();
- 						Train t1t = trainMap.get(0);
- 						Train t2t = trainMap.get(1);
- 						Integer train0Sec = t1t.getFront().getSection().getNumber();
- 						Integer train1Sec = t2t.getFront().getSection().getNumber();
-
- 						System.out.println("i:"+ i);
- 						System.out.println("train1Sec: "+train0Sec);
- 						System.out.println("train2Sec: "+train1Sec);
-
-
- 						try{
- 							System.out.println("route.nextSection(i): "+route.nextSection(i));
- 						    if(route.nextSection(i) == train0Sec) {
-
- 						       i = route.nextSection(i);
- 						    }
- 						}catch(IllegalArgumentException ex){}
-
- 						try{
- 							System.out.println("route2.nextSection(i):"+route2.nextSection(i));
- 					    	if (route2.nextSection(i) == train1Sec){
- 							   i = route2.nextSection(i);
- 					 	    }
- 						}catch(IllegalArgumentException ex){}
-
- 						if(i == oldI){
- 							System.out.println("Mistake in test");
- 							th.interrupt();
-
- 						}
- 					}
- 					if(loco2.getFront().getSection().getNumber() == i){
- 						outputArrayLoco2.add(""+i);
- 					} else{
- 						outputArrayLoco1.add(""+i);
- 					}
- 				}
+					boolean stop = false;
+					int loco0Sec = controller.trainOrientations().get(0).currentSection();
+					int loco1Sec = controller.trainOrientations().get(1).currentSection();
+					if(loco0Sec != loco0Movement.get(loco0Movement.size()-1)){
+						if(loco0Movement.contains(loco0Sec)){
+							stop = true;
+						}else{
+						    loco0Movement.add(loco0Sec);
+						    outputArrayLoco0.add(""+loco0Movement.get(loco0Movement.size()-1));
+						}
+						
+					}
+					if(loco1Sec != loco1Movement.get(loco1Movement.size()-1)){
+						if(loco1Movement.contains(loco1Sec)) {
+							stop = true;
+							
+						}else{
+						    loco1Movement.add(loco1Sec);
+						    outputArrayLoco1.add(""+loco1Movement.get(loco1Movement.size()-1));
+						}
+						
+					}
+					if(stop){
+						System.out.flush();
+						th.interrupt();
+						
+					}
+				}
+ 				
  				if(e instanceof Event.EmergencyStop){
  					Integer loco = ((Event.EmergencyStop) e).getLocomotive(); // get the locomotive
  					System.out.println("Emergency stop detected in unit test.");
  					if(loco == 1){
- 						outputArrayLoco1.add("Stop");
+ 						outputArrayLoco0.add("Stop");
  					}
  					else{
- 						outputArrayLoco2.add("Stop");
+ 						outputArrayLoco1.add("Stop");
  					}
  				}
- 				if(e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
-   				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
- 				  System.out.println("sectionchanged in unit test into section: "+ i);
- 				  if(i == 7){// if any loco is changing into section 8. i.e out of section 7
- 					  System.out.println("stop triggered by unit test");
- 					  controller.stop(0);
- 					  controller.stop(1);
- 					  System.out.flush();
- 					  th.interrupt();
- 				  }
- 				}
- 				else if(e instanceof Event.SpeedChanged){
- 				   System.out.println("speed changed in test: "+((Event.SpeedChanged) e).getLocomotive());
-
- 				}
- 				if(locomotive.getCurrentSpeed()==0 && loco2.getCurrentSpeed()== 0){
- 					System.out.println("both have stopped");
- 					System.out.flush();
- 					th.interrupt();
- 				}
+ 			
  				System.out.println("loco0: "+locomotive.getCurrentSpeed());
  				System.out.println("loco1: "+loco2.getCurrentSpeed());
  			}
@@ -173,8 +146,8 @@ public class MultiTrainSoftwareTest {
 			Thread.currentThread().join();
 		}catch(InterruptedException e){
 			System.out.println("hardwareTest0");
-			System.out.println("output: "+outputArrayLoco1.toString());
-			System.out.println("output: "+outputArrayLoco2.toString());
+			System.out.println("output 0: "+outputArrayLoco0.toString());
+			System.out.println("output 1: "+outputArrayLoco1.toString());
 			System.out.println("1:"+ring.getSectionNumberMap().get(1).getEntryRequests().toString());
 			System.out.println("2:"+ring.getSectionNumberMap().get(2).getEntryRequests().toString());
 			System.out.println("3:"+ring.getSectionNumberMap().get(3).getEntryRequests().toString());
@@ -185,6 +158,130 @@ public class MultiTrainSoftwareTest {
 			System.out.println("8:"+ring.getSectionNumberMap().get(8).getEntryRequests().toString());
 			System.out.println("9:"+ring.getSectionNumberMap().get(9).getEntryRequests().toString());
 			System.out.println("10:"+ring.getSectionNumberMap().get(10).getEntryRequests().toString());
+		    System.out.println("16:"+ring.getSectionNumberMap().get(16).getEntryRequests().toString());
+
+			System.out.flush();
+		}
+	}
+	/**
+	 * Two trains go around the track. one arround an outer loop, the other around and inner loop, they do not collide. 
+	 */
+	@Test public void softwareTest1(){
+		SimulationTrack sim0 = new SimulationTrack();
+		StraightDblRing ring = sim0.getTrack();
+		ring.recalculateSections();
+		Map<Integer,Section> numberMap = ring.getSectionNumberMap();
+		Section startSec = numberMap.get(8);
+		Track outerPiece = startSec.get(0);
+		Integer headID = ((Switch)outerPiece).getSwitchID();
+		Track innerStart = numberMap.get(16).get(0);
+		Integer innerID = ((Switch) innerStart).getSwitchID();
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		final Route route0 = new Route(true, 8,1,2,3,4,5,6,7);
+		final Movable loco0 = new Locomotive(new Track[]{outerPiece}, 40,40,10, false);
+		Train train0 = new Train(new Movable[]{loco0});
+		final Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
+		trainMap.put(0,train0 );
+		train0.setID(0);
+		final Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
+		orientationMap.put(0, new modelrailway.core.Train(8, true));
+
+
+
+		final Route route1 = new Route(true, 16,9,10,11,12,13,14,15);
+		final Movable loco1 = new Locomotive(new Track[]{innerStart},40,40,10,true);
+		Train train1 = new Train(new Movable[]{loco1});
+		trainMap.put(1, train1);
+		train1.setID(1);
+		orientationMap.put(1,  new modelrailway.core.Train(16, true));
+		Track headPiece = numberMap.get(1).get(0);
+
+		ring.getSectionNumberMap().get(16).getEntryRequests().offer(1);
+		ring.getSectionNumberMap().get(9).getEntryRequests().offer(1);
+
+		ring.getSectionNumberMap().get(8).getEntryRequests().offer(0);
+		ring.getSectionNumberMap().get(1).getEntryRequests().offer(0);
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		final Simulator sim = new Simulator(headPiece, orientationMap, trainMap);
+		final ControlerCollision controller = new ControlerCollision(orientationMap,ring.getSectionNumberMap(),headPiece,sim);
+		sim.register(controller);
+		controller.set(headID, startSec.retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
+		controller.set(innerID, numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
+		final ArrayList<Integer> loco0Movement = new ArrayList<Integer>();
+		final ArrayList<Integer> loco1Movement = new ArrayList<Integer>();
+		final ArrayList<String> outputArrayLoco0 = new ArrayList<String>();
+		final ArrayList<String> outputArrayLoco1 = new ArrayList<String>();
+		final Thread th = Thread.currentThread();
+		loco0Movement.add(orientationMap.get(0).currentSection());
+		loco1Movement.add(orientationMap.get(1).currentSection());
+		final Listener lst = new Listener(){
+			public void notify(Event e){
+				if(e instanceof Event.SectionChanged){
+					boolean stop = false;
+					int loco0Sec = controller.trainOrientations().get(0).currentSection();
+					int loco1Sec = controller.trainOrientations().get(1).currentSection();
+					if(loco0Sec != loco0Movement.get(loco0Movement.size()-1)){
+						if(loco0Movement.contains(loco0Sec)){
+							stop = true;
+						}else{
+						    loco0Movement.add(loco0Sec);
+						    outputArrayLoco0.add(""+loco0Movement.get(loco0Movement.size()-1));
+						}
+						
+					}
+					if(loco1Sec != loco1Movement.get(loco1Movement.size()-1)){
+						if(loco1Movement.contains(loco1Sec)) {
+							stop = true;
+							
+						}else{
+						    loco1Movement.add(loco1Sec);
+						    outputArrayLoco1.add(""+loco1Movement.get(loco1Movement.size()-1));
+						}
+						
+					}
+					if(stop){
+						System.out.flush();
+						th.interrupt();
+						
+					}
+				}
+				if(e instanceof Event.EmergencyStop){
+					if(((Event.EmergencyStop) e).getLocomotive() == 0){
+						outputArrayLoco0.add("STOP");
+					}else{
+						outputArrayLoco1.add("STOP");
+					}
+				}
+				
+			}
+		};
+		
+		controller.register(lst);
+		controller.start(0,route0);
+		controller.start(1,route1);
+		
+		try{
+			Thread.currentThread().join();
+		} catch(InterruptedException e){
+			System.out.println("output 0: "+outputArrayLoco0.toString());
+			System.out.println("output 1: "+outputArrayLoco1.toString());
+			System.out.println("1:"+ring.getSectionNumberMap().get(1).getEntryRequests().toString());
+			System.out.println("2:"+ring.getSectionNumberMap().get(2).getEntryRequests().toString());
+			System.out.println("3:"+ring.getSectionNumberMap().get(3).getEntryRequests().toString());
+			System.out.println("4:"+ring.getSectionNumberMap().get(4).getEntryRequests().toString());
+			System.out.println("5:"+ring.getSectionNumberMap().get(5).getEntryRequests().toString());
+			System.out.println("6:"+ring.getSectionNumberMap().get(6).getEntryRequests().toString());
+			System.out.println("7:"+ring.getSectionNumberMap().get(7).getEntryRequests().toString());
+			System.out.println("8:"+ring.getSectionNumberMap().get(8).getEntryRequests().toString());
+			System.out.println("9:"+ring.getSectionNumberMap().get(9).getEntryRequests().toString());
+			System.out.println("10:"+ring.getSectionNumberMap().get(10).getEntryRequests().toString());
+			System.out.println("11:"+ring.getSectionNumberMap().get(11).getEntryRequests().toString());
+			System.out.println("12:"+ring.getSectionNumberMap().get(12).getEntryRequests().toString());
+			System.out.println("13:"+ring.getSectionNumberMap().get(13).getEntryRequests().toString());
+			System.out.println("14:"+ring.getSectionNumberMap().get(14).getEntryRequests().toString());
+			System.out.println("15:"+ring.getSectionNumberMap().get(15).getEntryRequests().toString());
 		    System.out.println("16:"+ring.getSectionNumberMap().get(16).getEntryRequests().toString());
 
 			System.out.flush();
