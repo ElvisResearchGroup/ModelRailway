@@ -22,7 +22,7 @@ public class Crossing extends Track {
 	 * @param altlength
 	 */
 	public Crossing(Track previous, Track next, Track alternatePrevious, Track alternateNext, Section section, Section altSection, int length ,int altlength) {
-		super(previous, next, alternateNext, alternateNext, section, altSection, length, altlength);
+		super(previous, next, alternatePrevious, alternateNext, section, altSection, length, altlength);
 		// TODO Auto-generated constructor stub
 	}
 

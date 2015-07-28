@@ -147,6 +147,9 @@ public class ControlerCollision extends MovementController implements Controller
 				
 				Track notAltNext = front.getNext(false);
 				Track altNext = front.getNext(true);
+				System.out.println("front: "+ thisSec.getNumber());
+				System.out.println("front prev: "+front.getNext(false).getSection().getNumber());
+				System.out.println("nextSec: "+ nextSec);
 				boolean reserved = false ;
 
 				if(notAltNext.getSection().getNumber() == nextSec){
@@ -221,6 +224,9 @@ public class ControlerCollision extends MovementController implements Controller
 				//System.out.println("nextSec: "+ nextSec);
 				Track notAltPrev = back.getPrevious(false);
 				Track altPrev = back.getPrevious(true);
+				if(notAltPrev != null) System.out.println("notAltPrev not null");
+				if (altPrev != null) System.out.println("altPrev not null");
+				System.out.println("backType: "+back.getClass().toString());
 				boolean reserved = false ;
 				//System.out.println("backend: ");
 				if(notAltPrev.getSection().getNumber() == nextSec){
