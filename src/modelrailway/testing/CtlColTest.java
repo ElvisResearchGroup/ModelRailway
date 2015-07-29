@@ -246,7 +246,7 @@ public class CtlColTest {
  		assertTrue(str.getSection() == sec4);
 
  		Movable locomotive = new Locomotive(new Track[]{head,head},40,40,10,false);
- 		Movable locomotive2 = new Locomotive(new Track[]{sw,sw},40,40,10,false);
+ 		Movable locomotive2 = new Locomotive(new Track[]{tp_2,tp_2},40,40,10,false);
 
  		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
  		Train train = new Train(new Movable[]{locomotive});
@@ -261,8 +261,8 @@ public class CtlColTest {
  		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 
  		orientationMap.put(0, new modelrailway.core.Train(head.getSection().getNumber(), true));
- 		orientationMap.put(1, new modelrailway.core.Train(sw.getSection().getNumber(),true));
- 		sw.getSection().getEntryRequests().add(1);
+ 		orientationMap.put(1, new modelrailway.core.Train(tp_2.getSection().getNumber(),true));
+ 		tp_2.getSection().getEntryRequests().add(1);
  		head.getSection().getEntryRequests().add(0);
 
 //		train.toggleDirection();

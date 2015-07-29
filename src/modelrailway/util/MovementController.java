@@ -107,6 +107,7 @@ public class MovementController implements Controller, Listener {
 	@Override
 	public void notify(Event e) {
 		Train tr = null;
+		System.out.println("Event: "+e.toString());
 		try{
 		  if(e instanceof Event.SectionChanged ){ // when there is a section change into another section
 			  tr = adjustSection(e,true);
@@ -187,7 +188,7 @@ public class MovementController implements Controller, Listener {
 
 	public Pair<Integer,Train> sectionTrainMovesInto(Event.SectionChanged e, boolean moving){
 		Integer eventsectionID =  this.calculateSectionNumber((Event.SectionChanged) e);
-
+		System.out.println("EventID: "+eventsectionID);
 		if(((Event.SectionChanged) e).getInto()){ // if we are moving into a section,
 			//System.out.println("Moving in");
 			for(Map.Entry<Integer, Train> tr: trainOrientations.entrySet()){ // go through all the trains
@@ -322,7 +323,7 @@ public class MovementController implements Controller, Listener {
 	 */
 	public void moveSwitches(Integer trainID, Integer section, Train trainObj, Track  thisTrack){
 
-
+		System.out.println("move switches");
 		Route rt = trainRoutes.get(trainID);
 		Section sectionS = sections.get(section);
 	    Integer nextSec = rt.nextSection(section);
