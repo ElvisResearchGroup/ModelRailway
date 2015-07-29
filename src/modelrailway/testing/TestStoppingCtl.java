@@ -111,7 +111,7 @@ public class TestStoppingCtl {
 		//assertFalse(ring.getSectionNumberMap().get(8).containsMovable(0));// the train may or may not be still in section 8
 
 		//assert that the entry requests have been cleared from section 9
-		assertTrue(ring.getSectionNumberMap().get(9).getEntryRequests().size() == 0);
+		assertTrue(ring.getSectionNumberMap().get(9).getEntryRequests().size() == 1);
 		assertFalse(ring.getSectionNumberMap().get(9).containsMovable(1));
 
 		//assert that the entry requests have been cleared from section 2
@@ -138,7 +138,7 @@ public class TestStoppingCtl {
 		
 		Track eightPiece = numberMap.get(8).get(0);
 
-		final Route route = new Route(false,8,7,6,5,4,3,2,1,8,7);
+		final Route route = new Route(false,8,7,6,5,4,3,2,1);
 		route.setStopSection(1);
 
 		final Movable locomotive = new Locomotive(new Track[]{eightPiece}, 40,40,10, false);

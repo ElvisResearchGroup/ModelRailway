@@ -48,17 +48,17 @@ public class ControlerCollision extends MovementController implements Controller
 
 		    System.out.print("train: "+ trainPair.fst+", position: "+ sectionID);
 	        if(e instanceof Event.SectionChanged) System.out.println(", e: "+ ((Event.SectionChanged)e).getSection());
-		    System.out.println("1:"+sections().get(1).getEntryRequests().toString());
-			System.out.println("2:"+sections().get(2).getEntryRequests().toString());
-			System.out.println("3:"+sections().get(3).getEntryRequests().toString());
-			System.out.println("4:"+sections().get(4).getEntryRequests().toString());
-			System.out.println("5:"+sections().get(5).getEntryRequests().toString());
-			System.out.println("6:"+sections().get(6).getEntryRequests().toString());
-			System.out.println("7:"+sections().get(7).getEntryRequests().toString());
-			System.out.println("8:"+sections().get(8).getEntryRequests().toString());
-			System.out.println("9:"+sections().get(9).getEntryRequests().toString());
-			System.out.println("10:"+sections().get(10).getEntryRequests().toString());
-		    System.out.println("16:"+sections().get(16).getEntryRequests().toString());
+		 //   System.out.println("1:"+sections().get(1).getEntryRequests().toString());
+		//	System.out.println("2:"+sections().get(2).getEntryRequests().toString());
+		//	System.out.println("3:"+sections().get(3).getEntryRequests().toString());
+		//	System.out.println("4:"+sections().get(4).getEntryRequests().toString());
+		//	System.out.println("5:"+sections().get(5).getEntryRequests().toString());
+		//	System.out.println("6:"+sections().get(6).getEntryRequests().toString());
+		//	System.out.println("7:"+sections().get(7).getEntryRequests().toString());
+		//	System.out.println("8:"+sections().get(8).getEntryRequests().toString());
+		//	System.out.println("9:"+sections().get(9).getEntryRequests().toString());
+		//	System.out.println("10:"+sections().get(10).getEntryRequests().toString());
+		  //  System.out.println("16:"+sections().get(16).getEntryRequests().toString());
 		    System.out.flush();
 		}else{
 		  super.notify(e); // The train object is not null so a train has been returned when we tried to lock and failed.

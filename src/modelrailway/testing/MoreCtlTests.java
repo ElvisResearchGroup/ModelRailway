@@ -151,6 +151,7 @@ public class MoreCtlTests {
 				}
 				else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+					System.out.println("next Section is after: "+ i);
 					outputArray.add(routePlan.nextSection(i));
 
 				}

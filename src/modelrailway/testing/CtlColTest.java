@@ -101,6 +101,7 @@ public class CtlColTest {
 
 		orientationMap.put(0, new modelrailway.core.Train(head.getSection().getNumber(), true));
 		orientationMap.put(1, new modelrailway.core.Train(tp_3.getSection().getNumber(),true));
+		tp_3.getSection().getEntryRequests().add(1);
 
 
 		final Simulator sim = new Simulator(head, orientationMap, trainMap);
@@ -145,13 +146,21 @@ public class CtlColTest {
 						//output.add(routePlan.nextSection(i));
 
 					}
-
+				
+				
 
 				if(e instanceof Event.EmergencyStop){
 				  sim.stop();
 				  output.add("emergency stop at position by locomotive "+((Event.EmergencyStop) e).getLocomotive());
 				  th.interrupt();
 				}
+				
+				System.out.println("head: "+head.getSection().getEntryRequests());
+				System.out.println("tp_1: "+tp_1.getSection().getEntryRequests());
+				System.out.println("tp_2: "+tp_2.getSection().getEntryRequests());
+				System.out.println("tp_3: "+tp_3.getSection().getEntryRequests());
+				System.out.println();
+				System.out.println();
 			}
 
 		});
@@ -237,7 +246,7 @@ public class CtlColTest {
  		assertTrue(str.getSection() == sec4);
 
  		Movable locomotive = new Locomotive(new Track[]{head,head},40,40,10,false);
- 		Movable locomotive2 = new Locomotive(new Track[]{tp_2,tp_2},40,40,10,false);
+ 		Movable locomotive2 = new Locomotive(new Track[]{sw,sw},40,40,10,false);
 
  		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
  		Train train = new Train(new Movable[]{locomotive});
@@ -253,7 +262,8 @@ public class CtlColTest {
 
  		orientationMap.put(0, new modelrailway.core.Train(head.getSection().getNumber(), true));
  		orientationMap.put(1, new modelrailway.core.Train(sw.getSection().getNumber(),true));
-
+ 		sw.getSection().getEntryRequests().add(1);
+ 		head.getSection().getEntryRequests().add(0);
 
 //		train.toggleDirection();
 
@@ -382,6 +392,7 @@ public class CtlColTest {
  		Movable locomotive = new Locomotive(new Track[]{sw2,sw2},80,40,10,false);
  		Movable.GenerateID.generateID(locomotive);
  		Movable locomotive2 = new Locomotive(new Track[]{str,str},40,40,10,false);
+ 		str.getSection().getEntryRequests().add(1);
  		Movable.GenerateID.generateID(locomotive2);
  		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
  		Train train = new Train(new Movable[]{locomotive});
