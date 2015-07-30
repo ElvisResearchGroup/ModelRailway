@@ -42,7 +42,7 @@ public class CtlColTest {
 
 		Straight st = new Straight(null,null,sec,100);
 		Straight.StraightRing route = new Straight.StraightRing(st);
-		Track head = route.ringTrack(4, 100);
+		final Track head = route.ringTrack(4, 100);
 		sec.add(head);
 
 
@@ -50,10 +50,10 @@ public class CtlColTest {
 		route.recalculateSections();
 		route.getSectionNumberMap();
 
-		Track tp_1 = head.getNext(false);
-		Track tp_2 = tp_1.getNext(false);
-		Track tp_3 = tp_2.getNext(false);
-		Track tp_4 = tp_3.getNext(false);
+		final Track tp_1 = head.getNext(false);
+		final Track tp_2 = tp_1.getNext(false);
+		final Track tp_3 = tp_2.getNext(false);
+		final Track tp_4 = tp_3.getNext(false);
 
 		head.getSection().setSectionNumber(1);
 		tp_1.getSection().setSectionNumber(2);
@@ -146,15 +146,15 @@ public class CtlColTest {
 						//output.add(routePlan.nextSection(i));
 
 					}
-				
-				
+
+
 
 				if(e instanceof Event.EmergencyStop){
 				  sim.stop();
 				  output.add("emergency stop at position by locomotive "+((Event.EmergencyStop) e).getLocomotive());
 				  th.interrupt();
 				}
-				
+
 				System.out.println("head: "+head.getSection().getEntryRequests());
 				System.out.println("tp_1: "+tp_1.getSection().getEntryRequests());
 				System.out.println("tp_2: "+tp_2.getSection().getEntryRequests());
@@ -167,7 +167,7 @@ public class CtlColTest {
 
 		assertTrue(train.isFowards() == true);
 		ctl.start(0, routePlan);
-		
+
 		try{
 		   Thread.currentThread().join();
 		}catch(InterruptedException e){
@@ -301,7 +301,7 @@ public class CtlColTest {
  					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
  					  outputArray.add(i);
 
- 					  if(((SectionChanged)e).getSection() == 1){
+ 					  if(i == 1){
 
  						  ctl.stop(0);
  						  sim.stop();
@@ -392,10 +392,13 @@ public class CtlColTest {
  		Movable locomotive = new Locomotive(new Track[]{sw2,sw2},80,40,10,false);
  		Movable.GenerateID.generateID(locomotive);
  		Movable locomotive2 = new Locomotive(new Track[]{str,str},40,40,10,false);
- 		str.getSection().getEntryRequests().add(1);
+ 		
+ 		str.getSection().getEntryRequests().add(1); // add the locomotive2 to the straight
+ 		
  		Movable.GenerateID.generateID(locomotive2);
  		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
  		Train train = new Train(new Movable[]{locomotive});
+ 		
 
  		sw.getSection().reserveSection(train.getID());
 
@@ -409,6 +412,8 @@ public class CtlColTest {
 
  		orientationMap.put(0, new modelrailway.core.Train(head.getSection().getNumber(), false));
  		orientationMap.put(1, new modelrailway.core.Train(sw.getSection().getNumber(),false));
+ 		
+ 		
 
  		final Simulator sim = new Simulator(head, orientationMap, trainMap);
  		final MovementController ctl = new ControlerCollision(orientationMap,route.getSectionNumberMap(),head,sim); //
@@ -445,11 +450,11 @@ public class CtlColTest {
  					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
  					  outputArray.add(""+i);
 
- 					  if(((SectionChanged)e).getSection() == 1){
+ 					  if(i == 1){
 
  						  ctl.stop(0);
  						  sim.stop();
- 						  th.interrupt();
+ 						 // th.interrupt();
 
  					  }
  					//  throw new RuntimeException("Experienced Notify Stop Statement");

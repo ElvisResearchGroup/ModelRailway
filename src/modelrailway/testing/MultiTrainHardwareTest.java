@@ -110,22 +110,26 @@ public class MultiTrainHardwareTest extends Main{
 		final Controller controller = getCtl();
 		// Enter Read, Evaluate, Print loop.
 
-		StraightDblRing ring = sim0.getTrack();
+		final StraightDblRing ring = sim0.getTrack();
 
 		ring.getSectionNumberMap();
 
 		((TrainController)controller).trainOrientations().get(1).setSection(8);
-		final Route route = new Route(true, 8,7,6,5,4,3,2,1,8,7);
-		route.setStopSection(1);
+		final Route route = new Route(true, 8,1,2,3,4,5,6,7,8,1,2);
 
 		((TrainController)controller).trainOrientations().get(0).setSection(16);
 
 		final Route route2 = new Route(true, 16,9,10,3,4,5,6,7,8,9,10);
-		route2.setStopSection(8);
 
 		ctl.set(((Switch)ring.getSectionNumberMap().get(16).get(0)).getSwitchID(), false);
 		ctl.set(((Switch)ring.getSectionNumberMap().get(9).get(0)).getSwitchID(), true);
 		ctl.set(((Switch)ring.getSectionNumberMap().get(8).get(0)).getSwitchID(), false);
+
+		//ring.getSectionNumberMap().get(16).getEntryRequests().add(0);
+ 		ring.getSectionNumberMap().get(9).getEntryRequests().add(0);
+
+ 		//ring.getSectionNumberMap().get(8).getEntryRequests().add(1);
+ 		ring.getSectionNumberMap().get(1).getEntryRequests().add(1);
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		final Thread th = Thread.currentThread();
@@ -140,13 +144,32 @@ public class MultiTrainHardwareTest extends Main{
 
  				}
  				else if(e instanceof Event.SpeedChanged){
-
+ 				   System.out.println("=================================================================");
  				   System.out.println("speed changed in test: "+((Event.SpeedChanged) e).getLocomotive());
+ 				   System.out.println("==================================================================");
  				}
-
+ 				System.out.println(" 1: "+ring.getSectionNumberMap().get(1).getEntryRequests().toString());
+ 				System.out.println(" 2: "+ring.getSectionNumberMap().get(2).getEntryRequests().toString());
+ 				System.out.println(" 3: "+ring.getSectionNumberMap().get(3).getEntryRequests().toString());
+ 				System.out.println(" 4: "+ring.getSectionNumberMap().get(4).getEntryRequests().toString());
+ 				System.out.println(" 5: "+ring.getSectionNumberMap().get(5).getEntryRequests().toString());
+ 				System.out.println(" 6: "+ring.getSectionNumberMap().get(6).getEntryRequests().toString());
+ 				System.out.println(" 7: "+ring.getSectionNumberMap().get(7).getEntryRequests().toString());
+ 				System.out.println(" 8: "+ring.getSectionNumberMap().get(8).getEntryRequests().toString());
+ 				System.out.println(" 9: "+ring.getSectionNumberMap().get(9).getEntryRequests().toString());
+ 				System.out.println(" 10: "+ring.getSectionNumberMap().get(10).getEntryRequests().toString());
+ 				System.out.println(" 11: "+ring.getSectionNumberMap().get(11).getEntryRequests().toString());
+ 				System.out.println(" 12: "+ring.getSectionNumberMap().get(12).getEntryRequests().toString());
+ 				System.out.println(" 13: "+ring.getSectionNumberMap().get(13).getEntryRequests().toString());
+ 				System.out.println(" 14: "+ring.getSectionNumberMap().get(14).getEntryRequests().toString());
+ 				System.out.println(" 15: "+ring.getSectionNumberMap().get(15).getEntryRequests().toString());
+ 				System.out.println(" 16: "+ring.getSectionNumberMap().get(16).getEntryRequests().toString());
  			}
 
+
+
 		};
+
 
 		controller.register(lst);
 		controller.start(0, route2);
@@ -201,7 +224,7 @@ public class MultiTrainHardwareTest extends Main{
 
  				   System.out.println("speed changed in test: "+((Event.SpeedChanged) e).getLocomotive());
  				}
- 				
+
  				if(controller.train(0).currentSection() == 3){
  					controller.stop(0);
  					controller.stop(1);
@@ -218,7 +241,7 @@ public class MultiTrainHardwareTest extends Main{
 		try{
 			Thread.currentThread().join();
 		}catch(InterruptedException e){
-			
+
 			System.out.println("1: "+sim0.getSections().get(1).getEntryRequests().toString());
 			System.out.println("2: "+sim0.getSections().get(2).getEntryRequests().toString());
 			System.out.println("3: "+sim0.getSections().get(3).getEntryRequests().toString());
@@ -227,7 +250,7 @@ public class MultiTrainHardwareTest extends Main{
 			System.out.println("6: "+sim0.getSections().get(6).getEntryRequests().toString());
 			System.out.println("7: "+sim0.getSections().get(7).getEntryRequests().toString());
 			System.out.println("8: "+sim0.getSections().get(8).getEntryRequests().toString());
-			
+
 		}
 		//assert(outputArray.get(0) == 2);
 		//assert(outputArray.get(1) == 3);

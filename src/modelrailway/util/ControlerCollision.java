@@ -39,15 +39,15 @@ public class ControlerCollision extends MovementController implements Controller
 		    // if(rt.lastSection() == this.trainOrientations().get(trn).currentSection()) return
 		     if(rt != null){ // if there is a valid route that is not a loop and the stopSection has been moved into then notify the train to stop.
 		       if(!rt.isALoop() && rt.isStopSection(sectionID)){
-		    	   System.out.println("Trigger an emergency stop."+ trn);
+		    	   //System.out.println("Trigger an emergency stop."+ trn);
 		    	   this.stop(trn);
 		           super.notify(new Event.EmergencyStop(trn)); // reached the end of the track.
 		       }
 		     }
 		  }
 
-		    System.out.print("train: "+ trainPair.fst+", position: "+ sectionID);
-	        if(e instanceof Event.SectionChanged) System.out.println(", e: "+ ((Event.SectionChanged)e).getSection());
+		    //System.out.print("train: "+ trainPair.fst+", position: "+ sectionID);
+	       // if(e instanceof Event.SectionChanged) System.out.println(", e: "+ ((Event.SectionChanged)e).getSection());
 		 //   System.out.println("1:"+sections().get(1).getEntryRequests().toString());
 		//	System.out.println("2:"+sections().get(2).getEntryRequests().toString());
 		//	System.out.println("3:"+sections().get(3).getEntryRequests().toString());
@@ -59,23 +59,25 @@ public class ControlerCollision extends MovementController implements Controller
 		//	System.out.println("9:"+sections().get(9).getEntryRequests().toString());
 		//	System.out.println("10:"+sections().get(10).getEntryRequests().toString());
 		  //  System.out.println("16:"+sections().get(16).getEntryRequests().toString());
-		    System.out.flush();
+		   // System.out.flush();
 		}else{
 		  super.notify(e); // The train object is not null so a train has been returned when we tried to lock and failed.
 
 
 
 
-		  System.out.println("Stop triggered: "+ train);
+		  System.out.println("Stop triggered due to lock failure: "+ train);
 		  this.stop(train);
 		   // it is necisary to unlock the section before the section we have just come from .
 		  // as when the train stops it does not unlock the section it has just come from as it may be straddled across that section.
-		  // so succesive stops can cause a long chain of locked sections. , The section is only unlocked if it was tested and found to be locked to avoid unnecisarily starting trains that may be waiting. 
-		  
+		  // so succesive stops can cause a long chain of locked sections. , The section is only unlocked if it was tested and found to be locked to avoid unnecisarily starting trains that may be waiting.
+
 		  Integer loco = train;
+
+		  System.out.println("CurrentSection: "+this.trainOrientations().get(loco).currentSection());
 		  Integer prev = this.routes().get(loco).prevSection(this.trainOrientations().get(loco).currentSection());
 		  Integer prevPrevSection = routes().get(loco).prevSection(prev);
-		  
+
 		  for(Map.Entry<Integer, Train> trainEnt: this.trainOrientations().entrySet()){
 		     if(trainEnt.getKey() == loco){
 		    	 Section prevPrevSec = sections().get(prevPrevSection);
@@ -129,8 +131,8 @@ public class ControlerCollision extends MovementController implements Controller
 			//System.out.println("tr.currentSection(): "+ sectionID);
 
 			Integer nextSec = entry.getValue().nextSection(this.trainOrientations().get(train).currentSection());  // get the next section to lock.
-			
-			System.out.println("LOCK: "+ nextSec);
+
+			//System.out.println("LOCK: "+ nextSec);
 			if(nextSec == null){// in the event that there is no next section from the train section that the train is currently in, Stop the train.
 				this.stop(train);
 				this.notify(new Event.SpeedChanged(train, 0));
@@ -144,12 +146,12 @@ public class ControlerCollision extends MovementController implements Controller
 				Section thisSec = this.sections().get(tr.currentSection()); //
 				Track front = thisSec.get(0);
 				//System.out.println("thisSec: "+ thisSec.getNumber());
-				
+
 				Track notAltNext = front.getNext(false);
 				Track altNext = front.getNext(true);
-				System.out.println("front: "+ thisSec.getNumber());
-				System.out.println("front prev: "+front.getNext(false).getSection().getNumber());
-				System.out.println("nextSec: "+ nextSec);
+				//System.out.println("front: "+ thisSec.getNumber());
+				////System.out.println("front prev: "+front.getNext(false).getSection().getNumber());
+				//System.out.println("nextSec: "+ nextSec);
 				boolean reserved = false ;
 
 				if(notAltNext.getSection().getNumber() == nextSec){
@@ -224,9 +226,9 @@ public class ControlerCollision extends MovementController implements Controller
 				//System.out.println("nextSec: "+ nextSec);
 				Track notAltPrev = back.getPrevious(false);
 				Track altPrev = back.getPrevious(true);
-				if(notAltPrev != null) System.out.println("notAltPrev not null");
-				if (altPrev != null) System.out.println("altPrev not null");
-				System.out.println("backType: "+back.getClass().toString());
+				//if(notAltPrev != null) System.out.println("notAltPrev not null");
+				//if (altPrev != null) System.out.println("altPrev not null");
+				//System.out.println("backType: "+back.getClass().toString());
 				boolean reserved = false ;
 				//System.out.println("backend: ");
 				if(notAltPrev.getSection().getNumber() == nextSec){
@@ -269,7 +271,7 @@ public class ControlerCollision extends MovementController implements Controller
 				}
 
 				if(reserved == false){
-					System.out.println("========train is being stoped as reserved is false");
+					//System.out.println("========train is being stoped as reserved is false");
 					this.stop(train);
 					//super.notify(new Event.EmergencyStop(train));
 					return new Pair<Integer,Integer>(train,sectionID); // dont do the movement.
@@ -284,12 +286,12 @@ public class ControlerCollision extends MovementController implements Controller
 
 		Integer eventsectionID = train.currentSection(); // The train object has already been adjusted
 
-		System.out.println("In Controler Collision: "+ eventsectionID);
-		
+		//System.out.println("In Controler Collision: "+ eventsectionID);
+
 		for(Entry<Integer, Train> trainOrientation: trainOrientations().entrySet()){ // for all the trains on the track, we need to find the train id that matches the train we have.
 
 			Integer section = trainOrientation.getValue().currentSection(); // get the section of the train
-			System.out.println("section: "+section);
+			//System.out.println("section: "+section);
 			// we compare sections to see that we are working with the same train as has been passed in.
 			// so trainOrientation.getKey() will have the train id of the train object
 	    	if(section ==  eventsectionID && routes().get(trainOrientation.getKey()) != null){ // check that the front of the train is in the section
@@ -300,21 +302,21 @@ public class ControlerCollision extends MovementController implements Controller
 	    		Section thisSection = sections().get(section); // the section object matching the id of the current section that the train is in
 
 	    		Track thisTrack = sections().get(eventsectionID).get(0);
-	    		System.out.println("prevSection: "+prevSection +" trainOrientation.getKey(): "+ trainOrientation.getKey());
+	    		//System.out.println("prevSection: "+prevSection +" trainOrientation.getKey(): "+ trainOrientation.getKey());
 	    		if(previous != null){
 	    		   //System.out.println("Previous: "+previous.getNumber());
 	    		   //System.out.println("");
 
-	    		   System.out.println("UnlockedPrevious Section: "+ previous.getNumber());
+	    		 //  System.out.println("UnlockedPrevious Section: "+ previous.getNumber());
 	    		   Integer prevPrevSection = routes().get(trainOrientation.getKey()).prevSection(prevSection);
 	    		   Section prevPrevSec = sections().get(prevPrevSection);
-	    		   
+
 	    		   if(prevPrevSec != null && prevPrevSec.getEntryRequests().contains(trainOrientation.getKey())){ //unlock prevPrev
 	    			   unlockSection(prevPrevSec, trainOrientation);
 	    		   }
-	    		   
+
 	    		   unlockSection(previous, trainOrientation); // unlock the section we just came from
-	    	  	 
+
 	    		}
 	    		//System.out.println("Switch"+thisTrack);
 	    		//System.out.println("trackSection: "+thisTrack.getSection().getNumber());
@@ -337,20 +339,20 @@ public class ControlerCollision extends MovementController implements Controller
 	 * @param trainOrientation
 	 */
 	protected void unlockSection(Section previous, Map.Entry<Integer,Train> trainOrientation){
-		System.out.println("UNLOCK "+previous.getNumber() + " train: "+ trainOrientation.getKey() );
+		//System.out.println("UNLOCK "+previous.getNumber() + " train: "+ trainOrientation.getKey() );
 		if(previous == null) return;
 		Track t = previous.get(0); // for the track segment.
 	  //  boolean trainMoved = false; //
-		System.out.println("Key: "+ trainOrientation.getKey()+", "+t.getSection().getNumber());
+		//System.out.println("Key: "+ trainOrientation.getKey()+", "+t.getSection().getNumber());
 		Section tracSec = t.getSection(); // get the section
-		System.out.println("trackSec.getNumber(): "+ tracSec.getNumber());;
+		//'System.out.println("trackSec.getNumber(): "+ tracSec.getNumber());;
 		Section trackAltSec = t.getAltSection(); // get the alternate section
 
 
 		if(tracSec != null){
 			Pair<Boolean, Integer> pair = null;
 			if(!tracSec.isQueueEmpty() && trainOrientation.getKey() != null){
-				System.out.println("Queue: "+ tracSec.getEntryRequests().toString());
+				//System.out.println("Queue: "+ tracSec.getEntryRequests().toString());
 				pair = tracSec.removeFromQueue(trainOrientation.getKey());
 			}
 			//System.out.println("pair != null");
@@ -376,7 +378,7 @@ public class ControlerCollision extends MovementController implements Controller
 		if(trackAltSec != null){
 			Pair<Boolean, Integer> pair = null;
 			if(!trackAltSec.isQueueEmpty() && trainOrientation.getKey() != null){
-				System.out.println("Queue: "+ trackAltSec.getEntryRequests().toString());
+				//System.out.println("Queue: "+ trackAltSec.getEntryRequests().toString());
 				pair = tracSec.removeFromQueue(trainOrientation.getKey());
 			}
 			//System.out.println("pair != null");

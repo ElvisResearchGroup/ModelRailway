@@ -69,11 +69,11 @@ public class MultiTrainSoftwareTest {
 
 
 		final Route route1 = new Route(false, 16,9,10,3,4,5,6,7,8);
-		
+
 		assertTrue(route1.prevSection(9) == 16);
 
 		final Movable loco1 = new Locomotive(new Track[]{innerStart},40,40,10,true);
-		
+
 		Train train1 = new Train(new Movable[]{loco1});
 		trainMap.put(1, train1);
 		train1.setID(1);
@@ -86,28 +86,28 @@ public class MultiTrainSoftwareTest {
 
 		controller.sections().get(8).getEntryRequests().add(0);
 		controller.sections().get(1).getEntryRequests().add(0);
-		
+
 		controller.sections().get(16).getEntryRequests().add(1);
 		controller.sections().get(9).getEntryRequests().add(1);
-		
+
 		sim.register(controller);
 
 		controller.set(headID, startSec.retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
 		controller.set(innerID, numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
-		
-		
+
+
 		final ArrayList<Integer> outputLoco0 = new ArrayList<Integer>();
 		final ArrayList<Integer> outputLoco1 = new ArrayList<Integer>();
 		outputLoco0.add(8);
 		outputLoco1.add(16);
-		
+
 		final ArrayList<String> outputArrayLoco0 = new ArrayList<String>();
 		final ArrayList<String> outputArrayLoco1 = new ArrayList<String>();
 		final Thread th = Thread.currentThread();
 		final Listener lst = new Listener(){
 			public void notify(Event e){
- 				
- 				
+
+
  				if(e instanceof Event.SectionChanged){
  					Integer sec0 = controller.trainOrientations().get(0).currentSection();
  					Integer sec1 = controller.trainOrientations().get(1).currentSection();
@@ -115,33 +115,33 @@ public class MultiTrainSoftwareTest {
  					if(outputLoco0.get(outputLoco0.size()-1) != sec0){
  						if(outputLoco0.contains(sec0)){
  							stop = true;
- 							
+
  							th.interrupt();
  						}
  						else{
- 							System.out.println("Locomotive 0 is the moving train");
- 							System.out.println("sec0: "+sec0);
+ 						//	System.out.println("Locomotive 0 is the moving train");
+ 							//System.out.println("sec0: "+sec0);
  							outputLoco0.add(sec0);
  							outputArrayLoco0.add(""+sec0);
  						}
  					}
- 					
+
  					if(outputLoco1.get(outputLoco1.size()-1) != sec1){
  						if(outputLoco1.contains(sec1)){
  							stop = true;
  							th.interrupt();
  						}
  						else{
- 							System.out.println("Locomotive 1 is the moving train");
- 							System.out.println("sec1: "+sec1);
+ 							//System.out.println("Locomotive 1 is the moving train");
+ 							//System.out.println("sec1: "+sec1);
  							outputLoco1.add(sec1);
- 							
+
  							outputArrayLoco1.add(""+sec1);
  						}
  					}
  				}
- 					
- 				
+
+
  				if(e instanceof Event.EmergencyStop){
  					Integer loco = ((Event.EmergencyStop) e).getLocomotive();
  					if(loco == 1){
@@ -149,23 +149,23 @@ public class MultiTrainSoftwareTest {
  					}
  					else{
  						outputArrayLoco0.add("Stop");
- 						
+
  					}
  				}
- 				
- 			
+
+
  				if(loco0.getCurrentSpeed() ==0 && loco1.getCurrentSpeed() == 0){
- 					System.out.println("both have stopped");
+ 					//System.out.println("both have stopped");
  					th.interrupt();
- 					
+
  				}
  				//System.out.println("event in unit test: "+e.);
-				System.out.println();
-				System.out.println();
-				System.out.println();
+				//System.out.println();
+				///System.out.println();
+				///System.out.println();
  			}
-			
-			
+
+
 
 		};
 
@@ -193,7 +193,7 @@ public class MultiTrainSoftwareTest {
 		//((TrainController) controller).deregister(lst);
 
 	}
-	
+
 	@Test public void softwareTest1(){
 		SimulationTrack sim0 = new SimulationTrack();
 
@@ -232,7 +232,7 @@ public class MultiTrainSoftwareTest {
 		final Route route1 = new Route(true, 16,9,10,11,12,13,14,15);
 
 		final Movable loco1 = new Locomotive(new Track[]{innerStart},40,40,10,true);
-		
+
 		Train train1 = new Train(new Movable[]{loco1});
 		trainMap.put(1, train1);
 		train1.setID(1);
@@ -245,28 +245,28 @@ public class MultiTrainSoftwareTest {
 
 		controller.sections().get(8).getEntryRequests().add(0);
 		controller.sections().get(1).getEntryRequests().add(0);
-		
+
 		controller.sections().get(16).getEntryRequests().add(1);
 		controller.sections().get(9).getEntryRequests().add(1);
-		
+
 		sim.register(controller);
 
 		controller.set(headID, startSec.retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
 		controller.set(innerID, numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
-		
-		
+
+
 		final ArrayList<Integer> outputLoco0 = new ArrayList<Integer>();
 		final ArrayList<Integer> outputLoco1 = new ArrayList<Integer>();
 		outputLoco0.add(8);
 		outputLoco1.add(16);
-		
+
 		final ArrayList<String> outputArrayLoco0 = new ArrayList<String>();
 		final ArrayList<String> outputArrayLoco1 = new ArrayList<String>();
 		final Thread th = Thread.currentThread();
 		final Listener lst = new Listener(){
 			public void notify(Event e){
- 				System.out.println("event in unit test: "+e.toString());
- 				
+ 				//System.out.println("event in unit test: "+e.toString());
+
  				if(e instanceof Event.SectionChanged){
  					Integer sec0 = controller.trainOrientations().get(0).currentSection();
  					Integer sec1 = controller.trainOrientations().get(1).currentSection();
@@ -281,7 +281,7 @@ public class MultiTrainSoftwareTest {
  							outputArrayLoco0.add(""+sec0);
  						}
  					}
- 					
+
  					if(outputLoco1.get(outputLoco1.size()-1) != sec1){
  						if(outputLoco1.contains(sec1)){
  							stop = true;
@@ -293,8 +293,8 @@ public class MultiTrainSoftwareTest {
  						}
  					}
  				}
- 					
- 				
+
+
  				if(e instanceof Event.EmergencyStop){
  					Integer loco = ((Event.EmergencyStop) e).getLocomotive();
  					if(loco == 1){
@@ -302,15 +302,15 @@ public class MultiTrainSoftwareTest {
  					}
  					else{
  						outputArrayLoco0.add("Stop");
- 						
+
  					}
  				}
- 				
- 			
+
+
  				if(loco0.getCurrentSpeed() ==0 && loco1.getCurrentSpeed() == 0){
  					System.out.println("both have stopped");
  					th.interrupt();
- 					
+
  				}
  			}
 
@@ -340,8 +340,8 @@ public class MultiTrainSoftwareTest {
 		//((TrainController) controller).deregister(lst);
 
 	}
-	
-	
+
+
 	@Test public void softwareTest2(){
 		SimulationTrack sim0 = new SimulationTrack();
 
@@ -380,7 +380,7 @@ public class MultiTrainSoftwareTest {
 		final Route route1 = new Route(true, 16,9,10,11,12,13,14,15);
 
 		final Movable loco1 = new Locomotive(new Track[]{innerStart},40,40,10,true);
-		
+
 		Train train1 = new Train(new Movable[]{loco1});
 		trainMap.put(1, train1);
 		train1.setID(1);
@@ -393,28 +393,28 @@ public class MultiTrainSoftwareTest {
 
 		controller.sections().get(8).getEntryRequests().add(0);
 		controller.sections().get(1).getEntryRequests().add(0);
-		
+
 		controller.sections().get(16).getEntryRequests().add(1);
 		controller.sections().get(9).getEntryRequests().add(1);
-		
+
 		sim.register(controller);
 
 		controller.set(headID, startSec.retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
 		controller.set(innerID, numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
-		
-		
+
+
 		final ArrayList<Integer> outputLoco0 = new ArrayList<Integer>();
 		final ArrayList<Integer> outputLoco1 = new ArrayList<Integer>();
 		outputLoco0.add(8);
 		outputLoco1.add(16);
-		
+
 		final ArrayList<String> outputArrayLoco0 = new ArrayList<String>();
 		final ArrayList<String> outputArrayLoco1 = new ArrayList<String>();
 		final Thread th = Thread.currentThread();
 		final Listener lst = new Listener(){
 			public void notify(Event e){
  				System.out.println("event in unit test: "+e.toString());
- 				
+
  				if(e instanceof Event.SectionChanged){
  					Integer sec0 = controller.trainOrientations().get(0).currentSection();
  					Integer sec1 = controller.trainOrientations().get(1).currentSection();
@@ -429,7 +429,7 @@ public class MultiTrainSoftwareTest {
  							outputArrayLoco0.add(""+sec0);
  						}
  					}
- 					
+
  					if(outputLoco1.get(outputLoco1.size()-1) != sec1){
  						if(outputLoco1.contains(sec1)){
  							stop = true;
@@ -441,8 +441,8 @@ public class MultiTrainSoftwareTest {
  						}
  					}
  				}
- 					
- 				
+
+
  				if(e instanceof Event.EmergencyStop){
  					Integer loco = ((Event.EmergencyStop) e).getLocomotive();
  					if(loco == 1){
@@ -450,15 +450,15 @@ public class MultiTrainSoftwareTest {
  					}
  					else{
  						outputArrayLoco0.add("Stop");
- 						
+
  					}
  				}
- 				
- 			
+
+
  				if(loco0.getCurrentSpeed() ==0 && loco1.getCurrentSpeed() == 0){
  					System.out.println("both have stopped");
  					th.interrupt();
- 					
+
  				}
  			}
 
@@ -486,7 +486,7 @@ public class MultiTrainSoftwareTest {
 		//assert(outputArray.get(7) == 1);
 
 		//((TrainController) controller).deregister(lst);
-		
+
 	}
 
 }
