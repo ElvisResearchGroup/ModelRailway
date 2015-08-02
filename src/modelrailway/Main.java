@@ -53,15 +53,15 @@ public class Main {
 		this.new Command("locate",getMethod("setLocation",int.class,int.class)),
 		this.new Command("turnout",getMethod("setTurnout",int.class,boolean.class))
 	};
-	
+
 	public Command[] getCommands(){
 		return commands;
 	}
-	
+
 	public void setCommands(Command[] cmd){
 		commands = cmd;
 	}
-	
+
 	public void quit() {
 		System.exit(0);
 	}
@@ -138,6 +138,7 @@ public class Main {
 				System.out.print("> ");
 				// Read the input line
 				String line = input.readLine();
+				if(line == null) continue;
 				// Attempt to execute the input line
 				boolean isOK = execute(line);
 				if(!isOK) {

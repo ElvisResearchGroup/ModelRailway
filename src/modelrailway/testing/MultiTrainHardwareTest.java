@@ -18,14 +18,15 @@ import modelrailway.util.SimulationTrack;
 import modelrailway.util.TrainController;
 
 public class MultiTrainHardwareTest extends Main{
+
 	public MultiTrainHardwareTest(ModelRailway railway, Controller controller) {
 		super(railway, controller);
 		Command[] cmd = this.getCommands();
-		Command htest0 = this.new Command("hardwareTest0", getMethod("hardwareTest0"));
-		Command htest1 = this.new Command("hardwareTest1", getMethod("hardwareTest1"));
-		Command htest2 = this.new Command("hardwareTest2", getMethod("hardwareTest2"));
-		Command htest3 = this.new Command("hardwareTest3", getMethod("hardwareTest3"));
-		Command htest4 = this.new Command("hardwareTest4", getMethod("hardwareTest4"));
+		Command htest0 = this.new Command("hardwareTest0", MultiTrainHardwareTest.getMethod("hardwareTest0"));
+		Command htest1 = this.new Command("hardwareTest1", MultiTrainHardwareTest.getMethod("hardwareTest1"));
+		Command htest2 = this.new Command("hardwareTest2", MultiTrainHardwareTest.getMethod("hardwareTest2"));
+		Command htest3 = this.new Command("hardwareTest3", MultiTrainHardwareTest.getMethod("hardwareTest3"));
+		Command htest4 = this.new Command("hardwareTest4", MultiTrainHardwareTest.getMethod("hardwareTest4"));
 		Command[] cmd2 = new Command[cmd.length+5];//5];
 		System.arraycopy(cmd, 0, cmd2, 0, cmd.length);
 		cmd2[cmd2.length-5] = htest4;
@@ -34,7 +35,7 @@ public class MultiTrainHardwareTest extends Main{
 		//cmd2[cmd2.length-3] = htest1;
 		cmd2[cmd2.length-3] = htest2;
 		cmd2[cmd2.length-4] = htest3;
-		this.setCommands(cmd2);
+		super.setCommands(cmd2);
 
 		// TODO Auto-generated constructor stub
 	}
@@ -78,7 +79,7 @@ public class MultiTrainHardwareTest extends Main{
 		// needs to be updated accordingly.
 
 		final ModelRailway railway = new ModelRailway(port,
-				new int[] {1,2});
+				new int[] {1,2}); // 2 1
 		rails = railway;
 		// Add shutdown hook to make sure resources are released when quiting
 		// the application, even if the application is quit in a non-standard
@@ -92,44 +93,42 @@ public class MultiTrainHardwareTest extends Main{
 		}));
 
 		// Enter Read, Evaluate, Print loop.
-		Controller controller = new TrainController(trains,rails, sim0);
-		rails.register(controller);
-		controller.register(rails);
+		Controller controller = new TrainController(trains,new Integer[]{2,1},rails, sim0);
+
 		ctl = controller;
 		System.out.println("got to print Loop");
 		MultiTrainHardwareTest tst = new MultiTrainHardwareTest(rails,controller);
-		tst.ctl = ctl;
-		tst.rails = rails;
 		tst.readEvaluatePrintLoop();
 	}
 
 
 	final static String port="/dev/ttyACM0";
 
+	public void setRoute(int id, Route rt, StraightDblRing ring, TrainController ctl){
+		Integer fst = rt.firstSection();
+		Integer snd = rt.nextSection(rt.firstSection());
+		ctl.trainOrientations().get(id).setSection(rt.firstSection());
+		ring.getSectionNumberMap().get(rt.firstSection()).getEntryRequests().add(id);
+		ring.getSectionNumberMap().get(rt.nextSection(rt.firstSection())).getEntryRequests().add(id);
+	}
+
 	public void hardwareTest0(){
-		final Controller controller = getCtl();
-		// Enter Read, Evaluate, Print loop.
-
+		final TrainController controller =(TrainController) ctl;
 		final StraightDblRing ring = sim0.getTrack();
-
 		ring.getSectionNumberMap();
-
-		((TrainController)controller).trainOrientations().get(1).setSection(8);
 		final Route route = new Route(true, 8,1,2,3,4,5,6,7,8,1,2);
-
-		((TrainController)controller).trainOrientations().get(0).setSection(16);
-
 		final Route route2 = new Route(true, 16,9,10,3,4,5,6,7,8,9,10);
+		setRoute(1, route2, ring, (TrainController) controller);
+		setRoute(2, route,  ring, (TrainController) controller);
+
+		rails.register(controller);
+		controller.register(rails);
+
+		// configure switches on tracks for the starting sections.
 
 		ctl.set(((Switch)ring.getSectionNumberMap().get(16).get(0)).getSwitchID(), false);
 		ctl.set(((Switch)ring.getSectionNumberMap().get(9).get(0)).getSwitchID(), true);
 		ctl.set(((Switch)ring.getSectionNumberMap().get(8).get(0)).getSwitchID(), false);
-
-		//ring.getSectionNumberMap().get(16).getEntryRequests().add(0);
- 		ring.getSectionNumberMap().get(9).getEntryRequests().add(0);
-
- 		//ring.getSectionNumberMap().get(8).getEntryRequests().add(1);
- 		ring.getSectionNumberMap().get(1).getEntryRequests().add(1);
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		final Thread th = Thread.currentThread();
@@ -164,15 +163,10 @@ public class MultiTrainHardwareTest extends Main{
  				System.out.println(" 14: "+ring.getSectionNumberMap().get(14).getEntryRequests().toString());
  				System.out.println(" 15: "+ring.getSectionNumberMap().get(15).getEntryRequests().toString());
  				System.out.println(" 16: "+ring.getSectionNumberMap().get(16).getEntryRequests().toString());
- 			}
-
-
-
-		};
-
+ 			}};
 
 		controller.register(lst);
-		controller.start(0, route2);
+		controller.start(2, route2);
  		controller.start(1, route);
 
 		try{
@@ -323,11 +317,17 @@ public class MultiTrainHardwareTest extends Main{
 	 */
 	public void hardwareTest3(){
 		final Controller controller = getCtl();
+		if(controller == null) System.out.println("There is no controller supplied");
 		// Enter Read, Evaluate, Print loop.
 		StraightDblRing ring = sim0.getTrack();
 
 		ring.getSectionNumberMap();
-		((TrainController)controller).trainOrientations().get(0).setSection(5); // make train 0 placed in section 5
+		rails.register(controller);
+		controller.register(rails);
+		System.out.println("trainOrientations: "+((TrainController) controller).trainOrientations().toString());
+		System.out.println("trainOrientation2: "+ ((TrainController) controller).trainOrientations().get(2));
+
+		((TrainController)controller).trainOrientations().get(2).setSection(5); // make train 0 placed in section 5
 		ring.getSectionNumberMap().get(5).getMovableSet().add(0);
 
 		ctl.set(((Switch)ring.getSectionNumberMap().get(16).get(0)).getSwitchID(), false);
@@ -335,6 +335,8 @@ public class MultiTrainHardwareTest extends Main{
 		ctl.set(((Switch)ring.getSectionNumberMap().get(8).get(0)).getSwitchID(), false);
 
 		final Route route = new Route(true, 8,1,2,3,4,5,6,7,8,1);
+		this.setRoute(1, route, ring, (TrainController) ctl);
+		
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		final Thread th = Thread.currentThread();
 		final Listener lst = new Listener(){

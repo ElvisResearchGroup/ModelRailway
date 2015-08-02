@@ -78,6 +78,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		this.throttles = new DccThrottle[locomotives.length];
 		for(int i = 0;i!=locomotives.length;++i) {
 			this.locomotives[i] = new DccLocoAddress(locomotives[i],false);
+
 		}
 		// ============================================================
 		// Create the loconet connection
@@ -148,6 +149,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			if(locomotives[i].equals(arg0.getLocoAddress())) {
 				System.out.println("MATCHED THROTTLE: " + arg0.getLocoAddress());
 				throttles[i] = arg0;
+
 			}
 		}
 	}
@@ -177,6 +179,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 				linmon = new Llnmon();
 			}
 			System.out.println("MESSAGE: " + linmon.displayMessage(arg0));
+
 		}
 
 		// First, process loconet message
@@ -188,6 +191,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			break;
 		case LnConstants.OPC_LOCO_DIRF:
 			boolean isForward = (arg0.getElement(2) & LnConstants.DIRF_DIR) == LnConstants.DIRF_DIR;
+			try{getTrainIDfromSlot(arg0.getElement(1));}catch(IllegalArgumentException e){return;}
 			event = new Event.DirectionChanged(getTrainIDfromSlot(arg0.getElement(1)), isForward);
 			break;
 		case LnConstants.OPC_LOCO_SPD:
@@ -197,6 +201,8 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			} else if(speed > 1) {
 				speed = speed - 1;
 			}
+			System.out.println("speed changed slot: "+arg0.getElement(1));
+			try{getTrainIDfromSlot(arg0.getElement(1));}catch(IllegalArgumentException e){return;}
 			event = new Event.SpeedChanged(getTrainIDfromSlot(arg0.getElement(1)), speed / (0x7F-1));
 			break;
 		case LnConstants.OPC_INPUT_REP:
@@ -227,15 +233,32 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	 * @return
 	 */
 	private int getTrainIDfromSlot(int slot) {
+		int id = 0;
+		for(DccThrottle th: throttles){
+			LocoNetThrottle t = (LocoNetThrottle) th;
+
+			System.out.println("throttleNumber: "+t.getLocoNetSlot().getSlot()+", idNumber: "+id);
+			id++;
+		}
 		int trainID = 0;
 		for(DccThrottle throttle : throttles) {
 			LocoNetThrottle t = (LocoNetThrottle) throttle;
 			if(t.getLocoNetSlot().getSlot() == slot) {
+				System.out.println("SLOT: "+slot+", TRAINID: "+trainID);
 				return trainID;
 			}
 			trainID++;
 		}
 		throw new IllegalArgumentException("Invalid slot encountered");
+	}
+	public int getLocoNumber(int id){
+		for(int x =0; x< locomotives.length; x++){
+			if(locomotives[x].getNumber() == id){
+				return x;
+			}
+		}
+		return -1;
+
 	}
 
 	public void notify(Event event) {
@@ -246,16 +269,25 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 				//System.out.println("*** ERROR? ***");
 				//Thread.currentThread().dumpStack();
 			}
-			throttles[e.getLocomotive()].setSpeedSetting(e.getSpeed());
+			if(getLocoNumber(e.getLocomotive())<0 || getLocoNumber(e.getLocomotive()) >= throttles.length){
+				return;
+			}
+			throttles[getLocoNumber(e.getLocomotive())].setSpeedSetting(e.getSpeed());
 		} else if (event instanceof Event.DirectionChanged) {
 			Event.DirectionChanged e = (Event.DirectionChanged) event;
-			throttles[e.getLocomotive()].setIsForward(e.getDirection());
+			if(getLocoNumber(e.getLocomotive())<0 || getLocoNumber(e.getLocomotive()) >= throttles.length){
+				return;
+			}
+			throttles[getLocoNumber(e.getLocomotive())].setIsForward(e.getDirection());
 		} else if (event instanceof Event.EmergencyStop) {
 			System.out.println("*** EMERGENCY STOP ***");
 			Event.EmergencyStop e = (Event.EmergencyStop) event;
 			// throttles[e.getLocomotive()]
 			// .setSpeedSetting(LnConstants.OPC_LOCO_SPD_ESTOP);
-			throttles[e.getLocomotive()].setSpeedSetting(0.0f);
+			if(getLocoNumber(e.getLocomotive())<0 || getLocoNumber(e.getLocomotive()) >= throttles.length){
+				return;
+			}
+			throttles[getLocoNumber(e.getLocomotive())].setSpeedSetting(0.0f);
 		} else if (event instanceof Event.TurnoutChanged) {
 			Event.TurnoutChanged tc = (Event.TurnoutChanged) event;
 			System.out.println("SETTING TURNOUT : " + tc.getTurnout() + " : " + tc.getThrown() + " num turnouts: "+turnouts.length);

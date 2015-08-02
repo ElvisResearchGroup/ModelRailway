@@ -104,7 +104,7 @@ public class HardwareTrackTest extends Main{
 		Train[] trains = {
 				new Train(1,true), // default config for train 0
 		};
-		Controller controller = new TrainController(trains,rails, sim0);
+		Controller controller = new TrainController(trains,new Integer[]{1},rails, sim0);
 		rails.register(controller);
 		controller.register(rails);
 		ctl = controller;

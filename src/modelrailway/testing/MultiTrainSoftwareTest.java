@@ -36,7 +36,7 @@ public class MultiTrainSoftwareTest {
 	@Test public void softwareTest0(){
 		SimulationTrack sim0 = new SimulationTrack();
 
-		StraightDblRing ring = sim0.getTrack();
+		final StraightDblRing ring = sim0.getTrack();
 		ring.recalculateSections();
 
 		Map<Integer,Section> numberMap = ring.getSectionNumberMap();
@@ -163,6 +163,22 @@ public class MultiTrainSoftwareTest {
 				//System.out.println();
 				///System.out.println();
 				///System.out.println();
+ 				System.out.println(" 1: "+ring.getSectionNumberMap().get(1).getEntryRequests().toString());
+ 				System.out.println(" 2: "+ring.getSectionNumberMap().get(2).getEntryRequests().toString());
+ 				System.out.println(" 3: "+ring.getSectionNumberMap().get(3).getEntryRequests().toString());
+ 				System.out.println(" 4: "+ring.getSectionNumberMap().get(4).getEntryRequests().toString());
+ 				System.out.println(" 5: "+ring.getSectionNumberMap().get(5).getEntryRequests().toString());
+ 				System.out.println(" 6: "+ring.getSectionNumberMap().get(6).getEntryRequests().toString());
+ 				System.out.println(" 7: "+ring.getSectionNumberMap().get(7).getEntryRequests().toString());
+ 				System.out.println(" 8: "+ring.getSectionNumberMap().get(8).getEntryRequests().toString());
+ 				System.out.println(" 9: "+ring.getSectionNumberMap().get(9).getEntryRequests().toString());
+ 				System.out.println(" 10: "+ring.getSectionNumberMap().get(10).getEntryRequests().toString());
+ 				System.out.println(" 11: "+ring.getSectionNumberMap().get(11).getEntryRequests().toString());
+ 				System.out.println(" 12: "+ring.getSectionNumberMap().get(12).getEntryRequests().toString());
+ 				System.out.println(" 13: "+ring.getSectionNumberMap().get(13).getEntryRequests().toString());
+ 				System.out.println(" 14: "+ring.getSectionNumberMap().get(14).getEntryRequests().toString());
+ 				System.out.println(" 15: "+ring.getSectionNumberMap().get(15).getEntryRequests().toString());
+ 				System.out.println(" 16: "+ring.getSectionNumberMap().get(16).getEntryRequests().toString());
  			}
 
 
