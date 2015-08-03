@@ -1,11 +1,17 @@
 package modelrailway;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import modelrailway.core.Controller;
 import modelrailway.core.Event;
+import modelrailway.core.Train;
+import modelrailway.util.SimpleController;
 import jmri.DccLocoAddress;
 import jmri.DccThrottle;
 import jmri.ThrottleListener;
@@ -59,6 +65,42 @@ public class CheckRails implements LocoNetListener, ThrottleListener, Event.List
 	 * verbose mode means dump out more debugging information.
 	 */
 	private volatile boolean verbose = true;
+	
+	public static void main(String[] args){
+		try {
+		   String port = args[0];
+
+		   // Needed for connection on lab machines
+		   System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
+
+		   // Construct the model railway assuming the interface (i.e. USB Cable)
+		   // is on a given port. Likewise, we initialise it with three locomotives
+		   // whose addresses are 1,2 + 3. If more locomotives are to be used, this
+		   // needs to be updated accordingly.
+		   System.out.println("Port: "+port);
+		   final  CheckRails railway = new CheckRails(port,
+					new int[] { 1});
+		
+
+		   // Add shutdown hook to make sure resources are released when quiting
+		   // the application, even if the application is quit in a non-standard
+		   // fashion.
+		   Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+			   @Override
+			   public void run() {
+				   System.out.println("Disconnecting from railway...");
+				   railway.destroy();
+			   }
+		   }));
+		   railway.readEvaluatePrintLoop();
+		   
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 
 	/**
 	 * Constructor starts the JMRI application running, and then returns.
@@ -98,7 +140,10 @@ public class CheckRails implements LocoNetListener, ThrottleListener, Event.List
 
 	@Override
 	public void message(LocoNetMessage arg0) {
-		System.out.println("MESSAGE RECIEVED: "+arg0);
+		if(linmon == null) {
+			linmon = new Llnmon();
+		}
+		System.out.println("MESSAGE: " + linmon.displayMessage(arg0));
 
 	}
 
@@ -194,6 +239,29 @@ public class CheckRails implements LocoNetListener, ThrottleListener, Event.List
 				throttles[i] = arg0;
 
 			}
+		}
+	}
+	public void readEvaluatePrintLoop() {
+		final BufferedReader input = new BufferedReader(new InputStreamReader(
+				System.in));
+
+		try {
+			System.out.println("Welcome to the Model Railway!");
+			while (true) {
+				System.out.print("> ");
+				// Read the input line
+				String line = input.readLine();
+				if(line == null) continue;
+				// Attempt to execute the input line
+				boolean isOK = true; // fake it., ignore the input.
+				if(!isOK) {
+					// If we get here, then it means that the command was not
+					// recognised. Therefore, print error!
+					System.out.println("Error: command not recognised");
+				}
+			}
+		} catch (IOException e) {
+			System.err.println("I/O Error - " + e.getMessage());
 		}
 	}
 }

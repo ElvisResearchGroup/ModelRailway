@@ -106,9 +106,9 @@ public class MultiTrainHardwareTest extends Main{
 		ring.getSectionNumberMap().get(rt.firstSection()).getEntryRequests().add(id);
 		ring.getSectionNumberMap().get(rt.nextSection(rt.firstSection())).getEntryRequests().add(id);
 	}
-	
-	public Listener registerListenerNoStop(Controller controller, StraightDblRing ring , final ArrayList<Integer> outputArray){
-		
+
+	public Listener registerListenerNoStop(final Controller controller,final StraightDblRing ring , final ArrayList<Integer> outputArray){
+
 		///final Thread th = Thread.currentThread();
 		final Listener lst = new Listener(){
 			public void notify(Event e){
@@ -131,17 +131,17 @@ public class MultiTrainHardwareTest extends Main{
 
 		controller.register(lst);
 		return lst;
-		
+
 	}
-	
+
 	public void printEntryRequests(StraightDblRing ring){
 		for(int x = 1; x<17; x++){
 			System.out.println(" "+x+":"+ring.getSectionNumberMap().get(1).getEntryRequests().toString());
-			
+
 		}
 	}
-	
-	public Listener registerListenerWithStop(Controller controller, StraightDblRing ring, final ArrayList<Integer> outputArray){
+
+	public Listener registerListenerWithStop(final Controller controller, final StraightDblRing ring, final ArrayList<Integer> outputArray){
 		final Thread th = Thread.currentThread();
 		final Listener lst = new Listener(){
 			public void notify(Event e){
@@ -170,10 +170,10 @@ public class MultiTrainHardwareTest extends Main{
 		controller.register(lst);
 		return lst;
 	}
-	
-	public Listener registerListenerWithStopStart(Controller controller, StraightDblRing ring, final ArrayList<Integer> outputArray, Pair<Integer,Route> stopTrain, Pair<Integer,Route> startTrain ){
-		int stpTrn = stopTrain.fst;
-		int strtTrn = startTrain.fst;
+
+	public Listener registerListenerWithStopStart(final Controller controller,final StraightDblRing ring, final ArrayList<Integer> outputArray, Pair<Integer,Route> stopTrain, Pair<Integer,Route> startTrain ){
+		final int stpTrn = stopTrain.fst;
+		final int strtTrn = startTrain.fst;
 		final Route strtTrnRt = startTrain.snd;
 		final Listener lst = new Listener(){
 			public void notify(Event e){
@@ -251,7 +251,7 @@ public class MultiTrainHardwareTest extends Main{
 		System.out.println("Route 2: "+ sim0.getSections().get(2).getEntryRequests().toString());
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
-		
+
 		Listener lst = registerListenerWithStop(controller,  ring, outputArray);
 		controller.start(0, route2);
  		controller.start(1, route);
@@ -312,7 +312,7 @@ public class MultiTrainHardwareTest extends Main{
 		final Route route2 = new Route(true, 5);
 		this.setRoute(1, route , ring, (TrainController) ctl);
 		this.setRoute(2, route2, ring, (TrainController) ctl);
-		
+
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		Listener lst = this.registerListenerWithStop(controller, ring, outputArray);
 
@@ -336,7 +336,7 @@ public class MultiTrainHardwareTest extends Main{
 		final Controller controller = getCtl();
 		StraightDblRing ring = sim0.getTrack();
 		ring.getSectionNumberMap();
-		
+
 		ctl.set(((Switch)ring.getSectionNumberMap().get(16).get(0)).getSwitchID(), false);
 		ctl.set(((Switch)ring.getSectionNumberMap().get(9).get(0)).getSwitchID(), true);
 		ctl.set(((Switch)ring.getSectionNumberMap().get(8).get(0)).getSwitchID(), false);
