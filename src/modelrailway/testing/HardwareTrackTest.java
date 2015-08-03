@@ -112,6 +112,16 @@ public class HardwareTrackTest extends Main{
 
 
 	final String port="/dev/ttyACM0";
+	public void setRoute(int id, Route rt, StraightDblRing ring, TrainController ctl){
+		//Integer fst = rt.firstSection();
+		//Integer snd = rt.nextSection(rt.firstSection());
+		ctl.trainOrientations().get(id).setSection(rt.firstSection());
+		ring.getSectionNumberMap().get(rt.firstSection()).getEntryRequests().add(id);
+		ring.getSectionNumberMap().get(rt.nextSection(rt.firstSection())).getEntryRequests().add(id);
+	}
+	
+	
+	
 	public void hardwareTest0() throws Exception{
 
 
