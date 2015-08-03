@@ -67,11 +67,6 @@ public class HardwareTrackTest extends Main{
 	private static ModelRailway rails;
 	private static Controller ctl;
 
-	public HardwareTrackTest(){
-		super(null,null);
-
-	}
-
 	private static SimulationTrack sim0 = new SimulationTrack();
 
 	public static void main(String args[]) throws Exception {

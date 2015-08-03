@@ -14,6 +14,7 @@ import modelrailway.core.Event.Listener;
 import modelrailway.core.Event.SectionChanged;
 import modelrailway.simulation.Straight.StraightDblRing;
 import modelrailway.simulation.Switch;
+import modelrailway.util.Pair;
 import modelrailway.util.SimulationTrack;
 import modelrailway.util.TrainController;
 
@@ -54,11 +55,6 @@ public class MultiTrainHardwareTest extends Main{
 	}
 	private static ModelRailway rails;
 	private static Controller ctl;
-
-	public MultiTrainHardwareTest(){
-		super(null,null);
-
-	}
 
 	private static final SimulationTrack sim0 = new SimulationTrack();
 
@@ -124,32 +120,25 @@ public class MultiTrainHardwareTest extends Main{
  				  System.out.println("sectionchanged in unit test into section: "+ i);
 
  				}
+
  				else if(e instanceof Event.SpeedChanged){
  				   System.out.println("=================================================================");
  				   System.out.println("speed changed in test: "+((Event.SpeedChanged) e).getLocomotive());
  				   System.out.println("==================================================================");
  				}
- 				System.out.println(" 1: "+ring.getSectionNumberMap().get(1).getEntryRequests().toString());
- 				System.out.println(" 2: "+ring.getSectionNumberMap().get(2).getEntryRequests().toString());
- 				System.out.println(" 3: "+ring.getSectionNumberMap().get(3).getEntryRequests().toString());
- 				System.out.println(" 4: "+ring.getSectionNumberMap().get(4).getEntryRequests().toString());
- 				System.out.println(" 5: "+ring.getSectionNumberMap().get(5).getEntryRequests().toString());
- 				System.out.println(" 6: "+ring.getSectionNumberMap().get(6).getEntryRequests().toString());
- 				System.out.println(" 7: "+ring.getSectionNumberMap().get(7).getEntryRequests().toString());
- 				System.out.println(" 8: "+ring.getSectionNumberMap().get(8).getEntryRequests().toString());
- 				System.out.println(" 9: "+ring.getSectionNumberMap().get(9).getEntryRequests().toString());
- 				System.out.println(" 10: "+ring.getSectionNumberMap().get(10).getEntryRequests().toString());
- 				System.out.println(" 11: "+ring.getSectionNumberMap().get(11).getEntryRequests().toString());
- 				System.out.println(" 12: "+ring.getSectionNumberMap().get(12).getEntryRequests().toString());
- 				System.out.println(" 13: "+ring.getSectionNumberMap().get(13).getEntryRequests().toString());
- 				System.out.println(" 14: "+ring.getSectionNumberMap().get(14).getEntryRequests().toString());
- 				System.out.println(" 15: "+ring.getSectionNumberMap().get(15).getEntryRequests().toString());
- 				System.out.println(" 16: "+ring.getSectionNumberMap().get(16).getEntryRequests().toString());
+ 				printEntryRequests(ring);
  			}};
 
 		controller.register(lst);
 		return lst;
 		
+	}
+	
+	public void printEntryRequests(StraightDblRing ring){
+		for(int x = 1; x<17; x++){
+			System.out.println(" "+x+":"+ring.getSectionNumberMap().get(1).getEntryRequests().toString());
+			
+		}
 	}
 	
 	public Listener registerListenerWithStop(Controller controller, StraightDblRing ring, final ArrayList<Integer> outputArray){
@@ -173,6 +162,37 @@ public class MultiTrainHardwareTest extends Main{
  					controller.stop(1);
  					th.interrupt();
  				}
+ 				printEntryRequests(ring);
+ 			}
+
+		};
+
+		controller.register(lst);
+		return lst;
+	}
+	
+	public Listener registerListenerWithStopStart(Controller controller, StraightDblRing ring, final ArrayList<Integer> outputArray, Pair<Integer,Route> stopTrain, Pair<Integer,Route> startTrain ){
+		int stpTrn = stopTrain.fst;
+		int strtTrn = startTrain.fst;
+		final Route strtTrnRt = startTrain.snd;
+		final Listener lst = new Listener(){
+			public void notify(Event e){
+ 				System.out.println("event in unit test: "+e.toString());
+
+ 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+ 				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 				  outputArray.add(i);
+ 				  System.out.println("sectionchanged in unit test into section: "+ i);
+ 				}
+ 				else if(e instanceof Event.SpeedChanged){
+
+ 				   System.out.println("speed changed in test: "+((Event.SpeedChanged) e).getLocomotive());
+ 				}
+
+ 				else if ( e instanceof Event.EmergencyStop && ((Event.EmergencyStop)e).getLocomotive() == stpTrn){
+ 				   controller.start(strtTrn, strtTrnRt);
+ 				}
+ 				printEntryRequests(ring);
  			}
 
 		};
@@ -200,10 +220,8 @@ public class MultiTrainHardwareTest extends Main{
 		ctl.set(((Switch)ring.getSectionNumberMap().get(8).get(0)).getSwitchID(), false);
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		Listener lst = registerListenerNoStop(controller, ring , outputArray);
-		
 		controller.start(2, route2);
  		controller.start(1, route);
-
 		try{
 			Thread.currentThread().join();
 		}catch(InterruptedException e){
@@ -211,9 +229,7 @@ public class MultiTrainHardwareTest extends Main{
 			//System.out.println("route: "+route.toString());
 			System.out.println("output: "+outputArray.toString());
 		}
-
 		((TrainController) controller).deregister(lst);
-
 	}
 
 	/**
@@ -244,39 +260,22 @@ public class MultiTrainHardwareTest extends Main{
 			Thread.currentThread().join();
 		}catch(InterruptedException e){
 
-			System.out.println("1: "+sim0.getSections().get(1).getEntryRequests().toString());
-			System.out.println("2: "+sim0.getSections().get(2).getEntryRequests().toString());
-			System.out.println("3: "+sim0.getSections().get(3).getEntryRequests().toString());
-			System.out.println("4: "+sim0.getSections().get(4).getEntryRequests().toString());
-			System.out.println("5: "+sim0.getSections().get(5).getEntryRequests().toString());
-			System.out.println("6: "+sim0.getSections().get(6).getEntryRequests().toString());
-			System.out.println("7: "+sim0.getSections().get(7).getEntryRequests().toString());
-			System.out.println("8: "+sim0.getSections().get(8).getEntryRequests().toString());
-
 		}
 		((TrainController) controller).deregister(lst);
-
 	}
 	/**
 	 *  Check that the controller can control a second train.
 	 */
 	public void hardwareTest2(){
 		final Controller controller = getCtl();
-		// Enter Read, Evaluate, Print loop.
-
 		StraightDblRing ring = sim0.getTrack();
-
 		ring.getSectionNumberMap();
-		((TrainController)controller).trainOrientations().get(0).setSection(16);
-
 		ctl.set(((Switch)ring.getSectionNumberMap().get(16).get(0)).getSwitchID(), false);
 		ctl.set(((Switch)ring.getSectionNumberMap().get(9).get(0)).getSwitchID(), true);
 		ctl.set(((Switch)ring.getSectionNumberMap().get(8).get(0)).getSwitchID(), false);
 
 		final Route route = new Route(true, 8,1,2,3,4,5,6,7,8,1);
-
-
-
+		this.setRoute(1, route, ring, (TrainController) ctl);
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		Listener lst = this.registerListenerWithStop(controller, ring, outputArray);
  		controller.start(1, route);
@@ -304,15 +303,15 @@ public class MultiTrainHardwareTest extends Main{
 		System.out.println("trainOrientations: "+((TrainController) controller).trainOrientations().toString());
 		System.out.println("trainOrientation2: "+ ((TrainController) controller).trainOrientations().get(2));
 
-		((TrainController)controller).trainOrientations().get(2).setSection(5); // make train 0 placed in section 5
-		ring.getSectionNumberMap().get(5).getMovableSet().add(0);
 
 		ctl.set(((Switch)ring.getSectionNumberMap().get(16).get(0)).getSwitchID(), false);
 		ctl.set(((Switch)ring.getSectionNumberMap().get(9).get(0)).getSwitchID(), true);
 		ctl.set(((Switch)ring.getSectionNumberMap().get(8).get(0)).getSwitchID(), false);
 
 		final Route route = new Route(true, 8,1,2,3,4,5,6,7,8,1);
-		this.setRoute(1, route, ring, (TrainController) ctl);
+		final Route route2 = new Route(true, 5);
+		this.setRoute(1, route , ring, (TrainController) ctl);
+		this.setRoute(2, route2, ring, (TrainController) ctl);
 		
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 		Listener lst = this.registerListenerWithStop(controller, ring, outputArray);
@@ -326,12 +325,7 @@ public class MultiTrainHardwareTest extends Main{
 			System.out.println("route: "+route.toString());
 			System.out.println("output: "+outputArray.toString());
 		}
-
-
 		((TrainController) controller) .deregister(lst);
-
-
-
 	}
 
 	/**
@@ -342,39 +336,16 @@ public class MultiTrainHardwareTest extends Main{
 		final Controller controller = getCtl();
 		StraightDblRing ring = sim0.getTrack();
 		ring.getSectionNumberMap();
-		((TrainController)controller).trainOrientations().get(0).setSection(5); // make train 0 placed in section 5
-		ring.getSectionNumberMap().get(5).getMovableSet().add(0);
-		ring.getSectionNumberMap().get(5).getEntryRequests().offer(0);
+		
 		ctl.set(((Switch)ring.getSectionNumberMap().get(16).get(0)).getSwitchID(), false);
 		ctl.set(((Switch)ring.getSectionNumberMap().get(9).get(0)).getSwitchID(), true);
 		ctl.set(((Switch)ring.getSectionNumberMap().get(8).get(0)).getSwitchID(), false);
 		final Route route = new Route(true, 8,1,2,3,4,5,6,7,8,1);
 		final Route route2= new Route(true, 5,6,7,8,1,2,3,4);
+		this.setRoute(1, route , ring, (TrainController) ctl);
+		this.setRoute(2, route2, ring, (TrainController) ctl);
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
-		final Thread th = Thread.currentThread();
-		final Listener lst = new Listener(){
-			public void notify(Event e){
- 				System.out.println("event in unit test: "+e.toString());
- 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
- 				  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
- 				  outputArray.add(i);
- 				  System.out.println("sectionchanged in unit test into section: "+ i);
- 				}
- 				else if(e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
- 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
-					outputArray.add(route.nextSection(i));
- 				}
- 				if(e instanceof Event.SpeedChanged){
- 					System.out.println("LOCO: "+ ((Event.SpeedChanged) e).getLocomotive());
- 				    System.out.println("Speed: "+ ((Event.SpeedChanged)e).getSpeed());
- 					if(((Event.SpeedChanged) e).getLocomotive() == 1 && ((Event.SpeedChanged)e).getSpeed() == 0){
- 						controller.start(0, route2);
- 						System.out.println("starting it");
- 					}
- 				}
- 			}
-		};
-		controller.register(lst);
+		Listener lst = registerListenerWithStopStart(controller,ring,outputArray, new Pair<Integer,Route>(1,route), new Pair<Integer,Route>(2,route2));
  		controller.start(1, route);
 		try{
 			Thread.currentThread().join();
@@ -384,8 +355,6 @@ public class MultiTrainHardwareTest extends Main{
 			System.out.println("output: "+outputArray.toString());
 		}
 		((TrainController) controller) .deregister(lst);
-
-
 	}
 
 }
