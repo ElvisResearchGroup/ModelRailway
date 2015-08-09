@@ -32,7 +32,7 @@ import static org.junit.Assert.assertTrue;
 
 public class MultiTrainSoftwareTest {
 
-	public Listener addMultiTrainListener(final Map<Integer, modelrailway.simulation.Train> trainMap, final TrainController controller,final StraightDblRing ring , final ArrayList<String> outputArrayLoco0,
+	public Listener addMultiTrainListener(final Map<Integer, modelrailway.simulation.Train> trainMap, final ControlerCollision controller,final StraightDblRing ring , final ArrayList<String> outputArrayLoco0,
 			                              final ArrayList<String> outputArrayLoco1,final  int trainZero ,final int trainOne, final Route rt0, final Route rt1){
 		final ArrayList<Integer> outputLoco0 = new ArrayList<Integer>();
 		final ArrayList<Integer> outputLoco1 = new ArrayList<Integer>();
@@ -164,7 +164,7 @@ public class MultiTrainSoftwareTest {
 		setRoute(1, route0, ring, (ControlerCollision )controller);
 		final ArrayList<String> outputArrayLoco0 = new ArrayList<String>();
 		final ArrayList<String> outputArrayLoco1 = new ArrayList<String>();
-		Listener lst = addMultiTrainListener(trainMap, (TrainController) controller, ring, outputArrayLoco0, outputArrayLoco1, 0, 1, route0, route1);
+		Listener lst = addMultiTrainListener(trainMap, (ControlerCollision) controller, ring, outputArrayLoco0, outputArrayLoco1, 0, 1, route0, route1);
 
 		controller.set(8, numberMap.get(8).retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
 		controller.set(16, numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
@@ -201,7 +201,7 @@ public class MultiTrainSoftwareTest {
 		setRoute(1, route0, ring, (ControlerCollision )controller);
 		final ArrayList<String> outputArrayLoco0 = new ArrayList<String>();
 		final ArrayList<String> outputArrayLoco1 = new ArrayList<String>();
-		Listener lst = addMultiTrainListener(trainMap, (TrainController) controller, ring, outputArrayLoco0, outputArrayLoco1, 0, 1, route0, route1);
+		Listener lst = addMultiTrainListener(trainMap, (ControlerCollision)  controller, ring, outputArrayLoco0, outputArrayLoco1, 0, 1, route0, route1);
 
 		controller.set(8, numberMap.get(8).retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
 		controller.set(16, numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
@@ -242,7 +242,7 @@ public class MultiTrainSoftwareTest {
 		setRoute(1, route0, ring, (ControlerCollision )controller);
 		final ArrayList<String> outputArrayLoco0 = new ArrayList<String>();
 		final ArrayList<String> outputArrayLoco1 = new ArrayList<String>();
-		Listener lst = addMultiTrainListener(trainMap, (TrainController) controller, ring, outputArrayLoco0, outputArrayLoco1, 0, 1, route0, route1);
+		Listener lst = addMultiTrainListener(trainMap, (ControlerCollision)  controller, ring, outputArrayLoco0, outputArrayLoco1, 0, 1, route0, route1);
 
 		controller.set(8, numberMap.get(8).retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
 		controller.set(16, numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
@@ -270,6 +270,49 @@ public class MultiTrainSoftwareTest {
 		//assert(outputArray.get(7) == 1);
 
 		//((TrainController) controller).deregister(lst);
+
+	}
+	@Test public void softwareTest3(){
+		SimulationTrack sim0 = new SimulationTrack();
+		final StraightDblRing ring = sim0.getTrack();
+		ring.recalculateSections();
+		Map<Integer,Section> numberMap = ring.getSectionNumberMap();
+		final Route route0 = new Route(true, 8,1,2,3,4,5,6,7);
+		final Route route1 = new Route(false, 7,6,5,4,3,2,1,8); // go the opposite direction
+
+		Pair<Map<Integer,modelrailway.simulation.Train>, Map<Integer,modelrailway.core.Train>>
+		trainPair = this.makeDefaultTrains(new int[]{0,1},new Route[]{route0,route1}, ring);
+		Map<Integer,modelrailway.simulation.Train> trainMap = trainPair.fst;
+		Map<Integer,modelrailway.core.Train> orientationMap = trainPair.snd;
+		Track headPiece = numberMap.get(1).get(0);
+		final Simulator sim = new Simulator(headPiece, orientationMap, trainMap);
+		final ControlerCollision controller = new ControlerCollision(orientationMap,ring.getSectionNumberMap(),headPiece,sim);
+		setRoute(0, route0, ring, (ControlerCollision )controller);
+		setRoute(1, route0, ring, (ControlerCollision )controller);
+		final ArrayList<String> outputArrayLoco0 = new ArrayList<String>();
+		final ArrayList<String> outputArrayLoco1 = new ArrayList<String>();
+		Listener lst = addMultiTrainListener(trainMap, (ControlerCollision)  controller, ring, outputArrayLoco0, outputArrayLoco1, 0, 1, route0, route1);
+
+		controller.set(8, numberMap.get(8).retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
+		controller.set(16, numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
+
+		sim.register(controller);
+		controller.register(lst);
+		controller.start(1, route1);
+ 		controller.start(0, route0);
+
+		try{
+			Thread.currentThread().join();
+		}catch(InterruptedException e){
+			if(trainMap.get(0).getCurrentSpeed() == 0 && trainMap.get(1).getCurrentSpeed() == 0){
+				System.out.println("both trains have stopped");
+			}
+			System.out.println("hardwareTest0");
+			//System.out.println("route: "+route.toString());
+			System.out.println("output 0: "+outputArrayLoco0.toString());
+			System.out.println("output 1: "+outputArrayLoco1.toString());
+		}
+
 
 	}
 
