@@ -210,6 +210,11 @@ public class MovementController implements Controller, Listener {
 			    	if(!(trainObj.currentSection() == rt.lastSection() && !rt.isALoop())){ // if we are not at the last section of a non loop.
 			    	  nextID = trainRoutes.get(tr.getKey()).nextSection(trainObj.currentSection()) ;
 			    	}
+			    	//System.out.println("eventSectionID: "+eventsectionID);
+			    	//System.out.println("nextID: "+nextID);
+			    	//System.out.println("current: "+trainObj.currentSection());
+			    	//System.out.println("trainObj: "+tr.getKey());
+			    	
 			    	Queue<Integer> reqNext = sections().get(nextID).getEntryRequests();
 			    	//System.out.println("next == event: "+ (nextID == eventsectionID));
 			    	if(!(!rt.isALoop()&& trainObj.currentSection() == rt.lastSection()) && nextID == eventsectionID){

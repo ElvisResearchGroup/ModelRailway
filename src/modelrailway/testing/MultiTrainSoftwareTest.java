@@ -135,11 +135,12 @@ public class MultiTrainSoftwareTest {
 		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
 		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
 		for(int x = 0; x< trainIDs.length; x++){
-			final Movable loco0= new Locomotive(new Track[]{ring.getSectionNumberMap().get(routes[x].firstSection()).get(0)}, 40,40,10, false);
-			final Train train0 = new Train(new Movable[]{loco0});
-			trainMap.put(trainIDs[x], train0);
-			train0.setID(trainIDs[x]);
+			final Movable loco= new Locomotive(new Track[]{ring.getSectionNumberMap().get(routes[x].firstSection()).get(0)}, 40,40,10, false);
+			final Train train = new Train(new Movable[]{loco});
+			trainMap.put(trainIDs[x], train);
+			train.setID(trainIDs[x]);
 			orientationMap.put(trainIDs[x], new modelrailway.core.Train(routes[x].firstSection(), true));
+			System.out.println("trains: "+trainIDs[x] + ", section: "+routes[x].firstSection().intValue());
 		}
 	    return new Pair<>(trainMap,orientationMap);
 	}
@@ -152,7 +153,7 @@ public class MultiTrainSoftwareTest {
 
 
 		final Route route0 = new Route(true, 8,1,2,3,4,5,6,7);
-		final Route route1 = new Route(false, 16,9,10,3,4,5,6,7,8);
+		final Route route1 = new Route(false, 16,9,10,3,4,5,6,7,8); // route1
 		Pair<Map<Integer,modelrailway.simulation.Train>, Map<Integer,modelrailway.core.Train>>
 		trainPair = this.makeDefaultTrains(new int[]{0,1},new Route[]{route0,route1}, ring);
 		Map<Integer,modelrailway.simulation.Train> trainMap = trainPair.fst;
@@ -161,13 +162,15 @@ public class MultiTrainSoftwareTest {
 		final Simulator sim = new Simulator(headPiece, orientationMap, trainMap);
 		final ControlerCollision controller = new ControlerCollision(orientationMap,ring.getSectionNumberMap(),headPiece,sim);
 		setRoute(0, route0, ring, (ControlerCollision )controller);
-		setRoute(1, route0, ring, (ControlerCollision )controller);
+		setRoute(1, route1, ring, (ControlerCollision )controller);
 		final ArrayList<String> outputArrayLoco0 = new ArrayList<String>();
 		final ArrayList<String> outputArrayLoco1 = new ArrayList<String>();
 		Listener lst = addMultiTrainListener(trainMap, (ControlerCollision) controller, ring, outputArrayLoco0, outputArrayLoco1, 0, 1, route0, route1);
+		
+		
 
-		controller.set(8, numberMap.get(8).retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
-		controller.set(16, numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
+		controller.set(((Switch)numberMap.get(8).get(0)).getSwitchID(), numberMap.get(8).retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
+		controller.set(((Switch)numberMap.get(16).get(0)).getSwitchID(), numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
 		sim.register(controller);
 		controller.register(lst);
 		controller.start(1, route1);
@@ -198,13 +201,13 @@ public class MultiTrainSoftwareTest {
 		final Simulator sim = new Simulator(headPiece, orientationMap, trainMap);
 		final ControlerCollision controller = new ControlerCollision(orientationMap,ring.getSectionNumberMap(),headPiece,sim);
 		setRoute(0, route0, ring, (ControlerCollision )controller);
-		setRoute(1, route0, ring, (ControlerCollision )controller);
+		setRoute(1, route1, ring, (ControlerCollision )controller);
 		final ArrayList<String> outputArrayLoco0 = new ArrayList<String>();
 		final ArrayList<String> outputArrayLoco1 = new ArrayList<String>();
 		Listener lst = addMultiTrainListener(trainMap, (ControlerCollision)  controller, ring, outputArrayLoco0, outputArrayLoco1, 0, 1, route0, route1);
 
-		controller.set(8, numberMap.get(8).retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
-		controller.set(16, numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
+		controller.set(((Switch)numberMap.get(8).get(0)).getSwitchID(), numberMap.get(8).retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
+		controller.set(((Switch)numberMap.get(16).get(0)).getSwitchID(), numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
 
 		sim.register(controller);
 		controller.register(lst);
@@ -239,13 +242,13 @@ public class MultiTrainSoftwareTest {
 		final Simulator sim = new Simulator(headPiece, orientationMap, trainMap);
 		final ControlerCollision controller = new ControlerCollision(orientationMap,ring.getSectionNumberMap(),headPiece,sim);
 		setRoute(0, route0, ring, (ControlerCollision )controller);
-		setRoute(1, route0, ring, (ControlerCollision )controller);
+		setRoute(1, route1, ring, (ControlerCollision )controller);
 		final ArrayList<String> outputArrayLoco0 = new ArrayList<String>();
 		final ArrayList<String> outputArrayLoco1 = new ArrayList<String>();
 		Listener lst = addMultiTrainListener(trainMap, (ControlerCollision)  controller, ring, outputArrayLoco0, outputArrayLoco1, 0, 1, route0, route1);
 
-		controller.set(8, numberMap.get(8).retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
-		controller.set(16, numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
+		controller.set(((Switch)numberMap.get(8).get(0)).getSwitchID(), numberMap.get(8).retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
+		controller.set(((Switch)numberMap.get(16).get(0)).getSwitchID(), numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
 
 		sim.register(controller);
 		controller.register(lst);
@@ -288,13 +291,13 @@ public class MultiTrainSoftwareTest {
 		final Simulator sim = new Simulator(headPiece, orientationMap, trainMap);
 		final ControlerCollision controller = new ControlerCollision(orientationMap,ring.getSectionNumberMap(),headPiece,sim);
 		setRoute(0, route0, ring, (ControlerCollision )controller);
-		setRoute(1, route0, ring, (ControlerCollision )controller);
+		setRoute(1, route1, ring, (ControlerCollision )controller);
 		final ArrayList<String> outputArrayLoco0 = new ArrayList<String>();
 		final ArrayList<String> outputArrayLoco1 = new ArrayList<String>();
 		Listener lst = addMultiTrainListener(trainMap, (ControlerCollision)  controller, ring, outputArrayLoco0, outputArrayLoco1, 0, 1, route0, route1);
 
-		controller.set(8, numberMap.get(8).retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
-		controller.set(16, numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
+		controller.set(((Switch)numberMap.get(8).get(0)).getSwitchID(), numberMap.get(8).retrieveSwitchingOrder(new Pair<Integer,Integer>(7,1)).get(0));
+		controller.set(((Switch)numberMap.get(16).get(0)).getSwitchID(), numberMap.get(16).retrieveSwitchingOrder(new Pair<Integer,Integer>(15,9)).get(0));
 
 		sim.register(controller);
 		controller.register(lst);
