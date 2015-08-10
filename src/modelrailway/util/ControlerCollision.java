@@ -22,7 +22,7 @@ public class ControlerCollision extends MovementController implements Controller
 
 	public void notify(Event e){
 
-		Pair<Integer,Integer> trainPair = tryLocking(e, true); // try locking the section.
+		Pair<Integer,Integer> trainPair = tryLocking(e, true); // try locking the next section.
 		if(trainPair == null) return;
 		Integer train = trainPair.fst;
 		Integer sectionID = trainPair.snd;
@@ -40,6 +40,7 @@ public class ControlerCollision extends MovementController implements Controller
 		     if(rt != null){ // if there is a valid route that is not a loop and the stopSection has been moved into then notify the train to stop.
 		       if(!rt.isALoop() && rt.isStopSection(sectionID)){
 		    	   //System.out.println("Trigger an emergency stop."+ trn);
+		    	   System.out.println("sectionID: "+sectionID +"stopEvent");
 		    	   this.stop(trn);
 		           super.notify(new Event.EmergencyStop(trn)); // reached the end of the track.
 		       }
@@ -134,9 +135,12 @@ public class ControlerCollision extends MovementController implements Controller
 
 			//System.out.println("LOCK: "+ nextSec);
 			if(nextSec == null){// in the event that there is no next section from the train section that the train is currently in, Stop the train.
+				System.out.println("the next sectionWas null");
+			    System.out.println("currentSection: "+this.trainOrientations().get(train).currentSection());
 				this.stop(train);
 				this.notify(new Event.SpeedChanged(train, 0));
-				return null;
+				return new Pair<>(train, null);
+				//return null;
 			}
 			//System.out.println("trainOrientations: "+ this.trainOrientations().get(train).currentSection());
 			//System.out.println("trainID: "+ train);

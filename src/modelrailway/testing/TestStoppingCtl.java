@@ -164,7 +164,7 @@ public class TestStoppingCtl {
 
 		ctl.register(new Listener(){
  			public void notify(Event e){
- 				System.out.println("event "+e.toString());
+ 				System.out.println("event :"+e.toString());
  				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
 
  					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
@@ -199,7 +199,7 @@ public class TestStoppingCtl {
 		assertTrue(outputArray.get(3) == 4);
 		assertTrue(outputArray.get(4) == 3);
 		assertTrue(outputArray.get(5) == 2);
-		//assertTrue(outputArray.get(6) == 1);
+		assertTrue(outputArray.get(6) == 1);
 
 
 	}
