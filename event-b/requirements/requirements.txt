@@ -1,0 +1,12 @@
+Trains must not collide.
+
+trains can span multiple sections.
+
+trains move foward and backwards
+
+trains reserve sections. A train cannot enter a section it has not reserved. 
+
+If a train fails to reserve a section it must stop untill that section has been unlocked. 
+
+Assume that routes given to trains are correct. 
+

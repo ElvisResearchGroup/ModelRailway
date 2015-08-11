@@ -134,73 +134,16 @@ public class SimTestRun {
 
 		StraightDblRing ring = sim0.getTrack();
 		ring.recalculateSections();
-		Map<Integer,Section> numberMap = ring.getSectionNumberMap();
 
-		Section startSec = numberMap.get(17);
-		Track startPiece = startSec.get(0);
-
-		Section headSec = numberMap.get(1);
-		Track headPiece = headSec.get(0);
 		final Route route = new Route(true, 17,18,11,12,13,14,15,16,9,10,11);
 
-		Movable locomotive = new Locomotive(new Track[]{startPiece}, 40,40,10, false);
+		Pair<Map<Integer, Train>, Map<Integer, modelrailway.core.Train>> pair = this.makeDefaultTrains(new int[]{0}, new Route[]{route}, ring);
+		final Simulator sim = new Simulator(sim0.getHead(), pair.snd, pair.fst);
 
-		Train train = new Train(new Movable[]{locomotive});
-
-		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
-
-		trainMap.put(0,train );
-		train.setID(0);
-
-		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
-
-		orientationMap.put(0, new modelrailway.core.Train(17, true));
-
-		final Simulator sim = new Simulator(headPiece, orientationMap, trainMap);
-
-		final ControlerCollision ctl = new ControlerCollision(orientationMap,ring.getSectionNumberMap(),headPiece,sim);
-		sim.register(ctl);
-
+		final ControlerCollision ctl = new ControlerCollision(pair.snd,ring.getSectionNumberMap(),sim0.getHead(),sim);
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
- 		final Thread th = Thread.currentThread();
-
-		ctl.register(new Listener(){
- 			public void notify(Event e){
- 				//System.out.println("event "+e.toString());
- 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
-
- 					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
- 					  outputArray.add(i);
-
- 					  if(i== 9){
-
- 						  ctl.stop(0);
- 						  sim.stop();
- 						  th.interrupt();
-
- 					  }
- 					//  throw new RuntimeException("Experienced Notify Stop Statement");
- 				}
- 				else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
- 						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
- 						outputArray.add(route.nextSection(i));
- 						if(route.nextSection(i) == 9){
- 							ctl.stop(0);;
- 							sim.stop();
- 							th.interrupt();
- 						}
-
- 			    }
- 				else if (e instanceof Event.EmergencyStop){
- 					  ctl.stop(0);
- 					  sim.stop();
- 					  th.interrupt();
- 				}
-
- 			}
-
- 		});
-
+		this.addSingleTrainListener(ctl, outputArray, 0, 9, route);
+		sim.register(ctl);
  		ctl.start(0, route);
 
 		try{
@@ -220,68 +163,15 @@ public class SimTestRun {
 		StraightDblRing ring = sim0.getTrack();
 		ring.recalculateSections();
 
-		Map<Integer,Section> numberMap = ring.getSectionNumberMap();
-
-		Section startSec = numberMap.get(1);
-		Track headPiece = startSec.get(0);
-
 		final Route route = new Route(true,1,2,3,4,5,6,7,8,9,10,11,12);
 
-		Movable locomotive = new Locomotive(new Track[]{headPiece}, 40,40,10, false);
+		Pair<Map<Integer, Train>, Map<Integer, modelrailway.core.Train>> pair = this.makeDefaultTrains(new int[]{0}, new Route[]{route}, ring);
+		final Simulator sim = new Simulator(sim0.getHead(), pair.snd, pair.fst);
 
-		Train train = new Train(new Movable[]{locomotive});
-
-		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
-
-		trainMap.put(0,train );
-		train.setID(0);
-
-		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
-
-		orientationMap.put(0, new modelrailway.core.Train(1, true));
-
-		final Simulator sim = new Simulator(headPiece, orientationMap, trainMap);
-
-		final ControlerCollision ctl = new ControlerCollision(orientationMap,ring.getSectionNumberMap(),headPiece,sim);
-		sim.register(ctl);
-
+		final ControlerCollision ctl = new ControlerCollision(pair.snd,ring.getSectionNumberMap(),sim0.getHead(),sim);
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
- 		final Thread th = Thread.currentThread();
-
-		ctl.register(new Listener(){
- 			public void notify(Event e){
- 				System.out.println("event "+e.toString());
- 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
-
- 					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
- 					  outputArray.add(i);
- 					  //System.out.println("i: "+i);
-
- 					//  throw new RuntimeException("Experienced Notify Stop Statement");
- 					}
- 					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
- 						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
- 						outputArray.add(route.nextSection(i));
- 						 if(route.nextSection(i) == 10){
-
- 	 						  ctl.stop(0);
- 	 						  sim.stop();
- 	 						  th.interrupt();
-
- 	 					  }
-
- 					}
-
- 					else if (e instanceof Event.EmergencyStop){
- 						ctl.stop(0);
- 						sim.stop();
- 						th.interrupt();
- 					}
-
- 			}
-
- 		});
-
+		this.addSingleTrainListener(ctl, outputArray, 0, 9, route);
+		sim.register(ctl);
  		ctl.start(0, route);
 
 		try{
@@ -344,64 +234,16 @@ public class SimTestRun {
 
 		final Route route = new Route(true,1,2,3,4,5,6,7,8,9,10,11,12);
 
-		Movable locomotive = new Locomotive(new Track[]{headPiece}, 40,40,10, false);
+		Pair<Map<Integer, Train>, Map<Integer, modelrailway.core.Train>> pair = this.makeDefaultTrains(new int[]{0}, new Route[]{route}, ring);
 
-		Train train = new Train(new Movable[]{locomotive});
+		final Simulator sim = new Simulator(headPiece, pair.snd,pair.fst);
 
-		Map<Integer,modelrailway.simulation.Train> trainMap = new HashMap<Integer,modelrailway.simulation.Train>();
-
-		trainMap.put(0,train );
-		train.setID(0);
-
-		Map<Integer,modelrailway.core.Train> orientationMap = new HashMap<Integer,modelrailway.core.Train>();
-
-		orientationMap.put(0, new modelrailway.core.Train(1, true));
-
-		final Simulator sim = new Simulator(headPiece, orientationMap, trainMap);
-
-		final ControlerCollision ctl = new ControlerCollision(orientationMap,ring.getSectionNumberMap(),headPiece,sim);
+		final ControlerCollision ctl = new ControlerCollision(pair.snd,ring.getSectionNumberMap(),headPiece,sim);
 		sim.register(ctl);
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
- 		final Thread th = Thread.currentThread();
-
-		ctl.register(new Listener(){
- 			public void notify(Event e){
- 				System.out.println("event "+e.toString());
- 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
-
- 					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
- 					  outputArray.add(i);
- 					  System.out.println("ADDInG: "+i);
- 					  if(i == 9){
-
- 						  ctl.stop(0);
- 						  sim.stop();
- 						  th.interrupt();
-
- 					  }
- 					  //System.out.println("i: "+i);
-
- 					//  throw new RuntimeException("Experienced Notify Stop Statement");
- 				}
- 				else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
- 					Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
- 					outputArray.add(route.nextSection(i));
- 					System.out.println("ADDING : "+route.nextSection(i));
- 					if(i == 9){
-
- 	 					 ctl.stop(0);
- 	 					 sim.stop();
- 	 					 th.interrupt();
-
- 	 			    }
- 				}
- 				else if (e instanceof Event.EmergencyStop){
- 						ctl.stop(0);
- 						sim.stop();
- 						th.interrupt();
- 				}
- 			}});
+ 		Listener lst = this.addSingleTrainListener(ctl, outputArray, 0, 9, route);
+		ctl.register(lst);
 
  		ctl.start(0, route);
 
