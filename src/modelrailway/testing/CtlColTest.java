@@ -36,8 +36,35 @@ import org.junit.*;
 
 public class CtlColTest {
 
-	public Listener addSingleTrainStopAtSec(){
+	public Listener addSingleTrainStopAtSec(final Map<Integer,modelrailway.simulation.Train> trainMap, final Controller ctl, final StraightRing ring, final ArrayList<Integer> outputArray, final Route routePlan, final int stopSec, final int train, final Simulator sim){
+		final Thread th = Thread.currentThread();
+		return new Listener(){
+ 			public void notify(Event e){
+ 				//System.out.println("event "+e.toString());
+ 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
 
+ 					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 					  outputArray.add(i);
+
+ 					  if(i == stopSec){
+
+ 						  ctl.stop(train);
+ 						  sim.stop();
+ 						  th.interrupt();
+
+ 					  }
+ 					//  throw new RuntimeException("Experienced Notify Stop Statement");
+ 					}
+ 					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
+ 						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
+ 						outputArray.add(routePlan.nextSection(i));
+
+ 					}
+
+
+ 			}
+
+ 		};
 
 	}
 	public Listener addMultiTrainListener(final Map<Integer, modelrailway.simulation.Train> trainMap, final ControlerCollision controller,final StraightRing ring , final ArrayList<String> outputArrayLoco0,
@@ -293,36 +320,10 @@ public class CtlColTest {
 
 
  		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
- 		final Thread th = Thread.currentThread();
- 		ctl.register(new Listener(){
- 			public void notify(Event e){
- 				//System.out.println("event "+e.toString());
- 				if(e instanceof Event.SectionChanged && ((SectionChanged) e).getInto()){
+ 		Listener lst = addSingleTrainStopAtSec(pair.fst, ctl, ring, outputArray, routePlan0, 1, 0, sim);
+ 		ctl.register(lst);
 
- 					  Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
- 					  outputArray.add(i);
-
- 					  if(i == 1){
-
- 						  ctl.stop(0);
- 						  sim.stop();
- 						  th.interrupt();
-
- 					  }
- 					//  throw new RuntimeException("Experienced Notify Stop Statement");
- 					}
- 					else if (e instanceof Event.SectionChanged && !((SectionChanged) e).getInto()){
- 						Integer i = ((((SectionChanged)e).getSection() -1)* 2) +1;
- 						outputArray.add(routePlan.nextSection(i));
-
- 					}
-
-
- 			}
-
- 		});
-
- 		ctl.start(0, routePlan);
+ 		ctl.start(0, routePlan0);
 
  		try{
  			//System.out.println("started: ");
@@ -330,13 +331,13 @@ public class CtlColTest {
  		 //  System.out.println("stopped:");
  		}catch(InterruptedException e){
  			System.out.println("ctlColTest1");
- 			System.out.println(routePlan.toString());
+ 			System.out.println(routePlan0.toString());
  			System.out.println("output: "+outputArray.toString());
  		}
- 		assertTrue(outputArray.get(0) == switchSection);
- 		assertTrue(outputArray.get(1) == swAlt);
- 		assertTrue(outputArray.get(2) == sw2Section);
- 		assertTrue(outputArray.get(3) == headSection);
+ 		assertTrue(outputArray.get(0) == sw.getSection().getNumber());
+ 		assertTrue(outputArray.get(1) == str.getSection().getNumber());
+ 		assertTrue(outputArray.get(2) == 3);
+ 		assertTrue(outputArray.get(3) == head.getSection().getNumber());
 
   	}
 

@@ -141,7 +141,7 @@ public class MultiTrainHardwareTest extends Main{
 		}
 	}
 
-	public Listener registerListenerWithStop(final Controller controller, final StraightDblRing ring, final ArrayList<Integer> outputArray){
+	public Listener registerListenerWithStop(final Controller controller, final StraightDblRing ring, final ArrayList<Integer> outputArray, final int firstTrain, final int secondTrain, final int stopSec){
 		final Thread th = Thread.currentThread();
 		final Listener lst = new Listener(){
 			public void notify(Event e){
@@ -157,9 +157,9 @@ public class MultiTrainHardwareTest extends Main{
  				   System.out.println("speed changed in test: "+((Event.SpeedChanged) e).getLocomotive());
  				}
 
- 				if(controller.train(0).currentSection() == 3){
- 					controller.stop(0);
- 					controller.stop(1);
+ 				if(controller.train(firstTrain).currentSection() == stopSec){
+ 					controller.stop(firstTrain);
+ 					controller.stop(secondTrain);
  					th.interrupt();
  				}
  				printEntryRequests(ring);
@@ -252,9 +252,9 @@ public class MultiTrainHardwareTest extends Main{
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
 
-		Listener lst = registerListenerWithStop(controller,  ring, outputArray);
-		controller.start(0, route2);
- 		controller.start(1, route);
+		Listener lst = registerListenerNoStop(controller,  ring, outputArray);
+		controller.start(1, route2);
+ 		controller.start(2, route);
 
 		try{
 			Thread.currentThread().join();
@@ -273,11 +273,13 @@ public class MultiTrainHardwareTest extends Main{
 		ctl.set(((Switch)ring.getSectionNumberMap().get(16).get(0)).getSwitchID(), false);
 		ctl.set(((Switch)ring.getSectionNumberMap().get(9).get(0)).getSwitchID(), true);
 		ctl.set(((Switch)ring.getSectionNumberMap().get(8).get(0)).getSwitchID(), false);
-
+		int firstTrain = 1;
+		int secondTrain = 2;
+		int stopSection = 7;
 		final Route route = new Route(true, 8,1,2,3,4,5,6,7,8,1);
 		this.setRoute(1, route, ring, (TrainController) ctl);
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
-		Listener lst = this.registerListenerWithStop(controller, ring, outputArray);
+		Listener lst = this.registerListenerNoStop(controller, ring, outputArray);
  		controller.start(1, route);
 		try{
 			Thread.currentThread().join();
@@ -314,7 +316,7 @@ public class MultiTrainHardwareTest extends Main{
 		this.setRoute(2, route2, ring, (TrainController) ctl);
 
 		final ArrayList<Integer> outputArray = new ArrayList<Integer>();
-		Listener lst = this.registerListenerWithStop(controller, ring, outputArray);
+		Listener lst = this.registerListenerNoStop(controller, ring, outputArray);
 
  		controller.start(1, route);
 
