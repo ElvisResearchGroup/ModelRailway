@@ -1,13 +1,9 @@
 package modelrailway;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
-
 import modelrailway.core.Event;
-
 import org.slf4j.LoggerFactory;
-
 import jmri.DccLocoAddress;
 import jmri.DccThrottle;
 import jmri.InstanceManager;
@@ -21,50 +17,40 @@ import jmri.jmrix.loconet.pr3.PR3Adapter;
 import jmri.jmrix.loconet.pr3.PR3SystemConnectionMemo;
 import jmri.util.Log4JUtil;
 import jmri.web.server.WebServerManager;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Listener {
 	/**
 	 * The PR3 Adaptor is the physical interface to the railway. It contains a
 	 * USB port through which all loconet traffic is routed
 	 */
 	private PR3Adapter connection;
-
 	/**
 	 * The SystemConnectionMemo provides access to all the components of the
 	 * LocoNet interface.
 	 */
 	private PR3SystemConnectionMemo memo;
-
 	/**
 	 * The list of locomotives on the system.
 	 */
 	private DccLocoAddress[] locomotives;
-
 	/**
 	 * The list of active locomotive throttles
 	 */
 	private DccThrottle[] throttles;
-
 	/**
 	 * The list of active turnouts
 	 */
 	private Turnout[] turnouts;
-
 	private ArrayList<Event.Listener> eventListeners = new ArrayList<Event.Listener>();
-
 	/**
 	 * The linmonitor is useful for decoding loconet messages.
 	 */
 	private Llnmon linmon;
-
 	/**
 	 * verbose mode means dump out more debugging information.
 	 */
 	private volatile boolean verbose = true;
-
 	/**
 	 * Constructor starts the JMRI application running, and then returns.
 	 * @throws Exception
@@ -73,12 +59,10 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		// Configure Log4J
 		initLog4J();
 		log.info(Log4JUtil.startupInfo("Main"));
-
 		this.locomotives = new DccLocoAddress[locomotives.length];
 		this.throttles = new DccThrottle[locomotives.length];
 		for(int i = 0;i!=locomotives.length;++i) {
 			this.locomotives[i] = new DccLocoAddress(locomotives[i],false);
-
 		}
 		// ============================================================
 		// Create the loconet connection
@@ -98,20 +82,17 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		memo.configureCommandStation(true, true, "DCS51 (Zephyr Xtra)", false, false);
 		memo.getLnTrafficController().addLocoNetListener(LnTrafficController.ALL, this);
 		requestThrottles();
-		setupTurnouts(8);
+		setupTurnouts(4);
 	}
-
 	/**
 	 * Destroy this railway connection, dropping all resources.
 	 */
 	public void destroy() {
 		connection.dispose();
 	}
-
 	public void setVerbose(boolean verbose) {
 		this.verbose = verbose;
 	}
-
 	/**
 	 * Request throttles for all locomotives
 	 */
@@ -122,7 +103,6 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			manager.requestThrottle(loco,this);
 		}
 	}
-
 	/**
 	 * Set up the turnouts on the railway. These are assumed to be numbered
 	 * consecutively from 1.
@@ -136,12 +116,10 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			turnouts[i] = manager.provideTurnout(getTurnoutString(i+1));
 		}
 	}
-
 	@Override
 	public void notifyFailedThrottleRequest(DccLocoAddress arg0, String arg1) {
 		System.out.println("FAILED REQUESTING THROTTLE: " + arg0);
 	}
-
 	@Override
 	public void notifyThrottleFound(DccThrottle arg0) {
 		System.out.println("OBTAINED THROTTLE: " + arg0);
@@ -149,20 +127,15 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			if(locomotives[i].equals(arg0.getLocoAddress())) {
 				System.out.println("MATCHED THROTTLE: " + arg0.getLocoAddress());
 				throttles[i] = arg0;
-
 			}
 		}
 	}
-
 	// ===============================================================
 	// Message Listeners and Handlers
 	// ===============================================================
-
-
 	public void register(Event.Listener listener) {
 		this.eventListeners.add(listener);
 	}
-
 	/**
 	 * The message listener which is called for all broadcasted loconet
 	 * messages. This processes each message and turns it into an appropriate
@@ -171,7 +144,6 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 	@Override
 	public void message(LocoNetMessage arg0) {
 		Event event = null;
-
 		if(verbose) {
 			// In verbose mode, we exploit the JMRI Llnmon tool to generate
 			// correct strings for all loconet messages.
@@ -179,9 +151,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 				linmon = new Llnmon();
 			}
 			System.out.println("MESSAGE: " + linmon.displayMessage(arg0));
-
 		}
-
 		// First, process loconet message
 		int opcode = arg0.getOpCode();
 		switch(opcode) {
@@ -191,8 +161,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			break;
 		case LnConstants.OPC_LOCO_DIRF:
 			boolean isForward = (arg0.getElement(2) & LnConstants.DIRF_DIR) == LnConstants.DIRF_DIR;
-			try{getTrainIDfromSlot(arg0.getElement(1));}catch(IllegalArgumentException e){return;}
-			event = new Event.DirectionChanged(getTrainIDfromSlot(arg0.getElement(1)), isForward);
+			event = new Event.DirectionChanged(arg0.getElement(1), isForward);
 			break;
 		case LnConstants.OPC_LOCO_SPD:
 			int speed = arg0.getElement(2);
@@ -201,9 +170,7 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			} else if(speed > 1) {
 				speed = speed - 1;
 			}
-			System.out.println("speed changed slot: "+arg0.getElement(1));
-			try{getTrainIDfromSlot(arg0.getElement(1));}catch(IllegalArgumentException e){return;}
-			event = new Event.SpeedChanged(getTrainIDfromSlot(arg0.getElement(1)), speed / (0x7F-1));
+			event = new Event.SpeedChanged(arg0.getElement(1), speed / (0x7F-1));
 			break;
 		case LnConstants.OPC_INPUT_REP:
 			int in1 = arg0.getElement(1);
@@ -217,7 +184,6 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			// this is an unrecognised message, which we'll just silently ignore
 			// for now.
 		}
-
 		// Second, dispatch message as event (if understood)
 		if(event != null) {
 			for(Event.Listener listener : eventListeners) {
@@ -225,85 +191,30 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 			}
 		}
 	}
-
-	/**
-	 * Convert a throttle slot into a train identifier
-	 *
-	 * @param slot
-	 * @return
-	 */
-	private int getTrainIDfromSlot(int slot) {
-		int id = 0;
-		for(DccThrottle th: throttles){
-			LocoNetThrottle t = (LocoNetThrottle) th;
-
-			System.out.println("throttleNumber: "+t.getLocoNetSlot().getSlot()+", idNumber: "+id);
-			id++;
-		}
-		int trainID = 0;
-		for(DccThrottle throttle : throttles) {
-			LocoNetThrottle t = (LocoNetThrottle) throttle;
-			if(t.getLocoNetSlot().getSlot() == slot) {
-				System.out.println("SLOT: "+slot+", TRAINID: "+trainID);
-				return trainID;
-			}
-			trainID++;
-		}
-		throw new IllegalArgumentException("Invalid slot encountered");
-	}
-	public int getLocoNumber(int id){
-		for(int x =0; x< locomotives.length; x++){
-			if(locomotives[x].getNumber() == id){
-				return x;
-			}
-		}
-		return -1;
-
-	}
-
 	public void notify(Event event) {
 		if (event instanceof Event.SpeedChanged) {
 			Event.SpeedChanged e = (Event.SpeedChanged) event;
-			System.out.println("CHANGING SPEED: " + e.getLocomotive() + " to " + e.getSpeed());
-			if(e.getSpeed() == 0) {
-				//System.out.println("*** ERROR? ***");
-				//Thread.currentThread().dumpStack();
-			}
-			if(getLocoNumber(e.getLocomotive())<0 || getLocoNumber(e.getLocomotive()) >= throttles.length){
-				return;
-			}
-			throttles[getLocoNumber(e.getLocomotive())].setSpeedSetting(e.getSpeed());
+			throttles[e.getLocomotive()].setSpeedSetting(e.getSpeed());
 		} else if (event instanceof Event.DirectionChanged) {
 			Event.DirectionChanged e = (Event.DirectionChanged) event;
-			if(getLocoNumber(e.getLocomotive())<0 || getLocoNumber(e.getLocomotive()) >= throttles.length){
-				return;
-			}
-			throttles[getLocoNumber(e.getLocomotive())].setIsForward(e.getDirection());
+			throttles[e.getLocomotive()].setIsForward(e.getDirection());
 		} else if (event instanceof Event.EmergencyStop) {
 			System.out.println("*** EMERGENCY STOP ***");
 			Event.EmergencyStop e = (Event.EmergencyStop) event;
 			// throttles[e.getLocomotive()]
 			// .setSpeedSetting(LnConstants.OPC_LOCO_SPD_ESTOP);
-			if(getLocoNumber(e.getLocomotive())<0 || getLocoNumber(e.getLocomotive()) >= throttles.length){
-				return;
-			}
-			throttles[getLocoNumber(e.getLocomotive())].setSpeedSetting(0.0f);
+			throttles[e.getLocomotive()].setSpeedSetting(0.0f);
 		} else if (event instanceof Event.TurnoutChanged) {
 			Event.TurnoutChanged tc = (Event.TurnoutChanged) event;
-			System.out.println("SETTING TURNOUT : " + tc.getTurnout() + " : " + tc.getThrown() + " num turnouts: "+turnouts.length);
-		//	if(tc.getTurnout() == 6 && tc.getThrown() == false) throw new RuntimeException("setting wrong turnout 6 to off position");
+			System.out.println("SETTING TURNOUT : " + tc.getTurnout() + " : " + tc.getThrown());
 			Turnout turnout = turnouts[tc.getTurnout()];
-
 			turnout.setCommandedState(tc.getThrown() ? Turnout.THROWN
 					: Turnout.CLOSED);
-
 		}
 	}
-
-    static private int SENSOR_ADR(int a1, int a2) {
-        return (((a2 & 0x0f) * 128) + (a1 & 0x7f)) + 1;
-    }
-
+	static private int SENSOR_ADR(int a1, int a2) {
+		return (((a2 & 0x0f) * 128) + (a1 & 0x7f)) + 1;
+	}
 	/**
 	 * Static method to get Log4J working before the rest of JMRI starts up.
 	 */
@@ -327,7 +238,6 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 				jmri.util.exceptionhandler.AwtHandler.class.getName());
 		Thread.setDefaultUncaughtExceptionHandler(new jmri.util.exceptionhandler.UncaughtExceptionHandler());
 	}
-
 	static private String getTurnoutString(int i) {
 		String r = Integer.toString(i);
 		while (r.length() < 3) {
@@ -335,6 +245,5 @@ public class ModelRailway implements LocoNetListener, ThrottleListener, Event.Li
 		}
 		return "LT" + r;
 	}
-
 	static Logger log = LoggerFactory.getLogger(ModelRailway.class.getName());
 }

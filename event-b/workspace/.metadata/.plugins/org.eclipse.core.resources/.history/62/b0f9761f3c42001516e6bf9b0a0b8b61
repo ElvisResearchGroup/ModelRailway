@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.prFile version="1">
+<org.eventb.core.prProof name="axm2/THM" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prHyps="">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p0"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p1"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="max2∈ℤ">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="max1∈ℤ">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="axm9/WD" org.eventb.core.confidence="0" org.eventb.core.prFresh="x,y" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p2"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p3"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∀ goal (frees x,y)" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+<org.eventb.core.prIdent name="x" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="y" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⇒ goal" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p7" org.eventb.core.prHyps="p5,p6">
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∧ goal" org.eventb.core.prGoal="p7" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p8"/>
+<org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p9">
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="functional goal" org.eventb.core.prGoal="p9" org.eventb.core.prHyps="p1"/>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name=")" org.eventb.core.prGoal="p10"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℙ(ℤ)×ℙ(ℤ))"/>
+<org.eventb.core.prIdent name="track" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="x∈track">
+<org.eventb.core.prIdent name="x" org.eventb.core.type="ℙ(ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="y∈track">
+<org.eventb.core.prIdent name="y" org.eventb.core.type="ℙ(ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="route1∈ℙ(ℤ) ⇸ ℙ(ℤ)"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="max2∈ℤ">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="y∈dom(route1)">
+<org.eventb.core.prIdent name="y" org.eventb.core.type="ℙ(ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="max1∈ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="route1∈{0 ‥ max1} ↣ track"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="x∈dom(route1)">
+<org.eventb.core.prIdent name="x" org.eventb.core.type="ℙ(ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="x∈track∧y∈track⇒x∈dom(route1)∧route1∈ℙ(ℤ) ⇸ ℙ(ℤ)∧y∈dom(route1)">
+<org.eventb.core.prIdent name="x" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="y" org.eventb.core.type="ℙ(ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="∀x⦂ℙ(ℤ),y⦂ℙ(ℤ)·x∈track∧y∈track⇒x∈dom(route1)∧route1∈ℙ(ℤ) ⇸ ℙ(ℤ)∧y∈dom(route1)"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="x∈dom(route1)∧route1∈ℙ(ℤ) ⇸ ℙ(ℤ)∧y∈dom(route1)">
+<org.eventb.core.prIdent name="x" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="y" org.eventb.core.type="ℙ(ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="axm10/WD"/>
+</org.eventb.core.prFile>

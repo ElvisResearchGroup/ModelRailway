@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="22">
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="18">
+<org.eventb.core.poIdentifier name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="route1" org.eventb.core.type="ℙ(ℙ(ℤ)×ℙ(ℤ))"/>
+<org.eventb.core.poIdentifier name="route2" org.eventb.core.type="ℙ(ℙ(ℤ)×ℙ(ℤ))"/>
+<org.eventb.core.poIdentifier name="track" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="axm10/WD" org.eventb.core.accurate="false" org.eventb.core.poDesc="Well-definedness of Axiom" org.eventb.core.poStamp="22">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/Railway.bpo|org.eventb.core.poFile#Railway|org.eventb.core.poPredicateSet#HYP+"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℙ(ℤ),y⦂ℙ(ℤ)·x≠y⇒x∈dom(route2)∧route2∈ℙ(ℤ) ⇸ ℙ(ℤ)∧y∈dom(route2)" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#7"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#7"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/Railway.bpo|org.eventb.core.poFile#Railway|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/ModelRailway/Railway.bpo|org.eventb.core.poFile#Railway|org.eventb.core.poPredicateSet#HYP+"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="axm11/WD" org.eventb.core.accurate="false" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="22">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/Railway.bpo|org.eventb.core.poFile#Railway|org.eventb.core.poPredicateSet#HYP,"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℙ(ℤ)·x∈dom(route1)∧route1∈ℙ(ℤ) ⇸ ℙ(ℤ)" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#8"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#8"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/Railway.bpo|org.eventb.core.poFile#Railway|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/ModelRailway/Railway.bpo|org.eventb.core.poFile#Railway|org.eventb.core.poPredicateSet#HYP,"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="axm11/THM" org.eventb.core.accurate="false" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="22">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/Railway.bpo|org.eventb.core.poFile#Railway|org.eventb.core.poPredicateSet#HYP,"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℙ(ℤ)·route1(x)∈track" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#8"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#8"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/Railway.bpo|org.eventb.core.poFile#Railway|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/ModelRailway/Railway.bpo|org.eventb.core.poFile#Railway|org.eventb.core.poPredicateSet#HYP,"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="HYP+" org.eventb.core.parentSet="/ModelRailway/Railway.bpo|org.eventb.core.poFile#Railway|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="max1∈ℕ1" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#3"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="max2∈ℕ1" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#5"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="track⊆{1 ‥ 20}" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#*"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="route1∈{0 ‥ max1} ↣ track" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#0"/>
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="route2∈{0 ‥ max2} ↣ track" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#1"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="HYP," org.eventb.core.parentSet="/ModelRailway/Railway.bpo|org.eventb.core.poFile#Railway|org.eventb.core.poPredicateSet#HYP+" org.eventb.core.poStamp="22">
+<org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="∀x⦂ℙ(ℤ)·∀y⦂ℙ(ℤ)·x≠y⇒route2(x)≠route2(y)" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#7"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/ModelRailway/Railway.bpo|org.eventb.core.poFile#Railway|org.eventb.core.poPredicateSet#HYP," org.eventb.core.poStamp="22">
+<org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="∀x⦂ℙ(ℤ)·route1(x)∈track" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#8"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

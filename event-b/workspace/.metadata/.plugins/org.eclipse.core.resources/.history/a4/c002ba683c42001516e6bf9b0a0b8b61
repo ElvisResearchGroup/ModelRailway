@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scMachineFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd;de.prob.units.mchBase;org.eventb.codegen.ui.cgConfig">
+<org.eventb.core.scSeesContext name="'" org.eventb.core.scTarget="/ModelRailway/Railway.bcc" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.seesContext#)"/>
+<org.eventb.core.scInternalContext name="Railway">
+<org.eventb.core.scAxiom name="'" org.eventb.core.label="axm7" org.eventb.core.predicate="max1∈ℤ" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#3" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAxiom name="(" org.eventb.core.label="axm8" org.eventb.core.predicate="max2∈ℤ" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#5" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAxiom name=")" org.eventb.core.label="axm2" org.eventb.core.predicate="track⊂{0 ‥ 20}" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#*" org.eventb.core.theorem="true"/>
+<org.eventb.core.scAxiom name="*" org.eventb.core.label="axm5" org.eventb.core.predicate="route1∈{0 ‥ max1} ↣ track" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#0" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAxiom name="+" org.eventb.core.label="axm6" org.eventb.core.predicate="route2∈{0 ‥ max2} ↣ track" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#1" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAxiom name="," org.eventb.core.label="axm9" org.eventb.core.predicate="∀x⦂ℙ(ℤ)·∀y⦂ℙ(ℤ)·x∈track∧y∈track⇒route1(x)≠route1(y)" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#6" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAxiom name="-" org.eventb.core.label="axm10" org.eventb.core.predicate="∀x⦂ℙ(ℤ)·∀y⦂ℙ(ℤ)·x∈track∧y∈track⇒route2(x)≠route2(y)" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#7" org.eventb.core.theorem="false"/>
+<org.eventb.core.scConstant name="max1" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.scConstant name="max2" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#4" org.eventb.core.type="ℤ"/>
+<org.eventb.core.scConstant name="route1" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#," org.eventb.core.type="ℙ(ℙ(ℤ)×ℙ(ℤ))"/>
+<org.eventb.core.scConstant name="route2" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#-" org.eventb.core.type="ℙ(ℙ(ℤ)×ℙ(ℤ))"/>
+<org.eventb.core.scConstant name="track" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#+" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
+</org.eventb.core.scInternalContext>
+<org.eventb.core.scEvent name="Railwaz" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'"/>
+<org.eventb.core.scEvent name="Railwa{" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="notify" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(">
+<org.eventb.core.scGuard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="event∈ℤ" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(|org.eventb.core.guard#(" org.eventb.core.theorem="false"/>
+<org.eventb.core.scParameter name="event" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(|org.eventb.core.parameter#'" org.eventb.core.type="ℤ"/>
+</org.eventb.core.scEvent>
+</org.eventb.core.scMachineFile>

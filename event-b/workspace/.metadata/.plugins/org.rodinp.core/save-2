@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<index_root>
+<pim project="/MathExtensions">
+<rodin_index/>
+<export_table/>
+<graph is_sorted="true"/>
+</pim>
+<pim project="/ModelRailway">
+<rodin_index>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#9" name="speedChanged">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#@" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="12" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="40" loc_char_start="28"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#9" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#-" name="route2">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#1" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="6" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#7" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="48" loc_char_start="42"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#7" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="60" loc_char_start="54"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#-" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#+" name="track">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#1" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="24" loc_char_start="19"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#0" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="24" loc_char_start="19"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#+" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(" name="notify">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" name="Railway">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" kind="org.eventb.core.declaration"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.seesContext#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.target"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.variable#*" name="train1Loc">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.variable#*" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.variable#+" name="train2Loc">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.variable#+" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#4" name="max2">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#4" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#1" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="17" loc_char_start="13"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#7" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="33" loc_char_start="29"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#7" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="19" loc_char_start="15"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#5" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="4" loc_char_start="0"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#:" name="emergencyStop">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="54" loc_char_start="41"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#A" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="13" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#:" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller" name="Controller">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller" kind="org.eventb.core.declaration"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(|org.eventb.core.parameter#'" name="event">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(|org.eventb.core.parameter#'" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(|org.eventb.core.guard#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#8" name="sectionChanged">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#8" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#?" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="14" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="27" loc_char_start="13"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#=" name="eventType">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="9" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#=" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(|org.eventb.core.guard#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="15" loc_char_start="6"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#," name="route1">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#6" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="48" loc_char_start="42"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#6" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="60" loc_char_start="54"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#," kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#0" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="6" loc_char_start="0"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#2" name="max1">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#2" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#3" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="4" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#0" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="17" loc_char_start="13"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#6" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="19" loc_char_start="15"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#6" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="33" loc_char_start="29"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'" name="INITIALISATION">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+</descriptor>
+</rodin_index>
+<export_table>
+<export file="/ModelRailway/Controller.bum">
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" name="Railway"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#8" name="sectionChanged"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(" name="notify"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.variable#*" name="train1Loc"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#9" name="speedChanged"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.variable#+" name="train2Loc"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#," name="route1"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller" name="Controller"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(|org.eventb.core.parameter#'" name="event"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#=" name="eventType"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#2" name="max1"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#4" name="max2"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#-" name="route2"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#:" name="emergencyStop"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#+" name="track"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'" name="INITIALISATION"/>
+</export>
+<export file="/ModelRailway/Railway.buc">
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" name="Railway"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#8" name="sectionChanged"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#9" name="speedChanged"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#2" name="max1"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#=" name="eventType"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#4" name="max2"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#," name="route1"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#-" name="route2"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#+" name="track"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#:" name="emergencyStop"/>
+</export>
+</export_table>
+<graph is_sorted="true">
+<node label="/ModelRailway/Railway.buc" mark="false" order_pos="0"/>
+<node label="/ModelRailway/Controller.bum" mark="false" order_pos="1">
+<predecessor label="/ModelRailway/Railway.buc"/>
+</node>
+</graph>
+<unprocessed file="/ModelRailway/Controller.bcm"/>
+<unprocessed file="/ModelRailway/Controller.bpo"/>
+<unprocessed file="/ModelRailway/Controller.bpr"/>
+<unprocessed file="/ModelRailway/Controller.bps"/>
+<unprocessed file="/ModelRailway/Rails.bpr"/>
+<unprocessed file="/ModelRailway/Railway.bcc"/>
+<unprocessed file="/ModelRailway/Railway.bpo"/>
+<unprocessed file="/ModelRailway/Railway.bpr"/>
+<unprocessed file="/ModelRailway/Railway.bps"/>
+</pim>
+<delta_list/>
+<indexer_registry>
+<registry_entry element_type="org.eventb.core.machineFile">
+<indexer id="machineIndexer"/>
+</registry_entry>
+<registry_entry element_type="org.eventb.core.contextFile">
+<indexer id="contextIndexer"/>
+</registry_entry>
+</indexer_registry>
+</index_root>

@@ -1,20 +1,16 @@
 package modelrailway;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
-
 import modelrailway.core.Controller;
 import modelrailway.core.Event;
 import modelrailway.core.Route;
 import modelrailway.core.Event.SpeedChanged;
 import modelrailway.core.Train;
 import modelrailway.util.SimpleController;
-import modelrailway.util.TrainController;
-
 /**
  * Provides a simple command-line interface for controlling the model railway.
  * The user enters commands which then take effects on the railway.
@@ -25,47 +21,41 @@ import modelrailway.util.TrainController;
 public class Main {
 	private ModelRailway railway;
 	private Controller controller;
-
 	public Main(ModelRailway railway, Controller controller) {
 		this.railway = railway;
 		this.controller = controller;
 	}
-
 	// =========================================================================
 	// Commands.
 	// =========================================================================
 	// Below here is the set of all commands recognised by the interface. If you
 	// want to add a new command, then add a public static function for it and
 	// an appropriate entry in the commands array.
-
 	/**
 	 * The list of commands recognised by the readEvaluatePrintLoop(). To add
 	 * more functions, simply extend this list!
 	 */
 	private Command[] commands = {
-		this.new Command("quit",getMethod("quit")),
-		this.new Command("help",getMethod("printHelp")),
-		this.new Command("verbose",getMethod("setVerbose",boolean.class)),
-		this.new Command("start",getMethod("startLocomotive",int.class, float.class)),
-		this.new Command("stop",getMethod("stopLocomotive",int.class)),
-		this.new Command("route",getMethod("routeLocomotive",int.class,int[].class)),
-		this.new Command("loop",getMethod("loopLocomotive",int.class,int[].class)),
-		this.new Command("locate",getMethod("setLocation",int.class,int.class)),
-		this.new Command("turnout",getMethod("setTurnout",int.class,boolean.class))
+			this.new Command("quit",getMethod("quit")),
+			this.new Command("help",getMethod("printHelp")),
+			this.new Command("verbose",getMethod("setVerbose",boolean.class)),
+			this.new Command("start",getMethod("startLocomotive",int.class, float.class)),
+			this.new Command("stop",getMethod("stopLocomotive",int.class)),
+			this.new Command("route",getMethod("routeLocomotive",int.class,int[].class)),
+			this.new Command("loop",getMethod("loopLocomotive",int.class,int[].class)),
+			this.new Command("locate",getMethod("setLocation",int.class,int.class)),
+			this.new Command("turnout",getMethod("setTurnout",int.class,boolean.class))
 	};
-
-	public Command[] getCommands(){
-		return commands;
-	}
 
 	public void setCommands(Command[] cmd){
 		commands = cmd;
 	}
-
+	public Command[] getCommands(){
+		return commands;
+	}
 	public void quit() {
 		System.exit(0);
 	}
-
 	public void startLocomotive(int locomotive, float speed) {
 		boolean direction = speed >= 0;
 		speed = Math.abs(speed);
@@ -73,53 +63,44 @@ public class Main {
 		railway.notify(new Event.DirectionChanged(locomotive, direction));
 		railway.notify(new Event.SpeedChanged(locomotive, speed));
 	}
-
 	public void stopLocomotive(int locomotive) {
 		System.out.println("EMERGENCY STOP: " + locomotive);
 		railway.notify(new Event.EmergencyStop(locomotive));
 	}
-
 	public void routeLocomotive(int locomotive, int[] route) {
 		System.out.println("Starting train: " + locomotive + " on route: " + Arrays.toString(route));
 		if(!controller.start(locomotive, new Route(false,route))) {
 			System.out.println("Error starting route (perhaps train not in starting section?)");
 		}
 	}
-
 	public void loopLocomotive(int locomotive, int[] route) {
 		System.out.println("Starting train: " + locomotive + " on loop: " + Arrays.toString(route));
 		if(!controller.start(locomotive, new Route(true,route))) {
 			System.out.println("Error starting route (perhaps train not in starting section?)");
 		}
 	}
-
 	public void setLocation(int locomotive, int section) {
 		System.out.println("Setting location: " + locomotive + " to: " + section);
 		controller.train(locomotive).setSection(section);
 	}
-
 	public void setTurnout(int turnout, boolean thrown) {
 		System.out.println("Setting turnout: " + turnout + " to: " + thrown);
 		controller.set(turnout, thrown);
 	}
-
 	public void printHelp() {
 		System.out.println("Model rail commands:");
 		for(Command c : commands) {
 			System.out.println("\t" + c.keyword);
 		}
 	}
-
 	public void setVerbose(boolean verbose) {
 		railway.setVerbose(verbose);
 	}
-
 	// =========================================================================
 	// Read, Evaluate, Print loop
 	// =========================================================================
 	// Below here is all the machinery for the REPL. You shouldn't need to touch
 	// this.
-
 	/**
 	 * This function provides a simple interface to the model railway system. In
 	 * essence, it waits for user input. Each command consists of a line of
@@ -127,18 +108,15 @@ public class Main {
 	 * which then interface with the railway. The interface remains in the loop
 	 * continually waiting for user input.
 	 */
-
 	public void readEvaluatePrintLoop() {
 		final BufferedReader input = new BufferedReader(new InputStreamReader(
 				System.in));
-
 		try {
 			System.out.println("Welcome to the Model Railway!");
 			while (true) {
 				System.out.print("> ");
 				// Read the input line
 				String line = input.readLine();
-				if(line == null) continue;
 				// Attempt to execute the input line
 				boolean isOK = execute(line);
 				if(!isOK) {
@@ -151,7 +129,6 @@ public class Main {
 			System.err.println("I/O Error - " + e.getMessage());
 		}
 	}
-
 	/**
 	 * Attempt to execute a command-line
 	 * @param line
@@ -188,7 +165,6 @@ public class Main {
 		}
 		return false;
 	}
-
 	/**
 	 * This simply returns a reference to a given name. If the method doesn't
 	 * exist, then it will throw a runtime exception.
@@ -204,7 +180,6 @@ public class Main {
 			throw new RuntimeException("No such method: " + name, e);
 		}
 	}
-
 	/**
 	 * Represents a given interface command in the railway. Each command
 	 * consists of an initial keyword, followed by zero or more parameters. The
@@ -216,12 +191,10 @@ public class Main {
 	public class Command {
 		public final String keyword;
 		public final Method method;
-
 		public Command(String keyword, Method method) {
 			this.keyword = keyword;
 			this.method = method;
 		}
-
 		/**
 		 * Check whether a given line of text matches the command or not. For
 		 * this to be true, the number of arguments must match the expected
@@ -248,7 +221,6 @@ public class Main {
 				return arguments;
 			}
 		}
-
 		/**
 		 * Convert a string representation of this argument into an actual
 		 * object form. If this fails for some reason, then null is returned.
@@ -296,25 +268,19 @@ public class Main {
 			}
 		}
 	}
-
-
 	// =========================================================================
 	// Main entry point
 	// =========================================================================
 	public static void main(String args[]) throws Exception {
 		String port = args[0];
-
 		// Needed for connection on lab machines
 		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
-
 		// Construct the model railway assuming the interface (i.e. USB Cable)
 		// is on a given port. Likewise, we initialise it with three locomotives
 		// whose addresses are 1,2 + 3. If more locomotives are to be used, this
 		// needs to be updated accordingly.
-		System.out.println("Port: "+port);
 		final ModelRailway railway = new ModelRailway(port,
 				new int[] { 1, 2, 3 });
-
 		// Add shutdown hook to make sure resources are released when quiting
 		// the application, even if the application is quit in a non-standard
 		// fashion.
@@ -326,12 +292,11 @@ public class Main {
 			}
 		}) {
 		});
-
 		// Enter Read, Evaluate, Print loop.
 		Train[] trains = {
 				new Train(0,true), // default config for train 0
 				new Train(0,true), // default config for train 1
-				new Train(0,true)  // default config for train 2
+				new Train(0,true) // default config for train 2
 		};
 		Controller controller = new SimpleController(trains);
 		railway.register(controller);
