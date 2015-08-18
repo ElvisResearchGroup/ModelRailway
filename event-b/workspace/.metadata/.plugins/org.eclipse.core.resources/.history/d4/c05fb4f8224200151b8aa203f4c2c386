@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.scMachineFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd;de.prob.units.mchBase;org.eventb.codegen.ui.cgConfig">
-<org.eventb.core.scEvent name="'" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'"/>
-<org.eventb.core.scEvent name="(" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="notify" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(">
-<org.eventb.core.scGuard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="event∈ℤ" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(|org.eventb.core.guard#(" org.eventb.core.theorem="false"/>
-<org.eventb.core.scParameter name="event" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(|org.eventb.core.parameter#'" org.eventb.core.type="ℤ"/>
-</org.eventb.core.scEvent>
-</org.eventb.core.scMachineFile>

@@ -1,0 +1,2510 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.prFile version="1">
+<org.eventb.core.prProof name="INITIALISATION/inv3/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2" org.eventb.core.psManual="true">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p7">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p3" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p4"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p5" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p6"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in train2Loc'∈track ∖ {1}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="p9" org.eventb.core.prInfHyps="p8"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ∈ in train2Loc'∈1 ‥ 20 ∖ {1}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p8" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p10,p11"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p10,p11"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p10" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p12"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p13" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p9"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in train2Loc'∈track ∖ {1}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="p2" org.eventb.core.prInfHyps="p14"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ∈ in train2Loc'∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20} ∖ {1}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p14" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p15,p10"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p15,p10"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p10" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p12"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p7" org.eventb.core.prHyps="p12"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1.0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1.0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="track" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="train2Loc'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="¬train2Loc'∈{1}"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="train2Loc'∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="train2Loc'∈track ∖ {1}"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="track={i⦂ℤ·i∈1 ‥ 20 ∣ i}"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="1≠train2Loc'"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧x≠y⇒route1(x)≠route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="track=1 ‥ 20"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧x≠y⇒route2(x)≠route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="¬train2Loc'=1"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧¬x=y⇒¬route2(x)=route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="train2Loc'∈1 ‥ 20"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="train2Loc'∈1 ‥ 20 ∖ {1}"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="¬1=train2Loc'"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧¬x=y⇒¬route1(x)=route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="train2Loc'∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20} ∖ {1}"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.locEq"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.rmL1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALISATION/act1/FIS" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p5">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p2"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p3" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p4"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p5" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="1 ‥ 20≠(∅ ⦂ ℙ(ℤ))"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧x≠y⇒route1(x)≠route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℙ(ℤ))"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧¬x=y⇒¬route1(x)=route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℙ(ℤ))"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧x≠y⇒route2(x)≠route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℙ(ℤ))"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧¬x=y⇒¬route2(x)=route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℙ(ℤ))"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALISATION/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1" org.eventb.core.psManual="true">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p1,p2,p3"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p4" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p5"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p6" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p7"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p10">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p2" org.eventb.core.prInfHyps="p8"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p9"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p2,p3"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p10" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11">
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p11" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="track" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="route1∈1 ‥ max1 ↣ track">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="1∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧x≠y⇒route1(x)≠route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="route2∈1 ‥ max2 ↣ {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="route2∈1 ‥ max2 ↣ track">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="1∈track"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧¬x=y⇒¬route1(x)=route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="route1∈1 ‥ max1 ↣ {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧x≠y⇒route2(x)≠route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧¬x=y⇒¬route2(x)=route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALISATION/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2" org.eventb.core.psManual="true">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p3,p4,p5,p6,p7"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p8" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p9"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p10" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p11"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p12" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p5"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="finite definition" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p7" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p13"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p13"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∃ hyp (∃n,f·f∈1 ‥ n ⤖ track)" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p13" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p14">
+<org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="f" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prHypAction>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p14"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in train2Loc'∈track ∖ {1}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="p2" org.eventb.core.prInfHyps="p15"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ∈ in train2Loc'∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20} ∖ {1}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p15" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p16,p17"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p16,p17"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p17" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p18"/>
+<org.eventb.core.prRule name="r6" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="negEnum (train2Loc'∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20},¬train2Loc'=1)" org.eventb.core.prHyps="p16,p18">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16,p18" org.eventb.core.prInfHyps="p19"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ∈ in train2Loc'∈{2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p19" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p20"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∨ hyp (train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20)" org.eventb.core.prHyps="p20">
+<org.eventb.core.prAnte name="'" org.eventb.core.prHyps="p21">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p21" org.eventb.core.prInfHyps="p22"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p22"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=2" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p21">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p23">
+<org.eventb.core.prRule name="r10" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="he with train2Loc'=2" org.eventb.core.prGoal="p23" org.eventb.core.prHyps="p21">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p0">
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=2" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p21">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p23">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=2" org.eventb.core.prHyps="p21">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p26"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p27"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p26"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p27"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p23" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p26">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p26" org.eventb.core.prHyps="p26"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="(" org.eventb.core.prHyps="p30">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p30" org.eventb.core.prInfHyps="p31"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p31"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=3" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p30">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p32">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=3" org.eventb.core.prHyps="p30">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p33"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p34"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p33"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p34"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p32" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p33">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p33" org.eventb.core.prHyps="p33"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name=")" org.eventb.core.prHyps="p35">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p35" org.eventb.core.prInfHyps="p36"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p36"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=4" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p35">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p37">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=4" org.eventb.core.prHyps="p35">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p38"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p39"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p38"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p39"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p37" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p38">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p38" org.eventb.core.prHyps="p38"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="*" org.eventb.core.prHyps="p40">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p40" org.eventb.core.prInfHyps="p41"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p41"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=5" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p40">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p42">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=5" org.eventb.core.prHyps="p40">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p43"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p44"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p43"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p44"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p42" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p43">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p43" org.eventb.core.prHyps="p43"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="+" org.eventb.core.prHyps="p45">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p45" org.eventb.core.prInfHyps="p46"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p46"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=6" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p45">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p47">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=6" org.eventb.core.prHyps="p45">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p48"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p49"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p48"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p49"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p47" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p48">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p48" org.eventb.core.prHyps="p48"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="," org.eventb.core.prHyps="p50">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p50" org.eventb.core.prInfHyps="p51"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p51"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=7" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p50">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p52">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=7" org.eventb.core.prHyps="p50">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p53"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p54"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p53"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p54"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p52" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p53">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p53" org.eventb.core.prHyps="p53"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="-" org.eventb.core.prHyps="p55">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p55" org.eventb.core.prInfHyps="p56"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p56"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=8" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p55">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p57">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=8" org.eventb.core.prHyps="p55">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p58"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p59"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p58"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p59"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p57" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p58">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p58" org.eventb.core.prHyps="p58"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="." org.eventb.core.prHyps="p60">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p60" org.eventb.core.prInfHyps="p61"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p61"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=9" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p60">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p62">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=9" org.eventb.core.prHyps="p60">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p63"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p64"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p63"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p64"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p62" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p63">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p63" org.eventb.core.prHyps="p63"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="/" org.eventb.core.prHyps="p65">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p65" org.eventb.core.prInfHyps="p66"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p66"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=10" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p65">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p67">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=10" org.eventb.core.prHyps="p65">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p68"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p69"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p68"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p69"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p67" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p68">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p68" org.eventb.core.prHyps="p68"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="0" org.eventb.core.prHyps="p70">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p70" org.eventb.core.prInfHyps="p71"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p71"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=11" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p70">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p72">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=11" org.eventb.core.prHyps="p70">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p73"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p74"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p73"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p74"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p72" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p73">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p73" org.eventb.core.prHyps="p73"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="1" org.eventb.core.prHyps="p75">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p75" org.eventb.core.prInfHyps="p76"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p76"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=12" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p75">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p77">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=12" org.eventb.core.prHyps="p75">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p78"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p79"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p78"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p79"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p77" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p78">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p78" org.eventb.core.prHyps="p78"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="2" org.eventb.core.prHyps="p80">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p80" org.eventb.core.prInfHyps="p81"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p81"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=13" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p80">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p82">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=13" org.eventb.core.prHyps="p80">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p83"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p84"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p83"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p84"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p82" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p83">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p83" org.eventb.core.prHyps="p83"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="3" org.eventb.core.prHyps="p85">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p85" org.eventb.core.prInfHyps="p86"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p86"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=14" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p85">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p87">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=14" org.eventb.core.prHyps="p85">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p88"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p89"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p88"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p89"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p87" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p88">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p88" org.eventb.core.prHyps="p88"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="4" org.eventb.core.prHyps="p90">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p90" org.eventb.core.prInfHyps="p91"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p91"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=15" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p90">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p92">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=15" org.eventb.core.prHyps="p90">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p93"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p94"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p93"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p94"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p92" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p93">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p93" org.eventb.core.prHyps="p93"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="5" org.eventb.core.prHyps="p95">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p95" org.eventb.core.prInfHyps="p96"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p96"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=16" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p95">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p97">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=16" org.eventb.core.prHyps="p95">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p98"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p99"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p98"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p99"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p97" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p98">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p98" org.eventb.core.prHyps="p98"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="6" org.eventb.core.prHyps="p100">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p100" org.eventb.core.prInfHyps="p101"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p101"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=17" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p100">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p102">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=17" org.eventb.core.prHyps="p100">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p103"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p104"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p103"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p104"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p102" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p103">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p103" org.eventb.core.prHyps="p103"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="7" org.eventb.core.prHyps="p105">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p105" org.eventb.core.prInfHyps="p106"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p106"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=18" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p105">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p107">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=18" org.eventb.core.prHyps="p105">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p108"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p109"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p108"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p109"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p107" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p108">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p108" org.eventb.core.prHyps="p108"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="8" org.eventb.core.prHyps="p110">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p110" org.eventb.core.prInfHyps="p111"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p111"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=19" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p110">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p112">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=19" org.eventb.core.prHyps="p110">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p113"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p114"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p113"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p114"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p112" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p113">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p113" org.eventb.core.prHyps="p113"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="9" org.eventb.core.prHyps="p115">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p20"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="p115" org.eventb.core.prInfHyps="p116"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p116"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=20" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p115">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p117">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p24,p25,p2,p9,p11,p16,p18"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with train2Loc'=20" org.eventb.core.prHyps="p115">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p118"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p18" org.eventb.core.prInfHyps="p119"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p16,p18"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p118"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p119"/>
+<org.eventb.core.prRule name="r9" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p117" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p118">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p3" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p3,p4"/>
+<org.eventb.core.prRule name="r11" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p118" org.eventb.core.prHyps="p118"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prPredRef name=".preds" org.eventb.core.prRef="p16,p18"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1.0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="track" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="train2Loc'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="¬train2Loc'∈{1}"/>
+<org.eventb.core.prPred name="p92" org.eventb.core.predicate="15∈track"/>
+<org.eventb.core.prPred name="p91" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨⊤∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p26" org.eventb.core.predicate="2∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p28" org.eventb.core.predicate="route1∈1 ‥ max1 ↣ {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p66" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨⊤∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p50" org.eventb.core.predicate="train2Loc'=7"/>
+<org.eventb.core.prPred name="p90" org.eventb.core.predicate="train2Loc'=15"/>
+<org.eventb.core.prPred name="p108" org.eventb.core.predicate="18∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p67" org.eventb.core.predicate="10∈track"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="train2Loc'∈track"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="train2Loc'∈track ∖ {1}"/>
+<org.eventb.core.prPred name="p42" org.eventb.core.predicate="5∈track"/>
+<org.eventb.core.prPred name="p83" org.eventb.core.predicate="13∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p84" org.eventb.core.predicate="¬13=1"/>
+<org.eventb.core.prPred name="p58" org.eventb.core.predicate="8∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p104" org.eventb.core.predicate="¬17=1"/>
+<org.eventb.core.prPred name="p55" org.eventb.core.predicate="train2Loc'=8"/>
+<org.eventb.core.prPred name="p97" org.eventb.core.predicate="16∈track"/>
+<org.eventb.core.prPred name="p56" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨⊤∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p44" org.eventb.core.predicate="¬5=1"/>
+<org.eventb.core.prPred name="p95" org.eventb.core.predicate="train2Loc'=16"/>
+<org.eventb.core.prPred name="p33" org.eventb.core.predicate="3∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p64" org.eventb.core.predicate="¬9=1"/>
+<org.eventb.core.prPred name="p24" org.eventb.core.predicate="max1∈ℕ1">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p73" org.eventb.core.predicate="11∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p72" org.eventb.core.predicate="11∈track"/>
+<org.eventb.core.prPred name="p48" org.eventb.core.predicate="6∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p47" org.eventb.core.predicate="6∈track"/>
+<org.eventb.core.prPred name="p60" org.eventb.core.predicate="train2Loc'=9"/>
+<org.eventb.core.prPred name="p100" org.eventb.core.predicate="train2Loc'=17"/>
+<org.eventb.core.prPred name="p20" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="route1∈1 ‥ max1 ↣ track">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="train2Loc'∈{2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p103" org.eventb.core.predicate="17∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p102" org.eventb.core.predicate="17∈track"/>
+<org.eventb.core.prPred name="p111" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨⊤∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p109" org.eventb.core.predicate="¬18=1"/>
+<org.eventb.core.prPred name="p89" org.eventb.core.predicate="¬14=1"/>
+<org.eventb.core.prPred name="p21" org.eventb.core.predicate="train2Loc'=2"/>
+<org.eventb.core.prPred name="p27" org.eventb.core.predicate="¬2=1"/>
+<org.eventb.core.prPred name="p25" org.eventb.core.predicate="max2∈ℕ1">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p78" org.eventb.core.predicate="12∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p65" org.eventb.core.predicate="train2Loc'=10"/>
+<org.eventb.core.prPred name="p69" org.eventb.core.predicate="¬10=1"/>
+<org.eventb.core.prPred name="p49" org.eventb.core.predicate="¬6=1"/>
+<org.eventb.core.prPred name="p53" org.eventb.core.predicate="7∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p77" org.eventb.core.predicate="12∈track"/>
+<org.eventb.core.prPred name="p105" org.eventb.core.predicate="train2Loc'=18"/>
+<org.eventb.core.prPred name="p93" org.eventb.core.predicate="15∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p31" org.eventb.core.predicate="train2Loc'=2∨⊤∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p41" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨⊤∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="track={i⦂ℤ·i∈1 ‥ 20 ∣ i}"/>
+<org.eventb.core.prPred name="p52" org.eventb.core.predicate="7∈track"/>
+<org.eventb.core.prPred name="p23" org.eventb.core.predicate="2∈track"/>
+<org.eventb.core.prPred name="p36" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨⊤∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p30" org.eventb.core.predicate="train2Loc'=3"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="f∈1 ‥ n ⤖ track">
+<org.eventb.core.prIdent name="f" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="n" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p86" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨⊤∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p68" org.eventb.core.predicate="10∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p70" org.eventb.core.predicate="train2Loc'=11"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="card(track)=20"/>
+<org.eventb.core.prPred name="p107" org.eventb.core.predicate="18∈track"/>
+<org.eventb.core.prPred name="p29" org.eventb.core.predicate="route2∈1 ‥ max2 ↣ {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p43" org.eventb.core.predicate="5∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p110" org.eventb.core.predicate="train2Loc'=19"/>
+<org.eventb.core.prPred name="p82" org.eventb.core.predicate="13∈track"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="train2Loc'∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p116" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨⊤"/>
+<org.eventb.core.prPred name="p81" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨⊤∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p114" org.eventb.core.predicate="¬19=1"/>
+<org.eventb.core.prPred name="p94" org.eventb.core.predicate="¬15=1"/>
+<org.eventb.core.prPred name="p34" org.eventb.core.predicate="¬3=1"/>
+<org.eventb.core.prPred name="p35" org.eventb.core.predicate="train2Loc'=4"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="finite(track)"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧¬x=y⇒¬route2(x)=route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p46" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨⊤∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p106" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨⊤∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p98" org.eventb.core.predicate="16∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p75" org.eventb.core.predicate="train2Loc'=12"/>
+<org.eventb.core.prPred name="p71" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨⊤∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p74" org.eventb.core.predicate="¬11=1"/>
+<org.eventb.core.prPred name="p32" org.eventb.core.predicate="3∈track"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧¬x=y⇒¬route1(x)=route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="train2Loc'∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20} ∖ {1}"/>
+<org.eventb.core.prPred name="p54" org.eventb.core.predicate="¬7=1"/>
+<org.eventb.core.prPred name="p57" org.eventb.core.predicate="8∈track"/>
+<org.eventb.core.prPred name="p115" org.eventb.core.predicate="train2Loc'=20"/>
+<org.eventb.core.prPred name="p112" org.eventb.core.predicate="19∈track"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧x≠y⇒route2(x)≠route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p113" org.eventb.core.predicate="19∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p61" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨⊤∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p88" org.eventb.core.predicate="14∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p87" org.eventb.core.predicate="14∈track"/>
+<org.eventb.core.prPred name="p40" org.eventb.core.predicate="train2Loc'=5"/>
+<org.eventb.core.prPred name="p80" org.eventb.core.predicate="train2Loc'=13"/>
+<org.eventb.core.prPred name="p63" org.eventb.core.predicate="9∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p101" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨⊤∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="∃n⦂ℤ,f⦂ℙ(ℤ×ℤ)·f∈1 ‥ n ⤖ track"/>
+<org.eventb.core.prPred name="p119" org.eventb.core.predicate="¬20=1"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧x≠y⇒route1(x)≠route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p37" org.eventb.core.predicate="4∈track"/>
+<org.eventb.core.prPred name="p38" org.eventb.core.predicate="4∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p39" org.eventb.core.predicate="¬4=1"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="track=1 ‥ 20"/>
+<org.eventb.core.prPred name="p22" org.eventb.core.predicate="⊤∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p62" org.eventb.core.predicate="9∈track"/>
+<org.eventb.core.prPred name="p76" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨⊤∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="¬train2Loc'=1"/>
+<org.eventb.core.prPred name="p99" org.eventb.core.predicate="¬16=1"/>
+<org.eventb.core.prPred name="p45" org.eventb.core.predicate="train2Loc'=6"/>
+<org.eventb.core.prPred name="p51" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨⊤∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨train2Loc'=16∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p96" org.eventb.core.predicate="train2Loc'=2∨train2Loc'=3∨train2Loc'=4∨train2Loc'=5∨train2Loc'=6∨train2Loc'=7∨train2Loc'=8∨train2Loc'=9∨train2Loc'=10∨train2Loc'=11∨train2Loc'=12∨train2Loc'=13∨train2Loc'=14∨train2Loc'=15∨⊤∨train2Loc'=17∨train2Loc'=18∨train2Loc'=19∨train2Loc'=20"/>
+<org.eventb.core.prPred name="p117" org.eventb.core.predicate="20∈track"/>
+<org.eventb.core.prPred name="p79" org.eventb.core.predicate="¬12=1"/>
+<org.eventb.core.prPred name="p59" org.eventb.core.predicate="¬8=1"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="route2∈1 ‥ max2 ↣ track">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p85" org.eventb.core.predicate="train2Loc'=14"/>
+<org.eventb.core.prPred name="p118" org.eventb.core.predicate="20∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.locEq"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.exF"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.negEnum"/>
+<org.eventb.core.prReas name="r8" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL2"/>
+<org.eventb.core.prReas name="r9" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.disjE"/>
+<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.rmL1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.finiteDefRewrites"/>
+<org.eventb.core.prReas name="r10" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
+<org.eventb.core.prReas name="r11" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALISATION/inv4/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3" org.eventb.core.psManual="true">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p4" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p5"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p6" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p7"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in goal" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p8">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in goal" org.eventb.core.prGoal="p8" org.eventb.core.prHyps="p3">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p9">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in goal" org.eventb.core.prGoal="p9" org.eventb.core.prHyps="p1">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p10">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in goal" org.eventb.core.prGoal="p10" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p11" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p12">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p12" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1.1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1.0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="Bool" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="False" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="True" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="0∈{1,False}"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="True=1"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="False∈Bool"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="False=0"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="0∈{True,False}"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="Bool={True,False}"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧x≠y⇒route1(x)≠route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="0∈{1,0}"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧x≠y⇒route2(x)≠route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="0∈Bool"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧¬x=y⇒¬route2(x)=route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧¬x=y⇒¬route1(x)=route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.locEq"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALISATION/inv5/INV" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prHyps="">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p0" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p1"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p2" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p3"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧x≠y⇒route1(x)≠route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧¬x=y⇒¬route1(x)=route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧x≠y⇒route2(x)≠route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧¬x=y⇒¬route2(x)=route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALISATION/act2/FIS" org.eventb.core.confidence="500" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7" org.eventb.core.psManual="true">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p5,p2,p6,p8,p9"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p12">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p4" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p10"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p7" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p11"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p12" org.eventb.core.prHyps="p5">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p17">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p2" org.eventb.core.prInfHyps="p13"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p6" org.eventb.core.prInfHyps="p14"/>
+<org.eventb.core.prHypAction name="FORWARD_INF2" org.eventb.core.prHyps="p8" org.eventb.core.prInfHyps="p15"/>
+<org.eventb.core.prHypAction name="FORWARD_INF3" org.eventb.core.prHyps="p9" org.eventb.core.prInfHyps="p16"/>
+<org.eventb.core.prHypAction name="DESELECT4" org.eventb.core.prHyps="p2,p6,p8,p9"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p16"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p1,p2,p3,p8,p6,p10,p9,p11"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="ah (2∈track)" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p18">
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p18" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p19">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p1,p2,p3,p14,p6,p13,p11"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p5">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p20">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p20" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p18">
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p18" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name=")" org.eventb.core.prHyps="p19">
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}⊆{1})" org.eventb.core.prGoal="p17" org.eventb.core.prHyps="p5,p13,p14,p1,p2,p3,p6,p10,p11,p19"/>
+</org.eventb.core.prAnte>
+<org.eventb.core.prPredRef name=".pred" org.eventb.core.prRef="p19"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="track" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="finite({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20})"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="route1∈1 ‥ max1 ↣ track"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="max1∈ℕ1"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="card({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20})=20"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧x≠y⇒route1(x)≠route1(y)"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="2∈track"/>
+<org.eventb.core.prPred name="p20" org.eventb.core.predicate="2∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="route1∈1 ‥ max1 ↣ {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧x≠y⇒route2(x)≠route2(y)"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="finite(track)"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧¬x=y⇒¬route2(x)=route2(y)"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="max2∈ℕ1"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="card(track)=20"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="route2∈1 ‥ max2 ↣ {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="¬{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}⊆{1}"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="¬track⊆{1}"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="route2∈1 ‥ max2 ↣ track"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="track ∖ {1}≠(∅ ⦂ ℙ(ℤ))"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧¬x=y⇒¬route1(x)=route1(y)"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.cut"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
+<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.review"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALIZETRAINS/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0"/>
+<org.eventb.core.prIdent name="prm1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="track" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="prm1∈track"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALIZETRAINS/inv3/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2" org.eventb.core.psManual="true">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p9">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p3" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p4"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p5" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p6"/>
+<org.eventb.core.prHypAction name="REWRITE2" org.eventb.core.prHidden="p7" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p8"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in train2Loc'∈track ∖ {prm1}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="p11" org.eventb.core.prInfHyps="p10"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in initTrains=False" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p12" org.eventb.core.prHyps="p14" org.eventb.core.prInfHyps="p13"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in prm1∈track" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p15" org.eventb.core.prHyps="p11" org.eventb.core.prInfHyps="p16"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ∈ in prm1∈1 ‥ 20" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p16" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p17,p18"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p17,p18"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ∈ in train2Loc'∈1 ‥ 20 ∖ {prm1}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p10" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p19,p20"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p19,p20"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p19" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p21"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p22" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p11"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in train2Loc'∈track ∖ {prm1}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="p2" org.eventb.core.prInfHyps="p23"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ∈ in train2Loc'∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20} ∖ {prm1}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p24,p19"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p24,p19"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p19" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p21"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p9" org.eventb.core.prHyps="p21"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1.0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1.0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="prm1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="track" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="train2Loc'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="¬train2Loc'∈{prm1}"/>
+<org.eventb.core.prPred name="p22" org.eventb.core.predicate="track={i⦂ℤ·i∈1 ‥ 20 ∣ i}"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="train2Loc'∈1 ‥ 20 ∖ {prm1}"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="False=0">
+<org.eventb.core.prIdent name="False" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧x≠y⇒route2(x)≠route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="prm1≤20"/>
+<org.eventb.core.prPred name="p23" org.eventb.core.predicate="train2Loc'∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20} ∖ {prm1}"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="initTrains=0">
+<org.eventb.core.prIdent name="initTrains" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="¬prm1=train2Loc'"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="train2Loc'∈track ∖ {prm1}"/>
+<org.eventb.core.prPred name="p24" org.eventb.core.predicate="train2Loc'∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧x≠y⇒route1(x)≠route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="prm1≠train2Loc'"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="train1Loc≠train2Loc">
+<org.eventb.core.prIdent name="train1Loc" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="train2Loc" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="track=1 ‥ 20"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧¬x=y⇒¬route2(x)=route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="¬train1Loc=train2Loc">
+<org.eventb.core.prIdent name="train1Loc" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="train2Loc" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="prm1∈1 ‥ 20"/>
+<org.eventb.core.prPred name="p20" org.eventb.core.predicate="train2Loc'∈1 ‥ 20"/>
+<org.eventb.core.prPred name="p21" org.eventb.core.predicate="¬train2Loc'=prm1"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧¬x=y⇒¬route1(x)=route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="initTrains=False">
+<org.eventb.core.prIdent name="False" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="initTrains" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="prm1∈track"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="1≤prm1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.locEq"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.rmL1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALIZETRAINS/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1" org.eventb.core.psManual="true">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p2" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p3"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p4" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p5"/>
+<org.eventb.core.prHypAction name="REWRITE2" org.eventb.core.prHidden="p6" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p7"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in train2Loc∈track" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p8" org.eventb.core.prHyps="p10" org.eventb.core.prInfHyps="p9"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in prm1∈track" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p11" org.eventb.core.prHyps="p10" org.eventb.core.prInfHyps="p12"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ∈ in prm1∈1 ‥ 20" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p12" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p13,p14"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p13,p14"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p15" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p10"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ∈ in train2Loc'∈track ∖ {prm1}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p0,p16"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p0,p16"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="hyp" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p0"/>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="prm1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="track" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="train2Loc'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="train2Loc'∈track"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="train2Loc'∈track ∖ {prm1}"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="¬train2Loc'∈{prm1}"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="track={i⦂ℤ·i∈1 ‥ 20 ∣ i}"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧x≠y⇒route1(x)≠route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="train1Loc≠train2Loc">
+<org.eventb.core.prIdent name="train1Loc" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="train2Loc" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="track=1 ‥ 20"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧x≠y⇒route2(x)≠route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="prm1≤20"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧¬x=y⇒¬route2(x)=route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="¬train1Loc=train2Loc">
+<org.eventb.core.prIdent name="train1Loc" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="train2Loc" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="train2Loc∈1 ‥ 20">
+<org.eventb.core.prIdent name="train2Loc" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="prm1∈1 ‥ 20"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧¬x=y⇒¬route1(x)=route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="train2Loc∈track">
+<org.eventb.core.prIdent name="train2Loc" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="prm1∈track"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="1≤prm1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.locEq"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.rmL1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALIZETRAINS/act2/FIS" org.eventb.core.confidence="500" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15" org.eventb.core.psManual="true">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p19">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p6" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p16"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p9" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p17"/>
+<org.eventb.core.prHypAction name="REWRITE2" org.eventb.core.prHidden="p8" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p18"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p20" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p21"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in prm1∈track" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p15" org.eventb.core.prHyps="p11" org.eventb.core.prInfHyps="p22"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ∈ in prm1∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p22" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p23"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∨ hyp (prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20)" org.eventb.core.prHyps="p23">
+<org.eventb.core.prAnte name="'" org.eventb.core.prHyps="p24">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p24" org.eventb.core.prInfHyps="p25"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p25"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=1" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p24">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p26">
+<org.eventb.core.prRule name="r6" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p11,p1,p12,p4,p5,p7,p13,p27"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with initTrains=False" org.eventb.core.prHyps="p14">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p27" org.eventb.core.prInfHyps="p28"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p27"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}" org.eventb.core.prGoal="p26" org.eventb.core.prHyps="p11">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p33">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p1" org.eventb.core.prInfHyps="p29"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p12" org.eventb.core.prInfHyps="p30"/>
+<org.eventb.core.prHypAction name="FORWARD_INF2" org.eventb.core.prHyps="p7" org.eventb.core.prInfHyps="p31"/>
+<org.eventb.core.prHypAction name="FORWARD_INF3" org.eventb.core.prHyps="p13" org.eventb.core.prInfHyps="p32"/>
+<org.eventb.core.prHypAction name="DESELECT4" org.eventb.core.prHyps="p1,p12,p7,p13"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with False=0" org.eventb.core.prHyps="p4">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p14" org.eventb.core.prInfHyps="p34"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p5" org.eventb.core.prInfHyps="p35"/>
+<org.eventb.core.prHypAction name="FORWARD_INF2" org.eventb.core.prHyps="p28" org.eventb.core.prInfHyps="p36"/>
+<org.eventb.core.prHypAction name="DESELECT3" org.eventb.core.prHyps="p14,p5,p28"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with Bool={True,0}" org.eventb.core.prHyps="p35">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p36" org.eventb.core.prInfHyps="p37"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p36"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p37"/>
+<org.eventb.core.prRule name="r6" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p3,p10,p1,p12,p2,p5,p7,p13,p27,p14,p16,p17,p18,p28,p36"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with initTrains=0" org.eventb.core.prHyps="p34">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p14" org.eventb.core.prInfHyps="p38"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p14"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p38" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p39"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p39"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with Bool={True,0}" org.eventb.core.prHyps="p35">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p5" org.eventb.core.prInfHyps="p40"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p27" org.eventb.core.prInfHyps="p41"/>
+<org.eventb.core.prHypAction name="FORWARD_INF2" org.eventb.core.prHyps="p28" org.eventb.core.prInfHyps="p42"/>
+<org.eventb.core.prHypAction name="DESELECT3" org.eventb.core.prHyps="p5,p27,p28,p36"/>
+<org.eventb.core.prHypAction name="SELECT4" org.eventb.core.prHyps="p37"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p37"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with False=0" org.eventb.core.prHyps="p4">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p40" org.eventb.core.prInfHyps="p43"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p40,p42"/>
+<org.eventb.core.prHypAction name="SELECT2" org.eventb.core.prHyps="p37"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p37"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p43"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with initTrains=0" org.eventb.core.prHyps="p34">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p41"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p37"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p37"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with True=1" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p35" org.eventb.core.prInfHyps="p44"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p35"/>
+<org.eventb.core.prRule name="r6" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="sl/ds" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="SELECT0" org.eventb.core.prHyps="p5,p27,p14,p28,p35,p36,p40,p41,p42"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with False=0" org.eventb.core.prHyps="p4">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p40,p42"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p43,p37"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p37"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p43"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with initTrains=0" org.eventb.core.prHyps="p34">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p14,p41"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p38,p37"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p38" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p39"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p37"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with True=1" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p5" org.eventb.core.prInfHyps="p45"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p5"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with Bool={1,0}" org.eventb.core.prHyps="p44">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p27" org.eventb.core.prInfHyps="p46"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p28" org.eventb.core.prInfHyps="p47"/>
+<org.eventb.core.prHypAction name="FORWARD_INF2" org.eventb.core.prHyps="p35" org.eventb.core.prInfHyps="p48"/>
+<org.eventb.core.prHypAction name="FORWARD_INF3" org.eventb.core.prHyps="p36" org.eventb.core.prInfHyps="p49"/>
+<org.eventb.core.prHypAction name="FORWARD_INF4" org.eventb.core.prHyps="p45" org.eventb.core.prInfHyps="p50"/>
+<org.eventb.core.prHypAction name="DESELECT5" org.eventb.core.prHyps="p27,p28,p35,p36,p45"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p49"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with False=0" org.eventb.core.prHyps="p4">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p50" org.eventb.core.prInfHyps="p51"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p47,p50"/>
+<org.eventb.core.prHypAction name="SELECT2" org.eventb.core.prHyps="p49"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p49"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p51"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with initTrains=0" org.eventb.core.prHyps="p34">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p46"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p49"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p49"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with True=1" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p48"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p51"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p51"/>
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}⊆{1})" org.eventb.core.prGoal="p33" org.eventb.core.prHyps="p24,p11,p4,p29,p30,p31,p32,p34,p3,p10,p1,p12,p2,p7,p13,p16,p17,p18,p44"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="(" org.eventb.core.prHyps="p52">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p52" org.eventb.core.prInfHyps="p53"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p53"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=2" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p52">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p54">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{2})" org.eventb.core.prGoal="p54" org.eventb.core.prHyps="p14,p52"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name=")" org.eventb.core.prHyps="p55">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p55" org.eventb.core.prInfHyps="p56"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p56"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=3" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p55">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p57">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{3})" org.eventb.core.prGoal="p57" org.eventb.core.prHyps="p14,p55"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="*" org.eventb.core.prHyps="p58">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p58" org.eventb.core.prInfHyps="p59"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p59"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=4" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p58">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p60">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{4})" org.eventb.core.prGoal="p60" org.eventb.core.prHyps="p14,p58"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="+" org.eventb.core.prHyps="p61">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p61" org.eventb.core.prInfHyps="p62"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p62"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=5" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p61">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p63">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{5})" org.eventb.core.prGoal="p63" org.eventb.core.prHyps="p14,p61"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="," org.eventb.core.prHyps="p64">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p64" org.eventb.core.prInfHyps="p65"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p65"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=6" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p64">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p66">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{6})" org.eventb.core.prGoal="p66" org.eventb.core.prHyps="p14,p64"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="-" org.eventb.core.prHyps="p67">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p67" org.eventb.core.prInfHyps="p68"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p68"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=7" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p67">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p69">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{7})" org.eventb.core.prGoal="p69" org.eventb.core.prHyps="p14,p67"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="." org.eventb.core.prHyps="p70">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p70" org.eventb.core.prInfHyps="p71"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p71"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=8" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p70">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p72">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{8})" org.eventb.core.prGoal="p72" org.eventb.core.prHyps="p14,p70"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="/" org.eventb.core.prHyps="p73">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p73" org.eventb.core.prInfHyps="p74"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p74"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=9" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p73">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p75">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{9})" org.eventb.core.prGoal="p75" org.eventb.core.prHyps="p14,p73"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="0" org.eventb.core.prHyps="p76">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p76" org.eventb.core.prInfHyps="p77"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p77"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=10" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p76">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p78">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{10})" org.eventb.core.prGoal="p78" org.eventb.core.prHyps="p14,p76"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="1" org.eventb.core.prHyps="p79">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p79" org.eventb.core.prInfHyps="p80"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p80"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=11" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p79">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p81">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{11})" org.eventb.core.prGoal="p81" org.eventb.core.prHyps="p14,p79"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="2" org.eventb.core.prHyps="p82">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p82" org.eventb.core.prInfHyps="p83"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p83"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=12" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p82">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p84">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{12})" org.eventb.core.prGoal="p84" org.eventb.core.prHyps="p14,p82"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="3" org.eventb.core.prHyps="p85">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p85" org.eventb.core.prInfHyps="p86"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p86"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=13" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p85">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p87">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{13})" org.eventb.core.prGoal="p87" org.eventb.core.prHyps="p14,p85"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="4" org.eventb.core.prHyps="p88">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p88" org.eventb.core.prInfHyps="p89"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p89"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=14" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p88">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p90">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{14})" org.eventb.core.prGoal="p90" org.eventb.core.prHyps="p14,p88"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="5" org.eventb.core.prHyps="p91">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p91" org.eventb.core.prInfHyps="p92"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p92"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=15" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p91">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p93">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{15})" org.eventb.core.prGoal="p93" org.eventb.core.prHyps="p14,p91"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="6" org.eventb.core.prHyps="p94">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p94" org.eventb.core.prInfHyps="p95"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p95"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=16" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p94">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p96">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{16})" org.eventb.core.prGoal="p96" org.eventb.core.prHyps="p14,p94"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="7" org.eventb.core.prHyps="p97">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p97" org.eventb.core.prInfHyps="p98"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p98"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=17" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p97">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p99">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{17})" org.eventb.core.prGoal="p99" org.eventb.core.prHyps="p14,p97"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="8" org.eventb.core.prHyps="p100">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p100" org.eventb.core.prInfHyps="p101"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p101"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=18" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p100">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p102">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{18})" org.eventb.core.prGoal="p102" org.eventb.core.prHyps="p14,p100"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="9" org.eventb.core.prHyps="p103">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p103" org.eventb.core.prInfHyps="p104"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p104"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=19" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p103">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p105">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{19})" org.eventb.core.prGoal="p105" org.eventb.core.prHyps="p14,p103"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name=":" org.eventb.core.prHyps="p106">
+<org.eventb.core.prHypAction name="DESELECT0" org.eventb.core.prHyps="p23"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="generalized MP" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p23" org.eventb.core.prHyps="p106" org.eventb.core.prInfHyps="p107"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p107"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with prm1=20" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="p106">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p108">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="500" org.eventb.core.prDisplay="rv (500) (¬track⊆{20})" org.eventb.core.prGoal="p108" org.eventb.core.prHyps="p14,p106"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="Bool" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="False" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="True" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="initTrains" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="prm1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="track" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="train1Loc" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="train2Loc" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p42" org.eventb.core.predicate="False∈{True,0}"/>
+<org.eventb.core.prPred name="p100" org.eventb.core.predicate="prm1=18"/>
+<org.eventb.core.prPred name="p29" org.eventb.core.predicate="route1∈1 ‥ max1 ↣ {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p79" org.eventb.core.predicate="prm1=11"/>
+<org.eventb.core.prPred name="p74" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨⊤∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p92" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨⊤∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p55" org.eventb.core.predicate="prm1=3"/>
+<org.eventb.core.prPred name="p60" org.eventb.core.predicate="¬track⊆{4}"/>
+<org.eventb.core.prPred name="p51" org.eventb.core.predicate="{1,0}={1,0}"/>
+<org.eventb.core.prPred name="p32" org.eventb.core.predicate="train2Loc∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p84" org.eventb.core.predicate="¬track⊆{12}"/>
+<org.eventb.core.prPred name="p28" org.eventb.core.predicate="False∈Bool"/>
+<org.eventb.core.prPred name="p83" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨⊤∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p108" org.eventb.core.predicate="¬track⊆{20}"/>
+<org.eventb.core.prPred name="p97" org.eventb.core.predicate="prm1=17"/>
+<org.eventb.core.prPred name="p72" org.eventb.core.predicate="¬track⊆{8}"/>
+<org.eventb.core.prPred name="p46" org.eventb.core.predicate="initTrains∈{1,0}"/>
+<org.eventb.core.prPred name="p76" org.eventb.core.predicate="prm1=10"/>
+<org.eventb.core.prPred name="p56" org.eventb.core.predicate="prm1=1∨prm1=2∨⊤∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p52" org.eventb.core.predicate="prm1=2"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="¬track⊆{prm1}"/>
+<org.eventb.core.prPred name="p96" org.eventb.core.predicate="¬track⊆{16}"/>
+<org.eventb.core.prPred name="p44" org.eventb.core.predicate="Bool={1,0}"/>
+<org.eventb.core.prPred name="p86" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨⊤∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="max1∈ℕ1"/>
+<org.eventb.core.prPred name="p53" org.eventb.core.predicate="prm1=1∨⊤∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p106" org.eventb.core.predicate="prm1=20"/>
+<org.eventb.core.prPred name="p95" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨⊤∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p34" org.eventb.core.predicate="initTrains=0"/>
+<org.eventb.core.prPred name="p85" org.eventb.core.predicate="prm1=13"/>
+<org.eventb.core.prPred name="p57" org.eventb.core.predicate="¬track⊆{3}"/>
+<org.eventb.core.prPred name="p61" org.eventb.core.predicate="prm1=5"/>
+<org.eventb.core.prPred name="p47" org.eventb.core.predicate="False∈{1,0}"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="route1∈1 ‥ max1 ↣ track"/>
+<org.eventb.core.prPred name="p39" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p81" org.eventb.core.predicate="¬track⊆{11}"/>
+<org.eventb.core.prPred name="p105" org.eventb.core.predicate="¬track⊆{19}"/>
+<org.eventb.core.prPred name="p103" org.eventb.core.predicate="prm1=19"/>
+<org.eventb.core.prPred name="p62" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨⊤∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="train1Loc≠train2Loc"/>
+<org.eventb.core.prPred name="p38" org.eventb.core.predicate="0=False"/>
+<org.eventb.core.prPred name="p69" org.eventb.core.predicate="¬track⊆{7}"/>
+<org.eventb.core.prPred name="p35" org.eventb.core.predicate="Bool={True,0}"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="¬train1Loc=train2Loc"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="max2∈ℕ1"/>
+<org.eventb.core.prPred name="p82" org.eventb.core.predicate="prm1=12"/>
+<org.eventb.core.prPred name="p27" org.eventb.core.predicate="initTrains∈Bool"/>
+<org.eventb.core.prPred name="p93" org.eventb.core.predicate="¬track⊆{15}"/>
+<org.eventb.core.prPred name="p58" org.eventb.core.predicate="prm1=4"/>
+<org.eventb.core.prPred name="p20" org.eventb.core.predicate="track={i⦂ℤ·i∈1 ‥ 20 ∣ i}"/>
+<org.eventb.core.prPred name="p50" org.eventb.core.predicate="{1,0}={1,False}"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="Bool={True,False}"/>
+<org.eventb.core.prPred name="p48" org.eventb.core.predicate="{1,0}={True,0}"/>
+<org.eventb.core.prPred name="p36" org.eventb.core.predicate="0∈Bool"/>
+<org.eventb.core.prPred name="p37" org.eventb.core.predicate="0∈{True,0}"/>
+<org.eventb.core.prPred name="p77" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨⊤∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p91" org.eventb.core.predicate="prm1=15"/>
+<org.eventb.core.prPred name="p30" org.eventb.core.predicate="route2∈1 ‥ max2 ↣ {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p104" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨⊤∨prm1=20"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="track={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p43" org.eventb.core.predicate="{True,0}={True,0}"/>
+<org.eventb.core.prPred name="p67" org.eventb.core.predicate="prm1=7"/>
+<org.eventb.core.prPred name="p54" org.eventb.core.predicate="¬track⊆{2}"/>
+<org.eventb.core.prPred name="p102" org.eventb.core.predicate="¬track⊆{18}"/>
+<org.eventb.core.prPred name="p90" org.eventb.core.predicate="¬track⊆{14}"/>
+<org.eventb.core.prPred name="p66" org.eventb.core.predicate="¬track⊆{6}"/>
+<org.eventb.core.prPred name="p78" org.eventb.core.predicate="¬track⊆{10}"/>
+<org.eventb.core.prPred name="p98" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨⊤∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧¬x=y⇒¬route2(x)=route2(y)"/>
+<org.eventb.core.prPred name="p107" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨⊤"/>
+<org.eventb.core.prPred name="p88" org.eventb.core.predicate="prm1=14"/>
+<org.eventb.core.prPred name="p41" org.eventb.core.predicate="initTrains∈{True,0}"/>
+<org.eventb.core.prPred name="p71" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨⊤∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p33" org.eventb.core.predicate="¬{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}⊆{1}"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧¬x=y⇒¬route1(x)=route1(y)"/>
+<org.eventb.core.prPred name="p64" org.eventb.core.predicate="prm1=6"/>
+<org.eventb.core.prPred name="p25" org.eventb.core.predicate="⊤∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p23" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="True=1"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="False=0"/>
+<org.eventb.core.prPred name="p89" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨⊤∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p94" org.eventb.core.predicate="prm1=16"/>
+<org.eventb.core.prPred name="p49" org.eventb.core.predicate="0∈{1,0}"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧x≠y⇒route2(x)≠route2(y)"/>
+<org.eventb.core.prPred name="p65" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨⊤∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p73" org.eventb.core.predicate="prm1=9"/>
+<org.eventb.core.prPred name="p101" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨⊤∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p45" org.eventb.core.predicate="Bool={1,False}"/>
+<org.eventb.core.prPred name="p26" org.eventb.core.predicate="¬track⊆{1}"/>
+<org.eventb.core.prPred name="p68" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨⊤∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p24" org.eventb.core.predicate="prm1=1"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="train2Loc∈track"/>
+<org.eventb.core.prPred name="p80" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨prm1=4∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨⊤∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p40" org.eventb.core.predicate="{True,0}={True,False}"/>
+<org.eventb.core.prPred name="p59" org.eventb.core.predicate="prm1=1∨prm1=2∨prm1=3∨⊤∨prm1=5∨prm1=6∨prm1=7∨prm1=8∨prm1=9∨prm1=10∨prm1=11∨prm1=12∨prm1=13∨prm1=14∨prm1=15∨prm1=16∨prm1=17∨prm1=18∨prm1=19∨prm1=20"/>
+<org.eventb.core.prPred name="p22" org.eventb.core.predicate="prm1∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p87" org.eventb.core.predicate="¬track⊆{13}"/>
+<org.eventb.core.prPred name="p63" org.eventb.core.predicate="¬track⊆{5}"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧x≠y⇒route1(x)≠route1(y)"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="train1Loc∈track"/>
+<org.eventb.core.prPred name="p31" org.eventb.core.predicate="train1Loc∈{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}"/>
+<org.eventb.core.prPred name="p21" org.eventb.core.predicate="track=1 ‥ 20"/>
+<org.eventb.core.prPred name="p75" org.eventb.core.predicate="¬track⊆{9}"/>
+<org.eventb.core.prPred name="p70" org.eventb.core.predicate="prm1=8"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="track ∖ {prm1}≠(∅ ⦂ ℙ(ℤ))"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="route2∈1 ‥ max2 ↣ track"/>
+<org.eventb.core.prPred name="p99" org.eventb.core.predicate="¬track⊆{17}"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="initTrains=False"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="prm1∈track"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.locEq"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL2"/>
+<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.disjE"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.rmL1"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.review"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALIZETRAINS/inv4/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3" org.eventb.core.psManual="true">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p4" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p5"/>
+<org.eventb.core.prHypAction name="REWRITE1" org.eventb.core.prHidden="p6" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p7"/>
+<org.eventb.core.prHypAction name="REWRITE2" org.eventb.core.prHidden="p8" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p9"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with initTrains=False" org.eventb.core.prHyps="p3">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p10" org.eventb.core.prInfHyps="p11"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p10"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in prm1∈track" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p12" org.eventb.core.prHyps="p14" org.eventb.core.prInfHyps="p13"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in False∈Bool" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p11" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p15"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in 0∈Bool" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p15" org.eventb.core.prHyps="p2" org.eventb.core.prInfHyps="p17"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in 0∈{True,False}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p17" org.eventb.core.prHyps="p1" org.eventb.core.prInfHyps="p18"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in 0∈{1,False}" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p18" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p19"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p19"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="remove ∈ in prm1∈1 ‥ 20" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p13" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p20,p21"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p20,p21"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in initTrains=False" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p3" org.eventb.core.prHyps="p16" org.eventb.core.prInfHyps="p22"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in goal" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p23">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in goal" org.eventb.core.prGoal="p23" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p24">
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="lae in goal" org.eventb.core.prGoal="p24" org.eventb.core.prHyps="p1">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p25">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p25" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p26">
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p26" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1.0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1.1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1.0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="Bool" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="False" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="True" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="initTrains" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="True=1"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="False=0"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="0∈{True,False}"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="Bool={True,False}"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="0∈{1,0}"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧x≠y⇒route2(x)≠route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p20" org.eventb.core.predicate="prm1≤20">
+<org.eventb.core.prIdent name="prm1" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="0∈Bool"/>
+<org.eventb.core.prPred name="p22" org.eventb.core.predicate="initTrains=0"/>
+<org.eventb.core.prPred name="p24" org.eventb.core.predicate="1∈{True,False}"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="0∈{1,False}"/>
+<org.eventb.core.prPred name="p26" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="False∈Bool"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="∀x⦂ℤ·∀y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧x≠y⇒route1(x)≠route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="train1Loc≠train2Loc">
+<org.eventb.core.prIdent name="train1Loc" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="train2Loc" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="track=1 ‥ 20">
+<org.eventb.core.prIdent name="track" org.eventb.core.type="ℙ(ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max2∧y∈ℕ1∧y≤max2∧¬x=y⇒¬route2(x)=route2(y)">
+<org.eventb.core.prIdent name="max2" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route2" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="¬train1Loc=train2Loc">
+<org.eventb.core.prIdent name="train1Loc" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="train2Loc" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="prm1∈1 ‥ 20">
+<org.eventb.core.prIdent name="prm1" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p25" org.eventb.core.predicate="1∈{1,False}"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="True∈Bool"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="initTrains∈Bool"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧x≤max1∧y∈ℕ1∧y≤max1∧¬x=y⇒¬route1(x)=route1(y)">
+<org.eventb.core.prIdent name="max1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="route1" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="initTrains=False"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="prm1∈track">
+<org.eventb.core.prIdent name="prm1" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="track" org.eventb.core.type="ℙ(ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p21" org.eventb.core.predicate="1≤prm1">
+<org.eventb.core.prIdent name="prm1" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p23" org.eventb.core.predicate="1∈Bool"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.locEq"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.rmL1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+</org.eventb.core.prFile>
