@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
+<org.eventb.core.axiom name="3" org.eventb.core.label="axm7" org.eventb.core.predicate="max1 ∈ ℕ1"/>
+<org.eventb.core.axiom name="5" org.eventb.core.label="axm8" org.eventb.core.predicate="max2 ∈ ℕ1"/>
+<org.eventb.core.axiom name="*" org.eventb.core.label="axm2" org.eventb.core.predicate="track = {i∣i∈(1‥20)}"/>
+<org.eventb.core.axiom name="0" org.eventb.core.label="axm5" org.eventb.core.predicate="route1 ∈ ((1‥max1)↣track) "/>
+<org.eventb.core.axiom name="1" org.eventb.core.label="axm6" org.eventb.core.predicate="route2 ∈ ((1‥max2)↣track)"/>
+<org.eventb.core.constant name="+" org.eventb.core.identifier="track"/>
+<org.eventb.core.constant name="," org.eventb.core.identifier="route1"/>
+<org.eventb.core.constant name="-" org.eventb.core.identifier="route2"/>
+<org.eventb.core.constant name="2" org.eventb.core.identifier="max1"/>
+<org.eventb.core.constant name="4" org.eventb.core.identifier="max2"/>
+<org.eventb.core.axiom name="6" org.eventb.core.label="axm9" org.eventb.core.predicate="∀x·∀y·x∈dom(route1) ∧ y∈dom(route1)∧(x≠y) ⇒(route1(x) ≠ route1(y))"/>
+<org.eventb.core.axiom name="7" org.eventb.core.label="axm10" org.eventb.core.predicate="∀x·∀y·x∈dom(route2)∧ y∈dom(route2) ∧(x≠y) ⇒(route2(x) ≠ route2(y)) "/>
+<org.eventb.core.axiom name="&gt;" org.eventb.core.label="axm12" org.eventb.core.predicate="partition(eventType,{sectionChanged},{speedChanged},{emergencyStop})"/>
+<org.eventb.core.axiom name="G" org.eventb.core.label="axm18" org.eventb.core.predicate="partition(Bool,{True},{False})"/>
+<org.eventb.core.axiom name="H" org.eventb.core.label="axm19" org.eventb.core.predicate="forwardRt1 ∈ ((1‥max1) ↣ track)"/>
+<org.eventb.core.axiom name="W" org.eventb.core.label="axm24" org.eventb.core.predicate="backRt1 ∈ ((1‥max1) ↣ track)"/>
+<org.eventb.core.axiom name="I" org.eventb.core.label="axm20" org.eventb.core.predicate="forwardRt2 ∈ ((1‥max2) ↣ track)"/>
+<org.eventb.core.axiom name="Y" org.eventb.core.label="axm25" org.eventb.core.predicate="backRt2 ∈ ((1‥max1) ↣ track)"/>
+<org.eventb.core.axiom name="J" org.eventb.core.label="axm21" org.eventb.core.predicate="∀x· (x−1 ∈ dom(forwardRt1)∧ x ∈ dom(route1)) ⇒ forwardRt1(x−1) = route1(x)"/>
+<org.eventb.core.axiom name="K" org.eventb.core.label="axm22" org.eventb.core.predicate="∀x· (x−1 ∈ dom(forwardRt2)∧ x ∈ dom(route2)) ⇒ forwardRt2(x−1) = route2(x)"/>
+<org.eventb.core.constant name="L" org.eventb.core.identifier="forwardRt1"/>
+<org.eventb.core.constant name="V" org.eventb.core.identifier="backRt1"/>
+<org.eventb.core.constant name="M" org.eventb.core.identifier="forwardRt2"/>
+<org.eventb.core.carrierSet name="N" org.eventb.core.identifier="eventType"/>
+<org.eventb.core.carrierSet name="O" org.eventb.core.identifier="Bool"/>
+<org.eventb.core.constant name="X" org.eventb.core.identifier="backRt2"/>
+<org.eventb.core.constant name="P" org.eventb.core.identifier="sectionChanged"/>
+<org.eventb.core.constant name="Q" org.eventb.core.identifier="speedChanged"/>
+<org.eventb.core.constant name="R" org.eventb.core.identifier="emergencyStop"/>
+<org.eventb.core.constant name="S" org.eventb.core.identifier="True"/>
+<org.eventb.core.constant name="T" org.eventb.core.identifier="False"/>
+<org.eventb.core.axiom name="U" org.eventb.core.label="axm23" org.eventb.core.predicate="∀x· (x+1 ∈ dom(backRt1)∧ x ∈ dom(route1)) ⇒ backRt1(x+1) = route1(x)"/>
+<org.eventb.core.axiom name="Z" org.eventb.core.label="axm26" org.eventb.core.predicate="∀x· (x+1 ∈ dom(backRt2)∧ x ∈ dom(route2)) ⇒ backRt2(x+1) = route2(x)"/>
+<org.eventb.core.constant name="[" org.eventb.core.identifier="train1IsForward"/>
+<org.eventb.core.constant name="\" org.eventb.core.identifier="train2IsForward"/>
+<org.eventb.core.axiom name="]" org.eventb.core.label="axm27" org.eventb.core.predicate="train1IsForward ∈ Bool"/>
+<org.eventb.core.axiom name="^" org.eventb.core.label="axm28" org.eventb.core.predicate="train2IsForward ∈ Bool"/>
+</org.eventb.core.contextFile>

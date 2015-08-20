@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
+<org.eventb.core.extendsContext name="'" org.eventb.core.target="Railway"/>
+<org.eventb.core.constant name="cst6" org.eventb.core.identifier="forwardRt1"/>
+<org.eventb.core.constant name="cst7" org.eventb.core.identifier="backRt1"/>
+<org.eventb.core.constant name="cst8" org.eventb.core.identifier="forwardRt2"/>
+<org.eventb.core.constant name="cst9" org.eventb.core.identifier="backRt2"/>
+<org.eventb.core.constant name="cst15" org.eventb.core.identifier="train1IsForward"/>
+<org.eventb.core.constant name="cst16" org.eventb.core.identifier="train2IsForward"/>
+<org.eventb.core.constant name="cst17" org.eventb.core.identifier="nextRt1"/>
+<org.eventb.core.constant name="cst18" org.eventb.core.identifier="nextRt2"/>
+</org.eventb.core.contextFile>
