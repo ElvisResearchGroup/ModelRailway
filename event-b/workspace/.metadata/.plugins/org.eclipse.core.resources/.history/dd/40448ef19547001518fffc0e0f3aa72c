@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scContextFile org.eventb.core.accurate="false" org.eventb.core.configuration="org.eventb.core.fwd">
+<org.eventb.core.scAxiom name="'" org.eventb.core.label="axm2" org.eventb.core.predicate="track={i⦂ℤ·i∈1 ‥ 20 ∣ i}" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#*" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAxiom name="(" org.eventb.core.label="axm12" org.eventb.core.predicate="partition(eventType,{sectionChanged},{speedChanged},{emergencyStop})" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#&gt;" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAxiom name=")" org.eventb.core.label="axm18" org.eventb.core.predicate="partition(Bool,{True},{False})" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#G" org.eventb.core.theorem="false"/>
+<org.eventb.core.scCarrierSet name="Bool" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#O" org.eventb.core.type="ℙ(Bool)"/>
+<org.eventb.core.scConstant name="False" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#T" org.eventb.core.type="Bool"/>
+<org.eventb.core.scConstant name="True" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#S" org.eventb.core.type="Bool"/>
+<org.eventb.core.scConstant name="emergencyStop" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#R" org.eventb.core.type="eventType"/>
+<org.eventb.core.scCarrierSet name="eventType" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#N" org.eventb.core.type="ℙ(eventType)"/>
+<org.eventb.core.scCarrierSet name="routes" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#]" org.eventb.core.type="ℙ(routes)"/>
+<org.eventb.core.scConstant name="sectionChanged" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#P" org.eventb.core.type="eventType"/>
+<org.eventb.core.scConstant name="speedChanged" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#Q" org.eventb.core.type="eventType"/>
+<org.eventb.core.scConstant name="track" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#+" org.eventb.core.type="ℙ(ℤ)"/>
+</org.eventb.core.scContextFile>

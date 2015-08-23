@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <org.eventb.core.psFile>
-<org.eventb.core.psStatus name="INITIALISATION/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="99" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="INITIALISATION/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="99" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="INITIALISATION/inv3/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="99" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="INITIALISATION/act2/FIS" org.eventb.core.confidence="1000" org.eventb.core.poStamp="99" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="INITIALIZETRAINS/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="99" org.eventb.core.psManual="false"/>
-<org.eventb.core.psStatus name="INITIALIZETRAINS/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="99" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="INITIALIZETRAINS/inv3/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="99" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="INITIALIZETRAINS/act2/FIS" org.eventb.core.confidence="1000" org.eventb.core.poStamp="99" org.eventb.core.psManual="false"/>
-<org.eventb.core.psStatus name="NOTIFY/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="102" org.eventb.core.psManual="false"/>
-<org.eventb.core.psStatus name="NOTIFY/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="102" org.eventb.core.psManual="false"/>
-<org.eventb.core.psStatus name="NOTIFY/inv3/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="102" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/inv7/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="143" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="INITIALISATION/inv6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="142" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/act4/FIS" org.eventb.core.confidence="0" org.eventb.core.poStamp="143" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="INITIALISATION/act5/FIS" org.eventb.core.confidence="1000" org.eventb.core.poStamp="142" org.eventb.core.psManual="false"/>
 </org.eventb.core.psFile>
