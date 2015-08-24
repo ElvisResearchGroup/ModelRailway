@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.units.mchBase;org.eventb.codegen.ui.cgConfig" version="5">
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="*" org.eventb.core.assignment="setLocation :∈ trains ↣ track " org.eventb.core.comment=" set the location of all the trains and ensure no two trains on the same section" org.eventb.core.label="act4"/>
+<org.eventb.core.action name="+" org.eventb.core.assignment="startTrain :∈ trains → Moving  " org.eventb.core.comment=" start all of the trains" org.eventb.core.label="act5"/>
+</org.eventb.core.event>
+<org.eventb.core.seesContext name=")" org.eventb.core.target="Railway"/>
+<org.eventb.core.event name="7" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="NOTIFY">
+<org.eventb.core.guard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="eventName ∈ eventType"/>
+<org.eventb.core.parameter name="(" org.eventb.core.identifier="eventName"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="8" org.eventb.core.identifier="setLocation"/>
+<org.eventb.core.variable name=";" org.eventb.core.identifier="startTrain"/>
+<org.eventb.core.invariant name="&gt;" org.eventb.core.label="inv7" org.eventb.core.predicate="setLocation ∈ trains ↣ track"/>
+<org.eventb.core.invariant name="A" org.eventb.core.label="inv10" org.eventb.core.predicate="trains ≠∅" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="@" org.eventb.core.label="inv9" org.eventb.core.predicate="dom(setLocation) = trains" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="B" org.eventb.core.label="inv11" org.eventb.core.predicate="trainID ∈ trains ↣ track" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="E" org.eventb.core.label="inv14" org.eventb.core.predicate="{trainID} ⊆ trains↣ track" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="I" org.eventb.core.label="inv18" org.eventb.core.predicate="finite(trains)" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="K" org.eventb.core.label="inv20" org.eventb.core.predicate="finite(track)" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="G" org.eventb.core.label="inv16" org.eventb.core.predicate="finite(trains ↣ track)"/>
+<org.eventb.core.invariant name="F" org.eventb.core.label="inv15" org.eventb.core.predicate="card({trainID}) ≤ card(trains ↣ track)" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="?" org.eventb.core.label="inv8" org.eventb.core.predicate="trainID ∉ ∅ ⇒ trains ↣ track ≠ ∅" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="=" org.eventb.core.label="inv6" org.eventb.core.predicate="startTrain ∈ trains → Moving"/>
+</org.eventb.core.machineFile>

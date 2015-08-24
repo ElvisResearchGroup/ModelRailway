@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <org.eventb.core.psFile>
-<org.eventb.core.psStatus name="NotifySectionChanged/grd7/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="104" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="NotifySectionChanged/grd9/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="104" org.eventb.core.psManual="false"/>
-<org.eventb.core.psStatus name="NotifySectionChanged/grd10/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="104" org.eventb.core.psManual="false"/>
-<org.eventb.core.psStatus name="NotifySectionChanged/grd11/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="104" org.eventb.core.psManual="false"/>
-<org.eventb.core.psStatus name="NotifySectionChanged/act1/WD" org.eventb.core.confidence="0" org.eventb.core.poStamp="104" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="NotifySectionChanged/setLocation/EQL" org.eventb.core.confidence="0" org.eventb.core.poStamp="104" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="NotifySectionChanged/grd9/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="181" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="NotifySectionChanged/grd5/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="181" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="NotifySectionChanged/grd7/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="181" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="NotifySectionChanged/grd10/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="181" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="NotifySectionChanged/grd11/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="181" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="NotifySectionChanged/act1/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="181" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="NotifySectionChanged/setLocation/EQL" org.eventb.core.confidence="0" org.eventb.core.poStamp="181" org.eventb.core.psManual="true"/>
 </org.eventb.core.psFile>
