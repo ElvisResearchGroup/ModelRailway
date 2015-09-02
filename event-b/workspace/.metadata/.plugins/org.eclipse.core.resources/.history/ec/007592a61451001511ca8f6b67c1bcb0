@@ -8,7 +8,7 @@
 <org.eventb.core.event name="var5" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="NotifySectionChanged">
 <org.eventb.core.refinesEvent name="'" org.eventb.core.target="NOTIFY"/>
 <org.eventb.core.guard name="(" org.eventb.core.label="grd3b" org.eventb.core.predicate="eventName = sectionChanged"/>
-<org.eventb.core.parameter name="/" org.eventb.core.comment="rename to more descriptive term" org.eventb.core.identifier="parameter"/>
+<org.eventb.core.parameter name="/" org.eventb.core.identifier="parameter"/>
 <org.eventb.core.action name="0" org.eventb.core.assignment="setLocation(train)≔ nextRt(parameter) " org.eventb.core.label="act2"/>
 <org.eventb.core.parameter name="4" org.eventb.core.identifier="route"/>
 <org.eventb.core.guard name="2" org.eventb.core.comment=" the route is a valid route" org.eventb.core.label="grd6" org.eventb.core.predicate="route ∈ routes "/>
@@ -26,7 +26,7 @@
 <org.eventb.core.guard name="9" org.eventb.core.comment=" the train must be running" org.eventb.core.label="grd11b" org.eventb.core.predicate="startTrain(train) = Start"/>
 <org.eventb.core.parameter name="?" org.eventb.core.identifier="nextRt"/>
 </org.eventb.core.event>
-<org.eventb.core.variable name="var6" org.eventb.core.comment="note: this name is misleading, does this tell me the location of the train or set the location of the train" org.eventb.core.identifier="setLocation"/>
+<org.eventb.core.variable name="var6" org.eventb.core.identifier="setLocation"/>
 <org.eventb.core.variable name="var7" org.eventb.core.identifier="startTrain"/>
 <org.eventb.core.invariant name="inv1" org.eventb.core.label="inv7" org.eventb.core.predicate="setLocation ∈ trains → track"/>
 <org.eventb.core.invariant name="inv2" org.eventb.core.label="inv10" org.eventb.core.predicate="trains ≠∅" org.eventb.core.theorem="true"/>

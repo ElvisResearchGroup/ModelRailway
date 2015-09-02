@@ -12,9 +12,9 @@
 <org.eventb.core.action name="grd2" org.eventb.core.assignment="startTrain(train) ≔  mov" org.eventb.core.label="act1"/>
 <org.eventb.core.parameter name="grd3" org.eventb.core.identifier="mov"/>
 <org.eventb.core.guard name="grd4" org.eventb.core.label="grd9" org.eventb.core.predicate="mov ∈ Moving"/>
-<org.eventb.core.guard name="grd5" org.eventb.core.comment="should be deleted" org.eventb.core.label="grd10" org.eventb.core.predicate="startTrain ∈ trains → Moving"/>
-<org.eventb.core.guard name="grd6" org.eventb.core.comment="should be an invariant" org.eventb.core.label="grd11" org.eventb.core.predicate="startTrain {train ↦ mov} ∈ (trains)→(Moving)"/>
+<org.eventb.core.guard name="grd5" org.eventb.core.label="grd10" org.eventb.core.predicate="startTrain ∈ trains → Moving"/>
+<org.eventb.core.guard name="grd6" org.eventb.core.label="grd11" org.eventb.core.predicate="startTrain {train ↦ mov} ∈ (trains)→(Moving)"/>
 </org.eventb.core.event>
 <org.eventb.core.variable name=";" org.eventb.core.identifier="startTrain"/>
-<org.eventb.core.invariant name="=" org.eventb.core.comment="rename," org.eventb.core.label="v6&#9;" org.eventb.core.predicate="startTrain ∈ trains → Moving"/>
+<org.eventb.core.invariant name="=" org.eventb.core.label="v6&#9;" org.eventb.core.predicate="startTrain ∈ trains → Moving"/>
 </org.eventb.core.machineFile>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
-<org.eventb.core.axiom name="*" org.eventb.core.comment=" reminder: replace 20 by a constant" org.eventb.core.label="axm2" org.eventb.core.predicate="track = {i∣i∈(1‥20)}"/>
-<org.eventb.core.axiom name="axm8" org.eventb.core.comment="prove track is nonempty" org.eventb.core.label="axm52" org.eventb.core.predicate="track ⊆ ℤ " org.eventb.core.theorem="true"/>
+<org.eventb.core.axiom name="*" org.eventb.core.label="axm2" org.eventb.core.predicate="track = {i∣i∈(1‥20)}"/>
+<org.eventb.core.axiom name="axm8" org.eventb.core.label="axm52" org.eventb.core.predicate="track ⊆ ℤ " org.eventb.core.theorem="true"/>
 <org.eventb.core.axiom name="\" org.eventb.core.comment=" rename to maximum route size." org.eventb.core.label="axm25" org.eventb.core.predicate="max1 ∈ ℕ1"/>
 <org.eventb.core.axiom name="^" org.eventb.core.label="axm26" org.eventb.core.predicate="max1 &gt;2"/>
 <org.eventb.core.axiom name="e" org.eventb.core.label="axm30" org.eventb.core.predicate="numTrains ∈ ℕ1 "/>
