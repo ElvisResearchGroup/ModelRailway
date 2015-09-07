@@ -19,7 +19,7 @@
 <org.eventb.core.guard name="3" org.eventb.core.comment=" the section is refered to by the parameter" org.eventb.core.label="grd7" org.eventb.core.predicate="section = route(parameter)"/>
 <org.eventb.core.guard name="8" org.eventb.core.comment=" the section is the one that the train is in." org.eventb.core.label="grd10b" org.eventb.core.predicate="setLocation(train) = section"/>
 <org.eventb.core.guard name=":" org.eventb.core.label="grd12" org.eventb.core.predicate="setLocation(train) ∈ track" org.eventb.core.theorem="true"/>
-<org.eventb.core.guard name=";" org.eventb.core.label="grd13" org.eventb.core.predicate="nextRoute(route) ∈ 1 ‥ max1 → track" org.eventb.core.theorem="true"/>
+<org.eventb.core.guard name=";" org.eventb.core.label="grd13" org.eventb.core.predicate="nextRoute(route) ∈ 1 ‥ maxRouteSize → track" org.eventb.core.theorem="true"/>
 <org.eventb.core.guard name="@" org.eventb.core.label="grd16" org.eventb.core.predicate="ran(nextRt) ⊆ track" org.eventb.core.theorem="true"/>
 <org.eventb.core.guard name="&gt;" org.eventb.core.label="grd15" org.eventb.core.predicate="∀x· x∈ dom(setLocation) ⇒ setLocation(x) ∈ track" org.eventb.core.theorem="true"/>
 <org.eventb.core.guard name="A" org.eventb.core.label="grd17" org.eventb.core.predicate="nextRt(parameter)∈track" org.eventb.core.theorem="true"/>
@@ -32,5 +32,4 @@
 <org.eventb.core.invariant name="inv2" org.eventb.core.label="inv10" org.eventb.core.predicate="trains ≠∅" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="inv3" org.eventb.core.label="inv9" org.eventb.core.predicate="dom(setLocation) = trains" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="inv4" org.eventb.core.label="inv12" org.eventb.core.predicate="∀x·x∈ dom(setLocation) ⇒ setLocation(x) ∈ track " org.eventb.core.theorem="true"/>
-<org.eventb.core.invariant name="inv5" org.eventb.core.label="inv8" org.eventb.core.predicate="trainID ∉ ∅ ⇒ trains → track ≠ ∅" org.eventb.core.theorem="true"/>
 </org.eventb.core.machineFile>
