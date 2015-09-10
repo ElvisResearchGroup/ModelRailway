@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.units.mchBase;org.eventb.codegen.ui.cgConfig" version="5">
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="+" org.eventb.core.assignment="startTrain :∈ trains → Moving  " org.eventb.core.comment=" start all of the trains" org.eventb.core.label="act5"/>
+</org.eventb.core.event>
+<org.eventb.core.seesContext name=")" org.eventb.core.target="Railway"/>
+<org.eventb.core.event name="7" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="NOTIFY">
+<org.eventb.core.guard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="eventName ∈ eventType"/>
+<org.eventb.core.guard name="grd1" org.eventb.core.comment=" the train is a valid train" org.eventb.core.label="grd8" org.eventb.core.predicate="train ∈ trains"/>
+<org.eventb.core.parameter name="(" org.eventb.core.identifier="eventName"/>
+<org.eventb.core.parameter name=")" org.eventb.core.identifier="train"/>
+<org.eventb.core.action name="grd2" org.eventb.core.assignment="startTrain(train) ≔  mov" org.eventb.core.label="act1"/>
+<org.eventb.core.parameter name="grd3" org.eventb.core.identifier="mov"/>
+<org.eventb.core.guard name="grd4" org.eventb.core.label="grd9" org.eventb.core.predicate="mov ∈ Moving"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name=";" org.eventb.core.identifier="startTrain"/>
+<org.eventb.core.invariant name="@" org.eventb.core.label="inv3" org.eventb.core.predicate="startTrain ∈ trains → Moving"/>
+<org.eventb.core.invariant name="D" org.eventb.core.label="inv7" org.eventb.core.predicate="∀t· t∈ trains  ⇒ ((trains ∖ {t}) ◁ startTrain) ∈ trains ⇸ Moving" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="F" org.eventb.core.label="inv9" org.eventb.core.predicate="∀t·∀m· t∈trains ∧ m∈ Moving ⇒ {t ↦ m} ∈ {t} ⇸ Moving" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="E" org.eventb.core.label="inv8" org.eventb.core.predicate="∀m·∀t· t∈ trains ∧ m∈Moving ⇒ {t ↦ m} ∈ trains ⇸ Moving" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="C" org.eventb.core.label="inv6" org.eventb.core.predicate="∀t·∀m· t∈ trains ∧ m∈Moving ⇒ ((trains ∖ {t}) ◁ startTrain) ∪ {t ↦ m} = startTrain  {t ↦ m} " org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="B" org.eventb.core.label="inv5" org.eventb.core.predicate="∀t· (trains ∖ {t}) ◁ startTrain ∈ trains ⇸ Moving" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="A" org.eventb.core.label="inv4" org.eventb.core.predicate="∀t·∀m· t∈ trains ∧ m∈Moving ⇒ startTrain  {t ↦ m} ∈ trains → Moving" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="&gt;" org.eventb.core.label="inv1" org.eventb.core.predicate="∀t· t∈ trains ∧ t∈dom(startTrain) ⇒ startTrain(t) ∈ Moving"/>
+<org.eventb.core.invariant name="?" org.eventb.core.label="inv2" org.eventb.core.predicate="∀t· t∈ trains ⇒ t∈&#9;dom(startTrain)"/>
+</org.eventb.core.machineFile>

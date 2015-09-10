@@ -10,7 +10,7 @@
 <org.eventb.core.axiom name="`" org.eventb.core.label="axm28" org.eventb.core.predicate="trains = 1‥numTrains "/>
 <org.eventb.core.axiom name="k" org.eventb.core.label="axm33" org.eventb.core.predicate="trains ≠ ∅"/>
 <org.eventb.core.axiom name="axm7" org.eventb.core.label="axm51" org.eventb.core.predicate="trains ⊆ ℤ " org.eventb.core.theorem="true"/>
-<org.eventb.core.axiom name="1" org.eventb.core.label="axm6" org.eventb.core.predicate="routes ⊆ ((1‥maxRouteSize)↣track)"/>
+<org.eventb.core.axiom name="1" org.eventb.core.comment="a route is a sequence of tracks" org.eventb.core.label="axm6" org.eventb.core.predicate="routes ⊆ ((1‥maxRouteSize)↣track)"/>
 <org.eventb.core.constant name="+" org.eventb.core.identifier="track"/>
 <org.eventb.core.axiom name="axm5" org.eventb.core.label="axm49" org.eventb.core.predicate="routes ⊆ ℤ ⇸ ℤ "/>
 <org.eventb.core.axiom name="j" org.eventb.core.label="axm32" org.eventb.core.predicate="getRoute ∈ trains ⤖ routes"/>
