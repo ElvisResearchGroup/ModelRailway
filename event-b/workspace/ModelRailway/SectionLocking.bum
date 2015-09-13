@@ -43,21 +43,23 @@
 <org.eventb.core.variable name="var1" org.eventb.core.identifier="setLocation"/>
 <org.eventb.core.variable name="var2" org.eventb.core.identifier="startTrain"/>
 <org.eventb.core.variable name="var3" org.eventb.core.identifier="locks"/>
-<org.eventb.core.invariant name="var4" org.eventb.core.label="inv1" org.eventb.core.predicate="locks ∈ track → trains∪{0}"/>
+<org.eventb.core.invariant name="var4" org.eventb.core.label="inv1" org.eventb.core.predicate="locks ∈ track → (trains∪{0})"/>
 <org.eventb.core.invariant name="var6" org.eventb.core.label="inv2" org.eventb.core.predicate="reserved ∈ track → ℙ(trains)"/>
 <org.eventb.core.variable name="var7" org.eventb.core.identifier="reserved"/>
-<org.eventb.core.invariant name="var9" org.eventb.core.label="inv3" org.eventb.core.predicate="∀s·∀t· s∈track ∧ t∈trains ⇒ locks{s↦t} ∈ track → trains ∪ {0}" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="var9" org.eventb.core.label="inv3" org.eventb.core.predicate="∀s·∀t· s∈track ∧ t∈trains∪{0} ⇒ locks{s↦t} ∈ track → trains ∪{0}" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="varL" org.eventb.core.label="inv21" org.eventb.core.predicate="∀s· s∈track  ⇒ locks{s↦0} ∈ track → trains ∪ {0}" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="var:" org.eventb.core.label="inv4" org.eventb.core.predicate="∀s·∀t· s∈dom(reserved) ∧ t∈trains ⇒ reserved(s) ∖ {t} ∈ ℙ(trains)" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="var=" org.eventb.core.label="inv6" org.eventb.core.predicate="∀s·∀t· s∈dom(reserved) ∧ t∈trains ⇒ reserved(s) ∖ {t} ⊆ reserved(s)" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="var?" org.eventb.core.label="inv8" org.eventb.core.predicate="∀s·∀t· s∈track ∧ t∈ℙ(trains) ⇒ {s ↦ t} ∈ track ⇸ ℙ(trains) " org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="var@" org.eventb.core.label="inv9" org.eventb.core.predicate="∀s· s∈track ⇒ (({s})⩤reserved) ∈ track ⇸ ℙ(trains)" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="varC" org.eventb.core.label="inv12" org.eventb.core.predicate="∀s·∀t· s∈dom(reserved) ∧ t∈ℙ(trains) ⇒ dom((({s})⩤reserved))∩dom({s ↦ t}) = ∅" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="varB" org.eventb.core.label="inv11" org.eventb.core.predicate="∀s·∀t· s∈dom(reserved) ∧ t∈ℙ(trains) ⇒ dom((({s})⩤reserved)∪{s ↦ t}) = track" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="varJ" org.eventb.core.label="inv19" org.eventb.core.predicate="∀s·∀t· s∈ dom(reserved) ∧ t∈ ℙ(trains) ⇒ dom(reserved) = dom(reserved  {s ↦ t})" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="varA" org.eventb.core.label="inv10" org.eventb.core.predicate="∀s·∀t· s∈dom(reserved) ∧ t∈ℙ(trains) ⇒ (({s})⩤reserved)∪{s ↦ t} = reserved  {s ↦ t}" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="varF" org.eventb.core.label="inv15" org.eventb.core.predicate="∀s·∀t· s∈dom(reserved) ∧ t∈ ℙ(trains) ⇒ reserved{s ↦ t}∈ℤ ⇸ ℙ(ℤ)" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="varI" org.eventb.core.label="inv18" org.eventb.core.predicate="∀s·∀t· s∈dom(reserved) ∧ t∈ℙ(trains) ⇒ ran(reserved  {s ↦ t}) ⊆ ℙ(trains)" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="varH" org.eventb.core.label="inv17" org.eventb.core.predicate="∀s·∀t· s∈dom(reserved) ∧ t∈ℙ(trains) ⇒ dom(reserved  {s ↦ t}) = track" org.eventb.core.theorem="true"/>
-<org.eventb.core.invariant name="varG" org.eventb.core.label="inv16" org.eventb.core.predicate="∀s·∀t· s∈dom(reserved) ∧ t∈ ℙ(trains) ⇒ reserved{s ↦ t}∈ track ⇸ ℙ(trains)" org.eventb.core.theorem="true"/>
-<org.eventb.core.invariant name="var&gt;" org.eventb.core.label="inv7" org.eventb.core.predicate="∀s·∀t· s∈track ∧ t∈ℙ(trains) ⇒ reserved{s ↦ t} ∈ track → ℙ(trains)" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="var&gt;" org.eventb.core.label="inv7" org.eventb.core.predicate="∀s·∀t· s∈dom(reserved) ∧ t∈ℙ(trains) ⇒ reserved{s ↦ t} ∈ track → ℙ(trains)" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="var;" org.eventb.core.label="inv5" org.eventb.core.predicate="∀s·∀t· s∈dom(reserved) ∧ t∈trains ⇒ reserved{s↦reserved(s)∖{t}} ∈  track → ℙ(trains)" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="varK" org.eventb.core.label="inv20" org.eventb.core.predicate="∀s·∀t· s∈dom(reserved) ∧ t∈trains ⇒ reserved{s↦reserved(s)∪{t}} ∈  track → ℙ(trains)" org.eventb.core.theorem="true"/>
 </org.eventb.core.machineFile>
