@@ -13,9 +13,9 @@
 <org.eventb.core.parameter name=")" org.eventb.core.identifier="route"/>
 <org.eventb.core.parameter name="." org.eventb.core.identifier="parameter"/>
 <org.eventb.core.parameter name="+" org.eventb.core.identifier="nextSection"/>
-<org.eventb.core.guard name="0" org.eventb.core.label="grd5" org.eventb.core.predicate="parameter ∈ dom(route) ∧ parameter ∈ dom(nextRoute(route))"/>
+<org.eventb.core.guard name="0" org.eventb.core.label="grd5" org.eventb.core.predicate="parameter ∈ dom(route) ∧ parameter ∈ dom(nextSec(route))"/>
 <org.eventb.core.guard name="3" org.eventb.core.comment="fix the parameter by constraining the location of the train" org.eventb.core.label="grd7" org.eventb.core.predicate="setLocation(train) = route(parameter)"/>
-<org.eventb.core.guard name="/" org.eventb.core.comment="get the next section the train is going into" org.eventb.core.label="grd4" org.eventb.core.predicate="nextSection = nextRoute(route)(parameter) "/>
+<org.eventb.core.guard name="/" org.eventb.core.comment="get the next section the train is going into" org.eventb.core.label="grd4" org.eventb.core.predicate="nextSection = nextSec(route)(parameter) "/>
 <org.eventb.core.action name="1" org.eventb.core.assignment="locks(nextSection) ≔ train " org.eventb.core.comment=" lock the next section" org.eventb.core.label="act1"/>
 <org.eventb.core.guard name="4" org.eventb.core.comment="ensure that the train is in the reserved list for the next section" org.eventb.core.label="grd8" org.eventb.core.predicate="train ∈ reserved(nextSection)"/>
 <org.eventb.core.action name="5" org.eventb.core.assignment="reserved(nextSection) ≔ reserved(nextSection) ∖{train}" org.eventb.core.comment="remove the section from the reserved list." org.eventb.core.label="act2"/>
@@ -24,9 +24,9 @@
 <org.eventb.core.event name="var8" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ReserveSection">
 <org.eventb.core.guard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="train ∈ trains"/>
 <org.eventb.core.guard name="(" org.eventb.core.label="grd2" org.eventb.core.predicate="route = getRoute(train)"/>
-<org.eventb.core.guard name=")" org.eventb.core.label="grd3" org.eventb.core.predicate="parameter ∈ dom(route) ∧ parameter ∈ dom(nextRoute(route))"/>
+<org.eventb.core.guard name=")" org.eventb.core.label="grd3" org.eventb.core.predicate="parameter ∈ dom(route) ∧ parameter ∈ dom(nextSec(route))"/>
 <org.eventb.core.guard name="*" org.eventb.core.label="grd4" org.eventb.core.predicate="setLocation(train) = route(parameter)"/>
-<org.eventb.core.guard name="+" org.eventb.core.label="grd5" org.eventb.core.predicate="nextSection = nextRoute(route)(parameter)"/>
+<org.eventb.core.guard name="+" org.eventb.core.label="grd5" org.eventb.core.predicate="nextSection = nextSec(route)(parameter)"/>
 <org.eventb.core.guard name="," org.eventb.core.label="grd6" org.eventb.core.predicate="locks(nextSection) ≠ train"/>
 <org.eventb.core.guard name="-" org.eventb.core.label="grd7" org.eventb.core.predicate="train∉reserved(nextSection)"/>
 <org.eventb.core.action name="." org.eventb.core.assignment="reserved(nextSection) ≔ reserved(nextSection) ∪ {train}" org.eventb.core.comment="add the train to the reserved set" org.eventb.core.label="act1"/>
