@@ -10,6 +10,7 @@
 <org.eventb.core.axiom name="e" org.eventb.core.label="axm30" org.eventb.core.predicate="numTrains ∈ ℕ1 "/>
 <org.eventb.core.axiom name="l" org.eventb.core.label="axm34" org.eventb.core.predicate="numTrains &lt; maxTrains"/>
 <org.eventb.core.axiom name="`" org.eventb.core.label="axm28" org.eventb.core.predicate="trains = 1‥numTrains "/>
+<org.eventb.core.axiom name="axm@" org.eventb.core.label="axm58" org.eventb.core.predicate="∀x· x ≤ numTrains ⇒ x ≤ maxTrains"/>
 <org.eventb.core.axiom name="k" org.eventb.core.label="axm33" org.eventb.core.predicate="trains ≠ ∅"/>
 <org.eventb.core.axiom name="axm7" org.eventb.core.label="axm51" org.eventb.core.predicate="trains ⊆ ℤ " org.eventb.core.theorem="true"/>
 <org.eventb.core.axiom name="1" org.eventb.core.comment="a route is a sequence of tracks" org.eventb.core.label="axm6" org.eventb.core.predicate="routes ⊆ ((1‥maxRouteSize)↣track)"/>
@@ -42,4 +43,8 @@
 <org.eventb.core.axiom name="axm;" org.eventb.core.label="axm55" org.eventb.core.predicate="numTrains &lt; maxTrains ⇒ card(trains) ≤ card(track)"/>
 <org.eventb.core.axiom name="s" org.eventb.core.comment="this is true because trains and track are both finite" org.eventb.core.label="axm40" org.eventb.core.predicate="finite(trains ↣ track)"/>
 <org.eventb.core.axiom name="axm3" org.eventb.core.label="axm47" org.eventb.core.predicate="1 ≤ card(trains ↣ track)"/>
+<org.eventb.core.axiom name="axmA" org.eventb.core.label="axm59" org.eventb.core.predicate="{t↦t ∣ t∈ trains} ∈ (trains ↣ track)" org.eventb.core.theorem="true"/>
+<org.eventb.core.axiom name="axmB" org.eventb.core.label="axm60" org.eventb.core.predicate="{t↦t ∣ t∈ trains} ∈  (track ⇸ trains)" org.eventb.core.theorem="true"/>
+<org.eventb.core.axiom name="axmD" org.eventb.core.label="axm62" org.eventb.core.predicate="{t↦t ∣ t∈ trains} ∈ (trains ↣ track) ∩ (track ⇸ trains)" org.eventb.core.theorem="true"/>
+<org.eventb.core.axiom name="axmC" org.eventb.core.label="axm61" org.eventb.core.predicate="(trains ↣ track) ∩ (track ⇸ trains) ≠ ∅"/>
 </org.eventb.core.contextFile>
