@@ -4,8 +4,8 @@
 <org.eventb.core.psStatus name="inv9/THM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="12" org.eventb.core.psManual="true"/>
 <org.eventb.core.psStatus name="inv12/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="12" org.eventb.core.psManual="false"/>
 <org.eventb.core.psStatus name="inv12/THM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="12" org.eventb.core.psManual="false"/>
-<org.eventb.core.psStatus name="INITIALISATION/inv7/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="INITIALISATION/act6/FIS" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/inv7/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="INITIALISATION/act6/FIS" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="false"/>
 <org.eventb.core.psStatus name="NotifySectionChanged/grd9b/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
 <org.eventb.core.psStatus name="NotifySectionChanged/grd14/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
 <org.eventb.core.psStatus name="NotifySectionChanged/grd7/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="true"/>

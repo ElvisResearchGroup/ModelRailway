@@ -1,0 +1,850 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<index_root>
+<pim project="/MathExtensions">
+<rodin_index/>
+<export_table/>
+<graph is_sorted="true"/>
+</pim>
+<pim project="/ModelRailway">
+<rodin_index>
+<descriptor element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#'" name="INITIALISATION">
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#'" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.label"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.parameter#4" name="route">
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="45" loc_char_start="40"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="13" loc_char_start="8"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#=" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="22" loc_char_start="17"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#7" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="23" loc_char_start="18"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.parameter#4" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#2" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#3" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="15" loc_char_start="10"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#h" name="Moving">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#C" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="27" loc_char_start="21"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#D" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="64" loc_char_start="58"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#B" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="49" loc_char_start="43"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'|org.eventb.core.action#+" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="29" loc_char_start="23"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#A" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="27" loc_char_start="21"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#A" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="68" loc_char_start="62"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#F" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="27" loc_char_start="21"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#F" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="52" loc_char_start="46"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#E" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="27" loc_char_start="21"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#E" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="55" loc_char_start="49"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#h" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.guard#grd4" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="12" loc_char_start="6"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#i" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="16" loc_char_start="10"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="58" loc_char_start="52"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#@" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="28" loc_char_start="22"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#var1" name="setLocation">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#varM|org.eventb.core.action#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="25" loc_char_start="14"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varP" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="29" loc_char_start="18"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#var1" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#3" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="11" loc_char_start="0"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var1" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#7" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="17" loc_char_start="6"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="11" loc_char_start="0"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.parameter#element2" name="route">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.parameter#element2" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#+" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="27" loc_char_start="22"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="54" loc_char_start="49"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="16"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="26" loc_char_start="21"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#+" name="track">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="49" loc_char_start="44"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var9" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="14" loc_char_start="9"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#q" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="12" loc_char_start="7"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="63" loc_char_start="58"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var?" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="46" loc_char_start="41"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'|org.eventb.core.action#'" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="22" loc_char_start="17"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var@" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="11" loc_char_start="6"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var?" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="14" loc_char_start="9"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'|org.eventb.core.action#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="17" loc_char_start="12"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmC" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="15" loc_char_start="10"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmC" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="25" loc_char_start="20"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmA" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="35" loc_char_start="30"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var4" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="13" loc_char_start="8"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="41" loc_char_start="36"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmD" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="45" loc_char_start="40"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmD" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="35" loc_char_start="30"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#-" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="53" loc_char_start="48"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#," kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="63" loc_char_start="58"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="45" loc_char_start="40"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#@" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="19" loc_char_start="14"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varK" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="73" loc_char_start="68"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#A" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="23" loc_char_start="18"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varL" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="11" loc_char_start="6"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.invariant#inv1" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="28" loc_char_start="23"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm:" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="73" loc_char_start="68"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#+" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var9" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="51" loc_char_start="46"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm8" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var@" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="38" loc_char_start="33"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmB" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="27" loc_char_start="22"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var6" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="16" loc_char_start="11"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#:" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="26" loc_char_start="21"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varH" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="70" loc_char_start="65"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var:" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="24" loc_char_start="19"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#'|org.eventb.core.action#'" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="30" loc_char_start="25"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm3" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="23" loc_char_start="18"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varB" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="76" loc_char_start="71"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="27" loc_char_start="22"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varL" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="34" loc_char_start="29"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.invariant#inv4" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="47" loc_char_start="42"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#s" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="16"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="66" loc_char_start="61"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="92" loc_char_start="87"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="48" loc_char_start="43"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varP" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="46" loc_char_start="41"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#1" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="32" loc_char_start="27"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.parameter#)" name="route">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#0" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="54" loc_char_start="49"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#0" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="16"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#\/" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="27" loc_char_start="22"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#3" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="26" loc_char_start="21"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#'" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.parameter#)" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#Q" name="speedChanged">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#Q" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="50" loc_char_start="38"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller" name="Controller">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller" kind="org.eventb.core.declaration"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.refinesMachine#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.target"/>
+</descriptor>
+<descriptor element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#'" name="INITIALISATION">
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#'" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+</descriptor>
+<descriptor element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var6" name="evt1">
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var6" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking" name="SectionLocking">
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.refinesMachine#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.target"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking" kind="org.eventb.core.declaration"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.parameter#grd3" name="mov">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.parameter#grd3" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.action#grd2" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="24" loc_char_start="21"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.guard#grd4" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="3" loc_char_start="0"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#R" name="emergencyStop">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="66" loc_char_start="53"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#R" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#a" name="trains">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="35" loc_char_start="29"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.invariant#inv2" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="6" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#p" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="13" loc_char_start="7"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#B" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="11" loc_char_start="5"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="35" loc_char_start="29"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#C" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="16" loc_char_start="10"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'|org.eventb.core.action#+" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="20" loc_char_start="14"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmD" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="16" loc_char_start="10"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmC" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="7" loc_char_start="1"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#'|org.eventb.core.action#'" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="22" loc_char_start="16"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="84" loc_char_start="78"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var@" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="49" loc_char_start="43"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varB" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="35" loc_char_start="29"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm3" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="15" loc_char_start="9"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varK" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="84" loc_char_start="78"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var6" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="27" loc_char_start="21"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#E" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="46" loc_char_start="40"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm9" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="13" loc_char_start="7"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'|org.eventb.core.action#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="28" loc_char_start="22"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#'" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="14" loc_char_start="8"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#s" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="13" loc_char_start="7"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var?" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="27" loc_char_start="21"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="74" loc_char_start="68"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmA" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="16" loc_char_start="10"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#A" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="59" loc_char_start="53"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#B" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="40" loc_char_start="34"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varP" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="39" loc_char_start="33"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#a" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varA" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="35" loc_char_start="29"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varC" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="35" loc_char_start="29"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varH" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="35" loc_char_start="29"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varI" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="35" loc_char_start="29"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varL" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="43" loc_char_start="37"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.guard#grd1" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="14" loc_char_start="8"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#k" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="6" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#F" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="15" loc_char_start="9"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#@" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="19" loc_char_start="13"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="13" loc_char_start="7"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.invariant#inv3" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="25" loc_char_start="19"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmA" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="27" loc_char_start="21"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#A" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="16" loc_char_start="10"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmB" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="16" loc_char_start="10"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmB" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="36" loc_char_start="30"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#C" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="38" loc_char_start="32"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#D" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="55" loc_char_start="49"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmD" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="54" loc_char_start="48"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var9" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="60" loc_char_start="54"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var:" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="33" loc_char_start="27"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#`" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="6" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#E" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="16" loc_char_start="10"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#j" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="17" loc_char_start="11"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var4" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="23" loc_char_start="17"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#," kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="14" loc_char_start="8"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.invariant#inv1" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="20" loc_char_start="14"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var?" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="57" loc_char_start="51"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var=" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="33" loc_char_start="27"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#?" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="13" loc_char_start="7"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmD" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="27" loc_char_start="21"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var9" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="25" loc_char_start="19"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axmC" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="34" loc_char_start="28"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var:" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="64" loc_char_start="58"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="33" loc_char_start="27"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varF" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="36" loc_char_start="30"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="19" loc_char_start="13"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varK" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="33" loc_char_start="27"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varI" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="73" loc_char_start="67"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varJ" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="37" loc_char_start="31"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#D" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="13" loc_char_start="7"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#D" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="25" loc_char_start="19"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm7" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="6" loc_char_start="0"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#var2" name="startTrain">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#var2" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var2" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#f" name="Start">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#i" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="23" loc_char_start="18"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#f" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#9" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="25" loc_char_start="20"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*" name="NotifyLockingNoneWaiting">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var9|org.eventb.core.refinesEvent#'" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.target"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.variable#var6" name="setLocation">
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.action#0" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="11" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#8" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="11" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#:" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="11" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#var1" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#'|org.eventb.core.action#'" kind="org.eventb.core.modification" loc_attribute="org.eventb.core.assignment" loc_char_end="11" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.invariant#inv1" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="11" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.invariant#inv4" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="10"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.invariant#inv4" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="36" loc_char_start="25"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.invariant#inv3" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="15" loc_char_start="4"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.action#0" kind="org.eventb.core.modification" loc_attribute="org.eventb.core.assignment" loc_char_end="11" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.variable#var6" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="22" loc_char_start="11"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="37" loc_char_start="26"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.parameter#+" name="nextSection">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#6" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="17" loc_char_start="6"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#\/" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="11" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.action#1" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="17" loc_char_start="6"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.parameter#+" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#4" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="28" loc_char_start="17"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.action#5" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="44" loc_char_start="33"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.action#5" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="20" loc_char_start="9"/>
+</descriptor>
+<descriptor element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var7" name="locking">
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var7" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.parameter#element4" name="nextSection">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.parameter#element4" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#-" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="26" loc_char_start="15"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.action#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="20" loc_char_start="9"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.action#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="44" loc_char_start="33"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#+" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="11" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#," kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="17" loc_char_start="6"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#axm=" name="maxTrains">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="12"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#axm=" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="25" loc_char_start="16"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#l" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="12"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm?" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="9" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="9" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm@" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="33" loc_char_start="24"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7" name="NOTIFY">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.refinesEvent#'" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.target"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#var3" name="locks">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#varM|org.eventb.core.action#(" kind="org.eventb.core.modification" loc_attribute="org.eventb.core.assignment" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.action#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.action#1" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var4" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'|org.eventb.core.action#'" kind="org.eventb.core.modification" loc_attribute="org.eventb.core.assignment" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#6" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#7" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.guard#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#varM|org.eventb.core.action#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="13" loc_char_start="8"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var9" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="37" loc_char_start="32"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.action#)" kind="org.eventb.core.modification" loc_attribute="org.eventb.core.assignment" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#," kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.action#1" kind="org.eventb.core.modification" loc_attribute="org.eventb.core.assignment" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var3" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varL" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="20" loc_char_start="15"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#var3" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#O" name="Bool">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varO" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="14" loc_char_start="10"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#O" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#G" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="14" loc_char_start="10"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.parameter#5" name="section">
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#3" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="7" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.action#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="13" loc_char_start="6"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.parameter#5" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#8" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="28" loc_char_start="21"/>
+</descriptor>
+<descriptor element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var1" name="setLocation">
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var1" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="11" loc_char_start="0"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var:" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="15" loc_char_start="4"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5" name="NotifySectionChanged">
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.refinesEvent#'" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.target"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#g" name="Stop">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#i" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="30" loc_char_start="26"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#g" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged" name="SectionChanged">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.refinesMachine#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.target"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged" kind="org.eventb.core.declaration"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.parameter#element3" name="parameter">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="9" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="34" loc_char_start="25"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.parameter#element3" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#+" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="38" loc_char_start="29"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="36" loc_char_start="27"/>
+</descriptor>
+<descriptor element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var8" name="reservation">
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var8" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'" name="INITIALISATION">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#'" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.label"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#P" name="sectionChanged">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="35" loc_char_start="21"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="26" loc_char_start="12"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#P" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#d" name="numTrains">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#e" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="9" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="9" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm@" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="17" loc_char_start="8"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#l" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="9" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#d" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#`" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="20" loc_char_start="11"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.parameter#?" name="nextRt">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.guard#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="12" loc_char_start="6"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#=" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="6" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#@" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="10" loc_char_start="4"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#A" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="6" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.parameter#?" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="22" loc_char_start="16"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.action#0" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="26" loc_char_start="20"/>
+</descriptor>
+<descriptor element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var2" name="startTrain">
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var2" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.parameter#(" name="eventName">
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="9" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.parameter#(" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.guard#'" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="9" loc_char_start="0"/>
+</descriptor>
+<descriptor element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.constant#(" name="nextSec">
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="7" loc_char_start="0"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="32" loc_char_start="25"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#=" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="16" loc_char_start="9"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="60" loc_char_start="53"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#-" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="22" loc_char_start="15"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#," kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="49" loc_char_start="42"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="52" loc_char_start="45"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="80" loc_char_start="73"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="48" loc_char_start="41"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#\/" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="14"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#+" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="14"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#0" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="48" loc_char_start="41"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="7" loc_char_start="0"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.constant#(" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var9" name="movement">
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var9" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5" name="LockNext">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var7|org.eventb.core.refinesEvent#'" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.target"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.parameter#\/" name="parameter">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.guard#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="22" loc_char_start="13"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#3" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="25" loc_char_start="16"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#A" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="16" loc_char_start="7"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.parameter#\/" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="35" loc_char_start="26"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="9" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.action#0" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="36" loc_char_start="27"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#varM" name="evt1">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#varM" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var6|org.eventb.core.refinesEvent#'" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.target"/>
+</descriptor>
+<descriptor element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var3" name="locks">
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var3" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.variable#var7" name="startTrain">
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.variable#var7" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#var2" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#9" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="10" loc_char_start="0"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#N" name="eventType">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.guard#'" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="12"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#N" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="19" loc_char_start="10"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#]" name="routes">
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="19" loc_char_start="13"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm5" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="6" loc_char_start="0"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#," kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="17" loc_char_start="11"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#-" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="12" loc_char_start="6"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="15" loc_char_start="9"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="17" loc_char_start="11"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#6" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="17" loc_char_start="11"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#2" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="14" loc_char_start="8"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#]" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#j" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="26" loc_char_start="20"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#1" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="6" loc_char_start="0"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.parameter#." name="parameter">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.parameter#." kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#3" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="36" loc_char_start="27"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#0" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="34" loc_char_start="25"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#0" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="9" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#\/" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="38" loc_char_start="29"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.variable#;" name="startTrain">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.variable#;" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.action#grd2" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="10" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="32" loc_char_start="22"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#?" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="33" loc_char_start="23"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="46" loc_char_start="36"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'|org.eventb.core.action#+" kind="org.eventb.core.modification" loc_attribute="org.eventb.core.assignment" loc_char_end="10" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.variable#var7" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.action#grd2" kind="org.eventb.core.modification" loc_attribute="org.eventb.core.assignment" loc_char_end="10" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#D" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="45" loc_char_start="35"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#C" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="58" loc_char_start="48"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#C" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="82" loc_char_start="72"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#B" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="31" loc_char_start="21"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#A" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="40" loc_char_start="30"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#@" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="10" loc_char_start="0"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#var7" name="reserved">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varA" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="54" loc_char_start="46"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varF" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="13"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varC" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="58" loc_char_start="50"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var@" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="29" loc_char_start="21"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varB" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="13"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varA" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="74" loc_char_start="66"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varJ" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="69" loc_char_start="61"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varH" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="13"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varH" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="51" loc_char_start="43"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varK" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="44" loc_char_start="36"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varK" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="56" loc_char_start="48"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varJ" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="53" loc_char_start="45"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var:" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="44" loc_char_start="36"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="44" loc_char_start="36"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="56" loc_char_start="48"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'|org.eventb.core.action#(" kind="org.eventb.core.modification" loc_attribute="org.eventb.core.assignment" loc_char_end="8" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var=" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="44" loc_char_start="36"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var=" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="64" loc_char_start="56"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var6" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="8" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.action#5" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="32" loc_char_start="24"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.action#5" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="8" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varA" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="13"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.action#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="32" loc_char_start="24"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.action#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="8" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varF" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="48" loc_char_start="40"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varC" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="13"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varB" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="58" loc_char_start="50"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varI" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="13"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varK" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="13"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varJ" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="22" loc_char_start="14"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varI" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="51" loc_char_start="43"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#-" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="14" loc_char_start="6"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var:" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="13"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="13"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.action#5" kind="org.eventb.core.modification" loc_attribute="org.eventb.core.assignment" loc_char_end="8" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#var7" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.action#." kind="org.eventb.core.modification" loc_attribute="org.eventb.core.assignment" loc_char_end="8" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="13"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var&gt;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="47" loc_char_start="39"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var=" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="21" loc_char_start="13"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#4" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="16" loc_char_start="8"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var4" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#S" name="True">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.guard#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="14" loc_char_start="10"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#G" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="20" loc_char_start="16"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#S" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#element5" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="12" loc_char_start="8"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#8" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="14" loc_char_start="10"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.parameter#(" name="train">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.action#1" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="26" loc_char_start="21"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.parameter#(" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#7" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="23" loc_char_start="18"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#7" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="33" loc_char_start="28"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#4" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#3" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="17" loc_char_start="12"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.action#5" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="53" loc_char_start="48"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#'" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="22" loc_char_start="17"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#," kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+</descriptor>
+<descriptor element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var4" name="reserved">
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var4" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.parameter#element1" name="train">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="17" loc_char_start="12"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="22" loc_char_start="17"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#'" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.parameter#element1" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#," kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="26" loc_char_start="21"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.action#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="54" loc_char_start="49"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#-" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" name="Railway">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" kind="org.eventb.core.declaration"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.seesContext#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.target"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.extendsContext#'" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.target"/>
+</descriptor>
+<descriptor element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions" name="NoTrainColisions">
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions" kind="org.eventb.core.declaration"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8" name="ReserveSection">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var8|org.eventb.core.refinesEvent#'" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.target"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#T" name="False">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#T" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#varM|org.eventb.core.guard#'" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="15" loc_char_start="10"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'|org.eventb.core.action#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="15" loc_char_start="10"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#G" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="28" loc_char_start="23"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varP" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="15" loc_char_start="10"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'" name="INITIALISATION">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#'" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.label"/>
+</descriptor>
+<descriptor element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement" name="RailMovement">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.seesContext#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.target"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement" kind="org.eventb.core.declaration"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.seesContext#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.target"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.seesContext#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.target"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#c" name="getRoute">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#'" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="16" loc_char_start="8"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#(" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="16" loc_char_start="8"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#c" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#7" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="8" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm9" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="24" loc_char_start="16"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#j" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="8" loc_char_start="0"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.parameter#)" name="train">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.parameter#)" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.guard#grd1" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="5" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#:" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="17" loc_char_start="12"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#8" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="17" loc_char_start="12"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#9" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="16" loc_char_start="11"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#7" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="14" loc_char_start="9"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.action#grd2" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="16" loc_char_start="11"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.action#0" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.assignment" loc_char_end="17" loc_char_start="12"/>
+</descriptor>
+<descriptor element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var5" name="started">
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var5" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#[" name="maxRouteSize">
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="36" loc_char_start="24"/>
+<occurrence element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#;" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="33" loc_char_start="21"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#[" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#-" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="44" loc_char_start="32"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#," kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="39" loc_char_start="27"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#1" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="25" loc_char_start="13"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#\\" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="12" loc_char_start="0"/>
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#^" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="12" loc_char_start="0"/>
+<occurrence element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#." kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="42" loc_char_start="30"/>
+</descriptor>
+<descriptor element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#varN" name="started">
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'|org.eventb.core.action#)" kind="org.eventb.core.modification" loc_attribute="org.eventb.core.assignment" loc_char_end="7" loc_char_start="0"/>
+<occurrence element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var5" kind="org.eventb.core.redeclaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#element5" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="7" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#varN" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#varM|org.eventb.core.guard#'" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="7" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varO" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="7" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varP" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="7" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#8" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="7" loc_char_start="0"/>
+<occurrence element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.guard#*" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.predicate" loc_char_end="7" loc_char_start="0"/>
+</descriptor>
+</rodin_index>
+<export_table>
+<export file="/ModelRailway/SectionLocking.bum">
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#Q" name="speedChanged"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#var1" name="setLocation"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.parameter#element2" name="route"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.parameter#element4" name="nextSection"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#S" name="True"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8" name="ReserveSection"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.parameter#." name="parameter"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#T" name="False"/>
+<exported element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged" name="SectionChanged"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#varN" name="started"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller" name="Controller"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#]" name="routes"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#h" name="Moving"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#varM" name="evt1"/>
+<exported element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.constant#(" name="nextSec"/>
+<exported element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement" name="RailMovement"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#R" name="emergencyStop"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#a" name="trains"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#d" name="numTrains"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.parameter#element3" name="parameter"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking" name="SectionLocking"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#f" name="Start"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#O" name="Bool"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" name="Railway"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5" name="LockNext"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#var2" name="startTrain"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.parameter#)" name="route"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#g" name="Stop"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.parameter#+" name="nextSection"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#P" name="sectionChanged"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#c" name="getRoute"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*" name="NotifyLockingNoneWaiting"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#var7" name="reserved"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'" name="INITIALISATION"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.parameter#(" name="train"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#axm=" name="maxTrains"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#[" name="maxRouteSize"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#N" name="eventType"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.variable#var3" name="locks"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.parameter#element1" name="train"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#+" name="track"/>
+</export>
+<export file="/ModelRailway/RailMovement.buc">
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#Q" name="speedChanged"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" name="Railway"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#S" name="True"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#g" name="Stop"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#T" name="False"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#P" name="sectionChanged"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#c" name="getRoute"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#]" name="routes"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#h" name="Moving"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#axm=" name="maxTrains"/>
+<exported element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement" name="RailMovement"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#[" name="maxRouteSize"/>
+<exported element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.constant#(" name="nextSec"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#R" name="emergencyStop"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#a" name="trains"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#d" name="numTrains"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#f" name="Start"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#N" name="eventType"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#O" name="Bool"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#+" name="track"/>
+</export>
+<export file="/ModelRailway/Controller.bum">
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#Q" name="speedChanged"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#S" name="True"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.parameter#(" name="eventName"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#T" name="False"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller" name="Controller"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#]" name="routes"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#h" name="Moving"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#R" name="emergencyStop"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#a" name="trains"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#d" name="numTrains"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#f" name="Start"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.parameter#)" name="train"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#O" name="Bool"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" name="Railway"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.variable#;" name="startTrain"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#g" name="Stop"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#P" name="sectionChanged"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#c" name="getRoute"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#axm=" name="maxTrains"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#[" name="maxRouteSize"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.parameter#grd3" name="mov"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#N" name="eventType"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7" name="NOTIFY"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#+" name="track"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'" name="INITIALISATION"/>
+</export>
+<export file="/ModelRailway/SectionChanged.bum">
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#Q" name="speedChanged"/>
+<exported element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.parameter#\/" name="parameter"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#S" name="True"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#T" name="False"/>
+<exported element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged" name="SectionChanged"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller" name="Controller"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#]" name="routes"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#h" name="Moving"/>
+<exported element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.constant#(" name="nextSec"/>
+<exported element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement" name="RailMovement"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#R" name="emergencyStop"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#a" name="trains"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#d" name="numTrains"/>
+<exported element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.variable#var6" name="setLocation"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#f" name="Start"/>
+<exported element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#'" name="INITIALISATION"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#O" name="Bool"/>
+<exported element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.parameter#5" name="section"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" name="Railway"/>
+<exported element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5" name="NotifySectionChanged"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#g" name="Stop"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#P" name="sectionChanged"/>
+<exported element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.parameter#?" name="nextRt"/>
+<exported element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.variable#var7" name="startTrain"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#c" name="getRoute"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#axm=" name="maxTrains"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#[" name="maxRouteSize"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#N" name="eventType"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#+" name="track"/>
+<exported element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.parameter#4" name="route"/>
+</export>
+<export file="/ModelRailway/NoTrainColisions.bum">
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#Q" name="speedChanged"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#S" name="True"/>
+<exported element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var3" name="locks"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#T" name="False"/>
+<exported element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var5" name="started"/>
+<exported element="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged" name="SectionChanged"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller" name="Controller"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#]" name="routes"/>
+<exported element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var8" name="reservation"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#h" name="Moving"/>
+<exported element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.constant#(" name="nextSec"/>
+<exported element="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement" name="RailMovement"/>
+<exported element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#'" name="INITIALISATION"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#R" name="emergencyStop"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#a" name="trains"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#d" name="numTrains"/>
+<exported element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions" name="NoTrainColisions"/>
+<exported element="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking" name="SectionLocking"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#f" name="Start"/>
+<exported element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var9" name="movement"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#O" name="Bool"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" name="Railway"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#g" name="Stop"/>
+<exported element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var2" name="startTrain"/>
+<exported element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var4" name="reserved"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#P" name="sectionChanged"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#c" name="getRoute"/>
+<exported element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var6" name="evt1"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#axm=" name="maxTrains"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#[" name="maxRouteSize"/>
+<exported element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var7" name="locking"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#N" name="eventType"/>
+<exported element="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.variable#var1" name="setLocation"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#+" name="track"/>
+</export>
+<export file="/ModelRailway/Railway.buc">
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" name="Railway"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#Q" name="speedChanged"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#g" name="Stop"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#S" name="True"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#P" name="sectionChanged"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#T" name="False"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#c" name="getRoute"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#]" name="routes"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#h" name="Moving"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#axm=" name="maxTrains"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#[" name="maxRouteSize"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#a" name="trains"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#R" name="emergencyStop"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#d" name="numTrains"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#f" name="Start"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#N" name="eventType"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.carrierSet#O" name="Bool"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.constant#+" name="track"/>
+</export>
+</export_table>
+<graph is_sorted="true">
+<node label="/ModelRailway/Railway.buc" mark="false" order_pos="0"/>
+<node label="/ModelRailway/Controller.bum" mark="false" order_pos="1">
+<predecessor label="/ModelRailway/Railway.buc"/>
+</node>
+<node label="/ModelRailway/RailMovement.buc" mark="false" order_pos="2">
+<predecessor label="/ModelRailway/Railway.buc"/>
+</node>
+<node label="/ModelRailway/SectionChanged.bum" mark="false" order_pos="3">
+<predecessor label="/ModelRailway/RailMovement.buc"/>
+<predecessor label="/ModelRailway/Controller.bum"/>
+</node>
+<node label="/ModelRailway/SectionLocking.bum" mark="false" order_pos="4">
+<predecessor label="/ModelRailway/RailMovement.buc"/>
+<predecessor label="/ModelRailway/SectionChanged.bum"/>
+</node>
+<node label="/ModelRailway/NoTrainColisions.bum" mark="false" order_pos="5">
+<predecessor label="/ModelRailway/SectionLocking.bum"/>
+<predecessor label="/ModelRailway/RailMovement.buc"/>
+</node>
+</graph>
+<unprocessed file="/ModelRailway/Controller.bcm"/>
+<unprocessed file="/ModelRailway/Controller.bpo"/>
+<unprocessed file="/ModelRailway/Controller.bpr"/>
+<unprocessed file="/ModelRailway/Controller.bps"/>
+<unprocessed file="/ModelRailway/Rails.bpr"/>
+<unprocessed file="/ModelRailway/Railway.bcc"/>
+<unprocessed file="/ModelRailway/Railway.bpo"/>
+<unprocessed file="/ModelRailway/Railway.bpr"/>
+<unprocessed file="/ModelRailway/Railway.bps"/>
+<unprocessed file="/ModelRailway/SectionChanged.bcm"/>
+<unprocessed file="/ModelRailway/SectionChanged.bpo"/>
+<unprocessed file="/ModelRailway/SectionChanged.bpr"/>
+<unprocessed file="/ModelRailway/SectionChanged.bps"/>
+<unprocessed file="/ModelRailway/SectionChanged.bpo_tmp"/>
+<unprocessed file="/ModelRailway/RailMovement.bcc"/>
+<unprocessed file="/ModelRailway/RailMovement.bpo"/>
+<unprocessed file="/ModelRailway/RailMovement.bpr"/>
+<unprocessed file="/ModelRailway/RailMovement.bps"/>
+<unprocessed file="/ModelRailway/SectionChanged.bcm_tmp"/>
+<unprocessed file="/ModelRailway/Controller.bpo_tmp"/>
+<unprocessed file="/ModelRailway/SectionLocking.bcm"/>
+<unprocessed file="/ModelRailway/SectionLocking.bpo"/>
+<unprocessed file="/ModelRailway/SectionLocking.bpr"/>
+<unprocessed file="/ModelRailway/SectionLocking.bps"/>
+<unprocessed file="/ModelRailway/SectionLocking.bcm_tmp"/>
+<unprocessed file="/ModelRailway/SectionLocking.bpo_tmp"/>
+<unprocessed file="/ModelRailway/Locking.bpr"/>
+<unprocessed file="/ModelRailway/TrainCollision.bcm"/>
+<unprocessed file="/ModelRailway/TrainCollision.bpo"/>
+<unprocessed file="/ModelRailway/TrainCollision.bpr"/>
+<unprocessed file="/ModelRailway/TrainCollision.bps"/>
+<unprocessed file="/ModelRailway/NoTrainColisions.bcm"/>
+<unprocessed file="/ModelRailway/NoTrainColisions.bpo"/>
+<unprocessed file="/ModelRailway/NoTrainColisions.bpr"/>
+<unprocessed file="/ModelRailway/NoTrainColisions.bps"/>
+</pim>
+<pim project="/Lift">
+<rodin_index/>
+<export_table/>
+<graph is_sorted="true"/>
+</pim>
+<delta_list/>
+<indexer_registry>
+<registry_entry element_type="org.eventb.core.machineFile">
+<indexer id="machineIndexer"/>
+</registry_entry>
+<registry_entry element_type="org.eventb.core.contextFile">
+<indexer id="contextIndexer"/>
+</registry_entry>
+</indexer_registry>
+</index_root>
