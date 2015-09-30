@@ -10,6 +10,7 @@
 <org.eventb.core.event name="varM" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="evt1">
 <org.eventb.core.guard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="started = False"/>
 <org.eventb.core.action name="(" org.eventb.core.assignment="locks ≔ lockssetLocation∼" org.eventb.core.label="act1"/>
+<org.eventb.core.action name=")" org.eventb.core.assignment="started ≔ True" org.eventb.core.label="act2"/>
 </org.eventb.core.event>
 <org.eventb.core.event name="var5" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="LockNext">
 <org.eventb.core.guard name="," org.eventb.core.label="grd2" org.eventb.core.predicate="train ∈ trains"/>

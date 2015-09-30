@@ -43,8 +43,4 @@
 <org.eventb.core.axiom name="axm;" org.eventb.core.label="axm55" org.eventb.core.predicate="numTrains &lt; maxTrains ⇒ card(trains) ≤ card(track)"/>
 <org.eventb.core.axiom name="s" org.eventb.core.comment="this is true because trains and track are both finite" org.eventb.core.label="axm40" org.eventb.core.predicate="finite(trains ↣ track)"/>
 <org.eventb.core.axiom name="axm3" org.eventb.core.label="axm47" org.eventb.core.predicate="1 ≤ card(trains ↣ track)"/>
-<org.eventb.core.axiom name="axmA" org.eventb.core.label="axm59" org.eventb.core.predicate="{t↦t ∣ t∈ trains} ∈ (trains ↣ track)" org.eventb.core.theorem="true"/>
-<org.eventb.core.axiom name="axmB" org.eventb.core.label="axm60" org.eventb.core.predicate="{t↦t ∣ t∈ trains} ∈  (track ⇸ trains)" org.eventb.core.theorem="true"/>
-<org.eventb.core.axiom name="axmD" org.eventb.core.label="axm62" org.eventb.core.predicate="{t↦t ∣ t∈ trains} ∈ (trains ↣ track) ∩ (track ⇸ trains)" org.eventb.core.theorem="true"/>
-<org.eventb.core.axiom name="axmC" org.eventb.core.label="axm61" org.eventb.core.predicate="(trains ↣ track) ∩ (track ⇸ trains) ≠ ∅"/>
 </org.eventb.core.contextFile>

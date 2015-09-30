@@ -31,5 +31,6 @@
 <org.eventb.core.invariant name="inv1" org.eventb.core.label="inv7" org.eventb.core.predicate="setLocation ∈ trains → track"/>
 <org.eventb.core.invariant name="inv2" org.eventb.core.label="inv10" org.eventb.core.predicate="trains ≠∅" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="inv3" org.eventb.core.label="inv9" org.eventb.core.predicate="dom(setLocation) = trains" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="var8" org.eventb.core.label="inv13" org.eventb.core.predicate="ran(setLocation) ⊆ track" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="inv4" org.eventb.core.label="inv12" org.eventb.core.predicate="∀x·x∈ dom(setLocation) ⇒ setLocation(x) ∈ track " org.eventb.core.theorem="true"/>
 </org.eventb.core.machineFile>
