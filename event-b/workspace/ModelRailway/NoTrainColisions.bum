@@ -14,6 +14,7 @@
 <org.eventb.core.variable name="var5" org.eventb.core.identifier="started"/>
 <org.eventb.core.event name="var6" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="evt1">
 <org.eventb.core.refinesEvent name="'" org.eventb.core.target="evt1"/>
+<org.eventb.core.guard name="(" org.eventb.core.label="grd2" org.eventb.core.predicate="locks = {t↦0 ∣ t∈ track}"/>
 </org.eventb.core.event>
 <org.eventb.core.event name="var7" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="locking">
 <org.eventb.core.refinesEvent name="'" org.eventb.core.target="LockNext"/>
@@ -25,5 +26,6 @@
 <org.eventb.core.refinesEvent name="'" org.eventb.core.target="NotifyLockingNoneWaiting"/>
 <org.eventb.core.guard name="(" org.eventb.core.label="grd19" org.eventb.core.predicate="∀t· t∈ trains ⇒ setLocation(t) ≠ nextRt(parameter)" org.eventb.core.theorem="true"/>
 </org.eventb.core.event>
+<org.eventb.core.invariant name="var?" org.eventb.core.label="inv6" org.eventb.core.predicate="started = True ⇒ (∀t·∀r·∀p· t∈trains∧ r∈trains ∧ p∈ dom(getRoute(t)) ∧ p∈ dom(nextSec(getRoute(t))) ∧ locks(getRoute(t)(p))=t∧ r≠t ∧ locks(nextSec(getRoute(t))(p)) = 0 ⇒ setLocation(r) ≠ nextSec(getRoute(t))(p))"/>
 <org.eventb.core.invariant name="var&gt;" org.eventb.core.label="inv5" org.eventb.core.predicate="started = True ⇒ (∀t·∀r·∀p· t∈trains∧ p∈ dom(getRoute(t)) ∧ p∈ dom(nextSec(getRoute(t)))∧ r∈ trains ∧ t ≠ r  ∧ locks(getRoute(t)(p))=t ∧ locks(nextSec(getRoute(t))(p)) = t ⇒ setLocation(r) ≠ nextSec(getRoute(t))(p))"/>
 </org.eventb.core.machineFile>
