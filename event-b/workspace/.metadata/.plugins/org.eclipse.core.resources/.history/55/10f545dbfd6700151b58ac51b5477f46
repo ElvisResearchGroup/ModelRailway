@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.poFile org.eventb.core.poStamp="8">
+<org.eventb.core.poFile org.eventb.core.poStamp="4">
 <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
 <org.eventb.core.poIdentifier name="Bool" org.eventb.core.type="ℙ(Bool)"/>
 <org.eventb.core.poIdentifier name="Moving" org.eventb.core.type="ℙ(Moving)"/>
@@ -92,26 +92,20 @@
 <org.eventb.core.poPredicate name="setLocatip7" org.eventb.core.predicate="∀s⦂ℤ·∀t⦂ℤ·s∈dom(reserved)∧t∈trains⇒reserved{s ↦ reserved(s) ∖ {t}}∈track → ℙ(trains)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var;"/>
 <org.eventb.core.poPredicate name="setLocatip8" org.eventb.core.predicate="∀s⦂ℤ·∀t⦂ℤ·s∈dom(reserved)∧t∈trains⇒reserved{s ↦ reserved(s)∪{t}}∈track → ℙ(trains)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#varK"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poSequent name="inv2/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="8">
+<org.eventb.core.poSequent name="inv2/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
 <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ABSHYP"/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="ran(setLocation)⊆track" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var:"/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var:"/>
 <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ABSHYP"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="inv5/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Invariant" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo7"/>
-<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="started=True⇒(∀x⦂ℤ,t⦂ℤ·(t∈trains∧x∈dom(locks)⇒locks∈ℤ ⇸ ℤ)∧(t∈trains∧x∈dom(locks)∧locks(x)=0⇒t∈dom(setLocation)∧setLocation∈ℤ ⇸ ℤ))" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var&gt;"/>
-<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var&gt;"/>
-<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo7"/>
-</org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="inv1/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo9"/>
+<org.eventb.core.poSequent name="inv1/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo8"/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="setLocation∈trains ↣ track" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#*"/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#*"/>
-<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo9"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo8"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="INITIALISATION/inv4/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo;">
+<org.eventb.core.poSequent name="INITIALISATION/inv4/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="4">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo:">
 <org.eventb.core.poPredicate name="'" org.eventb.core.predicate="setLocation'∈trains ↣ track" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#'|org.eventb.core.action#'"/>
 </org.eventb.core.poPredicateSet>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="False=False⇒{t⦂ℤ·t∈track ∣ t ↦ 0}setLocation'∼∈ℤ ⇸ ℤ" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var="/>
@@ -119,21 +113,10 @@
 <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#'"/>
 <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var="/>
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poSequent#INITIALISATION\/inv4\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
-<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo7|org.eventb.core.poPredicate#PRD1"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo8|org.eventb.core.poPredicate#PRD1"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="INITIALISATION/inv5/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo;">
-<org.eventb.core.poPredicate name="'" org.eventb.core.predicate="setLocation'∈trains ↣ track" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#'|org.eventb.core.action#'"/>
-</org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="False=True⇒(∀x⦂ℤ·∀t⦂ℤ·t∈trains∧x∈dom({t⦂ℤ·t∈track ∣ t ↦ 0})∧{t⦂ℤ·t∈track ∣ t ↦ 0}(x)=0⇒setLocation'(t)≠x)" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var&gt;"/>
-<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'"/>
-<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#'"/>
-<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var&gt;"/>
-<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poSequent#INITIALISATION\/inv5\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
-<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo9|org.eventb.core.poPredicate#PRD2"/>
-</org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="INITIALISATION/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo;">
+<org.eventb.core.poSequent name="INITIALISATION/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="4">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo:">
 <org.eventb.core.poPredicate name="'" org.eventb.core.predicate="setLocation'∈trains ↣ track" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#'|org.eventb.core.action#'"/>
 </org.eventb.core.poPredicateSet>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="False=True⇒setLocation'∈trains ↣ track" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var;"/>
@@ -141,70 +124,52 @@
 <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#'"/>
 <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var;"/>
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poSequent#INITIALISATION\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
-<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo9|org.eventb.core.poPredicate#PRD3"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo8|org.eventb.core.poPredicate#PRD2"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poPredicateSet name="EVTIDENTRailMovemeo;" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="8">
+<org.eventb.core.poPredicateSet name="EVTIDENTRailMovemeo:" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
 <org.eventb.core.poIdentifier name="startTrain'" org.eventb.core.type="ℙ(ℤ×Moving)"/>
 <org.eventb.core.poIdentifier name="locks'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
 <org.eventb.core.poIdentifier name="reserved'" org.eventb.core.type="ℙ(ℤ×ℙ(ℤ))"/>
 <org.eventb.core.poIdentifier name="started'" org.eventb.core.type="Bool"/>
 <org.eventb.core.poIdentifier name="setLocation'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTALLHYPRailMovemeo;" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTIDENTRailMovemeo;" org.eventb.core.poStamp="8"/>
-<org.eventb.core.poSequent name="evt1/inv4/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo="/>
+<org.eventb.core.poPredicateSet name="EVTALLHYPRailMovemeo:" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTIDENTRailMovemeo:" org.eventb.core.poStamp="0"/>
+<org.eventb.core.poSequent name="evt1/inv4/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="4">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo;"/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="True=False⇒(lockssetLocation∼)setLocation∼∈ℤ ⇸ ℤ" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var="/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#varM"/>
 <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var6"/>
 <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var="/>
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poSequent#evt1\/inv4\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
-<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo7|org.eventb.core.poPredicate#PRD1"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo8|org.eventb.core.poPredicate#PRD1"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="evt1/inv5/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo="/>
-<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="True=True⇒(∀x⦂ℤ·∀t⦂ℤ·t∈trains∧x∈dom(lockssetLocation∼)∧(lockssetLocation∼)(x)=0⇒setLocation(t)≠x)" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var&gt;"/>
-<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#varM"/>
-<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var6"/>
-<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var&gt;"/>
-<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poSequent#evt1\/inv5\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
-<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo9|org.eventb.core.poPredicate#PRD2"/>
-</org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="evt1/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo="/>
+<org.eventb.core.poSequent name="evt1/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="4">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo;"/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="True=True⇒setLocation∈trains ↣ track" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var;"/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#varM"/>
 <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var6"/>
 <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var;"/>
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poSequent#evt1\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
-<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo9|org.eventb.core.poPredicate#PRD3"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo8|org.eventb.core.poPredicate#PRD2"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poPredicateSet name="EVTIDENTRailMovemeo=" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="8">
+<org.eventb.core.poPredicateSet name="EVTIDENTRailMovemeo;" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="4">
 <org.eventb.core.poIdentifier name="locks'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
 <org.eventb.core.poIdentifier name="started'" org.eventb.core.type="Bool"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTALLHYPRailMovemeo=" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTIDENTRailMovemeo=" org.eventb.core.poStamp="8">
+<org.eventb.core.poPredicateSet name="EVTALLHYPRailMovemeo;" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTIDENTRailMovemeo;" org.eventb.core.poStamp="4">
 <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="started=False" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#varM|org.eventb.core.guard#'"/>
 <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="locks={t⦂ℤ·t∈track ∣ t ↦ 0}" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var6|org.eventb.core.guard#("/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poSequent name="locking/inv4/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo&gt;"/>
+<org.eventb.core.poSequent name="locking/inv4/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="4">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo="/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="started=False⇒(locks{nextSection ↦ train})setLocation∼∈ℤ ⇸ ℤ" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var="/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5"/>
 <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var7"/>
 <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var="/>
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poSequent#locking\/inv4\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
-<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo7|org.eventb.core.poPredicate#PRD1"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo8|org.eventb.core.poPredicate#PRD1"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="locking/inv5/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo&gt;"/>
-<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="started=True⇒(∀x⦂ℤ·∀t⦂ℤ·t∈trains∧x∈dom(locks{nextSection ↦ train})∧(locks{nextSection ↦ train})(x)=0⇒setLocation(t)≠x)" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var&gt;"/>
-<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5"/>
-<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var7"/>
-<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var&gt;"/>
-<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poSequent#locking\/inv5\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
-<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo9|org.eventb.core.poPredicate#PRD2"/>
-</org.eventb.core.poSequent>
-<org.eventb.core.poPredicateSet name="EVTIDENTRailMovemeo&gt;" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="8">
+<org.eventb.core.poPredicateSet name="EVTIDENTRailMovemeo=" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="4">
 <org.eventb.core.poIdentifier name="locks'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
 <org.eventb.core.poIdentifier name="parameter" org.eventb.core.type="ℤ"/>
 <org.eventb.core.poIdentifier name="train" org.eventb.core.type="ℤ"/>
@@ -212,7 +177,7 @@
 <org.eventb.core.poIdentifier name="nextSection" org.eventb.core.type="ℤ"/>
 <org.eventb.core.poIdentifier name="route" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTALLHYPRailMovemeo&gt;" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTIDENTRailMovemeo&gt;" org.eventb.core.poStamp="8">
+<org.eventb.core.poPredicateSet name="EVTALLHYPRailMovemeo=" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTIDENTRailMovemeo=" org.eventb.core.poStamp="4">
 <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="train∈trains" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#,"/>
 <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="started=True" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#8"/>
 <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="route=getRoute(train)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#'"/>
@@ -223,14 +188,14 @@
 <org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="locks(nextSection)=0" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#6"/>
 <org.eventb.core.poPredicate name="PRD8" org.eventb.core.predicate="locks(setLocation(train))=train" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#7"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTIDENTRailMovemeo?" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="8">
+<org.eventb.core.poPredicateSet name="EVTIDENTRailMovemeo&gt;" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="4">
 <org.eventb.core.poIdentifier name="parameter" org.eventb.core.type="ℤ"/>
 <org.eventb.core.poIdentifier name="train" org.eventb.core.type="ℤ"/>
 <org.eventb.core.poIdentifier name="reserved'" org.eventb.core.type="ℙ(ℤ×ℙ(ℤ))"/>
 <org.eventb.core.poIdentifier name="nextSection" org.eventb.core.type="ℤ"/>
 <org.eventb.core.poIdentifier name="route" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTALLHYPRailMovemeo?" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTIDENTRailMovemeo?" org.eventb.core.poStamp="8">
+<org.eventb.core.poPredicateSet name="EVTALLHYPRailMovemeo&gt;" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTIDENTRailMovemeo&gt;" org.eventb.core.poStamp="4">
 <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="train∈trains" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#'"/>
 <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="started=True" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#element5"/>
 <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="route=getRoute(train)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#("/>
@@ -240,46 +205,37 @@
 <org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="locks(nextSection)≠train" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#,"/>
 <org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="train∉reserved(nextSection)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var8|org.eventb.core.guard#-"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poSequent name="movement/grd19/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTHYPRailMovemeo@parameteu"/>
+<org.eventb.core.poSequent name="movement/grd19/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="4">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTHYPRailMovemeo?parameteu"/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀t⦂ℤ·t∈trains⇒t∈dom(setLocation)∧setLocation∈ℤ ⇸ ℤ∧parameter∈dom(nextRt)∧nextRt∈ℤ ⇸ ℤ" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var9|org.eventb.core.guard#("/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var9|org.eventb.core.guard#("/>
-<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTHYPRailMovemeo@parameteu"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTHYPRailMovemeo?parameteu"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="movement/grd19/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTHYPRailMovemeo@parameteu"/>
+<org.eventb.core.poSequent name="movement/grd19/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="4">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTHYPRailMovemeo?parameteu"/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀t⦂ℤ·t∈trains⇒setLocation(t)≠nextRt(parameter)" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var9|org.eventb.core.guard#("/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var9|org.eventb.core.guard#("/>
-<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTHYPRailMovemeo@parameteu"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTHYPRailMovemeo?parameteu"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="movement/inv4/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo@"/>
+<org.eventb.core.poSequent name="movement/inv4/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="4">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo?"/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="started=False⇒(locks{section ↦ 0})(setLocation{train ↦ nextRt(parameter)})∼∈ℤ ⇸ ℤ" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var="/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*"/>
 <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var9"/>
 <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var="/>
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poSequent#movement\/inv4\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
-<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo7|org.eventb.core.poPredicate#PRD1"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo8|org.eventb.core.poPredicate#PRD1"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="movement/inv5/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo@"/>
-<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="started=True⇒(∀x⦂ℤ·∀t⦂ℤ·t∈trains∧x∈dom(locks{section ↦ 0})∧(locks{section ↦ 0})(x)=0⇒(setLocation{train ↦ nextRt(parameter)})(t)≠x)" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var&gt;"/>
-<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*"/>
-<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var9"/>
-<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var&gt;"/>
-<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poSequent#movement\/inv5\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
-<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo9|org.eventb.core.poPredicate#PRD2"/>
-</org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="movement/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo@"/>
+<org.eventb.core.poSequent name="movement/inv3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="4">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemeo?"/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="started=True⇒setLocation{train ↦ nextRt(parameter)}∈trains ↣ track" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var;"/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*"/>
 <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var9"/>
 <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var;"/>
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poSequent#movement\/inv3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
-<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo9|org.eventb.core.poPredicate#PRD3"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo8|org.eventb.core.poPredicate#PRD2"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poPredicateSet name="EVTIDENTRailMovemeo@" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="EVTIDENTRailMovemeo?" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="4">
 <org.eventb.core.poIdentifier name="startTrain'" org.eventb.core.type="ℙ(ℤ×Moving)"/>
 <org.eventb.core.poIdentifier name="mov" org.eventb.core.type="Moving"/>
 <org.eventb.core.poIdentifier name="locks'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
@@ -291,7 +247,7 @@
 <org.eventb.core.poIdentifier name="eventName" org.eventb.core.type="eventType"/>
 <org.eventb.core.poIdentifier name="route" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTHYPRailMovemeo@parameteu" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTIDENTRailMovemeo@" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="EVTHYPRailMovemeo?parameteu" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTIDENTRailMovemeo?" org.eventb.core.poStamp="0">
 <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="eventName∈eventType" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.guard#'"/>
 <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="train∈trains" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.guard#grd1"/>
 <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="mov∈Moving" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.guard#grd4"/>
@@ -311,18 +267,15 @@
 <org.eventb.core.poPredicate name="PRD16" org.eventb.core.predicate="locks(nextRt(parameter))=train" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.guard#("/>
 <org.eventb.core.poPredicate name="PRD17" org.eventb.core.predicate="started=True" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.guard#*"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTALLHYPRailMovemeo@" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTHYPRailMovemeo@parameteu" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="EVTALLHYPRailMovemeo?" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#EVTHYPRailMovemeo?parameteu" org.eventb.core.poStamp="4">
 <org.eventb.core.poPredicate name="PRD18" org.eventb.core.predicate="∀t⦂ℤ·t∈trains⇒setLocation(t)≠nextRt(parameter)" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.event#var9|org.eventb.core.guard#("/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="HYPRailMovemeo7" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="HYPRailMovemeo8" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
 <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="ran(setLocation)⊆track" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var:"/>
 <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="started=False⇒lockssetLocation∼∈ℤ ⇸ ℤ" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var="/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="started=True⇒setLocation∈trains ↣ track" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var;"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="HYPRailMovemeo9" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo7" org.eventb.core.poStamp="0">
-<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="started=True⇒(∀x⦂ℤ·∀t⦂ℤ·t∈trains∧x∈dom(locks)∧locks(x)=0⇒setLocation(t)≠x)" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var&gt;"/>
-<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="started=True⇒setLocation∈trains ↣ track" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#var;"/>
-</org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo9" org.eventb.core.poStamp="8">
-<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="setLocation∈trains ↣ track" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#*"/>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/ModelRailway/NoTrainColisions.bpo|org.eventb.core.poFile#NoTrainColisions|org.eventb.core.poPredicateSet#HYPRailMovemeo8" org.eventb.core.poStamp="4">
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="setLocation∈trains ↣ track" org.eventb.core.source="/ModelRailway/NoTrainColisions.bum|org.eventb.core.machineFile#NoTrainColisions|org.eventb.core.invariant#*"/>
 </org.eventb.core.poPredicateSet>
 </org.eventb.core.poFile>

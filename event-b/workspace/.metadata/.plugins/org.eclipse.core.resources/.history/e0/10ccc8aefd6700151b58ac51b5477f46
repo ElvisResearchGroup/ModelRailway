@@ -5,7 +5,6 @@
 <org.eventb.core.refinesMachine name=")" org.eventb.core.target="SectionLocking"/>
 <org.eventb.core.invariant name="var:" org.eventb.core.label="inv2" org.eventb.core.predicate="ran(setLocation) ⊆ track" org.eventb.core.theorem="true"/>
 <org.eventb.core.invariant name="var=" org.eventb.core.label="inv4" org.eventb.core.predicate="started = False ⇒ (locks  setLocation∼)∈ ℤ ⇸ ℤ  "/>
-<org.eventb.core.invariant name="var&gt;" org.eventb.core.label="inv5" org.eventb.core.predicate="started = True ⇒ (∀x·∀t· t∈trains ∧ x∈dom(locks) ∧ locks(x) = 0 ⇒ setLocation(t) ≠ x)"/>
 <org.eventb.core.invariant name="var;" org.eventb.core.label="inv3" org.eventb.core.predicate="(started = True) ⇒ setLocation ∈ (trains ↣ track)"/>
 <org.eventb.core.invariant name="*" org.eventb.core.label="inv1" org.eventb.core.predicate="setLocation∈(trains ↣ track)" org.eventb.core.theorem="true"/>
 <org.eventb.core.variable name="var1" org.eventb.core.identifier="setLocation"/>
@@ -27,4 +26,6 @@
 <org.eventb.core.refinesEvent name="'" org.eventb.core.target="NotifyLockingNoneWaiting"/>
 <org.eventb.core.guard name="(" org.eventb.core.label="grd19" org.eventb.core.predicate="∀t· t∈ trains ⇒ setLocation(t) ≠ nextRt(parameter)" org.eventb.core.theorem="true"/>
 </org.eventb.core.event>
+<org.eventb.core.invariant name="var?" org.eventb.core.label="inv6" org.eventb.core.predicate="started = True ⇒ (∀t·∀r·∀p· t∈trains∧ r∈trains ∧ p∈ dom(getRoute(t)) ∧ p∈ dom(nextSec(getRoute(t))) ∧ locks(getRoute(t)(p))=t∧ r≠t ∧ locks(nextSec(getRoute(t))(p)) = 0 ⇒ setLocation(r) ≠ nextSec(getRoute(t))(p))"/>
+<org.eventb.core.invariant name="var&gt;" org.eventb.core.label="inv5" org.eventb.core.predicate="started = True ⇒ (∀t·∀r·∀p· t∈trains∧ p∈ dom(getRoute(t)) ∧ p∈ dom(nextSec(getRoute(t)))∧ r∈ trains ∧ t ≠ r  ∧ locks(getRoute(t)(p))=t ∧ locks(nextSec(getRoute(t))(p)) = t ⇒ setLocation(r) ≠ nextSec(getRoute(t))(p))"/>
 </org.eventb.core.machineFile>

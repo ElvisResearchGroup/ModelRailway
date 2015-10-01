@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.poFile org.eventb.core.poStamp="0">
-<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0"/>
-<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/ModelRailway/TrainCollision.bpo|org.eventb.core.poFile#TrainCollision|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0"/>
-<org.eventb.core.poPredicateSet name="EVTALLHYP'" org.eventb.core.parentSet="/ModelRailway/TrainCollision.bpo|org.eventb.core.poFile#TrainCollision|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0"/>
-<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/ModelRailway/TrainCollision.bpo|org.eventb.core.poFile#TrainCollision|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0"/>
-</org.eventb.core.poFile>
