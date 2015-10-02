@@ -3,6 +3,7 @@
 <org.eventb.core.axiom name="axm&gt;" org.eventb.core.label="axm56" org.eventb.core.predicate="maxTrains ∈ ℕ1 "/>
 <org.eventb.core.axiom name="axm?" org.eventb.core.label="axm57" org.eventb.core.predicate="maxTrains &gt;3"/>
 <org.eventb.core.axiom name="*" org.eventb.core.comment=" reminder: replace 20 by a constant" org.eventb.core.label="axm2" org.eventb.core.predicate="track = {i∣i∈(1‥maxTrains)}"/>
+<org.eventb.core.axiom name="axmA" org.eventb.core.label="axm59" org.eventb.core.predicate="∀t·t∈track ⇒ (track ∖ {t}) ∪ {t} = track"/>
 <org.eventb.core.axiom name="axm8" org.eventb.core.comment="prove track is nonempty" org.eventb.core.label="axm52" org.eventb.core.predicate="track ⊆ ℤ " org.eventb.core.theorem="true"/>
 <org.eventb.core.axiom name="axm:" org.eventb.core.label="axm54" org.eventb.core.predicate="track ≠ ∅" org.eventb.core.theorem="true"/>
 <org.eventb.core.axiom name="\" org.eventb.core.comment=" rename to maximum route size." org.eventb.core.label="axm25" org.eventb.core.predicate="maxRouteSize ∈ ℕ1"/>

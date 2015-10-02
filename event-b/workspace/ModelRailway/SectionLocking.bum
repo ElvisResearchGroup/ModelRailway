@@ -46,6 +46,7 @@
 </org.eventb.core.event>
 <org.eventb.core.event name="*" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="NotifyLockingNoneWaiting">
 <org.eventb.core.refinesEvent name="'" org.eventb.core.target="NotifySectionChanged"/>
+<org.eventb.core.guard name="+" org.eventb.core.label="grd19" org.eventb.core.predicate="locks(section) = train"/>
 <org.eventb.core.guard name="(" org.eventb.core.comment="the only train locking the next section is this one" org.eventb.core.label="grd12b" org.eventb.core.predicate="locks(nextRt(parameter)) = train"/>
 <org.eventb.core.action name=")" org.eventb.core.assignment="locks(section) ≔ 0" org.eventb.core.label="act3"/>
 <org.eventb.core.guard name="*" org.eventb.core.label="grd18" org.eventb.core.predicate="started = True"/>

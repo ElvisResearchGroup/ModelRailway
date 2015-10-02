@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_HdUCQGfHEeWFP47MQtLohw" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_HdUCQWfHEeWFP47MQtLohw" bindingContexts="_HdVQYWfHEeWFP47MQtLohw">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;NoTrainColisions.bps&quot; tooltip=&quot;ModelRailway/NoTrainColisions.bps&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ModelRailway/NoTrainColisions.bps&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;NoTrainColisions.bum&quot; tooltip=&quot;ModelRailway/NoTrainColisions.bum&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ModelRailway/NoTrainColisions.bum&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;SectionChanged.bps&quot; tooltip=&quot;ModelRailway/SectionChanged.bps&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ModelRailway/SectionChanged.bps&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;SectionChanged.bum&quot; tooltip=&quot;ModelRailway/SectionChanged.bum&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ModelRailway/SectionChanged.bum&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;Controller.bum&quot; tooltip=&quot;ModelRailway/Controller.bum&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ModelRailway/Controller.bum&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;SectionLocking.bum&quot; tooltip=&quot;ModelRailway/SectionLocking.bum&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ModelRailway/SectionLocking.bum&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;RailMovement.buc&quot; tooltip=&quot;ModelRailway/RailMovement.buc&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ModelRailway/RailMovement.buc&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;Railway.buc&quot; tooltip=&quot;ModelRailway/Railway.buc&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ModelRailway/Railway.buc&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;SectionLocking.bps&quot; tooltip=&quot;ModelRailway/SectionLocking.bps&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ModelRailway/SectionLocking.bps&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;TrainCollision.bum&quot; tooltip=&quot;ModelRailway/TrainCollision.bum&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ModelRailway/TrainCollision.bum&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;TrainCollision.bps&quot; tooltip=&quot;ModelRailway/TrainCollision.bps&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ModelRailway/TrainCollision.bps&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;Railway.bps&quot; tooltip=&quot;ModelRailway/Railway.bps&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ModelRailway/Railway.bps&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;RailMovement.bps&quot; tooltip=&quot;ModelRailway/RailMovement.bps&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ModelRailway/RailMovement.bps&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;Controller.bps&quot; tooltip=&quot;ModelRailway/Controller.bps&quot;>&#xD;&#xA;&lt;persistable path=&quot;/ModelRailway/Controller.bps&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workbench>&#xA;&lt;mruList>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;NoTrainColisions.bps&quot; tooltip=&quot;ModelRailway/NoTrainColisions.bps&quot;>&#xA;&lt;persistable path=&quot;/ModelRailway/NoTrainColisions.bps&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;NoTrainColisions.bum&quot; tooltip=&quot;ModelRailway/NoTrainColisions.bum&quot;>&#xA;&lt;persistable path=&quot;/ModelRailway/NoTrainColisions.bum&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;Railway.buc&quot; tooltip=&quot;ModelRailway/Railway.buc&quot;>&#xA;&lt;persistable path=&quot;/ModelRailway/Railway.buc&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;RailMovement.buc&quot; tooltip=&quot;ModelRailway/RailMovement.buc&quot;>&#xA;&lt;persistable path=&quot;/ModelRailway/RailMovement.buc&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;SectionLocking.bum&quot; tooltip=&quot;ModelRailway/SectionLocking.bum&quot;>&#xA;&lt;persistable path=&quot;/ModelRailway/SectionLocking.bum&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;RailMovement.bps&quot; tooltip=&quot;ModelRailway/RailMovement.bps&quot;>&#xA;&lt;persistable path=&quot;/ModelRailway/RailMovement.bps&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;SectionChanged.bum&quot; tooltip=&quot;ModelRailway/SectionChanged.bum&quot;>&#xA;&lt;persistable path=&quot;/ModelRailway/SectionChanged.bum&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;SectionChanged.bps&quot; tooltip=&quot;ModelRailway/SectionChanged.bps&quot;>&#xA;&lt;persistable path=&quot;/ModelRailway/SectionChanged.bps&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;Controller.bum&quot; tooltip=&quot;ModelRailway/Controller.bum&quot;>&#xA;&lt;persistable path=&quot;/ModelRailway/Controller.bum&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;SectionLocking.bps&quot; tooltip=&quot;ModelRailway/SectionLocking.bps&quot;>&#xA;&lt;persistable path=&quot;/ModelRailway/SectionLocking.bps&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;TrainCollision.bum&quot; tooltip=&quot;ModelRailway/TrainCollision.bum&quot;>&#xA;&lt;persistable path=&quot;/ModelRailway/TrainCollision.bum&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;TrainCollision.bps&quot; tooltip=&quot;ModelRailway/TrainCollision.bps&quot;>&#xA;&lt;persistable path=&quot;/ModelRailway/TrainCollision.bps&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;Railway.bps&quot; tooltip=&quot;ModelRailway/Railway.bps&quot;>&#xA;&lt;persistable path=&quot;/ModelRailway/Railway.bps&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;Controller.bps&quot; tooltip=&quot;ModelRailway/Controller.bps&quot;>&#xA;&lt;persistable path=&quot;/ModelRailway/Controller.bps&quot;/>&#xA;&lt;/file>&#xA;&lt;/mruList>&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
   <children xsi:type="basic:TrimmedWindow" xmi:id="_HdUCQWfHEeWFP47MQtLohw" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_HdUCQmfHEeWFP47MQtLohw" label="%trimmedwindow.label.eclipseSDK" x="26" y="-8" width="1797" height="841">
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="true"/>
-    <persistedState key="workingSets" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workingSets/>"/>
+    <persistedState key="workingSets" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workingSets/>"/>
     <persistedState key="aggregateWorkingSetId" value="Aggregate for window 1439527479662"/>
     <tags>topLevel</tags>
     <tags>shellMaximized</tags>
@@ -34,7 +34,7 @@
           <tags>persp.viewSC:org.eclipse.pde.runtime.LogView</tags>
           <tags>persp.viewSC:org.eventb.ui.symboltable.view</tags>
           <tags>persp.viewSC:org.rodinp.keyboard.ui.views.KeyboardView</tags>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_HdUCRWfHEeWFP47MQtLohw" selectedElement="_HdUCRmfHEeWFP47MQtLohw" horizontal="true">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_HdUCRWfHEeWFP47MQtLohw" selectedElement="_HdUCSGfHEeWFP47MQtLohw" horizontal="true">
             <children xsi:type="basic:PartStack" xmi:id="_HdUCRmfHEeWFP47MQtLohw" elementId="left" containerData="2361" selectedElement="_HdUCR2fHEeWFP47MQtLohw">
               <tags>newtablook</tags>
               <children xsi:type="advanced:Placeholder" xmi:id="_HdUCR2fHEeWFP47MQtLohw" elementId="fr.systerel.explorer.navigator.view" ref="_HdUpaGfHEeWFP47MQtLohw"/>
@@ -92,16 +92,15 @@
           <tags>persp.viewSC:org.eventb.ui.views.TypeEnv</tags>
           <tags>persp.viewSC:org.eventb.ui.symboltable.view</tags>
           <tags>persp.viewSC:org.rodinp.keyboard.ui.views.KeyboardView</tags>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_HdUCVmfHEeWFP47MQtLohw" selectedElement="_HdUCV2fHEeWFP47MQtLohw" horizontal="true">
-            <children xsi:type="basic:PartStack" xmi:id="_HdUCV2fHEeWFP47MQtLohw" elementId="left" containerData="1382" selectedElement="_HdUCWGfHEeWFP47MQtLohw">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_HdUCVmfHEeWFP47MQtLohw" selectedElement="_HdUCWWfHEeWFP47MQtLohw" horizontal="true">
+            <children xsi:type="basic:PartStack" xmi:id="_HdUCV2fHEeWFP47MQtLohw" elementId="left" containerData="2705" selectedElement="_HdUCWGfHEeWFP47MQtLohw">
               <tags>newtablook</tags>
-              <tags>active</tags>
               <children xsi:type="advanced:Placeholder" xmi:id="_HdUCWGfHEeWFP47MQtLohw" elementId="org.eventb.ui.views.ProofTreeUI" ref="_HdUpt2fHEeWFP47MQtLohw"/>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_HdUCWWfHEeWFP47MQtLohw" containerData="8618" selectedElement="_HdUCWmfHEeWFP47MQtLohw" horizontal="true">
-              <children xsi:type="basic:PartSashContainer" xmi:id="_HdUCWmfHEeWFP47MQtLohw" containerData="6357" selectedElement="_HdUCXGfHEeWFP47MQtLohw">
-                <children xsi:type="advanced:Placeholder" xmi:id="_HdUCW2fHEeWFP47MQtLohw" elementId="org.eclipse.ui.editorss" containerData="6631" ref="_HdUDSWfHEeWFP47MQtLohw"/>
-                <children xsi:type="basic:PartSashContainer" xmi:id="_HdUCXGfHEeWFP47MQtLohw" containerData="3369" selectedElement="_HdUCX2fHEeWFP47MQtLohw">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_HdUCWWfHEeWFP47MQtLohw" containerData="7295" selectedElement="_HdUCZmfHEeWFP47MQtLohw" horizontal="true">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_HdUCWmfHEeWFP47MQtLohw" containerData="6437" selectedElement="_HdUCW2fHEeWFP47MQtLohw">
+                <children xsi:type="advanced:Placeholder" xmi:id="_HdUCW2fHEeWFP47MQtLohw" elementId="org.eclipse.ui.editorss" containerData="7198" ref="_HdUDSWfHEeWFP47MQtLohw"/>
+                <children xsi:type="basic:PartSashContainer" xmi:id="_HdUCXGfHEeWFP47MQtLohw" containerData="2802" selectedElement="_HdUCX2fHEeWFP47MQtLohw">
                   <children xsi:type="basic:PartStack" xmi:id="_HdUCXWfHEeWFP47MQtLohw" elementId="org.eventb.ui.views.GoalMStack" containerData="3957" selectedElement="_HdUCXmfHEeWFP47MQtLohw">
                     <tags>newtablook</tags>
                     <children xsi:type="advanced:Placeholder" xmi:id="_HdUCXmfHEeWFP47MQtLohw" elementId="org.eventb.ui.views.Goal" ref="_HdUp02fHEeWFP47MQtLohw"/>
@@ -120,9 +119,11 @@
                   </children>
                 </children>
               </children>
-              <children xsi:type="basic:PartSashContainer" xmi:id="_HdUCZmfHEeWFP47MQtLohw" containerData="3643" selectedElement="_HdUCZ2fHEeWFP47MQtLohw">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_HdUCZmfHEeWFP47MQtLohw" containerData="3563" selectedElement="_HdUCZ2fHEeWFP47MQtLohw">
                 <children xsi:type="basic:PartStack" xmi:id="_HdUCZ2fHEeWFP47MQtLohw" elementId="right" containerData="7000" selectedElement="_HdUCaGfHEeWFP47MQtLohw">
                   <tags>newtablook</tags>
+                  <tags>active</tags>
+                  <tags>noFocus</tags>
                   <children xsi:type="advanced:Placeholder" xmi:id="_HdUCaGfHEeWFP47MQtLohw" elementId="fr.systerel.explorer.navigator.view" ref="_HdUpaGfHEeWFP47MQtLohw"/>
                 </children>
                 <children xsi:type="basic:PartStack" xmi:id="_HdUCaWfHEeWFP47MQtLohw" elementId="org.eventb.ui.symboltable.viewMStack" containerData="3000" selectedElement="_HdUCa2fHEeWFP47MQtLohw">
@@ -155,76 +156,66 @@
       <tags>categoryTag:Help</tags>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_HdUDSWfHEeWFP47MQtLohw" elementId="org.eclipse.ui.editorss" selectedElement="_HdUDSmfHEeWFP47MQtLohw">
-      <children xsi:type="basic:PartStack" xmi:id="_HdUDSmfHEeWFP47MQtLohw" elementId="PartStack@7fae4d4a" selectedElement="_HdUDTmfHEeWFP47MQtLohw">
+      <children xsi:type="basic:PartStack" xmi:id="_HdUDSmfHEeWFP47MQtLohw" elementId="PartStack@7fae4d4a" selectedElement="_zQJCcGiDEeWeM6cIxcIEXQ">
         <tags>newtablook</tags>
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
-        <children xsi:type="basic:Part" xmi:id="_HdUDS2fHEeWFP47MQtLohw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Controller" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;Controller.bum&quot; partName=&quot;Controller&quot; title=&quot;Controller&quot; tooltip=&quot;ModelRailway/Controller.bum&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/Controller.bum&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;76&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_hVjsMGiDEeWeM6cIxcIEXQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="NoTrainColisions" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;NoTrainColisions.bum&quot; partName=&quot;NoTrainColisions&quot; title=&quot;NoTrainColisions&quot; tooltip=&quot;ModelRailway/NoTrainColisions.bum&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/NoTrainColisions.bum&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;409&quot; selectionTopPixel=&quot;8&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>fr.systerel.editor.editors.RodinEditor</tags>
           <tags>removeOnHide</tags>
         </children>
-        <children xsi:type="basic:Part" xmi:id="_HdUDTGfHEeWFP47MQtLohw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="SectionLocking" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;SectionLocking.bum&quot; partName=&quot;SectionLocking&quot; title=&quot;SectionLocking&quot; tooltip=&quot;ModelRailway/SectionLocking.bum&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/SectionLocking.bum&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;48&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1385&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_hf4s4GiDEeWeM6cIxcIEXQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="SectionChanged" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;SectionChanged.bum&quot; partName=&quot;SectionChanged&quot; title=&quot;SectionChanged&quot; tooltip=&quot;ModelRailway/SectionChanged.bum&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/SectionChanged.bum&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>fr.systerel.editor.editors.RodinEditor</tags>
           <tags>removeOnHide</tags>
         </children>
-        <children xsi:type="basic:Part" xmi:id="_HdUDTWfHEeWFP47MQtLohw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="SectionChanged" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;SectionChanged.bum&quot; partName=&quot;SectionChanged&quot; title=&quot;SectionChanged&quot; tooltip=&quot;ModelRailway/SectionChanged.bum&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/SectionChanged.bum&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;425&quot; selectionTopPixel=&quot;60&quot;/>&#xD;&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_hmfEIGiDEeWeM6cIxcIEXQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="SectionLocking" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;SectionLocking.bum&quot; partName=&quot;SectionLocking&quot; title=&quot;SectionLocking&quot; tooltip=&quot;ModelRailway/SectionLocking.bum&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/SectionLocking.bum&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;37&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>fr.systerel.editor.editors.RodinEditor</tags>
           <tags>removeOnHide</tags>
         </children>
-        <children xsi:type="basic:Part" xmi:id="_HdUDTmfHEeWFP47MQtLohw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="NoTrainColisions" iconURI="platform:/plugin/org.eventb.ui/icons/full/obj16/proof_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;NoTrainColisions.bps&quot; partName=&quot;NoTrainColisions&quot; title=&quot;NoTrainColisions&quot; tooltip=&quot;ModelRailway/NoTrainColisions.bps&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/NoTrainColisions.bps&quot;/>&#xD;&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_zQJCcGiDEeWeM6cIxcIEXQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="NoTrainColisions" iconURI="platform:/plugin/org.eventb.ui/icons/full/obj16/proof_obj.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;NoTrainColisions.bps&quot; partName=&quot;NoTrainColisions&quot; title=&quot;NoTrainColisions&quot; tooltip=&quot;ModelRailway/NoTrainColisions.bps&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/NoTrainColisions.bps&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eventb.ui.editors.ProverUI</tags>
           <tags>removeOnHide</tags>
         </children>
-        <children xsi:type="basic:Part" xmi:id="_HdUDT2fHEeWFP47MQtLohw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="NoTrainColisions" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;NoTrainColisions.bum&quot; partName=&quot;NoTrainColisions&quot; title=&quot;NoTrainColisions&quot; tooltip=&quot;ModelRailway/NoTrainColisions.bum&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/NoTrainColisions.bum&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;88&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_GIZP8GiGEeWeM6cIxcIEXQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="RailMovement" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;RailMovement.buc&quot; partName=&quot;RailMovement&quot; title=&quot;RailMovement&quot; tooltip=&quot;ModelRailway/RailMovement.buc&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/RailMovement.buc&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;743&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>fr.systerel.editor.editors.RodinEditor</tags>
           <tags>removeOnHide</tags>
         </children>
-        <children xsi:type="basic:Part" xmi:id="_HdUDUGfHEeWFP47MQtLohw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="SectionChanged" iconURI="platform:/plugin/org.eventb.ui/icons/full/obj16/proof_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;SectionChanged.bps&quot; partName=&quot;SectionChanged&quot; title=&quot;SectionChanged&quot; tooltip=&quot;ModelRailway/SectionChanged.bps&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/SectionChanged.bps&quot;/>&#xD;&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_VAPN8GiGEeWeM6cIxcIEXQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="RailMovement" iconURI="platform:/plugin/org.eventb.ui/icons/full/obj16/proof_obj.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eventb.ui.editors.ProverUI&quot; name=&quot;RailMovement.bps&quot; partName=&quot;RailMovement&quot; title=&quot;RailMovement&quot; tooltip=&quot;ModelRailway/RailMovement.bps&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/RailMovement.bps&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eventb.ui.editors.ProverUI</tags>
           <tags>removeOnHide</tags>
         </children>
-        <children xsi:type="basic:Part" xmi:id="_HdUDUWfHEeWFP47MQtLohw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="NoTrainColisions" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;NoTrainColisions.bum&quot; partName=&quot;NoTrainColisions&quot; title=&quot;NoTrainColisions&quot; tooltip=&quot;ModelRailway/NoTrainColisions.bum&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/NoTrainColisions.bum&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;667&quot; selectionTopPixel=&quot;293&quot;/>&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>fr.systerel.editor.editors.RodinEditor</tags>
-          <tags>removeOnHide</tags>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_HdUDUmfHEeWFP47MQtLohw" elementId="fr.systerel.editor.editors.RodinEditor">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:fr.systerel.editor.editors.RodinEditor</tags>
-            <tags>popup:fr.systerel.editor.editors.RodinEditor.EditorContext</tags>
-            <tags>popup:#AbstractTextEditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_HdUpZmfHEeWFP47MQtLohw" elementId="#TextRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#TextRulerContext</tags>
-            <tags>popup:fr.systerel.editor.editors.RodinEditor.RulerContext</tags>
-            <tags>popup:#AbstractTextEditorRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_HdUpZ2fHEeWFP47MQtLohw" elementId="#OverviewRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#OverviewRulerContext</tags>
-          </menus>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_3aI1YGfNEeW8A89NFT_IXw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="NoTrainColisions" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;NoTrainColisions.bum&quot; partName=&quot;NoTrainColisions&quot; title=&quot;NoTrainColisions&quot; tooltip=&quot;ModelRailway/NoTrainColisions.bum&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/NoTrainColisions.bum&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;902&quot; selectionTopPixel=&quot;16&quot;/>&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_nsNqQGiZEeWMh9RNxIxAQQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="NoTrainColisions" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;NoTrainColisions.bum&quot; partName=&quot;NoTrainColisions&quot; title=&quot;NoTrainColisions&quot; tooltip=&quot;ModelRailway/NoTrainColisions.bum&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/NoTrainColisions.bum&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;4637&quot; selectionTopPixel=&quot;1376&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>fr.systerel.editor.editors.RodinEditor</tags>
           <tags>removeOnHide</tags>
         </children>
-        <children xsi:type="basic:Part" xmi:id="_IxEkYGhwEeW9fYe8QzUHZA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="NoTrainColisions" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;NoTrainColisions.bum&quot; partName=&quot;NoTrainColisions&quot; title=&quot;NoTrainColisions&quot; tooltip=&quot;ModelRailway/NoTrainColisions.bum&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/NoTrainColisions.bum&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_mnevcGicEeWMh9RNxIxAQQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="SectionLocking" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;SectionLocking.bum&quot; partName=&quot;SectionLocking&quot; title=&quot;SectionLocking&quot; tooltip=&quot;ModelRailway/SectionLocking.bum&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/SectionLocking.bum&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;5686&quot; selectionTopPixel=&quot;1488&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>fr.systerel.editor.editors.RodinEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_D8BgMGigEeWMh9RNxIxAQQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="RailMovement" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;RailMovement.buc&quot; partName=&quot;RailMovement&quot; title=&quot;RailMovement&quot; tooltip=&quot;ModelRailway/RailMovement.buc&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/RailMovement.buc&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>fr.systerel.editor.editors.RodinEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_EKqZIGigEeWMh9RNxIxAQQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Railway" iconURI="platform:/plugin/fr.systerel.editor/icons/full/clcl16/b_file.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;fr.systerel.editor.editors.RodinEditor&quot; name=&quot;Railway.buc&quot; partName=&quot;Railway&quot; title=&quot;Railway&quot; tooltip=&quot;ModelRailway/Railway.buc&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/ModelRailway/Railway.buc&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;296&quot; selectionTopPixel=&quot;160&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>fr.systerel.editor.editors.RodinEditor</tags>
           <tags>removeOnHide</tags>
@@ -232,9 +223,11 @@
       </children>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_HdUpaGfHEeWFP47MQtLohw" elementId="fr.systerel.explorer.navigator.view" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Event-B Explorer" iconURI="platform:/plugin/fr.systerel.explorer/icons/full/clcl16/prj_expl.gif" closeable="true">
-      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot; org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets=&quot;0&quot;/>"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot; org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets=&quot;0&quot;/>"/>
       <tags>View</tags>
       <tags>categoryTag:Event-B</tags>
+      <tags>active</tags>
+      <tags>activeOnClose</tags>
       <menus xmi:id="_HdUpaWfHEeWFP47MQtLohw" elementId="fr.systerel.explorer.navigator.view">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -338,14 +331,12 @@
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
-      <toolbar xmi:id="_HdUptmfHEeWFP47MQtLohw" elementId="org.eventb.ui.symboltable.view" visible="false"/>
+      <toolbar xmi:id="_HdUptmfHEeWFP47MQtLohw" elementId="org.eventb.ui.symboltable.view"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_HdUpt2fHEeWFP47MQtLohw" elementId="org.eventb.ui.views.ProofTreeUI" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Proof Tree" iconURI="platform:/plugin/org.eventb.ui/icons/full/clcl16/prf_tree.gif" closeable="true">
-      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view>&#xD;&#xA;&lt;showGoal IMemento.internal.id=&quot;false&quot;/>&#xD;&#xA;&lt;/view>"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;view>&#xA;&lt;showGoal IMemento.internal.id=&quot;false&quot;/>&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:Event-B</tags>
-      <tags>active</tags>
-      <tags>activeOnClose</tags>
       <menus xmi:id="_HdUpuGfHEeWFP47MQtLohw" elementId="org.eventb.ui.views.ProofTreeUI">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -401,7 +392,7 @@
       <toolbar xmi:id="_HdUpxmfHEeWFP47MQtLohw" elementId="org.eventb.ui.views.ProofTreeUI"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_HdUpzWfHEeWFP47MQtLohw" elementId="org.eventb.ui.views.ProofControl" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Proof Control" iconURI="platform:/plugin/org.eventb.ui/icons/full/clcl16/prv_ctrl.gif" closeable="true">
-      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:Event-B</tags>
       <menus xmi:id="_HdUpzmfHEeWFP47MQtLohw" elementId="org.eventb.ui.views.ProofControl">
@@ -411,7 +402,7 @@
       <toolbar xmi:id="_HdUp0mfHEeWFP47MQtLohw" elementId="org.eventb.ui.views.ProofControl"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_HdUp02fHEeWFP47MQtLohw" elementId="org.eventb.ui.views.Goal" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Goal" iconURI="platform:/plugin/org.eventb.ui/icons/full/ctool16/goal.gif" closeable="true">
-      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:Event-B</tags>
       <menus xmi:id="_HdUp1GfHEeWFP47MQtLohw" elementId="org.eventb.ui.views.Goal">
@@ -441,7 +432,7 @@
       <toolbar xmi:id="_HdUp3GfHEeWFP47MQtLohw" elementId="org.eventb.ui.views.RuleDetails" visible="false"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_HdUp3WfHEeWFP47MQtLohw" elementId="org.eventb.ui.views.TypeEnv" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Type Environment" iconURI="platform:/plugin/org.eventb.ui/icons/full/ctool16/info_type_env.gif" closeable="true">
-      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:Event-B</tags>
       <menus xmi:id="_HdUp3mfHEeWFP47MQtLohw" elementId="org.eventb.ui.views.TypeEnv">
@@ -467,7 +458,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_HdUp5mfHEeWFP47MQtLohw" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_Fnvb92hwEeW9fYe8QzUHZA" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_HdV30GfHEeWFP47MQtLohw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_7r76UGiUEeWMh9RNxIxAQQ" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_HdV30GfHEeWFP47MQtLohw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_HdUp82fHEeWFP47MQtLohw" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -488,7 +479,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_HdUqPGfHEeWFP47MQtLohw" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_Fn5M-WhwEeW9fYe8QzUHZA" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_HdVR3WfHEeWFP47MQtLohw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_7sAy0GiUEeWMh9RNxIxAQQ" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_HdVR3WfHEeWFP47MQtLohw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_HdUqR2fHEeWFP47MQtLohw" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -546,7 +537,9 @@
     <bindings xmi:id="_HdUqaGfHEeWFP47MQtLohw" keySequence="CTRL+A" command="_HdV4T2fHEeWFP47MQtLohw"/>
     <bindings xmi:id="_HdUqaWfHEeWFP47MQtLohw" keySequence="CTRL+SPACE" command="_HdV3kGfHEeWFP47MQtLohw"/>
     <bindings xmi:id="_HdUqamfHEeWFP47MQtLohw" keySequence="CTRL+SHIFT+SPACE" command="_HdV3c2fHEeWFP47MQtLohw"/>
-    <bindings xmi:id="_C7ss4Wf2EeWcMISy5Hc1AA" keySequence="CTRL+Y" command="_HdV4kmfHEeWFP47MQtLohw"/>
+    <bindings xmi:id="_bl4MkWiDEeWeM6cIxcIEXQ" keySequence="CTRL+SHIFT+Z" command="_HdV4kmfHEeWFP47MQtLohw">
+      <tags>platform:gtk</tags>
+    </bindings>
   </bindingTables>
   <bindingTables xmi:id="_HdUqbGfHEeWFP47MQtLohw" elementId="org.eclipse.ui.contexts.window" bindingContext="_HdVQYmfHEeWFP47MQtLohw">
     <bindings xmi:id="_HdUqbWfHEeWFP47MQtLohw" keySequence="ALT+SHIFT+N" command="_HdV3tWfHEeWFP47MQtLohw"/>
@@ -706,9 +699,7 @@
     <bindings xmi:id="_HdUq9mfHEeWFP47MQtLohw" keySequence="SHIFT+ARROW_UP" command="_HdV3r2fHEeWFP47MQtLohw"/>
   </bindingTables>
   <bindingTables xmi:id="_HdUq92fHEeWFP47MQtLohw" elementId="org.eclipse.debug.ui.console" bindingContext="_HdVQZmfHEeWFP47MQtLohw">
-    <bindings xmi:id="_C7ss4Gf2EeWcMISy5Hc1AA" keySequence="CTRL+Z" command="_HdV4dGfHEeWFP47MQtLohw">
-      <tags>platform:win32</tags>
-    </bindings>
+    <bindings xmi:id="_bl8eAGiDEeWeM6cIxcIEXQ" keySequence="CTRL+D" command="_HdV4dGfHEeWFP47MQtLohw"/>
   </bindingTables>
   <bindingTables xmi:id="_HdUq-WfHEeWFP47MQtLohw" elementId="org.eclipse.debug.ui.memory.abstractasynctablerendering" bindingContext="_HdVQa2fHEeWFP47MQtLohw">
     <bindings xmi:id="_HdUq-mfHEeWFP47MQtLohw" keySequence="CTRL+SHIFT+," command="_HdV36GfHEeWFP47MQtLohw"/>
