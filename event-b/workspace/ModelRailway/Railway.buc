@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
 <org.eventb.core.axiom name="axm&gt;" org.eventb.core.label="axm56" org.eventb.core.predicate="maxTrains ∈ ℕ1 "/>
+<org.eventb.core.axiom name="axmC" org.eventb.core.label="axm61" org.eventb.core.predicate="ℕ1 ⊆ ℕ "/>
 <org.eventb.core.axiom name="axm?" org.eventb.core.label="axm57" org.eventb.core.predicate="maxTrains &gt;3"/>
 <org.eventb.core.axiom name="*" org.eventb.core.comment=" reminder: replace 20 by a constant" org.eventb.core.label="axm2" org.eventb.core.predicate="track = {i∣i∈(1‥maxTrains)}"/>
-<org.eventb.core.axiom name="axmA" org.eventb.core.label="axm59" org.eventb.core.predicate="∀t·t∈track ⇒ (track ∖ {t}) ∪ {t} = track"/>
+<org.eventb.core.axiom name="axmA" org.eventb.core.comment="when we remove an item from track then add it back in we get track" org.eventb.core.label="axm59" org.eventb.core.predicate="∀t·t∈track ⇒ (track ∖ {t}) ∪ {t} = track"/>
 <org.eventb.core.axiom name="axm8" org.eventb.core.comment="prove track is nonempty" org.eventb.core.label="axm52" org.eventb.core.predicate="track ⊆ ℤ " org.eventb.core.theorem="true"/>
 <org.eventb.core.axiom name="axm:" org.eventb.core.label="axm54" org.eventb.core.predicate="track ≠ ∅" org.eventb.core.theorem="true"/>
 <org.eventb.core.axiom name="\" org.eventb.core.comment=" rename to maximum route size." org.eventb.core.label="axm25" org.eventb.core.predicate="maxRouteSize ∈ ℕ1"/>
@@ -14,6 +15,7 @@
 <org.eventb.core.axiom name="axm@" org.eventb.core.label="axm58" org.eventb.core.predicate="∀x· x ≤ numTrains ⇒ x ≤ maxTrains"/>
 <org.eventb.core.axiom name="k" org.eventb.core.label="axm33" org.eventb.core.predicate="trains ≠ ∅"/>
 <org.eventb.core.axiom name="axm7" org.eventb.core.label="axm51" org.eventb.core.predicate="trains ⊆ ℤ " org.eventb.core.theorem="true"/>
+<org.eventb.core.axiom name="axmB" org.eventb.core.label="axm60" org.eventb.core.predicate="trains ⊆ ℕ " org.eventb.core.theorem="true"/>
 <org.eventb.core.axiom name="1" org.eventb.core.comment="a route is a sequence of tracks" org.eventb.core.label="axm6" org.eventb.core.predicate="routes ⊆ ((1‥maxRouteSize)↣track)"/>
 <org.eventb.core.constant name="+" org.eventb.core.identifier="track"/>
 <org.eventb.core.axiom name="axm5" org.eventb.core.label="axm49" org.eventb.core.predicate="routes ⊆ ℤ ⇸ ℤ "/>
