@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
+<org.eventb.core.extendsContext name="'" org.eventb.core.target="Railway"/>
+<org.eventb.core.constant name="(" org.eventb.core.identifier="nextSec"/>
+<org.eventb.core.axiom name=")" org.eventb.core.comment="comment: change name to nextSection" org.eventb.core.label="axm1" org.eventb.core.predicate="nextSec ∈ (routes → ((1‥maxRouteSize) → track))"/>
+<org.eventb.core.axiom name="0" org.eventb.core.label="axm8" org.eventb.core.predicate="∀r·∀x· r∈routes ∧ x+1∈dom(r) ⇒ x∈ dom(nextSec(r))"/>
+<org.eventb.core.axiom name="*" org.eventb.core.label="axm2" org.eventb.core.predicate="∀r·∀x· r∈routes ∧  x∈dom(nextSec(r))∧ x+1 ∈ dom(r) ⇒ nextSec(r)(x) = r(x+1)"/>
+<org.eventb.core.axiom name="/" org.eventb.core.label="axm7" org.eventb.core.predicate="∀r·∀x· r∈routes ∧ x∈dom(nextSec(r)) ∧ x+1 ∈ dom(r) ∧ x∈dom(r)⇒ nextSec(r)(x) ≠ r(x)" org.eventb.core.theorem="true"/>
+<org.eventb.core.axiom name="-" org.eventb.core.label="axm5" org.eventb.core.predicate="∀r· r∈routes ⇒ nextSec(r) ∈ ((1‥maxRouteSize) → track)"/>
+<org.eventb.core.axiom name="," org.eventb.core.label="axm4" org.eventb.core.predicate="∀r ·∀p ·r∈ routes ∧ p∈ 1 ‥ maxRouteSize ⇒ nextSec(r)(p) ∈ track " org.eventb.core.theorem="true"/>
+<org.eventb.core.axiom name="." org.eventb.core.label="axm6" org.eventb.core.predicate="∀r ·∀p · r ∈ routes ∧ p ∈ 1 ‥ maxRouteSize ∧ nextSec(r)(p) ∈ track ⇒ ran(nextSec(r)) ⊆ track" org.eventb.core.theorem="true"/>
+</org.eventb.core.contextFile>
