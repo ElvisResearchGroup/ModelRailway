@@ -6,7 +6,7 @@
 
 # Home of the JMRI installation
 #JMRI_HOME=/Applications/JMRI
-JMRI_HOME=$HOME/pkg/JMRI
+JMRI_HOME=$HOME/Documents/COMP489/JMRI/JMRI
 
 # Directory in which application class files located
 BINDIR=bin

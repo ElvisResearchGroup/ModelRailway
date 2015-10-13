@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="6">
+<org.eventb.core.poIdentifier name="Bool" org.eventb.core.type="ℙ(Bool)"/>
+<org.eventb.core.poIdentifier name="Moving" org.eventb.core.type="ℙ(Moving)"/>
+<org.eventb.core.poIdentifier name="eventType" org.eventb.core.type="ℙ(eventType)"/>
+<org.eventb.core.poIdentifier name="False" org.eventb.core.type="Bool"/>
+<org.eventb.core.poIdentifier name="Start" org.eventb.core.type="Moving"/>
+<org.eventb.core.poIdentifier name="Stop" org.eventb.core.type="Moving"/>
+<org.eventb.core.poIdentifier name="True" org.eventb.core.type="Bool"/>
+<org.eventb.core.poIdentifier name="emergencyStop" org.eventb.core.type="eventType"/>
+<org.eventb.core.poIdentifier name="getRoute" org.eventb.core.type="ℙ(ℤ×ℙ(ℤ×ℤ))"/>
+<org.eventb.core.poIdentifier name="maxRouteSize" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="numTrains" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="routes" org.eventb.core.type="ℙ(ℙ(ℤ×ℤ))"/>
+<org.eventb.core.poIdentifier name="sectionChanged" org.eventb.core.type="eventType"/>
+<org.eventb.core.poIdentifier name="speedChanged" org.eventb.core.type="eventType"/>
+<org.eventb.core.poIdentifier name="track" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="trains" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poPredicate name="sectionChangee" org.eventb.core.predicate="track={i⦂ℤ·i∈1 ‥ 20 ∣ i}" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#*"/>
+<org.eventb.core.poPredicate name="sectionChangef" org.eventb.core.predicate="track⊆ℤ" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm8"/>
+<org.eventb.core.poPredicate name="sectionChangeg" org.eventb.core.predicate="track≠(∅ ⦂ ℙ(ℤ))" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm:"/>
+<org.eventb.core.poPredicate name="sectionChangeh" org.eventb.core.predicate="maxRouteSize∈ℕ1" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#\\"/>
+<org.eventb.core.poPredicate name="sectionChangei" org.eventb.core.predicate="maxRouteSize&gt;2" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#^"/>
+<org.eventb.core.poPredicate name="sectionChangej" org.eventb.core.predicate="numTrains∈ℕ1" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#e"/>
+<org.eventb.core.poPredicate name="sectionChangek" org.eventb.core.predicate="numTrains&lt;20" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#l"/>
+<org.eventb.core.poPredicate name="sectionChangel" org.eventb.core.predicate="trains=1 ‥ numTrains" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#`"/>
+<org.eventb.core.poPredicate name="sectionChangem" org.eventb.core.predicate="trains≠(∅ ⦂ ℙ(ℤ))" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#k"/>
+<org.eventb.core.poPredicate name="sectionChangen" org.eventb.core.predicate="trains⊆ℤ" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm7"/>
+<org.eventb.core.poPredicate name="sectionChangeo" org.eventb.core.predicate="routes⊆1 ‥ maxRouteSize ↣ track" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#1"/>
+<org.eventb.core.poPredicate name="sectionChangep" org.eventb.core.predicate="routes⊆ℤ ⇸ ℤ" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm5"/>
+<org.eventb.core.poPredicate name="sectionChangeq" org.eventb.core.predicate="getRoute∈trains ⤖ routes" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#j"/>
+<org.eventb.core.poPredicate name="sectionChanger" org.eventb.core.predicate="∀x⦂ℤ·x∈trains⇒getRoute(x)∈ℤ ⇸ ℤ" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm9"/>
+<org.eventb.core.poPredicate name="sectionChanges" org.eventb.core.predicate="∀r⦂ℙ(ℤ×ℤ)·∀x⦂ℤ·∀y⦂ℤ·r∈routes∧x∈dom(r)∧y∈dom(r)∧x≠y⇒r(x)≠r(y)" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#6"/>
+<org.eventb.core.poPredicate name="sectionChanget" org.eventb.core.predicate="partition(eventType,{sectionChanged},{speedChanged},{emergencyStop})" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#&gt;"/>
+<org.eventb.core.poPredicate name="sectionChangeu" org.eventb.core.predicate="partition(Bool,{True},{False})" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#G"/>
+<org.eventb.core.poPredicate name="sectionChangev" org.eventb.core.predicate="partition(Moving,{Start},{Stop})" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#i"/>
+<org.eventb.core.poPredicate name="sectionChangew" org.eventb.core.predicate="finite(track)" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#q"/>
+<org.eventb.core.poPredicate name="sectionChangex" org.eventb.core.predicate="finite(trains)" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#p"/>
+<org.eventb.core.poPredicate name="sectionChangey" org.eventb.core.predicate="numTrains&lt;20⇒card(trains)≤card(track)" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm;"/>
+<org.eventb.core.poPredicate name="sectionChangez" org.eventb.core.predicate="finite(trains ↣ track)" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#s"/>
+<org.eventb.core.poPredicate name="sectionChange{" org.eventb.core.predicate="1≤card(trains ↣ track)" org.eventb.core.source="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.core.axiom#axm3"/>
+<org.eventb.core.poIdentifier name="nextRoute" org.eventb.core.type="ℙ(ℙ(ℤ×ℤ)×ℙ(ℤ×ℤ))"/>
+<org.eventb.core.poPredicate name="sectionChange|" org.eventb.core.predicate="nextRoute∈routes → (1 ‥ maxRouteSize → track)" org.eventb.core.source="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#)"/>
+<org.eventb.core.poPredicate name="sectionChange}" org.eventb.core.predicate="∀r⦂ℙ(ℤ×ℤ)·∀x⦂ℤ·r∈routes∧x∈dom(nextRoute(r))∧x+1∈dom(r)⇒nextRoute(r)(x)=r(x+1)" org.eventb.core.source="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#*"/>
+<org.eventb.core.poPredicate name="sectionChange~" org.eventb.core.predicate="∀r⦂ℙ(ℤ×ℤ)·r∈routes⇒nextRoute(r)∈1 ‥ maxRouteSize → track" org.eventb.core.source="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#-"/>
+<org.eventb.core.poPredicate name="sectionChangf'" org.eventb.core.predicate="∀r⦂ℙ(ℤ×ℤ)·∀p⦂ℤ·r∈routes∧p∈1 ‥ maxRouteSize⇒nextRoute(r)(p)∈track" org.eventb.core.source="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#,"/>
+<org.eventb.core.poPredicate name="sectionChangf(" org.eventb.core.predicate="∀r⦂ℙ(ℤ×ℤ)·∀p⦂ℤ·r∈routes∧p∈1 ‥ maxRouteSize∧nextRoute(r)(p)∈track⇒ran(nextRoute(r))⊆track" org.eventb.core.source="/ModelRailway/RailMovement.buc|org.eventb.core.contextFile#RailMovement|org.eventb.core.axiom#."/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="17">
+<org.eventb.core.poIdentifier name="locks" org.eventb.core.type="ℙ(ℤ×ℙ(ℤ))"/>
+<org.eventb.core.poIdentifier name="setLocation" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="startTrain" org.eventb.core.type="ℙ(ℤ×Moving)"/>
+<org.eventb.core.poPredicate name="setLocatioo" org.eventb.core.predicate="startTrain∈trains → Moving" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#@"/>
+<org.eventb.core.poPredicate name="setLocatiop" org.eventb.core.predicate="∀t⦂ℤ·∀m⦂Moving·t∈trains∧m∈Moving⇒startTrain{t ↦ m}∈trains → Moving" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#A"/>
+<org.eventb.core.poPredicate name="setLocatioq" org.eventb.core.predicate="∀t⦂ℤ·t∈trains∧t∈dom(startTrain)⇒startTrain(t)∈Moving" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#&gt;"/>
+<org.eventb.core.poPredicate name="setLocatior" org.eventb.core.predicate="dom(startTrain)=trains" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.invariant#?"/>
+<org.eventb.core.poPredicate name="setLocatios" org.eventb.core.predicate="setLocation∈trains → track" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.invariant#inv1"/>
+<org.eventb.core.poPredicate name="setLocatiot" org.eventb.core.predicate="trains≠(∅ ⦂ ℙ(ℤ))" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.invariant#inv2"/>
+<org.eventb.core.poPredicate name="setLocatiou" org.eventb.core.predicate="dom(setLocation)=trains" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.invariant#inv3"/>
+<org.eventb.core.poPredicate name="setLocatiov" org.eventb.core.predicate="∀x⦂ℤ·x∈dom(setLocation)⇒setLocation(x)∈track" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.invariant#inv4"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="INITIALISATION/inv1/INV" org.eventb.core.accurate="false" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemenz">
+<org.eventb.core.poPredicate name="'" org.eventb.core.predicate="locks'∈track → {∅ ⦂ ℙ(ℤ)}" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'|org.eventb.core.action#'"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="locks'∈track → ℙ(trains)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var4"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var4"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poSequent#INITIALISATION\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="INITIALISATION/act7/FIS" org.eventb.core.accurate="false" org.eventb.core.poDesc="Feasibility of action" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemenz">
+<org.eventb.core.poPredicate name="'" org.eventb.core.predicate="startTrain'∈trains → Moving" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'|org.eventb.core.action#+"/>
+<org.eventb.core.poPredicate name="(" org.eventb.core.predicate="setLocation'∈trains ↣ track" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#'|org.eventb.core.action#'"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="track → {∅ ⦂ ℙ(ℤ)}≠(∅ ⦂ ℙ(ℙ(ℤ×ℙ(ℤ))))" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'|org.eventb.core.action#'"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#'|org.eventb.core.action#'"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemenz"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTRailMovemenz" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="6">
+<org.eventb.core.poIdentifier name="startTrain'" org.eventb.core.type="ℙ(ℤ×Moving)"/>
+<org.eventb.core.poIdentifier name="locks'" org.eventb.core.type="ℙ(ℤ×ℙ(ℤ))"/>
+<org.eventb.core.poIdentifier name="setLocation'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPRailMovemenz" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTIDENTRailMovemenz" org.eventb.core.poStamp="6"/>
+<org.eventb.core.poSequent name="LockNext/grd1/WD" org.eventb.core.accurate="false" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen{'"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="train∈dom(getRoute)∧getRoute∈ℤ ⇸ ℙ(ℤ × ℤ)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#'"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#'"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen{'"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="LockNext/grd5/WD" org.eventb.core.accurate="false" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen{("/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="parameter∈dom(route)⇒route∈dom(nextRoute)∧nextRoute∈ℙ(ℤ × ℤ) ⇸ ℙ(ℤ × ℤ)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#0"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#0"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen{("/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="LockNext/grd4/WD" org.eventb.core.accurate="false" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen{)"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="route∈dom(nextRoute)∧nextRoute∈ℙ(ℤ × ℤ) ⇸ ℙ(ℤ × ℤ)∧parameter∈dom(nextRoute(route))∧nextRoute(route)∈ℤ ⇸ ℤ" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#\/"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#\/"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen{)"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="LockNext/grd6/WD" org.eventb.core.accurate="false" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen{*"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="train∈dom(setLocation)∧setLocation∈ℤ ⇸ ℤ∧parameter∈dom(route)∧route∈ℤ ⇸ ℤ" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#2"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#2"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen{*"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="LockNext/inv1/INV" org.eventb.core.accurate="false" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemen{"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="locks{nextSection ↦ locks(nextSection)∪{train}}∈track → ℙ(trains)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var4"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var4"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poSequent#LockNext\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="LockNext/act1/WD" org.eventb.core.accurate="false" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemen{"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="nextSection∈dom(locks)∧locks∈ℤ ⇸ ℙ(ℤ)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.action#1"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.action#1"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemen{"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTRailMovemen{" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="17">
+<org.eventb.core.poIdentifier name="locks'" org.eventb.core.type="ℙ(ℤ×ℙ(ℤ))"/>
+<org.eventb.core.poIdentifier name="parameter" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="train" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="nextSection" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="route" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTHYPRailMovemen{'" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTIDENTRailMovemen{" org.eventb.core.poStamp="17">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="train∈trains" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#,"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTHYPRailMovemen{(" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen{'" org.eventb.core.poStamp="17">
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="route=getRoute(train)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#'"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTHYPRailMovemen{)" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen{(" org.eventb.core.poStamp="17">
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="parameter∈dom(route)∧parameter∈dom(nextRoute(route))" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#0"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTHYPRailMovemen{*" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen{)" org.eventb.core.poStamp="17">
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="nextSection=nextRoute(route)(parameter)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#\/"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPRailMovemen{" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen{*" org.eventb.core.poStamp="17">
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="setLocation(train)=route(parameter)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#var5|org.eventb.core.guard#2"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="NotifyLockingNoneWaiting/grd12b/WD" org.eventb.core.accurate="false" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen\|eventNams"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="route∈dom(nextRoute)∧nextRoute∈ℙ(ℤ × ℤ) ⇸ ℙ(ℤ × ℤ)∧parameter∈dom(nextRoute(route))∧nextRoute(route)∈ℤ ⇸ ℤ∧train∈dom(nextRoute(route))∧nextRoute(route)(train)∈dom(locks)∧locks∈ℤ ⇸ ℙ(ℤ)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.guard#("/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.guard#("/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen\|eventNams"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="NotifyLockingNoneWaiting/inv1/INV" org.eventb.core.accurate="false" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemen\|"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="locks{route(train) ↦ locks(route(train)) ∖ {route(parameter)}}∈track → ℙ(trains)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var4"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var4"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poSequent#NotifyLockingNoneWaiting\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="NotifyLockingNoneWaiting/act3/WD" org.eventb.core.accurate="false" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemen\|"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="train∈dom(route)∧route∈ℤ ⇸ ℤ∧route(train)∈dom(locks)∧locks∈ℤ ⇸ ℙ(ℤ)∧parameter∈dom(route)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.action#)"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.action#)"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTALLHYPRailMovemen\|"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTRailMovemen|" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="17">
+<org.eventb.core.poIdentifier name="startTrain'" org.eventb.core.type="ℙ(ℤ×Moving)"/>
+<org.eventb.core.poIdentifier name="mov" org.eventb.core.type="Moving"/>
+<org.eventb.core.poIdentifier name="locks'" org.eventb.core.type="ℙ(ℤ×ℙ(ℤ))"/>
+<org.eventb.core.poIdentifier name="section" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="parameter" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="train" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="nextRt" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="setLocation'" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="eventName" org.eventb.core.type="eventType"/>
+<org.eventb.core.poIdentifier name="route" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTHYPRailMovemen|eventNams" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTIDENTRailMovemen\|" org.eventb.core.poStamp="17">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="eventName∈eventType" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.guard#'"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="train∈trains" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.guard#grd1"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="mov∈Moving" org.eventb.core.source="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#7|org.eventb.core.guard#grd4"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="eventName=sectionChanged" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#("/>
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="route∈routes" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#2"/>
+<org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="getRoute(train)=route" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#7"/>
+<org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="nextRt=nextRoute(route)" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#="/>
+<org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="parameter∈dom(nextRt)∧parameter∈dom(route)" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#."/>
+<org.eventb.core.poPredicate name="PRD8" org.eventb.core.predicate="section=route(parameter)" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#3"/>
+<org.eventb.core.poPredicate name="PRD9" org.eventb.core.predicate="setLocation(train)=section" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#8"/>
+<org.eventb.core.poPredicate name="PRD10" org.eventb.core.predicate="setLocation(train)∈track" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#:"/>
+<org.eventb.core.poPredicate name="PRD11" org.eventb.core.predicate="nextRoute(route)∈1 ‥ maxRouteSize → track" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#;"/>
+<org.eventb.core.poPredicate name="PRD12" org.eventb.core.predicate="ran(nextRt)⊆track" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#@"/>
+<org.eventb.core.poPredicate name="PRD13" org.eventb.core.predicate="∀x⦂ℤ·x∈dom(setLocation)⇒setLocation(x)∈track" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#&gt;"/>
+<org.eventb.core.poPredicate name="PRD14" org.eventb.core.predicate="nextRt(parameter)∈track" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#A"/>
+<org.eventb.core.poPredicate name="PRD15" org.eventb.core.predicate="startTrain(train)=Start" org.eventb.core.source="/ModelRailway/SectionChanged.bum|org.eventb.core.machineFile#SectionChanged|org.eventb.core.event#var5|org.eventb.core.guard#9"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPRailMovemen|" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#EVTHYPRailMovemen\|eventNams" org.eventb.core.poStamp="17">
+<org.eventb.core.poPredicate name="PRD16" org.eventb.core.predicate="{nextRoute(route)(parameter)}=locks(nextRoute(route)(train))" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.event#*|org.eventb.core.guard#("/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/ModelRailway/SectionLocking.bpo|org.eventb.core.poFile#SectionLocking|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="17">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="locks∈track → ℙ(trains)" org.eventb.core.source="/ModelRailway/SectionLocking.bum|org.eventb.core.machineFile#SectionLocking|org.eventb.core.invariant#var4"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

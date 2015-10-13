@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<index_root>
+<pim project="/ModelRailway">
+<rodin_index>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller" name="Controller">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller" kind="org.eventb.core.declaration"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(|org.eventb.core.parameter#'" name="event">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(|org.eventb.core.parameter#'" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.identifier"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.records.record#'" name="rec1">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" kind="org.eventb.core.declaration"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(" name="notify">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+</descriptor>
+<descriptor element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'" name="INITIALISATION">
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'" kind="org.eventb.core.declaration" loc_attribute="org.eventb.core.label"/>
+</descriptor>
+<descriptor element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" name="Railway">
+<occurrence element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" kind="org.eventb.core.declaration"/>
+<occurrence element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.seesContext#)" kind="org.eventb.core.reference" loc_attribute="org.eventb.core.target"/>
+</descriptor>
+</rodin_index>
+<export_table>
+<export file="/ModelRailway/Controller.bum">
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" name="Railway"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(" name="notify"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.records.record#'" name="rec1"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#(|org.eventb.core.parameter#'" name="event"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller" name="Controller"/>
+<exported element="/ModelRailway/Controller.bum|org.eventb.core.machineFile#Controller|org.eventb.core.event#'" name="INITIALISATION"/>
+</export>
+<export file="/ModelRailway/Railway.buc">
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway" name="Railway"/>
+<exported element="/ModelRailway/Railway.buc|org.eventb.core.contextFile#Railway|org.eventb.records.record#'" name="rec1"/>
+</export>
+</export_table>
+<graph is_sorted="true">
+<node label="/ModelRailway/Railway.buc" mark="false" order_pos="0"/>
+<node label="/ModelRailway/Controller.bum" mark="false" order_pos="1">
+<predecessor label="/ModelRailway/Railway.buc"/>
+</node>
+</graph>
+<unprocessed file="/ModelRailway/Controller.bcm"/>
+<unprocessed file="/ModelRailway/Controller.bpo"/>
+<unprocessed file="/ModelRailway/Controller.bpr"/>
+<unprocessed file="/ModelRailway/Controller.bps"/>
+<unprocessed file="/ModelRailway/Railway.bcc"/>
+<unprocessed file="/ModelRailway/Railway.bpo"/>
+<unprocessed file="/ModelRailway/Railway.bpr"/>
+<unprocessed file="/ModelRailway/Railway.bps"/>
+<unprocessed file="/ModelRailway/Controller.bpo_tmp"/>
+<unprocessed file="/ModelRailway/Railway.bpo_tmp"/>
+</pim>
+<pim project="/MathExtensions">
+<rodin_index/>
+<export_table/>
+<graph is_sorted="true"/>
+</pim>
+<delta_list/>
+<indexer_registry>
+<registry_entry element_type="ch.ethz.eventb.decomposition.core.dcpFile">
+<indexer id="ch.ethz.eventb.decomposition.core.indexer"/>
+</registry_entry>
+<registry_entry element_type="org.eventb.core.machineFile">
+<indexer id="machineIndexer"/>
+</registry_entry>
+<registry_entry element_type="ac.soton.composition.core.composedMachineFile">
+<indexer id="ac.soton.composition.core.indexer.composedMachine"/>
+</registry_entry>
+<registry_entry element_type="org.eventb.core.contextFile">
+<indexer id="contextIndexer"/>
+<indexer id="org.eventb.records.indexer"/>
+</registry_entry>
+</indexer_registry>
+</index_root>
